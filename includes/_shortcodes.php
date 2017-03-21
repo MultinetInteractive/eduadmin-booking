@@ -181,7 +181,7 @@ function eduadmin_get_detailinfo($attributes)
 
 	if(!$apiKey || empty($apiKey))
 	{
-		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
+		return edu_notice_config_incomplete_message();
 	}
 	else
 	{
