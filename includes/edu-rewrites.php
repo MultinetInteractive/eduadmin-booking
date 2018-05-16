@@ -67,7 +67,7 @@ function eduadmin_rewrite_init() {
 		}
 	}
 
-	if ( true === get_option( 'eduadmin-options_have_changed', 'false' ) ) {
+	if ( true == get_option( 'eduadmin-options_have_changed', 'false' ) ) {
 		flush_rewrite_rules();
 		update_option( 'eduadmin-options_have_changed', false );
 	}
