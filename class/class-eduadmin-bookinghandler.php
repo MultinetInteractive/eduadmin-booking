@@ -493,6 +493,11 @@ class EduAdmin_BookingHandler {
 
 		$booking_data = $this->get_single_participant_booking();
 
+		if ( empty( $booking_data->ContactPerson->FirstName ) ) {
+			$booking_data->ContactPerson->FirstName = 'Tempo';
+			$booking_data->ContactPerson->LastName  = 'Rary';
+		}
+
 		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
 	}
 

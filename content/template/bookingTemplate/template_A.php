@@ -108,8 +108,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<?php
 				$no_invoice_free_events         = get_option( 'eduadmin-noInvoiceFreeEvents', false );
 				$single_person_booking          = get_option( 'eduadmin-singlePersonBooking', false );
-				$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false === $attributes['hideinvoiceemailfield'] : false === get_option( 'eduadmin-hideInvoiceEmailField', false );
-				$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false === $attributes['showinvoiceinformation'] : true === get_option( 'eduadmin-showInvoiceInformation', false );
+				$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false == $attributes['hideinvoiceemailfield'] : false == get_option( 'eduadmin-hideInvoiceEmailField', false );
+				$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false == $attributes['showinvoiceinformation'] : true == get_option( 'eduadmin-showInvoiceInformation', false );
 				if ( $single_person_booking ) {
 					include_once 'single-person-booking.php';
 				} else {

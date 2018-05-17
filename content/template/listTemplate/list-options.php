@@ -10,6 +10,8 @@ $show_city          = $attributes['showcity'];
 $show_book_btn      = $attributes['showbookbtn'];
 $show_read_more_btn = $attributes['showreadmorebtn'];
 
+$filter_city = $attributes['filtercity'];
+
 $search_visible = $show_search == true || ( $attributes['hidesearch'] == false || $attributes['hidesearch'] == null );
 
 $subjects = get_transient( 'eduadmin-subjects' );
