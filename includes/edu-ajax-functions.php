@@ -80,6 +80,7 @@ function edu_api_listview_eventlist() {
 	$filters       = array();
 	$event_filters = array();
 	$expands       = array();
+	$sorting       = array();
 
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
@@ -125,6 +126,37 @@ function edu_api_listview_eventlist() {
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb';
 
+	$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+
+	$custom_order_by       = null;
+	$custom_order_by_order = null;
+	if ( ! empty( $_POST['orderby'] ) ) {
+		$custom_order_by = $_POST['orderby'];
+	}
+
+	if ( ! empty( $_POST['order'] ) ) {
+		$custom_order_by_order = $_POST['order'];
+	}
+
+	if ( null !== $custom_order_by ) {
+		$orderby    = explode( ' ', $custom_order_by );
+		$sort_order = explode( ' ', $custom_order_by_order );
+		foreach ( $orderby as $od => $v ) {
+			if ( isset( $sort_order[ $od ] ) ) {
+				$or = $sort_order[ $od ];
+			} else {
+				$or = 'asc';
+			}
+
+			if ( edu_validate_column( 'course', $v ) !== false ) {
+				$sorting[] = $v . ' ' . strtolower( $or );
+			}
+		}
+	}
+
+	if ( edu_validate_column( 'course', $sort_order ) !== false ) {
+		$sorting[] = $sort_order . ' asc';
+	}
 
 	$expand_arr = array();
 	foreach ( $expands as $key => $value ) {
@@ -138,7 +170,8 @@ function edu_api_listview_eventlist() {
 	$edo     = EDUAPI()->OData->CourseTemplates->Search(
 		null,
 		join( ' and ', $filters ),
-		join( ',', $expand_arr )
+		join( ',', $expand_arr ),
+		join( ',', $sorting )
 	);
 	$courses = $edo['value'];
 
@@ -186,18 +219,6 @@ function edu_api_listview_eventlist() {
 			$events[] = $event;
 		}
 	}
-
-
-	usort( $events, function( $a, $b ) {
-		$aD = $a['StartDate'];
-		$bD = $b['StartDate'];
-		if ( $aD < $bD )
-			return -1;
-		else if ( $aD > $bD )
-			return 1;
-		else
-			return 0;
-	});
 
 	if ( 'A' === $_POST['template'] ) {
 		edu_api_listview_eventlist_template_A( $events, $_POST );
