@@ -10,7 +10,6 @@ if ( ! is_numeric( $fetch_months ) ) {
 
 $filters = array();
 $expands = array();
-$sorting = array();
 
 $expands['Subjects']   = '';
 $expands['Categories'] = '';
@@ -69,27 +68,6 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 	$attributes['courselevel'] = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
-
-if ( null !== $custom_order_by ) {
-	$orderby   = explode( ' ', $custom_order_by );
-	$sortorder = explode( ' ', $custom_order_by_order );
-	foreach ( $orderby as $od => $v ) {
-		if ( isset( $sortorder[ $od ] ) ) {
-			$or = $sortorder[ $od ];
-		} else {
-			$or = 'asc';
-		}
-		if ( edu_validate_column( 'course', $v ) !== false ) {
-			$sorting[] = $v . ' ' . strtolower( $or );
-		}
-	}
-}
-
-if ( edu_validate_column( 'course', $sort_order ) !== false ) {
-	$sorting[] = $sort_order . ' asc';
-}
-
 $expand_arr = array();
 foreach ( $expands as $key => $value ) {
 	if ( empty( $value ) ) {
@@ -102,8 +80,7 @@ foreach ( $expands as $key => $value ) {
 $edo = EDUAPI()->OData->CourseTemplates->Search(
 	null,
 	join( ' and ', $filters ),
-	join( ',', $expand_arr ),
-	join( ',', $sorting )
+	join( ',', $expand_arr )
 );
 
 $courses = $edo['value'];
@@ -165,5 +142,17 @@ $show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
 $spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 $always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+
+usort( $events, function( $a, $b ) {
+	$aD = $a['StartDate'];
+	$bD = $b['StartDate'];
+	if ( $aD < $bD )
+		return -1;
+	else if ( $aD > $bD )
+		return 1;
+	else
+		return 0;
+});
 ?>
-<div class="eventListTable" data-eduwidget="listview-eventlist" data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-orderby="<?php echo esc_attr( $attributes['orderby'] ); ?>" data-order="<?php echo esc_attr( $attributes['order'] ); ?>" data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>" data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>" data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>" data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>">
+
+<div class="eventListTable" data-eduwidget="listview-eventlist" data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>" data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>" data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>" data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>">
