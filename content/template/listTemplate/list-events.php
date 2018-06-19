@@ -70,17 +70,16 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 }
 
 $order_by = array();
-$order = array();
+$order = array(1);
 $order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 if ( null !== $custom_order_by ) {
     $order_by   = explode( ' ', $custom_order_by );
-    $custom_order         = explode( ' ', $custom_order_by_order );
-	foreach ($custom_order as $coVal) {
-        if ( !isset($coVal) || $coVal == "asc" ) {
-            array_push($order, 1);
-        } else {
-            array_push($order, -1);
+    if ( null !== $custom_order_by_order ) {
+        $order = array();
+        $custom_order         = explode( ' ', $custom_order_by_order );
+        foreach ($custom_order as $coVal) {
+	        ! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
         }
     }
 } else {
