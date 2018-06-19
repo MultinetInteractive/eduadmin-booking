@@ -80,7 +80,6 @@ function edu_api_listview_eventlist() {
 	$filters       = array();
 	$event_filters = array();
 	$expands       = array();
-	$sorting       = array();
 
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
@@ -126,10 +125,12 @@ function edu_api_listview_eventlist() {
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb';
 
-	$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
-
+	$order_by = array();
+	$order = array();
+	$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 	$custom_order_by       = null;
 	$custom_order_by_order = null;
+
 	if ( ! empty( $_POST['orderby'] ) ) {
 		$custom_order_by = $_POST['orderby'];
 	}
@@ -139,23 +140,21 @@ function edu_api_listview_eventlist() {
 	}
 
 	if ( null !== $custom_order_by ) {
-		$orderby    = explode( ' ', $custom_order_by );
-		$sort_order = explode( ' ', $custom_order_by_order );
-		foreach ( $orderby as $od => $v ) {
-			if ( isset( $sort_order[ $od ] ) ) {
-				$or = $sort_order[ $od ];
+		$order_by           = explode( ' ', $custom_order_by );
+		$custom_order       = explode( ' ', $custom_order_by_order );
+		foreach ($custom_order as $coVal) {
+			if ( !isset($coVal) || $coVal == "asc" ) {
+				array_push($order, 1);
 			} else {
-				$or = 'asc';
-			}
-
-			if ( edu_validate_column( 'course', $v ) !== false ) {
-				$sorting[] = $v . ' ' . strtolower( $or );
+				array_push($order, -1);
 			}
 		}
-	}
-
-	if ( edu_validate_column( 'course', $sort_order ) !== false ) {
-		$sorting[] = $sort_order . ' asc';
+	} else {
+		if ( $order_option === "SortIndex" ) {
+			$order_option = "StartDate";
+		}
+		array_push( $order_by, $order_option );
+		array_push( $order, 1 );
 	}
 
 	$expand_arr = array();
@@ -170,8 +169,7 @@ function edu_api_listview_eventlist() {
 	$edo     = EDUAPI()->OData->CourseTemplates->Search(
 		null,
 		join( ' and ', $filters ),
-		join( ',', $expand_arr ),
-		join( ',', $sorting )
+		join( ',', $expand_arr )
 	);
 	$courses = $edo['value'];
 
@@ -219,6 +217,8 @@ function edu_api_listview_eventlist() {
 			$events[] = $event;
 		}
 	}
+
+	$events = sortEvents( $events, $order_by, $order );
 
 	if ( 'A' === $_POST['template'] ) {
 		edu_api_listview_eventlist_template_A( $events, $_POST );

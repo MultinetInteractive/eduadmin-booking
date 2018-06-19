@@ -69,21 +69,26 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 	$attributes['courselevel'] = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+$order_by = array();
+$order = array();
+$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 if ( null !== $custom_order_by ) {
-	$orderby   = explode( ' ', $custom_order_by );
-	$sortorder = explode( ' ', $custom_order_by_order );
-	foreach ( $orderby as $od => $v ) {
-		if ( isset( $sortorder[ $od ] ) ) {
-			$or = $sortorder[ $od ];
-		} else {
-			$or = 'asc';
-		}
-		if ( edu_validate_column( 'course', $v ) !== false ) {
-			$sorting[] = $v . ' ' . strtolower( $or );
-		}
+    $order_by   = explode( ' ', $custom_order_by );
+    $custom_order         = explode( ' ', $custom_order_by_order );
+	foreach ($custom_order as $coVal) {
+        if ( !isset($coVal) || $coVal == "asc" ) {
+            array_push($order, 1);
+        } else {
+            array_push($order, -1);
+        }
+    }
+} else {
+	if ( $order_option === "SortIndex" ) {
+		$order_option = "StartDate";
 	}
+	array_push( $order_by, $order_option );
+	array_push( $order, 1 );
 }
 
 if ( edu_validate_column( 'course', $sort_order ) !== false ) {
@@ -102,8 +107,7 @@ foreach ( $expands as $key => $value ) {
 $edo = EDUAPI()->OData->CourseTemplates->Search(
 	null,
 	join( ' and ', $filters ),
-	join( ',', $expand_arr ),
-	join( ',', $sorting )
+	join( ',', $expand_arr )
 );
 
 $courses = $edo['value'];
@@ -152,6 +156,8 @@ foreach ( $courses as $object ) {
 		$events[] = $event;
 	}
 }
+
+$events = sortEvents( $events, $order_by, $order );
 
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 $show_course_times = get_option( 'eduadmin-showCourseTimes', true );
