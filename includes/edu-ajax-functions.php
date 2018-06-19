@@ -126,7 +126,7 @@ function edu_api_listview_eventlist() {
 	$expands['CustomFields'] = '$filter=ShowOnWeb';
 
 	$order_by = array();
-	$order = array();
+	$order = array(1);
 	$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 	$custom_order_by       = null;
 	$custom_order_by_order = null;
@@ -140,13 +140,12 @@ function edu_api_listview_eventlist() {
 	}
 
 	if ( null !== $custom_order_by ) {
-		$order_by           = explode( ' ', $custom_order_by );
-		$custom_order       = explode( ' ', $custom_order_by_order );
-		foreach ($custom_order as $coVal) {
-			if ( !isset($coVal) || $coVal == "asc" ) {
-				array_push($order, 1);
-			} else {
-				array_push($order, -1);
+		$order_by = explode( ' ', $custom_order_by );
+		if ( null !== $custom_order_by_order ) {
+			$order = array();
+			$custom_order = explode( ' ', $custom_order_by_order );
+			foreach ( $custom_order as $coVal ) {
+				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
 			}
 		}
 	} else {
