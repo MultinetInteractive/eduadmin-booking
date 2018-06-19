@@ -221,6 +221,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			include_once 'includes/edu-attribute-functions.php';
 			include_once 'includes/edu-text-functions.php';
 			include_once 'includes/edu-login-functions.php';
+			include_once 'includes/edu-sort-functions.php';
 
 			include_once 'class/class-eduadmin-apicontroller.php';
 
