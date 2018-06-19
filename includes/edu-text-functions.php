@@ -346,12 +346,12 @@ function get_start_end_display_date( $start_date, $end_date, $short = false, $ev
 					$str .= ' ' . date( 'H:i', strtotime( $end_date['StartDate'] ) ) . '-' . date( 'H:i', strtotime( $end_date['EndDate'] ) );
 				}
 			} else {
+				$str .= ' ';
+				$str .= $months[ date( 'n', strtotime( $start_date['StartDate'] ) ) ];
 				if ( $show_days && ( date( 'H:i', strtotime( $start_date['StartDate'] ) ) !== date( 'H:i', strtotime( $end_date['StartDate'] ) ) && date( 'H:i', strtotime( $start_date['EndDate'] ) ) !== date( 'H:i', strtotime( $end_date['EndDate'] ) ) )
 				) {
 					$str .= ' ' . date( 'H:i', strtotime( $start_date['StartDate'] ) ) . '-' . date( 'H:i', strtotime( $start_date['EndDate'] ) );
 				}
-				$str .= ' ';
-				$str .= $months[ date( 'n', strtotime( $start_date['StartDate'] ) ) ];
 				$str .= ' - ';
 				if ( $show_days ) {
 					$str .= $week_days[ date( 'N', strtotime( $end_date['EndDate'] ) ) ] . ' ';
