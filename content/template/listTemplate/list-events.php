@@ -10,7 +10,6 @@ if ( ! is_numeric( $fetch_months ) ) {
 
 $filters = array();
 $expands = array();
-$sorting = array();
 
 $expands['Subjects']   = '';
 $expands['Categories'] = '';
@@ -88,10 +87,6 @@ if ( null !== $custom_order_by ) {
 	}
 	array_push( $order_by, $order_option );
 	array_push( $order, 1 );
-}
-
-if ( edu_validate_column( 'course', $sort_order ) !== false ) {
-	$sorting[] = $sort_order . ' asc';
 }
 
 $expand_arr = array();
