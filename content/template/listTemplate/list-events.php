@@ -152,6 +152,8 @@ foreach ( $courses as $object ) {
 		$min_price      = min( $pricenames );
 		$event['Price'] = $min_price;
 
+		$event = array_merge($event, $event["CourseTemplate"]);
+
 		$events[] = $event;
 	}
 }
