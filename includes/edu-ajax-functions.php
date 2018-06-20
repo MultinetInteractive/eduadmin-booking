@@ -126,7 +126,7 @@ function edu_api_listview_eventlist() {
 	$expands['CustomFields'] = '$filter=ShowOnWeb';
 
 	$order_by = array();
-	$order = array(1);
+	$order = array( 1 );
 	$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 	$custom_order_by       = null;
 	$custom_order_by_order = null;
@@ -213,7 +213,7 @@ function edu_api_listview_eventlist() {
 			$min_price      = min( $pricenames );
 			$event['Price'] = $min_price;
 
-			$event = array_merge($event, $event["CourseTemplate"]);
+			$event = array_merge( $event, $event['CourseTemplate'] );
 
 			$events[] = $event;
 		}
