@@ -172,7 +172,7 @@ function edu_api_listview_eventlist() {
 	);
 	$courses = $edo['value'];
 
-	if ( ! empty( $_POST['searchCourses'] ) ) {
+	if ( ! empty( $_POST['search'] ) ) {
 		$courses = array_filter( $courses, function( $object ) {
 			$name        = ( ! empty( $object['CourseName'] ) ? $object['CourseName'] : $object['InternalCourseName'] );
 			$descr_field = get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
@@ -189,8 +189,8 @@ function edu_api_listview_eventlist() {
 				$descr = strip_tags( $object[ $descr_field ] );
 			}
 
-			$name_match  = false !== stripos( $name, sanitize_text_field( $_POST['searchCourses'] ) );
-			$descr_match = false !== stripos( $descr, sanitize_text_field( $_POST['searchCourses'] ) );
+			$name_match  = false !== stripos( $name, sanitize_text_field( $_POST['search'] ) );
+			$descr_match = false !== stripos( $descr, sanitize_text_field( $_POST['search'] ) );
 
 			return ( $name_match || $descr_match );
 		} );
