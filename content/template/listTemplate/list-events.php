@@ -10,7 +10,6 @@ if ( ! is_numeric( $fetch_months ) ) {
 
 $filters = array();
 $expands = array();
-$sorting = array();
 
 $expands['Subjects']   = '';
 $expands['Categories'] = '';
@@ -69,25 +68,25 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 	$attributes['courselevel'] = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+$order_by = array();
+$order = array(1);
+$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 if ( null !== $custom_order_by ) {
-	$orderby   = explode( ' ', $custom_order_by );
-	$sortorder = explode( ' ', $custom_order_by_order );
-	foreach ( $orderby as $od => $v ) {
-		if ( isset( $sortorder[ $od ] ) ) {
-			$or = $sortorder[ $od ];
-		} else {
-			$or = 'asc';
-		}
-		if ( edu_validate_column( 'course', $v ) !== false ) {
-			$sorting[] = $v . ' ' . strtolower( $or );
-		}
+    $order_by   = explode( ' ', $custom_order_by );
+    if ( null !== $custom_order_by_order ) {
+        $order = array();
+        $custom_order         = explode( ' ', $custom_order_by_order );
+        foreach ($custom_order as $coVal) {
+	        ! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+        }
+    }
+} else {
+	if ( $order_option === "SortIndex" ) {
+		$order_option = "StartDate";
 	}
-}
-
-if ( edu_validate_column( 'course', $sort_order ) !== false ) {
-	$sorting[] = $sort_order . ' asc';
+	array_push( $order_by, $order_option );
+	array_push( $order, 1 );
 }
 
 $expand_arr = array();
@@ -102,8 +101,7 @@ foreach ( $expands as $key => $value ) {
 $edo = EDUAPI()->OData->CourseTemplates->Search(
 	null,
 	join( ' and ', $filters ),
-	join( ',', $expand_arr ),
-	join( ',', $sorting )
+	join( ',', $expand_arr )
 );
 
 $courses = $edo['value'];
@@ -149,9 +147,13 @@ foreach ( $courses as $object ) {
 		$min_price      = min( $pricenames );
 		$event['Price'] = $min_price;
 
+		$event = array_merge( $event, $event['CourseTemplate'] );
+
 		$events[] = $event;
 	}
 }
+
+$events = sortEvents( $events, $order_by, $order );
 
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 $show_course_times = get_option( 'eduadmin-showCourseTimes', true );

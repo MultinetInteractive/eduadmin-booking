@@ -39,6 +39,11 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.7 ###
+- fix: Fixed the date format in the event schedule when the event is withing different months
+- fix: The events in the list-view are now sorted by `startDate` when the `Sort order` is set to `Sort index`
+- fix: Events in the event-list can now be sorted with event properties as well as course template properties
+
 ### 2.0.6 ###
 - fix: `get_option` does only return booleans when they are empty (fixed on booking page)
 - fix: When checking price on a single-participant-booking, we should fill the participant name if it's empty
