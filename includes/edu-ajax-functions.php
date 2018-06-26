@@ -118,7 +118,7 @@ function edu_api_listview_eventlist() {
 		'$filter=' .
 		join( ' and ', $event_filters ) .
 		';' .
-		'$expand=PriceNames,EventDates' .
+		'$expand=PriceNames,EventDates($orderby=StartDate)' .
 		';' .
 		'$orderby=StartDate asc' .
 		';';

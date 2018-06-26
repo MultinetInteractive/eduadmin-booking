@@ -272,7 +272,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 				';' .
-				'$expand=PriceNames($filter=PublicPriceName),EventDates,Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
+				'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate),Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
 				';' .
 				'$orderby=StartDate asc' .
 				';';

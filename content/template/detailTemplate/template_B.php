@@ -55,7 +55,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				</div>
 			<?php } ?>
 			<?php if ( ! in_array( 'prerequisites', $hide_sections, true ) && ! empty( $selected_course['Prerequisites'] ) ) { ?>
-			<?php if ( $showHeaders ) { ?>
+			<?php if ( $show_headers ) { ?>
 				<h3><?php _e( 'Prerequisites', 'eduadmin-booking' ); ?></h3>
 			<?php } ?>
 			<div>
@@ -66,7 +66,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		</div>
 		<div class="textblock rightBlock">
 			<?php } ?>
-			<?php if ( ! in_array( 'after', $hide_sections, true ) && ! empty( $selected_course['CourseAfter'] ) ) { ?><?php if ( $showHeaders ) { ?>
+			<?php if ( ! in_array( 'after', $hide_sections, true ) && ! empty( $selected_course['CourseAfter'] ) ) { ?><?php if ( $show_headers ) { ?>
 				<h3><?php _e( 'After the course', 'eduadmin-booking' ); ?></h3>
 			<?php } ?>
 				<div>
@@ -75,7 +75,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					?>
 				</div>
 			<?php } ?>
-			<?php if ( ! in_array( 'quote', $hide_sections, true ) && ! empty( $selected_course['Quote'] ) ) { ?><?php if ( $showHeaders ) { ?>
+			<?php if ( ! in_array( 'quote', $hide_sections, true ) && ! empty( $selected_course['Quote'] ) ) { ?><?php if ( $show_headers ) { ?>
 				<h3><?php _e( 'Quotes', 'eduadmin-booking' ); ?></h3>
 			<?php } ?>
 				<div>
@@ -113,11 +113,11 @@ if ( ! $api_key || empty( $api_key ) ) {
 		</div>
 		<?php
 		include( 'blocks/event-list.php' );
-		if ( $allowInterestRegObject && $objectInterestPage != false ) {
+		if ( $allow_interest_reg_object && $object_interest_page != false ) {
 			?>
 			<br />
 			<div class="inquiry">
-				<a class="inquiry-link" href="<?php echo $baseUrl; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $selected_course['CourseTemplateId']; ?>/interest/<?php echo edu_get_query_string( '?' ); ?>"><?php _e( 'Send inquiry about this course', 'eduadmin-booking' ); ?></a>
+				<a class="inquiry-link" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $selected_course['CourseTemplateId']; ?>/interest/<?php echo edu_get_query_string( '?' ); ?>"><?php _e( 'Send inquiry about this course', 'eduadmin-booking' ); ?></a>
 			</div>
 			<?php
 		}
