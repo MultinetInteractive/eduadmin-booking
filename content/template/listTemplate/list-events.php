@@ -23,7 +23,7 @@ $expands['Events']     =
 	' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 	' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 	';' .
-	'$expand=PriceNames,EventDates' .
+	'$expand=PriceNames,EventDates($orderby=StartDate)' .
 	';' .
 	'$orderby=StartDate asc' .
 	';';

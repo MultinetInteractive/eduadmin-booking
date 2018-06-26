@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -21,7 +21,7 @@ Plugin that you connect to [EduAdmin](https://www.eduadmin.se) to enable booking
 [<img src="https://travis-ci.org/MultinetInteractive/EduAdmin-WordPress.svg?branch=master" alt="Build status" />](https://travis-ci.org/MultinetInteractive/EduAdmin-WordPress)
 [<img src="https://scrutinizer-ci.com/g/MultinetInteractive/EduAdmin-WordPress/badges/quality-score.png?b=master" alt="Code quality" />](https://scrutinizer-ci.com/g/MultinetInteractive/EduAdmin-WordPress/?branch=master)
 
-[<img src="https://img.shields.io/github/commits-since/MultinetInteractive/EduAdmin-WordPress/latest.svg" alt="Plugin version" />](https://wordpress.org/plugins/eduadmin-booking/)
+[<img src="https://img.shields.io/github/commits-since/MultinetInteractive/EduAdmin-WordPress/latest.svg" alt="Commits since latest plugin version" />](https://wordpress.org/plugins/eduadmin-booking/)
 
 
 
@@ -38,6 +38,9 @@ We have replaced everything with a new API-client, so some things may be broken.
 If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
+
+### 2.0.8 ###
+- fix: Fixed sort order on event dates
 
 ### 2.0.7 ###
 - fix: Fixed the date format in the event schedule when the event is withing different months
