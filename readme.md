@@ -41,6 +41,7 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 ### 2.0.8 ###
 - fix: Fixed sort order on event dates
+- fix: Adding extra parameter to links that could contain sensitive information 
 
 ### 2.0.7 ###
 - fix: Fixed the date format in the event schedule when the event is withing different months

@@ -448,7 +448,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
-				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/' . edu_get_query_string() );
+				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/' . edu_get_query_string() . '&_=' . time() );
 			}
 
 			if ( isset( $attributes['courseinquiryurl'] ) ) {
@@ -458,7 +458,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
-				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string() );
+				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string() . '&_=' . time() );
 			}
 
 			if ( isset( $attributes['courseeventlist'] ) ) {
