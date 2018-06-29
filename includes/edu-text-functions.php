@@ -107,6 +107,7 @@ function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
 	$t = EDU()->start_timer( __METHOD__ );
 	array_push( $remove_parameters, 'eduadmin-thankyou' );
 	array_push( $remove_parameters, 'q' );
+	array_push( $remove_parameters, '_' );
 	foreach ( $remove_parameters as $par ) {
 		unset( $_GET[ $par ] );
 	}

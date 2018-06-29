@@ -48,7 +48,7 @@
 		if ( $show_book_btn ) {
 			if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
 				?>
-				<a class="bookButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php _e( "Book", 'eduadmin-booking' ); ?></a>
+				<a class="bookButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _e( "Book", 'eduadmin-booking' ); ?></a>
 				<?php
 			} else {
 				?>
