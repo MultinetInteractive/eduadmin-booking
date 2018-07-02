@@ -1,4 +1,5 @@
 <?php
+
 // phpcs:disable WordPress.NamingConventions
 class EduAdmin_APIController {
 	public $namespace;
@@ -30,6 +31,7 @@ class EduAdmin_APIController {
 			'methods'  => 'POST',
 			'callback' => 'edu_api_listview_eventlist',
 			'args'     => array(
+				'fetchmonths'    => array(),
 				'city'           => array(),
 				'category'       => array(),
 				'subject'        => array(),

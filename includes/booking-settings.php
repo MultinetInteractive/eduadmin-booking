@@ -214,7 +214,7 @@ function edu_render_booking_settings_page() {
 				?>                    <h3><?php esc_html_e( "Customer matching", 'eduadmin-booking' ); ?></h3>
 					<select name="eduadmin-customerMatching">
 						<option<?php echo( 'use-match' === $selected_match ? " selected=\"selected\"" : "" ); ?>
-							value="use-match"><?php esc_html_e( "No matching for new customers, matches and overwrites old", 'eduadmin-booking' ); ?></option>
+							value="use-match"><?php esc_html_e( "Let EduAdmin match customers (Creates new if no match is found)", 'eduadmin-booking' ); ?></option>
 						<option<?php echo( 'no-match' === $selected_match ? " selected=\"selected\"" : "" ); ?>
 							value="no-match"><?php esc_html_e( "No matching (Creates new customers every time)", 'eduadmin-booking' ); ?></option>
 					</select>

@@ -14,7 +14,7 @@ $filter_city = $attributes['filtercity'];
 
 $search_visible = $show_search == true || ( $attributes['hidesearch'] == false || $attributes['hidesearch'] == null );
 
-$subjects = get_transient( 'eduadmin-subjects' );
+$subjects = get_transient( 'eduadmin-subjects'. '__' . EDU()->version );
 if ( ! $subjects ) {
 	$subjects = EDUAPI()->OData->Subjects->Search(
 		null,
@@ -22,7 +22,7 @@ if ( ! $subjects ) {
 		null,
 		'SubjectName asc'
 	)['value'];
-	set_transient( 'eduadmin-subjects', $subjects, DAY_IN_SECONDS );
+	set_transient( 'eduadmin-subjects'. '__' . EDU()->version, $subjects, DAY_IN_SECONDS );
 }
 
 $distinct_subjects = array();
@@ -32,29 +32,29 @@ foreach ( $subjects as $subj ) {
 	}
 }
 
-$addresses = get_transient( 'eduadmin-locations' );
+$addresses = get_transient( 'eduadmin-locations'. '__' . EDU()->version );
 if ( ! $addresses ) {
 	$addresses = EDUAPI()->OData->Locations->Search(
 		'LocationId,City',
 		'PublicLocation'
 	)['value'];
-	set_transient( 'eduadmin-locations', $addresses, DAY_IN_SECONDS );
+	set_transient( 'eduadmin-locations'. '__' . EDU()->version, $addresses, DAY_IN_SECONDS );
 }
 
 $show_events = get_option( 'eduadmin-showEventsInList', false );
 
-$categories = get_transient( 'eduadmin-categories' );
+$categories = get_transient( 'eduadmin-categories'. '__' . EDU()->version );
 if ( ! $categories ) {
 	$categories = EDUAPI()->OData->Categories->Search(
 		'CategoryId,CategoryName',
 		'ShowOnWeb'
 	)['value'];
 
-	set_transient( 'eduadmin-categories', $categories, DAY_IN_SECONDS );
+	set_transient( 'eduadmin-categories'. '__' . EDU()->version, $categories, DAY_IN_SECONDS );
 }
 
-$levels = get_transient( 'eduadmin-levels' );
+$levels = get_transient( 'eduadmin-levels'. '__' . EDU()->version );
 if ( ! $levels ) {
 	$levels = EDUAPI()->OData->CourseLevels->Search()['value'];
-	set_transient( 'eduadmin-levels', $levels, DAY_IN_SECONDS );
+	set_transient( 'eduadmin-levels'. '__' . EDU()->version, $levels, DAY_IN_SECONDS );
 }

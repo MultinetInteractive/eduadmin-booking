@@ -26,14 +26,14 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 	}
 
 	if ( isset( $wp ) && isset( $wp->query_vars ) && isset( $wp->query_vars['courseId'] ) ) {
-		$edo = get_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId'] );
+		$edo = get_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version );
 		if ( ! $edo ) {
 			$edo = EDUAPI()->OData->CourseTemplates->GetItem(
 				intval( $wp->query_vars['courseId'] ),
 				null,
 				'CustomFields'
 			);
-			set_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId'], $edo, 6 * HOUR_IN_SECONDS );
+			set_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version, $edo, 6 * HOUR_IN_SECONDS );
 		}
 
 		$selected_course = false;

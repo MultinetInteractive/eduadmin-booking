@@ -390,7 +390,7 @@ function edu_api_eventlist() {
 		$fetch_months = 6;
 	}
 
-	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json' );
+	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 	if ( ! $edo ) {
 		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
 
@@ -429,7 +429,7 @@ function edu_api_eventlist() {
 			null,
 			join( ',', $expand_arr )
 		) );
-		set_transient( 'eduadmin-object_' . $course_id . '_json', $edo, 10 );
+		set_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version, $edo, 10 );
 	}
 
 	$selected_course = false;

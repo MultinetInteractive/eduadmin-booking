@@ -11,14 +11,14 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	$course_id = $wp_query->query_vars['courseId'];
-	$edo       = get_transient( 'eduadmin-object_' . $course_id );
+	$edo       = get_transient( 'eduadmin-object_' . $course_id. '__' . EDU()->version );
 	if ( ! $edo ) {
 		$edo = EDUAPI()->OData->CourseTemplates->GetItem(
 			$course_id,
 			null,
 			'Subjects,Events,CustomFields'
 		);
-		set_transient( 'eduadmin-object_' . $course_id, $edo, 10 );
+		set_transient( 'eduadmin-object_' . $course_id. '__' . EDU()->version, $edo, 10 );
 	}
 
 	$selected_course = false;

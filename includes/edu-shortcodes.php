@@ -252,7 +252,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
 	} else {
-		$edo          = get_transient( 'eduadmin-object_' . $course_id . '_json' );
+		$edo          = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
@@ -293,7 +293,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				null,
 				join( ',', $expand_arr )
 			) );
-			set_transient( 'eduadmin-object_' . $course_id . '_json', $edo, 10 );
+			set_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version, $edo, 10 );
 		}
 
 		$selected_course = false;
@@ -308,10 +308,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
-			$getorg_json = get_transient( 'eduadmin-organisation_json' );
+			$getorg_json = get_transient( 'eduadmin-organisation_json'. '__' . EDU()->version );
 			if ( ! $getorg_json ) {
 				$org = EDUAPI()->REST->Organisation->GetOrganisation();
-				set_transient( 'eduadmin-organisation_json', wp_json_encode( $org ), 10 );
+				set_transient( 'eduadmin-organisation_json'. '__' . EDU()->version, wp_json_encode( $org ), 10 );
 			} else {
 				$org = json_decode( $getorg_json, true );
 			}

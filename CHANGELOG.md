@@ -1,3 +1,44 @@
+### 2.0.5 ###
+- fix: Fixed a bug with saving attribute values
+- add: More errorhandling to booking handler
+
+### 2.0.4 ###
+- fix: Fixed so that strings from the EduAdmin-API also gets captured into `data`
+- add: Show price on programme booking-page
+- add: Support for programme bookings to be booked (with support for payment plugins)
+- chg: Added CTA-class to book-button on detail view for programme starts
+- chg: Updating EduAdmin PHP API Client
+- chg: Adding escaping of output
+- add: Making it easier to add profile-menu items
+- add: Support for REST endpoint ProgrammeStart (Get questions)
+- add: Support for price check on ProgrammeBooking
+- chg: Codestyling to match other pages.
+- fix: Checking for existence of the property data before we try to fetch data from it.
+- fix: Better check if the person is logged in or not.
+
+### 2.0.3 ###
+- add: Ability to view schedule of a programme
+- chg: Bugfix where confirmation emails weren't sent for multiple participant bookings
+- chg: Bugfix for 2 column detail template
+- add: Better error handling when booking a course (At least some handling..)
+
+### 2.0.2 ###
+- fix: Adding check for nonces in interest-registration pages
+- fix: Checking count in password reset in a different way
+- add: When you activate/deactivate the plugin, all transients are now cleaned
+- add: Programme start list in detail view
+- add: Save `customerId` and `personId` in hidden variables on booking page, so we won't lose logged in users if the session times out.
+- add: If we cannot find anything related to `[eduadmin` in the pages, show all pages.
+
+### 2.0.1 ###
+- chg: Better check against `customtemplate`
+- add: Backend-function to fix old search/sort/display values to the new ones
+- fix: Stop setting cookies for while logging in (except the ones from WP_Session), should stop nginx from breaking.
+- chg: Validating all fields when you post a booking
+- chg: Removed `setcookie( 'eduadmin_loginUser' ...`, since it's not needed by the plugin.
+- chg: Fixed line breaks in interest registration in a textarea
+- add: Validate what fields are being sorted on (if it's even possible) in course and event lists
+
 ### 2.0 ###
 - add: Adding page for certificates
 - chg: Bumping major version, since we're using a brand new API
