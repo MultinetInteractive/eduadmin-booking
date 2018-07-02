@@ -408,7 +408,7 @@ function edu_api_eventlist() {
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
-			'$expand=PriceNames($filter=PublicPriceName),EventDates' .
+			'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate)' .
 			';' .
 			'$orderby=' . ( $group_by_city ? 'City asc,' : '' ) . 'StartDate asc' .
 			';';
