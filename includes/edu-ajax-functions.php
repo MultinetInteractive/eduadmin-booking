@@ -118,7 +118,7 @@ function edu_api_listview_eventlist() {
 		'$filter=' .
 		join( ' and ', $event_filters ) .
 		';' .
-		'$expand=PriceNames,EventDates' .
+		'$expand=PriceNames,EventDates($orderby=StartDate)' .
 		';' .
 		'$orderby=StartDate asc' .
 		';';
@@ -390,7 +390,7 @@ function edu_api_eventlist() {
 		$fetch_months = 6;
 	}
 
-	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json' );
+	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 	if ( ! $edo ) {
 		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
 
@@ -408,7 +408,7 @@ function edu_api_eventlist() {
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
-			'$expand=PriceNames($filter=PublicPriceName),EventDates' .
+			'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate)' .
 			';' .
 			'$orderby=' . ( $group_by_city ? 'City asc,' : '' ) . 'StartDate asc' .
 			';';
@@ -429,7 +429,7 @@ function edu_api_eventlist() {
 			null,
 			join( ',', $expand_arr )
 		) );
-		set_transient( 'eduadmin-object_' . $course_id . '_json', $edo, 10 );
+		set_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version, $edo, 10 );
 	}
 
 	$selected_course = false;

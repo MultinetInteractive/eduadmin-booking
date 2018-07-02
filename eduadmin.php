@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.0.7
+ * Version:	2.0.8
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -358,6 +358,12 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function activate() {
+			$this->clear_transients();
+			wp_cache_flush();
+			eduadmin_activate_rewrite();
+		}
+
+		public function clear_transients() {
 			global $wpdb;
 
 			$prefix     = esc_sql( 'eduadmin-' );
@@ -369,25 +375,12 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				$key = str_replace( '_transient_timeout_', '', $transient );
 				delete_transient( $key );
 			}
-
-			wp_cache_flush();
-			eduadmin_activate_rewrite();
 		}
 
 		public function deactivate() {
 			eduadmin_deactivate_rewrite();
 			wp_clear_scheduled_hook( 'eduadmin_call_home' );
-			global $wpdb;
-
-			$prefix     = esc_sql( 'eduadmin-' );
-			$options    = $wpdb->options;
-			$t          = esc_sql( "%transient%$prefix%" );
-			$sql        = $wpdb->prepare( "SELECT option_name FROM $options WHERE option_name LIKE '%s'", $t );
-			$transients = $wpdb->get_col( $sql );
-			foreach ( $transients as $transient ) {
-				$key = str_replace( '_transient_timeout_', '', $transient );
-				delete_transient( $key );
-			}
+			$this->clear_transients();
 
 			wp_cache_flush();
 		}
@@ -408,7 +401,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				}
 			}
 
-			$current_token = get_transient( 'eduadmin-newapi-token' );
+			$current_token = get_transient( 'eduadmin-newapi-token__' . $this->version );
 			if ( false === $current_token || ! $current_token->IsValid() ) {
 				try {
 					$current_token = EDUAPI()->GetToken();
@@ -419,7 +412,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				if ( empty( $current_token->Issued ) ) {
 					return new WP_Error( 'broke', __( 'The key for the EduAdmin API is not configured to work with the new API, please contact MultiNet support.', 'eduadmin-booking' ) );
 				}
-				set_transient( 'eduadmin-newapi-token', $current_token, WEEK_IN_SECONDS );
+				set_transient( 'eduadmin-newapi-token__' . $this->version, $current_token, WEEK_IN_SECONDS );
 			}
 
 			EDUAPI()->SetToken( $current_token );

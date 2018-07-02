@@ -135,7 +135,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			?>
 			<br/>
 			<div class="inquiry">
-				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string( '?' ) ); ?>"><?php esc_html_e( 'Send inquiry about this course', 'eduadmin-booking' ); ?></a>
+				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string( '?' ) . '&_=' . time() ); ?>"><?php esc_html_e( 'Send inquiry about this course', 'eduadmin-booking' ); ?></a>
 			</div>
 			<?php
 		}

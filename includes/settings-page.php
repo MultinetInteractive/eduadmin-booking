@@ -2,16 +2,7 @@
 function edu_render_settings_page() {
 	EDU()->timers[ __METHOD__ ] = microtime( true );
 	if ( get_option( 'eduadmin-credentials_have_changed' ) ) {
-		delete_transient( 'eduadmin-token' );
-		delete_transient( 'eduadmin-listCourses' );
-		delete_transient( 'eduadmin-events-object' );
-		delete_transient( 'eduadmin-courseSubject' );
-		delete_transient( 'eduadmin-listEvents' );
-		delete_transient( 'eduadmin-courseLevels' );
-		delete_transient( 'eduadmin-levels' );
-		delete_transient( 'eduadmin-categories' );
-		delete_transient( 'eduadmin-locations' );
-		delete_transient( 'eduadmin-subjects' );
+		EDU()->clear_transients();
 
 		update_option( 'eduadmin-credentials_have_changed', false );
 	}

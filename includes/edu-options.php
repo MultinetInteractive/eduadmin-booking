@@ -26,14 +26,14 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 	}
 
 	if ( isset( $wp ) && isset( $wp->query_vars ) && isset( $wp->query_vars['courseId'] ) ) {
-		$edo = get_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId'] );
+		$edo = get_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version );
 		if ( ! $edo ) {
 			$edo = EDUAPI()->OData->CourseTemplates->GetItem(
 				intval( $wp->query_vars['courseId'] ),
 				null,
 				'CustomFields'
 			);
-			set_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId'], $edo, 6 * HOUR_IN_SECONDS );
+			set_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version, $edo, 6 * HOUR_IN_SECONDS );
 		}
 
 		$selected_course = false;
@@ -163,6 +163,12 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-alwaysFewSpots' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-monthsToFetch' );
+
+	if ( is_admin() ) {
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery-form' );
+	}
+
 	EDU()->stop_timer( $t );
 }
 
@@ -203,7 +209,7 @@ function eduadmin_backend_content() {
 
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/script/adminjs.js' );
 	wp_register_script( 'eduadmin_admin_script', plugins_url( 'content/script/adminjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
-	wp_enqueue_script( 'eduadmin_admin_script', false, array( 'jquery' ) );
+	wp_enqueue_script( 'eduadmin_admin_script', false, array( 'jquery', 'jquery-form' ) );
 	EDU()->stop_timer( $t );
 }
 

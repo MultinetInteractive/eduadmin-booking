@@ -252,7 +252,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
 	} else {
-		$edo          = get_transient( 'eduadmin-object_' . $course_id . '_json' );
+		$edo          = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
@@ -272,7 +272,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 				';' .
-				'$expand=PriceNames($filter=PublicPriceName),EventDates,Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
+				'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate),Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
 				';' .
 				'$orderby=StartDate asc' .
 				';';
@@ -293,7 +293,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				null,
 				join( ',', $expand_arr )
 			) );
-			set_transient( 'eduadmin-object_' . $course_id . '_json', $edo, 10 );
+			set_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version, $edo, 10 );
 		}
 
 		$selected_course = false;
@@ -308,10 +308,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
-			$getorg_json = get_transient( 'eduadmin-organisation_json' );
+			$getorg_json = get_transient( 'eduadmin-organisation_json'. '__' . EDU()->version );
 			if ( ! $getorg_json ) {
 				$org = EDUAPI()->REST->Organisation->GetOrganisation();
-				set_transient( 'eduadmin-organisation_json', wp_json_encode( $org ), 10 );
+				set_transient( 'eduadmin-organisation_json'. '__' . EDU()->version, wp_json_encode( $org ), 10 );
 			} else {
 				$org = json_decode( $getorg_json, true );
 			}
@@ -448,7 +448,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
-				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/' . edu_get_query_string() );
+				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/' . edu_get_query_string() . '&_=' . time() );
 			}
 
 			if ( isset( $attributes['courseinquiryurl'] ) ) {
@@ -458,7 +458,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
-				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string() );
+				$ret_str .= esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string() . '&_=' . time() );
 			}
 
 			if ( isset( $attributes['courseeventlist'] ) ) {

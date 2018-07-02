@@ -44,7 +44,7 @@ if ( empty( $edo ) ) {
 		null,
 		join( ',', $expand_arr )
 	);
-	set_transient( 'eduadmin-object_' . $course_id, $edo, 10 );
+	set_transient( 'eduadmin-object_' . $course_id . '__' . EDU()->version, $edo, 10 );
 }
 
 $selected_course = false;

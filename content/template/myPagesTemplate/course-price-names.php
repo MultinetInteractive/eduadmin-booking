@@ -32,14 +32,14 @@ if ( ! $api_key || empty( $api_key ) ) {
 		$sorting[] = 'PriceNameId asc';
 	}
 
-	$edo = get_transient( 'eduadmin-objectpublicpricename_' . $course_id );
+	$edo = get_transient( 'eduadmin-objectpublicpricename_' . $course_id. '__' . EDU()->version );
 	if ( ! $edo ) {
 		$edo = EDUAPI()->OData->CourseTemplates->GetItem(
 			$course_id,
 			'CourseTemplateId',
 			'PriceNames($filter=PublicPriceName;$orderby=' . join( ',', $sorting ) . ')'
 		)['PriceNames'];
-		set_transient( 'eduadmin-objectpublicpricename_' . $course_id, $edo, 10 );
+		set_transient( 'eduadmin-objectpublicpricename_' . $course_id. '__' . EDU()->version, $edo, 10 );
 	}
 
 	if ( ! empty( $attributes['numberofprices'] ) ) {
