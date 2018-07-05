@@ -199,6 +199,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 			'coursestarttime'           => null,
 			'courseendtime'             => null,
 			'courseprice'               => null,
+			'eventprice'                => null,
 			'coursedescriptionshort'    => null,
 			'coursedescription'         => null,
 			'coursegoal'                => null,
