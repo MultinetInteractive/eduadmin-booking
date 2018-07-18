@@ -415,7 +415,7 @@ class EduAdmin_BookingHandler {
 			$contact->PriceNameId = intval( $_POST['contactPriceName'] ); // Var input okay.
 		}
 
-		$contact->CanLogin     = get_option( 'eduadmin-useLogin', false );
+		$contact->CanLogin     = !!get_option( 'eduadmin-useLogin', false );
 		$contact->Answers      = $this->get_contact_questions();
 		$contact->CustomFields = $this->get_contact_custom_fields();
 		$contact->Sessions     = $this->get_contact_sessions();
