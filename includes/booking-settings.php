@@ -63,7 +63,7 @@ function edu_render_booking_settings_page() {
 					<br />
 					<br />
 					<label>
-						<input type="checkbox" name="eduadmin-useLogin"
+						<input type="checkbox" name="eduadmin-useLogin" value="true"
 							<?php echo( get_option( 'eduadmin-useLogin', false ) ? ' checked="checked"' : '' ); ?>
 							onchange="EduAdmin.ToggleVisibility(this.checked, '.eduadmin-forceLogin');" />
 						<?php esc_html_e( 'Use login', 'eduadmin-booking' ); ?>
@@ -71,7 +71,7 @@ function edu_render_booking_settings_page() {
 					<br />
 					<div class="eduadmin-forceLogin"<?php echo( get_option( 'eduadmin-useLogin', false ) ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
 						<label>
-							<input type="checkbox" name="eduadmin-allowCustomerRegistration"
+							<input type="checkbox" name="eduadmin-allowCustomerRegistration" value="true"
 								<?php echo get_option( 'eduadmin-allowCustomerRegistration', true ) ? ' checked="checked"' : ''; ?>
 							/>
 							<?php esc_html_e( 'Allow customer registration', 'eduadmin-booking' ); ?>
