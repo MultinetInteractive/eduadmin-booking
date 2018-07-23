@@ -392,8 +392,6 @@ function edu_api_eventlist() {
 
 	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 	if ( ! $edo ) {
-		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
-
 		$expands = array();
 
 		$expands['Subjects']   = '';
@@ -410,7 +408,7 @@ function edu_api_eventlist() {
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate)' .
 			';' .
-			'$orderby=' . ( $group_by_city ? 'City asc,' : '' ) . 'StartDate asc' .
+			'$orderby=' . ( !!$group_by_city ? 'City asc,' : '' ) . 'StartDate asc' .
 			';';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb';
@@ -443,7 +441,29 @@ function edu_api_eventlist() {
 	$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
 	$base_url = $surl . '/' . $cat;
 
-	$events = $selected_course['Events'];
+	$events = array();
+
+	foreach ( $selected_course['Events'] as $event ) {
+		$event['CourseTemplate'] = $selected_course;
+		unset( $event['CourseTemplate']['Events'] );
+
+		$pricenames = array();
+		foreach ( $selected_course['PriceNames'] as $pn ) {
+			$pricenames[] = $pn['Price'];
+		}
+		foreach ( $event['PriceNames'] as $pn ) {
+
+			$pricenames[] = $pn['Price'];
+		}
+
+		$event = array_merge( $event, $event['CourseTemplate'] );
+
+		$min_price      = min( $pricenames );
+		$event['Price'] = $min_price;
+		$event['PriceNames'] = $pricenames;
+
+		$events[] = $event;
+	}
 
 	$prices = array();
 
@@ -463,6 +483,27 @@ function edu_api_eventlist() {
 			return $_event['City'] === $_city;
 		} );
 	}
+
+	$order_by = array();
+	$order = array(1);
+	$order_option = (!!$group_by_city ? 'City' : 'StartDate');
+
+	if ( null !== $custom_order_by ) {
+		$order_by   = explode( ' ', $custom_order_by );
+		if ( null !== $custom_order_by_order ) {
+			$order = array();
+			$custom_order         = explode( ' ', $custom_order_by_order );
+			foreach ($custom_order as $coVal) {
+				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+			}
+		}
+	} else {
+
+		array_push( $order_by, $order_option );
+		array_push( $order, 1 );
+	}
+
+	$events = sortEvents( $events, $order_by, $order );
 
 	$last_city = '';
 
