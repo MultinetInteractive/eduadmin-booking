@@ -146,10 +146,10 @@ var eduBookingView = {
 			}
 		);
 	},
-	CheckValidation: function () {
+	CheckValidation: function (ignoreTerms) {
 		var terms = document.getElementById('confirmTerms');
 		if (terms) {
-			if (!terms.checked) {
+			if (!ignoreTerms && !terms.checked) {
 				var termWarning = document.getElementById('edu-warning-terms');
 				if (termWarning) {
 					termWarning.style.display = 'block';
@@ -257,7 +257,7 @@ var eduBookingView = {
 			eduBookingView.PriceCheckThrottle = setTimeout(function () {
 				var validation = true;
 				if (validate) {
-					validation = eduBookingView.CheckValidation();
+					validation = eduBookingView.CheckValidation(true);
 				}
 				if (validation) {
 					var form = jQuery('#edu-booking-form').serialize();
@@ -284,7 +284,7 @@ var eduBookingView = {
 			eduBookingView.PriceCheckThrottle = setTimeout(function () {
 				var validation = true;
 				if (validate) {
-					validation = eduBookingView.CheckValidation();
+					validation = eduBookingView.CheckValidation(true);
 				}
 				if (validation) {
 					var form = jQuery('#edu-booking-form').serialize();
