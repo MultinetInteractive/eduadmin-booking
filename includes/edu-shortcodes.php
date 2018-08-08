@@ -255,6 +255,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 	} else {
 		$edo          = get_transient( 'eduadmin-object_' . $course_id . '_json'. '__' . EDU()->version );
 		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$group_by_city       = get_option( 'eduadmin-groupEventsByCity', false );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -275,7 +276,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				';' .
 				'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate),Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
 				';' .
-				'$orderby=StartDate asc' .
+				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb';
@@ -472,7 +473,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 					} );
 				}
 
-				$group_by_city       = get_option( 'eduadmin-groupEventsByCity', false );
+
 				$group_by_city_class = '';
 				if ( $group_by_city ) {
 					$group_by_city_class = ' noCity';
