@@ -30,7 +30,7 @@ if ( ! $edo ) {
 		';' .
 		'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate)' .
 		';' .
-		'$orderby=' . ( $group_by_city ? 'City asc,' : '' ) . 'StartDate asc' .
+		'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 		';';
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb';
