@@ -219,6 +219,39 @@ function edu_api_listview_eventlist() {
 		}
 	}
 
+	if ( ! empty( $_POST['edu-region'] ) ) {
+		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
+		if(!$regions){
+			$regions = EDUAPI()->OData->Regions->Search(
+				null,
+				null,
+				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+				'RegionName asc'
+			);
+			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+		}
+
+		$_GET['edu-region'] = $_POST['edu-region'];
+
+		$matching_regions = array_filter( $regions['value'], function( $region ) {
+			$name       = make_slugs( $region['RegionName'] );
+			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+
+			return $name_match;
+		} );
+
+		$matching_locations = array();
+		foreach ( $matching_regions as $reg ) {
+			foreach ( $reg['Locations'] as $loc ) {
+				$matching_locations[] = $loc['LocationId'];
+			}
+		}
+
+		$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+			return in_array( $event['LocationId'], $matching_locations );
+		} );
+	}
+
 	$events = sortEvents( $events, $order_by, $order );
 
 	if ( 'A' === $_POST['template'] ) {
@@ -462,6 +495,37 @@ function edu_api_eventlist() {
 		$event['PriceNames'] = $pricenames;
 
 		$events[] = $event;
+	}
+
+	if ( ! empty( $_POST['edu-region'] ) ) {
+		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
+		if(!$regions){
+			$regions = EDUAPI()->OData->Regions->Search(
+				null,
+				null,
+				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+				'RegionName asc'
+			);
+			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+		}
+
+		$matching_regions = array_filter( $regions['value'], function( $region ) {
+			$name       = make_slugs( $region['RegionName'] );
+			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+
+			return $name_match;
+		} );
+
+		$matching_locations = array();
+		foreach ( $matching_regions as $reg ) {
+			foreach ( $reg['Locations'] as $loc ) {
+				$matching_locations[] = $loc['LocationId'];
+			}
+		}
+
+		$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+			return in_array( $event['LocationId'], $matching_locations );
+		} );
 	}
 
 	$prices = array();
