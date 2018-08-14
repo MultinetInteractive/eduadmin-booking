@@ -32,9 +32,9 @@ foreach ( $subjects as $subj ) {
 		$distinct_subjects[ $subj['SubjectId'] ] = $subj['SubjectName'];
 	}
 }
-
-$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
-if(!$regions){
+$tr       = EDU()->start_timer( 'GetRegions' );
+$regions = get_transient( 'eduadmin-regions' . '__' . EDU()->version );
+if ( ! $regions ) {
 	$regions = EDUAPI()->OData->Regions->Search(
 		null,
 		null,
@@ -43,6 +43,7 @@ if(!$regions){
 	);
 	set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
 }
+EDU()->stop_timer( $tr );
 
 $addresses = get_transient( 'eduadmin-locations' . '__' . EDU()->version );
 if ( ! $addresses ) {

@@ -1,9 +1,11 @@
 <?php
 
 function sortEvents( $events, $order_by, $order ) {
+	$t = EDU()->start_timer( 'sortEvents' );
 	usort( $events, function( $evA, $evB ) use ( $order_by, $order ) {
 		return multiSort( $evA, $evB, $order_by, $order, 0 );
 	} );
+	EDU()->stop_timer( $t );
 
 	return $events;
 }

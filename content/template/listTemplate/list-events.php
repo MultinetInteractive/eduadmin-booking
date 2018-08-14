@@ -97,12 +97,15 @@ foreach ( $expands as $key => $value ) {
 		$expand_arr[] = $key . '(' . $value . ')';
 	}
 }
-
-$edo = EDUAPI()->OData->CourseTemplates->Search(
-	null,
-	join( ' and ', $filters ),
-	join( ',', $expand_arr )
-);
+$edo = get_transient( 'eduadmin-listevent-courses' . '__' . EDU()->version );
+if ( ! $edo ) {
+	$edo = EDUAPI()->OData->CourseTemplates->Search(
+		null,
+		join( ' and ', $filters ),
+		join( ',', $expand_arr )
+	);
+	set_transient( 'eduadmin-listevent-courses' . '__' . EDU()->version, $edo, 300 );
+}
 
 $courses = $edo['value'];
 
@@ -178,7 +181,13 @@ $events = sortEvents( $events, $order_by, $order );
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 $show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 $show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-$inc_vat           = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+
+$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+if ( ! $org ) {
+	$org = EDUAPI()->REST->Organisation->GetOrganisation();
+	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+}
+$inc_vat = $org['PriceIncVat'];
 
 $show_event_price = get_option( 'eduadmin-showEventPrice', false );
 $currency         = get_option( 'eduadmin-currency', 'SEK' );
@@ -188,21 +197,4 @@ $spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 $always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 ?>
-<div class="eventListTable"
-	data-eduwidget="listview-eventlist"
-	data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>"
-	data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>"
-	data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>"
-	data-category="<?php echo esc_attr( $attributes['category'] ); ?>"
-	data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>"
-	data-city="<?php echo esc_attr( $attributes['city'] ); ?>"
-	data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>"
-	data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>"
-	data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>"
-	data-orderby="<?php echo esc_attr( $attributes['orderby'] ); ?>"
-	data-order="<?php echo esc_attr( $attributes['order'] ); ?>"
-	data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>"
-	data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>"
-	data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>"
-	data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>"
->
+<div class="eventListTable" data-eduwidget="listview-eventlist" data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-orderby="<?php echo esc_attr( $attributes['orderby'] ); ?>" data-order="<?php echo esc_attr( $attributes['order'] ); ?>" data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>" data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>" data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>" data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>">

@@ -65,6 +65,7 @@ $base_url = $surl . '/' . $cat;
 
 $events = $selected_course['Events'];
 
+$tr      = EDU()->start_timer( 'GetRegions' );
 $regions = get_transient( 'eduadmin-regions' . '__' . EDU()->version );
 if ( ! $regions ) {
 	$regions = EDUAPI()->OData->Regions->Search(
@@ -75,6 +76,7 @@ if ( ! $regions ) {
 	);
 	set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
 }
+EDU()->stop_timer( $tr );
 
 if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	$matching_regions = array_filter( $regions['value'], function( $region ) {
