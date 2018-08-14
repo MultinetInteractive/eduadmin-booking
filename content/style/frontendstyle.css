@@ -102,6 +102,12 @@ h1.courseTitle:hover,
 	box-shadow: unset;
 }
 
+
+.eduadmin .neutral-btn.active {
+	background: hsla(0, 0%, 95%, 0.88);
+	box-shadow: unset;
+}
+
 /* ------------------------
   Form and Search Control
 ----------------------------*/
@@ -130,6 +136,26 @@ h1.courseTitle:hover,
 
 .eduadmin .search-form .search-row .searchButton {
 	height: 100%;
+}
+
+.eduadmin .search-regionitems {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-items: stretch;
+
+	margin-right: -10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.eduadmin .search-regionitems .edu-regionbutton {
+	flex: 1 0 20%;
+	margin: 0 10px 10px 0;
+	padding: 8px;
+	text-align: center;
+	cursor: pointer;
 }
 
 /* Desktop */
@@ -170,6 +196,9 @@ h1.courseTitle:hover,
 		flex: 1;
 	}
 
+	.eduadmin .search-regionitems {
+		flex-direction: row;
+	}
 }
 
 /* ------------------------
