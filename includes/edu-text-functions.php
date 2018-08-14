@@ -104,6 +104,7 @@ function edu_get_percent_class( $percent ) {
 }
 
 function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
+
 	$t = EDU()->start_timer( __METHOD__ );
 	array_push( $remove_parameters, 'eduadmin-thankyou' );
 	array_push( $remove_parameters, 'q' );

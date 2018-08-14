@@ -136,6 +136,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-list', 'eduadmin-showEventsInList' );
 	register_setting( 'eduadmin-list', 'eduadmin-listTemplate' );
 
+	register_setting( 'eduadmin-list', 'eduadmin-allowRegionSearch' );
 	register_setting( 'eduadmin-list', 'eduadmin-allowLocationSearch' );
 	register_setting( 'eduadmin-list', 'eduadmin-allowSubjectSearch' );
 	register_setting( 'eduadmin-list', 'eduadmin-allowCategorySearch' );
