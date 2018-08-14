@@ -126,6 +126,32 @@ if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 	} );
 }
 
+if ( ! empty( $_REQUEST['edu-region'] ) ) {
+	$matching_regions = array_filter( $regions['value'], function( $region ) {
+		$name       = make_slugs( $region['RegionName'] );
+		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+
+		return $name_match;
+	} );
+
+	$matching_locations = array();
+	foreach ( $matching_regions as $reg ) {
+		foreach ( $reg['Locations'] as $loc ) {
+			$matching_locations[] = $loc['LocationId'];
+		}
+	}
+
+	$courses = array_filter( $courses, function( $course ) use ( &$matching_locations ) {
+		foreach ( $course['Events'] as $event ) {
+			if ( in_array( $event['LocationId'], $matching_locations ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	} );
+}
+
 $show_next_event_date  = get_option( 'eduadmin-showNextEventDate', false );
 $show_course_locations = get_option( 'eduadmin-showCourseLocations', false );
 $show_event_price      = get_option( 'eduadmin-showEventPrice', false );

@@ -68,19 +68,19 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 	$attributes['courselevel'] = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$order_by = array();
-$order = array(1);
+$order_by     = array();
+$order        = array( 1 );
 $order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 if ( null !== $custom_order_by ) {
-    $order_by   = explode( ' ', $custom_order_by );
-    if ( null !== $custom_order_by_order ) {
-        $order = array();
-        $custom_order         = explode( ' ', $custom_order_by_order );
-        foreach ($custom_order as $coVal) {
-	        ! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
-        }
-    }
+	$order_by = explode( ' ', $custom_order_by );
+	if ( null !== $custom_order_by_order ) {
+		$order        = array();
+		$custom_order = explode( ' ', $custom_order_by_order );
+		foreach ( $custom_order as $coVal ) {
+			! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+		}
+	}
 } else {
 	if ( $order_option === "SortIndex" ) {
 		$order_option = "StartDate";
@@ -153,6 +153,26 @@ foreach ( $courses as $object ) {
 	}
 }
 
+if ( ! empty( $_REQUEST['edu-region'] ) ) {
+	$matching_regions = array_filter( $regions['value'], function( $region ) {
+		$name       = make_slugs( $region['RegionName'] );
+		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+
+		return $name_match;
+	} );
+
+	$matching_locations = array();
+	foreach ( $matching_regions as $reg ) {
+		foreach ( $reg['Locations'] as $loc ) {
+			$matching_locations[] = $loc['LocationId'];
+		}
+	}
+
+	$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+		return in_array( $event['LocationId'], $matching_locations );
+	} );
+}
+
 $events = sortEvents( $events, $order_by, $order );
 
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
@@ -168,4 +188,21 @@ $spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 $always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 ?>
-<div class="eventListTable" data-eduwidget="listview-eventlist" data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-orderby="<?php echo esc_attr( $attributes['orderby'] ); ?>" data-order="<?php echo esc_attr( $attributes['order'] ); ?>" data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>" data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>" data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>" data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>">
+<div class="eventListTable"
+	data-eduwidget="listview-eventlist"
+	data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>"
+	data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>"
+	data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>"
+	data-category="<?php echo esc_attr( $attributes['category'] ); ?>"
+	data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>"
+	data-city="<?php echo esc_attr( $attributes['city'] ); ?>"
+	data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>"
+	data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>"
+	data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>"
+	data-orderby="<?php echo esc_attr( $attributes['orderby'] ); ?>"
+	data-order="<?php echo esc_attr( $attributes['order'] ); ?>"
+	data-showmore="<?php echo esc_attr( $attributes['showmore'] ); ?>"
+	data-showcity="<?php echo esc_attr( $attributes['showcity'] ); ?>"
+	data-showbookbtn="<?php echo esc_attr( $attributes['showbookbtn'] ); ?>"
+	data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>"
+>

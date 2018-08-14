@@ -109,7 +109,8 @@ edu.apiclient = {
 				showmore: jQuery(target).data('showmore'),
 				showcity: jQuery(target).data('showcity'),
 				showbookbtn: jQuery(target).data('showbookbtn'),
-				showreadmorebtn: jQuery(target).data('showreadmorebtn')
+				showreadmorebtn: jQuery(target).data('showreadmorebtn'),
+				'edu-region': jQuery(target).data('region')
 			},
 			success: function (d) {
 				jQuery(target).html(d);
@@ -133,7 +134,8 @@ edu.apiclient = {
 				numberofevents: jQuery(target).data('numberofevents'),
 				fetchmonths: jQuery(target).data('fetchmonths'),
 				showvenue: jQuery(target).data('showvenue'),
-				eventinquiry: jQuery(target).data('eventinquiry')
+				eventinquiry: jQuery(target).data('eventinquiry'),
+				'edu-region': jQuery(target).data('region')
 			},
 			success: function (d) {
 				jQuery(target).replaceWith(d);
