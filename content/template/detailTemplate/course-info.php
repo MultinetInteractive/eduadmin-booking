@@ -65,6 +65,37 @@ $base_url = $surl . '/' . $cat;
 
 $events = $selected_course['Events'];
 
+$regions = get_transient( 'eduadmin-regions' . '__' . EDU()->version );
+if ( ! $regions ) {
+	$regions = EDUAPI()->OData->Regions->Search(
+		null,
+		null,
+		'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+		'RegionName asc'
+	);
+	set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+}
+
+if ( ! empty( $_REQUEST['edu-region'] ) ) {
+	$matching_regions = array_filter( $regions['value'], function( $region ) {
+		$name       = make_slugs( $region['RegionName'] );
+		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+
+		return $name_match;
+	} );
+
+	$matching_locations = array();
+	foreach ( $matching_regions as $reg ) {
+		foreach ( $reg['Locations'] as $loc ) {
+			$matching_locations[] = $loc['LocationId'];
+		}
+	}
+
+	$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+		return in_array( $event['LocationId'], $matching_locations );
+	} );
+}
+
 $prices = array();
 
 if ( ! empty( $selected_course['PriceNames'] ) ) {
