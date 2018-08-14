@@ -1,5 +1,5 @@
 <?php
-$allow_region_search   = get_option( 'eduadmin-allowRegionSearch', false );
+$allow_region_search = get_option( 'eduadmin-allowRegionSearch', false );
 
 $show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
 $spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
@@ -18,26 +18,16 @@ $has_hidden_dates = false;
 $last_city = "";
 
 ?>
-<?php if($allow_region_search) : ?>
+<?php if ( $allow_region_search ) : ?>
 	<div class="search-regionitems">
 		<?php
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/search/region.php';
 		?>
 	</div>
 <?php endif; ?>
-<div
-	class="event-table eventDays"
-	data-eduwidget="eventlist"
-	data-objectid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>"
-	data-spotsleft="<?php echo esc_attr( $spot_left_option ); ?>"
-	data-spotsettings="<?php echo esc_attr( $spot_settings ); ?>"
-	data-fewspots="<?php echo esc_attr( $always_few_spots ); ?>"
-	data-showmore="<?php echo esc_attr( $show_more ); ?>"
-	data-groupbycity="<?php echo esc_attr( $group_by_city ); ?>"
-	data-fetchmonths="<?php echo esc_attr( $fetch_months ); ?>"
-	data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>"
+<div class="event-table eventDays" data-eduwidget="eventlist" data-objectid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" data-spotsleft="<?php echo esc_attr( $spot_left_option ); ?>" data-spotsettings="<?php echo esc_attr( $spot_settings ); ?>" data-fewspots="<?php echo esc_attr( $always_few_spots ); ?>" data-showmore="<?php echo esc_attr( $show_more ); ?>" data-groupbycity="<?php echo esc_attr( $group_by_city ); ?>" data-fetchmonths="<?php echo esc_attr( $fetch_months ); ?>" data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>"
 	<?php echo( isset( $_GET['eid'] ) ? ' data-eid="' . intval( $_GET['eid'] ) . '"' : '' ); ?>
-		data-showvenue="<?php echo esc_attr( $show_event_venue ); ?>" data-eventinquiry="<?php echo esc_attr( $allow_interest_reg_event ); ?>">
+	data-showvenue="<?php echo esc_attr( $show_event_venue ); ?>" data-eventinquiry="<?php echo esc_attr( $allow_interest_reg_event ); ?>">
 	<?php
 	$i = 0;
 	if ( ! empty( $prices ) ) {
