@@ -1,4 +1,6 @@
 <?php
+$r             = uniqid( 'eduadmin-timer-' );
+${$r}          = EDU()->start_timer( 'Booking info' );
 $course_id     = $wp_query->query_vars['courseId'];
 $group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
 
@@ -7,8 +9,8 @@ if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
 
-if ( empty( $edo ) ) {
-
+$edo = get_transient( 'eduadmin-object_' . $course_id . '__' . EDU()->version );
+if ( ! $edo ) {
 	$expands = array();
 
 	$expands['Subjects']   = '';
@@ -19,6 +21,7 @@ if ( empty( $edo ) ) {
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
+		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date( 'c' ) .
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
@@ -75,7 +78,12 @@ if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
 	}
 }
 
-$questions = EDUAPI()->REST->Event->BookingQuestions( $event['EventId'], true );
+$questions = get_transient( 'eduadmin-event_questions_' . $event['EventId'] . '__' . EDU()->version );
+if ( ! $questions ) {
+	$questions = EDUAPI()->REST->Event->BookingQuestions( $event['EventId'], true );
+	set_transient( 'eduadmin-event_questions_' . $event['EventId'] . '__' . EDU()->version, $questions, DAY_IN_SECONDS );
+}
 
 $booking_questions     = $questions['BookingQuestions'];
 $participant_questions = $questions['ParticipantQuestions'];
+EDU()->stop_timer( ${$r} );

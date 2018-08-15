@@ -167,6 +167,13 @@ function edu_render_list_settings_page() {
 								<br/>
 								<h3><?php _e( "Filter options", 'eduadmin-booking' ); ?></h3>
 								<label>
+									<input type="checkbox" name="eduadmin-allowRegionSearch"<?php if ( get_option( 'eduadmin-allowRegionSearch', false ) ) {
+										echo " checked=\"checked\"";
+									} ?> />
+									<?php _e( "Allow filter by region", 'eduadmin-booking' ); ?>
+								</label>
+								<br/>
+								<label>
 									<input type="checkbox" name="eduadmin-allowLocationSearch"<?php if ( get_option( 'eduadmin-allowLocationSearch', true ) ) {
 										echo " checked=\"checked\"";
 									} ?> />

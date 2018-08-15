@@ -56,6 +56,13 @@
 					</div>
 				<?php } ?>
 			</div>
+			<?php if($allow_region_search) : ?>
+			<div class="search-regionitems">
+				<?php
+				include('search/region.php');
+				?>
+			</div>
+			<?php endif; ?>
 			<div class="search-box">
 				<div class="search-item search-text">
 					<input class="edu-searchTextBox" type="search" name="searchCourses" results="10" placeholder="<?php esc_attr_e( 'Search courses', 'eduadmin-booking' ); ?>"<?php if ( isset( $_POST['searchCourses'] ) ) { // Input var okay.

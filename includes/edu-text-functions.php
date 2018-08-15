@@ -104,7 +104,6 @@ function edu_get_percent_class( $percent ) {
 }
 
 function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	array_push( $remove_parameters, 'eduadmin-thankyou' );
 	array_push( $remove_parameters, 'q' );
 	array_push( $remove_parameters, '_' );
@@ -112,53 +111,35 @@ function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
 		unset( $_GET[ $par ] );
 	}
 	if ( ! empty( $_GET ) ) {
-		EDU()->stop_timer( $t );
-
 		return $prepend . http_build_query( $_GET );
 	}
-	EDU()->stop_timer( $t );
 
 	return '';
 }
 
 function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers', $spot_settings = "1-5\n5-10\n10+", $always_few_spots = 3 ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	if ( 0 === intval( $max_spots ) ) {
-		EDU()->stop_timer( $t );
-
 		return __( 'Spots left', 'eduadmin-booking' );
 	}
 
 	if ( intval( $free_spots ) <= 0 ) {
-		EDU()->stop_timer( $t );
-
 		return __( 'No spots left', 'eduadmin-booking' );
 	}
 
 	switch ( $spot_option ) {
 		case 'exactNumbers':
-			EDU()->stop_timer( $t );
-
 			/* translators: 1: Number of spots */
 
 			return sprintf( _n( '%1$s spot left', '%1$s spots left', $free_spots, 'eduadmin-booking' ), $free_spots );
 		case 'onlyText':
 			$few_spots_limit = intval( $always_few_spots );
 			if ( intval( $free_spots ) > ( intval( $max_spots ) - $few_spots_limit ) ) {
-				EDU()->stop_timer( $t );
-
 				return __( 'Spots left', 'eduadmin-booking' );
 			} elseif ( intval( $free_spots ) <= ( intval( $max_spots ) - $few_spots_limit ) && 1 !== intval( $free_spots ) ) {
-				EDU()->stop_timer( $t );
-
 				return __( 'Few spots left', 'eduadmin-booking' );
 			} elseif ( 1 === intval( $free_spots ) ) {
-				EDU()->stop_timer( $t );
-
 				return __( 'One spot left', 'eduadmin-booking' );
 			} elseif ( intval( $free_spots ) <= 0 ) {
-				EDU()->stop_timer( $t );
-
 				return __( 'No spots left', 'eduadmin-booking' );
 			}
 
@@ -166,8 +147,6 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 		case 'intervals':
 			$interval = $spot_settings;
 			if ( empty( $interval ) ) {
-				EDU()->stop_timer( $t );
-
 				/* translators: 1: Number of spots */
 
 				return sprintf( _n( '%1$s spot left', '%1$s spots left', $free_spots, 'eduadmin-booking' ), $free_spots );
@@ -179,21 +158,16 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 						$min   = intval( $range[0] );
 						$max   = intval( $range[1] );
 						if ( intval( $free_spots ) <= $max && intval( $free_spots ) >= $min ) {
-							EDU()->stop_timer( $t );
-
 							/* translators: 1: Number of spots (range) */
 
 							return sprintf( __( '%1$s spots left', 'eduadmin-booking' ), $line );
 						}
 					} elseif ( stripos( $line, '+' ) > -1 ) {
-						EDU()->stop_timer( $t );
-
 						/* translators: 1: Number of spots (range) */
 
 						return sprintf( __( '%1$s spots left', 'eduadmin-booking' ), $line );
 					}
 				}
-				EDU()->stop_timer( $t );
 
 				/* translators: 1: Number of spots */
 
@@ -203,16 +177,11 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 		case 'alwaysFewSpots':
 			$min_participants = $always_few_spots;
 			if ( ( $max_spots - intval( $free_spots ) ) >= $min_participants ) {
-				EDU()->timers[ __METHOD__ ] = microtime( true ) - EDU()->timers[ __METHOD__ ];
-
 				return __( 'Few spots left', 'eduadmin-booking' );
 			}
-			EDU()->stop_timer( $t );
 
 			return __( 'Spots left', 'eduadmin-booking' );
 		default:
-			EDU()->stop_timer( $t );
-
 			return '';
 	}
 }
@@ -248,32 +217,27 @@ function convert_to_money( $value, $currency = 'SEK', $decimal = ',', $thousand 
 }
 
 function get_display_date( $in_date, $short = true ) {
-	$t      = EDU()->start_timer( __METHOD__ );
 	$months = $short ? EDU()->short_months : EDU()->months;
 
 	$year     = date( 'Y', strtotime( $in_date ) );
 	$now_year = date( 'Y' );
-	EDU()->stop_timer( $t );
 
 	return '<span class="eduadmin-dateText">' . date( 'd', strtotime( $in_date ) ) . ' ' . $months[ date( 'n', strtotime( $in_date ) ) ] . ( $now_year !== $year ? ' ' . $year : '' ) . '</span>';
 }
 
 function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	if ( count( $dates ) > 3 ) {
 		$short     = true;
 		$show_days = true;
 	}
 
 	$n_dates = get_range_from_days( $dates, $short, $event, $show_days );
-	EDU()->stop_timer( $t );
 
 	return join( '<span class="edu-dateSeparator"></span>', $n_dates );
 }
 
 // Copied from http://codereview.stackexchange.com/a/83095/27610
 function get_range_from_days( $days, $short, $event, $show_days ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	sort( $days );
 	$start_date  = $days[0];
 	$finish_date = $days[ count( $days ) - 1 ];
@@ -302,17 +266,14 @@ function get_range_from_days( $days, $short, $event, $show_days ) {
 </div>';
 
 		$n_res[] = $ret;
-		EDU()->stop_timer( $t );
 
 		return $n_res;
 	}
-	EDU()->stop_timer( $t );
 
 	return $result;
 }
 
 function get_start_end_display_date( $start_date, $end_date, $short = false, $event, $show_days = false ) {
-	$t         = EDU()->start_timer( __METHOD__ );
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
@@ -391,7 +352,6 @@ function get_start_end_display_date( $start_date, $end_date, $short = false, $ev
 	}
 
 	$str .= '</span>';
-	EDU()->stop_timer( $t );
 
 	return $str;
 }
@@ -400,7 +360,7 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 	if ( ! isset( $start_date ) && ! isset( $end_date ) ) {
 		return '';
 	}
-	$t         = EDU()->start_timer( __METHOD__ );
+
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
@@ -456,7 +416,6 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 		$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 	}
 	$str .= '</span>';
-	EDU()->stop_timer( $t );
 
 	return $str;
 }
@@ -988,7 +947,6 @@ if ( ! function_exists( 'no_diacritics' ) ) {
 
 if ( ! function_exists( 'make_slugs' ) ) {
 	function make_slugs( $string, $maxlen = 0 ) {
-		$t              = EDU()->start_timer( __METHOD__ );
 		$new_string_tab = array();
 		$string         = strtolower( no_diacritics( $string ) );
 		if ( function_exists( 'str_split' ) ) {
@@ -1017,7 +975,6 @@ if ( ! function_exists( 'make_slugs' ) ) {
 		} else {
 			$new_string = '';
 		}
-		EDU()->stop_timer( $t );
 
 		return $new_string;
 	}
@@ -1035,7 +992,6 @@ if ( ! function_exists( 'check_slug' ) ) {
 
 if ( ! function_exists( 'remove_duplicates' ) ) {
 	function remove_duplicates( $s_search, $s_replace, $s_subject ) {
-		$t = EDU()->start_timer( __METHOD__ );
 		$i = 0;
 		do {
 			$s_subject = str_replace( $s_search, $s_replace, $s_subject );
@@ -1046,7 +1002,6 @@ if ( ! function_exists( 'remove_duplicates' ) ) {
 				die( 'removeDuplicates() loop error' );
 			}
 		} while ( false !== $pos );
-		EDU()->stop_timer( $t );
 
 		return $s_subject;
 	}

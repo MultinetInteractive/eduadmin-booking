@@ -23,6 +23,7 @@ function edu_listview_courselist() {
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
+		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date( 'c' ) .
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
@@ -84,6 +85,7 @@ function edu_api_listview_eventlist() {
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
 	$event_filters[] = 'CustomerId eq null';
+	$event_filters[] = 'CompanySpecific eq false';
 	$event_filters[] = 'LastApplicationDate ge ' . date( 'c' );
 	$event_filters[] = 'StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) );
 	$event_filters[] = 'EndDate ge ' . date( 'c', strtotime( 'now' ) );
@@ -219,6 +221,39 @@ function edu_api_listview_eventlist() {
 		}
 	}
 
+	if ( ! empty( $_POST['edu-region'] ) ) {
+		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
+		if(!$regions){
+			$regions = EDUAPI()->OData->Regions->Search(
+				null,
+				null,
+				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+				'RegionName asc'
+			);
+			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+		}
+
+		$_GET['edu-region'] = $_POST['edu-region'];
+
+		$matching_regions = array_filter( $regions['value'], function( $region ) {
+			$name       = make_slugs( $region['RegionName'] );
+			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+
+			return $name_match;
+		} );
+
+		$matching_locations = array();
+		foreach ( $matching_regions as $reg ) {
+			foreach ( $reg['Locations'] as $loc ) {
+				$matching_locations[] = $loc['LocationId'];
+			}
+		}
+
+		$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+			return in_array( $event['LocationId'], $matching_locations );
+		} );
+	}
+
 	$events = sortEvents( $events, $order_by, $order );
 
 	if ( 'A' === $_POST['template'] ) {
@@ -238,7 +273,12 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$inc_vat           = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+	if ( ! $org ) {
+		$org = EDUAPI()->REST->Organisation->GetOrganisation();
+		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+	}
+	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );
@@ -305,7 +345,12 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$inc_vat           = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+	if ( ! $org ) {
+		$org = EDUAPI()->REST->Organisation->GetOrganisation();
+		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+	}
+	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );
@@ -402,6 +447,7 @@ function edu_api_eventlist() {
 			'HasPublicPriceName' .
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
+			' and CompanySpecific eq false' .
 			' and LastApplicationDate ge ' . date( 'c' ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
@@ -462,6 +508,37 @@ function edu_api_eventlist() {
 		$event['PriceNames'] = $pricenames;
 
 		$events[] = $event;
+	}
+
+	if ( ! empty( $_POST['edu-region'] ) ) {
+		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
+		if(!$regions){
+			$regions = EDUAPI()->OData->Regions->Search(
+				null,
+				null,
+				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+				'RegionName asc'
+			);
+			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+		}
+
+		$matching_regions = array_filter( $regions['value'], function( $region ) {
+			$name       = make_slugs( $region['RegionName'] );
+			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+
+			return $name_match;
+		} );
+
+		$matching_locations = array();
+		foreach ( $matching_regions as $reg ) {
+			foreach ( $reg['Locations'] as $loc ) {
+				$matching_locations[] = $loc['LocationId'];
+			}
+		}
+
+		$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+			return in_array( $event['LocationId'], $matching_locations );
+		} );
 	}
 
 	$prices = array();

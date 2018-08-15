@@ -24,6 +24,7 @@ class EduAdmin_APIController {
 				'eventinquiry' => array(),
 				'orderby'      => array(),
 				'order'        => array(),
+				'edu-region'   => array(),
 			),
 		) );
 
@@ -44,6 +45,7 @@ class EduAdmin_APIController {
 				'eventinquiry'   => array(),
 				'orderby'        => array(),
 				'order'          => array(),
+				'edu-region'     => array(),
 			),
 		) );
 
@@ -65,6 +67,7 @@ class EduAdmin_APIController {
 				'fetchmonths'    => array(),
 				'showvenue'      => array(),
 				'eventinquiry'   => array(),
+				'edu-region'     => array(),
 			),
 		) );
 

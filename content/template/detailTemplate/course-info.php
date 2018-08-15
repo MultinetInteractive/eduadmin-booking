@@ -24,6 +24,7 @@ if ( ! $edo ) {
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
+		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date( 'c' ) .
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
@@ -65,6 +66,39 @@ $base_url = $surl . '/' . $cat;
 
 $events = $selected_course['Events'];
 
+$tr      = EDU()->start_timer( 'GetRegions' );
+$regions = get_transient( 'eduadmin-regions' . '__' . EDU()->version );
+if ( ! $regions ) {
+	$regions = EDUAPI()->OData->Regions->Search(
+		null,
+		null,
+		'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
+		'RegionName asc'
+	);
+	set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
+}
+EDU()->stop_timer( $tr );
+
+if ( ! empty( $_REQUEST['edu-region'] ) ) {
+	$matching_regions = array_filter( $regions['value'], function( $region ) {
+		$name       = make_slugs( $region['RegionName'] );
+		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+
+		return $name_match;
+	} );
+
+	$matching_locations = array();
+	foreach ( $matching_regions as $reg ) {
+		foreach ( $reg['Locations'] as $loc ) {
+			$matching_locations[] = $loc['LocationId'];
+		}
+	}
+
+	$events = array_filter( $events, function( $event ) use ( &$matching_locations ) {
+		return in_array( $event['LocationId'], $matching_locations );
+	} );
+}
+
 $prices = array();
 
 if ( ! empty( $selected_course['PriceNames'] ) ) {
@@ -85,7 +119,12 @@ if ( ! $course_level && ! empty( $selected_course['CourseLevelId'] ) ) {
 	set_transient( 'eduadmin-courseLevel-' . $selected_course['CourseTemplateId'] . '__' . EDU()->version, $course_level, HOUR_IN_SECONDS );
 }
 
-$inc_vat      = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+if ( ! $org ) {
+	$org = EDUAPI()->REST->Organisation->GetOrganisation();
+	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+}
+$inc_vat = $org['PriceIncVat'];
 $show_headers = get_option( 'eduadmin-showDetailHeaders', true );
 
 $hide_sections = array();

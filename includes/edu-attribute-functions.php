@@ -6,8 +6,6 @@
  * @param stdClass|array|object|null $data
  */
 function render_attribute( $attribute, $multiple = false, $suffix = '', $data = null ) {
-	$t = EDU()->start_timer( __METHOD__ );
-
 	switch ( $attribute['CustomFieldType'] ) {
 		case 'Checkbox':
 			render_check_field( $attribute, $multiple, $suffix, $data );
@@ -36,7 +34,6 @@ function render_attribute( $attribute, $multiple = false, $suffix = '', $data = 
 			render_debug_attribute( $attribute );
 			break;
 	}
-	EDU()->stop_timer( $t );
 }
 
 function render_check_field( $attribute, $multiple, $suffix, $data ) {
