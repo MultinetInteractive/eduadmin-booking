@@ -47,7 +47,12 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	$currency = get_option( 'eduadmin-currency', 'SEK' );
-	$inc_vat  = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+	if ( ! $org ) {
+		$org = EDUAPI()->REST->Organisation->GetOrganisation();
+		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+	}
+	$inc_vat = $org['PriceIncVat'];
 	?>
 	<div class="eventInformation">
 		<h3><?php esc_html_e( 'Prices', 'eduadmin-booking' ); ?></h3>

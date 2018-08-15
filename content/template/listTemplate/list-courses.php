@@ -155,7 +155,12 @@ if ( ! empty( $_REQUEST['edu-region'] ) ) {
 $show_next_event_date  = get_option( 'eduadmin-showNextEventDate', false );
 $show_course_locations = get_option( 'eduadmin-showCourseLocations', false );
 $show_event_price      = get_option( 'eduadmin-showEventPrice', false );
-$inc_vat               = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+if ( ! $org ) {
+	$org = EDUAPI()->REST->Organisation->GetOrganisation();
+	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+}
+$inc_vat = $org['PriceIncVat'];
 
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 $show_course_times = get_option( 'eduadmin-showCourseTimes', true );

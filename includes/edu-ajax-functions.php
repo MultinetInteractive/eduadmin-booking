@@ -271,7 +271,12 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$inc_vat           = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+	if ( ! $org ) {
+		$org = EDUAPI()->REST->Organisation->GetOrganisation();
+		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+	}
+	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );
@@ -338,7 +343,12 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$inc_vat           = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+	if ( ! $org ) {
+		$org = EDUAPI()->REST->Organisation->GetOrganisation();
+		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+	}
+	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );

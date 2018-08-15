@@ -118,7 +118,12 @@ if ( ! $course_level && ! empty( $selected_course['CourseLevelId'] ) ) {
 	set_transient( 'eduadmin-courseLevel-' . $selected_course['CourseTemplateId'] . '__' . EDU()->version, $course_level, HOUR_IN_SECONDS );
 }
 
-$inc_vat      = EDUAPI()->REST->Organisation->GetOrganisation()['PriceIncVat'];
+$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+if ( ! $org ) {
+	$org = EDUAPI()->REST->Organisation->GetOrganisation();
+	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
+}
+$inc_vat = $org['PriceIncVat'];
 $show_headers = get_option( 'eduadmin-showDetailHeaders', true );
 
 $hide_sections = array();

@@ -190,11 +190,15 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 <?php } ?>
 <div class="attributeView">
 	<?php
-	$contact_custom_fields = EDUAPI()->OData->CustomFields->Search(
-		null,
-		'ShowOnWeb and CustomFieldOwner eq \'Person\'',
-		'CustomFieldAlternatives'
-	)['value'];
+	$contact_custom_fields = get_transient( 'eduadmin-customfields_person' . '__' . EDU()->version );
+	if ( ! $contact_custom_fields ) {
+		$contact_custom_fields = EDUAPI()->OData->CustomFields->Search(
+			null,
+			'ShowOnWeb and CustomFieldOwner eq \'Person\'',
+			'CustomFieldAlternatives'
+		)['value'];
+		set_transient( 'eduadmin-customfields_person' . '__' . EDU()->version, $contact_custom_fields, DAY_IN_SECONDS );
+	}
 
 	if ( ! empty( $contact_custom_fields ) ) {
 		foreach ( $contact_custom_fields as $custom_field ) {
@@ -221,11 +225,15 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 		}
 	}
 
-	$customer_custom_fields = EDUAPI()->OData->CustomFields->Search(
-		null,
-		'ShowOnWeb and CustomFieldOwner eq \'Customer\'',
-		'CustomFieldAlternatives'
-	)['value'];
+	$customer_custom_fields = get_transient( 'eduadmin-customfields_customer' . '__' . EDU()->version );
+	if ( ! $customer_custom_fields ) {
+		$customer_custom_fields = EDUAPI()->OData->CustomFields->Search(
+			null,
+			'ShowOnWeb and CustomFieldOwner eq \'Customer\'',
+			'CustomFieldAlternatives'
+		)['value'];
+		set_transient( 'eduadmin-customfields_customer' . '__' . EDU()->version, $customer_custom_fields, DAY_IN_SECONDS );
+	}
 
 	if ( ! empty( $customer_custom_fields ) ) {
 		foreach ( $customer_custom_fields as $custom_field ) {
@@ -251,7 +259,6 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 			render_attribute( $custom_field, false, 'customer', $data );
 		}
 	}
-
 	?>
 	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
 		<label>
