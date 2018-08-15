@@ -46,6 +46,10 @@ If you notice that your API key doesn't work any more, you have to contact us.
 -   add: Adding options in admin to enable region filtering
 -   add: Adding support for region filtering in API/Ajax methods
 -   add: Adding region-support in API-controller
+-   chg: If an event ID is present in the query string on a detail page, we won't show regions.
+-   chg: Adding more transients to cache more data.
+-   chg: Adding more checks to multiSort to get rid of notices/warnings
+-   chg: Code style
 
 ### 2.0.14
 -   fix: `courseattributeid`-attribute on `[eduadmin-detailinfo]` didn't work with a strict check
