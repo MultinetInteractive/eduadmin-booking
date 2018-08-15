@@ -18,7 +18,7 @@ $has_hidden_dates = false;
 $last_city = "";
 
 ?>
-<?php if ( $allow_region_search ) : ?>
+<?php if ( $allow_region_search && empty( $_GET['eid'] ) ) : ?>
 	<div class="search-regionitems">
 		<?php
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/search/region.php';
