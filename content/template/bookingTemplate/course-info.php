@@ -21,6 +21,7 @@ if ( ! $edo ) {
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
+		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date( 'c' ) .
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .

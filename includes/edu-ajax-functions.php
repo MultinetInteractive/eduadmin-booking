@@ -23,6 +23,7 @@ function edu_listview_courselist() {
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
+		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date( 'c' ) .
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
@@ -84,6 +85,7 @@ function edu_api_listview_eventlist() {
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
 	$event_filters[] = 'CustomerId eq null';
+	$event_filters[] = 'CompanySpecific eq false';
 	$event_filters[] = 'LastApplicationDate ge ' . date( 'c' );
 	$event_filters[] = 'StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) );
 	$event_filters[] = 'EndDate ge ' . date( 'c', strtotime( 'now' ) );
@@ -445,6 +447,7 @@ function edu_api_eventlist() {
 			'HasPublicPriceName' .
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
+			' and CompanySpecific eq false' .
 			' and LastApplicationDate ge ' . date( 'c' ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
