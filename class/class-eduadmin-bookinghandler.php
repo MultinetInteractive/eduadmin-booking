@@ -874,11 +874,7 @@ class EduAdmin_BookingHandler {
 				case 'radio':
 					$question_answer_id = $_POST[ $key ]; // Var input okay.
 					$answer->AnswerId   = intval( $question_answer_id );
-					if ( 'check' === $question_type || 'radio' === $question_type ) {
-						$answer->AnswerValue = true;
-					} else {
-						$answer->AnswerValue = intval( $question_answer_id );
-					}
+					$answer->AnswerValue = true;
 					break;
 				default:
 					$answer->AnswerId = intval( $question_answer_id );
