@@ -16,3 +16,4 @@ filter:
     excluded_paths:
         - 'tests/*'
         - scripts/
+        - Composer/
