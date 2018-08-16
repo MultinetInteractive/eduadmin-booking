@@ -1,4 +1,5 @@
 <?php
+
 // phpcs:disable WordPress.NamingConventions
 class EduAdmin_BookingInfo {
 	/**
@@ -21,9 +22,9 @@ class EduAdmin_BookingInfo {
 	/**
 	 * EduAdminBookingInfo constructor.
 	 *
-	 * @param null $event_booking
-	 * @param null $customer
-	 * @param null $contact
+	 * @param stdClass|object|null $event_booking
+	 * @param stdClass|object|null $customer
+	 * @param stdClass|object|null $contact
 	 */
 	public function __construct( $event_booking = null, $customer = null, $contact = null ) {
 		$this->EventBooking = $event_booking;

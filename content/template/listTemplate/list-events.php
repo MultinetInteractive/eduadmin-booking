@@ -1,6 +1,6 @@
 <?php
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;
 
 $fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );

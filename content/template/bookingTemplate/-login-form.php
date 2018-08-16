@@ -4,6 +4,8 @@
 	<input type="hidden" name="eduReturnUrl" value="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>"/>
 	<h3><?php esc_html_e( 'Please login to continue.', 'eduadmin-booking' ); ?></h3>
 	<?php
+	$login_value = ! empty( $_POST['eduadminloginEmail'] ) ? sanitize_text_field( $_POST['eduadminloginEmail'] ) : '';
+
 	$selected_login_field = get_option( 'eduadmin-loginField', 'Email' );
 	$login_label          = __( 'E-mail address', 'eduadmin-booking' );
 	$field_type           = 'text';
@@ -26,7 +28,7 @@
 		<div class="loginLabel"><?php echo esc_html( $login_label ); ?></div>
 		<div class="loginInput">
 			<input type="<?php echo esc_attr( $field_type ); ?>" name="eduadminloginEmail"<?php echo( 'CivicRegistrationNumber' === $selected_login_field ? ' class="eduadmin-civicRegNo" onblur="eduBookingView.ValidateCivicRegNo();"' : '' ); ?>
-					required autocomplete="off" title="<?php echo esc_attr( sprintf( __( 'Please enter your %s here', 'eduadmin-booking' ), $login_label ) ); ?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo @esc_attr( sanitize_text_field( $_POST['eduadminloginEmail'] ) ); ?>"/>
+					required autocomplete="off" title="<?php echo esc_attr( sprintf( __( 'Please enter your %s here', 'eduadmin-booking' ), $login_label ) ); ?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo esc_attr( $login_value ); ?>"/>
 		</div>
 	</label>
 	<label>

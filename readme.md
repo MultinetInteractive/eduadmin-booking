@@ -37,6 +37,9 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.17
+-   fix: Code styling and small fixes
+
 ### 2.0.16
 -   fix: Validation of answers were changed in the API, so doing change to reflect that
 

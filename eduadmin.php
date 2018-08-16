@@ -70,7 +70,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		 */
 		public $router = null;
 		/**
-		 * @var WP_Session
+		 * @var WP_Session|bool
 		 */
 		public $session = null;
 		/**

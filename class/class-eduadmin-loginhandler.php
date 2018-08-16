@@ -15,7 +15,7 @@ class EduAdmin_LoginHandler {
 	public function process_login() {
 		if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ver'], 'edu-profile-login' ) ) {
 			$surl     = get_home_url();
-			$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+			$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
 			$base_url = $surl . '/' . $cat;
 
 			$regular_login = ! empty( $_POST['eduformloginaction'] ) && 'login' === sanitize_text_field( wp_unslash( $_POST['eduformloginaction'] ) ); // Input var okay.

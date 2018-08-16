@@ -415,7 +415,7 @@ class EduAdmin_BookingHandler {
 			$contact->PriceNameId = intval( $_POST['contactPriceName'] ); // Var input okay.
 		}
 
-		$contact->CanLogin     = !!get_option( 'eduadmin-useLogin', false );
+		$contact->CanLogin     = ! ! get_option( 'eduadmin-useLogin', false );
 		$contact->Answers      = $this->get_contact_questions();
 		$contact->CustomFields = $this->get_contact_custom_fields();
 		$contact->Sessions     = $this->get_contact_sessions();
@@ -872,8 +872,8 @@ class EduAdmin_BookingHandler {
 				case 'dropdown':
 				case 'check':
 				case 'radio':
-					$question_answer_id = $_POST[ $key ]; // Var input okay.
-					$answer->AnswerId   = intval( $question_answer_id );
+					$question_answer_id  = $_POST[ $key ]; // Var input okay.
+					$answer->AnswerId    = intval( $question_answer_id );
 					$answer->AnswerValue = true;
 					break;
 				default:
