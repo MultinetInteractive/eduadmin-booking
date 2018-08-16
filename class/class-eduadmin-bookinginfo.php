@@ -3,15 +3,15 @@
 // phpcs:disable WordPress.NamingConventions
 class EduAdmin_BookingInfo {
 	/**
-	 * @var stdClass|object
+	 * @var stdClass|object|array
 	 */
 	public $EventBooking;
 	/**
-	 * @var stdClass|object
+	 * @var stdClass|object|array
 	 */
 	public $Customer;
 	/**
-	 * @var stdClass|object
+	 * @var stdClass|object|array
 	 */
 	public $Contact;
 	/**
