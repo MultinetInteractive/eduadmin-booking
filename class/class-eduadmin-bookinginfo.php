@@ -22,9 +22,9 @@ class EduAdmin_BookingInfo {
 	/**
 	 * EduAdminBookingInfo constructor.
 	 *
-	 * @param stdClass|object|null $event_booking
-	 * @param stdClass|object|null $customer
-	 * @param stdClass|object|null $contact
+	 * @param stdClass|object|array|null $event_booking
+	 * @param stdClass|object|array|null $customer
+	 * @param stdClass|object|array|null $contact
 	 */
 	public function __construct( $event_booking = null, $customer = null, $contact = null ) {
 		$this->EventBooking = $event_booking;
