@@ -39,6 +39,7 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 ### 2.0.17
 -   fix: Code styling and small fixes
+-   add: Added a header for the region-filter on the detail view
 
 ### 2.0.16
 -   fix: Validation of answers were changed in the API, so doing change to reflect that
