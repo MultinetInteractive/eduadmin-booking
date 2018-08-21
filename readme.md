@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 2.0.16
+Stable tag: 2.0.17
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -36,6 +36,12 @@ We have replaced everything with a new API-client, so some things may be broken.
 If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
+
+### 2.0.17
+-   fix: Code styling and small fixes
+-   add: Added a header for the region-filter on the detail view
+-   fix: Apperantly the information from the course template and event was merged the wrong way, so some information didn't get through.
+-   add: Added debug variables to "free spots"-placeholder
 
 ### 2.0.16
 -   fix: Validation of answers were changed in the API, so doing change to reflect that

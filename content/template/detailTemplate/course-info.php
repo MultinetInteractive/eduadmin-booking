@@ -64,7 +64,28 @@ $surl     = get_home_url();
 $cat      = get_option( 'eduadmin-rewriteBaseUrl' );
 $base_url = $surl . '/' . $cat;
 
-$events = $selected_course['Events'];
+$events = array();
+
+foreach ( $selected_course['Events'] as $event ) {
+	$event['CourseTemplate'] = $selected_course;
+	unset( $event['CourseTemplate']['Events'] );
+
+	$pricenames = array();
+	foreach ( $selected_course['PriceNames'] as $pn ) {
+		$pricenames[] = $pn['Price'];
+	}
+	foreach ( $event['PriceNames'] as $pn ) {
+		$pricenames[] = $pn['Price'];
+	}
+
+	$event = array_merge( $event['CourseTemplate'], $event );
+
+	$min_price           = min( $pricenames );
+	$event['Price']      = $min_price;
+	$event['PriceNames'] = $pricenames;
+
+	$events[] = $event;
+}
 
 $tr      = EDU()->start_timer( 'GetRegions' );
 $regions = get_transient( 'eduadmin-regions' . '__' . EDU()->version );
@@ -99,6 +120,19 @@ if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	} );
 }
 
+$order_by     = array();
+$order        = array( 1 );
+$order_option = ( ! ! $group_by_city ? 'City' : 'StartDate' );
+
+array_push( $order_by, $order_option );
+array_push( $order, 1 );
+if ( $order_option == 'City' ) {
+	array_push( $order_by, 'StartDate' );
+	array_push( $order, 1 );
+}
+
+$events = sortEvents( $events, $order_by, $order );
+
 $prices = array();
 
 if ( ! empty( $selected_course['PriceNames'] ) ) {
@@ -124,7 +158,7 @@ if ( ! $org ) {
 	$org = EDUAPI()->REST->Organisation->GetOrganisation();
 	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
 }
-$inc_vat = $org['PriceIncVat'];
+$inc_vat      = $org['PriceIncVat'];
 $show_headers = get_option( 'eduadmin-showDetailHeaders', true );
 
 $hide_sections = array();

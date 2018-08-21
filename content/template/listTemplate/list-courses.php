@@ -1,6 +1,6 @@
 <?php
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;
 
 $fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
@@ -156,7 +156,7 @@ if ( ! empty( $_REQUEST['edu-region'] ) ) {
 $show_next_event_date  = get_option( 'eduadmin-showNextEventDate', false );
 $show_course_locations = get_option( 'eduadmin-showCourseLocations', false );
 $show_event_price      = get_option( 'eduadmin-showEventPrice', false );
-$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
+$org                   = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
 if ( ! $org ) {
 	$org = EDUAPI()->REST->Organisation->GetOrganisation();
 	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );

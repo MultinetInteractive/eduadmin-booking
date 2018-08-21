@@ -35,7 +35,13 @@ if ( ! empty( $ev['EventDates'] ) ) {
 			?>
 		</div>
 	<?php } ?>
-	<div class="eventStatus<?php echo esc_attr( $group_by_city_class ); ?>">
+	<div class="eventStatus<?php echo esc_attr( $group_by_city_class ); ?>"
+		data-spots-left="<?php echo esc_attr(intval($ev['ParticipantNumberLeft'])); ?>"
+		data-max-spots="<?php echo esc_attr(intval( $ev['MaxParticipantNumber'] )); ?>"
+		data-spots-left-option="<?php echo esc_attr($spot_left_option); ?>"
+		data-spots-settings="<?php echo esc_attr($spot_settings); ?>"
+		data-always-few-spots="<?php echo esc_attr($always_few_spots); ?>"
+	>
 		<?php
 		$spots_left = intval( $ev['ParticipantNumberLeft'] );
 		echo '<span class="spotsLeftInfo">' . esc_html( get_spots_left( $spots_left, intval( $ev['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) ) . '</span>';

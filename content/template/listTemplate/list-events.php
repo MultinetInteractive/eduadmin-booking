@@ -1,6 +1,6 @@
 <?php
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;
 
 $fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
@@ -151,7 +151,7 @@ foreach ( $courses as $object ) {
 		$min_price      = min( $pricenames );
 		$event['Price'] = $min_price;
 
-		$event = array_merge( $event, $event['CourseTemplate'] );
+		$event = array_merge( $event['CourseTemplate'], $event );
 
 		$events[] = $event;
 	}
