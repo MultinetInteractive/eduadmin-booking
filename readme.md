@@ -40,6 +40,8 @@ If you notice that your API key doesn't work any more, you have to contact us.
 ### 2.0.17
 -   fix: Code styling and small fixes
 -   add: Added a header for the region-filter on the detail view
+-   fix: Apperantly the information from the course template and event was merged the wrong way, so some information didn't get through.
+-   add: Added debug variables to "free spots"-placeholder
 
 ### 2.0.16
 -   fix: Validation of answers were changed in the API, so doing change to reflect that

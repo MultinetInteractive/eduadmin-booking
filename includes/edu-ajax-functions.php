@@ -215,7 +215,7 @@ function edu_api_listview_eventlist() {
 			$min_price      = min( $pricenames );
 			$event['Price'] = $min_price;
 
-			$event = array_merge( $event, $event['CourseTemplate'] );
+			$event = array_merge( $event['CourseTemplate'], $event );
 
 			$events[] = $event;
 		}
@@ -501,7 +501,7 @@ function edu_api_eventlist() {
 			$pricenames[] = $pn['Price'];
 		}
 
-		$event = array_merge( $event, $event['CourseTemplate'] );
+		$event = array_merge( $event['CourseTemplate'], $event );
 
 		$min_price           = min( $pricenames );
 		$event['Price']      = $min_price;
