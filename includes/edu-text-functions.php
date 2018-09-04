@@ -238,7 +238,7 @@ function get_logical_date_groups( $dates, $short = false, $event = null, $show_d
 
 // Copied from http://codereview.stackexchange.com/a/83095/27610
 function get_range_from_days( $days, $short, $event, $show_days ) {
-	sort( $days );
+	usort( $days, "DateComparer" );
 	$start_date  = $days[0];
 	$finish_date = $days[ count( $days ) - 1 ];
 	$result      = array();
