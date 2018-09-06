@@ -123,16 +123,16 @@ function edu_render_list_settings_page() {
 													<option value="CourseGoal"<?php if ( $selectedDescriptionField === "CourseGoal" ) {
 														echo " selected=\"selected\"";
 													} ?>><?php _e( "Course goal", 'eduadmin-booking' ); ?></option>
-													<option value="CourseTarget"<?php if ( $selectedDescriptionField === "CourseTarget" ) {
+													<option value="TargetGroup"<?php if ( $selectedDescriptionField === "TargetGroup" ) {
 														echo " selected=\"selected\"";
 													} ?>><?php _e( "Target group", 'eduadmin-booking' ); ?></option>
-													<option value="CoursePrerequisites"<?php if ( $selectedDescriptionField === "CoursePrerequisites" ) {
+													<option value="Prerequisites"<?php if ( $selectedDescriptionField === "Prerequisites" ) {
 														echo " selected=\"selected\"";
 													} ?>><?php _e( "Prerequisites", 'eduadmin-booking' ); ?></option>
 													<option value="CourseAfter"<?php if ( $selectedDescriptionField === "CourseAfter" ) {
 														echo " selected=\"selected\"";
 													} ?>><?php _e( "After the course", 'eduadmin-booking' ); ?></option>
-													<option value="CourseQuote"<?php if ( $selectedDescriptionField === "CourseQuote" ) {
+													<option value="Quote"<?php if ( $selectedDescriptionField === "Quote" ) {
 														echo " selected=\"selected\"";
 													} ?>><?php _e( "Quote", 'eduadmin-booking' ); ?></option>
 												</optgroup>

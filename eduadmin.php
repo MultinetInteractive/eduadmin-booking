@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.0.18
+ * Version:	2.0.19
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -155,6 +155,61 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			echo '<xmp>' . ob_get_clean() . '</xmp>';
 		}
 
+		/**
+		 * Method that returns a unique transient-name based on input
+		 * @return string
+		 */
+		private function generate_transient_hash() {
+			$arguments = func_get_args();
+			$jsonArgs  = array();
+			foreach ( $arguments as $arg ) {
+				$jsonArgs[] = json_encode( $arg );
+			}
+
+			return sha1( join( '', $jsonArgs ) ) . '__' . $this->get_version();
+		}
+
+		/**
+		 * @param $name       - The name of the transient
+		 *
+		 * @param $action     callable
+		 *
+		 * @param $expiration int
+		 *
+		 * @return mixed
+		 */
+		public function get_transient( $name, $action, $expiration ) {
+			$t = $this->start_timer( __METHOD__ . '::' . $name );
+
+			if ( $action == null || ! is_callable( $action ) ) {
+				$this->stop_timer( $t );
+				throw new InvalidArgumentException();
+			}
+
+			if ( $expiration == null || ! is_numeric( $expiration ) ) {
+				$this->stop_timer( $t );
+				throw new InvalidArgumentException();
+			}
+
+			$args = func_get_args();
+			$args = array_reverse( $args );
+			array_pop( $args ); // Removing $name from $args
+			array_pop( $args ); // Removing $action from $args
+			array_pop( $args ); // Removing $expiration from $args
+			$args = array_reverse( $args );
+
+			$h = $name . '_' . $this->generate_transient_hash( $name, $args );
+			$r = \get_transient( $h );
+
+			if ( ! $r ) {
+				$r = $action();
+				\set_transient( $h, $r, $expiration );
+			}
+			$this->stop_timer( $t );
+
+			return $r;
+		}
+
 		public function get_version() {
 			if ( function_exists( 'get_plugin_data' ) ) {
 				$p_data = get_plugin_data( __FILE__ );
@@ -187,6 +242,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->router->init();
 
 			include_once 'includes/eduadmin-api-client/eduadmin-api-client.php';
+			include_once 'includes/eduapi-helper-functions.php';
 
 			if ( ! class_exists( 'Recursive_ArrayAccess' ) ) {
 				include_once 'libraries/class-recursive-arrayaccess.php';

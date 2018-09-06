@@ -614,7 +614,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['invoiceReference'] ) ) { // Var input okay.
-			$billing_info->SellerReference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+			$billing_info->BuyerReference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
 		}
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {

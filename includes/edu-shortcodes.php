@@ -253,51 +253,13 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
 	} else {
-		$edo           = get_transient( 'eduadmin-object_' . $course_id . '_json' . '__' . EDU()->version );
 		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
 		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
-		if ( ! $edo ) {
-			$expands = array();
 
-			$expands['Subjects']   = '';
-			$expands['Categories'] = '';
-			$expands['PriceNames'] = '$filter=PublicPriceName;';
-			$expands['Events']     =
-				'$filter=' .
-				'HasPublicPriceName' .
-				' and StatusId eq 1' .
-				' and CustomerId eq null' .
-				' and CompanySpecific eq false' .
-				' and LastApplicationDate ge ' . date( 'c' ) .
-				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
-				';' .
-				'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate),Sessions($expand=PriceNames($filter=PublicPriceName;)),PaymentMethods' .
-				';' .
-				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
-				';';
-
-			$expands['CustomFields'] = '$filter=ShowOnWeb';
-
-			$expand_arr = array();
-			foreach ( $expands as $key => $value ) {
-				if ( empty( $value ) ) {
-					$expand_arr[] = $key;
-				} else {
-					$expand_arr[] = $key . '(' . $value . ')';
-				}
-			}
-
-			$edo = wp_json_encode( EDUAPI()->OData->CourseTemplates->GetItem(
-				$course_id,
-				null,
-				join( ',', $expand_arr )
-			) );
-			set_transient( 'eduadmin-object_' . $course_id . '_json' . '__' . EDU()->version, $edo, 10 );
-		}
+		$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
 
 		$selected_course = false;
 
@@ -311,13 +273,8 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
-			$getorg_json = get_transient( 'eduadmin-organisation_json' . '__' . EDU()->version );
-			if ( ! $getorg_json ) {
-				$org = EDUAPI()->REST->Organisation->GetOrganisation();
-				set_transient( 'eduadmin-organisation_json' . '__' . EDU()->version, wp_json_encode( $org ), 10 );
-			} else {
-				$org = json_decode( $getorg_json, true );
-			}
+			$org = EDUAPIHelper()->GetOrganization();
+
 			$inc_vat = $org['PriceIncVat'];
 
 			if ( isset( $attributes['coursename'] ) ) {

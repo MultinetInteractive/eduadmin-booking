@@ -10,9 +10,25 @@ if ( ! is_numeric( $fetch_months ) ) {
 
 $filters = array();
 $expands = array();
+$selects = array();
 
-$expands['Subjects']   = '';
-$expands['Categories'] = '';
+$selects[] = 'CourseTemplateId';
+$selects[] = 'CourseName';
+$selects[] = 'InternalCourseName';
+$selects[] = 'ImageUrl';
+$selects[] = 'CourseDescription';
+$selects[] = 'CourseGoal';
+$selects[] = 'TargetGroup';
+$selects[] = 'Prerequisites';
+$selects[] = 'CourseAfter';
+$selects[] = 'Quote';
+$selects[] = 'Days';
+$selects[] = 'StartTime';
+$selects[] = 'EndTime';
+$selects[] = 'RequireCivicRegistrationNumber';
+
+$expands['Subjects']   = '$select=SubjectName;';
+$expands['Categories'] = '$select=CategoryName;';
 $expands['PriceNames'] = '$filter=PublicPriceName';
 $expands['Events']     =
 	'$filter=' .
@@ -24,49 +40,45 @@ $expands['Events']     =
 	' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 	' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 	';' .
-	'$expand=PriceNames,EventDates($orderby=StartDate)' .
+	'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 	';' .
 	'$orderby=StartDate asc' .
-	';';
+	';' .
+	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
 
-$expands['CustomFields'] = '$filter=ShowOnWeb';
+$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
 $filters[] = 'ShowOnWeb';
 
 $showEventsWithEventsOnly    = $attributes['onlyevents'];
 $showEventsWithoutEventsOnly = $attributes['onlyempty'];
 
+if ( ! empty( $_REQUEST['eduadmin-category'] ) ) {
+	$category_id = intval( $_REQUEST['eduadmin-category'] );
+}
+
 if ( $category_id > 0 ) {
-	$filters[]              = 'CategoryId eq ' . $category_id;
 	$attributes['category'] = $category_id;
 }
 
-if ( ! empty( $_REQUEST['eduadmin-category'] ) ) {
-	$filters[]              = "CategoryId eq " . intval( sanitize_text_field( $_REQUEST['eduadmin-category'] ) );
-	$attributes['category'] = intval( $_REQUEST['eduadmin-category'] );
-}
+$city = null;
 
 if ( ! empty( $_REQUEST['eduadmin-city'] ) ) {
-	$filters[]          = 'Events/any(e:e/LocationId eq ' . intval( $_REQUEST['eduadmin-city'] ) . ')';
-	$attributes['city'] = intval( $_REQUEST['eduadmin-city'] );
+	$city               = intval( $_REQUEST['eduadmin-city'] );
+	$attributes['city'] = $city;
 }
 
-if ( ! empty( $attributes['subject'] ) ) {
-	$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
-}
-
-if ( ! empty( $attributes['subjectid'] ) ) {
-	$filters[] = 'Subjects/any(s:s/SubjectId eq ' . intval( $attributes['subjectid'] ) . ')';
-}
+$subject_id = null;
 
 if ( ! empty( $_REQUEST['eduadmin-subject'] ) ) {
-	$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $_REQUEST['eduadmin-subject'] ) . ')';
-	$attributes['subjectid'] = intval( $_REQUEST['eduadmin-subject'] );
+	$subject_id              = intval( $_REQUEST['eduadmin-subject'] );
+	$attributes['subjectid'] = $subject_id;
 }
 
+$course_level = null;
+
 if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
-	$filters[]                 = 'CourseLevelId eq ' . intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
-	$attributes['courselevel'] = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
+	$course_level = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
 $order_by     = array();
@@ -90,23 +102,7 @@ if ( null !== $custom_order_by ) {
 	array_push( $order, 1 );
 }
 
-$expand_arr = array();
-foreach ( $expands as $key => $value ) {
-	if ( empty( $value ) ) {
-		$expand_arr[] = $key;
-	} else {
-		$expand_arr[] = $key . '(' . $value . ')';
-	}
-}
-$edo = get_transient( 'eduadmin-listevent-courses' . '__' . EDU()->version );
-if ( ! $edo ) {
-	$edo = EDUAPI()->OData->CourseTemplates->Search(
-		null,
-		join( ' and ', $filters ),
-		join( ',', $expand_arr )
-	);
-	set_transient( 'eduadmin-listevent-courses' . '__' . EDU()->version, $edo, 300 );
-}
+$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
 
 $courses = $edo['value'];
 
@@ -183,11 +179,8 @@ $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 $show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 $show_week_days    = get_option( 'eduadmin-showWeekDays', false );
 
-$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-if ( ! $org ) {
-	$org = EDUAPI()->REST->Organisation->GetOrganisation();
-	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-}
+$org = EDUAPIHelper()->GetOrganization();
+
 $inc_vat = $org['PriceIncVat'];
 
 $show_event_price = get_option( 'eduadmin-showEventPrice', false );

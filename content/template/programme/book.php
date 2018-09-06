@@ -27,11 +27,8 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 	$participant_discount_percent = 0.0;
 	$customer_invoice_email       = '';
 
-	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-	if ( ! $org ) {
-		$org = EDUAPI()->REST->Organisation->GetOrganisation();
-		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-	}
+	$org = EDUAPIHelper()->GetOrganization();
+
 	$inc_vat = $org['PriceIncVat'];
 
 	if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {

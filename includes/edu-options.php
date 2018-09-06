@@ -26,20 +26,20 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 	}
 
 	if ( isset( $wp ) && isset( $wp->query_vars ) && isset( $wp->query_vars['courseId'] ) ) {
-		$edo = get_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version );
-		if ( ! $edo ) {
-			$edo = EDUAPI()->OData->CourseTemplates->GetItem(
-				intval( $wp->query_vars['courseId'] ),
-				null,
-				'CustomFields'
-			);
-			set_transient( 'eduadmin-courseTemplate_' . $wp->query_vars['courseId']. '__' . EDU()->version, $edo, 6 * HOUR_IN_SECONDS );
+		$course_id = $wp->query_vars['courseId'];
+
+		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+		if ( ! is_numeric( $fetch_months ) ) {
+			$fetch_months = 6;
 		}
+
+		$edo = json_decode( EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city ), true );
 
 		$selected_course = false;
 
 		$id = $edo['CourseTemplateId'];
-		if ( $id === $wp->query_vars['courseId'] ) {
+		if ( $id === intval( $course_id ) ) {
 			$selected_course = $edo;
 		}
 

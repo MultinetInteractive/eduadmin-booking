@@ -2,13 +2,13 @@
 	<form method="POST" class="search-form">
 		<div class="search-row">
 			<div class="search-dropdowns">
-				<?php if ( $allow_location_search && ! empty( $addresses ) && $show_events ) { ?>
+				<?php if ( $allow_location_search && ! empty( $addresses['value'] ) && $show_events ) { ?>
 					<div class="search-item search-dropdown">
 						<select name="eduadmin-city">
 							<option value=""><?php esc_html_e( 'Choose city', 'eduadmin-booking' ); ?></option>
 							<?php
 							$added_cities = array();
-							foreach ( $addresses as $address ) {
+							foreach ( $addresses['value'] as $address ) {
 								$city = trim( $address['City'] );
 								if ( ! in_array( $address['LocationId'], $added_cities, true ) && ! empty( $city ) ) {
 									echo '<option value="' . intval( $address['LocationId'] ) . '"' . ( ! empty( $_POST['eduadmin-city'] ) && intval( $_POST['eduadmin-city'] ) === $address['LocationId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $address['City'] ) . '</option>';  // Input var okay.
@@ -31,24 +31,24 @@
 						</select>
 					</div>
 				<?php } ?>
-				<?php if ( $allow_category_search && ! empty( $categories ) ) { ?>
+				<?php if ( $allow_category_search && ! empty( $categories['value'] ) ) { ?>
 					<div class="search-item search-dropdown">
 						<select name="eduadmin-category">
 							<option value=""><?php esc_html_e( 'Choose category', 'eduadmin-booking' ); ?></option>
 							<?php
-							foreach ( $categories as $subj ) {
+							foreach ( $categories['value'] as $subj ) {
 								echo '<option value="' . intval( $subj['CategoryId'] ) . '"' . ( ! empty( $_POST['eduadmin-category'] ) && intval( $_POST['eduadmin-category'] ) === $subj['CategoryId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $subj['CategoryName'] ) . '</option>'; // Input var okay.
 							}
 							?>
 						</select>
 					</div>
 				<?php } ?>
-				<?php if ( $allow_level_search && ! empty( $levels ) ) { ?>
+				<?php if ( $allow_level_search && ! empty( $levels['value'] ) ) { ?>
 					<div class="search-item search-dropdown">
 						<select name="eduadmin-level">
 							<option value=""><?php esc_html_e( 'Choose course level', 'eduadmin-booking' ); ?></option>
 							<?php
-							foreach ( $levels as $level ) {
+							foreach ( $levels['value'] as $level ) {
 								echo '<option value="' . intval( $level['CourseLevelId'] ) . '"' . ( ! empty( $_POST['eduadmin-level'] ) && intval( $_POST['eduadmin-level'] ) === $level['CourseLevelId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $level['Name'] ) . '</option>'; // Input var okay.
 							}
 							?>

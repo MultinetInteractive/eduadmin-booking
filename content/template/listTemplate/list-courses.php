@@ -8,99 +8,39 @@ if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
 
-$filters = array();
-$expands = array();
-$sorting = array();
-
-$expands['Subjects']   = '';
-$expands['Categories'] = '';
-$expands['PriceNames'] = '';
-$expands['Events']     =
-	'$filter=' .
-	'HasPublicPriceName' .
-	' and StatusId eq 1' .
-	' and CustomerId eq null' .
-	' and CompanySpecific eq false' .
-	' and LastApplicationDate ge ' . date( 'c' ) .
-	' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-	' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
-	';' .
-	'$expand=PriceNames' .
-	';' .
-	'$orderby=StartDate asc' .
-	';';
-
-$expands['CustomFields'] = '$filter=ShowOnWeb';
-
-$filters[] = 'ShowOnWeb';
-
 $show_events_with_events_only    = $attributes['onlyevents'];
 $show_events_without_events_only = $attributes['onlyempty'];
 
+if ( ! empty( $_REQUEST['eduadmin-category'] ) ) {
+	$category_id = intval( $_REQUEST['eduadmin-category'] );
+}
+
 if ( $category_id > 0 ) {
-	$filters[]              = 'CategoryId eq ' . $category_id;
 	$attributes['category'] = $category_id;
 }
 
-if ( ! empty( $_REQUEST['eduadmin-category'] ) ) {
-	$filters[]              = 'CategoryId eq ' . intval( sanitize_text_field( $_REQUEST['eduadmin-category'] ) );
-	$attributes['category'] = intval( $_REQUEST['eduadmin-category'] );
-}
+$city = null;
 
 if ( ! empty( $_REQUEST['eduadmin-city'] ) ) {
-	$filters[]          = 'Events/any(e:e/LocationId eq ' . intval( $_REQUEST['eduadmin-city'] ) . ')';
-	$attributes['city'] = intval( $_REQUEST['eduadmin-city'] );
+	$city               = intval( $_REQUEST['eduadmin-city'] );
+	$attributes['city'] = $city;
 }
 
-if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
-	$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
-}
+$subject_id = null;
 
 if ( ! empty( $_REQUEST['eduadmin-subject'] ) ) {
-	$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $_REQUEST['eduadmin-subject'] ) . ')';
-	$attributes['subjectid'] = intval( $_REQUEST['eduadmin-subject'] );
+	$subject_id              = intval( $_REQUEST['eduadmin-subject'] );
+	$attributes['subjectid'] = $subject_id;
 }
+
+$course_level = null;
 
 if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
-	$filters[] = 'CourseLevelId eq ' . intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
+	$course_level = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+$edo = EDUAPIHelper()->GetCourseList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
 
-if ( null !== $custom_order_by ) {
-	$orderby   = explode( ' ', $custom_order_by );
-	$sortorder = explode( ' ', $custom_order_by_order );
-	foreach ( $orderby as $od => $v ) {
-		if ( isset( $sortorder[ $od ] ) ) {
-			$or = $sortorder[ $od ];
-		} else {
-			$or = 'asc';
-		}
-
-		if ( edu_validate_column( 'course', $v ) !== false ) {
-			$sorting[] = $v . ' ' . strtolower( $or );
-		}
-	}
-}
-if ( edu_validate_column( 'course', $sort_order ) !== false ) {
-	$sorting[] = $sort_order . ' asc';
-}
-
-$expand_arr = array();
-foreach ( $expands as $key => $value ) {
-	if ( empty( $value ) ) {
-		$expand_arr[] = $key;
-	} else {
-		$expand_arr[] = $key . '(' . $value . ')';
-	}
-}
-
-$edo     = EDUAPI()->OData->CourseTemplates->Search(
-	null,
-	join( ' and ', $filters ),
-	join( ',', $expand_arr ),
-	join( ',', $sorting )
-);
 $courses = $edo['value'];
 
 if ( ! empty( $_REQUEST['searchCourses'] ) ) {
@@ -156,11 +96,9 @@ if ( ! empty( $_REQUEST['edu-region'] ) ) {
 $show_next_event_date  = get_option( 'eduadmin-showNextEventDate', false );
 $show_course_locations = get_option( 'eduadmin-showCourseLocations', false );
 $show_event_price      = get_option( 'eduadmin-showEventPrice', false );
-$org                   = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-if ( ! $org ) {
-	$org = EDUAPI()->REST->Organisation->GetOrganisation();
-	set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-}
+
+$org = EDUAPIHelper()->GetOrganization();
+
 $inc_vat = $org['PriceIncVat'];
 
 $show_course_days  = get_option( 'eduadmin-showCourseDays', true );
