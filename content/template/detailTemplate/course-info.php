@@ -35,10 +35,10 @@ foreach ( $selected_course['Events'] as $event ) {
 
 	$pricenames = array();
 	foreach ( $selected_course['PriceNames'] as $pn ) {
-		$pricenames[] = $pn['Price'];
+		$pricenames[] = $pn;
 	}
 	foreach ( $event['PriceNames'] as $pn ) {
-		$pricenames[] = $pn['Price'];
+		$pricenames[] = $pn;
 	}
 
 	$event = array_merge( $event['CourseTemplate'], $event );

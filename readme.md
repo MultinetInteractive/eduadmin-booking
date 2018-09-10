@@ -45,7 +45,8 @@ This method generates a unique transient-name based on the name and the argument
 - chg: Redoing most of the code fetching data from EduAdmin (Adding `$select`, to decrease the amount of data fetched)
 - add: Added new class `EduAdminAPIHelper`, that I'm using to deduplicate code.
 - per: Adding more performance fixes, that should solve some issues.
-
+- fix: Fixed a problem with showing price names in the detail view.
+- add: Added extra check for regions, so we don't loop over empty objects
 
 ### 2.0.18
 -   fix: Proper sorting on event dates. (Using `sort` on an `array` was stupid)..
