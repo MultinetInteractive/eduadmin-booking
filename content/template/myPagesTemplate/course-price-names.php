@@ -32,26 +32,22 @@ if ( ! $api_key || empty( $api_key ) ) {
 		$sorting[] = 'PriceNameId asc';
 	}
 
-	$edo = get_transient( 'eduadmin-objectpublicpricename_' . $course_id. '__' . EDU()->version );
-	if ( ! $edo ) {
-		$edo = EDUAPI()->OData->CourseTemplates->GetItem(
+	$edo = EDU()->get_transient( 'eduadmin-objectpublicpricename', function() use ( $course_id, $sorting ) {
+		return EDUAPI()->OData->CourseTemplates->GetItem(
 			$course_id,
 			'CourseTemplateId',
 			'PriceNames($filter=PublicPriceName;$orderby=' . join( ',', $sorting ) . ')'
 		)['PriceNames'];
-		set_transient( 'eduadmin-objectpublicpricename_' . $course_id. '__' . EDU()->version, $edo, 10 );
-	}
+	}, 10, $course_id );
 
 	if ( ! empty( $attributes['numberofprices'] ) ) {
 		$edo = array_slice( $edo, 0, $attributes['numberofprices'], true );
 	}
 
 	$currency = get_option( 'eduadmin-currency', 'SEK' );
-	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-	if ( ! $org ) {
-		$org = EDUAPI()->REST->Organisation->GetOrganisation();
-		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-	}
+
+	$org = EDUAPIHelper()->GetOrganization();
+
 	$inc_vat = $org['PriceIncVat'];
 	?>
 	<div class="eventInformation">
@@ -62,7 +58,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			echo '<br />';
 		}
 		?>
-		<hr/>
+		<hr />
 	</div>
 	<?php
 }

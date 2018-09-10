@@ -17,8 +17,7 @@ function edu_listview_courselist() {
 	$expands = array();
 	$sorting = array();
 
-	$expands['PriceNames'] = '';
-	$expands['Events']     =
+	$expands['Events'] =
 		'$filter=' .
 		'HasPublicPriceName' .
 		' and StatusId eq 1' .
@@ -28,12 +27,11 @@ function edu_listview_courselist() {
 		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 		';' .
-		'$expand=PriceNames' .
-		';' .
 		'$top=1' .
 		';' .
 		'$orderby=StartDate asc' .
-		';';
+		';' .
+		'$select=StartDate,City';
 
 	$filters[] = 'ShowOnWeb';
 
@@ -79,8 +77,25 @@ function edu_api_listview_eventlist() {
 	}
 
 	$filters       = array();
+	$selects       = array();
 	$event_filters = array();
 	$expands       = array();
+
+	$selects[] = 'CourseTemplateId';
+	$selects[] = 'CourseName';
+	$selects[] = 'InternalCourseName';
+	$selects[] = 'ImageUrl';
+	$selects[] = 'CourseDescription';
+	$selects[] = 'CourseDescriptionShort';
+	$selects[] = 'CourseGoal';
+	$selects[] = 'TargetGroup';
+	$selects[] = 'Prerequisites';
+	$selects[] = 'CourseAfter';
+	$selects[] = 'Quote';
+	$selects[] = 'Days';
+	$selects[] = 'StartTime';
+	$selects[] = 'EndTime';
+	$selects[] = 'RequireCivicRegistrationNumber';
 
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
@@ -113,19 +128,29 @@ function edu_api_listview_eventlist() {
 		$filters[] = 'CourseLevelId eq ' . intval( sanitize_text_field( $_POST['courselevel'] ) );
 	}
 
-	$expands['Subjects']   = '';
-	$expands['Categories'] = '';
+	$expands['Subjects']   = '$select=SubjectName;';
+	$expands['Categories'] = '$select=CategoryName;';
 	$expands['PriceNames'] = '$filter=PublicPriceName';
 	$expands['Events']     =
 		'$filter=' .
 		join( ' and ', $event_filters ) .
 		';' .
-		'$expand=PriceNames,EventDates($orderby=StartDate)' .
+		'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 		';' .
 		'$orderby=StartDate asc' .
-		';';
+		';' .
+		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
 
-	$expands['CustomFields'] = '$filter=ShowOnWeb';
+	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
+
+	$filters[] = 'Events/any(b:b/HasPublicPriceName' .
+	             ' and b/StatusId eq 1' .
+	             ' and b/CustomerId eq null' .
+	             ' and b/CompanySpecific eq false' .
+	             ' and b/LastApplicationDate ge ' . date( 'c' ) .
+	             ' and b/StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+	             ' and b/EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+	             ')';
 
 	$order_by              = array();
 	$order                 = array( 1 );
@@ -168,7 +193,7 @@ function edu_api_listview_eventlist() {
 	}
 
 	$edo     = EDUAPI()->OData->CourseTemplates->Search(
-		null,
+		join( ',', $selects ),
 		join( ' and ', $filters ),
 		join( ',', $expand_arr )
 	);
@@ -222,16 +247,7 @@ function edu_api_listview_eventlist() {
 	}
 
 	if ( ! empty( $_POST['edu-region'] ) ) {
-		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
-		if(!$regions){
-			$regions = EDUAPI()->OData->Regions->Search(
-				null,
-				null,
-				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
-				'RegionName asc'
-			);
-			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
-		}
+		$regions = EDUAPIHelper()->GetRegions();
 
 		$_GET['edu-region'] = $_POST['edu-region'];
 
@@ -273,11 +289,9 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-	if ( ! $org ) {
-		$org = EDUAPI()->REST->Organisation->GetOrganisation();
-		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-	}
+
+	$org = EDUAPIHelper()->GetOrganization();
+
 	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
@@ -345,11 +359,9 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-	$org = get_transient( 'eduadmin-organization' . '__' . EDU()->version );
-	if ( ! $org ) {
-		$org = EDUAPI()->REST->Organisation->GetOrganisation();
-		set_transient( 'eduadmin-organization' . '__' . EDU()->version, $org, DAY_IN_SECONDS );
-	}
+
+	$org = EDUAPIHelper()->GetOrganization();
+
 	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
@@ -435,46 +447,7 @@ function edu_api_eventlist() {
 		$fetch_months = 6;
 	}
 
-	$edo = get_transient( 'eduadmin-object_' . $course_id . '_json' . '__' . EDU()->version );
-	if ( ! $edo ) {
-		$expands = array();
-
-		$expands['Subjects']   = '';
-		$expands['Categories'] = '';
-		$expands['PriceNames'] = '$filter=PublicPriceName;';
-		$expands['Events']     =
-			'$filter=' .
-			'HasPublicPriceName' .
-			' and StatusId eq 1' .
-			' and CustomerId eq null' .
-			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c' ) .
-			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
-			';' .
-			'$expand=PriceNames($filter=PublicPriceName),EventDates($orderby=StartDate)' .
-			';' .
-			'$orderby=StartDate asc' . ( ! ! $group_by_city ? ', City asc' : '' ) .
-			';';
-
-		$expands['CustomFields'] = '$filter=ShowOnWeb';
-
-		$expand_arr = array();
-		foreach ( $expands as $key => $value ) {
-			if ( empty( $value ) ) {
-				$expand_arr[] = $key;
-			} else {
-				$expand_arr[] = $key . '(' . $value . ')';
-			}
-		}
-
-		$edo = wp_json_encode( EDUAPI()->OData->CourseTemplates->GetItem(
-			$course_id,
-			null,
-			join( ',', $expand_arr )
-		) );
-		set_transient( 'eduadmin-object_' . $course_id . '_json' . '__' . EDU()->version, $edo, 10 );
-	}
+	$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
 
 	$selected_course = false;
 	$name            = '';
@@ -511,16 +484,7 @@ function edu_api_eventlist() {
 	}
 
 	if ( ! empty( $_POST['edu-region'] ) ) {
-		$regions = get_transient('eduadmin-regions' . '__' . EDU()->version);
-		if(!$regions){
-			$regions = EDUAPI()->OData->Regions->Search(
-				null,
-				null,
-				'Locations($filter=PublicLocation;$expand=LocationAddresses;)',
-				'RegionName asc'
-			);
-			set_transient( 'eduadmin-regions' . '__' . EDU()->version, $regions, DAY_IN_SECONDS );
-		}
+		$regions = EDUAPIHelper()->GetRegions();
 
 		$matching_regions = array_filter( $regions['value'], function( $region ) {
 			$name       = make_slugs( $region['RegionName'] );

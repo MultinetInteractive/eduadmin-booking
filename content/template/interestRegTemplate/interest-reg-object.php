@@ -10,16 +10,14 @@ if ( ! $api_key || empty( $api_key ) ) {
 		include_once 'send-object-inquiry.php';
 	}
 
-	$course_id = $wp_query->query_vars['courseId'];
-	$edo       = get_transient( 'eduadmin-object_' . $course_id. '__' . EDU()->version );
-	if ( ! $edo ) {
-		$edo = EDUAPI()->OData->CourseTemplates->GetItem(
-			$course_id,
-			null,
-			'Subjects,Events,CustomFields'
-		);
-		set_transient( 'eduadmin-object_' . $course_id. '__' . EDU()->version, $edo, 10 );
+	$course_id     = $wp_query->query_vars['courseId'];
+	$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+	$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+	if ( ! is_numeric( $fetch_months ) ) {
+		$fetch_months = 6;
 	}
+
+	$edo = json_decode( EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city ), true );
 
 	$selected_course = false;
 	$name            = '';

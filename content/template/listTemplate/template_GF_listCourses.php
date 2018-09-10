@@ -115,7 +115,7 @@ if ( ! empty( $courses ) ) {
 			}
 		?>
 		<td class="GFObjectBook">
-			<a class="readMoreButton" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object->ObjectID; ?>/<?php echo edu_get_query_string(); ?>"><?php _e( "Read more", 'eduadmin-booking' ); ?></a>
+			<a class="readMoreButton" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>"><?php _e( "Read more", 'eduadmin-booking' ); ?></a>
 		</td>
 	</tr>
 <?php

@@ -1,11 +1,13 @@
 <?php
 
 $regions_with_public_locations = array();
-foreach ( $regions['value'] as $region ) {
-	foreach ( $region['Locations'] as $location ) {
-		if ( $location['PublicLocation'] ) {
-			$regions_with_public_locations[] = $region;
-			break;
+if ( ! empty( $regions ) && ! empty( $regions['value'] ) ) {
+	foreach ( $regions['value'] as $region ) {
+		foreach ( $region['Locations'] as $location ) {
+			if ( $location['PublicLocation'] ) {
+				$regions_with_public_locations[] = $region;
+				break;
+			}
 		}
 	}
 }
