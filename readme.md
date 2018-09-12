@@ -37,6 +37,9 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.20
+- chg: Altered the info text you get when you request a password reset.
+
 ### 2.0.19
 - add: Added `get_transient` in `eduadmin.php` (`EDU()->get_transient($name, $action, $expiration, ..$args)`)
 
