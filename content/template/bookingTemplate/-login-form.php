@@ -58,13 +58,13 @@ if ( isset( EDU()->session['eduadmin-forgotPassSent'] ) && true === EDU()->sessi
 	unset( EDU()->session['eduadmin-forgotPassSent'] );
 	?>
 	<div class="edu-modal warning" style="display: block; clear: both;">
-		<?php esc_html_e( 'A new password has been sent by email.', 'eduadmin-booking' ); ?>
+		<?php esc_html_e( 'An email with instructions how to reset your password has been sent.', 'eduadmin-booking' ); ?>
 	</div>
 	<?php
 } elseif ( isset( EDU()->session['eduadmin-forgotPassSent'] ) && false === EDU()->session['eduadmin-forgotPassSent'] ) {
 	unset( EDU()->session['eduadmin-forgotPassSent'] );
 	?>
 	<div class="edu-modal warning" style="display: block; clear: both;">
-		<?php esc_html_e( 'Could not send a new password by email.', 'eduadmin-booking' ); ?>
+		<?php esc_html_e( 'An email with instructions how to reset your password has been sent.', 'eduadmin-booking' ); ?>
 	</div>
 <?php } ?>
