@@ -238,38 +238,36 @@ function get_logical_date_groups( $dates, $short = false, $event = null, $show_d
 
 function edu_get_date_range( $days, $short, $event, $show_days ) {
 	usort( $days, "DateComparer" );
-	$result      = array();
 
-	if(count($days) === 1)
-		return array(get_start_end_display_date($days[0], $days[0], $short, $event, $show_days));
-
-	$start_date  = $days[0];
-	$finish_date = $days[ count( $days ) - 1 ];
-	$prevDay     = 0;
+	if ( 1 === count( $days ) ) {
+		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days ) );
+	}
 
 	$added_dates = array();
 
-	for($x = 0; $x < count($days); $x++) {
+	$total_days = count( $days );
+
+	for ( $x = 0; $x < $total_days; $x++ ) {
 		$day = $days[ $x ];
-		$added_dates[date('H:i', strtotime($day['StartDate'])) . '-' . date('H:i', strtotime($day['EndDate']))][] = $day;
+
+		$added_dates[ date( 'H:i', strtotime( $day['StartDate'] ) ) . '-' . date( 'H:i', strtotime( $day['EndDate'] ) ) ][] = $day;
 	}
 
 	$ordered_dategroups = array();
 
-	foreach($added_dates as $time => $_days) {
-		$start_date = $_days[0];
+	foreach ( $added_dates as $time => $_days ) {
+		$start_date  = $_days[0];
 		$finish_date = $_days[ count( $_days ) - 1 ];
-		foreach($_days as $key => $date) {
-			if($key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ))
-			{
-				$ordered_dategroups[$start_date['StartDate']] = get_start_end_display_date( $start_date, $_days[ $key - 1 ], $short, $event, $show_days );
-				$start_date = $date;
+		foreach ( $_days as $key => $date ) {
+			if ( $key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
+				$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $_days[ $key - 1 ], $short, $event, $show_days );
+				$start_date                                     = $date;
 			}
 		}
-		$ordered_dategroups[$start_date['StartDate']] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
+		$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
 	}
 
-	ksort($ordered_dategroups);
+	ksort( $ordered_dategroups );
 
 	if ( count( $ordered_dategroups ) > 3 ) {
 		$n_res = array();
