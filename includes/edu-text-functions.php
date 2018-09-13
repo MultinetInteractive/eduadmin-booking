@@ -231,28 +231,47 @@ function get_logical_date_groups( $dates, $short = false, $event = null, $show_d
 		$show_days = true;
 	}
 
-	$n_dates = get_range_from_days( $dates, $short, $event, $show_days );
+	$n_dates = edu_get_date_range( $dates, $short, $event, $show_days );
 
 	return join( '<span class="edu-dateSeparator"></span>', $n_dates );
 }
 
-// Copied from http://codereview.stackexchange.com/a/83095/27610
-function get_range_from_days( $days, $short, $event, $show_days ) {
+function edu_get_date_range( $days, $short, $event, $show_days ) {
 	usort( $days, "DateComparer" );
+	$result      = array();
+
+	if(count($days) === 1)
+		return array(get_start_end_display_date($days[0], $days[0], $short, $event, $show_days));
+
 	$start_date  = $days[0];
 	$finish_date = $days[ count( $days ) - 1 ];
-	$result      = array();
-	// walk through the dates, breaking at gaps
-	foreach ( $days as $key => $date ) {
-		if ( ( $key > 0 ) && ( strtotime( $date['StartDate'] ) - strtotime( $days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
-			$result[]   = get_start_end_display_date( $start_date, $days[ $key - 1 ], $short, $event, $show_days );
-			$start_date = $date;
-		}
-	}
-	// force the end
-	$result[] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
+	$prevDay     = 0;
 
-	if ( count( $result ) > 3 ) {
+	$added_dates = array();
+
+	for($x = 0; $x < count($days); $x++) {
+		$day = $days[ $x ];
+		$added_dates[date('H:i', strtotime($day['StartDate'])) . '-' . date('H:i', strtotime($day['EndDate']))][] = $day;
+	}
+
+	$ordered_dategroups = array();
+
+	foreach($added_dates as $time => $_days) {
+		$start_date = $_days[0];
+		$finish_date = $_days[ count( $_days ) - 1 ];
+		foreach($_days as $key => $date) {
+			if($key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ))
+			{
+				$ordered_dategroups[$start_date['StartDate']] = get_start_end_display_date( $start_date, $_days[ $key - 1 ], $short, $event, $show_days );
+				$start_date = $date;
+			}
+		}
+		$ordered_dategroups[$start_date['StartDate']] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
+	}
+
+	ksort($ordered_dategroups);
+
+	if ( count( $ordered_dategroups ) > 3 ) {
 		$n_res = array();
 		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr__( 'Show schedule', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
@@ -260,7 +279,7 @@ function get_range_from_days( $days, $short, $event, $show_days ) {
 			wp_kses_post( sprintf( __( '%1$d days between %2$s', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, $show_days ) ) ) .
 			'</span><div class="edu-DayPopup">
 <b>' . esc_html__( 'Schedule', 'eduadmin-booking' ) . '</b><br />
-' . join( "<br />\n", $result ) . '
+' . join( "<br />\n", $ordered_dategroups ) . '
 <br />
 <a href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html__( 'Close', 'eduadmin-booking' ) . '</a>
 </div>';
@@ -270,7 +289,7 @@ function get_range_from_days( $days, $short, $event, $show_days ) {
 		return $n_res;
 	}
 
-	return $result;
+	return $ordered_dategroups;
 }
 
 function get_start_end_display_date( $start_date, $end_date, $short = false, $event, $show_days = false ) {
