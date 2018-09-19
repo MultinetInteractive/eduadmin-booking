@@ -40,7 +40,7 @@ class EduAdminAPIHelper {
 				' and StatusId eq 1' .
 				' and CustomerId eq null' .
 				' and CompanySpecific eq false' .
-				' and LastApplicationDate ge ' . date( 'c' ) .
+				' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
 				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 				';' .
@@ -107,7 +107,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c' ) .
+			' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
@@ -219,7 +219,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c' ) .
+			' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
