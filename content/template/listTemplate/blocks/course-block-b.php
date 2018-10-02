@@ -20,7 +20,10 @@
 		}
 
 		if ( $show_descr ) {
-			echo '<div class"courseDescription">' . esc_html( $descr ) . '</div>';
+			echo '<div class"courseDescription">' . esc_html( wp_kses( $descr, array(
+					'br' => array(),
+					'p'  => array(),
+				) ) ) . '</div>';
 		}
 
 		if ( $show_course_locations && ! empty( $event_cities ) && $show_city ) {
