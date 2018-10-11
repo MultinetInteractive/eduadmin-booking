@@ -12,6 +12,8 @@ function edu_render_general_settings() {
 		foreach ( $transients as $transient ) {
 			$key = str_replace( '_transient_timeout_', '', $transient );
 			delete_transient( $key );
+			$key = str_replace( '_site_transient_timeout_', '', $transient );
+			delete_transient( $key );
 		}
 
 		wp_cache_flush();

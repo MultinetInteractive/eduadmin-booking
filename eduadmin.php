@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.0.24
+ * Version:	2.0.25
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -309,9 +309,61 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			add_action( 'plugins_loaded', array( $this, 'load_language' ) );
 			add_action( 'eduadmin_call_home', array( $this, 'call_home' ) );
 			add_action( 'wp_footer', 'edu_get_timers' );
+			add_action( 'wp_footer', array( $this, 'get_transient_list' ) );
 
 			register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 			$this->stop_timer( $t );
+		}
+
+		public function get_transient_list() {
+			if ( ! empty( $_GET['edu-showtransients'] ) && '1' === $_GET['edu-showtransients'] ) {
+				global $wpdb;
+
+				$prefix     = esc_sql( 'eduadmin-' );
+				$options    = $wpdb->options;
+				$t          = esc_sql( "%transient%$prefix%" );
+				$sql        = $wpdb->prepare( "SELECT option_name, option_value FROM $options WHERE option_name LIKE '%s'", $t );
+				$transients = $wpdb->get_results( $sql );
+
+				$list = array();
+				foreach ( $transients as $transient ) {
+					$key            = str_replace( array(
+						                               '_transient_timeout_',
+						                               '_transient_',
+					                               ), '', $transient->option_name );
+					$list[ $key ][] = $transient;
+				}
+				echo '<!-- EduAdmin Booking (' . esc_html( EDU()->version ) . ") Transients -->\n";
+
+				$nowTime = time();
+				foreach ( $list as $trn => $value ) {
+					$expires = "";
+					$_value  = "";
+					foreach ( $value as $item ) {
+						if ( stristr( $item->option_name, "timeout" ) == true ) {
+							$timeToExpire = $item->option_value - $nowTime;
+							if ( abs( $timeToExpire ) > 59 ) {
+								if ( $timeToExpire > 0 ) {
+									$expires = "Expires in: " . human_time_diff( $nowTime, $item->option_value );
+								} else {
+									$expires = "Expired: " . human_time_diff( $item->option_value, $nowTime );
+								}
+							} else {
+								if ( $timeToExpire > 0 ) {
+									$expires = "Expires in: " . $timeToExpire . " seconds";
+								} else {
+									$expires = "Expired: " . abs( $timeToExpire ) . " seconds ago";
+								}
+							}
+						} else {
+							$_value = $item->option_value;
+						}
+					}
+					echo '<!-- ' . esc_html( $trn ) . ": " . $expires . " -->\n";
+					//echo '<!-- ' . esc_html( $_value ) . " -->\n";
+				}
+				echo "<!-- /EduAdmin Booking Transients -->\n";
+			}
 		}
 
 		public function init() {
