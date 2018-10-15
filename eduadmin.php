@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.0.25
+ * Version:	2.0.26
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -308,11 +308,52 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			add_action( 'init', array( $this, 'init' ) );
 			add_action( 'plugins_loaded', array( $this, 'load_language' ) );
 			add_action( 'eduadmin_call_home', array( $this, 'call_home' ) );
+			add_action( 'eduadmin_clear_expired', array( $this, 'clear_expired_transients' ) );
 			add_action( 'wp_footer', 'edu_get_timers' );
 			add_action( 'wp_footer', array( $this, 'get_transient_list' ) );
+			add_action( 'wp_footer', array( $this, 'get_scheduled_tasks' ) );
+
+			add_filter( 'cron_schedules', array( $this, 'add_cron_schedule' ) );
 
 			register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 			$this->stop_timer( $t );
+		}
+
+		public function add_cron_schedule( $schedules ) {
+			$schedules['five_minutes'] = array(
+				'interval' => 5 * 60,
+				'display'  => esc_html__( 'Every Five Minutes' ),
+			);
+
+			return $schedules;
+		}
+
+		public function get_scheduled_tasks() {
+			if ( ! empty( $_GET['edu-showtasks'] ) && '1' === $_GET['edu-showtasks'] ) {
+				echo '<!-- EduAdmin Booking (' . esc_html( EDU()->version ) . ") Scheduled Tasks -->\n";
+
+				$tasks = _get_cron_array();
+
+				$prettyList = array();
+
+				foreach ( $tasks as $nextExecution => $task ) {
+					if ( stristr( key( $task ), "eduadmin" ) == true ) {
+						$_task = array();
+
+						$_task['next_execution']    = date( "Y-m-d H:i:s", $nextExecution );
+						$_task['action_to_execute'] = key( $task );
+						$_task['schedule_name']     = current( current( $task ) )["schedule"];
+						$_task['schedule_interval'] = current( current( $task ) )["interval"];
+
+						$prettyList[] = $_task;
+					}
+				}
+
+				foreach ( $prettyList as $t ) {
+					echo "<!-- " . $t['action_to_execute'] . " :: Next execution: " . $t['next_execution'] . " (Schedule: " . $t['schedule_name'] . ", interval: " . $t['schedule_interval'] . ") -->\n";
+				}
+				echo "<!-- /EduAdmin Booking Scheduled Tasks -->\n";
+			}
 		}
 
 		public function get_transient_list() {
@@ -346,7 +387,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 								if ( $timeToExpire > 0 ) {
 									$expires = "Expires in: " . human_time_diff( $nowTime, $item->option_value );
 								} else {
-									$expires = "Expired: " . human_time_diff( $item->option_value, $nowTime );
+									$expires = "Expired: " . human_time_diff( $item->option_value, $nowTime ) . " ago";
 								}
 							} else {
 								if ( $timeToExpire > 0 ) {
@@ -458,6 +499,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				wp_schedule_event( time(), 'hourly', 'eduadmin_call_home' );
 			}
 
+			if ( ! wp_next_scheduled( 'eduadmin_clear_expired' ) ) {
+				wp_schedule_event( time(), 'five_minutes', 'eduadmin_clear_expired' );
+			}
+
 			$this->stop_timer( $t );
 		}
 
@@ -469,6 +514,43 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->clear_transients();
 			wp_cache_flush();
 			eduadmin_activate_rewrite();
+		}
+
+		public function clear_expired_transients() {
+			global $wpdb;
+
+			$prefix     = esc_sql( 'eduadmin-' );
+			$options    = $wpdb->options;
+			$t          = esc_sql( "%transient%$prefix%" );
+			$sql        = $wpdb->prepare( "SELECT option_name, option_value FROM $options WHERE option_name LIKE '%s'", $t );
+			$transients = $wpdb->get_results( $sql );
+
+			$list = array();
+			foreach ( $transients as $transient ) {
+				$key            = str_replace( array(
+					                               '_transient_timeout_',
+					                               '_transient_',
+				                               ), '', $transient->option_name );
+				$list[ $key ][] = $transient;
+			}
+
+			$expired_transients = array();
+
+			$nowTime = time();
+			foreach ( $list as $trn => $value ) {
+				foreach ( $value as $item ) {
+					if ( stristr( $item->option_name, "timeout" ) == true ) {
+						$timeToExpire = $item->option_value - $nowTime;
+						if ( $timeToExpire <= 0 ) {
+							$expired_transients[] = $trn;
+						}
+					}
+				}
+			}
+
+			foreach ( $expired_transients as $ex_tran ) {
+				delete_transient( $ex_tran );
+			}
 		}
 
 		public function clear_transients() {
@@ -488,6 +570,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public function deactivate() {
 			eduadmin_deactivate_rewrite();
 			wp_clear_scheduled_hook( 'eduadmin_call_home' );
+			wp_clear_scheduled_hook( 'eduadmin_clear_expired' );
 			$this->clear_transients();
 
 			wp_cache_flush();
