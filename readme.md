@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 2.0.26
+Stable tag: 2.0.27
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -36,6 +36,9 @@ We have replaced everything with a new API-client, so some things may be broken.
 If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
+
+### 2.0.27
+- add: Better civregno-check for contact persons if the course requires it.
 
 ### 2.0.26
 - add: Adding automatic pruning of transients that are expired. (Only from EduAdmin)

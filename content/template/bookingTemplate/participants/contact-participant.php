@@ -40,7 +40,7 @@
 				<?php esc_html_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" readonly class="contactCivReg" placeholder="<?php esc_attr_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>"/>
+				<input type="text" readonly data-required="true" class="contactCivReg" placeholder="<?php esc_attr_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>"/>
 			</div>
 		</label>
 	<?php } ?>

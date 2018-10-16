@@ -6,6 +6,7 @@ var eduBookingView = {
 	ContactPerson: null,
 	Participants: [],
 	SingleParticipant: false,
+	ForceContactCivicRegNo: false,
 	MaxParticipants: 0,
 	CurrentParticipants: 0,
 	DiscountPercent: 0,
@@ -104,6 +105,9 @@ var eduBookingView = {
 			document.querySelector('.contactMobile').value = cMobile;
 			var tCivReg = document.querySelector('.contactCivReg');
 			if (tCivReg) {
+				if(this.ForceContactCivicRegNo) {
+					tCivReg.required = true;
+				}
 				tCivReg.value = document.getElementById('edu-contactCivReg').value;
 			}
 
