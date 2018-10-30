@@ -10,13 +10,13 @@ if ( ! $api_key || empty( $api_key ) ) {
 		include_once 'send-event-inquiry.php';
 	}
 
-	$course_id = $wp_query->query_vars['courseId'];
+	$course_id     = $wp_query->query_vars['courseId'];
 	$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
 	$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
 	if ( ! is_numeric( $fetch_months ) ) {
 		$fetch_months = 6;
 	}
-	$edo       = json_decode( EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city ), true );
+	$edo = json_decode( EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city ), true );
 
 	$selected_course = false;
 	$name            = '';
@@ -41,7 +41,16 @@ if ( ! $api_key || empty( $api_key ) ) {
 		die();
 	}
 
-	$event = $events[0];
+	if ( ! empty( $_REQUEST['eid'] ) && is_numeric( $_REQUEST['eid'] ) ) {
+		foreach ( $events as $_event ) {
+			if ( $_event['EventId'] === intval( $_REQUEST['eid'] ) ) {
+				$event = $_event;
+				break;
+			}
+		}
+	} else {
+		$event = $events[0];
+	}
 
 	?>
 	<div class="eduadmin">
