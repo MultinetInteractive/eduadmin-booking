@@ -372,7 +372,7 @@ var eduBookingView = {
 			return (sum % 10) === 0;
 		}
 
-		var civicRegNoFields = jQuery('div:not(.template) .eduadmin-civicRegNo');
+		var civicRegNoFields = jQuery('div:not(.template) .eduadmin-civicRegNo[required]');
 		for (var i = 0; i < civicRegNoFields.length; i++) {
 			var field = civicRegNoFields[i];
 			var p = jQuery(field).parent().parent().parent();
