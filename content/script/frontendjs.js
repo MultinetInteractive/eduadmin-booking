@@ -105,8 +105,10 @@ var eduBookingView = {
 			document.querySelector('.contactMobile').value = cMobile;
 			var tCivReg = document.querySelector('.contactCivReg');
 			if (tCivReg) {
-				if(this.ForceContactCivicRegNo) {
+				document.getElementById('edu-contactCivReg').required = false;
+				if(this.ForceContactCivicRegNo && contact == 1) {
 					tCivReg.required = true;
+					document.getElementById('edu-contactCivReg').required = true;
 				}
 				tCivReg.value = document.getElementById('edu-contactCivReg').value;
 			}
