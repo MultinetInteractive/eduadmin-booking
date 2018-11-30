@@ -85,7 +85,7 @@
 			echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 			echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
 			echo esc_html( $hide_sub_event_date_info ? '' : ' (' . date( 'd/m H:i', strtotime( $sub_event['StartDate'] ) ) . ' - ' . date( 'd/m H:i', strtotime( $sub_event['EndDate'] ) ) . ') ' );
-			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) ) . '</i>' : '' );
+			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . '</i>' : '' );
 			echo "</label>\n";
 		}
 		echo '<br />';

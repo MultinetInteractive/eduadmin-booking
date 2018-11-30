@@ -31,7 +31,8 @@ $customer = $user->Customer;
 
 	krsort( $bookings );
 
-	$currency = get_option( 'eduadmin-currency', 'SEK' );
+	$currency               = get_option( 'eduadmin-currency', 'SEK' );
+	$selected_price_setting = get_option( 'eduadmin-profile-priceType', 'IncVat' );
 	?>
 	<table class="myReservationsTable">
 		<tr>
@@ -61,7 +62,7 @@ $customer = $user->Customer;
 					<td><?php echo esc_html( $name ); ?></td>
 					<td><?php echo wp_kses_post( get_old_start_end_display_date( $book['Event']['StartDate'], $book['Event']['EndDate'], true ) ); ?></td>
 					<td align="right"><?php echo esc_html( $book['NumberOfParticipants'] ); ?></td>
-					<td align="right"><?php echo esc_html( convert_to_money( $book['TotalPriceIncVat'], $currency ) ); ?></td>
+					<td align="right"><?php echo esc_html( convert_to_money( ( 'IncVat' === $selected_price_setting ? $book['TotalPriceIncVat'] : $book['TotalPriceExVat'] ), $currency ) ); ?></td>
 				</tr>
 				<?php
 				if ( ! empty( $book['Participants'] ) ) {
