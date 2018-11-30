@@ -937,7 +937,7 @@ function edu_render_booking_settings_page() {
 							</td>
 						</tr>
 					</table>
-					<br />                    <p class="submit">
+					<br />					<p class="submit">
 						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo __( "Save settings", 'eduadmin-booking' ); ?>" />
 					</p>
 					<div id="edu-formSettings" class="eduWindow" style="display: none;">

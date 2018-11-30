@@ -839,6 +839,10 @@ h1.courseTitle:hover,
 	display: none;
 }
 
+.eduadmin .myReservationsTable th, .eduadmin .myReservationsTable td {
+	padding: 5px;
+}
+
 .edu-DayPopup.cloned .scrollable-full-height {
 	overflow: auto;
 	max-height: 400px;

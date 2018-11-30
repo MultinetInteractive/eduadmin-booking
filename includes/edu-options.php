@@ -8,6 +8,7 @@ require_once 'list-settings.php';
 
 require_once 'detail-settings.php';
 require_once 'booking-settings.php';
+require_once 'profile-settings.php';
 require_once 'style-settings.php';
 
 add_action( 'admin_init', 'eduadmin_settings_init' );
@@ -159,6 +160,9 @@ function eduadmin_settings_init() {
 	/* Plugin settings */
 	register_setting( 'eduadmin-plugins', 'eduadmin-plugin-settings' );
 
+	/* Profile page settings */
+	register_setting( 'eduadmin-profile', 'eduadmin-profile-priceType' );
+
 	/* Global settings */
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsLeft' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
@@ -222,6 +226,7 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - List view', 'eduadmin-booking' ), __( 'List settings', 'eduadmin-booking' ), $level, 'eduadmin-settings-view', 'edu_render_list_settings_page' );
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Detail view', 'eduadmin-booking' ), __( 'Detail settings', 'eduadmin-booking' ), $level, 'eduadmin-settings-detail', 'edu_render_detail_settings_page' );
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Booking view', 'eduadmin-booking' ), __( 'Booking settings', 'eduadmin-booking' ), $level, 'eduadmin-settings-booking', 'edu_render_booking_settings_page' );
+	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Profile view', 'eduadmin-booking' ), __( 'Profile settings', 'eduadmin-booking' ), $level, 'eduadmin-settings-profile', 'edu_render_profile_settings_page' );
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Style', 'eduadmin-booking' ), __( 'Style settings', 'eduadmin-booking' ), $level, 'eduadmin-settings-style', 'edu_render_style_settings_page' );
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Plugins', 'eduadmin-booking' ), __( 'Plugins', 'eduadmin-booking' ), $level, 'eduadmin-settings-plugins', 'edu_render_plugin_page' );
 	add_submenu_page( 'eduadmin-settings', __( 'EduAdmin - Api Authentication', 'eduadmin-booking' ), __( 'Api Authentication', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );

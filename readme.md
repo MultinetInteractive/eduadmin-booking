@@ -37,6 +37,10 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.31
+- add: Settings page with settings for "My page" / User profiles (Fixes: [#213](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/214))
+- fix: Showing both incl. VAT and excl. VAT prices
+
 ### 2.0.30
 - fix: And actually checking the required-attribute in the validation would help.
 
