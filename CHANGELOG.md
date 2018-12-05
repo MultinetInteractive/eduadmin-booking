@@ -1,3 +1,75 @@
+### 2.0.28
+- fix: Interest registration on events, now actually know which event the user selected
+
+### 2.0.27
+- add: Better civregno-check for contact persons if the course requires it.
+
+### 2.0.26
+- add: Adding automatic pruning of transients that are expired. (Only from EduAdmin)
+
+### 2.0.25
+- add: Added query param to view plugin transients to debug caching problems.
+
+### 2.0.24
+- removed: Removed client side validation of civic registration numbers.
+
+### 2.0.23
+- add: Listview: Allow line breaks in HTML-code from course templates
+
+### 2.0.22
+- fix: Setting last admittance date and time to 23:59:59 (since some customers uses that full day)
+
+### 2.0.21
+- fix: Added missing `CourseDescriptionShort` in helper-method
+
+### 2.0.20
+- chg: Altered the info text you get when you request a password reset.
+- chg: Made a new function to group dates, that works better.
+
+### 2.0.19
+- add: Added `get_transient` in `eduadmin.php` (`EDU()->get_transient($name, $action, $expiration, ..$args)`)
+
+This method generates a unique transient-name based on the name and the arguments, so that we can cache the same method, multiple times (depending on filters)
+
+- chg: Redoing most of the code fetching data from EduAdmin (Adding `$select`, to decrease the amount of data fetched)
+- add: Added new class `EduAdminAPIHelper`, that I'm using to deduplicate code.
+- per: Adding more performance fixes, that should solve some issues.
+- fix: Fixed a problem with showing price names in the detail view.
+- add: Added extra check for regions, so we don't loop over empty objects
+
+### 2.0.18
+-   fix: Proper sorting on event dates. (Using `sort` on an `array` was stupid)..
+
+### 2.0.17
+-   fix: Code styling and small fixes
+-   add: Added a header for the region-filter on the detail view
+-   fix: Apperantly the information from the course template and event was merged the wrong way, so some information didn't get through.
+-   add: Added debug variables to "free spots"-placeholder
+
+### 2.0.16
+-   fix: Validation of answers were changed in the API, so doing change to reflect that
+
+### 2.0.15
+-   add: Adding region filtering to detail view
+-   add: Adding filter to event and course list.
+-   add: Adding styles for region-filter buttons
+-   add: Adding timer in event-block-a to see if the rendering takes too long
+-   add: Adding base data and template for region filtering
+-   add: Adding options in admin to enable region filtering
+-   add: Adding support for region filtering in API/Ajax methods
+-   add: Adding region-support in API-controller
+-   chg: If an event ID is present in the query string on a detail page, we won't show regions.
+-   chg: Adding more transients to cache more data.
+-   chg: Adding more checks to multiSort to get rid of notices/warnings
+-   fix: Adding another filter to get rid of company specific events.
+-   chg: Code style
+
+### 2.0.14
+-   fix: `courseattributeid`-attribute on `[eduadmin-detailinfo]` didn't work with a strict check
+
+### 2.0.13
+-   fix: Sorting on dates even while grouped on city
+
 ### 2.0.12
 -   fix: We don't need users to accept terms to check prices.. That's just silly.
 
