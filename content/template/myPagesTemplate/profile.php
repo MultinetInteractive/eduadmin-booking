@@ -21,7 +21,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 	$patch_customer->BillingInfo->Zip                = sanitize_text_field( $_POST['customerInvoiceZip'] );
 	$patch_customer->BillingInfo->City               = sanitize_text_field( $_POST['customerInvoiceCity'] );
 	$patch_customer->BillingInfo->OrganisationNumber = sanitize_text_field( $_POST['customerInvoiceOrgNr'] );
-	$patch_customer->BillingInfo->SellerReference    = sanitize_text_field( $_POST['customerReference'] );
+	$patch_customer->BillingInfo->BuyerReference     = sanitize_text_field( $_POST['customerReference'] );
 	$patch_customer->BillingInfo->Email              = sanitize_email( $_POST['customerInvoiceEmail'] );
 
 	$patch_contact         = new stdClass();
@@ -130,7 +130,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label>
 				<div class="inputLabel"><?php esc_html_e( 'Invoice reference', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerReference" placeholder="<?php echo esc_attr__( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->SellerReference ); ?>" />
+					<input type="text" name="customerReference" placeholder="<?php echo esc_attr__( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->CustomerReference ); ?>" />
 				</div>
 			</label>
 		</div>
