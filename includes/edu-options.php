@@ -180,8 +180,8 @@ function eduadmin_settings_init() {
 function eduadmin_frontend_content() {
 	$t = EDU()->start_timer( __METHOD__ );
 
-	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/frontendstyle.css' );
-	wp_register_style( 'eduadmin_frontend_style', plugins_url( 'content/style/frontendstyle.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/global.css' );
+	wp_register_style( 'eduadmin_frontend_style', plugins_url( 'content/style/compiled/frontend/global.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
 	$customcss = get_option( 'eduadmin-style', '' );
 	wp_enqueue_style( 'eduadmin_frontend_style' );
 	wp_add_inline_style( 'eduadmin_frontend_style', $customcss );
@@ -208,8 +208,8 @@ function eduadmin_frontend_content() {
 
 function eduadmin_backend_content() {
 	$t             = EDU()->start_timer( __METHOD__ );
-	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/adminstyle.css' );
-	wp_register_style( 'eduadmin_admin_style', plugins_url( 'content/style/adminstyle.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/admin/global.css' );
+	wp_register_style( 'eduadmin_admin_style', plugins_url( 'content/style/compiled/admin/global.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
 	wp_enqueue_style( 'eduadmin_admin_style' );
 
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/script/adminjs.js' );

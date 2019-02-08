@@ -1,0 +1,61 @@
+.eduadmin {
+	* {
+		box-sizing: border-box;
+	}
+
+	.eduadmin-courselistoptions {
+		display: none;
+	}
+
+	ul,
+	ol {
+		padding: 0 0 0 32px;
+	}
+
+	h1,
+	h2 {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 100%;
+	}
+
+	h3 {
+		color: hsl(0, 0%, 35%);
+		font-weight: 600;
+	}
+
+	h1.courseTitle,
+	h1.courseTitle:hover,
+	.objectName a,
+	.objectName a:hover,
+	a.readMoreButton:hover,
+	a.bookButton,
+	a.bookButton:hover,
+	a.readMoreButton {
+		border: none;
+		outline: none;
+		box-shadow: none;
+	}
+
+	@import "./parts/buttons.scss";
+	@import "./parts/searchForm.scss";
+
+	.edu-modal.warning {
+		width: 100%;
+		padding: 8px 16px;
+		color: hsl(5, 80%, 50%);
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+		background: hsl(6, 100%, 94%);
+		margin: 0 0 16px 0;
+		border-radius: 3px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+	}
+
+	.edu-dateSeparator::before {
+		content: ", ";
+	}
+}
+
+@import "./parts/daypopup.scss";
+@import "./parts/generalFormStyle.scss";
+@import "./parts/loginForm.scss";

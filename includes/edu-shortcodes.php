@@ -19,7 +19,17 @@ if ( ! function_exists( 'normalize_empty_atts' ) ) {
 function eduadmin_get_list_view( $attributes ) {
 	$t                 = EDU()->start_timer( __METHOD__ );
 	$selected_template = get_option( 'eduadmin-listTemplate', 'template_A' );
-	$attributes        = shortcode_atts(
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/listView.css' );
+	wp_register_style(
+		'eduadmin_frontend_list',
+		plugins_url( 'content/style/compiled/frontend/listView.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_list' );
+
+	$attributes = shortcode_atts(
 		array(
 			'template'        => $selected_template,
 			'category'        => null,
@@ -45,7 +55,7 @@ function eduadmin_get_list_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
 	);
-	$str               = include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/' . $attributes['template'] . '.php';
+	$str        = include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/' . $attributes['template'] . '.php';
 	EDU()->stop_timer( $t );
 
 	return $str;
@@ -80,8 +90,18 @@ function eduadmin_get_event_interest( $attributes ) {
 }
 
 function eduadmin_get_detail_view( $attributes ) {
-	$t                           = EDU()->start_timer( __METHOD__ );
-	$selected_template           = get_option( 'eduadmin-detailTemplate', 'template_A' );
+	$t                 = EDU()->start_timer( __METHOD__ );
+	$selected_template = get_option( 'eduadmin-detailTemplate', 'template_A' );
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/detailView.css' );
+	wp_register_style(
+		'eduadmin_frontend_detail',
+		plugins_url( 'content/style/compiled/frontend/detailView.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_detail' );
+
 	$attributes                  = shortcode_atts(
 		array(
 			'template'       => $selected_template,
@@ -163,6 +183,16 @@ function eduadmin_get_booking_view( $attributes ) {
 	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 		define( 'DONOTCACHEPAGE', true );
 	}
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/bookingPage.css' );
+	wp_register_style(
+		'eduadmin_frontend_booking',
+		plugins_url( 'content/style/compiled/frontend/bookingPage.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_booking' );
+
 	$selected_template = get_option( 'eduadmin-bookingTemplate', 'template_A' );
 	$attributes        = shortcode_atts(
 		array(
@@ -273,6 +303,12 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
+
+			if(isset($selected_course["@error"])) {
+				EDU()->stop_timer( $t );
+				return $selected_course["@error"];
+			}
+
 			$org = EDUAPIHelper()->GetOrganization();
 
 			$inc_vat = $org['PriceIncVat'];
@@ -499,21 +535,23 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$event_interest_page = get_option( 'eduadmin-interestEventPage' );
 
-				foreach ( $events as $ev ) {
-					$spots_left = $ev['ParticipantNumberLeft'];
+				if ( ! empty( $events ) ) {
+					foreach ( $events as $ev ) {
+						$spots_left = $ev['ParticipantNumberLeft'];
 
-					if ( ! empty( $_REQUEST['eid'] ) ) {
-						if ( $ev['EventId'] !== intval( $_REQUEST['eid'] ) ) {
-							continue;
+						if ( ! empty( $_REQUEST['eid'] ) ) {
+							if ( $ev['EventId'] !== intval( $_REQUEST['eid'] ) ) {
+								continue;
+							}
 						}
+
+						ob_start();
+						include EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/blocks/event-item.php';
+						$ret_str .= ob_get_clean();
+
+						$last_city = $ev['City'];
+						$i++;
 					}
-
-					ob_start();
-					include EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/blocks/event-item.php';
-					$ret_str .= ob_get_clean();
-
-					$last_city = $ev['City'];
-					$i++;
 				}
 				if ( empty( $events ) ) {
 					$ret_str .= '<div class="noDatesAvailable"><i>' . esc_html__( 'No available dates for the selected course', 'eduadmin-booking' ) . '</i></div>';
@@ -563,6 +601,16 @@ function eduadmin_get_login_view( $attributes ) {
 	if ( ! defined( 'DONOTCACHEPAGE' ) ) {
 		define( 'DONOTCACHEPAGE', true );
 	}
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/profilePage.css' );
+	wp_register_style(
+		'eduadmin_frontend_profile',
+		plugins_url( 'content/style/compiled/frontend/profilePage.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_profile' );
+
 	$attributes = shortcode_atts(
 		array(
 			'logintext'  => __( 'Log in', 'eduadmin-booking' ),
@@ -583,6 +631,15 @@ function eduadmin_get_programme_list( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-programmelist'
 	);
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/listProgrammeView.css' );
+	wp_register_style(
+		'eduadmin_frontend_programmelist',
+		plugins_url( 'content/style/compiled/frontend/listProgrammeView.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_programmelist' );
 
 	$programmes = EDUAPI()->OData->Programmes->Search(
 		null,

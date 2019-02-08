@@ -130,7 +130,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label>
 				<div class="inputLabel"><?php esc_html_e( 'Invoice reference', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerReference" placeholder="<?php echo esc_attr__( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->CustomerReference ); ?>" />
+					<input type="text" name="customerReference" placeholder="<?php echo esc_attr__( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->BuyerReference ); ?>" />
 				</div>
 			</label>
 		</div>
