@@ -25,9 +25,11 @@ $subjects = EDU()->get_transient( 'eduadmin-subjects', function() {
 }, DAY_IN_SECONDS );
 
 $distinct_subjects = array();
-foreach ( $subjects['value'] as $subj ) {
-	if ( ! key_exists( $subj['SubjectId'], $distinct_subjects ) ) {
-		$distinct_subjects[ $subj['SubjectId'] ] = $subj['SubjectName'];
+if ( isset( $subjects['value'] ) ) {
+	foreach ( $subjects['value'] as $subj ) {
+		if ( ! key_exists( $subj['SubjectId'], $distinct_subjects ) ) {
+			$distinct_subjects[ $subj['SubjectId'] ] = $subj['SubjectName'];
+		}
 	}
 }
 

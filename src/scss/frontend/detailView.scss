@@ -1,0 +1,67 @@
+.eduadmin {
+	div.title {
+		display: flex;
+		align-items: center;
+		padding: 16px 0;
+		.courseTitle {
+			color: hsl(0, 0%, 30%);
+			font-weight: 600;
+			margin: 0;
+			padding: 0;
+		}
+		.courseImage {
+			width: 72px;
+			height: 72px;
+			margin: 0 16px 0 0;
+		}
+	}
+
+	.textblock {
+		color: hsl(0, 0%, 35%);
+	}
+
+	.eventInformation {
+		margin: 0 0 48px 0;
+		color: hsl(0, 0%, 35%);
+	}
+
+	.event-table.eventDays .eventSeparator {
+		margin-top: 1rem;
+		font-size: 1.4rem;
+		font-weight: 500;
+	}
+
+	.eventItem {
+		padding: 16px 0;
+		border-bottom: 1px solid hsl(0, 0%, 95%);
+		&:first-child {
+			border-top: 1px solid hsl(0, 0%, 95%);
+		}
+		&:last-child {
+			border: none;
+		}
+
+		.eventStatus {
+			margin: 0 0 16px 0;
+		}
+
+		.eventDate,
+		.eventCity {
+			margin: 0 0 8px 0;
+		}
+	}
+}
+
+@media (min-width: 800px) {
+	.eduadmin .eventItem {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		.eventStatus,
+		.eventDate,
+		.eventCity {
+			margin: 0;
+			flex: 1;
+		}
+	}
+}

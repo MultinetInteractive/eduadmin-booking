@@ -1,0 +1,81 @@
+.search-form {
+	margin: 0 0 32px 0;
+
+	.search-row {
+		display: flex;
+		flex-direction: column;
+		select {
+			width: 100%;
+		}
+
+		.search-dropdowns {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.searchButton {
+			height: 100%;
+		}
+	}
+
+	.search-item {
+		margin: 0 0 16px 0;
+	}
+}
+
+.search-regionitems {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-items: stretch;
+
+	margin-right: -10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	.edu-regionbutton {
+		flex: 1 0 20%;
+		margin: 0 10px 10px 0;
+		padding: 8px;
+		text-align: center;
+		cursor: pointer;
+	}
+}
+
+@media (min-width: 800px) {
+	.search-form {
+		.search-row {
+			.search-dropdowns {
+				flex-direction: row;
+				justify-content: space-between;
+			}
+
+			.search-box {
+				display: flex;
+				flex-direction: row;
+			}
+		}
+
+		.search-dropdown {
+			flex: 1;
+			margin-right: 8px;
+			min-width: 190px;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+
+		.search-item {
+			&.search-text {
+				margin-right: 8px;
+				flex: 1;
+			}
+		}
+	}
+
+	.search-regionitems {
+		flex-direction: row;
+	}
+}

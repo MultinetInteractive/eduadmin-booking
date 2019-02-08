@@ -1,0 +1,211 @@
+.eduadmin.booking-page form .title {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 16px 0 0;
+}
+
+.eduadmin.booking-page form .title .courseImage {
+  width: 72px;
+  height: 72px;
+}
+
+.eduadmin.booking-page form .title .dateInfo {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.eduadmin.booking-page form .title select.dateInfo {
+  padding: unset;
+}
+
+.eduadmin.booking-page form .title .notUserCheck {
+  text-align: center;
+  color: #666666;
+  margin: 0 0 56px;
+  font-size: 0.95rem;
+}
+
+.eduadmin.booking-page form .title .notUserCheck a {
+  margin: 0 0 0 8px;
+  color: #666666;
+}
+
+.eduadmin.booking-page form h2 {
+  color: #333333;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+}
+
+.eduadmin.booking-page form .contactView,
+.eduadmin.booking-page form .customerView,
+.eduadmin.booking-page form .participantView,
+.eduadmin.booking-page form .questionPanel {
+  margin: 0 0 48px 0;
+}
+
+.eduadmin.booking-page form .invoiceView {
+  margin: 48px 0 0 0;
+}
+
+.eduadmin.booking-page form label {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+  /* justify-content: space-between; */
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.eduadmin.booking-page form label .inputLabel {
+  display: none;
+  margin: 0 0 8px;
+  color: #333333;
+}
+
+.eduadmin.booking-page form label .inputLabel.noHide {
+  display: inherit;
+}
+
+.eduadmin.booking-page form label .inputHolder {
+  width: 100%;
+}
+
+.eduadmin.booking-page form label .inputHolder .contactFirstName,
+.eduadmin.booking-page form label .inputHolder .first-name {
+  margin-right: 2%;
+}
+
+.eduadmin.booking-page form label .inputHolder .contactLastName,
+.eduadmin.booking-page form label .inputHolder .contactFirstName,
+.eduadmin.booking-page form label .inputHolder .last-name,
+.eduadmin.booking-page form label .inputHolder .first-name {
+  display: inline-block;
+  width: 49%;
+}
+
+.eduadmin.booking-page form label .inputHolder.alsoInvoiceCustomer {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.eduadmin.booking-page form label .inputHolder.contactIsAlsoParticipant {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.eduadmin.booking-page form label .inputHolder select {
+  width: 100%;
+}
+
+.eduadmin.booking-page form label .inputHolder input[required],
+.eduadmin.booking-page form label .inputHolder input[data-required="true"],
+.eduadmin.booking-page form label .inputHolder textarea[required],
+.eduadmin.booking-page form label .inputHolder textarea[data-required="true"],
+.eduadmin.booking-page form label .inputHolder select[required],
+.eduadmin.booking-page form label .inputHolder select[data-required="true"] {
+  background-color: #feffcc;
+}
+
+.eduadmin.booking-page form .participantView h3 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  color: #333333;
+}
+
+.eduadmin.booking-page form .participantView h3 .removeParticipant {
+  color: #666666;
+  font-size: 1rem;
+}
+
+.eduadmin.booking-page form .participantView h3 .removeParticipant:hover {
+  cursor: pointer;
+}
+
+.eduadmin.booking-page form .participantView .addParticipantLink {
+  display: inline-block;
+  margin: 0 0 16px 0;
+}
+
+.eduadmin.booking-page form .submitView {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.eduadmin.booking-page form .submitView .sumTotal {
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
+.eduadmin.booking-page form .submitView .sumTotal span {
+  font-weight: normal;
+  margin: 0 0 0 8px;
+}
+
+.eduadmin.booking-page form .edu-modal.warning {
+  display: none;
+  width: 100%;
+  padding: 8px 16px;
+  color: #e62b1a;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  -ms-flex-order: -1;
+  order: -1;
+  background: #ffe3e0;
+  margin: 0 0 16px 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.eduadmin.booking-page form .bookButton {
+  padding: 16px 24px;
+}
+
+.eduadmin.booking-page form .confirmTermsHolder label {
+  display: unset;
+}
+
+@media (min-width: 800px) {
+  .eduadmin.booking-page form .title select.dateInfo {
+    padding: unset;
+  }
+
+  .eduadmin.booking-page form .notUserCheck {
+    text-align: right;
+    margin: 0;
+    position: relative;
+    bottom: -1.9rem;
+  }
+
+  .eduadmin.booking-page form .submitView {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .eduadmin.booking-page form .submitView .sumTotal {
+    margin: 0;
+  }
+}

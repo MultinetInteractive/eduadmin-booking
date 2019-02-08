@@ -1,0 +1,33 @@
+.eduadmin .tab_container.tabhead {
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.eduadmin .tab_container .tab_item {
+  padding: 5px 10px 4px 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.eduadmin .tab_container .tab_item:hover {
+  border: 1px solid #b8b8b8;
+  border-bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.eduadmin .tab_container .tab_item.active {
+  border: 1px solid #d1d1d1;
+  border-bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.eduadmin .tab_container a.tab_item {
+  text-decoration: none;
+  box-shadow: unset;
+}
+
+.eduadmin .myReservationsTable th,
+.eduadmin .myReservationsTable td {
+  padding: 5px;
+}

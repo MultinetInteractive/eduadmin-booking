@@ -1,0 +1,187 @@
+.eduadmin {
+	.eventListTable {
+		&[data-template="A"] {
+			display: flex;
+			flex-direction: column;
+		}
+		&[data-template="B"] {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+	}
+
+	.objectItem {
+		padding: 24px 8px;
+		border-bottom: 1px solid hsl(0, 0%, 95%);
+
+		&:last-child .objectInfoHolder {
+			border-bottom: none;
+		}
+
+		.objectImage {
+			display: none;
+
+			background-size: cover;
+			background-position: center;
+			border-radius: 1px;
+			margin: 0 0 16px 0;
+		}
+
+		.objectName {
+			font-size: 20px;
+			font-weight: 600;
+			margin: 0 0 16px 0;
+
+			a {
+				color: hsl(0, 0%, 30%);
+			}
+		}
+
+		.objectDescription {
+			color: hsl(0, 0%, 35%);
+			margin: 0 0 16px 0;
+
+			.eduadmin-dateText,
+			.cityInfo {
+				display: inline-block;
+				margin: 0 0 8px 0;
+			}
+			.spotsLeftInfo {
+				display: block;
+				margin: 24px 0 32px 0;
+			}
+		}
+
+		.objectBook {
+			display: flex;
+			flex-direction: row;
+			align-items: baseline;
+
+			a.bookButton {
+				margin: 0 16px 0 0;
+			}
+
+			a.readMoreButton:not(.cta-btn) {
+				color: hsl(0, 0%, 40%);
+				font-style: italic;
+				&:hover {
+					color: hsl(0, 0%, 15%);
+				}
+			}
+		}
+	}
+
+	.objectBlock.brick {
+		width: 100%;
+		min-height: 300px;
+		margin: 0 0 16px 0;
+		text-align: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+		padding: 16px;
+		border-radius: 3px;
+		background: hsl(0, 0%, 99.5%);
+
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.objectImage {
+			height: 160px;
+			background-size: cover;
+			background-position: center;
+			margin: 0 0 16px 0;
+			border-radius: 1px;
+		}
+
+		.objectName {
+			font-size: 20px;
+			font-weight: 600;
+			margin: 0 0 16px 0;
+
+			a {
+				color: hsl(0, 0%, 30%);
+			}
+		}
+
+		.objectDescription {
+			color: hsl(0, 0%, 35%);
+
+			.spotsLeft {
+				display: none;
+			}
+
+			.spotsLeftInfo {
+				display: block;
+				margin: 24px 0 32px 0;
+			}
+
+			.eduadmin-dateText,
+			.cityInfo {
+				display: inline-block;
+				margin: 0 0 8px 0;
+			}
+		}
+	}
+}
+
+/* Desktop */
+@media (min-width: 800px) {
+	.eduadmin .objectItem {
+		display: flex;
+		align-items: stretch;
+
+		.objectImage {
+			display: block;
+			width: 170px;
+			/* height: 72px; */
+			margin: 0 32px 0 0;
+		}
+
+		.objectInfoHolder {
+			flex: 1;
+		}
+
+		.objectDescription {
+			margin: 0;
+
+			.spotsLeftInfo {
+				margin: 24px 0 0 0;
+			}
+		}
+
+		.objectBook {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			a.bookButton {
+				order: -1;
+				margin: 0 0 16px 0;
+			}
+		}
+
+		.readMoreButton {
+			width: 100%;
+		}
+	}
+
+	.eduadmin {
+		.course-holder.tmpl_A {
+			.objectItem {
+				align-items: center;
+			}
+
+			.objectImage {
+				width: 56px;
+				height: 56px;
+			}
+		}
+
+		.objectBlock.brick {
+			max-width: 350px;
+			margin: 0 16px 16px 0;
+		}
+	}
+}

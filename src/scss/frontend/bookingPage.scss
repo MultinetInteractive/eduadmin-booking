@@ -1,0 +1,195 @@
+.eduadmin.booking-page form {
+	.title {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 16px 0 0;
+
+		.courseImage {
+			width: 72px;
+			height: 72px;
+		}
+
+		.dateInfo {
+			width: 100%;
+			text-align: center;
+			font-size: 1.2rem;
+			font-weight: 500;
+		}
+
+		select.dateInfo {
+			padding: unset;
+		}
+
+		.notUserCheck {
+			text-align: center;
+			color: hsl(0, 0%, 40%);
+			margin: 0 0 56px;
+			font-size: 0.95rem;
+
+			a {
+				margin: 0 0 0 8px;
+				color: hsl(0, 0%, 40%);
+			}
+		}
+	}
+
+	h2 {
+		color: hsl(0, 0%, 20%);
+		font-weight: 600;
+		margin: 0 0 24px 0;
+	}
+
+	.contactView,
+	.customerView,
+	.participantView,
+	.questionPanel {
+		margin: 0 0 48px 0;
+	}
+
+	.invoiceView {
+		margin: 48px 0 0 0;
+	}
+
+	label {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin: 0 0 16px;
+		/* justify-content: space-between; */
+		align-items: center;
+
+		.inputLabel {
+			display: none;
+			margin: 0 0 8px;
+			color: hsl(0, 0%, 20%);
+			&.noHide {
+				display: inherit;
+			}
+		}
+
+		.inputHolder {
+			width: 100%;
+
+			.contactFirstName,
+			.first-name {
+				margin-right: 2%;
+			}
+
+			.contactLastName,
+			.contactFirstName,
+			.last-name,
+			.first-name {
+				display: inline-block;
+				width: 49%;
+			}
+
+			&.alsoInvoiceCustomer {
+				display: flex;
+			}
+
+			&.contactIsAlsoParticipant {
+				display: flex;
+				align-items: center;
+				padding: 8px 0;
+			}
+
+			select {
+				width: 100%;
+			}
+
+			input[required],
+			input[data-required="true"],
+			textarea[required],
+			textarea[data-required="true"],
+			select[required],
+			select[data-required="true"] {
+				background-color: #feffcc;
+			}
+		}
+	}
+
+	.participantView {
+		h3 {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			color: hsl(0, 0%, 20%);
+
+			.removeParticipant {
+				color: hsl(0, 0%, 40%);
+				font-size: 1rem;
+
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.addParticipantLink {
+			display: inline-block;
+			margin: 0 0 16px 0;
+		}
+	}
+
+	.submitView {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+
+		.sumTotal {
+			font-weight: bold;
+			margin: 0 0 8px 0;
+
+			span {
+				font-weight: normal;
+				margin: 0 0 0 8px;
+			}
+		}
+	}
+
+	.edu-modal.warning {
+		display: none;
+		width: 100%;
+		padding: 8px 16px;
+		color: hsl(5, 80%, 50%);
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+		order: -1;
+		background: hsl(6, 100%, 94%);
+		margin: 0 0 16px 0;
+		border-radius: 3px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+	}
+
+	.bookButton {
+		padding: 16px 24px;
+	}
+
+	.confirmTermsHolder label {
+		display: unset;
+	}
+}
+
+@media (min-width: 800px) {
+	.eduadmin.booking-page form {
+		.title select.dateInfo {
+			padding: unset;
+		}
+
+		.notUserCheck {
+			text-align: right;
+			margin: 0;
+			position: relative;
+			bottom: -1.9rem;
+		}
+
+		.submitView {
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-between;
+			.sumTotal {
+				margin: 0;
+			}
+		}
+	}
+}
