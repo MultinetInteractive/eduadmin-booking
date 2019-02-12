@@ -1,3 +1,16 @@
+### 2.0.32
+- add: Allowing HTML (`<p></p>` and `<br />`) in list view
+
+### 2.0.31
+- add: Settings page with settings for "My page" / User profiles (Fixes: [#213](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/214))
+- fix: Showing both incl. VAT and excl. VAT prices
+
+### 2.0.30
+- fix: And actually checking the required-attribute in the validation would help.
+
+### 2.0.29
+- fix: [#163](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/163) Civic registration number only required if the contact person is a participant
+
 ### 2.0.28
 - fix: Interest registration on events, now actually know which event the user selected
 

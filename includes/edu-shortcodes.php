@@ -666,6 +666,15 @@ function eduadmin_get_programme_details( $attributes ) {
 		'eduadmin-programmedetail'
 	);
 
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/detailView.css' );
+	wp_register_style(
+		'eduadmin_frontend_detail',
+		plugins_url( 'content/style/compiled/frontend/detailView.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_detail' );
+
 	global $wp_query;
 
 	if ( ! empty( $wp_query->query_vars['edu_programme'] ) ) {
@@ -708,6 +717,15 @@ function eduadmin_get_programme_booking( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-programmebooking'
 	);
+
+	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/bookingPage.css' );
+	wp_register_style(
+		'eduadmin_frontend_booking',
+		plugins_url( 'content/style/compiled/frontend/bookingPage.css', dirname( __FILE__ ) ),
+		array( 'eduadmin_frontend_style' ),
+		date_version( $style_version )
+	);
+	wp_enqueue_style( 'eduadmin_frontend_booking' );
 
 	global $wp_query;
 

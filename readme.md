@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 5.0
-Stable tag: 2.0.34
+Stable tag: 2.0.35
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -37,22 +37,15 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.35
+- add: If it seems like inc/excl VAT is the same price, show as VAT free. [#222](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/222)
+- add: Backend setting to allow customers to update their profile while booking (only existing customers) [#219](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/219)
+- fix: Adding missing CSS to Programme Detail / Booking
+- chg: Rewritten the rewrite rules to all work from the `EduAdminRouter` instead of `edu-rewrites.php`
+
 ### 2.0.34
 - fix: Using `BuyerReference` when we fetch in profile.
 - chg: Switched to SCSS and splitted files into multiple files instead
 
 ### 2.0.33
 - chg: `BuyerReference` should be saved in `BuyerReference`, not `SellerReference`
-
-### 2.0.32
-- add: Allowing HTML (`<p></p>` and `<br />`) in list view
-
-### 2.0.31
-- add: Settings page with settings for "My page" / User profiles (Fixes: [#213](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/214))
-- fix: Showing both incl. VAT and excl. VAT prices
-
-### 2.0.30
-- fix: And actually checking the required-attribute in the validation would help.
-
-### 2.0.29
-- fix: [#163](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/163) Civic registration number only required if the contact person is a participant

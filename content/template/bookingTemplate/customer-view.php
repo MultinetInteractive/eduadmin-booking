@@ -182,4 +182,14 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			</div>
 		</label>
 	<?php } ?>
+	<?php if ( get_option( 'eduadmin-useLogin', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+		<label>
+			<div class="inputHolder">
+				<label class="inline-checkbox" for="overwriteCustomerData">
+					<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
+					<?php esc_html_e( 'Also update my customer information for future use', 'eduadmin-booking' ); ?>
+				</label>
+			</div>
+		</label>
+	<?php } ?>
 </div>

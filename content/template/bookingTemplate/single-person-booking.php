@@ -187,6 +187,16 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 			</label>
 		</div>
 	</div>
+	<?php if ( get_option( 'eduadmin-useLogin', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+		<label>
+			<div class="inputHolder">
+				<label class="inline-checkbox" for="overwriteCustomerData">
+					<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
+					<?php esc_html_e( 'Also update my customer information for future use', 'eduadmin-booking' ); ?>
+				</label>
+			</div>
+		</label>
+	<?php } ?>
 <?php } ?>
 <div class="attributeView">
 	<?php

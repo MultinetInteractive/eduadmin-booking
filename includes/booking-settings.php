@@ -106,7 +106,15 @@ function edu_render_booking_settings_page() {
 							value="true" />
 						<?php esc_html_e( "Block ability to edit login information if logged in", 'eduadmin-booking' ); ?>
 					</label>
-					<br />                <?php
+					<br />				<?php
+				$allowCustomerToUpdate = get_option( 'eduadmin-allowCustomerUpdate', false );
+				?>
+					<label>
+						<input type="checkbox" name="eduadmin-allowCustomerUpdate"<?php echo( $allowCustomerToUpdate ? " checked=\"checked\"" : "" ); ?>
+							value="true" />
+						<?php esc_html_e( "Allow end customer to overwrite customer info (requires logged in users)", 'eduadmin-booking' ); ?>
+					</label>
+					<br /><?php
 				$allowDiscountCode = get_option( 'eduadmin-allowDiscountCode', false );
 				?>
 					<label>
@@ -937,7 +945,7 @@ function edu_render_booking_settings_page() {
 							</td>
 						</tr>
 					</table>
-					<br />					<p class="submit">
+					<br />                    <p class="submit">
 						<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo __( "Save settings", 'eduadmin-booking' ); ?>" />
 					</p>
 					<div id="edu-formSettings" class="eduWindow" style="display: none;">
