@@ -218,7 +218,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 			var edu_vat = {
 				inc: '<?php echo esc_js( __( 'inc vat', 'eduadmin-booking' ) ); ?>',
-				ex: '<?php echo esc_js( __( 'ex vat', 'eduadmin-booking' ) ); ?>'
+				ex: '<?php echo esc_js( __( 'ex vat', 'eduadmin-booking' ) ); ?>',
+				free: '<?php echo esc_js( __( 'vat free', 'eduadmin-booking' ) ); ?>'
 			};
 			(function () {
 				var title = document.title;

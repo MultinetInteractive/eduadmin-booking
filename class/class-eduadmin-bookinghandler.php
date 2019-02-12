@@ -288,6 +288,10 @@ class EduAdmin_BookingHandler {
 		$first = '';
 		$last  = '';
 
+		if ( ! empty( $_REQUEST['overwriteCustomerData'] ) ) {
+			$customer->UpdateCustomerInformation = true;
+		}
+
 		if ( ! empty( $_POST['contactFirstName'] ) ) { // Var input okay.
 			$first = sanitize_text_field( $_POST['contactFirstName'] ); // Var input okay.
 		}
@@ -548,6 +552,10 @@ class EduAdmin_BookingHandler {
 		}
 
 		$customer = new stdClass();
+
+		if ( ! empty( $_REQUEST['overwriteCustomerData'] ) ) {
+			$customer->UpdateCustomerInformation = true;
+		}
 
 		if ( ! empty( $_POST['customerName'] ) ) { // Var input okay.
 			$customer->CustomerName = sanitize_text_field( $_POST['customerName'] ); // Var input okay.

@@ -103,6 +103,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-booking', 'eduadmin-useLogin' );
 	register_setting( 'eduadmin-booking', 'eduadmin-allowCustomerRegistration' );
 	register_setting( 'eduadmin-booking', 'eduadmin-loginField' );
+	register_setting( 'eduadmin-booking', 'eduadmin-allowCustomerUpdate' );
 
 	register_setting( 'eduadmin-booking', 'eduadmin-singlePersonBooking' );
 	register_setting( 'eduadmin-booking', 'eduadmin-customerGroupId' );

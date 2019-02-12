@@ -344,6 +344,16 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						</div>
 					</label>
 				<?php } ?>
+				<?php if ( get_option( 'eduadmin-useLogin', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+					<label>
+						<div class="inputHolder">
+							<label class="inline-checkbox" for="overwriteCustomerData">
+								<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
+								<?php esc_html_e( 'Also update my customer information for future use', 'eduadmin-booking' ); ?>
+							</label>
+						</div>
+					</label>
+				<?php } ?>
 			</div>
 			<div class="questionPanel">
 				<?php
@@ -486,7 +496,8 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 
 				var edu_vat = {
 					inc: '<?php echo esc_js( __( 'inc vat', 'eduadmin-booking' ) ); ?>',
-					ex: '<?php echo esc_js( __( 'ex vat', 'eduadmin-booking' ) ); ?>'
+					ex: '<?php echo esc_js( __( 'ex vat', 'eduadmin-booking' ) ); ?>',
+					free: '<?php echo esc_js( __( 'vat free', 'eduadmin-booking' ) ); ?>'
 				};
 				(function () {
 					var title = document.title;
