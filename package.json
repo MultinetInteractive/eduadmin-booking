@@ -6,11 +6,7 @@
 	"author": "Chris Gårdenberg <chga@multinet.se>",
 	"license": "MIT",
 	"scripts": {
-		"build-task:scss-compile": "node-sass-chokidar --source-map true src/scss/ -o content/style/compiled",
-		"build-task:autoprefixer": "postcss content/style/compiled/*.css --use autoprefixer -d content/style/compiled",
-		"sass:build": "npm-run-all -p build-task:*",
-		"sass:watch": "chokidar 'src/scss/**/*.scss' -c 'npm run sass:build'",
-		"dev": "npm-run-all -p sass:*"
+		"dev": "yarn gulp"
 	},
 	"dependencies": {
 		"gulp": "^4.0.0",

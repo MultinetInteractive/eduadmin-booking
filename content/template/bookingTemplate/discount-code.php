@@ -7,7 +7,7 @@ if ( get_option( 'eduadmin-allowDiscountCode', false ) ) :
 				<?php esc_html_e( 'Discount code', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="edu-discountCode" id="edu-discountCode" class="discount-box" placeholder="<?php esc_attr__( 'Discount code', 'eduadmin-booking' ); ?>" />
+				<input type="text" name="edu-discountCode" id="edu-discountCode" class="discount-box" placeholder="<?php echo esc_attr__( 'Discount code', 'eduadmin-booking' ); ?>" />
 				<button class="validateDiscount neutral-btn" data-eventid="<?php echo esc_attr( $event['EventId'] ); ?>" data-objectid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" onclick="eduBookingView.ValidateDiscountCode(); return false;">
 					<?php esc_html_e( 'Validate', 'eduadmin-booking' ); ?>
 				</button>

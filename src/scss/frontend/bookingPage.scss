@@ -60,12 +60,15 @@
 		align-items: center;
 
 		.inputLabel {
-			display: none;
-			margin: 0 0 8px;
-			color: hsl(0, 0%, 20%);
+
 			&.noHide {
 				display: inherit;
 			}
+
+			display: none;
+			margin: 0 0 8px;
+			color: hsl(0, 0%, 20%);
+
 		}
 
 		.inputHolder {
@@ -172,6 +175,12 @@
 
 @media (min-width: 800px) {
 	.eduadmin.booking-page form {
+		label .inputLabel {
+			display: inherit;
+			margin: 0;
+			flex: 1;
+		}
+
 		.title select.dateInfo {
 			padding: unset;
 		}
