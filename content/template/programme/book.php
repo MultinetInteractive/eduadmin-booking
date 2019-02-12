@@ -344,7 +344,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						</div>
 					</label>
 				<?php } ?>
-				<?php if ( get_option( 'eduadmin-useLogin', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+				<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
 					<label>
 						<div class="inputHolder">
 							<label class="inline-checkbox" for="overwriteCustomerData">
