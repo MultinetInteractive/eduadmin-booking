@@ -170,7 +170,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			render_attribute( $custom_field, false, 'customer', $data );
 		}
 	}
-	if ( ! $no_invoice_free_events || $first_price->Price > 0 ) {
+	if ( empty( $no_invoice_free_events ) || ( $no_invoice_free_events && $first_price->Price > 0 ) ) {
 		?>
 		<label<?php echo $force_show_invoice_information ? ' style="display: none;"' : ''; ?>>
 			<div class="inputHolder alsoInvoiceCustomer">

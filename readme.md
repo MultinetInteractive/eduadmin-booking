@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 5.0
-Stable tag: 2.0.36
+Stable tag: 2.0.37
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -36,6 +36,9 @@ We have replaced everything with a new API-client, so some things may be broken.
 If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
+
+### 2.0.37
+- fix: Logical error when to show invoice information
 
 ### 2.0.36
 - fix: CSS-fixes, missing css.
