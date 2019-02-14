@@ -74,20 +74,22 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	if ( ! empty( $contact_custom_fields ) ) {
 		foreach ( $contact_custom_fields as $custom_field ) {
 			$data = null;
-			foreach ( $contact->CustomFields as $cf ) {
-				if ( $cf->CustomFieldId === $custom_field['CustomFieldId'] ) {
-					switch ( $cf->CustomFieldType ) {
-						case 'Checkbox':
-							$data = $cf->CustomFieldChecked;
-							break;
-						case 'Dropdown':
-							$data = $cf->CustomFieldAlternativeId;
-							break;
-						default:
-							$data = $cf->CustomFieldValue;
-							break;
+			if ( isset( $contact->CustomFields ) ) {
+				foreach ( $contact->CustomFields as $cf ) {
+					if ( $cf->CustomFieldId === $custom_field['CustomFieldId'] ) {
+						switch ( $cf->CustomFieldType ) {
+							case 'Checkbox':
+								$data = $cf->CustomFieldChecked;
+								break;
+							case 'Dropdown':
+								$data = $cf->CustomFieldAlternativeId;
+								break;
+							default:
+								$data = $cf->CustomFieldValue;
+								break;
+						}
+						break;
 					}
-					break;
 				}
 			}
 			render_attribute( $custom_field, false, 'contact', $data );
