@@ -40,6 +40,7 @@ rm -f $PROJECT_ROOT/LICENSE.md
 rm -f $PROJECT_ROOT/phpunit.xml
 rm -f $PROJECT_ROOT/README.md
 rm -f $PROJECT_ROOT/.gitignore
+rm -f $PROJECT_ROOT/Gulpfile.js
 rm -fR $PROJECT_ROOT/scripts
 rm -fR $PROJECT_ROOT/tests
 rm -fR $PROJECT_ROOT/.git
@@ -47,6 +48,7 @@ rm -fR $PROJECT_ROOT/wp-tests
 rm -fR $PROJECT_ROOT/vendor
 rm -fR $PROJECT_ROOT/bin
 rm -fR $PROJECT_ROOT/node_modules
+rm -fR $PROJECT_ROOT/src
 
 # Make sure we are in the project root
 cd $PROJECT_ROOT
