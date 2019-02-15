@@ -88,6 +88,7 @@ if ( ! class_exists( 'EduAdmin_OData_Client' ) ) {
 			include_once 'subclasses/odata/eduadmin-grades.php';
 			include_once 'subclasses/odata/eduadmin-interestregistrations.php';
 			include_once 'subclasses/odata/eduadmin-locations.php';
+			include_once 'subclasses/odata/eduadmin-participants.php';
 			include_once 'subclasses/odata/eduadmin-personnel.php';
 			include_once 'subclasses/odata/eduadmin-persons.php';
 			include_once 'subclasses/odata/eduadmin-programmebookings.php';
@@ -129,6 +130,7 @@ if ( ! class_exists( 'EduAdmin_OData_Client' ) ) {
 			$this->OData->Grades                = new EduAdmin_OData_Grades();
 			$this->OData->InterestRegistrations = new EduAdmin_OData_InterestRegistrations();
 			$this->OData->Locations             = new EduAdmin_OData_Locations();
+			$this->OData->Participants          = new EduAdmin_OData_Participants();
 			$this->OData->Personnel             = new EduAdmin_OData_Personnel();
 			$this->OData->Persons               = new EduAdmin_OData_Persons();
 			$this->OData->ProgrammeBookings     = new EduAdmin_OData_ProgrammeBookings();

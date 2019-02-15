@@ -16,9 +16,9 @@ class EduAdminToken {
 	 * @var integer|null
 	 */
 	public $ExpiresIn = null;
-	public $UserName  = null;
-	public $Issued    = null;
-	public $Expires   = null;
+	public $UserName = null;
+	public $Issued = null;
+	public $Expires = null;
 
 	/**
 	 * EduAdminToken constructor.
@@ -89,6 +89,8 @@ class EduAdmin_ODataHolder {
 	public $InterestRegistrations = null;
 	/** @var EduAdmin_OData_Locations */
 	public $Locations = null;
+	/** @var EduAdmin_OData_Participants */
+	public $Participants = null;
 	/** @var EduAdmin_OData_Personnel */
 	public $Personnel = null;
 	/** @var EduAdmin_OData_Persons */
