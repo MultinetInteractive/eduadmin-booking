@@ -51,7 +51,8 @@
 		margin: 48px 0 0 0;
 	}
 
-	label {
+	label,
+	div.fakeLabel {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -60,7 +61,6 @@
 		align-items: center;
 
 		.inputLabel {
-
 			&.noHide {
 				display: inherit;
 			}
@@ -68,7 +68,6 @@
 			display: none;
 			margin: 0 0 8px;
 			color: hsl(0, 0%, 20%);
-
 		}
 
 		.inputHolder {

@@ -53,7 +53,8 @@
   margin: 48px 0 0 0;
 }
 
-.eduadmin.booking-page form label {
+.eduadmin.booking-page form label,
+.eduadmin.booking-page form div.fakeLabel {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -66,39 +67,50 @@
   align-items: center;
 }
 
-.eduadmin.booking-page form label .inputLabel {
+.eduadmin.booking-page form label .inputLabel,
+.eduadmin.booking-page form div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
   color: #333333;
 }
 
-.eduadmin.booking-page form label .inputLabel.noHide {
+.eduadmin.booking-page form label .inputLabel.noHide,
+.eduadmin.booking-page form div.fakeLabel .inputLabel.noHide {
   display: inherit;
 }
 
-.eduadmin.booking-page form label .inputHolder {
+.eduadmin.booking-page form label .inputHolder,
+.eduadmin.booking-page form div.fakeLabel .inputHolder {
   width: 100%;
 }
 
 .eduadmin.booking-page form label .inputHolder .contactFirstName,
-.eduadmin.booking-page form label .inputHolder .first-name {
+.eduadmin.booking-page form label .inputHolder .first-name,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .contactFirstName,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .first-name {
   margin-right: 2%;
 }
 
 .eduadmin.booking-page form label .inputHolder .contactLastName,
 .eduadmin.booking-page form label .inputHolder .contactFirstName,
 .eduadmin.booking-page form label .inputHolder .last-name,
-.eduadmin.booking-page form label .inputHolder .first-name {
+.eduadmin.booking-page form label .inputHolder .first-name,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .contactLastName,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .contactFirstName,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .last-name,
+.eduadmin.booking-page form div.fakeLabel .inputHolder .first-name {
   display: inline-block;
   width: 49%;
 }
 
-.eduadmin.booking-page form label .inputHolder.alsoInvoiceCustomer {
+.eduadmin.booking-page form label .inputHolder.alsoInvoiceCustomer,
+.eduadmin.booking-page form div.fakeLabel .inputHolder.alsoInvoiceCustomer {
   display: -ms-flexbox;
   display: flex;
 }
 
-.eduadmin.booking-page form label .inputHolder.contactIsAlsoParticipant {
+.eduadmin.booking-page form label .inputHolder.contactIsAlsoParticipant,
+.eduadmin.booking-page form div.fakeLabel .inputHolder.contactIsAlsoParticipant {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -106,7 +118,8 @@
   padding: 8px 0;
 }
 
-.eduadmin.booking-page form label .inputHolder select {
+.eduadmin.booking-page form label .inputHolder select,
+.eduadmin.booking-page form div.fakeLabel .inputHolder select {
   width: 100%;
 }
 
@@ -115,7 +128,13 @@
 .eduadmin.booking-page form label .inputHolder textarea[required],
 .eduadmin.booking-page form label .inputHolder textarea[data-required="true"],
 .eduadmin.booking-page form label .inputHolder select[required],
-.eduadmin.booking-page form label .inputHolder select[data-required="true"] {
+.eduadmin.booking-page form label .inputHolder select[data-required="true"],
+.eduadmin.booking-page form div.fakeLabel .inputHolder input[required],
+.eduadmin.booking-page form div.fakeLabel .inputHolder input[data-required="true"],
+.eduadmin.booking-page form div.fakeLabel .inputHolder textarea[required],
+.eduadmin.booking-page form div.fakeLabel .inputHolder textarea[data-required="true"],
+.eduadmin.booking-page form div.fakeLabel .inputHolder select[required],
+.eduadmin.booking-page form div.fakeLabel .inputHolder select[data-required="true"] {
   background-color: #feffcc;
 }
 

@@ -3,7 +3,7 @@
 		<?php esc_html_e( 'Participant', 'eduadmin-booking' ); ?>
 		<div class="removeParticipant" onclick="eduBookingView.RemoveParticipant(this);"><?php esc_html_e( 'Remove', 'eduadmin-booking' ); ?></div>
 	</h3>
-	<label>
+	<label onclick="event.preventDefault()">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Participant name', 'eduadmin-booking' ); ?>
 		</div>

@@ -17,7 +17,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 ?>
 <div class="contactView">
 	<h2><?php esc_html_e( 'Contact information', 'eduadmin-booking' ); ?></h2>
-	<label>
+	<label onclick="event.preventDefault()">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Contact name', 'eduadmin-booking' ); ?>
 		</div>

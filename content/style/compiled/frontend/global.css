@@ -211,7 +211,8 @@
   }
 }
 
-label {
+.eduadmin label,
+.eduadmin div.fakeLabel {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -224,42 +225,54 @@ label {
   align-items: center;
 }
 
-label .inputLabel {
+.eduadmin label .inputLabel,
+.eduadmin div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
   color: #333333;
 }
 
-label .inputLabel.noHide {
+.eduadmin label .inputLabel.noHide,
+.eduadmin div.fakeLabel .inputLabel.noHide {
   display: inherit;
 }
 
-label .inputHolder {
+.eduadmin label .inputHolder,
+.eduadmin div.fakeLabel .inputHolder {
   width: 100%;
 }
 
-label .inputHolder select {
+.eduadmin label .inputHolder select,
+.eduadmin div.fakeLabel .inputHolder select {
   width: 100%;
 }
 
-label .inputHolder input[required],
-label .inputHolder input[data-required="true"],
-label .inputHolder textarea[required],
-label .inputHolder textarea[data-required="true"],
-label .inputHolder select[required],
-label .inputHolder select[data-required="true"] {
+.eduadmin label .inputHolder input[required],
+.eduadmin label .inputHolder input[data-required="true"],
+.eduadmin label .inputHolder textarea[required],
+.eduadmin label .inputHolder textarea[data-required="true"],
+.eduadmin label .inputHolder select[required],
+.eduadmin label .inputHolder select[data-required="true"],
+.eduadmin div.fakeLabel .inputHolder input[required],
+.eduadmin div.fakeLabel .inputHolder input[data-required="true"],
+.eduadmin div.fakeLabel .inputHolder textarea[required],
+.eduadmin div.fakeLabel .inputHolder textarea[data-required="true"],
+.eduadmin div.fakeLabel .inputHolder select[required],
+.eduadmin div.fakeLabel .inputHolder select[data-required="true"] {
   background-color: #feffcc;
 }
 
 @media (min-width: 800px) {
-  label .inputLabel {
+  .eduadmin label .inputLabel,
+  .eduadmin div.fakeLabel .inputLabel {
     display: inherit;
     margin: 0;
     -ms-flex: 1;
     flex: 1;
   }
 
-  label .inputHolder {
+  .eduadmin label .inputHolder,
+  .eduadmin div.fakeLabel .inputHolder {
     width: 100%;
     max-width: 400px;
   }
