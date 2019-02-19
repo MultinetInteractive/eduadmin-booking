@@ -1,49 +1,53 @@
-label {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	margin: 0 0 16px;
-	/* justify-content: space-between; */
-	align-items: center;
+.eduadmin {
+	label,
+	div.fakeLabel {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin: 0 0 16px;
+		/* justify-content: space-between; */
+		align-items: center;
 
-	.inputLabel {
-		display: none;
-		margin: 0 0 8px;
-		color: hsl(0, 0%, 20%);
-		&.noHide {
-			display: inherit;
-		}
-	}
-
-	.inputHolder {
-		width: 100%;
-
-		select {
-			width: 100%;
-		}
-
-		input[required],
-		input[data-required="true"],
-		textarea[required],
-		textarea[data-required="true"],
-		select[required],
-		select[data-required="true"] {
-			background-color: #feffcc;
-		}
-	}
-}
-
-@media (min-width: 800px) {
-	label {
 		.inputLabel {
-			display: inherit;
-			margin: 0;
-			flex: 1;
+			display: none;
+			margin: 0 0 8px;
+			color: hsl(0, 0%, 20%);
+			&.noHide {
+				display: inherit;
+			}
 		}
 
 		.inputHolder {
 			width: 100%;
-			max-width: 400px;
+
+			select {
+				width: 100%;
+			}
+
+			input[required],
+			input[data-required="true"],
+			textarea[required],
+			textarea[data-required="true"],
+			select[required],
+			select[data-required="true"] {
+				background-color: #feffcc;
+			}
+		}
+	}
+
+	@media (min-width: 800px) {
+		label,
+		div.fakeLabel {
+			.inputLabel {
+				display: inherit;
+				margin: 0;
+				flex: 1;
+			}
+
+			.inputHolder {
+				width: 100%;
+				max-width: 400px;
+			}
 		}
 	}
 }

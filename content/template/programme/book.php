@@ -82,7 +82,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			<br />
 			<div class="contactView">
 				<h2><?php esc_html_e( 'Contact information', 'eduadmin-booking' ); ?></h2>
-				<label>
+				<label onclick="event.preventDefault()">
 					<div class="inputLabel">
 						<?php esc_html_e( 'Contact name', 'eduadmin-booking' ); ?>
 					</div>
@@ -374,7 +374,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<div class="removeParticipant" onclick="eduBookingView.RemoveParticipant(this);"><?php esc_html_e( 'Remove', 'eduadmin-booking' ); ?></div>
 							<?php } ?>
 						</h3>
-						<label>
+						<label onclick="event.preventDefault()">
 							<div class="inputLabel">
 								<?php esc_html_e( 'Participant name', 'eduadmin-booking' ); ?>
 							</div>

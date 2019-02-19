@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.7
 Tested up to: 5.0
-Stable tag: 2.0.37
+Stable tag: 2.0.38
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -23,6 +23,12 @@ Plugin that you connect to [EduAdmin](https://www.eduadmin.se) to enable booking
 
 [<img src="https://img.shields.io/github/commits-since/MultinetInteractive/EduAdmin-WordPress/latest.svg" alt="Commits since latest plugin version" />](https://wordpress.org/plugins/eduadmin-booking/)
 
+Requires the following PHP-modules
+
+- php-curl
+- php-mbstring
+- php-mcrypt
+
 == Installation ==
 
 -   Upload the zip-file (or install from WordPress) and activate the plugin
@@ -36,6 +42,9 @@ We have replaced everything with a new API-client, so some things may be broken.
 If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
+
+### 2.0.38
+- fix: Fixing problems with iOS not being able to select second text box within labels.
 
 ### 2.0.37
 - fix: Logical error when to show invoice information

@@ -60,7 +60,7 @@ class EduAdmin_REST_ProgrammeBooking extends EduAdminRESTClient {
 			get_called_class() . '|' . __FUNCTION__
 		);
 	}
-
+	
 	/**
 	 * @param EduAdmin_Data_ProgrammeBooking|stdClass|object $booking_data
 	 *
