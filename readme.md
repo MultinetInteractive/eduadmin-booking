@@ -23,6 +23,12 @@ Plugin that you connect to [EduAdmin](https://www.eduadmin.se) to enable booking
 
 [<img src="https://img.shields.io/github/commits-since/MultinetInteractive/EduAdmin-WordPress/latest.svg" alt="Commits since latest plugin version" />](https://wordpress.org/plugins/eduadmin-booking/)
 
+Requires the following PHP-modules
+
+- php-curl
+- php-mbstring
+- php-mcrypt
+
 == Installation ==
 
 -   Upload the zip-file (or install from WordPress) and activate the plugin
