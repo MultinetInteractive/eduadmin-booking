@@ -273,13 +273,17 @@ var eduBookingView = {
 						success: function (data) {
 							var d = JSON.parse(data);
 							if (d.hasOwnProperty('TotalPriceExVat')) {
-								if (d['TotalPriceExVat'] === d['TotalPriceIncVat']) {
-									jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.free);
+								if (d['TotalPriceExVat'] === 0 && d['TotalPriceIncVat'] === 0) {
+									jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency);
 								} else {
-									jQuery('#sumValue').text(
-										numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.ex +
-										' (' + numberWithSeparator(d['TotalPriceIncVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.inc + ')'
-									)
+									if (d['TotalPriceExVat'] === d['TotalPriceIncVat']) {
+										jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.free);
+									} else {
+										jQuery('#sumValue').text(
+											numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.ex +
+											' (' + numberWithSeparator(d['TotalPriceIncVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.inc + ')'
+										)
+									}
 								}
 							}
 							if (d.hasOwnProperty('Message')) {
@@ -304,13 +308,17 @@ var eduBookingView = {
 						success: function (data) {
 							var d = JSON.parse(data);
 							if (d.hasOwnProperty('TotalPriceExVat')) {
-								if (d['TotalPriceExVat'] === d['TotalPriceIncVat']) {
-									jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.free);
+								if (d['TotalPriceExVat'] === 0 && d['TotalPriceIncVat'] === 0) {
+									jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency);
 								} else {
-									jQuery('#sumValue').text(
-										numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.ex +
-										' (' + numberWithSeparator(d['TotalPriceIncVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.inc + ')'
-									)
+									if (d['TotalPriceExVat'] === d['TotalPriceIncVat']) {
+										jQuery('#sumValue').text(numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.free);
+									} else {
+										jQuery('#sumValue').text(
+											numberWithSeparator(d['TotalPriceExVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.ex +
+											' (' + numberWithSeparator(d['TotalPriceIncVat'], ' ') + ' ' + window.currency + ' ' + window.edu_vat.inc + ')'
+										)
+									}
 								}
 							}
 							if (d.hasOwnProperty('Message')) {
