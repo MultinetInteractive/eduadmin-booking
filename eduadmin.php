@@ -410,7 +410,9 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public function init() {
 			$t                  = $this->start_timer( __METHOD__ );
 			$this->integrations = new EDU_IntegrationLoader();
-			$this->rest_controller->register_routes();
+			add_action( 'rest_api_init', function() {
+				$this->rest_controller->register_routes();
+			} );
 			$this->week_days = array(
 				1 => __( 'monday', 'eduadmin-booking' ),
 				2 => __( 'tuesday', 'eduadmin-booking' ),
