@@ -300,7 +300,11 @@ class EduAdmin_BookingHandler {
 		}
 
 		$customer->CustomerName    = $first . ' ' . $last;
-		$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
+
+		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
+			$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
+		}
+
 		if ( ! empty( $_POST['contactCivRegNr'] ) ) { // Var input okay.
 			$customer->OrganisationNumber = sanitize_text_field( $_POST['contactCivRegNr'] ); // Var input okay.
 		}
@@ -560,7 +564,11 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['customerName'] ) ) { // Var input okay.
 			$customer->CustomerName = sanitize_text_field( $_POST['customerName'] ); // Var input okay.
 		}
-		$customer->CustomerGroupId = get_option( 'eduadmin-customerGroupId', null );
+
+		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
+			$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
+		}
+
 		if ( ! empty( $_POST['customerVatNo'] ) ) { // Var input okay.
 			$customer->OrganisationNumber = sanitize_text_field( $_POST['customerVatNo'] ); // Var input okay.
 		}
