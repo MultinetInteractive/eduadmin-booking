@@ -276,9 +276,10 @@ class EduAdmin_BookingHandler {
 		$contact->AddAsParticipant = true;
 
 		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
-			$user                 = EDU()->session['eduadmin-loginUser'];
-			$contact->PersonId    = $user->Contact->PersonId;
-			$customer->CustomerId = $user->Customer->CustomerId;
+			$user                      = EDU()->session['eduadmin-loginUser'];
+			$contact->PersonId         = $user->Contact->PersonId;
+			$customer->CustomerId      = $user->Customer->CustomerId;
+			$customer->CustomerGroupId = $user->Customer->CustomerGroupId;
 		}
 
 		if ( ! empty( $_POST['edu-customerId'] ) ) { // Var input okay.
@@ -299,7 +300,7 @@ class EduAdmin_BookingHandler {
 			$last = sanitize_text_field( $_POST['contactLastName'] ); // Var input okay.
 		}
 
-		$customer->CustomerName    = $first . ' ' . $last;
+		$customer->CustomerName = $first . ' ' . $last;
 
 		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
 			$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
@@ -531,9 +532,10 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
-			$user                 = EDU()->session['eduadmin-loginUser'];
-			$contact->PersonId    = $user->Contact->PersonId;
-			$customer->CustomerId = $user->Customer->CustomerId;
+			$user                      = EDU()->session['eduadmin-loginUser'];
+			$contact->PersonId         = $user->Contact->PersonId;
+			$customer->CustomerId      = $user->Customer->CustomerId;
+			$customer->CustomerGroupId = $user->Customer->CustomerGroupId;
 		}
 
 		if ( ! empty( $_POST['edu-customerId'] ) ) { // Var input okay.
