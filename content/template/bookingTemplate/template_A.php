@@ -47,9 +47,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 		}
 
 		$unique_prices = array();
-
-		foreach ( $event['PriceNames'] as $price ) {
-			$unique_prices[ $price['PriceNameDescription'] ] = $price;
+		if ( ! $GLOBALS['noAvailableDates'] ) {
+			foreach ( $event['PriceNames'] as $price ) {
+				$unique_prices[ $price['PriceNameDescription'] ] = $price;
+			}
 		}
 
 		// PriceNameVat
@@ -57,7 +58,6 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 		$hide_sub_event_date_info = get_option( 'eduadmin-hideSubEventDateTime', false );
 		?>
-
 		<div class="eduadmin booking-page">
 			<form action="" method="post" id="edu-booking-form">
 				<input type="hidden" name="act" value="bookCourse" />
@@ -74,6 +74,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<?php require_once 'event-selector.php'; ?>
 				</div>
 				<?php
+				if ( ! $GLOBALS['noAvailableDates'] )
+				{
 				if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
 					$user_val = '';
 					if ( isset( $contact->PersonId ) && $contact->PersonId > 0 ) {
@@ -234,6 +236,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			})();
 		</script>
 		<?php
+	}
 	}
 }
 do_action( 'eduadmin-bookingform-loaded', EDU()->session['eduadmin-loginUser'] );

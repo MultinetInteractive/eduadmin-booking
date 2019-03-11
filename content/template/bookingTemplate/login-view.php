@@ -19,21 +19,23 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<h1 class="courseTitle"><?php echo esc_html( $name ); ?></h1>
 				<?php require_once 'event-selector.php'; ?>
 				<?php
-				if ( ! isset( EDU()->session['checkEmail'] ) ) {
-					include_once '-check-email.php';
-				} elseif ( isset( EDU()->session['checkEmail'] ) ) {
-					if ( isset( EDU()->session['needsLogin'] ) && true === EDU()->session['needsLogin'] ) {
-						include_once '-login-form.php';
-					} else {
-						unset( EDU()->session['checkEmail'] );
-						unset( EDU()->session['needsLogin'] );
-						?>
-						<script type="text/javascript">(function () {
-								location.reload(true);
-							})();</script>
-						<?php
-					}
-				}
+	if ( ! $GLOBALS['noAvailableDates'] ) {
+		if ( ! isset( EDU()->session['checkEmail'] ) ) {
+			include_once '-check-email.php';
+		} elseif ( isset( EDU()->session['checkEmail'] ) ) {
+			if ( isset( EDU()->session['needsLogin'] ) && true === EDU()->session['needsLogin'] ) {
+				include_once '-login-form.php';
+			} else {
+				unset( EDU()->session['checkEmail'] );
+				unset( EDU()->session['needsLogin'] );
+				?>
+				<script type="text/javascript">(function () {
+						location.reload(true);
+					})();</script>
+				<?php
+			}
+		}
+	}
 				?>
 			</div>
 		</form>

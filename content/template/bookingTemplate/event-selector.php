@@ -20,7 +20,7 @@
 		<?php endforeach; ?>
 	</select>
 <?php
-else :
+elseif ( 1 === count( $events ) ) :
 	echo '<div class="dateInfo">';
 	echo wp_kses( get_old_start_end_display_date( $event['StartDate'], $event['EndDate'] ) . ', ', wp_kses_allowed_html( 'post' ) );
 
@@ -32,4 +32,6 @@ else :
 	echo esc_html( date( 'H:i', strtotime( $event['EndDate'] ) ) ) . '</span>';
 	echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), ', ' ) );
 	echo '</div>';
+else:
+	echo '<div class="dateInfo">' . esc_html__( 'No events planned for this course yet.', 'eduadmin-booking' ) . '</div>';
 endif;
