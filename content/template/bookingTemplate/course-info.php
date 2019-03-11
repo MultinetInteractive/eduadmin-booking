@@ -20,33 +20,38 @@ if ( $edo ) {
 	$name            = ( ! empty( $edo['CourseName'] ) ? $edo['CourseName'] : $edo['InternalCourseName'] );
 }
 
-if ( ! $selected_course || 0 === count( $selected_course['Events'] ) ) {
-	?>
-	<script>history.go(-1);</script>
-	<?php
-	die();
-}
+$noAvailableDates = false;
+$GLOBALS['noAvailableDates'] = false;
 
+if ( ! $selected_course || 0 === count( $selected_course['Events'] ) ) {
+	$noAvailableDates = true;
+	$GLOBALS['noAvailableDates'] = true;
+}
+$event  = null;
 $events = $selected_course['Events'];
-$event  = $events[0];
-if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
-	$eventid = intval( $_GET['eid'] );
-	foreach ( $events as $ev ) {
-		if ( $eventid === $ev['EventId'] ) {
-			$event    = $ev;
-			$events   = array();
-			$events[] = $ev;
-			break;
+
+if ( ! $noAvailableDates ) {
+	$event = $events[0];
+	if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
+		$eventid = intval( $_GET['eid'] );
+		foreach ( $events as $ev ) {
+			if ( $eventid === $ev['EventId'] ) {
+				$event    = $ev;
+				$events   = array();
+				$events[] = $ev;
+				break;
+			}
 		}
 	}
+
+	$event_id = $event['EventId'];
+
+	$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
+		return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
+	}, DAY_IN_SECONDS, $event_id );
+
+	$booking_questions     = $questions['BookingQuestions'];
+	$participant_questions = $questions['ParticipantQuestions'];
 }
 
-$event_id = $event['EventId'];
-
-$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
-	return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
-}, DAY_IN_SECONDS, $event_id );
-
-$booking_questions     = $questions['BookingQuestions'];
-$participant_questions = $questions['ParticipantQuestions'];
 EDU()->stop_timer( ${$r} );
