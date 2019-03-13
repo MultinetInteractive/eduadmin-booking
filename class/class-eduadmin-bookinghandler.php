@@ -711,6 +711,14 @@ class EduAdmin_BookingHandler {
 
 		$booking_data = $this->get_multiple_participant_booking();
 
+		if ( count( $booking_data->Participants ) === 0 ) {
+			$person            = new stdClass();
+			$person->FirstName = "Price";
+			$person->LastName  = "Check";
+
+			$booking_data->Participants[] = $person;
+		}
+
 		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
 	}
 
