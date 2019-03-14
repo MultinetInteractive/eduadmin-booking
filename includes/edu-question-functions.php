@@ -34,7 +34,8 @@ function render_question( $question, $multiple = false, $suffix = '' ) {
 }
 
 function edu_render_note_question( $question, $multiple, $suffix ) {
-	echo '<label><h3 class="inputLabel noteQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' ) . '</h3>';
+	echo '<label class="edu-question-note questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<div class="inputLabel noteQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' ) . '</div>';
 	echo '<div class="inputHolder">';
 	echo '<textarea placeholder="' . esc_attr( $question['QuestionText'] ) . '"';
 	if ( $multiple ) {
@@ -53,7 +54,8 @@ function edu_render_note_question( $question, $multiple, $suffix ) {
 }
 
 function edu_render_checkbox_question( $question, $multiple, $suffix ) {
-	echo '<h3 class="inputLabel checkBoxQuestion noHide">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</h3>';
+	echo '<div class="edu-question-checkbox questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<div class="inputLabel checkBoxQuestion noHide">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
 	foreach ( $question['Alternatives'] as $q ) {
 		echo '<label>';
 		echo '<div class="inputHolder">';
@@ -71,10 +73,11 @@ function edu_render_checkbox_question( $question, $multiple, $suffix ) {
 		echo '</div>';
 		echo '</label>';
 	}
+	echo '</div>';
 }
 
 function edu_render_date_question( $question, $multiple, $suffix ) {
-	echo '<label>';
+	echo '<label class="edu-question-date questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' );
 	echo '</div>';
@@ -99,7 +102,7 @@ function edu_render_date_question( $question, $multiple, $suffix ) {
 }
 
 function edu_render_drop_list_question( $question, $multiple, $suffix ) {
-	echo '<label>';
+	echo '<label class="edu-question-droplist questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) );
 	echo '</div>';
@@ -125,7 +128,7 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 }
 
 function edu_render_number_question( $question, $multiple, $suffix ) {
-	echo '<label>';
+	echo '<label class="edu-question-number questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) );
 	echo '</div>';
@@ -147,15 +150,17 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 function edu_render_info_text( $question ) {
 	return;
 	if ( ! empty( $question['QuestionText'] ) ) {
-		echo '<h3 class="inputLabel questionInfoQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</h3>';
+		echo '<div class="edu-question-info questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+		echo '<div class="inputLabel questionInfoQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
 		echo '<div class="questionInfoText" data-type="infotext">';
 		echo wp_kses( $question->Answers->EventBookingAnswer->AnswerText, wp_kses_allowed_html( 'post' ) );
-		echo '</div>';
+		echo '</div></div>';
 	}
 }
 
 function edu_render_radio_question( $question, $multiple, $suffix ) {
-	echo '<h3 class="inputLabel radioQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</h3>';
+	echo '<div class="edu-question-note questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<div class="inputLabel radioQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
 	foreach ( $question['Alternatives'] as $q ) {
 		echo '<label class="questionRadioVertical">';
 		echo '<div class="inputHolder">';
@@ -172,10 +177,11 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 		echo '</div>';
 		echo '</label>';
 	}
+	echo '</div>';
 }
 
 function edu_render_text_question( $question, $multiple, $suffix ) {
-	echo '<label>';
+	echo '<label class="edu-question-text questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' );
 	echo '</div>';

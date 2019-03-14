@@ -3,7 +3,7 @@
 		<?php esc_html_e( 'Participant', 'eduadmin-booking' ); ?>
 		<div class="removeParticipant" onclick="eduBookingView.RemoveParticipant(this);"><?php esc_html_e( 'Remove', 'eduadmin-booking' ); ?></div>
 	</h3>
-	<label onclick="event.preventDefault()">
+	<label onclick="event.preventDefault()" class="edu-book-participant-participantName">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Participant name', 'eduadmin-booking' ); ?>
 		</div>
@@ -11,7 +11,7 @@
 			<input type="text" class="participantFirstName first-name" onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]" placeholder="<?php esc_attr_e( 'Participant first name', 'eduadmin-booking' ); ?>"/><input type="text" class="participantLastName last-name" onchange="eduBookingView.CheckPrice(false);" name="participantLastName[]" placeholder="<?php esc_attr_e( 'Participant surname', 'eduadmin-booking' ); ?>"/>
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-participant-participantEmail">
 		<div class="inputLabel">
 			<?php esc_html_e( 'E-mail address', 'eduadmin-booking' ); ?>
 		</div>
@@ -19,7 +19,7 @@
 			<input type="email" name="participantEmail[]" onchange="eduBookingView.CheckPrice(false);" placeholder="<?php esc_attr_e( 'E-mail address', 'eduadmin-booking' ); ?>"/>
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-participant-participantPhone">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Phone number', 'eduadmin-booking' ); ?>
 		</div>
@@ -27,7 +27,7 @@
 			<input type="tel" name="participantPhone[]" placeholder="<?php esc_attr_e( 'Phone number', 'eduadmin-booking' ); ?>"/>
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-participant-participantMobile">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Mobile number', 'eduadmin-booking' ); ?>
 		</div>
@@ -36,7 +36,7 @@
 		</div>
 	</label>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] ) { ?>
-		<label>
+		<label class="edu-book-participant-participantCivicRegNo">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>
 			</div>
@@ -54,7 +54,7 @@
 
 	?>
 	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
-		<label>
+		<label class="edu-book-participant-participantPriceName">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Price name', 'eduadmin-booking' ); ?>
 			</div>
@@ -85,7 +85,7 @@
 				$s = 0;
 			}
 
-			echo '<label>';
+			echo '<label class="edu-book-participant-participantSubEvent>';
 			echo '<input class="subEventCheckBox" data-price="' . esc_attr( $s ) . '" onchange=eduBookingView.UpdatePrice();" data-replace="name|index" ';
 			echo 'data-name-template="participantSubEvent_' . esc_attr( $sub_event['SessionId'] ) . '_{{index}}" ';
 			echo 'name="participantSubEvent_' . esc_attr( $sub_event['SessionId'] ) . '_-1" ';
