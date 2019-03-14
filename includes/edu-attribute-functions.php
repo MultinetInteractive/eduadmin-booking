@@ -37,7 +37,7 @@ function render_attribute( $attribute, $multiple = false, $suffix = '', $data = 
 }
 
 function render_check_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel noHide">';
+	echo '<label class="edu-attribute-checkbox attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel noHide">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<input type="checkbox"' . ( ! empty( $data ) && $data ? ' checked="checked"' : '' );
@@ -52,7 +52,7 @@ function render_check_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_text_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel">';
+	echo '<label class="edu-attribute-text attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<input type="text" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
@@ -66,7 +66,7 @@ function render_text_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_number_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel">';
+	echo '<label class="edu-attribute-number attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<input type="number" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
@@ -80,7 +80,7 @@ function render_number_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_date_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel">';
+	echo '<label class="edu-attribute-date attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<input type="date" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
@@ -94,7 +94,7 @@ function render_date_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_textarea_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel">';
+	echo '<label class="edu-attribute-textarea attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<textarea placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
@@ -109,7 +109,7 @@ function render_textarea_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_select_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<label><div class="inputLabel">';
+	echo '<label class="edu-attribute-select attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
 	echo '<select name="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '"';
@@ -126,9 +126,9 @@ function render_select_field( $attribute, $multiple, $suffix, $data ) {
 }
 
 function render_checkbox_list_field( $attribute, $multiple, $suffix, $data ) {
-	echo '<div class="inputLabel"><label>';
+	echo '<div class="inputLabel edu-attribute-checkboxlist attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><label>';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
-	echo '</label></div><div class="inputHolder">';
+	echo '</label></div><div class="inputHolder checkboxlist attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '">';
 	foreach ( $attribute['CustomFieldAlternatives'] as $val ) {
 		echo "\t<label><input" . ( ! empty( $data ) && $data === $val['CustomFieldAlternativeId'] ? ' checked="checked"' : '' ) . ' type="checkbox" name="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '[]' : '' ) ) . '" value="' . esc_attr( $val['CustomFieldAlternativeId'] ) . '">' . esc_html( $val['CustomFieldAlternativeValue'] ) . "</label>\n";
 	}

@@ -17,7 +17,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 ?>
 <div class="contactView">
 	<h2><?php esc_html_e( 'Contact information', 'eduadmin-booking' ); ?></h2>
-	<label onclick="event.preventDefault()">
+	<label onclick="event.preventDefault()" class="edu-book-singleParticipant-contactName">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Contact name', 'eduadmin-booking' ); ?>
 		</div>
@@ -27,7 +27,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				required onchange="eduBookingView.ContactAsParticipant();" id="edu-contactLastName" class="last-name" name="contactLastName" placeholder="<?php esc_attr_e( 'Contact surname', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->LastName ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-singleParticipant-contactEmail">
 		<div class="inputLabel">
 			<?php esc_html_e( 'E-mail address', 'eduadmin-booking' ); ?>
 		</div>
@@ -36,7 +36,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				onchange="eduBookingView.ContactAsParticipant();" placeholder="<?php esc_attr_e( 'E-mail address', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->Email ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-singleParticipant-contactPhone">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Phone number', 'eduadmin-booking' ); ?>
 		</div>
@@ -44,7 +44,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			<input type="tel" id="edu-contactPhone" name="contactPhone" onchange="eduBookingView.ContactAsParticipant();" placeholder="<?php esc_attr_e( 'Phone number', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->Phone ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-singleParticipant-contactMobile">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Mobile number', 'eduadmin-booking' ); ?>
 		</div>
@@ -54,7 +54,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 	</label>
 	<?php $selected_login_field = get_option( 'eduadmin-loginField', 'Email' ); ?>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] || 'CivicRegistrationNumber' === $selected_login_field ) { ?>
-		<label>
+		<label class="edu-book-singleParticipant-contactCivicRegNo">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>
 			</div>
@@ -64,7 +64,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 		</label>
 	<?php } ?>
 	<?php if ( get_option( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) { ?>
-		<label>
+		<label class="edu-book-singleParticipant-contactPassword">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Please enter a password', 'eduadmin-booking' ); ?>
 			</div>
@@ -81,7 +81,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Price'] > 0 ) ) {
 	?>
 	<div class="customerView">
-		<label>
+		<label class="edu-book-singleParticipant-customerAddress1">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Address 1', 'eduadmin-booking' ); ?>
 			</div>
@@ -89,7 +89,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="customerAddress1" placeholder="<?php esc_attr_e( 'Address 1', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Address ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-singleParticipant-customerAddress2">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Address 2', 'eduadmin-booking' ); ?>
 			</div>
@@ -97,7 +97,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="customerAddress2" placeholder="<?php esc_attr_e( 'Address 2', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Address2 ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-singleParticipant-customerPostalCode">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Postal code', 'eduadmin-booking' ); ?>
 			</div>
@@ -105,7 +105,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="customerPostalCode" placeholder="<?php esc_attr_e( 'Postal code', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Zip ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-singleParticipant-customerPostalCity">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Postal city', 'eduadmin-booking' ); ?>
 			</div>
@@ -117,7 +117,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 
 	<div class="invoiceView__wrapper">
 		<?php if ( $show_invoice_email ) { ?>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoiceEmail">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Invoice e-mail address', 'eduadmin-booking' ); ?>
 				</div>
@@ -126,7 +126,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				</div>
 			</label>
 		<?php } ?>
-		<label>
+		<label class="edu-book-singleParticipant-customerInvoiceReference">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Invoice reference', 'eduadmin-booking' ); ?>
 			</div>
@@ -134,7 +134,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="invoiceReference" placeholder="<?php esc_attr_e( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo ! empty( $billing_customer->SellerReference ) ? esc_attr( $billing_customer->SellerReference ) : ''; ?>" />
 			</div>
 		</label>
-		<label style="<?php echo $force_show_invoice_information ? 'display: none;' : '' ?>">
+		<label style="<?php echo $force_show_invoice_information ? 'display: none;' : '' ?>" class="edu-book-singleParticipant-customerInvoiceOtherInfo>
 			<div class="inputHolder alsoInvoiceCustomer">
 				<input type="checkbox" id="alsoInvoiceCustomer" name="alsoInvoiceCustomer" value="true" onchange="eduBookingView.UpdateInvoiceCustomer(this);"
 					<?php echo $force_show_invoice_information ? 'checked' : '' ?>/>
@@ -145,7 +145,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 
 		<div id="invoiceView" class="invoiceView" style="<?php echo( $force_show_invoice_information ? 'display: block;' : 'display: none;' ); ?>">
 			<h2><?php esc_html_e( 'Invoice information', 'eduadmin-booking' ); ?></h2>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoiceName">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Customer name', 'eduadmin-booking' ); ?>
 				</div>
@@ -153,7 +153,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					<input type="text" name="invoiceName" placeholder="<?php esc_attr_e( 'Customer name', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $billing_customer->CustomerName ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoiceAddress1">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Address 1', 'eduadmin-booking' ); ?>
 				</div>
@@ -161,7 +161,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					<input type="text" name="invoiceAddress1" placeholder="<?php esc_attr_e( 'Address 1', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $billing_customer->Address ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoiceAddress2">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Address 2', 'eduadmin-booking' ); ?>
 				</div>
@@ -169,7 +169,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					<input type="text" name="invoiceAddress2" placeholder="<?php esc_attr_e( 'Address 2', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $billing_customer->Address2 ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoicePostalCode">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Postal code', 'eduadmin-booking' ); ?>
 				</div>
@@ -177,7 +177,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					<input type="text" name="invoicePostalCode" placeholder="<?php esc_attr_e( 'Postal code', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $billing_customer->Zip ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-singleParticipant-customerInvoicePostalCity">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Postal city', 'eduadmin-booking' ); ?>
 				</div>
@@ -188,7 +188,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 		</div>
 	</div>
 	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
-		<label>
+		<label class="edu-book-singleParticipant-customerOverwriteData">
 			<div class="inputHolder">
 				<label class="inline-checkbox" for="overwriteCustomerData">
 					<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
@@ -271,7 +271,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 	}
 	?>
 	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
-		<label>
+		<label class="edu-book-singleParticipant-priceName">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Price name', 'eduadmin-booking' ); ?>
 			</div>
@@ -303,7 +303,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					$s = 0;
 				}
 
-				echo '<label>';
+				echo '<label class="edu-book-singleParticipant-subEvent">';
 				echo '<input class="subEventCheckBox" data-price="' . esc_attr( $s ) . '" onchange=eduBookingView.UpdatePrice();" ';
 				echo 'name="contactSubEvent_' . esc_attr( $sub_event['SessionId'] ) . '" ';
 				echo 'type="checkbox"';

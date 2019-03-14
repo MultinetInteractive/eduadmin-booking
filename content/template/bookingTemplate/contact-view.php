@@ -7,7 +7,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 ?>
 <div class="contactView">
 	<h2><?php esc_html_e( 'Contact information', 'eduadmin-booking' ); ?></h2>
-	<label onclick="event.preventDefault()">
+	<label onclick="event.preventDefault()" class="edu-book-contact-contactName">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Contact name', 'eduadmin-booking' ); ?>
 		</div>
@@ -17,7 +17,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 				required onchange="eduBookingView.ContactAsParticipant();" id="edu-contactLastName" class="last-name" autocomplete="family-name" name="contactLastName" placeholder="<?php esc_attr_e( 'Contact surname', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $contact->LastName ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-contact-contactEmail">
 		<div class="inputLabel">
 			<?php esc_html_e( 'E-mail address', 'eduadmin-booking' ); ?>
 		</div>
@@ -25,7 +25,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 			<input type="email" id="edu-contactEmail" required name="contactEmail"<?php echo( $__block ? ' readonly' : '' ); ?> autocomplete="email" onchange="eduBookingView.ContactAsParticipant();" placeholder="<?php esc_attr_e( 'E-mail address', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $contact->Email ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-contact-contactPhone">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Phone number', 'eduadmin-booking' ); ?>
 		</div>
@@ -33,7 +33,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 			<input type="tel" id="edu-contactPhone" name="contactPhone" autocomplete="tel" onchange="eduBookingView.ContactAsParticipant();" placeholder="<?php esc_attr_e( 'Phone number', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $contact->Phone ); ?>" />
 		</div>
 	</label>
-	<label>
+	<label class="edu-book-contact-contactMobile">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Mobile number', 'eduadmin-booking' ); ?>
 		</div>
@@ -43,7 +43,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	</label>
 	<?php $selected_login_field = get_option( 'eduadmin-loginField', 'Email' ); ?>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] || 'CivicRegistrationNumber' === $selected_login_field ) { ?>
-		<label>
+		<label class="edu-book-contact-contactCivicRegNo">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Civic Registration Number', 'eduadmin-booking' ); ?>
 			</div>
@@ -55,7 +55,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	<?php
 	if ( get_option( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) {
 		?>
-		<label>
+		<label class="edu-book-contact-contactPassword">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Please enter a password', 'eduadmin-booking' ); ?>
 			</div>
@@ -97,7 +97,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	}
 	?>
 
-	<label>
+	<label class="edu-book-contact-contactAlsoParticipant">
 		<div class="inputHolder contactIsAlsoParticipant">
 			<label class="inline-checkbox" for="contactIsAlsoParticipant">
 				<input type="checkbox" id="contactIsAlsoParticipant" name="contactIsAlsoParticipant" value="true" onchange="if(eduBookingView.CheckParticipantCount()) { eduBookingView.ContactAsParticipant(); } else { this.checked = false; return false; }" />

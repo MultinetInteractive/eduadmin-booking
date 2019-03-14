@@ -12,7 +12,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 ?>
 <div class="customerView">
 	<h2><?php esc_html_e( 'Customer information', 'eduadmin-booking' ); ?></h2>
-	<label>
+	<label class="edu-book-customerName">
 		<div class="inputLabel">
 			<?php esc_html_e( 'Customer name', 'eduadmin-booking' ); ?>
 		</div>
@@ -23,7 +23,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 	<?php
 	if ( empty( $no_invoice_free_events ) || ( $no_invoice_free_events && $first_price['Price'] > 0 ) ) {
 		?>
-		<label>
+		<label class="edu-book-customerVatNo">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Org.No.', 'eduadmin-booking' ); ?>
 			</div>
@@ -31,7 +31,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerVatNo" placeholder="<?php esc_attr_e( 'Org.No.', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->OrganisationNumber ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-customerAddress1">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Address 1', 'eduadmin-booking' ); ?>
 			</div>
@@ -39,7 +39,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerAddress1" placeholder="<?php esc_attr_e( 'Address 1', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-customerAddress2">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Address 2', 'eduadmin-booking' ); ?>
 			</div>
@@ -47,7 +47,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerAddress2" placeholder="<?php esc_attr_e( 'Address 2', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address2 ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-customerPostalCode">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Postal code', 'eduadmin-booking' ); ?>
 			</div>
@@ -55,7 +55,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerPostalCode" placeholder="<?php esc_attr_e( 'Postal code', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Zip ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-customerPostalCity">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Postal city', 'eduadmin-booking' ); ?>
 			</div>
@@ -63,7 +63,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerPostalCity" placeholder="<?php esc_attr_e( 'Postal city', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->City ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-customerEmailAddress">
 			<div class="inputLabel">
 				<?php esc_html_e( 'E-mail address', 'eduadmin-booking' ); ?>
 			</div>
@@ -73,7 +73,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 		</label>
 		<div id="invoiceView" class="invoiceView" style="<?php echo( $force_show_invoice_information ? 'display: block;' : 'display: none;' ); ?>">
 			<h2><?php esc_html_e( 'Invoice information', 'eduadmin-booking' ); ?></h2>
-			<label>
+			<label class="edu-book-invoice-customerName">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Customer name', 'eduadmin-booking' ); ?>
 				</div>
@@ -81,7 +81,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<input type="text" name="invoiceName" placeholder="<?php esc_attr_e( 'Customer name', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->CustomerName ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-invoice-customerAddress1">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Address 1', 'eduadmin-booking' ); ?>
 				</div>
@@ -89,7 +89,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<input type="text" name="invoiceAddress1" placeholder="<?php esc_attr_e( 'Address 1', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->Address ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-invoice-customerAddress2">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Address 2', 'eduadmin-booking' ); ?>
 				</div>
@@ -97,7 +97,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<input type="text" name="invoiceAddress2" placeholder="<?php esc_attr_e( 'Address 2', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->Address2 ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-invoice-customerPostalCode">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Postal code', 'eduadmin-booking' ); ?>
 				</div>
@@ -105,7 +105,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<input type="text" name="invoicePostalCode" placeholder="<?php esc_attr_e( 'Postal code', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->Zip ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="edu-book-invoice-customerPostalCity">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Postal city', 'eduadmin-booking' ); ?>
 				</div>
@@ -115,7 +115,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			</label>
 		</div>
 		<?php if ( $show_invoice_email ) { ?>
-			<label>
+			<label class="edu-book-invoice-customerInvoiceEmail">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Invoice e-mail address', 'eduadmin-booking' ); ?>
 				</div>
@@ -124,7 +124,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				</div>
 			</label>
 		<?php } ?>
-		<label>
+		<label class="edu-book-invoice-customerInvoiceReference">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Invoice reference', 'eduadmin-booking' ); ?>
 			</div>
@@ -132,7 +132,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="invoiceReference" placeholder="<?php esc_attr_e( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( ! empty( $billing_customer->SellerReference ) ? $billing_customer->SellerReference : '' ); ?>" />
 			</div>
 		</label>
-		<label>
+		<label class="edu-book-invoice-customerPurchaseOrderNumber">
 			<div class="inputLabel">
 				<?php esc_html_e( 'Purchase order number', 'eduadmin-booking' ); ?>
 			</div>
@@ -185,7 +185,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 		</label>
 	<?php } ?>
 	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
-		<label>
+		<label class="edu-book-overwriteCustomerData">
 			<div class="inputHolder">
 				<label class="inline-checkbox" for="overwriteCustomerData">
 					<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
