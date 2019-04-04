@@ -366,6 +366,9 @@ class EduAdmin_BookingHandler {
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
 			}
+			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
+				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
+			}
 		}
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
@@ -628,6 +631,9 @@ class EduAdmin_BookingHandler {
 			}
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
+			}
+			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
+				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
 			}
 		}
 
