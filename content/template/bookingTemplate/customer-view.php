@@ -81,6 +81,14 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<input type="text" name="invoiceName" placeholder="<?php esc_attr_e( 'Customer name', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->CustomerName ); ?>" />
 				</div>
 			</label>
+			<label class="edu-book-invoice-customerInvoiceOrgNo">
+				<div class="inputLabel">
+					<?php esc_html_e( 'Org.No.', 'eduadmin-booking' ); ?>
+				</div>
+				<div class="inputHolder">
+					<input type="text" name="invoiceOrgNo" placeholder="<?php esc_attr_e( 'Org.No.', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->OrganisationNumber ); ?>" />
+				</div>
+			</label>
 			<label class="edu-book-invoice-customerAddress1">
 				<div class="inputLabel">
 					<?php esc_html_e( 'Address 1', 'eduadmin-booking' ); ?>
