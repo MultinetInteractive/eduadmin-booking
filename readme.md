@@ -43,6 +43,9 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 == Changelog ==
 
+### 2.0.47
+- fix: Missing `"` on one class-attribute
+
 ### 2.0.46
 - add: Added invoice organisation number to invoice-section
 

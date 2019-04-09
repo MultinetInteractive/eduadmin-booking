@@ -134,7 +134,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="invoiceReference" placeholder="<?php esc_attr_e( 'Invoice reference', 'eduadmin-booking' ); ?>" value="<?php echo ! empty( $billing_customer->SellerReference ) ? esc_attr( $billing_customer->SellerReference ) : ''; ?>" />
 			</div>
 		</label>
-		<label style="<?php echo $force_show_invoice_information ? 'display: none;' : '' ?>" class="edu-book-singleParticipant-customerInvoiceOtherInfo>
+		<label style="<?php echo $force_show_invoice_information ? 'display: none;' : '' ?>" class="edu-book-singleParticipant-customerInvoiceOtherInfo">
 			<div class="inputHolder alsoInvoiceCustomer">
 				<input type="checkbox" id="alsoInvoiceCustomer" name="alsoInvoiceCustomer" value="true" onchange="eduBookingView.UpdateInvoiceCustomer(this);"
 					<?php echo $force_show_invoice_information ? 'checked' : '' ?>/>
@@ -196,14 +196,14 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 		</div>
 	</div>
 	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
-		<label class="edu-book-singleParticipant-customerOverwriteData">
+		<div class="edu-book-singleParticipant-customerOverwriteData">
 			<div class="inputHolder">
 				<label class="inline-checkbox" for="overwriteCustomerData">
 					<input type="checkbox" id="overwriteCustomerData" name="overwriteCustomerData" value="true" />
 					<?php esc_html_e( 'Also update my customer information for future use', 'eduadmin-booking' ); ?>
 				</label>
 			</div>
-		</label>
+		</div>
 	<?php } ?>
 <?php } ?>
 <div class="attributeView">
