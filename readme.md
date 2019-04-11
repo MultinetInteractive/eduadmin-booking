@@ -27,7 +27,6 @@ Requires the following PHP-modules
 
 - php-curl
 - php-mbstring
-- php-mcrypt
 
 == Installation ==
 
