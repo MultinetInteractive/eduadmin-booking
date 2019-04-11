@@ -15,6 +15,11 @@ if [[ -z "$TRAVIS_BRANCH" || "$TRAVIS_BRANCH" == "production" ]]; then
 	exit 0
 fi
 
+echo $WP_PASSWORD
+echo $WP_USERNAME
+echo $SLACK_HOOKURL
+echo $slackNotification
+
 
 PLUGIN="eduadmin-booking"
 PROJECT_ROOT=$TRAVIS_BUILD_DIR
