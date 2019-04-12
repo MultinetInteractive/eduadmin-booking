@@ -65,6 +65,8 @@ gulp.task("styles-admin-nano", function() {
 gulp.task("default", function() {
 	gulp.watch("src/scss/frontend/**/*.scss", gulp.series("styles-frontend"));
 	gulp.watch("src/scss/admin/**/*.scss", gulp.series("styles-admin"));
+	gulp.watch("src/eduadmin.php", gulp.series("eduadmin-version"));
+	gulp.watch("src/readme.md", gulp.series("readme-version"));
 	gulp.watch("package.json", gulp.series("readme-version", "eduadmin-version"));
 });
 
