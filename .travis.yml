@@ -45,12 +45,12 @@ script:
         fi
 
 deploy:
-    - provider: script
-      skip_cleanup: true
-      script: chmod +x $TRAVIS_BUILD_DIR/scripts/trunk.sh && $TRAVIS_BUILD_DIR/scripts/trunk.sh
-      on:
-          branch: master
-          php: 7.3
+#    - provider: script
+#      skip_cleanup: true
+#      script: chmod +x $TRAVIS_BUILD_DIR/scripts/trunk.sh && $TRAVIS_BUILD_DIR/scripts/trunk.sh
+#      on:
+#          branch: master
+#          php: 7.3
     - provider: script
       skip_cleanup: true
       script: chmod +x $TRAVIS_BUILD_DIR/scripts/deploy.sh && $TRAVIS_BUILD_DIR/scripts/deploy.sh
