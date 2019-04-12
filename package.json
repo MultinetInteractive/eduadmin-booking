@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "yarn gulp",
-		"bump-version": "yarn standard-version"
+		"bump-version": "yarn standard-version && yarn gulp debug"
 	},
 	"dependencies": {
 		"gulp": "^4.0.0",
