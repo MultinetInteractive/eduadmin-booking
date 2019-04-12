@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.48](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.27...v2.0.48) (2019-04-12)
+
+
+### Bug Fixes
+
+* Don't add temporary participant if you use the contact as participant. Would double the price. :D ([841463f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/841463f))
+* Missing `"` in a class attribute. ([5c81608](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5c81608))
+
+
+
 ## [2.0.47](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.46...v2.0.47) (2019-04-09)
 
 ### Bug Fixes

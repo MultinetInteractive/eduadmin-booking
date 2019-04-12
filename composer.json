@@ -12,5 +12,6 @@
   "require": {
     "php": ">=5.2",
     "composer/installers": "~1"
-  }
+  },
+  "version": "2.0.48"
 }
