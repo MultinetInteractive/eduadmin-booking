@@ -5,7 +5,7 @@ php:
     - 7.3
 
 node_js:
-    - "10"
+    - "11"
 
 cache:
     apt: true
