@@ -1,3 +1,74 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.49](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.48...v2.0.49) (2019-04-12)
+
+
+
+## [2.0.48](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.27...v2.0.48) (2019-04-12)
+
+
+### Bug Fixes
+
+* Don't add temporary participant if you use the contact as participant. Would double the price. :D ([841463f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/841463f))
+* Missing `"` in a class attribute. ([5c81608](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5c81608))
+
+
+
+## [2.0.47](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.46...v2.0.47) (2019-04-09)
+
+### Bug Fixes
+
+- fix: Missing `"` on one class-attribute ([5c81608](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5c81608))
+
+### 2.0.46
+- add: Added invoice organisation number to invoice-section
+
+### 2.0.45
+- fix: Don't add temporary participant if you use the contact as participant. Would double the price. :D
+
+### 2.0.44
+- add: Added lots of new classes to labels and elements, so that people can find stuff, and customize it.
+- chg: Replaced h3 with divs in questions and attributes
+
+### 2.0.43
+- chg: When checking price, make sure we have a temporary participant if none are present.
+
+### 2.0.42
+- fix: When we load a customer from the session, we should also load the `CustomerGroupId`
+
+### 2.0.41
+- If you get to the `/book/` URL on a course template that doesn't have any events, we will now show a label saying `No events planned for this course yet.` 
+
+### 2.0.40
+- Don't set the customer group if it's already set.
+
+### 2.0.39
+- If the price is zero (no participants added, don't show any text)
+
+### 2.0.38
+- fix: Fixing problems with iOS not being able to select second text box within labels.
+
+### 2.0.37
+- fix: Logical error when to show invoice information
+
+### 2.0.36
+- fix: CSS-fixes, missing css.
+
+### 2.0.35
+- add: If it seems like inc/excl VAT is the same price, show as VAT free. [#222](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/222)
+- add: Backend setting to allow customers to update their profile while booking (only existing customers) [#219](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/219)
+- fix: Adding missing CSS to Programme Detail / Booking
+- chg: Rewritten the rewrite rules to all work from the `EduAdminRouter` instead of `edu-rewrites.php`
+
+### 2.0.34
+- fix: Using `BuyerReference` when we fetch in profile.
+- chg: Switched to SCSS and splitted files into multiple files instead
+
+### 2.0.33
+- chg: `BuyerReference` should be saved in `BuyerReference`, not `SellerReference`
+
 ### 2.0.32
 - add: Allowing HTML (`<p></p>` and `<br />`) in list view
 

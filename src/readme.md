@@ -1,10 +1,10 @@
 === EduAdmin Booking ===
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
-Requires at least: 4.7
-Tested up to: 5.1
-Stable tag: 2.0.49
-Requires PHP: 5.2
+Requires at least: $PLUGINATLEAST$
+Tested up to: $PLUGINTESTEDTO$
+Stable tag: $PLUGINVERSION$
+Requires PHP: $PLUGINREQUIREDPHP$
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 EduAdmin plugin to allow visitors to book courses at your website. Requires EduAdmin-account.
