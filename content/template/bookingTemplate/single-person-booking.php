@@ -194,6 +194,14 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				</div>
 			</label>
 		</div>
+		<label class="edu-book-singleParticipant-customerEdiReference">
+			<div class="inputLabel">
+				<?php esc_html_e( 'EDI Reference', 'eduadmin-booking' ); ?>
+			</div>
+			<div class="inputHolder">
+				<input type="text" name="ediReference" placeholder="<?php esc_attr_e( 'EDI Reference', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( ! empty( $billing_customer->EdiReference ) ? $billing_customer->EdiReference : '' ); ?>" />
+			</div>
+		</label>
 	</div>
 	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
 		<div class="edu-book-singleParticipant-customerOverwriteData">

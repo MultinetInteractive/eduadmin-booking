@@ -371,6 +371,10 @@ class EduAdmin_BookingHandler {
 			}
 		}
 
+		if ( ! empty( $_POST['ediReference'] ) ) {
+			$billing_info->EdiReference = sanitize_text_field( $_POST['ediReference'] ); // Var input okay.
+		}
+
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
 			$billing_info->Email = $customerInvoiceEmailAddress;
 		}
@@ -639,6 +643,10 @@ class EduAdmin_BookingHandler {
 
 		if ( ! empty( $_POST['invoiceReference'] ) ) { // Var input okay.
 			$billing_info->BuyerReference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+		}
+
+		if ( ! empty( $_POST['ediReference'] ) ) {
+			$billing_info->EdiReference = sanitize_text_field( $_POST['ediReference'] ); // Var input okay.
 		}
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
