@@ -148,6 +148,14 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="purchaseOrderNumber" placeholder="<?php esc_attr_e( 'Purchase order number', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( ! empty( $_POST['purchaseOrderNumber'] ) ? $_POST['purchaseOrderNumber'] : '' ); ?>" />
 			</div>
 		</label>
+		<label class="edu-book-invoice-customerEdiReference">
+			<div class="inputLabel">
+				<?php esc_html_e( 'EDI Reference', 'eduadmin-booking' ); ?>
+			</div>
+			<div class="inputHolder">
+				<input type="text" name="ediReference" placeholder="<?php esc_attr_e( 'EDI Reference', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( ! empty( $billing_customer->EdiReference ) ? $billing_customer->EdiReference : '' ); ?>" />
+			</div>
+		</label>
 		<?php
 	}
 
