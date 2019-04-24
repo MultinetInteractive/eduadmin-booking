@@ -2,6 +2,91 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.1.0...v2.2.0) (2019-04-24)
+
+
+### Features
+
+* 🎸 Course list can now also be limited by numberofevents ([ffa3b27](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ffa3b27))
+
+
+
+## [2.0.47](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.46...v2.0.47) (2019-04-09)
+
+
+
+## [2.0.46](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.44...v2.0.46) (2019-04-04)
+
+
+
+## [2.0.44](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.43...v2.0.44) (2019-03-14)
+
+
+
+## [2.0.43](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.42...v2.0.43) (2019-03-13)
+
+
+
+## [2.0.42](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.39...v2.0.42) (2019-03-11)
+
+
+
+## [2.0.39](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.38...v2.0.39) (2019-02-21)
+
+
+
+## [2.0.38](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.37...v2.0.38) (2019-02-19)
+
+
+
+## [2.0.37](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.35...v2.0.37) (2019-02-14)
+
+
+
+## [2.0.35](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.34...v2.0.35) (2019-02-12)
+
+
+
+## [2.0.34](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.33...v2.0.34) (2019-02-08)
+
+
+
+## [2.0.33](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.32...v2.0.33) (2019-01-28)
+
+
+
+## [2.0.32](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.31...v2.0.32) (2018-12-05)
+
+
+
+## [2.0.31](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.30...v2.0.31) (2018-11-30)
+
+
+
+## [2.0.30](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.29...v2.0.30) (2018-11-19)
+
+
+
+## [2.0.29](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.28...v2.0.29) (2018-11-19)
+
+
+
+## [2.0.28](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.27...v2.0.28) (2018-10-30)
+
+
+
+## [2.0.25](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.24...v2.0.25) (2018-10-11)
+
+
+
+## [2.0.24](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.21...v2.0.24) (2018-10-10)
+
+
+
+## [2.0.21](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.20...v2.0.21) (2018-09-17)
+
+
+
 # [2.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.0.49...v2.1.0) (2019-04-23)
 
 
