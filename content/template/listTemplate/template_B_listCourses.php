@@ -1,11 +1,16 @@
 <?php
 ob_start();
 include 'list-courses.php';
+$number_of_events = $attributes['numberofevents'];
+$current_events   = 0;
 ?>
 	<div class="course-holder tmpl_B">
 		<?php
 
 		foreach ( $courses as $object ) {
+			if ( null !== $number_of_events && $number_of_events > 0 && $current_events >= $number_of_events ) {
+				break;
+			}
 			include 'blocks/course-block.php';
 			if ( $show_events_with_events_only && empty( $object['Events'] ) ) {
 				continue;
@@ -15,6 +20,7 @@ include 'list-courses.php';
 				continue;
 			}
 			include 'blocks/course-block-b.php';
+			$current_events++;
 		}
 		?>
 	</div>
