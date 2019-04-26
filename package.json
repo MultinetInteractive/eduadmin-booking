@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "yarn gulp",
-		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git commit -m \"chore: versionbump\""
+		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
 	"dependencies": {
 		"gulp": "^4.0.0",
