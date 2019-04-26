@@ -222,7 +222,7 @@ function get_display_date( $in_date, $short = true ) {
 	$year     = date( 'Y', strtotime( $in_date ) );
 	$now_year = date( 'Y' );
 
-	return '<span class="eduadmin-dateText">' . date( 'd', strtotime( $in_date ) ) . ' ' . $months[ date( 'n', strtotime( $in_date ) ) ] . ( $now_year !== $year ? ' ' . $year : '' ) . '</span>';
+	return '<span class="eduadmin-dateText" data-date="' . esc_attr( $in_date ) . '">' . date( 'd', strtotime( $in_date ) ) . ' ' . $months[ date( 'n', strtotime( $in_date ) ) ] . ( $now_year !== $year ? ' ' . $year : '' ) . '</span>';
 }
 
 function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false ) {
@@ -300,7 +300,7 @@ function get_start_end_display_date( $start_date, $end_date, $short = false, $ev
 	$end_month   = date( 'n', strtotime( $end_date['EndDate'] ) );
 	$now_year    = date( 'Y' );
 
-	$str = '<span class="eduadmin-dateText">';
+	$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">';
 
 	if ( $show_days ) {
 		$str .= $week_days[ date( 'N', strtotime( $start_date['StartDate'] ) ) ] . ' ';
@@ -386,7 +386,7 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 	$end_year    = date( 'Y', strtotime( $end_date ) );
 	$end_month   = date( 'n', strtotime( $end_date ) );
 	$now_year    = date( 'Y' );
-	$str         = '<span class="eduadmin-dateText">';
+	$str         = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">';
 	if ( $show_week_days ) {
 		$str .= $week_days[ date( 'N', strtotime( $start_date ) ) ] . ' ';
 	}

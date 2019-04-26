@@ -1,13 +1,13 @@
 {
 	"name": "eduadmin-wordpress-plugin",
 	"private": true,
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"repository": "https://github.com/MultinetInteractive/EduAdmin-WordPress.git",
 	"author": "Chris Gårdenberg <chga@multinet.se>",
 	"license": "MIT",
 	"scripts": {
 		"dev": "yarn gulp",
-		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git commit -m \"chore: versionbump\""
+		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
 	"dependencies": {
 		"gulp": "^4.0.0",

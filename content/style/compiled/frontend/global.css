@@ -177,6 +177,10 @@
   content: ", ";
 }
 
+.eduadmin .eventItem.showMoreHidden {
+  display: none;
+}
+
 .edu-DayPopup {
   display: none;
   opacity: 0;

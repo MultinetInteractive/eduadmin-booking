@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.2.0...v2.3.0) (2019-04-26)
+
+
+### Bug Fixes
+
+* 🐛 Adding missing CSS class ([19a94f8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/19a94f8))
+
+
+### Features
+
+* 🎸 Added data-attributes for dates ([a89753d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a89753d))
+
+
+
 # [2.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.1.0...v2.2.0) (2019-04-24)
 
 
