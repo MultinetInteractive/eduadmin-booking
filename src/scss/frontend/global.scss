@@ -54,6 +54,10 @@
 	.edu-dateSeparator::before {
 		content: ", ";
 	}
+
+	.eventItem.showMoreHidden {
+		display: none;
+	}
 }
 
 @import "./parts/daypopup.scss";
