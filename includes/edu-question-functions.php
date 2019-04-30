@@ -42,11 +42,11 @@ function edu_render_note_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_note' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_note' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '"';
+	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_note' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '"';
 	echo ' data-type="note"';
 	echo ' onchange="eduBookingView.UpdatePrice();"';
 	echo ' data-price="' . esc_attr( $question['Price'] ) . '"';
-	echo ( $question['Mandatory'] ? ' data-required="true"' : '' );
+	echo( $question['Mandatory'] ? ' data-required="true"' : '' );
 	echo ' resizable="resizable" class="questionNoteField" rows="3">';
 	echo esc_textarea( $question['DefaultAnswer'] );
 	echo '</textarea>';
@@ -65,7 +65,7 @@ function edu_render_checkbox_question( $question, $multiple, $suffix ) {
 			echo ' data-replace="name|index"';
 			echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 		}
-		echo ' name="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
+		echo ' name="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
 			echo ' <i class="priceLabel">(' . esc_html( convert_to_money( $q['Price'] ) ) . ')</i>';
@@ -88,14 +88,14 @@ function edu_render_date_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_date' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_date' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '" />';
+	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_date' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" />';
 	if ( $question['HasTimeField'] ) {
 		echo '<input type="time" onchange="eduBookingView.UpdatePrice();" class="questionTime"' . ( $question['Mandatory'] ? ' data-required="true"' : '' );
 		if ( $multiple ) {
 			echo ' data-replace="name|index"';
 			echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_time' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 		}
-		echo ' name="question_' . esc_attr( $question['AnswerId'] . '_time' ) . ( $multiple ? '_-1' : '' ) . '" />';
+		echo ' name="question_' . esc_attr( $question['AnswerId'] . '_time' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) . '" />';
 	}
 	echo '</div>';
 	echo '</label>';
@@ -112,7 +112,7 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( md5( $question['QuestionText'] ) . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '">';
+	echo ' name="question_' . esc_attr( md5( $question['QuestionText'] ) . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '">';
 	foreach ( $question['Alternatives'] as $q ) {
 		echo '<option value="' . esc_attr( $q['AnswerId'] ) . '"' . ( $q['Selected'] ? ' selected="selected"' : '' ) . ' data-type="dropdown" data-price="' . esc_attr( $q['Price'] ) . '">';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
@@ -138,7 +138,7 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '" placeholder="' . esc_attr__( 'Quantity', 'eduadmin-booking' ) . '" />';
+	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" placeholder="' . esc_attr__( 'Quantity', 'eduadmin-booking' ) . '" />';
 	if ( ! empty( $question['Price'] ) ) {
 		/* translators: 1: Price */
 		echo ' <i class="priceLabel">(' . esc_html( sprintf( __( '%1$s / pcs', 'eduadmin-booking' ), convert_to_money( $question['Price'] ) ) ) . ')</i>';
@@ -169,7 +169,7 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 			echo ' data-replace="name|index"';
 			echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 		}
-		echo ' name="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '" value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
+		echo ' name="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
 			echo ' <i class="priceLabel">(' . esc_html( convert_to_money( $q['Price'] ) ) . ')</i>';
@@ -191,7 +191,7 @@ function edu_render_text_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_text' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_text' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '" value="' . esc_attr( $question['DefaultAnswer'] ) . '" />';
+	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_text' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" value="' . esc_attr( $question['DefaultAnswer'] ) . '" />';
 	echo '</div>';
 	echo '</label>';
 }
