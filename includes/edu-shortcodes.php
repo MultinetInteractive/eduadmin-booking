@@ -303,9 +303,9 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
-
-			if(isset($selected_course["@error"])) {
+			if ( isset( $selected_course["@error"] ) ) {
 				EDU()->stop_timer( $t );
+
 				return $selected_course["@error"];
 			}
 
@@ -627,7 +627,9 @@ function eduadmin_get_login_view( $attributes ) {
 
 function eduadmin_get_programme_list( $attributes ) {
 	$attributes = shortcode_atts(
-		array(),
+		array(
+			'category' => null,
+		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-programmelist'
 	);
