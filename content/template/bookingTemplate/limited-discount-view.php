@@ -11,7 +11,7 @@ if ( $use_limited_discount ) {
 				<?php
 				if ( 0 !== count( $c_cards ) ) {
 					?>
-					<h2><?php esc_html_e( 'Discount cards', 'eduadmin-booking' ); ?></h2>
+					<h2><?php echo esc_html_x( 'Discount cards', 'frontend', 'eduadmin-booking' ); ?></h2>
 
 					<?php
 					foreach ( $c_cards as $card ) {
@@ -21,7 +21,7 @@ if ( $use_limited_discount ) {
 							<label class="discountCardItem">
 								<input type="radio" name="edu-limitedDiscountID"
 									<?php if ( ! $enough_credits ) : ?>
-										disabled readonly title="<?php esc_attr_e( 'Not enough uses left on this card.', 'eduadmin-booking' ); ?>"
+										disabled readonly title="<?php echo esc_attr_x( 'Not enough uses left on this card.', 'frontend', 'eduadmin-booking' ); ?>"
 									<?php endif; ?>
 									value="<?php echo esc_attr( $card['VoucherId'] ); ?>" />
 								<?php echo esc_html( $card['Description'] ); ?>&nbsp;

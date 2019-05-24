@@ -55,14 +55,13 @@ class EduAdmin_LoginHandler {
 						exit();
 					}
 				} else {
-					EDU()->session['eduadminLoginError'] = __( 'Wrong username or password.', 'eduadmin-booking' );
+					EDU()->session['eduadminLoginError'] = _x( 'Wrong username or password.', 'frontend', 'eduadmin-booking' );
 				}
 			}
 		}
 	}
 
 	public function get_login_user( $personId, $customerId ) {
-
 		$contact = EDUAPI()->OData->Persons->GetItem(
 			$personId,
 			null,

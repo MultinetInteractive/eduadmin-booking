@@ -12,9 +12,9 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<div class="scrollable">';
 	echo '<table class="programme-list">';
 	echo '<tr>';
-	echo '<th>' . esc_html__( 'Start', 'eduadmin-booking' ) . '</th>';
-	echo '<th>' . esc_html__( 'Schedule', 'eduadmin-booking' ) . '</th>';
-	echo '<th>' . esc_html__( 'Spots left', 'eduadmin-booking' ) . '</th>';
+	echo '<th>' . esc_html_x( 'Start', 'frontend', 'eduadmin-booking' ) . '</th>';
+	echo '<th>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</th>';
+	echo '<th>' . esc_html_x( 'Spots left', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th></th>';
 	echo '</tr>';
 	foreach ( $grouped_programme as $programme_start ) {
@@ -23,14 +23,14 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		echo '<td>';
 
 		if ( 0 === count( $programme_start['Events'] ) ) {
-			echo '<i>' . esc_html__( 'No planned events', 'eduadmin-booking' ) . '</i>';
+			echo '<i>' . esc_html_x( 'No planned events', 'frontend', 'eduadmin-booking' ) . '</i>';
 		} else {
-			echo '<span class="edu-manyDays" onclick="edu_openDatePopup(this);">' . esc_html__( 'Show', 'eduadmin-booking' ) . '</span>';
+			echo '<span class="edu-manyDays" onclick="edu_openDatePopup(this);">' . esc_html_x( 'Show', 'frontend', 'eduadmin-booking' ) . '</span>';
 			echo '<div class="edu-DayPopup">';
 			echo esc_html( $programme['ProgrammeName'] );
 			echo ' - ';
 			echo wp_kses_post( get_display_date( $programme_start['StartDate'] ) );
-			echo '<a style="float: right;" href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html__( 'Close', 'eduadmin-booking' ) . '</a>';
+			echo '<a style="float: right;" href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html_x( 'Close', 'frontend', 'eduadmin-booking' ) . '</a>';
 			echo '<div class="scrollable-full-height">';
 			$events_per_day = array();
 			foreach ( $programme_start['Events'] as $event ) {
@@ -52,8 +52,8 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		}
 
 		echo '</td>';
-		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 ? __( 'Yes', 'eduadmin-booking' ) : __( 'No', 'eduadmin-booking' ) ) . '</td>';
-		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html__( 'Book', 'eduadmin-booking' ) . '</a></td>';
+		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 ? _x( 'Yes', 'frontend', 'eduadmin-booking' ) : _x( 'No', 'frontend', 'eduadmin-booking' ) ) . '</td>';
+		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ) . '</a></td>';
 		echo '</tr>';
 	}
 	echo '</table>';

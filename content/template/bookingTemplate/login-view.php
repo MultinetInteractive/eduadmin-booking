@@ -11,7 +11,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 	?>
 	<div class="eduadmin loginForm">
 		<form action="<?php echo( isset( $_REQUEST['eid'] ) ? '?eid=' . esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>" method="post">
-			<a href="../" class="backLink"><?php esc_html_e( '« Go back', 'eduadmin-booking' ); ?></a>
+			<a href="../" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 			<div class="title">
 				<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
 					<img class="courseImage" src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>"/>

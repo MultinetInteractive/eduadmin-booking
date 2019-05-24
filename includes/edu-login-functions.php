@@ -80,7 +80,7 @@ add_action(
 							break;
 					}
 				} else {
-					EDU()->session['eduadminLoginError'] = __( 'You have to provide your login credentials.', 'eduadmin-booking' );
+					EDU()->session['eduadminLoginError'] = _x( 'You have to provide your login credentials.', 'frontend', 'eduadmin-booking' );
 				}
 			}
 		}

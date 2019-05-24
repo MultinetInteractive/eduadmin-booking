@@ -9,7 +9,7 @@ $customer = $user->Customer;
 	$tab = 'bookings';
 	require_once 'login-tab-header.php';
 	?>
-	<h2><?php esc_html_e( 'Reservations', 'eduadmin-booking' ); ?></h2>
+	<h2><?php echo esc_html_x( 'Reservations', 'frontend', 'eduadmin-booking' ); ?></h2>
 	<?php
 
 	$events = EDUAPI()->OData->Events->Search(
@@ -36,17 +36,17 @@ $customer = $user->Customer;
 	?>
 	<table class="myReservationsTable">
 		<tr>
-			<th align="left"><?php esc_html_e( 'Booked', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php esc_html_e( 'Course', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php esc_html_e( 'Dates', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php esc_html_e( 'Participants', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php esc_html_e( 'Price', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Booked', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Course', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Dates', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="right"><?php echo esc_html_x( 'Participants', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="right"><?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?></th>
 		</tr>
 		<?php
 		if ( empty( $bookings ) ) {
 			?>
 			<tr>
-				<td colspan="5" align="center"><i><?php esc_html_e( 'No courses booked', 'eduadmin-booking' ); ?></i>
+				<td colspan="5" align="center"><i><?php echo esc_html_x( 'No courses booked', 'frontend', 'eduadmin-booking' ); ?></i>
 				</td>
 			</tr>
 			<?php
@@ -71,9 +71,9 @@ $customer = $user->Customer;
 						<td colspan="5">
 							<table class="edu-event-participantList">
 								<tr>
-									<th align="left" class="edu-participantList-name"><?php esc_html_e( 'Participant name', 'eduadmin-booking' ); ?></th>
-									<th align="center" class="edu-participantList-arrived"><?php esc_html_e( 'Arrived', 'eduadmin-booking' ); ?></th>
-									<th align="right" class="edu-participantList-grade"><?php esc_html_e( 'Grade', 'eduadmin-booking' ); ?></th>
+									<th align="left" class="edu-participantList-name"><?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th align="center" class="edu-participantList-arrived"><?php echo esc_html_x( 'Arrived', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th align="right" class="edu-participantList-grade"><?php echo esc_html_x( 'Grade', 'frontend', 'eduadmin-booking' ); ?></th>
 								</tr>
 								<?php
 								foreach ( $book['Participants'] as $participant ) {
@@ -81,7 +81,7 @@ $customer = $user->Customer;
 									<tr>
 										<td align="left"><?php echo esc_html( $participant['FirstName'] . ' ' . $participant['LastName'] ); ?></td>
 										<td align="center"><?php echo true === $participant['Arrived'] ? '&#9745;' : '&#9744;'; ?></td>
-										<td align="right"><?php echo( ! empty( $participant['GradeName'] ) ? esc_html( $participant['GradeName'] ) : '<i>' . esc_html__( 'Not graded', 'eduadmin-booking' ) . '</i>' ); ?></td>
+										<td align="right"><?php echo( ! empty( $participant['GradeName'] ) ? esc_html( $participant['GradeName'] ) : '<i>' . esc_html_x( 'Not graded', 'frontend', 'eduadmin-booking' ) . '</i>' ); ?></td>
 									</tr>
 									<?php
 								}

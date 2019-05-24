@@ -14,12 +14,12 @@ $certificates = EDUAPI()->OData->Persons->GetItem(
 	$tab = 'certificates';
 	require_once 'login-tab-header.php';
 	?>
-	<h2><?php esc_html_e( 'Certificates', 'eduadmin-booking' ); ?></h2>
+	<h2><?php echo esc_html_x( 'Certificates', 'frontend', 'eduadmin-booking' ); ?></h2>
 	<table class="myCertificationsTable">
 		<tr>
-			<th align="left"><?php esc_html_e( 'Name', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php esc_html_e( 'Certified', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php esc_html_e( 'Valid', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Name', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Certified', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="left"><?php echo esc_html_x( 'Valid', 'frontend', 'eduadmin-booking' ); ?></th>
 		</tr>
 		<?php
 		if ( ! empty( $certificates ) ) {
@@ -36,7 +36,7 @@ $certificates = EDUAPI()->OData->Persons->GetItem(
 			?>
 			<tr>
 				<td colspan="3" align="center">
-					<i><?php esc_html_e( 'You have no certificates.', 'eduadmin-booking' ); ?></i>
+					<i><?php echo esc_html_x( 'You have no certificates.', 'frontend', 'eduadmin-booking' ); ?></i>
 				</td>
 			</tr>
 			<?php

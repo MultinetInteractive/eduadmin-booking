@@ -3,15 +3,15 @@ function edu_render_plugin_page() {
 	EDU()->timers[ __METHOD__ ] = microtime( true );
 	?>
 	<div class="eduadmin wrap">
-		<h2><?php echo esc_html( sprintf( __( 'EduAdmin settings - %s', 'eduadmin-booking' ), __( 'Plugins', 'eduadmin-booking' ) ) ); ?></h2>
+		<h2><?php echo esc_html( sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ) ) ); ?></h2>
 
 		<form method="post">
-			<input type="hidden" name="plugin-settings-nonce" value="<?php echo esc_attr( wp_create_nonce( 'eduadmin-plugin-settings' ) ); ?>"/>
+			<input type="hidden" name="plugin-settings-nonce" value="<?php echo esc_attr( wp_create_nonce( 'eduadmin-plugin-settings' ) ); ?>" />
 			<?php settings_fields( 'eduadmin-plugin-settings' ); ?>
 			<?php do_settings_sections( 'eduadmin-plugin-settings' ); ?>
 			<div class="block">
-				<h3><?php esc_html_e( 'Installed plugins', 'eduadmin-booking' ); ?></h3>
-				<hr noshade="noshade"/>
+				<h3><?php echo esc_html_x( 'Installed plugins', 'backend', 'eduadmin-booking' ); ?></h3>
+				<hr noshade="noshade" />
 				<?php
 				$integrations = EDU()->integrations->integrations;
 				foreach ( $integrations as $integration ) {
@@ -22,7 +22,7 @@ function edu_render_plugin_page() {
 				?>
 			</div>
 			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php esc_attr_e( 'Save changes', 'eduadmin-booking' ); ?>"/>
+				<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save changes', 'backend', 'eduadmin-booking' ); ?>" />
 			</p>
 		</form>
 	</div>

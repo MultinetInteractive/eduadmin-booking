@@ -20,7 +20,7 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 		public function register_post_types() {
 			/*register_post_type( 'edu_programme', array(
 				'public'              => true,
-				'label'               => __( 'Programmes', 'eduadmin-booking' ),
+				'label'               => _x( 'Programmes', 'backend', 'eduadmin-booking' ),
 				'rewrite'             => array(
 					'with_front' => false,
 					'slug'       => 'programmes',
@@ -32,7 +32,7 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 
 			register_post_type( 'edu_coursetemplate', array(
 				'public'              => true,
-				'label'               => __( 'Course templates', 'eduadmin-booking' ),
+				'label'               => _x( 'Course templates', 'backend', 'eduadmin-booking' ),
 				'rewrite'             => array(
 					'with_front' => false,
 					'slug'       => 'coursetemplates',

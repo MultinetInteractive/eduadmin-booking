@@ -138,10 +138,10 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
-	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" placeholder="' . esc_attr__( 'Quantity', 'eduadmin-booking' ) . '" />';
+	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" placeholder="' . esc_attr_x( 'Quantity', 'frontend', 'eduadmin-booking' ) . '" />';
 	if ( ! empty( $question['Price'] ) ) {
 		/* translators: 1: Price */
-		echo ' <i class="priceLabel">(' . esc_html( sprintf( __( '%1$s / pcs', 'eduadmin-booking' ), convert_to_money( $question['Price'] ) ) ) . ')</i>';
+		echo ' <i class="priceLabel">(' . esc_html( sprintf( _x( '%1$s / pcs', 'frontend', 'eduadmin-booking' ), convert_to_money( $question['Price'] ) ) ) . ')</i>';
 	}
 	echo '</div>';
 	echo '</label>';

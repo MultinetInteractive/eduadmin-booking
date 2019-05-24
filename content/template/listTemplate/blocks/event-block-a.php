@@ -36,7 +36,7 @@
 					if ( 0 === $event['Price'] ) {
 						echo '<div class="priceInfo">' . _x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . '</div> ';
 					} else {
-						echo '<div class="priceInfo">' . sprintf( __( 'From %1$s', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) . '</div> ';
+						echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) . '</div> ';
 					}
 				}
 
@@ -49,17 +49,17 @@
 			if ( $show_book_btn ) {
 				if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
 					?>
-					<a class="bookButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _e( "Book", 'eduadmin-booking' ); ?></a>
+					<a class="bookButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
 					<?php
 				} else {
 					?>
-					<i class="fullBooked"><?php _e( "Full", 'eduadmin-booking' ); ?></i>
+					<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
 					<?php
 				}
 			}
 			?>
 			<?php if ( $show_read_more_btn ) : ?>
-				<a class="readMoreButton" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php _e( "Read more", 'eduadmin-booking' ); ?></a>
+				<a class="readMoreButton" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php _ex( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 				<br />
 			<?php endif; ?>
 		</div>

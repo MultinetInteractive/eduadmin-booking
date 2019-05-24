@@ -40,7 +40,7 @@ class EduAdminAPIHelper {
 				' and StatusId eq 1' .
 				' and CustomerId eq null' .
 				' and CompanySpecific eq false' .
-				' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
+				' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
 				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 				';' .
@@ -107,7 +107,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
+			' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
@@ -124,12 +124,12 @@ class EduAdminAPIHelper {
 		$show_events_with_events_only    = $attributes['onlyevents'];
 		$show_events_without_events_only = $attributes['onlyempty'];
 
-		if ( !empty($category_id) ) {
-			$filters[]              = 'CategoryId eq ' . $category_id;
+		if ( ! empty( $category_id ) ) {
+			$filters[] = 'CategoryId eq ' . $category_id;
 		}
 
 		if ( ! empty( $city ) ) {
-			$filters[]          = 'Events/any(e:e/LocationId eq ' . intval( $city ) . ')';
+			$filters[] = 'Events/any(e:e/LocationId eq ' . intval( $city ) . ')';
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
@@ -219,7 +219,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c', strtotime('now 23:59:59') ) .
+			' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
 			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 			';' .
@@ -236,12 +236,12 @@ class EduAdminAPIHelper {
 		$showEventsWithEventsOnly    = $attributes['onlyevents'];
 		$showEventsWithoutEventsOnly = $attributes['onlyempty'];
 
-		if ( !empty($category_id) ) {
-			$filters[]              = 'CategoryId eq ' . $category_id;
+		if ( ! empty( $category_id ) ) {
+			$filters[] = 'CategoryId eq ' . $category_id;
 		}
 
 		if ( ! empty( $city ) ) {
-			$filters[]          = 'Events/any(e:e/LocationId eq ' . intval( $city ) . ')';
+			$filters[] = 'Events/any(e:e/LocationId eq ' . intval( $city ) . ')';
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {

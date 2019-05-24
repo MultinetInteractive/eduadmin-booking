@@ -15,7 +15,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 	?>
 	<div class="eduadmin">
-		<a href="../" class="backLink"><?php esc_html_e( '« Go back', 'eduadmin-booking' ); ?></a>
+		<a href="../" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 		<div class="title">
 			<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
 				<img src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>" class="courseImage"/>
@@ -30,7 +30,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'description', $hide_sections, true ) && ! empty( $selected_course['CourseDescription'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'Course description', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'Course description', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -42,7 +42,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'goal', $hide_sections, true ) && ! empty( $selected_course['CourseGoal'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'Course goal', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'Course goal', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -54,7 +54,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'target', $hide_sections, true ) && ! empty( $selected_course['TargetGroup'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'Target group', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'Target group', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -66,7 +66,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'prerequisites', $hide_sections, true ) && ! empty( $selected_course['Prerequisites'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'Prerequisites', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'Prerequisites', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -78,7 +78,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'after', $hide_sections, true ) && ! empty( $selected_course['CourseAfter'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'After the course', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'After the course', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -90,7 +90,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			if ( ! in_array( 'quote', $hide_sections, true ) && ! empty( $selected_course['Quote'] ) ) {
 				if ( $show_headers ) {
 					?>
-					<h3><?php esc_html_e( 'Quotes', 'eduadmin-booking' ); ?></h3>
+					<h3><?php echo esc_html_x( 'Quotes', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php } ?>
 				<div>
 					<?php
@@ -103,7 +103,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<?php
 			if ( ! in_array( 'time', $hide_sections, true ) && ! empty( $selected_course['StartTime'] ) && ! empty( $selected_course['EndTime'] ) ) {
 				?>
-				<h3><?php esc_html_e( 'Time', 'eduadmin-booking' ); ?></h3>
+				<h3><?php echo esc_html_x( 'Time', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php
 				/* translators: 1: Number of days */
 				echo esc_html( ( $selected_course['Days'] > 0 ? sprintf( _n( '%1$d day', '%1$d days', $selected_course['Days'], 'eduadmin-booking' ), $selected_course['Days'] ) . ', ' : '' ) . date( 'H:i', strtotime( $selected_course['StartTime'] ) ) . ' - ' . date( 'H:i', strtotime( $selected_course['EndTime'] ) ) );
@@ -111,15 +111,15 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 			if ( ! in_array( 'price', $hide_sections, true ) && ! empty( $prices ) ) {
 				?>
-				<h3><?php esc_html_e( 'Price', 'eduadmin-booking' ); ?></h3>
+				<h3><?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 
 				if ( 1 === count( $prices ) ) {
-					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) );
+					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
 				} else {
 					foreach ( $prices as $up ) {
-						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) );
+						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
 						?>
 						<br/>
 						<?php
@@ -135,7 +135,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			?>
 			<br/>
 			<div class="inquiry">
-				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string( '?' ) . '&_=' . time() ); ?>"><?php esc_html_e( 'Send inquiry about this course', 'eduadmin-booking' ); ?></a>
+				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string( '?' ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Send inquiry about this course', 'frontend', 'eduadmin-booking' ); ?></a>
 			</div>
 			<?php
 		}

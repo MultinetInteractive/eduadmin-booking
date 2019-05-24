@@ -1,10 +1,10 @@
 <?php if ( count( $events ) > 1 ) : ?>
 	<div class="dateSelectLabel">
-		<?php esc_html_e( 'Select the event you want to book', 'eduadmin-booking' ); ?>
+		<?php echo esc_html_x( 'Select the event you want to book', 'frontend', 'eduadmin-booking' ); ?>
 	</div>
 
 	<select name="eid" required class="dateInfo" onchange="eduBookingView.SelectEvent(this);">
-		<option value=""><?php esc_html_e( 'Select event', 'eduadmin-booking' ); ?></option>
+		<option value=""><?php echo esc_html_x( 'Select event', 'frontend', 'eduadmin-booking' ); ?></option>
 		<?php foreach ( $events as $ev ) : ?>
 			<option value="<?php echo esc_attr( $ev['EventId'] ); ?>">
 				<?php
@@ -33,5 +33,5 @@ elseif ( 1 === count( $events ) ) :
 	echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), ', ' ) );
 	echo '</div>';
 else:
-	echo '<div class="dateInfo">' . esc_html__( 'No events planned for this course yet.', 'eduadmin-booking' ) . '</div>';
+	echo '<div class="dateInfo">' . esc_html_x( 'No events planned for this course yet.', 'frontend', 'eduadmin-booking' ) . '</div>';
 endif;

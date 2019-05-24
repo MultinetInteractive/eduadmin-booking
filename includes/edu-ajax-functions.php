@@ -56,7 +56,7 @@ function edu_listview_courselist() {
 	foreach ( $courses as $event ) {
 		if ( ! isset( $return_value[ $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
-			$return_value[ $event['CourseTemplateId'] ] = sprintf( __( 'Next event %1$s', 'eduadmin-booking' ), date( 'Y-m-d', strtotime( $event['Events'][0]['StartDate'] ) ) ) . ' ' . $event['Events'][0]['City'];
+			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date( 'Y-m-d', strtotime( $event['Events'][0]['StartDate'] ) ) ) . ' ' . $event['Events'][0]['City'];
 		}
 	}
 
@@ -591,10 +591,10 @@ function edu_api_eventlist() {
 		}
 	}
 	if ( empty( $prices ) || empty( $events ) ) {
-		echo '<div class="noDatesAvailable"><i>' . esc_html__( 'No available dates for the selected course', 'eduadmin-booking' ) . '</i></div>';
+		echo '<div class="noDatesAvailable"><i>' . esc_html_x( 'No available dates for the selected course', 'frontend', 'eduadmin-booking' ) . '</i></div>';
 	}
 	if ( $has_hidden_dates ) {
-		echo '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( $group_by_city ? '-' . $last_city : '' ) . '\', this);">' . esc_html__( 'Show all events', 'eduadmin-booking' ) . '</a></div>';
+		echo '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( $group_by_city ? '-' . $last_city : '' ) . '\', this);">' . esc_html_x( 'Show all events', 'frontend', 'eduadmin-booking' ) . '</a></div>';
 	}
 	echo '</div></div>';
 
@@ -626,19 +626,19 @@ function edu_api_loginwidget() {
 			                                   'module',
 		                                   ) ) ) .
 		     '" class="eduadminLogoutButton">' .
-		     esc_html( ! empty( $logout_text ) ? $logout_text : __( 'Log out', 'eduadmin-booking' ) ) .
+		     esc_html( ! empty( $logout_text ) ? $logout_text : _x( 'Log out', 'frontend', 'eduadmin-booking' ) ) .
 		     '</a>' .
 		     '</div>';
 	} else {
 		echo '<div class="eduadminLogin"><i>' .
-		     esc_html( ! empty( $guest_text ) ? $guest_text : __( 'Guest', 'eduadmin-booking' ) ) .
+		     esc_html( ! empty( $guest_text ) ? $guest_text : _x( 'Guest', 'frontend', 'eduadmin-booking' ) ) .
 		     '</i> - ' .
 		     '<a href="' . esc_url( $base_url . '/profile/login' . edu_get_query_string( '?', array(
 			                            'eid',
 			                            'module',
 		                            ) ) ) .
 		     '" class="eduadminLoginButton">' .
-		     esc_html( ! empty( $login_text ) ? $login_text : __( 'Log in', 'eduadmin-booking' ) ) .
+		     esc_html( ! empty( $login_text ) ? $login_text : _x( 'Log in', 'frontend', 'eduadmin-booking' ) ) .
 		     '</a>' .
 		     '</div>';
 	}
