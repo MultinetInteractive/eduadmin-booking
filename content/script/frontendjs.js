@@ -432,6 +432,16 @@ var eduDetailView = {
 	}
 };
 
+var eduGlobalMethods = {
+		GoBack: function(fallBackUrl) {
+			if(window.history.length > 1) {
+				window.history.go(-1);
+				return;
+			}
+			location.href = fallBackUrl;
+		}
+};
+
 function numberWithSeparator(x, sep) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 }
