@@ -38,7 +38,6 @@ rm -f $PROJECT_ROOT/.travis.yml
 rm -f $PROJECT_ROOT/CONTRIBUTING.md
 rm -f $PROJECT_ROOT/LICENSE.md
 rm -f $PROJECT_ROOT/phpunit.xml
-rm -f $PROJECT_ROOT/README.md
 rm -f $PROJECT_ROOT/.gitignore
 rm -f $PROJECT_ROOT/Gulpfile.js
 rm -f $PROJECT_ROOT/yarn.lock
