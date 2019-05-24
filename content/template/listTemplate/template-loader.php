@@ -12,6 +12,14 @@ if ( ! empty( $attributes['category'] ) ) {
 
 $show_images = get_option( 'eduadmin-showCourseImage', true );
 
+if ( ! empty( $attributes['showimages'] ) ) {
+	$show_images = true;
+}
+
+if ( ! empty( $attributes['hideimages'] ) ) {
+	$show_images = false;
+}
+
 $custom_order_by       = null;
 $custom_order_by_order = null;
 if ( ! empty( $attributes['orderby'] ) ) {

@@ -110,7 +110,9 @@ edu.apiclient = {
 				showcity: jQuery(target).data('showcity'),
 				showbookbtn: jQuery(target).data('showbookbtn'),
 				showreadmorebtn: jQuery(target).data('showreadmorebtn'),
-				'edu-region': jQuery(target).data('region')
+				'edu-region': jQuery(target).data('region'),
+				showimages: jQuery(target).data('showimages'),
+				hideimages: jQuery(target).data('hideimages')
 			},
 			success: function (d) {
 				jQuery(target).html(d);

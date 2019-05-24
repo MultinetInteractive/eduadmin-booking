@@ -304,6 +304,14 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 
 	$show_images = get_option( 'eduadmin-showCourseImage', true );
 
+	if ( ! empty( $request['showimages'] ) ) {
+		$show_images = true;
+	}
+
+	if ( ! empty( $request['hideimages'] ) ) {
+		$show_images = false;
+	}
+
 	$number_of_events = $request['numberofevents'];
 
 	$surl     = get_home_url();
@@ -373,6 +381,14 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 	$show_images = get_option( 'eduadmin-showCourseImage', true );
+
+	if ( ! empty( $request['showimages'] ) ) {
+		$show_images = true;
+	}
+
+	if ( ! empty( $request['hideimages'] ) ) {
+		$show_images = false;
+	}
 
 	$number_of_events = $request['numberofevents'];
 

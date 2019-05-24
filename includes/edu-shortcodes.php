@@ -51,6 +51,8 @@ function eduadmin_get_list_view( $attributes ) {
 			'courselevel'     => null,
 			'searchCourse'    => null,
 			'filtercity'      => null,
+			'hideimages'      => null,
+			'showimages'      => null,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
