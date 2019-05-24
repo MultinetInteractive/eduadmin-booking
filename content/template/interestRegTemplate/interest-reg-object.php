@@ -92,9 +92,9 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<input type="hidden" name="edu-participants" value="1" />
 				<?php } else { ?>
 					<label>
-						<div class="inputLabel"><?php esc_html_e( 'Participants', 'eduadmin-booking' ); ?> *</div>
+						<div class="inputLabel"><?php esc_html_e( 'Number of participants', 'eduadmin-booking' ); ?> *</div>
 						<div class="inputHolder">
-							<input type="number" min="1" required name="edu-participants" placeholder="<?php esc_attr_e( 'Participants', 'eduadmin-booking' ); ?>" />
+							<input type="number" min="1" required name="edu-participants" placeholder="<?php esc_attr_e( 'Number of participants', 'eduadmin-booking' ); ?>" />
 						</div>
 					</label>
 				<?php } ?>
