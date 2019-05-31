@@ -31,13 +31,13 @@
 			/* translators: 1. The date for the next programme start */
 			echo wp_kses_post( sprintf( _x( 'Next start: %s', 'Next programme start', 'eduadmin-booking' ), get_display_date( $next_start['StartDate'] ) ) );
 			echo '<br />';
-			echo wp_kses_post( $next_start['ParticipantNumberLeft'] ? '<span class="spots-left">' . __( 'Spots left', 'eduadmin-booking' ) . '</span>' : '<span class="no-spots">' . __( 'No spots', 'eduadmin-booking' ) . '</span>' );
+			echo wp_kses_post( $next_start['ParticipantNumberLeft'] ? '<span class="spots-left">' . _x( 'Spots left', 'frontend', 'eduadmin-booking' ) . '</span>' : '<span class="no-spots">' . _x( 'No spots', 'frontend', 'eduadmin-booking' ) . '</span>' );
 		}
 		?>
 	</div>
 	<div class="programme-buttons">
 		<a href="<?php echo esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/' ); ?>" class="cta-btn">
-			<?php esc_html_e( 'Details', 'eduadmin-booking' ); ?>
+			<?php echo esc_html_x( 'Details', 'frontend', 'eduadmin-booking' ); ?>
 		</a>
 	</div>
 </div>

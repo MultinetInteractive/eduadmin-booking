@@ -38,34 +38,34 @@ class EduAdmin_BookingHandler {
 					foreach ( $booking_info['Errors'] as $error ) {
 						switch ( $error['ErrorCode'] ) {
 							case -1: // Exception
-								$errors[] = __( 'An error has occured, please try again later!', 'eduadmin-booking' );
+								$errors[] = _x( 'An error has occured, please try again later!', 'frontend', 'eduadmin-booking' );
 								break;
 							case 40:
-								$errors[] = __( 'Not enough spots left.', 'eduadmin-booking' );
+								$errors[] = _x( 'Not enough spots left.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 45:
-								$errors[] = __( 'Person already booked on event.', 'eduadmin-booking' );
+								$errors[] = _x( 'Person already booked on event.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 100:
-								$errors[] = __( 'The voucher was not found.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher was not found.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 101:
-								$errors[] = __( 'The voucher is not valid during the event period.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is not valid during the event period.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 102:
-								$errors[] = __( 'The voucher is too small for the number of participants.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is too small for the number of participants.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 103:
-								$errors[] = __( 'The voucher belongs to a different customer.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher belongs to a different customer.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 104:
-								$errors[] = __( 'The voucher belongs to a different customer contact.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher belongs to a different customer contact.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 105:
-								$errors[] = __( 'The voucher is not valid for this event.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is not valid for this event.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 200:
-								$errors[] = __( 'Person added on session where dates are overlapping.', 'eduadmin-booking' );
+								$errors[] = _x( 'Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking' );
 								break;
 							default:
 								$errors[] = $error['ErrorText'];
@@ -120,34 +120,34 @@ class EduAdmin_BookingHandler {
 					foreach ( $booking_info['Errors'] as $error ) {
 						switch ( $error['ErrorCode'] ) {
 							case -1: // Exception
-								$errors[] = __( 'An error has occured, please try again later!', 'eduadmin-booking' );
+								$errors[] = _x( 'An error has occured, please try again later!', 'frontend', 'eduadmin-booking' );
 								break;
 							case 40:
-								$errors[] = __( 'Not enough spots left.', 'eduadmin-booking' );
+								$errors[] = _x( 'Not enough spots left.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 45:
-								$errors[] = __( 'Person already booked on event.', 'eduadmin-booking' );
+								$errors[] = _x( 'Person already booked on event.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 100:
-								$errors[] = __( 'The voucher was not found.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher was not found.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 101:
-								$errors[] = __( 'The voucher is not valid during the event period.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is not valid during the event period.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 102:
-								$errors[] = __( 'The voucher is too small for the number of participants.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is too small for the number of participants.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 103:
-								$errors[] = __( 'The voucher belongs to a different customer.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher belongs to a different customer.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 104:
-								$errors[] = __( 'The voucher belongs to a different customer contact.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher belongs to a different customer contact.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 105:
-								$errors[] = __( 'The voucher is not valid for this event.', 'eduadmin-booking' );
+								$errors[] = _x( 'The voucher is not valid for this event.', 'frontend', 'eduadmin-booking' );
 								break;
 							case 200:
-								$errors[] = __( 'Person added on session where dates are overlapping.', 'eduadmin-booking' );
+								$errors[] = _x( 'Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking' );
 								break;
 							default:
 								$errors[] = $error['ErrorText'];
@@ -457,8 +457,8 @@ class EduAdmin_BookingHandler {
 
 			$std_error                 = array();
 			$std_error['ErrorCode']    = -1;
-			$std_error['ErrorDetails'] = 'An error has occurred, please try again!';
-			$std_error['ErrorText']    = 'General error';
+			$std_error['ErrorDetails'] = _x( 'An error has occurred, please try again!', 'frontend', 'eduadmin-booking' );
+			$std_error['ErrorText']    = _x( 'General error', 'frontend', 'eduadmin-booking' );
 
 			$error_list['Errors'][] = $std_error;
 
@@ -673,8 +673,8 @@ class EduAdmin_BookingHandler {
 
 			$std_error                 = array();
 			$std_error['ErrorCode']    = -1;
-			$std_error['ErrorDetails'] = 'An error has occurred, please try again!';
-			$std_error['ErrorText']    = 'General error';
+			$std_error['ErrorDetails'] = _x( 'An error has occurred, please try again!', 'frontend', 'eduadmin-booking' );
+			$std_error['ErrorText']    = _x( 'General error', 'frontend', 'eduadmin-booking' );
 
 			$error_list['Errors'][] = $std_error;
 

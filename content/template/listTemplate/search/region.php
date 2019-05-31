@@ -20,6 +20,6 @@ foreach ( $regions_with_public_locations as $re ) {
 
 if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	?>
-	<a class="edu-regionbutton neutral-btn" href="./"><?php esc_html_e( 'All regions', 'eduadmin-booking' ); ?></a>
+	<a class="edu-regionbutton neutral-btn" href="./"><?php echo esc_html_x( 'All regions', 'frontend', 'eduadmin-booking' ); ?></a>
 	<?php
 }

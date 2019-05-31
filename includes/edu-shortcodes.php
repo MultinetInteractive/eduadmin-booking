@@ -51,6 +51,8 @@ function eduadmin_get_list_view( $attributes ) {
 			'courselevel'     => null,
 			'searchCourse'    => null,
 			'filtercity'      => null,
+			'hideimages'      => null,
+			'showimages'      => null,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
@@ -396,10 +398,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . "\n";
+					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "<br />\n";
 					}
 				}
 			}
@@ -416,10 +418,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . "\n";
+					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "<br />\n";
 					}
 				}
 			}
@@ -554,10 +556,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 					}
 				}
 				if ( empty( $events ) ) {
-					$ret_str .= '<div class="noDatesAvailable"><i>' . esc_html__( 'No available dates for the selected course', 'eduadmin-booking' ) . '</i></div>';
+					$ret_str .= '<div class="noDatesAvailable"><i>' . esc_html_x( 'No available dates for the selected course', 'frontend', 'eduadmin-booking' ) . '</i></div>';
 				}
 				if ( $has_hidden_dates ) {
-					$ret_str .= '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( ( $group_by_city ? '-' . $last_city : '' ) ) . '\', this);">' . esc_html__( 'Show all events', 'eduadmin-booking' ) . '</a></div>';
+					$ret_str .= '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( ( $group_by_city ? '-' . $last_city : '' ) ) . '\', this);">' . esc_html_x( 'Show all events', 'frontend', 'eduadmin-booking' ) . '</a></div>';
 				}
 				$ret_str .= '</div></div>';
 			}
@@ -572,9 +574,9 @@ function eduadmin_get_login_widget( $attributes ) {
 	$t          = EDU()->start_timer( __METHOD__ );
 	$attributes = shortcode_atts(
 		array(
-			'logintext'  => __( 'Log in', 'eduadmin-booking' ),
-			'logouttext' => __( 'Log out', 'eduadmin-booking' ),
-			'guesttext'  => __( 'Guest', 'eduadmin-booking' ),
+			'logintext'  => _x( 'Log in', 'frontend', 'eduadmin-booking' ),
+			'logouttext' => _x( 'Log out', 'frontend', 'eduadmin-booking' ),
+			'guesttext'  => _x( 'Guest', 'frontend', 'eduadmin-booking' ),
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-loginwidget'
@@ -613,9 +615,9 @@ function eduadmin_get_login_view( $attributes ) {
 
 	$attributes = shortcode_atts(
 		array(
-			'logintext'  => __( 'Log in', 'eduadmin-booking' ),
-			'logouttext' => __( 'Log out', 'eduadmin-booking' ),
-			'guesttext'  => __( 'Guest', 'eduadmin-booking' ),
+			'logintext'  => _x( 'Log in', 'frontend', 'eduadmin-booking' ),
+			'logouttext' => _x( 'Log out', 'frontend', 'eduadmin-booking' ),
+			'guesttext'  => _x( 'Guest', 'frontend', 'eduadmin-booking' ),
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-loginview'

@@ -33,6 +33,6 @@ if ( wp_verify_nonce( $_POST['edu-interest-nonce'], 'edu-object-interest' ) ) {
 		$inquiry = EDUAPI()->REST->InterestRegistration->CreateBasic( $inquiry );
 
 		$inquiry_id = $inquiry['InterestRegistrationId'];
-		die( '<script type="text/javascript">alert(\'' . esc_js( __( 'Thank you for your inquiry! We will be in touch!', 'eduadmin-booking' ) ) . '\'); location.href = \'' . esc_js( get_home_url() . '?edu-thankyouinquiry=' . $inquiry_id ) . '\';</script>' );
+		die( '<script type="text/javascript">alert(\'' . esc_js( _x( 'Thank you for your inquiry! We will be in touch!', 'frontend', 'eduadmin-booking' ) ) . '\'); location.href = \'' . esc_js( get_home_url() . '?edu-thankyouinquiry=' . $inquiry_id ) . '\';</script>' );
 	}
 }

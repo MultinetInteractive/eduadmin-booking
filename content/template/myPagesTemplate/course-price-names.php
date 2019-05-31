@@ -51,10 +51,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 	$inc_vat = $org['PriceIncVat'];
 	?>
 	<div class="eventInformation">
-		<h3><?php esc_html_e( 'Prices', 'eduadmin-booking' ); ?></h3>
+		<h3><?php echo esc_html_x( 'Prices', 'frontend', 'eduadmin-booking' ); ?></h3>
 		<?php
 		foreach ( $edo as $price ) {
-			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) );
+			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
 			echo '<br />';
 		}
 		?>

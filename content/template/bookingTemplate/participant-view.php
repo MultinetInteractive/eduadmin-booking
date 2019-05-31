@@ -1,5 +1,5 @@
 <div class="participantView">
-	<h2><?php esc_html_e( 'Participant information', 'eduadmin-booking' ); ?></h2>
+	<h2><?php echo esc_html_x( 'Participant information', 'frontend', 'eduadmin-booking' ); ?></h2>
 	<div class="participantHolder" id="edu-participantHolder">
 		<?php
 		require_once 'participants/contact-participant.php';
@@ -7,9 +7,9 @@
 		?>
 	</div>
 	<div>
-		<a href="javascript://" class="addParticipantLink neutral-btn" onclick="eduBookingView.AddParticipant(); return false;"><?php esc_html_e( '+ Add participant', 'eduadmin-booking' ); ?></a>
+		<a href="javascript://" class="addParticipantLink neutral-btn" onclick="eduBookingView.AddParticipant(); return false;"><?php echo esc_html_x( '+ Add participant', 'frontend', 'eduadmin-booking' ); ?></a>
 	</div>
 	<div class="edu-modal warning" id="edu-warning-participants">
-		<?php esc_html_e( 'You cannot add any more participants.', 'eduadmin-booking' ); ?>
+		<?php echo esc_html_x( 'You cannot add any more participants.', 'frontend', 'eduadmin-booking' ); ?>
 	</div>
 </div>

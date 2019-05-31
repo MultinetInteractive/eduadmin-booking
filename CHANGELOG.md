@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.3.1...v2.4.0) (2019-05-31)
+
+
+### Features
+
+* 🎸 Back-buttons now use history.go(-1) or fallback url ([b3ce1f7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b3ce1f7))
+* 🎸 show/hideimages attribute on listview shortcode ([8480ff2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8480ff2))
+
+
+
 ## [2.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.3.0...v2.3.1) (2019-05-01)
 
 

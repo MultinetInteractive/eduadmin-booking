@@ -24,7 +24,7 @@ $current_events   = 0;
 			}
 		} else {
 			?>
-			<div class="noResults"><?php esc_html_e( 'Your search returned zero results', 'eduadmin-booking' ); ?></div>
+			<div class="noResults"><?php echo esc_html_x( 'Your search returned zero results', 'frontend', 'eduadmin-booking' ); ?></div>
 			<?php
 		}
 		?>

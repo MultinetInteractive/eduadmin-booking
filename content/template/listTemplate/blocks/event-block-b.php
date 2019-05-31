@@ -34,7 +34,7 @@
 			if ( 0 === $event['Price'] ) {
 				echo '<div class="priceInfo">' . esc_html_x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . "</div> ";
 			} else {
-				echo '<div class="priceInfo">' . esc_html( sprintf( __( 'From %1$s', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ) . '</div> ';
+				echo '<div class="priceInfo">' . esc_html( sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . '</div> ';
 			}
 		}
 		echo '<div class="spotsLeft"></div>';
@@ -43,7 +43,7 @@
 	</div>
 	<div class="objectBook">
 		<?php if ( $show_read_more_btn ) : ?>
-			<a class="readMoreButton cta-btn" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $object['CourseTemplateId'] . '/?eid=' . $event['EventId'] . edu_get_query_string( '&' ) ); ?>"><?php esc_html_e( 'Read more', 'eduadmin-booking' ); ?></a>
+			<a class="readMoreButton cta-btn" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $object['CourseTemplateId'] . '/?eid=' . $event['EventId'] . edu_get_query_string( '&' ) ); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 		<?php endif; ?>
 	</div>
 </div>

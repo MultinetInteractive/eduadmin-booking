@@ -46,12 +46,12 @@ $last_city = "";
 	if ( empty( $prices ) || empty( $events ) ) {
 		?>
 		<div class="noDatesAvailable">
-			<i><?php esc_html_e( 'No available dates for the selected course', 'eduadmin-booking' ); ?></i>
+			<i><?php echo esc_html_x( 'No available dates for the selected course', 'frontend', 'eduadmin-booking' ); ?></i>
 		</div>
 		<?php
 	}
 	if ( $has_hidden_dates ) {
-		echo '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( $group_by_city ? '-' . $last_city : '' ) . '\', this);">' . esc_html__( 'Show all events', 'eduadmin-booking' ) . '</a></div>';
+		echo '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( $group_by_city ? '-' . $last_city : '' ) . '\', this);">' . esc_html_x( 'Show all events', 'frontend', 'eduadmin-booking' ) . '</a></div>';
 	}
 	?>
 </div>

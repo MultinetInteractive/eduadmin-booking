@@ -16,9 +16,9 @@ function edu_profile_menu_item( $url, $text, $active ) {
 ?>
 <div class="tab_container tabhead">
 	<?php
-	edu_profile_menu_item( '/profile/myprofile', __( 'Profile', 'eduadmin-booking' ), 'profile' === $tab );
-	edu_profile_menu_item( '/profile/certificates', __( 'Certificates', 'eduadmin-booking' ), 'certificates' === $tab );
-	edu_profile_menu_item( '/profile/bookings', __( 'Reservations', 'eduadmin-booking' ), 'bookings' === $tab );
-	edu_profile_menu_item( '/profile/card', __( 'Discount Cards', 'eduadmin-booking' ), 'limitedDiscount' === $tab );
+	edu_profile_menu_item( '/profile/myprofile', _x( 'Profile', 'frontend', 'eduadmin-booking' ), 'profile' === $tab );
+	edu_profile_menu_item( '/profile/certificates', _x( 'Certificates', 'frontend', 'eduadmin-booking' ), 'certificates' === $tab );
+	edu_profile_menu_item( '/profile/bookings', _x( 'Reservations', 'frontend', 'eduadmin-booking' ), 'bookings' === $tab );
+	edu_profile_menu_item( '/profile/card', _x( 'Discount Cards', 'frontend', 'eduadmin-booking' ), 'limitedDiscount' === $tab );
 	?>
 </div>

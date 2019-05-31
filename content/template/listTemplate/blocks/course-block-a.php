@@ -37,12 +37,12 @@
 				echo '<div class="nextEventDate" data-eduwidget="courseitem-date" data-objectid="' . esc_attr( $object['CourseTemplateId'] ) . '">';
 
 				if ( ! empty( $sorted_events ) ) {
-					echo esc_html( sprintf( __( 'Next event %1$s', 'eduadmin-booking' ), date( 'Y-m-d', strtotime( current( $sorted_events )['StartDate'] ) ) ) . ' ' . current( $sorted_events )['City'] );
+					echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date( 'Y-m-d', strtotime( current( $sorted_events )['StartDate'] ) ) ) . ' ' . current( $sorted_events )['City'] );
 					if ( $show_event_venue && ! empty( current( $sorted_events )['AddressName'] ) ) {
 						echo '<span class="venueInfo">, ' . esc_html( current( $sorted_events )['AddressName'] ) . '</span>';
 					}
 				} else {
-					echo '<i>' . esc_html__( 'No coming events', 'eduadmin-booking' ) . '</i>';
+					echo '<i>' . esc_html_x( 'No coming events', 'frontend', 'eduadmin-booking' ) . '</i>';
 				}
 				echo '</div> ';
 			}
@@ -50,7 +50,7 @@
 			if ( $show_event_price && ! empty( $prices ) ) {
 				ksort( $prices );
 				$cheapest = current( $prices );
-				echo '<div class="priceInfo">' . sprintf( __( 'From %1$s', 'eduadmin-booking' ), convert_to_money( $cheapest['Price'], $currency ) ) . " " . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) . '</div> ';
+				echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $cheapest['Price'], $currency ) ) . " " . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) . '</div> ';
 			}
 
 			if ( $object['Days'] > 0 ) {
@@ -66,7 +66,7 @@
 	</div>
 	<div class="objectBook">
 		<?php if ( $show_read_more_btn ) : ?>
-			<a class="readMoreButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>"><?php esc_html_e( 'Read more', 'eduadmin-booking' ); ?></a>
+			<a class="readMoreButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 		<?php endif; ?>
 	</div>
 </div>

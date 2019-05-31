@@ -6,7 +6,7 @@ function edu_render_style_settings_page() {
 	}
 	?>
 	<div class="eduadmin wrap">
-		<h2><?php echo sprintf( __( "EduAdmin settings - %s", 'eduadmin-booking' ), __( "Style", 'eduadmin-booking' ) ); ?></h2>
+		<h2><?php echo sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Style', 'backend', 'eduadmin-booking' ) ); ?></h2>
 
 		<form method="post" action="options.php" id="edu-styleform">
 			<input type="hidden" name="style-settings-nonce" value="<?php echo esc_attr( wp_create_nonce( 'eduadmin-style-settings' ) ); ?>" />
@@ -21,21 +21,29 @@ function edu_render_style_settings_page() {
 					?></textarea>
 
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo __( 'Save settings', 'eduadmin-booking' ); ?>" />
-					<input type="button" onclick="var c = confirm('<?php _e( 'Are you sure you want to reset the style settings?', 'eduadmin-booking' ); ?>'); if (c) { var f = document.getElementById('resetForm').submit(); } else { return false; }" class="button button-secondary" value="<?php echo esc_attr__( "Reset styles", 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo _x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="button" onclick="var c = confirm('<?php _ex( 'Are you sure you want to reset the style settings?', 'backend', 'eduadmin-booking' ); ?>'); if (c) { var f = document.getElementById('resetForm').submit(); } else { return false; }" class="button button-secondary" value="<?php echo esc_attr_x( 'Reset styles', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>
 		<div id="saveResult"></div>
 		<script type="text/javascript">
-			jQuery(document).ready(function() {
-				jQuery('#edu-styleform').submit(function() {
+			jQuery(document).ready(function () {
+				jQuery('#edu-styleform').submit(function () {
 					var data = jQuery(this).serialize();
-					jQuery.post('options.php', data, function(r) {
-						jQuery('#saveResult').html("<div id='saveMessage' class='successModal'></div>");
-						jQuery('#saveMessage').append("<p><?php echo htmlentities(__('Settings Saved Successfully','eduadmin-booking'),ENT_QUOTES); ?></p>").show();
+					jQuery.post('options.php', data, function (r) {
+						jQuery('#saveResult').html("<div id="
+						saveMessage
+						" class="
+						successModal
+						"></div>"
+					)
+						;
+						jQuery('#saveMessage').append("<p><?php echo htmlentities( __( 'Settings Saved Successfully', 'eduadmin-booking' ), ENT_QUOTES ); ?></p>").show();
 
-						setTimeout(function() { jQuery('#saveMessage').hide('slow'); }, 2000);
+						setTimeout(function () {
+							jQuery('#saveMessage').hide('slow');
+						}, 2000);
 					});
 					return false;
 				});

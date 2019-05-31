@@ -119,11 +119,11 @@ function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
 
 function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers', $spot_settings = "1-5\n5-10\n10+", $always_few_spots = 3 ) {
 	if ( 0 === intval( $max_spots ) ) {
-		return __( 'Spots left', 'eduadmin-booking' );
+		return _x( 'Spots left', 'frontend', 'eduadmin-booking' );
 	}
 
 	if ( intval( $free_spots ) <= 0 ) {
-		return __( 'No spots left', 'eduadmin-booking' );
+		return _x( 'No spots left', 'frontend', 'eduadmin-booking' );
 	}
 
 	switch ( $spot_option ) {
@@ -134,16 +134,16 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 		case 'onlyText':
 			$few_spots_limit = intval( $always_few_spots );
 			if ( intval( $free_spots ) > ( intval( $max_spots ) - $few_spots_limit ) ) {
-				return __( 'Spots left', 'eduadmin-booking' );
+				return _x( 'Spots left', 'frontend', 'eduadmin-booking' );
 			} elseif ( intval( $free_spots ) <= ( intval( $max_spots ) - $few_spots_limit ) && 1 !== intval( $free_spots ) ) {
-				return __( 'Few spots left', 'eduadmin-booking' );
+				return _x( 'Few spots left', 'frontend', 'eduadmin-booking' );
 			} elseif ( 1 === intval( $free_spots ) ) {
-				return __( 'One spot left', 'eduadmin-booking' );
+				return _x( 'One spot left', 'frontend', 'eduadmin-booking' );
 			} elseif ( intval( $free_spots ) <= 0 ) {
-				return __( 'No spots left', 'eduadmin-booking' );
+				return _x( 'No spots left', 'frontend', 'eduadmin-booking' );
 			}
 
-			return __( 'Spots left', 'eduadmin-booking' );
+			return _x( 'Spots left', 'frontend', 'eduadmin-booking' );
 		case 'intervals':
 			$interval = $spot_settings;
 			if ( empty( $interval ) ) {
@@ -160,12 +160,12 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 						if ( intval( $free_spots ) <= $max && intval( $free_spots ) >= $min ) {
 							/* translators: 1: Number of spots (range) */
 
-							return sprintf( __( '%1$s spots left', 'eduadmin-booking' ), $line );
+							return sprintf( _x( '%1$s spots left', 'frontend', 'eduadmin-booking' ), $line );
 						}
 					} elseif ( stripos( $line, '+' ) > -1 ) {
 						/* translators: 1: Number of spots (range) */
 
-						return sprintf( __( '%1$s spots left', 'eduadmin-booking' ), $line );
+						return sprintf( _x( '%1$s spots left', 'frontend', 'eduadmin-booking' ), $line );
 					}
 				}
 
@@ -177,10 +177,10 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 		case 'alwaysFewSpots':
 			$min_participants = $always_few_spots;
 			if ( ( $max_spots - intval( $free_spots ) ) >= $min_participants ) {
-				return __( 'Few spots left', 'eduadmin-booking' );
+				return _x( 'Few spots left', 'frontend', 'eduadmin-booking' );
 			}
 
-			return __( 'Spots left', 'eduadmin-booking' );
+			return _x( 'Spots left', 'frontend', 'eduadmin-booking' );
 		default:
 			return '';
 	}
@@ -272,14 +272,14 @@ function edu_get_date_range( $days, $short, $event, $show_days ) {
 	if ( count( $ordered_dategroups ) > 3 ) {
 		$n_res = array();
 		$ret   =
-			'<span class="edu-manyDays" title="' . esc_attr__( 'Show schedule', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
+			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
-			wp_kses_post( sprintf( __( '%1$d days between %2$s', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, $show_days ) ) ) .
+			wp_kses_post( sprintf( _x( '%1$d days between %2$s', 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, $show_days ) ) ) .
 			'</span><div class="edu-DayPopup">
-<b>' . esc_html__( 'Schedule', 'eduadmin-booking' ) . '</b><br />
+<b>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</b><br />
 ' . join( "<br />\n", $ordered_dategroups ) . '
 <br />
-<a href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html__( 'Close', 'eduadmin-booking' ) . '</a>
+<a href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html_x( 'Close', 'frontend', 'eduadmin-booking' ) . '</a>
 </div>';
 
 		$n_res[] = $ret;

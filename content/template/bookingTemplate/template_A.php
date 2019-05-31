@@ -62,7 +62,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<form action="" method="post" id="edu-booking-form">
 				<input type="hidden" name="act" value="bookCourse" />
 				<input type="hidden" name="edu-valid-form" value="<?php echo esc_attr( wp_create_nonce( 'edu-booking-confirm' ) ); ?>" />
-				<a href="../" class="backLink"><?php esc_html_e( '« Go back', 'eduadmin-booking' ); ?></a>
+				<a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 
 				<div class="title">
 					<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
@@ -102,7 +102,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 						<i>
 							<?php
 							/* translators: 1: User display name 2: Beginning of link 3: End of link */
-							echo wp_kses( sprintf( __( 'Not <b>%1$s</b>? %2$sLog out%3$s', 'eduadmin-booking' ), esc_html( $user_val ), '<a href="' . esc_url( $base_url . '/profile/logout' ) . '">', '</a>' ), wp_kses_allowed_html( 'post' ) );
+							echo wp_kses( sprintf( _x( 'Not <b>%1$s</b>? %2$sLog out%3$s', 'frontend', 'eduadmin-booking' ), esc_html( $user_val ), '<a href="' . esc_url( $base_url . '/profile/logout' ) . '">', '</a>' ), wp_kses_allowed_html( 'post' ) );
 							?>
 						</i>
 					</div>
@@ -130,9 +130,9 @@ if ( ! $api_key || empty( $api_key ) ) {
 				?>
 				<?php if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) : ?>
 					<div class="priceView">
-						<?php esc_html_e( 'Price name', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>
 						<select id="edu-pricename" name="edu-pricename" required class="edudropdown edu-pricename" onchange="eduBookingView.UpdatePrice();">
-							<option data-price="0" value=""><?php esc_html_e( 'Choose price', 'eduadmin-booking' ); ?></option>
+							<option data-price="0" value=""><?php echo esc_html_x( 'Choose price', 'frontend', 'eduadmin-booking' ); ?></option>
 							<?php foreach ( $event['PriceNames'] as $price ) : ?>
 								<option data-price="<?php echo esc_attr( $price['Price'] ); ?>" date-discountpercent="<?php echo esc_attr( $price['DiscountPercent'] ); ?>" data-pricelnkid="<?php echo esc_attr( $price['PriceNameId'] ); ?>" data-maxparticipants="<?php echo esc_attr( $price['MaxParticipantNumber'] ); ?>" data-currentparticipants="<?php echo esc_attr( $price['NumberOfParticipants'] ); ?>"
 									<?php if ( ! empty( $price['MaxParticipantNumber'] ) && $price['NumberOfParticipants'] >= $price['MaxParticipantNumber'] ) { ?>
@@ -140,7 +140,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 									<?php } ?>
 									value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 									<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-									(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . ' ' . ( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ) ); ?>
+									(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ); ?>
 									)
 								</option>
 							<?php endforeach; ?>
@@ -159,33 +159,33 @@ if ( ! $api_key || empty( $api_key ) ) {
 								<input type="checkbox" id="confirmTerms" name="confirmTerms" value="agree" />
 								<?php
 								/* translators: 1: Start of link 2: End of link */
-								echo wp_kses( sprintf( __( 'I agree to the %1$sTerms and Conditions%2$s', 'eduadmin-booking' ), '<a href="' . $link . '" target="_blank">', '</a>' ), wp_kses_allowed_html( 'post' ) );
+								echo wp_kses( sprintf( _x( 'I agree to the %1$sTerms and Conditions%2$s', 'frontend', 'eduadmin-booking' ), '<a href="' . $link . '" target="_blank">', '</a>' ), wp_kses_allowed_html( 'post' ) );
 								?>
 							</label>
 						</div>
 					<?php endif; ?>
 					<div class="sumTotal">
-						<?php esc_html_e( 'Total sum:', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'Total sum:', 'frontend', 'eduadmin-booking' ); ?>
 						<span id="sumValue" class="sumValue"></span>
 					</div>
 					<?php if ( 0 !== $event['ParticipantNumberLeft'] ) : ?>
-						<input type="submit" class="bookButton cta-btn" id="edu-book-btn" onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;" value="<?php esc_attr_e( 'Book now', 'eduadmin-booking' ); ?>" />
+						<input type="submit" class="bookButton cta-btn" id="edu-book-btn" onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;" value="<?php echo esc_attr_x( 'Book now', 'frontend', 'eduadmin-booking' ); ?>" />
 					<?php else : ?>
 						<div class="bookButton neutral-btn cta-disabled">
-							<?php esc_html_e( 'No free spots left on this event', 'eduadmin-booking' ); ?>
+							<?php echo esc_html_x( 'No free spots left on this event', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 					<?php endif; ?>
 					<div class="edu-modal warning" id="edu-warning-terms">
-						<?php esc_html_e( 'You must accept Terms and Conditions to continue.', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'You must accept Terms and Conditions to continue.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
 					<div class="edu-modal warning" id="edu-warning-no-participants">
-						<?php esc_html_e( 'You must add some participants.', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'You must add some participants.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
 					<div class="edu-modal warning" id="edu-warning-missing-participants">
-						<?php esc_html_e( 'One or more participants is missing a name.', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'One or more participants is missing a name.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
 					<div class="edu-modal warning" id="edu-warning-missing-civicregno">
-						<?php esc_html_e( 'One or more participants is missing their civic registration number.', 'eduadmin-booking' ); ?>
+						<?php echo esc_html_x( 'One or more participants is missing their civic registration number.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
 					<?php
 					$error_list = apply_filters( 'edu-booking-error', array() );
@@ -215,13 +215,13 @@ if ( ! $api_key || empty( $api_key ) ) {
 			var discountPerParticipant = <?php echo esc_js( round( $participant_discount_percent / 100, 2 ) ); ?>;
 			var totalPriceDiscountPercent = <?php echo esc_js( $discount_percent ); ?>;
 			var currency = '<?php echo esc_js( get_option( 'eduadmin-currency', 'SEK' ) ); ?>';
-			var vatText = '<?php echo esc_js( $inc_vat ? __( 'inc vat', 'eduadmin-booking' ) : __( 'ex vat', 'eduadmin-booking' ) ); ?>';
+			var vatText = '<?php echo esc_js( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>';
 			var ShouldValidateCivRegNo = <?php echo esc_js( get_option( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
 
 			var edu_vat = {
-				inc: '<?php echo esc_js( __( 'inc vat', 'eduadmin-booking' ) ); ?>',
-				ex: '<?php echo esc_js( __( 'ex vat', 'eduadmin-booking' ) ); ?>',
-				free: '<?php echo esc_js( __( 'vat free', 'eduadmin-booking' ) ); ?>'
+				inc: '<?php echo esc_js( _x( 'inc vat', 'frontend', 'eduadmin-booking' ) ); ?>',
+				ex: '<?php echo esc_js( _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>',
+				free: '<?php echo esc_js( _x( 'vat free', 'frontend', 'eduadmin-booking' ) ); ?>'
 			};
 			(function () {
 				var title = document.title;
