@@ -9,11 +9,11 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.3.1
+ * Version:	2.4.0
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
- * Tested up to: 5.1
+ * Tested up to: 5.2
  * Author:	Chris Gårdenberg, MultiNet Interactive AB
  * Author URI:	https://www.multinet.com
  * License:	GPL3
@@ -414,53 +414,53 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				$this->rest_controller->register_routes();
 			} );
 			$this->week_days = array(
-				1 => __( 'monday', 'eduadmin-booking' ),
-				2 => __( 'tuesday', 'eduadmin-booking' ),
-				3 => __( 'wednesday', 'eduadmin-booking' ),
-				4 => __( 'thursday', 'eduadmin-booking' ),
-				5 => __( 'friday', 'eduadmin-booking' ),
-				6 => __( 'saturday', 'eduadmin-booking' ),
-				7 => __( 'sunday', 'eduadmin-booking' ),
+				1 => _x( 'monday', 'frontend', 'eduadmin-booking' ),
+				2 => _x( 'tuesday', 'frontend', 'eduadmin-booking' ),
+				3 => _x( 'wednesday', 'frontend', 'eduadmin-booking' ),
+				4 => _x( 'thursday', 'frontend', 'eduadmin-booking' ),
+				5 => _x( 'friday', 'frontend', 'eduadmin-booking' ),
+				6 => _x( 'saturday', 'frontend', 'eduadmin-booking' ),
+				7 => _x( 'sunday', 'frontend', 'eduadmin-booking' ),
 			);
 
 			$this->short_week_days = array(
-				1 => __( 'mon', 'eduadmin-booking' ),
-				2 => __( 'tue', 'eduadmin-booking' ),
-				3 => __( 'wed', 'eduadmin-booking' ),
-				4 => __( 'thu', 'eduadmin-booking' ),
-				5 => __( 'fri', 'eduadmin-booking' ),
-				6 => __( 'sat', 'eduadmin-booking' ),
-				7 => __( 'sun', 'eduadmin-booking' ),
+				1 => _x( 'mon', 'frontend', 'eduadmin-booking' ),
+				2 => _x( 'tue', 'frontend', 'eduadmin-booking' ),
+				3 => _x( 'wed', 'frontend', 'eduadmin-booking' ),
+				4 => _x( 'thu', 'frontend', 'eduadmin-booking' ),
+				5 => _x( 'fri', 'frontend', 'eduadmin-booking' ),
+				6 => _x( 'sat', 'frontend', 'eduadmin-booking' ),
+				7 => _x( 'sun', 'frontend', 'eduadmin-booking' ),
 			);
 
 			$this->months = array(
-				1  => __( 'january', 'eduadmin-booking' ),
-				2  => __( 'february', 'eduadmin-booking' ),
-				3  => __( 'march', 'eduadmin-booking' ),
-				4  => __( 'april', 'eduadmin-booking' ),
-				5  => __( 'may', 'eduadmin-booking' ),
-				6  => __( 'june', 'eduadmin-booking' ),
-				7  => __( 'july', 'eduadmin-booking' ),
-				8  => __( 'august', 'eduadmin-booking' ),
-				9  => __( 'september', 'eduadmin-booking' ),
-				10 => __( 'october', 'eduadmin-booking' ),
-				11 => __( 'november', 'eduadmin-booking' ),
-				12 => __( 'december', 'eduadmin-booking' ),
+				1  => _x( 'january', 'frontend', 'eduadmin-booking' ),
+				2  => _x( 'february', 'frontend', 'eduadmin-booking' ),
+				3  => _x( 'march', 'frontend', 'eduadmin-booking' ),
+				4  => _x( 'april', 'frontend', 'eduadmin-booking' ),
+				5  => _x( 'may', 'frontend', 'eduadmin-booking' ),
+				6  => _x( 'june', 'frontend', 'eduadmin-booking' ),
+				7  => _x( 'july', 'frontend', 'eduadmin-booking' ),
+				8  => _x( 'august', 'frontend', 'eduadmin-booking' ),
+				9  => _x( 'september', 'frontend', 'eduadmin-booking' ),
+				10 => _x( 'october', 'frontend', 'eduadmin-booking' ),
+				11 => _x( 'november', 'frontend', 'eduadmin-booking' ),
+				12 => _x( 'december', 'frontend', 'eduadmin-booking' ),
 			);
 
 			$this->short_months = array(
-				1  => __( 'jan', 'eduadmin-booking' ),
-				2  => __( 'feb', 'eduadmin-booking' ),
-				3  => __( 'mar', 'eduadmin-booking' ),
-				4  => __( 'apr', 'eduadmin-booking' ),
+				1  => _x( 'jan', 'frontend', 'eduadmin-booking' ),
+				2  => _x( 'feb', 'frontend', 'eduadmin-booking' ),
+				3  => _x( 'mar', 'frontend', 'eduadmin-booking' ),
+				4  => _x( 'apr', 'frontend', 'eduadmin-booking' ),
 				5  => _x( 'may', 'short form of the month may', 'eduadmin-booking' ),
-				6  => __( 'jun', 'eduadmin-booking' ),
-				7  => __( 'jul', 'eduadmin-booking' ),
-				8  => __( 'aug', 'eduadmin-booking' ),
-				9  => __( 'sep', 'eduadmin-booking' ),
-				10 => __( 'oct', 'eduadmin-booking' ),
-				11 => __( 'nov', 'eduadmin-booking' ),
-				12 => __( 'dec', 'eduadmin-booking' ),
+				6  => _x( 'jun', 'frontend', 'eduadmin-booking' ),
+				7  => _x( 'jul', 'frontend', 'eduadmin-booking' ),
+				8  => _x( 'aug', 'frontend', 'eduadmin-booking' ),
+				9  => _x( 'sep', 'frontend', 'eduadmin-booking' ),
+				10 => _x( 'oct', 'frontend', 'eduadmin-booking' ),
+				11 => _x( 'nov', 'frontend', 'eduadmin-booking' ),
+				12 => _x( 'dec', 'frontend', 'eduadmin-booking' ),
 			);
 
 			$this->stop_timer( $t );
@@ -472,7 +472,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				<p>
 					<?php
 					/* translators: 1: start of link 2: end of link */
-					echo wp_kses_post( sprintf( __( 'Please complete the configuration: %1$sEduAdmin - Api Authentication%2$s', 'eduadmin-booking' ), '<a href="' . admin_url() . 'admin.php?page=eduadmin-settings">', '</a>' ) );
+					echo wp_kses_post( sprintf( _x( 'Please complete the configuration: %1$sEduAdmin - Api Authentication%2$s', 'backend', 'eduadmin-booking' ), '<a href="' . admin_url() . 'admin.php?page=eduadmin-settings">', '</a>' ) );
 					?>
 				</p>
 			</div>
@@ -599,11 +599,11 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				try {
 					$current_token = EDUAPI()->GetToken();
 				} catch ( Exception $ex ) {
-					return new WP_Error( 'broke', __( 'Could not fetch a new access token for the EduAdmin API, please contact MultiNet support.', 'eduadmin-booking' ) );
+					return new WP_Error( 'broke', _x( 'Could not fetch a new access token for the EduAdmin API, please contact MultiNet support.', 'backend', 'eduadmin-booking' ) );
 				}
 
 				if ( empty( $current_token->Issued ) ) {
-					return new WP_Error( 'broke', __( 'The key for the EduAdmin API is not configured to work with the new API, please contact MultiNet support.', 'eduadmin-booking' ) );
+					return new WP_Error( 'broke', _x( 'The key for the EduAdmin API is not configured to work with the new API, please contact MultiNet support.', 'backend', 'eduadmin-booking' ) );
 				}
 				set_transient( 'eduadmin-newapi-token__' . $this->version, $current_token, WEEK_IN_SECONDS );
 			}
@@ -628,7 +628,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			add_action( 'admin_notices', function() {
 				?>
 				<div class="notice notice-warning is-dismissable">
-					<p><?php echo esc_html__( 'Could not set timezone', 'eduadmin-booking' ); ?></p>
+					<p><?php echo esc_html_x( 'Could not set timezone', 'backend', 'eduadmin-booking' ); ?></p>
 				</div>
 				<?php
 			} );
@@ -649,7 +649,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 					add_action( 'admin_notices', function() {
 						?>
 						<div class="notice notice-success is-dismissible">
-							<p><?php esc_html_e( 'Plugin settings saved', 'eduadmin-booking' ); ?></p>
+							<p><?php echo esc_html_x( 'Plugin settings saved', 'backend', 'eduadmin-booking' ); ?></p>
 						</div>
 						<?php
 					} );
@@ -662,7 +662,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 	add_action( 'in_plugin_update_message-eduadmin-booking/eduadmin.php',
 		function( $current_plugin_metadata, $new_plugin_metadata ) {
 			if ( ! empty( $new_plugin_metadata->upgrade_notice ) && strlen( trim( $new_plugin_metadata->upgrade_notice ) ) > 0 ) {
-				echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>' . esc_html__( 'Important Upgrade Notice', 'eduadmin-booking' ) . ':</strong> ';
+				echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>' . esc_html_x( 'Important Upgrade Notice', 'backend', 'eduadmin-booking' ) . ':</strong> ';
 				echo esc_html( $new_plugin_metadata->upgrade_notice ), '</p>';
 			}
 		},
