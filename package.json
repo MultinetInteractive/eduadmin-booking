@@ -7,6 +7,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "yarn gulp",
+		"commit": "npx git-cz",
 		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
 	"dependencies": {
