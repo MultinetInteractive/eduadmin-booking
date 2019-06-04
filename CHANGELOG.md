@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.4.0...v2.4.1) (2019-06-04)
+
+
+### Bug Fixes
+
+* 🐛 Only one event = add hidden field ([25c813d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/25c813d))
+
+
+
 # [2.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.3.1...v2.4.0) (2019-05-31)
 
 
