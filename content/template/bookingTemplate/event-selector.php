@@ -32,6 +32,9 @@ elseif ( 1 === count( $events ) ) :
 	echo esc_html( date( 'H:i', strtotime( $event['EndDate'] ) ) ) . '</span>';
 	echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), ', ' ) );
 	echo '</div>';
-else:
+	if ( !isset( $_GET['eid'] ) || !is_numeric( $_GET['eid'] ) ) :
+		?><input type="hidden" name="eid" value="<?php echo esc_attr( $event['EventId'] ); ?>" /><?php
+	endif;
+else :
 	echo '<div class="dateInfo">' . esc_html_x( 'No events planned for this course yet.', 'frontend', 'eduadmin-booking' ) . '</div>';
 endif;
