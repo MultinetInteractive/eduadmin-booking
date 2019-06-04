@@ -45,6 +45,7 @@ if ( ! $noAvailableDates ) {
 	}
 
 	$event_id = $event['EventId'];
+	$eventid = $event_id;
 
 	$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
 		return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
