@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.5.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.4.2...v2.5.0) (2019-06-28)
+
+
+### Features
+
+* 🎸 Category filtering on programme-list ([c722379](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c722379))
+
+
+
 ## [2.4.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.4.1...v2.4.2) (2019-06-26)
 
 
