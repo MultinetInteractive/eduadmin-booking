@@ -705,7 +705,7 @@ function eduadmin_get_programme_details( $attributes ) {
 			'StartDate' .
 			';' .
 			'$expand=' .
-			'Courses,Events' .
+			'Courses,Events,PriceNames' .
 			'),Courses,PriceNames'
 		);
 
