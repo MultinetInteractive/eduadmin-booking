@@ -13,6 +13,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<table class="programme-list">';
 	echo '<tr>';
 	echo '<th>' . esc_html_x( 'Start', 'frontend', 'eduadmin-booking' ) . '</th>';
+	echo '<th>' . esc_html_x( 'Location', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th>' . esc_html_x( 'Spots left', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th></th>';
@@ -20,6 +21,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	foreach ( $grouped_programme as $programme_start ) {
 		echo '<tr>';
 		echo '<td>' . wp_kses_post( get_display_date( $programme_start['StartDate'] ) ) . '</td>';
+		echo '<td>' . ( ! empty( $programme_start['City'] ) ? esc_html( $programme_start['City'] ) : '' ) . '</td>';
 		echo '<td>';
 
 		if ( 0 === count( $programme_start['Events'] ) ) {
