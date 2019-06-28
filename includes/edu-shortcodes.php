@@ -647,7 +647,8 @@ function eduadmin_get_programme_list( $attributes ) {
 
 	$programmes = EDUAPI()->OData->Programmes->Search(
 		null,
-		'ShowOnWeb',
+		'ShowOnWeb' .
+		( ! empty( $attributes['category'] ) ? ' and CategoryId eq ' . $attributes['category'] : '' ),
 		'ProgrammeStarts(' .
 		'$filter=' .
 		'HasPublicPriceName' .

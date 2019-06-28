@@ -1,5 +1,5 @@
 <?php
-
+EDU()->write_debug( $programmes );
 if ( empty( $programmes['Errors'] ) ) {
 	?>
 	<div class="eduadmin programme-list">
