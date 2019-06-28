@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.6.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.5.1...v2.6.0) (2019-06-28)
+
+
+### Features
+
+* 🎸 Show prices on programme starts (detail view) ([57c1c26](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/57c1c26))
+* 🎸 Showing city (if available) on programme starts ([88f4d3d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/88f4d3d))
+
+
+
 ## [2.5.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.5.0...v2.5.1) (2019-06-28)
 
 
