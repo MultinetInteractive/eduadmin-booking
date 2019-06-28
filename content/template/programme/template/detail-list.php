@@ -1,6 +1,10 @@
 <?php
 $grouped_programmes = array();
 
+$currency = get_option( 'eduadmin-currency', 'SEK' );
+
+$vat_text = ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) );
+
 foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 	$key = date( 'Y-m', strtotime( $programme_start['StartDate'] ) );
 
@@ -16,6 +20,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<th>' . esc_html_x( 'Location', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th>' . esc_html_x( 'Spots left', 'frontend', 'eduadmin-booking' ) . '</th>';
+	echo '<th>' . esc_html_x( 'Prices from', 'frontend', 'eduadmin-booking' ) . '</th>';
 	echo '<th></th>';
 	echo '</tr>';
 	foreach ( $grouped_programme as $programme_start ) {
@@ -55,6 +60,18 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 
 		echo '</td>';
 		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 ? _x( 'Yes', 'frontend', 'eduadmin-booking' ) : _x( 'No', 'frontend', 'eduadmin-booking' ) ) . '</td>';
+		echo '<td>';
+
+		$priceNames = array();
+
+		foreach ( $programme_start['PriceNames'] as $pn ) {
+			$priceNames[ $pn['Price'] ] = $pn;
+		}
+
+		$min_price = min( array_keys( $priceNames ) );
+
+		echo esc_html( convert_to_money( $priceNames[ $min_price ]["Price"], $currency ) . ' ' . $vat_text );
+		echo '</td>';
 		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ) . '</a></td>';
 		echo '</tr>';
 	}
