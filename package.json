@@ -11,20 +11,23 @@
 		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
 	"dependencies": {
-		"gulp": "^4.0.0",
+		"gulp": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-cssnano": "^2.1.3",
 		"gulp-myth": "^2.0.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-sass": "^4.0.2",
-		"gulp-uglify": "^3.0.1"
+		"gulp-uglify": "^3.0.2"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^7.5.2",
-		"@commitlint/config-conventional": "^7.5.0",
+		"@commitlint/cli": "^8.0.0",
+		"@commitlint/config-conventional": "^8.0.0",
+		"@types/jquery": "^3.3.30",
 		"cz-conventional-changelog": "2.1.0",
-		"husky": "^1.3.1",
-		"standard-version": "^5.0.2"
+		"gulp-typescript": "^5.0.1",
+		"husky": "^2.7.0",
+		"standard-version": "^6.0.1",
+		"typescript": "^3.5.2"
 	},
 	"husky": {
 		"hooks": {
