@@ -121,9 +121,6 @@ class EduAdminAPIHelper {
 
 		$filters[] = 'ShowOnWeb';
 
-		$show_events_with_events_only    = $attributes['onlyevents'];
-		$show_events_without_events_only = $attributes['onlyempty'];
-
 		if ( ! empty( $category_id ) ) {
 			$filters[] = 'CategoryId eq ' . $category_id;
 		}
@@ -232,9 +229,6 @@ class EduAdminAPIHelper {
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
 		$filters[] = 'ShowOnWeb';
-
-		$showEventsWithEventsOnly    = $attributes['onlyevents'];
-		$showEventsWithoutEventsOnly = $attributes['onlyempty'];
 
 		if ( ! empty( $category_id ) ) {
 			$filters[] = 'CategoryId eq ' . $category_id;
