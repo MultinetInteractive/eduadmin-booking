@@ -1,4 +1,5 @@
 /** global: edu */
+import Timeout = NodeJS.Timeout;
 
 declare var ShouldValidateCivRegNo: boolean;
 
@@ -10,7 +11,7 @@ interface EduBookingView {
 	SingleParticipant: boolean;
 	MaxParticipants: number;
 	ProgrammeBooking: boolean;
-	PriceCheckThrottle: number | null;
+	PriceCheckThrottle: Timeout | null;
 
 	Customer: any | null;
 	ContactPerson: any | null;
