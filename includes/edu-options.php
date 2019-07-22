@@ -187,8 +187,8 @@ function eduadmin_frontend_content() {
 	wp_enqueue_style( 'eduadmin_frontend_style' );
 	wp_add_inline_style( 'eduadmin_frontend_style', $customcss );
 
-	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/script/educlient/edu.apiclient.js' );
-	wp_register_script( 'eduadmin_apiclient_script', plugins_url( 'content/script/educlient/edu.apiclient.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/eduapi/edu.apiclient.js' );
+	wp_register_script( 'eduadmin_apiclient_script', plugins_url( 'content/scripts/eduapi/edu.apiclient.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
 	wp_localize_script(
 		'eduadmin_apiclient_script',
 		'wp_edu',
@@ -201,8 +201,8 @@ function eduadmin_frontend_content() {
 	);
 	wp_enqueue_script( 'eduadmin_apiclient_script', false, array( 'jquery' ) );
 
-	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/script/frontendjs.js' );
-	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/script/frontendjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/frontendjs.js' );
+	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
 	EDU()->stop_timer( $t );
 }
@@ -213,8 +213,8 @@ function eduadmin_backend_content() {
 	wp_register_style( 'eduadmin_admin_style', plugins_url( 'content/style/compiled/admin/global.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
 	wp_enqueue_style( 'eduadmin_admin_style' );
 
-	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/script/adminjs.js' );
-	wp_register_script( 'eduadmin_admin_script', plugins_url( 'content/script/adminjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/backend/adminjs.js' );
+	wp_register_script( 'eduadmin_admin_script', plugins_url( 'content/scripts/backend/adminjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_admin_script', false, array( 'jquery', 'jquery-form' ) );
 	EDU()->stop_timer( $t );
 }
