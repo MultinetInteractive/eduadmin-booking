@@ -117,7 +117,7 @@ var eduBookingView = {
                     element.required = true;
                 }
                 else {
-                    delete element.required;
+                    element.required = false;
                 }
             });
             if (contact == 1 && !this.AddedContactPerson) {

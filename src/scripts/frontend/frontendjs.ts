@@ -205,7 +205,7 @@ var eduBookingView: EduBookingView = {
                 if (contact == 1) {
                     element.required = true;
                 } else {
-                    delete element.required;
+                    element.required = false;
                 }
             });
 
