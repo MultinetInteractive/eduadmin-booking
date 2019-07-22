@@ -1,3 +1,4 @@
+"use strict";
 var EduAdmin = {
     UnlockApiAuthentication: function () {
         var apiKey = document.getElementById("eduadmin-api-key");

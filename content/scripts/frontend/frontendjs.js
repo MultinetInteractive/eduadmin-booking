@@ -1,3 +1,4 @@
+"use strict";
 /** global: edu */
 var eduBookingView = {
     ProgrammeBooking: false,
@@ -58,10 +59,9 @@ var eduBookingView = {
             eduBookingView.MaxParticipants >= 0);
     },
     CheckNumberOfParticipants: function () {
-        var participants = eduBookingView.SingleParticipant
+        return eduBookingView.SingleParticipant
             ? 1
             : document.querySelectorAll(".eduadmin .participantItem:not(.template):not(.contactPerson)").length;
-        return participants;
     },
     UpdatePrice: function () {
         this.CheckPrice(true);
@@ -110,6 +110,16 @@ var eduBookingView = {
                 }
                 tCivReg.value = document.getElementById("edu-contactCivReg").value;
             }
+            var requiredFields = contactParticipantItem.querySelectorAll('[data-required]');
+            requiredFields.forEach(function (el) {
+                var element = el;
+                if (contact == 1) {
+                    element.required = true;
+                }
+                else {
+                    delete element.required;
+                }
+            });
             if (contact == 1 && !this.AddedContactPerson) {
                 var freeParticipant = document.querySelector(".eduadmin .participantItem:not(.template):not(.contactPerson)");
                 if (freeParticipant) {
@@ -236,8 +246,6 @@ var eduBookingView = {
                 }
             }
         }
-        var bookBtn = document.getElementById("edu-book-btn");
-        //bookBtn.disabled = true;
         return true;
     },
     CheckPrice: function (validate) {

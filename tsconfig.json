@@ -4,6 +4,7 @@
 		"noImplicitAny": true,
 		"target": "es5",
 		"strict": true,
-		"rootDir": "src/scripts"
+		"rootDir": "src/scripts",
+		"outDir": "content/scripts"
 	}
 }

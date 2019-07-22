@@ -213,8 +213,8 @@ function eduadmin_backend_content() {
 	wp_register_style( 'eduadmin_admin_style', plugins_url( 'content/style/compiled/admin/global.css', dirname( __FILE__ ) ), false, date_version( $style_version ) );
 	wp_enqueue_style( 'eduadmin_admin_style' );
 
-	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/compiled/adminjs.js' );
-	wp_register_script( 'eduadmin_admin_script', plugins_url( 'content/scripts/compiled/adminjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/backend/adminjs.js' );
+	wp_register_script( 'eduadmin_admin_script', plugins_url( 'content/scripts/backend/adminjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_admin_script', false, array( 'jquery', 'jquery-form' ) );
 	EDU()->stop_timer( $t );
 }

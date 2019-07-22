@@ -6,7 +6,7 @@
 	"author": "Chris Gårdenberg <chga@multinet.se>",
 	"license": "MIT",
 	"scripts": {
-		"dev": "yarn gulp",
+		"dev": "yarn && concurrently --kill-others \"yarn gulp\" \"npx tsc -w\"",
 		"commit": "npx git-cz",
 		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
@@ -23,8 +23,8 @@
 		"@commitlint/cli": "^8.1.0",
 		"@commitlint/config-conventional": "^8.1.0",
 		"@types/jquery": "^3.3.30",
+		"concurrently": "^4.1.1",
 		"cz-conventional-changelog": "2.1.0",
-		"gulp-typescript": "^5.0.1",
 		"husky": "^2.7.0",
 		"js-yaml": "3.13.1",
 		"lodash": "^4.17.14",

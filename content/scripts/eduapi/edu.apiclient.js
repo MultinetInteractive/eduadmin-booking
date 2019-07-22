@@ -1,3 +1,4 @@
+"use strict";
 wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "" };
 var edu = window["edu"] ? window["edu"] : {};
 edu.apiclient = {

@@ -3,10 +3,7 @@ const replace = require("gulp-replace");
 const sass = require("gulp-sass");
 const myth = require("gulp-myth");
 const nano = require("gulp-cssnano");
-const ts = require("gulp-typescript");
 const pinfo = require("./package.json");
-
-const tsProject = ts.createProject("./tsconfig.json");
 
 /* Debug */
 gulp.task("styles-frontend", function() {
@@ -23,10 +20,6 @@ gulp.task("styles-admin", function() {
 		.pipe(sass().on("error", sass.logError))
 		.pipe(myth())
 		.pipe(gulp.dest("./content/style/compiled/admin/"));
-});
-
-gulp.task("typescript", function() {
-	return tsProject.src().pipe(tsProject());
 });
 
 gulp.task("readme-version", function() {
@@ -70,14 +63,9 @@ gulp.task("styles-admin-nano", function() {
 		.pipe(gulp.dest("./content/style/compiled/admin/"));
 });
 
-gulp.task("typescript-nano", function() {
-	return tsProject.src().pipe(tsProject());
-});
-
 gulp.task("default", function() {
 	gulp.watch("src/scss/frontend/**/*.scss", gulp.series("styles-frontend"));
 	gulp.watch("src/scss/admin/**/*.scss", gulp.series("styles-admin"));
-	gulp.watch("src/scripts/**/*.ts", gulp.series("typescript"));
 	gulp.watch("src/eduadmin.php", gulp.series("eduadmin-version"));
 	gulp.watch("src/readme.md", gulp.series("readme-version"));
 	gulp.watch(
@@ -91,7 +79,6 @@ gulp.task(
 	gulp.series(
 		"styles-frontend",
 		"styles-admin",
-		"typescript",
 		"readme-version",
 		"eduadmin-version"
 	)
@@ -101,7 +88,6 @@ gulp.task(
 	gulp.series(
 		"styles-frontend-nano",
 		"styles-admin-nano",
-		"typescript-nano",
 		"readme-version",
 		"eduadmin-version"
 	)
