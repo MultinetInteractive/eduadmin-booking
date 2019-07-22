@@ -1,6 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.6.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.0...v2.6.1) (2019-07-22)
+
+
+### Bug Fixes
+
+* 🐛 Fix for TypeScript type (timeout) ([22cc179](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/22cc179))
+* 🐛 Required fields are required, fixes [#268](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/268) ([9604c35](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9604c35))
+* 🐛 Reset required-state if not participant ([d5a4f7d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d5a4f7d))
+
+
 
 # [2.6.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.5.1...v2.6.0) (2019-06-28)
 
