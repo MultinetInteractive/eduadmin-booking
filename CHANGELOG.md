@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.1...v2.6.2) (2019-07-25)
+
+
+### Bug Fixes
+
+* 🐛 Multibyte-searches should work now. :( Fixes [#270](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/270) ([f05c0f1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f05c0f1))
+
+
+
 ### [2.6.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.0...v2.6.1) (2019-07-22)
 
 
