@@ -216,8 +216,8 @@ function edu_api_listview_eventlist() {
 				$descr = strip_tags( $object[ $descr_field ] );
 			}
 
-			$name_match  = false !== stripos( $name, sanitize_text_field( $_POST['search'] ) );
-			$descr_match = false !== stripos( $descr, sanitize_text_field( $_POST['search'] ) );
+			$name_match  = false !== mb_stripos( $name, sanitize_text_field( $_POST['search'] ) );
+			$descr_match = false !== mb_stripos( $descr, sanitize_text_field( $_POST['search'] ) );
 
 			return ( $name_match || $descr_match );
 		} );
@@ -253,7 +253,7 @@ function edu_api_listview_eventlist() {
 
 		$matching_regions = array_filter( $regions['value'], function( $region ) {
 			$name       = make_slugs( $region['RegionName'] );
-			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+			$name_match = mb_stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
 
 			return $name_match;
 		} );
@@ -504,7 +504,7 @@ function edu_api_eventlist() {
 
 		$matching_regions = array_filter( $regions['value'], function( $region ) {
 			$name       = make_slugs( $region['RegionName'] );
-			$name_match = stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
+			$name_match = mb_stripos( $name, sanitize_text_field( $_POST['edu-region'] ) ) !== false;
 
 			return $name_match;
 		} );

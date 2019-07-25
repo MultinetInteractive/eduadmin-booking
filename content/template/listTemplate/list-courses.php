@@ -60,8 +60,8 @@ if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 			$descr = strip_tags( $object[ $descr_field ] );
 		}
 
-		$name_match  = stripos( $name, sanitize_text_field( $_REQUEST['searchCourses'] ) ) !== false;
-		$descr_match = stripos( $descr, sanitize_text_field( $_REQUEST['searchCourses'] ) ) !== false;
+		$name_match  = mb_stripos( $name, sanitize_text_field( $_REQUEST['searchCourses'] ) ) !== false;
+		$descr_match = mb_stripos( $descr, sanitize_text_field( $_REQUEST['searchCourses'] ) ) !== false;
 
 		return ( $name_match || $descr_match );
 	} );
@@ -70,7 +70,7 @@ if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	$matching_regions = array_filter( $regions['value'], function( $region ) {
 		$name       = make_slugs( $region['RegionName'] );
-		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+		$name_match = mb_stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
 
 		return $name_match;
 	} );

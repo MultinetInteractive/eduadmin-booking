@@ -55,7 +55,7 @@ $regions = EDUAPIHelper()->GetRegions();
 if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	$matching_regions = array_filter( $regions['value'], function( $region ) {
 		$name       = make_slugs( $region['RegionName'] );
-		$name_match = stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
+		$name_match = mb_stripos( $name, sanitize_text_field( $_REQUEST['edu-region'] ) ) !== false;
 
 		return $name_match;
 	} );
