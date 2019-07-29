@@ -163,6 +163,7 @@ function eduadmin_settings_init() {
 
 	/* Profile page settings */
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-priceType' );
+	register_setting( 'eduadmin-profile', 'eduadmin-profile-showCompanyCertificates' );
 
 	/* Global settings */
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsLeft' );

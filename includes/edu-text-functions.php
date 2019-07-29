@@ -378,6 +378,10 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 		return '';
 	}
 
+	if ( null === $end_date ) {
+		$end_date = $start_date;
+	}
+
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 

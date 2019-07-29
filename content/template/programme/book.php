@@ -68,7 +68,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			<?php
 
 			if ( ! empty( $customer->BillingInfo ) ) {
-				$billing_customer = $customer->BillingInfo[0];
+				$billing_customer = $customer->BillingInfo;
 			} else {
 				$billing_customer = new EduAdmin_Data_BillingInfo();
 			}

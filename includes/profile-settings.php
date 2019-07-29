@@ -20,8 +20,17 @@ function edu_render_profile_settings_page() {
 					<option<?php echo( 'ExVat' === $selected_price_setting ? ' selected="selected"' : '' ); ?>
 						value="ExVat"><?php echo esc_html_x( 'VAT Excluded', 'backend', 'eduadmin-booking' ); ?></option>
 				</select>
-				<i>Select how you want the logged in users to view the prices in their list of orders/bookings.</i>
+				<i><?php _ex( 'Select how you want the logged in users to view the prices in their list of orders/bookings.', 'backend', 'eduadmin-booking' ); ?></i>
 				<br />
+
+				<h4><?php _ex( 'Certificates', 'backend', 'eduadmin-booking' ); ?></h4>
+				<label>
+					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates" name="eduadmin-profile-showCompanyCertificates"<?php if ( get_option( 'eduadmin-profile-showCompanyCertificates', false ) ) {
+						echo " checked=\"checked\"";
+					} ?> />
+					<?php _ex( 'Show certificates from all persons in the certificates page', 'backend', 'eduadmin-booking' ); ?>
+				</label>
+
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo _x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>

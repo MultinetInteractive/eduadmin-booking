@@ -4,7 +4,7 @@ $block_edit_if_logged_in = get_option( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 
 if ( ! empty( $customer->BillingInfo ) ) {
-	$billing_customer = $customer->BillingInfo[0];
+	$billing_customer = $customer->BillingInfo;
 } else {
 	$billing_customer = new EduAdmin_Data_BillingInfo();
 }
