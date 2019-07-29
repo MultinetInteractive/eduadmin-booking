@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.2...v2.7.0) (2019-07-29)
+
+
+### Features
+
+* 🎸 Setting for showing all certs in a company fixes [#259](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/259) ([64b05be](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/64b05be))
+
+
+
 ### [2.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.1...v2.6.2) (2019-07-25)
 
 

@@ -24,14 +24,14 @@
 					break;
 			}
 			?>
-			<label>
+			<label class="login-field">
 				<div class="loginLabel"><?php echo esc_html( $login_label ); ?></div>
 				<div class="loginInput">
 					<input type="<?php echo esc_attr( $field_type ); ?>" name="eduadminloginEmail"<?php echo( 'CivicRegistrationNumber' === $selected_login_field ? ' class="eduadmin-civicRegNo" onblur="eduBookingView.ValidateCivicRegNo();"' : '' ); ?>
 						required autocomplete="off" title="<?php echo esc_attr( sprintf( _x( 'Please enter your %s here', 'frontend', 'eduadmin-booking' ), $login_label ) ); ?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo esc_attr( ! empty( $_POST['eduadminloginEmail'] ) ? sanitize_text_field( $_POST['eduadminloginEmail'] ) : '' ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="login-field">
 				<div class="loginLabel"><?php echo esc_html_x( 'Password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="loginInput">
 					<input type="password" autocomplete="off" name="eduadminpassword" required title="<?php echo esc_attr_x( 'Please enter your password here', 'frontend', 'eduadmin-booking' ); ?>" placeholder="<?php echo esc_attr_x( 'Password', 'frontend', 'eduadmin-booking' ); ?>" />

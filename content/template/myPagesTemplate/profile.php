@@ -3,7 +3,8 @@
 $user             = EDU()->session['eduadmin-loginUser'];
 $contact          = $user->Contact;
 $customer         = $user->Customer;
-$invoice_customer = $user->Customer->BillingInfo[0];
+
+$invoice_customer = $user->Customer->BillingInfo;
 
 if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonce'], 'edu-save-profile' ) && 'saveInfo' === sanitize_text_field( $_POST['eduaction'] ) ) {
 	$patch_customer               = new stdClass();
