@@ -175,6 +175,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 							<?php echo esc_html_x( 'No free spots left on this event', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 					<?php endif; ?>
+					<div class="edu-modal warning" id="edu-warning-pricecheck"></div>
 					<div class="edu-modal warning" id="edu-warning-terms">
 						<?php echo esc_html_x( 'You must accept Terms and Conditions to continue.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
@@ -217,6 +218,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 			var currency = '<?php echo esc_js( get_option( 'eduadmin-currency', 'SEK' ) ); ?>';
 			var vatText = '<?php echo esc_js( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>';
 			var ShouldValidateCivRegNo = <?php echo esc_js( get_option( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
+
+			var eduTexts = {
+				validationError: '<?php echo esc_js( _x( 'Validation errors, please check your fields', 'backend', 'eduadmin-booking' ) ); ?>'
+			};
 
 			var edu_vat = {
 				inc: '<?php echo esc_js( _x( 'inc vat', 'frontend', 'eduadmin-booking' ) ); ?>',

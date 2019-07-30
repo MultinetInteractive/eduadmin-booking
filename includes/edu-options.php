@@ -202,9 +202,15 @@ function eduadmin_frontend_content() {
 	);
 	wp_enqueue_script( 'eduadmin_apiclient_script', false, array( 'jquery' ) );
 
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/js_strings.js' );
+	wp_register_script( 'eduadmin_jsstrings_script', plugins_url( 'content/scripts/frontend/js_strings.js', dirname( __FILE__ ) ), array( 'wp-i18n' ), date_version( $script_version ) );
+	wp_enqueue_script( 'eduadmin_jsstrings_script', false, array( 'wp-i18n' ) );
+
+	wp_set_script_translations( 'eduadmin_jsstrings_script', 'eduadmin-booking' );
+
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/frontendjs.js' );
-	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
-	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
+	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), array( 'eduadmin_jsstrings_script' ), date_version( $script_version ) );
+	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery', 'eduadmin_jsstrings_script' ) );
 	EDU()->stop_timer( $t );
 }
 

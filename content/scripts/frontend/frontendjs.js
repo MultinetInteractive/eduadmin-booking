@@ -266,41 +266,7 @@ var eduBookingView = {
                         url: "",
                         data: form,
                         success: function (data) {
-                            var d = JSON.parse(data);
-                            if (d.hasOwnProperty("TotalPriceExVat")) {
-                                if (d["TotalPriceExVat"] === 0 &&
-                                    d["TotalPriceIncVat"] === 0) {
-                                    jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                        " " +
-                                        window.currency);
-                                }
-                                else {
-                                    if (d["TotalPriceExVat"] ===
-                                        d["TotalPriceIncVat"]) {
-                                        jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.free);
-                                    }
-                                    else {
-                                        jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.ex +
-                                            " (" +
-                                            numberWithSeparator(d["TotalPriceIncVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.inc +
-                                            ")");
-                                    }
-                                }
-                            }
-                            if (d.hasOwnProperty("Message")) {
-                            }
+                            eduBookingView.SetPriceField(data);
                         }
                     });
                 }
@@ -320,41 +286,7 @@ var eduBookingView = {
                         url: "",
                         data: form,
                         success: function (data) {
-                            var d = JSON.parse(data);
-                            if (d.hasOwnProperty("TotalPriceExVat")) {
-                                if (d["TotalPriceExVat"] === 0 &&
-                                    d["TotalPriceIncVat"] === 0) {
-                                    jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                        " " +
-                                        window.currency);
-                                }
-                                else {
-                                    if (d["TotalPriceExVat"] ===
-                                        d["TotalPriceIncVat"]) {
-                                        jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.free);
-                                    }
-                                    else {
-                                        jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.ex +
-                                            " (" +
-                                            numberWithSeparator(d["TotalPriceIncVat"], " ") +
-                                            " " +
-                                            window.currency +
-                                            " " +
-                                            window.edu_vat.inc +
-                                            ")");
-                                    }
-                                }
-                            }
-                            if (d.hasOwnProperty("Message")) {
-                            }
+                            eduBookingView.SetPriceField(data);
                         }
                     });
                 }
@@ -426,6 +358,79 @@ var eduBookingView = {
             }
         }
         return true;
+    },
+    SetPriceField: function (data) {
+        var priceCheckError = jQuery('#edu-warning-pricecheck');
+        priceCheckError.hide();
+        var d = JSON.parse(data);
+        if (d.hasOwnProperty("TotalPriceExVat")) {
+            if (d["TotalPriceExVat"] === 0 &&
+                d["TotalPriceIncVat"] === 0) {
+                jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
+                    " " +
+                    window.currency);
+            }
+            else {
+                if (d["TotalPriceExVat"] ===
+                    d["TotalPriceIncVat"]) {
+                    jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
+                        " " +
+                        window.currency +
+                        " " +
+                        window.edu_vat.free);
+                }
+                else {
+                    jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
+                        " " +
+                        window.currency +
+                        " " +
+                        window.edu_vat.ex +
+                        " (" +
+                        numberWithSeparator(d["TotalPriceIncVat"], " ") +
+                        " " +
+                        window.currency +
+                        " " +
+                        window.edu_vat.inc +
+                        ")");
+                }
+            }
+        }
+        if (d.hasOwnProperty("Message")) {
+            var errorHeader = document.createElement('h3');
+            errorHeader.innerText = d["Message"];
+            priceCheckError.empty();
+            priceCheckError.append(errorHeader);
+            var listOfErrors = document.createElement('ul');
+            for (var _i = 0, _a = d["ErrorMessages"]; _i < _a.length; _i++) {
+                var error = _a[_i];
+                var _errorItem = document.createElement('li');
+                _errorItem.innerText = error;
+                listOfErrors.appendChild(_errorItem);
+            }
+            priceCheckError.append(listOfErrors);
+            priceCheckError.show();
+        }
+        var getUserFriendlyErrorMessage = function getUserFriendlyErrorMessage(statusCode, originalMessage) {
+            switch (statusCode) {
+                case 301: return edu_i18n_strings.ErrorMessages["301"];
+                default: return originalMessage;
+            }
+        };
+        if (d.hasOwnProperty("Errors")) {
+            var errorHeader = document.createElement('h3');
+            errorHeader.innerText = window.eduTexts.validationError;
+            priceCheckError.empty();
+            priceCheckError.append(errorHeader);
+            var listOfErrors = document.createElement('ul');
+            for (var _b = 0, _c = d["Errors"]; _b < _c.length; _b++) {
+                var error = _c[_b];
+                var _errorItem = document.createElement('li');
+                _errorItem.innerText = getUserFriendlyErrorMessage(error["ErrorCode"], error["ErrorText"]);
+                listOfErrors.appendChild(_errorItem);
+            }
+            priceCheckError.append(listOfErrors);
+            priceCheckError.show();
+        }
     }
 };
 function edu_openDatePopup(obj) {
