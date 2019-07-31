@@ -33,14 +33,10 @@ function edu_render_general_settings() {
 				$spotLeft = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 				?>
 				<select class="eduadmin-spotsLeft" name="eduadmin-spotsLeft" onchange="EduAdmin.SpotExampleText();">
-					<option<?php echo( $spotLeft === "exactNumbers" ? " selected=\"selected\"" : "" ); ?>
-						value="exactNumbers"><?php _ex( 'Exact numbers', 'backend', 'eduadmin-booking' ); ?></option>
-					<option<?php echo( $spotLeft === "onlyText" ? " selected=\"selected\"" : "" ); ?>
-						value="onlyText"><?php _ex( 'Only text (Spots left/ Few spots / No spots left)', 'backend', 'eduadmin-booking' ); ?></option>
-					<option<?php echo( $spotLeft === "intervals" ? " selected=\"selected\"" : "" ); ?>
-						value="intervals"><?php _ex( 'Interval (Please specify below)', 'backend', 'eduadmin-booking' ); ?></option>
-					<option<?php echo( $spotLeft === "alwaysFewSpots" ? " selected=\"selected\"" : "" ); ?>
-						value="alwaysFewSpots"><?php _ex( 'Always few spots', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "exactNumbers" ); ?> value="exactNumbers"><?php _ex( 'Exact numbers', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "onlyText" ); ?> value="onlyText"><?php _ex( 'Only text (Spots left/ Few spots / No spots left)', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "intervals" ); ?> value="intervals"><?php _ex( 'Interval (Please specify below)', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "alwaysFewSpots" ); ?> value="alwaysFewSpots"><?php _ex( 'Always few spots', 'backend', 'eduadmin-booking' ); ?></option>
 				</select> <span id="eduadmin-spotExampleText"></span>
 				<br />
 				<div class="eduadmin-spotsSettings">
@@ -100,7 +96,7 @@ function edu_render_general_settings() {
 									if ( stristr( $p->post_content, '[eduadmin-listview' ) ) {
 										$suggested = true;
 									}
-									echo "\t\t\t\t\t\t\t<option" . ( $listPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
+									echo "\t\t\t\t\t\t\t<option " . ( $listPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
 									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
 									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
 									     "</option>\n";

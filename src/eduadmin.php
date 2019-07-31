@@ -155,6 +155,14 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			echo '<xmp>' . ob_get_clean() . '</xmp>';
 		}
 
+		public function is_checked( $optionValue ) {
+			return ! empty( $optionValue );
+		}
+
+		public function is_selected( $optionValue, $currentValue ) {
+			return ! empty( $optionValue ) && $optionValue === $currentValue;
+		}
+
 		/**
 		 * Method that returns a unique transient-name based on input
 		 * @return string
