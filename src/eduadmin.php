@@ -144,7 +144,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			}
 
 			if ( $as_json ) {
-				echo '<xmp>' . json_encode( $object, JSON_PRETTY_PRINT ) . '</xmp>';
+				echo '<span style="white-space: pre;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
 
 				return;
 			}
@@ -152,14 +152,39 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			ob_start();
 			var_dump( $object );
 
-			echo '<xmp>' . ob_get_clean() . '</xmp>';
+			echo '<span style="white-space: pre;">' . ob_get_clean() . '</span>';
 		}
 
-		public function is_checked( $optionValue ) {
-			return ! empty( $optionValue );
+		/*
+		 * Checks if the current option is checked inside
+		 * @param string|bool|number|null $optionValue
+		 * @param bool|null $default
+		 * @return bool
+		 */
+		public function is_checked( $optionValue, $default = false ) {
+			if ( empty( $optionValue ) ) {
+				return $default;
+			}
+			if ( 'on' === $optionValue ) {
+				return true;
+			}
+			if ( true === $optionValue ) {
+				return true;
+			}
+			if ( 'true' === $optionValue ) {
+				return true;
+			}
+			if ( 1 === $optionValue ) {
+				return true;
+			}
+			if ( '1' === $optionValue ) {
+				return true;
+			}
+
+			return $default;
 		}
 
-		public function is_selected( $optionValue, $currentValue ) {
+		public function is_selected( $optionValue, $currentValue, $defaultValue ) {
 			return ! empty( $optionValue ) && $optionValue === $currentValue;
 		}
 
