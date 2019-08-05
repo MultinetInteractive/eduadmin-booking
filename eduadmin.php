@@ -165,10 +165,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$t           = $this->start_timer( __METHOD__ . '::' . $optionName );
 			$optionValue = get_option( $optionName, $default );
 
-			EDU()->write_debug( $optionName );
-			EDU()->write_debug( $optionValue );
-			EDU()->write_debug( $default );
-
 			if ( empty( $optionValue ) ) {
 				$this->stop_timer( $t );
 
