@@ -417,7 +417,7 @@ var eduBookingView: EduBookingView = {
                         type: "POST",
                         url: "",
                         data: form,
-                        success: function(data) {
+                        success: function (data) {
                             eduBookingView.SetPriceField(data)
                         }
                     });
@@ -436,7 +436,7 @@ var eduBookingView: EduBookingView = {
                         type: "POST",
                         url: "",
                         data: form,
-                        success: function(data) {
+                        success: function (data) {
                             eduBookingView.SetPriceField(data)
                         }
                     });
@@ -530,7 +530,7 @@ var eduBookingView: EduBookingView = {
         }
         return true;
     },
-    SetPriceField: function (data : string) {
+    SetPriceField: function (data: string) {
         let priceCheckError = jQuery('#edu-warning-pricecheck');
         priceCheckError.hide();
         let d = JSON.parse(data);
@@ -593,7 +593,7 @@ var eduBookingView: EduBookingView = {
             priceCheckError.append(errorHeader);
 
             let listOfErrors = document.createElement('ul');
-            for(let error of d["ErrorMessages"]) {
+            for (let error of d["ErrorMessages"]) {
                 let _errorItem = document.createElement('li');
                 _errorItem.innerText = error;
                 listOfErrors.appendChild(_errorItem);
@@ -605,10 +605,9 @@ var eduBookingView: EduBookingView = {
         }
 
         let getUserFriendlyErrorMessage = function getUserFriendlyErrorMessage(statusCode: number, originalMessage: string) {
-            switch(statusCode) {
-                case 301: return edu_i18n_strings.ErrorMessages["301"];
-                default: return originalMessage;
-            }
+            if ((edu_i18n_strings.ErrorMessages as any)[statusCode.toString()])
+                return (edu_i18n_strings.ErrorMessages as any)[statusCode.toString()];
+            return originalMessage;
         }
 
         if (d.hasOwnProperty("Errors")) {
@@ -618,7 +617,7 @@ var eduBookingView: EduBookingView = {
             priceCheckError.append(errorHeader);
 
             let listOfErrors = document.createElement('ul');
-            for(let error of d["Errors"]) {
+            for (let error of d["Errors"]) {
                 let _errorItem = document.createElement('li');
                 _errorItem.innerText = getUserFriendlyErrorMessage(error["ErrorCode"], error["ErrorText"]);
                 listOfErrors.appendChild(_errorItem);
