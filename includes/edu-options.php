@@ -170,6 +170,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-alwaysFewSpots' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-monthsToFetch' );
+	register_setting( 'eduadmin-rewrite', 'eduadmin-hideAllVatTexts' );
 
 	if ( is_admin() ) {
 		wp_enqueue_script( 'jquery' );

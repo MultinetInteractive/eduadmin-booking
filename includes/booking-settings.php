@@ -106,7 +106,7 @@ function edu_render_booking_settings_page() {
 							value="true" />
 						<?php echo esc_html_x( 'Block ability to edit login information if logged in', 'backend', 'eduadmin-booking' ); ?>
 					</label>
-					<br />				<?php
+					<br />                <?php
 				$allowCustomerToUpdate = get_option( 'eduadmin-allowCustomerUpdate', false );
 				?>
 					<label>
@@ -118,7 +118,7 @@ function edu_render_booking_settings_page() {
 				$allowDiscountCode = get_option( 'eduadmin-allowDiscountCode', false );
 				?>
 					<label>
-						<input type="checkbox" name="eduadmin-allowDiscountCode"<?php echo( $allowDiscountCode === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-allowDiscountCode"<?php checked( $allowDiscountCode, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Allow end customers to use discount codes', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -126,7 +126,7 @@ function edu_render_booking_settings_page() {
 				$useLimitedDiscount = get_option( 'eduadmin-useLimitedDiscount', false );
 				?>
 					<label>
-						<input type="checkbox" name="eduadmin-useLimitedDiscount"<?php echo( $useLimitedDiscount === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-useLimitedDiscount"<?php checked( $useLimitedDiscount, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Allow end customers to use discount cards', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -134,7 +134,7 @@ function edu_render_booking_settings_page() {
 				$validateCivicRegNo = get_option( 'eduadmin-validateCivicRegNo', false );
 				?>
 					<label>
-						<input type="checkbox" name="eduadmin-validateCivicRegNo"<?php echo( $validateCivicRegNo === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-validateCivicRegNo"<?php checked( $validateCivicRegNo, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Validate civic registration numbers (Swedish)', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -142,13 +142,13 @@ function edu_render_booking_settings_page() {
 				$fieldOrder = get_option( 'eduadmin-fieldOrder', 'contact_customer' );
 				?>
 					<label>
-						<input type="radio" name="eduadmin-fieldOrder"<?php echo( $fieldOrder === "contact_customer" ? " checked=\"checked\"" : "" ); ?>
+						<input type="radio" name="eduadmin-fieldOrder"<?php checked( $fieldOrder, "contact_customer" ); ?>
 							value="contact_customer" />
 						<?php echo esc_html_x( 'Contact, customer', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
 					<label>
-						<input type="radio" name="eduadmin-fieldOrder"<?php echo( $fieldOrder === "customer_contact" ? " checked=\"checked\"" : "" ); ?>
+						<input type="radio" name="eduadmin-fieldOrder"<?php checked( $fieldOrder, "customer_contact" ); ?>
 							value="customer_contact" />
 						<?php echo esc_html_x( 'Customer, contact', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -157,7 +157,7 @@ function edu_render_booking_settings_page() {
 				$hideSubEventDateTime = get_option( 'eduadmin-hideSubEventDateTime', false );
 				?>
 					<label>
-						<input type="checkbox" name="eduadmin-hideSubEventDateTime"<?php echo( $hideSubEventDateTime === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-hideSubEventDateTime"<?php checked( $hideSubEventDateTime, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Hide date and time information from sub events', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -167,34 +167,35 @@ function edu_render_booking_settings_page() {
 				$allowInterestRegEvent  = get_option( 'eduadmin-allowInterestRegEvent', false );
 				?>
 					<label>
-						<input type="checkbox" name="eduadmin-allowInterestRegObject"<?php echo( $allowInterestRegObject === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-allowInterestRegObject"<?php checked( $allowInterestRegObject, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Allow interest registration for course', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
 					<label>
-						<input type="checkbox" name="eduadmin-allowInterestRegEvent"<?php echo( $allowInterestRegEvent === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-allowInterestRegEvent"<?php checked( $allowInterestRegEvent, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Allow interest registration for event', 'backend', 'eduadmin-booking' ); ?>
 					</label>
-					<br />                    <h4><?php echo esc_html_x( 'Form settings', 'backend', 'eduadmin-booking' ); ?></h4>
+					<br />
+					<h4><?php echo esc_html_x( 'Form settings', 'backend', 'eduadmin-booking' ); ?></h4>
 					<button class="button" disabled onclick="showFormWindow(); return false;"><?php _ex( 'Show settings', 'backend', 'eduadmin-booking' ); ?></button>
 					<br />
 					<br />                <?php $noInvoiceFreeEvents = get_option( 'eduadmin-noInvoiceFreeEvents', false ); ?>
 					<label>
-						<input type="checkbox" name="eduadmin-noInvoiceFreeEvents"<?php echo( $noInvoiceFreeEvents === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-noInvoiceFreeEvents"<?php checked( $noInvoiceFreeEvents, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Hide invoice information if the event is free', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />                <?php $hideInvoiceEmailField = get_option( 'eduadmin-hideInvoiceEmailField', false ); ?>
 					<label>
-						<input type="checkbox" name="eduadmin-hideInvoiceEmailField"<?php echo( $hideInvoiceEmailField === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-hideInvoiceEmailField"<?php checked( $hideInvoiceEmailField, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Hide the invoice e-mail field', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />                <?php $forceShowInvoiceInformation = get_option( 'eduadmin-showInvoiceInformation', false ); ?>
 					<label>
-						<input type="checkbox" name="eduadmin-showInvoiceInformation"<?php echo( $forceShowInvoiceInformation === "true" ? " checked=\"checked\"" : "" ); ?>
+						<input type="checkbox" name="eduadmin-showInvoiceInformation"<?php checked( $forceShowInvoiceInformation, "true" ); ?>
 							value="true" />
 						<?php echo esc_html_x( 'Force show invoice information fields', 'backend', 'eduadmin-booking' ); ?>
 					</label>
@@ -202,675 +203,678 @@ function edu_render_booking_settings_page() {
 				$priceNameSetting = get_option( 'eduadmin-selectPricename', 'firstPublic' );
 				?>
 					<label>
-						<input type="radio" name="eduadmin-selectPricename"<?php echo( $priceNameSetting === "firstPublic" ? " checked=\"checked\"" : "" ); ?>
+						<input type="radio" name="eduadmin-selectPricename"<?php checked( $priceNameSetting, "firstPublic" ); ?>
 							value="firstPublic" />
 						<?php echo esc_html_x( 'EduAdmin chooses the appropriate price name for the event and participants', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
 					<label>
-						<input type="radio" name="eduadmin-selectPricename"<?php echo( $priceNameSetting === "selectWholeEvent" ? " checked=\"checked\"" : "" ); ?>
+						<input type="radio" name="eduadmin-selectPricename"<?php checked( $priceNameSetting, "selectWholeEvent" ); ?>
 							value="selectWholeEvent" />
 						<?php echo esc_html_x( 'Can choose between public price names', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
 					<label>
-						<input type="radio" name="eduadmin-selectPricename"<?php echo( $priceNameSetting === "selectParticipant" ? " checked=\"checked\"" : "" ); ?>
+						<input type="radio" name="eduadmin-selectPricename"<?php checked( $priceNameSetting, "selectParticipant" ); ?>
 							value="selectParticipant" />
 						<?php echo esc_html_x( 'Can choose per participant', 'backend', 'eduadmin-booking' ); ?>
 					</label>                <?php
 				$selected_match = get_option( 'eduadmin-customerMatching', 'use-match' );
-				?>                    <h3><?php echo esc_html_x( 'Customer matching', 'backend', 'eduadmin-booking' ); ?></h3>
+				?>
+					<h3><?php echo esc_html_x( 'Customer matching', 'backend', 'eduadmin-booking' ); ?></h3>
 					<select name="eduadmin-customerMatching">
-						<option<?php echo( 'use-match' === $selected_match ? " selected=\"selected\"" : "" ); ?>
-							value="use-match"><?php echo esc_html_x( 'Let EduAdmin match customers (Creates new if no match is found)', 'backend', 'eduadmin-booking' ); ?></option>
-						<option<?php echo( 'no-match' === $selected_match ? " selected=\"selected\"" : "" ); ?>
-							value="no-match"><?php echo esc_html_x( 'No matching (Creates new customers every time)', 'backend', 'eduadmin-booking' ); ?></option>
+						<option<?php selected( $selected_match, 'use-match' ); ?> value="use-match">
+							<?php echo esc_html_x( 'Let EduAdmin match customers (Creates new if no match is found)', 'backend', 'eduadmin-booking' ); ?>
+						</option>
+						<option<?php selected( $selected_match, 'no-match' ); ?> value="no-match">
+							<?php echo esc_html_x( 'No matching (Creates new customers every time)', 'backend', 'eduadmin-booking' ); ?>
+						</option>
 					</select>
 					<br />
 					<br />                <?php
 				$selectedCurrency = get_option( 'eduadmin-currency', 'SEK' );
 				?>                    <h3><?php echo esc_html_x( 'Currency', 'backend', 'eduadmin-booking' ); ?></h3>
 					<select name="eduadmin-currency">
-						<option value="AED"<?php echo( $selectedCurrency === "AED" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AED"<?php selected( $selectedCurrency, "AED" ); ?>>
 							AED
 							- United Arab Emirates, Dirhams
 						</option>
-						<option value="AFN"<?php echo( $selectedCurrency === "AFN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AFN"<?php selected( $selectedCurrency, "AFN" ); ?>>
 							AFN
 							- Afghanistan, Afghanis
 						</option>
-						<option value="ALL"<?php echo( $selectedCurrency === "ALL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ALL"<?php selected( $selectedCurrency, "ALL" ); ?>>
 							ALL
 							- Albania, Leke
 						</option>
-						<option value="AMD"<?php echo( $selectedCurrency === "AMD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AMD"<?php selected( $selectedCurrency, "AMD" ); ?>>
 							AMD
 							- Armenia, Drams
 						</option>
-						<option value="ANG"<?php echo( $selectedCurrency === "ANG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ANG"<?php selected( $selectedCurrency, "ANG" ); ?>>
 							ANG
 							- Netherlands Antilles, Guilders (also called Florins)
 						</option>
-						<option value="AOA"<?php echo( $selectedCurrency === "AOA" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AOA"<?php selected( $selectedCurrency, "AOA" ); ?>>
 							AOA
 							- Angola, Kwanza
 						</option>
-						<option value="ARS"<?php echo( $selectedCurrency === "ARS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ARS"<?php selected( $selectedCurrency, "ARS" ); ?>>
 							ARS
 							- Argentina, Pesos
 						</option>
-						<option value="AUD"<?php echo( $selectedCurrency === "AUD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AUD"<?php selected( $selectedCurrency, "AUD" ); ?>>
 							AUD
 							- Australia, Dollars
 						</option>
-						<option value="AWG"<?php echo( $selectedCurrency === "AWG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AWG"<?php selected( $selectedCurrency, "AWG" ); ?>>
 							AWG
 							- Aruba, Guilders (also called Florins)
 						</option>
-						<option value="AZN"<?php echo( $selectedCurrency === "AZN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="AZN"<?php selected( $selectedCurrency, "AZN" ); ?>>
 							AZN
 							- Azerbaijan, New Manats
 						</option>
-						<option value="BAM"<?php echo( $selectedCurrency === "BAM" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BAM"<?php selected( $selectedCurrency, "BAM" ); ?>>
 							BAM
 							- Bosnia and Herzegovina, Convertible Marka
 						</option>
-						<option value="BBD"<?php echo( $selectedCurrency === "BBD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BBD"<?php selected( $selectedCurrency, "BBD" ); ?>>
 							BBD
 							- Barbados, Dollars
 						</option>
-						<option value="BDT"<?php echo( $selectedCurrency === "BDT" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BDT"<?php selected( $selectedCurrency, "BDT" ); ?>>
 							BDT
 							- Bangladesh, Taka
 						</option>
-						<option value="BGN"<?php echo( $selectedCurrency === "BGN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BGN"<?php selected( $selectedCurrency, "BGN" ); ?>>
 							BGN
 							- Bulgaria, Leva
 						</option>
-						<option value="BHD"<?php echo( $selectedCurrency === "BHD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BHD"<?php selected( $selectedCurrency, "BHD" ); ?>>
 							BHD
 							- Bahrain, Dinars
 						</option>
-						<option value="BIF"<?php echo( $selectedCurrency === "BIF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BIF"<?php selected( $selectedCurrency, "BIF" ); ?>>
 							BIF
 							- Burundi, Francs
 						</option>
-						<option value="BMD"<?php echo( $selectedCurrency === "BMD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BMD"<?php selected( $selectedCurrency, "BMD" ); ?>>
 							BMD
 							- Bermuda, Dollars
 						</option>
-						<option value="BND"<?php echo( $selectedCurrency === "BND" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BND"<?php selected( $selectedCurrency, "BND" ); ?>>
 							BND
 							- Brunei Darussalam, Dollars
 						</option>
-						<option value="BOB"<?php echo( $selectedCurrency === "BOB" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BOB"<?php selected( $selectedCurrency, "BOB" ); ?>>
 							BOB
 							- Bolivia, Bolivianos
 						</option>
-						<option value="BRL"<?php echo( $selectedCurrency === "BRL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BRL"<?php selected( $selectedCurrency, "BRL" ); ?>>
 							BRL
 							- Brazil, Brazil Real
 						</option>
-						<option value="BSD"<?php echo( $selectedCurrency === "BSD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BSD"<?php selected( $selectedCurrency, "BSD" ); ?>>
 							BSD
 							- Bahamas, Dollars
 						</option>
-						<option value="BTN"<?php echo( $selectedCurrency === "BTN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BTN"<?php selected( $selectedCurrency, "BTN" ); ?>>
 							BTN
 							- Bhutan, Ngultrum
 						</option>
-						<option value="BWP"<?php echo( $selectedCurrency === "BWP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BWP"<?php selected( $selectedCurrency, "BWP" ); ?>>
 							BWP
 							- Botswana, Pulas
 						</option>
-						<option value="BYR"<?php echo( $selectedCurrency === "BYR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BYR"<?php selected( $selectedCurrency, "BYR" ); ?>>
 							BYR
 							- Belarus, Rubles
 						</option>
-						<option value="BZD"<?php echo( $selectedCurrency === "BZD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="BZD"<?php selected( $selectedCurrency, "BZD" ); ?>>
 							BZD
 							- Belize, Dollars
 						</option>
-						<option value="CAD"<?php echo( $selectedCurrency === "CAD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CAD"<?php selected( $selectedCurrency, "CAD" ); ?>>
 							CAD
 							- Canada, Dollars
 						</option>
-						<option value="CDF"<?php echo( $selectedCurrency === "CDF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CDF"<?php selected( $selectedCurrency, "CDF" ); ?>>
 							CDF
 							- Congo/Kinshasa, Congolese Francs
 						</option>
-						<option value="CHF"<?php echo( $selectedCurrency === "CHF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CHF"<?php selected( $selectedCurrency, "CHF" ); ?>>
 							CHF
 							- Switzerland, Francs
 						</option>
-						<option value="CLP"<?php echo( $selectedCurrency === "CLP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CLP"<?php selected( $selectedCurrency, "CLP" ); ?>>
 							CLP
 							- Chile, Pesos
 						</option>
-						<option value="CNY"<?php echo( $selectedCurrency === "CNY" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CNY"<?php selected( $selectedCurrency, "CNY" ); ?>>
 							CNY
 							- China, Yuan Renminbi
 						</option>
-						<option value="COP"<?php echo( $selectedCurrency === "COP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="COP"<?php selected( $selectedCurrency, "COP" ); ?>>
 							COP
 							- Colombia, Pesos
 						</option>
-						<option value="CRC"<?php echo( $selectedCurrency === "CRC" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CRC"<?php selected( $selectedCurrency, "CRC" ); ?>>
 							CRC
 							- Costa Rica, Colones
 						</option>
-						<option value="CUP"<?php echo( $selectedCurrency === "CUP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CUP"<?php selected( $selectedCurrency, "CUP" ); ?>>
 							CUP
 							- Cuba, Pesos
 						</option>
-						<option value="CVE"<?php echo( $selectedCurrency === "CVE" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CVE"<?php selected( $selectedCurrency, "CVE" ); ?>>
 							CVE
 							- Cape Verde, Escudos
 						</option>
-						<option value="CZK"<?php echo( $selectedCurrency === "CZK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="CZK"<?php selected( $selectedCurrency, "CZK" ); ?>>
 							CZK
 							- Czech Republic, Koruny
 						</option>
-						<option value="DJF"<?php echo( $selectedCurrency === "DJF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="DJF"<?php selected( $selectedCurrency, "DJF" ); ?>>
 							DJF
 							- Djibouti, Francs
 						</option>
-						<option value="DKK"<?php echo( $selectedCurrency === "DKK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="DKK"<?php selected( $selectedCurrency, "DKK" ); ?>>
 							DKK
 							- Denmark, Kroner
 						</option>
-						<option value="DOP"<?php echo( $selectedCurrency === "DOP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="DOP"<?php selected( $selectedCurrency, "DOP" ); ?>>
 							DOP
 							- Dominican Republic, Pesos
 						</option>
-						<option value="DZD"<?php echo( $selectedCurrency === "DZD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="DZD"<?php selected( $selectedCurrency, "DZD" ); ?>>
 							DZD
 							- Algeria, Algeria Dinars
 						</option>
-						<option value="EGP"<?php echo( $selectedCurrency === "EGP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="EGP"<?php selected( $selectedCurrency, "EGP" ); ?>>
 							EGP
 							- Egypt, Pounds
 						</option>
-						<option value="ERN"<?php echo( $selectedCurrency === "ERN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ERN"<?php selected( $selectedCurrency, "ERN" ); ?>>
 							ERN
 							- Eritrea, Nakfa
 						</option>
-						<option value="ETB"<?php echo( $selectedCurrency === "ETB" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ETB"<?php selected( $selectedCurrency, "ETB" ); ?>>
 							ETB
 							- Ethiopia, Birr
 						</option>
-						<option value="EUR"<?php echo( $selectedCurrency === "EUR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="EUR"<?php selected( $selectedCurrency, "EUR" ); ?>>
 							EUR
 							- Euro Member Countries, Euro
 						</option>
-						<option value="FJD"<?php echo( $selectedCurrency === "FJD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="FJD"<?php selected( $selectedCurrency, "FJD" ); ?>>
 							FJD
 							- Fiji, Dollars
 						</option>
-						<option value="FKP"<?php echo( $selectedCurrency === "FKP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="FKP"<?php selected( $selectedCurrency, "FKP" ); ?>>
 							FKP
 							- Falkland Islands (Malvinas), Pounds
 						</option>
-						<option value="GBP"<?php echo( $selectedCurrency === "GBP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GBP"<?php selected( $selectedCurrency, "GBP" ); ?>>
 							GBP
 							- United Kingdom, Pounds
 						</option>
-						<option value="GEL"<?php echo( $selectedCurrency === "GEL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GEL"<?php selected( $selectedCurrency, "GEL" ); ?>>
 							GEL
 							- Georgia, Lari
 						</option>
-						<option value="GHS"<?php echo( $selectedCurrency === "GHS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GHS"<?php selected( $selectedCurrency, "GHS" ); ?>>
 							GHS
 							- Ghana, Cedis
 						</option>
-						<option value="GIP"<?php echo( $selectedCurrency === "GIP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GIP"<?php selected( $selectedCurrency, "GIP" ); ?>>
 							GIP
 							- Gibraltar, Pounds
 						</option>
-						<option value="GMD"<?php echo( $selectedCurrency === "GMD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GMD"<?php selected( $selectedCurrency, "GMD" ); ?>>
 							GMD
 							- Gambia, Dalasi
 						</option>
-						<option value="GNF"<?php echo( $selectedCurrency === "GNF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GNF"<?php selected( $selectedCurrency, "GNF" ); ?>>
 							GNF
 							- Guinea, Francs
 						</option>
-						<option value="GTQ"<?php echo( $selectedCurrency === "GTQ" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GTQ"<?php selected( $selectedCurrency, "GTQ" ); ?>>
 							GTQ
 							- Guatemala, Quetzales
 						</option>
-						<option value="GYD"<?php echo( $selectedCurrency === "GYD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="GYD"<?php selected( $selectedCurrency, "GYD" ); ?>>
 							GYD
 							- Guyana, Dollars
 						</option>
-						<option value="HKD"<?php echo( $selectedCurrency === "HKD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="HKD"<?php selected( $selectedCurrency, "HKD" ); ?>>
 							HKD
 							- Hong Kong, Dollars
 						</option>
-						<option value="HNL"<?php echo( $selectedCurrency === "HNL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="HNL"<?php selected( $selectedCurrency, "HNL" ); ?>>
 							HNL
 							- Honduras, Lempiras
 						</option>
-						<option value="HRK"<?php echo( $selectedCurrency === "HRK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="HRK"<?php selected( $selectedCurrency, "HRK" ); ?>>
 							HRK
 							- Croatia, Kuna
 						</option>
-						<option value="HTG"<?php echo( $selectedCurrency === "HTG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="HTG"<?php selected( $selectedCurrency, "HTG" ); ?>>
 							HTG
 							- Haiti, Gourdes
 						</option>
-						<option value="HUF"<?php echo( $selectedCurrency === "HUF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="HUF"<?php selected( $selectedCurrency, "HUF" ); ?>>
 							HUF
 							- Hungary, Forint
 						</option>
-						<option value="IDR"<?php echo( $selectedCurrency === "IDR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="IDR"<?php selected( $selectedCurrency, "IDR" ); ?>>
 							IDR
 							- Indonesia, Rupiahs
 						</option>
-						<option value="ILS"<?php echo( $selectedCurrency === "ILS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ILS"<?php selected( $selectedCurrency, "ILS" ); ?>>
 							ILS
 							- Israel, New Shekels
 						</option>
-						<option value="INR"<?php echo( $selectedCurrency === "INR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="INR"<?php selected( $selectedCurrency, "INR" ); ?>>
 							INR
 							- India, Rupees
 						</option>
-						<option value="IQD"<?php echo( $selectedCurrency === "IQD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="IQD"<?php selected( $selectedCurrency, "IQD" ); ?>>
 							IQD
 							- Iraq, Dinars
 						</option>
-						<option value="IRR"<?php echo( $selectedCurrency === "IRR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="IRR"<?php selected( $selectedCurrency, "IRR" ); ?>>
 							IRR
 							- Iran, Rials
 						</option>
-						<option value="ISK"<?php echo( $selectedCurrency === "ISK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ISK"<?php selected( $selectedCurrency, "ISK" ); ?>>
 							ISK
 							- Iceland, Kronur
 						</option>
-						<option value="JMD"<?php echo( $selectedCurrency === "JMD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="JMD"<?php selected( $selectedCurrency, "JMD" ); ?>>
 							JMD
 							- Jamaica, Dollars
 						</option>
-						<option value="JOD"<?php echo( $selectedCurrency === "JOD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="JOD"<?php selected( $selectedCurrency, "JOD" ); ?>>
 							JOD
 							- Jordan, Dinars
 						</option>
-						<option value="JPY"<?php echo( $selectedCurrency === "JPY" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="JPY"<?php selected( $selectedCurrency, "JPY" ); ?>>
 							JPY
 							- Japan, Yen
 						</option>
-						<option value="KES"<?php echo( $selectedCurrency === "KES" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KES"<?php selected( $selectedCurrency, "KES" ); ?>>
 							KES
 							- Kenya, Shillings
 						</option>
-						<option value="KGS"<?php echo( $selectedCurrency === "KGS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KGS"<?php selected( $selectedCurrency, "KGS" ); ?>>
 							KGS
 							- Kyrgyzstan, Soms
 						</option>
-						<option value="KHR"<?php echo( $selectedCurrency === "KHR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KHR"<?php selected( $selectedCurrency, "KHR" ); ?>>
 							KHR
 							- Cambodia, Riels
 						</option>
-						<option value="KMF"<?php echo( $selectedCurrency === "KMF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KMF"<?php selected( $selectedCurrency, "KMF" ); ?>>
 							KMF
 							- Comoros, Francs
 						</option>
-						<option value="KPW"<?php echo( $selectedCurrency === "KPW" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KPW"<?php selected( $selectedCurrency, "KPW" ); ?>>
 							KPW
 							- Korea (North), Won
 						</option>
-						<option value="KRW"<?php echo( $selectedCurrency === "KRW" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KRW"<?php selected( $selectedCurrency, "KRW" ); ?>>
 							KRW
 							- Korea (South), Won
 						</option>
-						<option value="KWD"<?php echo( $selectedCurrency === "KWD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KWD"<?php selected( $selectedCurrency, "KWD" ); ?>>
 							KWD
 							- Kuwait, Dinars
 						</option>
-						<option value="KYD"<?php echo( $selectedCurrency === "KYD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KYD"<?php selected( $selectedCurrency, "KYD" ); ?>>
 							KYD
 							- Cayman Islands, Dollars
 						</option>
-						<option value="KZT"<?php echo( $selectedCurrency === "KZT" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="KZT"<?php selected( $selectedCurrency, "KZT" ); ?>>
 							KZT
 							- Kazakhstan, Tenge
 						</option>
-						<option value="LAK"<?php echo( $selectedCurrency === "LAK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LAK"<?php selected( $selectedCurrency, "LAK" ); ?>>
 							LAK
 							- Laos, Kips
 						</option>
-						<option value="LBP"<?php echo( $selectedCurrency === "LBP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LBP"<?php selected( $selectedCurrency, "LBP" ); ?>>
 							LBP
 							- Lebanon, Pounds
 						</option>
-						<option value="LKR"<?php echo( $selectedCurrency === "LKR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LKR"<?php selected( $selectedCurrency, "LKR" ); ?>>
 							LKR
 							- Sri Lanka, Rupees
 						</option>
-						<option value="LRD"<?php echo( $selectedCurrency === "LRD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LRD"<?php selected( $selectedCurrency, "LRD" ); ?>>
 							LRD
 							- Liberia, Dollars
 						</option>
-						<option value="LSL"<?php echo( $selectedCurrency === "LSL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LSL"<?php selected( $selectedCurrency, "LSL" ); ?>>
 							LSL
 							- Lesotho, Maloti
 						</option>
-						<option value="LYD"<?php echo( $selectedCurrency === "LYD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="LYD"<?php selected( $selectedCurrency, "LYD" ); ?>>
 							LYD
 							- Libya, Dinars
 						</option>
-						<option value="MAD"<?php echo( $selectedCurrency === "MAD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MAD"<?php selected( $selectedCurrency, "MAD" ); ?>>
 							MAD
 							- Morocco, Dirhams
 						</option>
-						<option value="MDL"<?php echo( $selectedCurrency === "MDL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MDL"<?php selected( $selectedCurrency, "MDL" ); ?>>
 							MDL
 							- Moldova, Lei
 						</option>
-						<option value="MGA"<?php echo( $selectedCurrency === "MGA" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MGA"<?php selected( $selectedCurrency, "MGA" ); ?>>
 							MGA
 							- Madagascar, Ariary
 						</option>
-						<option value="MKD"<?php echo( $selectedCurrency === "MKD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MKD"<?php selected( $selectedCurrency, "MKD" ); ?>>
 							MKD
 							- Macedonia, Denars
 						</option>
-						<option value="MMK"<?php echo( $selectedCurrency === "MMK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MMK"<?php selected( $selectedCurrency, "MMK" ); ?>>
 							MMK
 							- Myanmar (Burma), Kyats
 						</option>
-						<option value="MNT"<?php echo( $selectedCurrency === "MNT" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MNT"<?php selected( $selectedCurrency, "MNT" ); ?>>
 							MNT
 							- Mongolia, Tugriks
 						</option>
-						<option value="MOP"<?php echo( $selectedCurrency === "MOP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MOP"<?php selected( $selectedCurrency, "MOP" ); ?>>
 							MOP
 							- Macau, Patacas
 						</option>
-						<option value="MRO"<?php echo( $selectedCurrency === "MRO" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MRO"<?php selected( $selectedCurrency, "MRO" ); ?>>
 							MRO
 							- Mauritania, Ouguiyas
 						</option>
-						<option value="MUR"<?php echo( $selectedCurrency === "MUR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MUR"<?php selected( $selectedCurrency, "MUR" ); ?>>
 							MUR
 							- Mauritius, Rupees
 						</option>
-						<option value="MWK"<?php echo( $selectedCurrency === "MWK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MWK"<?php selected( $selectedCurrency, "MWK" ); ?>>
 							MWK
 							- Malawi, Kwachas
 						</option>
-						<option value="MVR"<?php echo( $selectedCurrency === "MVR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MVR"<?php selected( $selectedCurrency, "MVR" ); ?>>
 							MVR
 							- Maldives (Maldive Islands), Rufiyaa
 						</option>
-						<option value="MXN"<?php echo( $selectedCurrency === "MXN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MXN"<?php selected( $selectedCurrency, "MXN" ); ?>>
 							MXN
 							- Mexico, Pesos
 						</option>
-						<option value="MYR"<?php echo( $selectedCurrency === "MYR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MYR"<?php selected( $selectedCurrency, "MYR" ); ?>>
 							MYR
 							- Malaysia, Ringgits
 						</option>
-						<option value="MZN"<?php echo( $selectedCurrency === "MZN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="MZN"<?php selected( $selectedCurrency, "MZN" ); ?>>
 							MZN
 							- Mozambique, Meticais
 						</option>
-						<option value="NAD"<?php echo( $selectedCurrency === "NAD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NAD"<?php selected( $selectedCurrency, "NAD" ); ?>>
 							NAD
 							- Namibia, Dollars
 						</option>
-						<option value="NGN"<?php echo( $selectedCurrency === "NGN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NGN"<?php selected( $selectedCurrency, "NGN" ); ?>>
 							NGN
 							- Nigeria, Nairas
 						</option>
-						<option value="NIO"<?php echo( $selectedCurrency === "NIO" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NIO"<?php selected( $selectedCurrency, "NIO" ); ?>>
 							NIO
 							- Nicaragua, Cordobas
 						</option>
-						<option value="NOK"<?php echo( $selectedCurrency === "NOK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NOK"<?php selected( $selectedCurrency, "NOK" ); ?>>
 							NOK
 							- Norway, Krone
 						</option>
-						<option value="NPR"<?php echo( $selectedCurrency === "NPR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NPR"<?php selected( $selectedCurrency, "NPR" ); ?>>
 							NPR
 							- Nepal, Nepal Rupees
 						</option>
-						<option value="NZD"<?php echo( $selectedCurrency === "NZD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="NZD"<?php selected( $selectedCurrency, "NZD" ); ?>>
 							NZD
 							- New Zealand, Dollars
 						</option>
-						<option value="OMR"<?php echo( $selectedCurrency === "OMR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="OMR"<?php selected( $selectedCurrency, "OMR" ); ?>>
 							OMR
 							- Oman, Rials
 						</option>
-						<option value="PAB"<?php echo( $selectedCurrency === "PAB" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PAB"<?php selected( $selectedCurrency, "PAB" ); ?>>
 							PAB
 							- Panama, Balboa
 						</option>
-						<option value="PEN"<?php echo( $selectedCurrency === "PEN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PEN"<?php selected( $selectedCurrency, "PEN" ); ?>>
 							PEN
 							- Peru, Nuevos Soles
 						</option>
-						<option value="PGK"<?php echo( $selectedCurrency === "PGK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PGK"<?php selected( $selectedCurrency, "PGK" ); ?>>
 							PGK
 							- Papua New Guinea, Kina
 						</option>
-						<option value="PHP"<?php echo( $selectedCurrency === "PHP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PHP"<?php selected( $selectedCurrency, "PHP" ); ?>>
 							PHP
 							- Philippines, Pesos
 						</option>
-						<option value="PKR"<?php echo( $selectedCurrency === "PKR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PKR"<?php selected( $selectedCurrency, "PKR" ); ?>>
 							PKR
 							- Pakistan, Rupees
 						</option>
-						<option value="PLN"<?php echo( $selectedCurrency === "PLN" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PLN"<?php selected( $selectedCurrency, "PLN" ); ?>>
 							PLN
 							- Poland, Zlotych
 						</option>
-						<option value="PYG"<?php echo( $selectedCurrency === "PYG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="PYG"<?php selected( $selectedCurrency, "PYG" ); ?>>
 							PYG
 							- Paraguay, Guarani
 						</option>
-						<option value="QAR"<?php echo( $selectedCurrency === "QAR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="QAR"<?php selected( $selectedCurrency, "QAR" ); ?>>
 							QAR
 							- Qatar, Rials
 						</option>
-						<option value="RON"<?php echo( $selectedCurrency === "RON" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="RON"<?php selected( $selectedCurrency, "RON" ); ?>>
 							RON
 							- Romania, New Lei
 						</option>
-						<option value="RSD"<?php echo( $selectedCurrency === "RSD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="RSD"<?php selected( $selectedCurrency, "RSD" ); ?>>
 							RSD
 							- Serbia, Dinars
 						</option>
-						<option value="RUB"<?php echo( $selectedCurrency === "RUB" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="RUB"<?php selected( $selectedCurrency, "RUB" ); ?>>
 							RUB
 							- Russia, Rubles
 						</option>
-						<option value="RWF"<?php echo( $selectedCurrency === "RWF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="RWF"<?php selected( $selectedCurrency, "RWF" ); ?>>
 							RWF
 							- Rwanda, Rwanda Francs
 						</option>
-						<option value="SAR"<?php echo( $selectedCurrency === "SAR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SAR"<?php selected( $selectedCurrency, "SAR" ); ?>>
 							SAR
 							- Saudi Arabia, Riyals
 						</option>
-						<option value="SBD"<?php echo( $selectedCurrency === "SBD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SBD"<?php selected( $selectedCurrency, "SBD" ); ?>>
 							SBD
 							- Solomon Islands, Dollars
 						</option>
-						<option value="SCR"<?php echo( $selectedCurrency === "SCR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SCR"<?php selected( $selectedCurrency, "SCR" ); ?>>
 							SCR
 							- Seychelles, Rupees
 						</option>
-						<option value="SDG"<?php echo( $selectedCurrency === "SDG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SDG"<?php selected( $selectedCurrency, "SDG" ); ?>>
 							SDG
 							- Sudan, Pounds
 						</option>
-						<option value="SEK"<?php echo( $selectedCurrency === "SEK" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SEK"<?php selected( $selectedCurrency, "SEK" ); ?>>
 							SEK
 							- Sweden, Kronor
 						</option>
-						<option value="SGD"<?php echo( $selectedCurrency === "SGD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SGD"<?php selected( $selectedCurrency, "SGD" ); ?>>
 							SGD
 							- Singapore, Dollars
 						</option>
-						<option value="SHP"<?php echo( $selectedCurrency === "SHP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SHP"<?php selected( $selectedCurrency, "SHP" ); ?>>
 							SHP
 							- Saint Helena, Pounds
 						</option>
-						<option value="SLL"<?php echo( $selectedCurrency === "SLL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SLL"<?php selected( $selectedCurrency, "SLL" ); ?>>
 							SLL
 							- Sierra Leone, Leones
 						</option>
-						<option value="SOS"<?php echo( $selectedCurrency === "SOS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SOS"<?php selected( $selectedCurrency, "SOS" ); ?>>
 							SOS
 							- Somalia, Shillings
 						</option>
-						<option value="SRD"<?php echo( $selectedCurrency === "SRD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SRD"<?php selected( $selectedCurrency, "SRD" ); ?>>
 							SRD
 							- Suriname, Dollars
 						</option>
-						<option value="STD"<?php echo( $selectedCurrency === "STD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="STD"<?php selected( $selectedCurrency, "STD" ); ?>>
 							STD
 							- São Tome and Principe, Dobras
 						</option>
-						<option value="SYP"<?php echo( $selectedCurrency === "SYP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SYP"<?php selected( $selectedCurrency, "SYP" ); ?>>
 							SYP
 							- Syria, Pounds
 						</option>
-						<option value="SZL"<?php echo( $selectedCurrency === "SZL" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="SZL"<?php selected( $selectedCurrency, "SZL" ); ?>>
 							SZL
 							- Swaziland, Emalangeni
 						</option>
-						<option value="THB"<?php echo( $selectedCurrency === "THB" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="THB"<?php selected( $selectedCurrency, "THB" ); ?>>
 							THB
 							- Thailand, Baht
 						</option>
-						<option value="TJS"<?php echo( $selectedCurrency === "TJS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TJS"<?php selected( $selectedCurrency, "TJS" ); ?>>
 							TJS
 							- Tajikistan, Somoni
 						</option>
-						<option value="TMT"<?php echo( $selectedCurrency === "TMT" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TMT"<?php selected( $selectedCurrency, "TMT" ); ?>>
 							TMT
 							- Turkmenistan, New Manats
 						</option>
-						<option value="TND"<?php echo( $selectedCurrency === "TND" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TND"<?php selected( $selectedCurrency, "TND" ); ?>>
 							TND
 							- Tunisia, Dinars
 						</option>
-						<option value="TOP"<?php echo( $selectedCurrency === "TOP" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TOP"<?php selected( $selectedCurrency, "TOP" ); ?>>
 							TOP
 							- Tonga, Pa'anga
 						</option>
-						<option value="TRY"<?php echo( $selectedCurrency === "TRY" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TRY"<?php selected( $selectedCurrency, "TRY" ); ?>>
 							TRY
 							- Turkey, New Lira
 						</option>
-						<option value="TTD"<?php echo( $selectedCurrency === "TTD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TTD"<?php selected( $selectedCurrency, "TTD" ); ?>>
 							TTD
 							- Trinidad and Tobago, Dollars
 						</option>
-						<option value="TWD"<?php echo( $selectedCurrency === "TWD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TWD"<?php selected( $selectedCurrency, "TWD" ); ?>>
 							TWD
 							- Taiwan, New Dollars
 						</option>
-						<option value="TZS"<?php echo( $selectedCurrency === "TZS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="TZS"<?php selected( $selectedCurrency, "TZS" ); ?>>
 							TZS
 							- Tanzania, Shillings
 						</option>
-						<option value="UAH"<?php echo( $selectedCurrency === "UAH" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="UAH"<?php selected( $selectedCurrency, "UAH" ); ?>>
 							UAH
 							- Ukraine, Hryvnia
 						</option>
-						<option value="UGX"<?php echo( $selectedCurrency === "UGX" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="UGX"<?php selected( $selectedCurrency, "UGX" ); ?>>
 							UGX
 							- Uganda, Shillings
 						</option>
-						<option value="USD"<?php echo( $selectedCurrency === "USD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="USD"<?php selected( $selectedCurrency, "USD" ); ?>>
 							USD
 							- United States of America, Dollars
 						</option>
-						<option value="UYU"<?php echo( $selectedCurrency === "UYU" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="UYU"<?php selected( $selectedCurrency, "UYU" ); ?>>
 							UYU
 							- Uruguay, Pesos
 						</option>
-						<option value="UZS"<?php echo( $selectedCurrency === "UZS" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="UZS"<?php selected( $selectedCurrency, "UZS" ); ?>>
 							UZS
 							- Uzbekistan, Sums
 						</option>
-						<option value="VEF"<?php echo( $selectedCurrency === "VEF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="VEF"<?php selected( $selectedCurrency, "VEF" ); ?>>
 							VEF
 							- Venezuela, Bolivares Fuertes
 						</option>
-						<option value="VND"<?php echo( $selectedCurrency === "VND" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="VND"<?php selected( $selectedCurrency, "VND" ); ?>>
 							VND
 							- Viet Nam, Dong
 						</option>
-						<option value="WST"<?php echo( $selectedCurrency === "WST" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="WST"<?php selected( $selectedCurrency, "WST" ); ?>>
 							WST
 							- Samoa, Tala
 						</option>
-						<option value="VUV"<?php echo( $selectedCurrency === "VUV" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="VUV"<?php selected( $selectedCurrency, "VUV" ); ?>>
 							VUV
 							- Vanuatu, Vatu
 						</option>
-						<option value="XAF"<?php echo( $selectedCurrency === "XAF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XAF"<?php selected( $selectedCurrency, "XAF" ); ?>>
 							XAF
 							- Communauté Financière Africaine BEAC, Francs
 						</option>
-						<option value="XAG"<?php echo( $selectedCurrency === "XAG" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XAG"<?php selected( $selectedCurrency, "XAG" ); ?>>
 							XAG
 							- Silver, Ounces
 						</option>
-						<option value="XAU"<?php echo( $selectedCurrency === "XAU" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XAU"<?php selected( $selectedCurrency, "XAU" ); ?>>
 							XAU
 							- Gold, Ounces
 						</option>
-						<option value="XCD"<?php echo( $selectedCurrency === "XCD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XCD"<?php selected( $selectedCurrency, "XCD" ); ?>>
 							XCD
 							- East Caribbean Dollars
 						</option>
-						<option value="XDR"<?php echo( $selectedCurrency === "XDR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XDR"<?php selected( $selectedCurrency, "XDR" ); ?>>
 							XDR
 							- International Monetary Fund (IMF) Special Drawing Rights
 						</option>
-						<option value="XOF"<?php echo( $selectedCurrency === "XOF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XOF"<?php selected( $selectedCurrency, "XOF" ); ?>>
 							XOF
 							- Communauté Financière Africaine BCEAO, Francs
 						</option>
-						<option value="XPD"<?php echo( $selectedCurrency === "XPD" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XPD"<?php selected( $selectedCurrency, "XPD" ); ?>>
 							XPD
 							- Palladium Ounces
 						</option>
-						<option value="XPF"<?php echo( $selectedCurrency === "XPF" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XPF"<?php selected( $selectedCurrency, "XPF" ); ?>>
 							XPF
 							- Comptoirs Français du Pacifique Francs
 						</option>
-						<option value="XPT"<?php echo( $selectedCurrency === "XPT" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="XPT"<?php selected( $selectedCurrency, "XPT" ); ?>>
 							XPT
 							- Platinum, Ounces
 						</option>
-						<option value="YER"<?php echo( $selectedCurrency === "YER" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="YER"<?php selected( $selectedCurrency, "YER" ); ?>>
 							YER
 							- Yemen, Rials
 						</option>
-						<option value="ZAR"<?php echo( $selectedCurrency === "ZAR" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ZAR"<?php selected( $selectedCurrency, "ZAR" ); ?>>
 							ZAR
 							- South Africa, Rand
 						</option>
-						<option value="ZMW"<?php echo( $selectedCurrency === "ZMW" ? " selected=\"selected\"" : "" ); ?>>
+						<option value="ZMW"<?php selected( $selectedCurrency, "ZMW" ); ?>>
 							ZMW
 							- Zambia, Kwacha
 						</option>
-					</select>                    <h3><?php echo esc_html_x( 'Booking terms', 'backend', 'eduadmin-booking' ); ?></h3>
+					</select>
+					<h3><?php echo esc_html_x( 'Booking terms', 'backend', 'eduadmin-booking' ); ?></h3>
 					<h4><?php echo esc_html_x( 'Booking terms link', 'backend', 'eduadmin-booking' ); ?></h4>
 					<input type="url" class="form-control" style="width: 100%;" name="eduadmin-bookingTermsLink" placeholder="<?php _ex( 'Booking terms link', 'backend', 'eduadmin-booking' ); ?>" value="<?php echo get_option( 'eduadmin-bookingTermsLink' ); ?>" />
 					<br />
 					<label>
-						<input type="checkbox" name="eduadmin-useBookingTermsCheckbox" value="true"<?php if ( get_option( 'eduadmin-useBookingTermsCheckbox', false ) ) {
-							echo " checked=\"checked\"";
-						} ?> /> <?php echo esc_html_x( 'Use booking terms', 'backend', 'eduadmin-booking' ); ?>
+						<input type="checkbox" name="eduadmin-useBookingTermsCheckbox" value="true"<?php checked( get_option( 'eduadmin-useBookingTermsCheckbox', false ), "true" ); ?> />
+						<?php echo esc_html_x( 'Use booking terms', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<h3><?php echo esc_html_x( 'Javascript to run when a booking is completed', 'backend', 'eduadmin-booking' ); ?></h3>
 					<i><?php echo esc_html_x( 'You do not need to include &lt;script&gt;-tags', 'backend', 'eduadmin-booking' ); ?></i>
