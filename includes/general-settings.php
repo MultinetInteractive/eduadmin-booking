@@ -60,6 +60,14 @@ function edu_render_general_settings() {
 				<br />
 				<input type="number" name="eduadmin-monthsToFetch" value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
 				<br />
+				<br />
+				<?php echo esc_html_x( 'VAT text options', 'backend', 'eduadmin-booking' ); ?>
+				<br />
+				<label>
+					<input type="checkbox" name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
+					<?php echo esc_html_x( 'Show VAT texts on prices', 'backend', 'eduadmin-booking' ); ?>
+				</label>
+				<br />
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>

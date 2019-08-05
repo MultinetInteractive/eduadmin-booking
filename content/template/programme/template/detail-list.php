@@ -3,7 +3,10 @@ $grouped_programmes = array();
 
 $currency = get_option( 'eduadmin-currency', 'SEK' );
 
-$vat_text = ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) );
+$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
+EDU()->write_debug( $show_vat );
+
+$vat_text = $show_vat ? ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) : '';
 
 foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 	$key = date( 'Y-m', strtotime( $programme_start['StartDate'] ) );
