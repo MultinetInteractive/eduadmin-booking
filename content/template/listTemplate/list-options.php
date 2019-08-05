@@ -1,9 +1,9 @@
 <?php
-$allow_region_search   = get_option( 'eduadmin-allowRegionSearch', false );
-$allow_location_search = get_option( 'eduadmin-allowLocationSearch', true );
-$allow_subject_search  = get_option( 'eduadmin-allowSubjectSearch', false );
-$allow_category_search = get_option( 'eduadmin-allowCategorySearch', false );
-$allow_level_search    = get_option( 'eduadmin-allowLevelSearch', false );
+$allow_region_search   = EDU()->is_checked( 'eduadmin-allowRegionSearch', false );
+$allow_location_search = EDU()->is_checked( 'eduadmin-allowLocationSearch', true );
+$allow_subject_search  = EDU()->is_checked( 'eduadmin-allowSubjectSearch', false );
+$allow_category_search = EDU()->is_checked( 'eduadmin-allowCategorySearch', false );
+$allow_level_search    = EDU()->is_checked( 'eduadmin-allowLevelSearch', false );
 
 $show_search        = $attributes['showsearch'];
 $show_more_number   = $attributes['showmore'];
@@ -42,7 +42,7 @@ $addresses = EDU()->get_transient( 'eduadmin-locations', function() {
 	);
 }, DAY_IN_SECONDS );
 
-$show_events = get_option( 'eduadmin-showEventsInList', false );
+$show_events = EDU()->is_checked( 'eduadmin-showEventsInList', false );
 
 $categories = EDU()->get_transient( 'eduadmin-categories', function() {
 	return EDUAPI()->OData->Categories->Search(

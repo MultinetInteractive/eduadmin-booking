@@ -29,7 +29,7 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 	if ( isset( $wp ) && isset( $wp->query_vars ) && isset( $wp->query_vars['courseId'] ) ) {
 		$course_id = $wp->query_vars['courseId'];
 
-		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;

@@ -37,14 +37,14 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 		$customer = $user->Customer;
 	}
 
-	$no_invoice_free_events = get_option( 'eduadmin-noInvoiceFreeEvents', false );
+	$no_invoice_free_events = EDU()->is_checked( 'eduadmin-noInvoiceFreeEvents', false );
 
 	$first_price = current( $programme['PriceNames'] );
 
-	$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false === $attributes['hideinvoiceemailfield'] : false === get_option( 'eduadmin-hideInvoiceEmailField', false );
-	$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false === $attributes['showinvoiceinformation'] : true === get_option( 'eduadmin-showInvoiceInformation', false );
+	$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false === $attributes['hideinvoiceemailfield'] : ! EDU()->is_checked( 'eduadmin-hideInvoiceEmailField', false );
+	$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false === $attributes['showinvoiceinformation'] : EDU()->is_checked( 'eduadmin-showInvoiceInformation', false );
 
-	$block_edit_if_logged_in = get_option( 'eduadmin-blockEditIfLoggedIn', true );
+	$block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 	$__block                 = ( $block_edit_if_logged_in && isset( $contact->PersonId ) && 0 !== $contact->PersonId );
 
 	$questions = EDUAPI()->REST->ProgrammeStart->BookingQuestions( $programme['ProgrammeStartId'], true );
@@ -128,7 +128,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						</div>
 					</label>
 				<?php } ?>
-				<?php if ( get_option( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) { ?>
+				<?php if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) { ?>
 					<label class="edu-book-contact-contactPassword">
 						<div class="inputLabel">
 							<?php echo esc_html_x( 'Please enter a password', 'frontend', 'eduadmin-booking' ); ?>
@@ -354,7 +354,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						</div>
 					</label>
 				<?php } ?>
-				<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+				<?php if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && EDU()->is_checked( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
 					<label>
 						<div class="inputHolder">
 							<label class="inline-checkbox" for="overwriteCustomerData">
@@ -380,7 +380,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					<div class="participantItem template" style="display: none;">
 						<h3>
 							<?php echo esc_html_x( 'Participant', 'frontend', 'eduadmin-booking' ); ?>
-							<?php if ( ! get_option( 'eduadmin-singlePersonBooking', false ) ) { ?>
+							<?php if ( ! EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ) { ?>
 								<div class="removeParticipant" onclick="eduBookingView.RemoveParticipant(this);"><?php echo esc_html_x( 'Remove', 'frontend', 'eduadmin-booking' ); ?></div>
 							<?php } ?>
 						</h3>
@@ -431,7 +431,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						?>
 					</div>
 				</div>
-				<?php if ( ! get_option( 'eduadmin-singlePersonBooking', false ) ) { ?>
+				<?php if ( ! EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ) { ?>
 					<div>
 						<a href="javascript://" class="addParticipantLink neutral-btn" onclick="eduBookingView.AddParticipant(); return false;"><?php echo esc_html_x( '+ Add participant', 'frontend', 'eduadmin-booking' ); ?></a>
 					</div>
@@ -442,7 +442,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			</div>
 
 			<div class="submitView">
-				<?php if ( get_option( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
+				<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
 					<div class="confirmTermsHolder">
 						<label>
 							<input type="checkbox" id="confirmTerms" name="confirmTerms" value="agree" />
@@ -503,7 +503,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				var totalPriceDiscountPercent = <?php echo esc_js( $discount_percent ); ?>;
 				var currency = '<?php echo esc_js( get_option( 'eduadmin-currency', 'SEK' ) ); ?>';
 				var vatText = '<?php echo esc_js( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>';
-				var ShouldValidateCivRegNo = <?php echo esc_js( get_option( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
+				var ShouldValidateCivRegNo = <?php echo esc_js( EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
 
 				var eduTexts = {
 					validationError: '<?php echo esc_js( _x( 'Validation errors, please check your fields', 'backend', 'eduadmin-booking' ) ); ?>'

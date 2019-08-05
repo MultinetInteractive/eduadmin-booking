@@ -69,7 +69,7 @@ function edu_render_booking_settings_page() {
 						<?php echo esc_html_x( 'Use login', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
-					<div class="eduadmin-forceLogin"<?php echo( get_option( 'eduadmin-useLogin', false ) ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
+					<div class="eduadmin-forceLogin"<?php echo( EDU()->is_checked( 'eduadmin-useLogin', false ) ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
 						<label>
 							<input type="checkbox" name="eduadmin-allowCustomerRegistration" value="true"
 								<?php echo get_option( 'eduadmin-allowCustomerRegistration', true ) ? ' checked="checked"' : ''; ?>

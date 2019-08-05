@@ -3,7 +3,7 @@ $user     = EDU()->session['eduadmin-loginUser'];
 $contact  = $user->Contact;
 $customer = $user->Customer;
 
-$show_company_certificates = ! empty( get_option( 'eduadmin-profile-showCompanyCertificates', false ) );
+$show_company_certificates = EDU()->is_checked( 'eduadmin-profile-showCompanyCertificates', false );
 
 $certificates = array();
 

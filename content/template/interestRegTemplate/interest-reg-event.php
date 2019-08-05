@@ -11,7 +11,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	$course_id     = $wp_query->query_vars['courseId'];
-	$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+	$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 	$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
 	if ( ! is_numeric( $fetch_months ) ) {
 		$fetch_months = 6;
@@ -120,7 +120,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 						<textarea name="edu-notes" placeholder="<?php echo esc_attr_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?>"></textarea>
 					</div>
 				</label>
-				<?php if ( get_option( 'eduadmin-singlePersonBooking', false ) ) { ?>
+				<?php if ( EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ) { ?>
 					<input type="hidden" name="edu-participants" value="1" />
 				<?php } else { ?>
 					<label>

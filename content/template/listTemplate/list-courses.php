@@ -93,20 +93,20 @@ if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	} );
 }
 
-$show_next_event_date  = get_option( 'eduadmin-showNextEventDate', false );
-$show_course_locations = get_option( 'eduadmin-showCourseLocations', false );
-$show_event_price      = get_option( 'eduadmin-showEventPrice', false );
+$show_next_event_date  = EDU()->is_checked( 'eduadmin-showNextEventDate', false );
+$show_course_locations = EDU()->is_checked( 'eduadmin-showCourseLocations', false );
+$show_event_price      = EDU()->is_checked( 'eduadmin-showEventPrice', false );
 
 $org = EDUAPIHelper()->GetOrganization();
 
 $inc_vat = $org['PriceIncVat'];
 
-$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
-$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
-$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
+$show_course_days  = EDU()->is_checked( 'eduadmin-showCourseDays', true );
+$show_course_times = EDU()->is_checked( 'eduadmin-showCourseTimes', true );
+$show_week_days    = EDU()->is_checked( 'eduadmin-showWeekDays', false );
 
-$show_descr       = get_option( 'eduadmin-showCourseDescription', true );
-$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+$show_descr       = EDU()->is_checked( 'eduadmin-showCourseDescription', true );
+$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $currency         = get_option( 'eduadmin-currency', 'SEK' );
 ?>
 <div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>" data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"></div>

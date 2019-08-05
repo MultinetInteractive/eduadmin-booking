@@ -1,5 +1,5 @@
 <?php
-$block_edit_if_logged_in = get_option( 'eduadmin-blockEditIfLoggedIn', true );
+$block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	echo '<input type="hidden" name="edu-contactId" value="' . esc_attr( $contact->PersonId ) . '" />';
@@ -53,7 +53,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 		</label>
 	<?php } ?>
 	<?php
-	if ( get_option( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) {
+	if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) {
 		?>
 		<label class="edu-book-contact-contactPassword">
 			<div class="inputLabel">

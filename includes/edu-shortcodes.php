@@ -206,7 +206,7 @@ function eduadmin_get_booking_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-bookingview'
 	);
-	if ( empty( get_option( 'eduadmin-useLogin', false ) ) || ( isset( EDU()->session['eduadmin-loginUser'] ) && ( ( isset( EDU()->session['eduadmin-loginUser']->Contact->PersonId ) && 0 !== EDU()->session['eduadmin-loginUser']->Contact->PersonId ) || isset( EDU()->session['eduadmin-loginUser']->NewCustomer ) ) ) ) {
+	if ( ! EDU()->is_checked( 'eduadmin-useLogin', false ) || ( isset( EDU()->session['eduadmin-loginUser'] ) && ( ( isset( EDU()->session['eduadmin-loginUser']->Contact->PersonId ) && 0 !== EDU()->session['eduadmin-loginUser']->Contact->PersonId ) || isset( EDU()->session['eduadmin-loginUser']->NewCustomer ) ) ) ) {
 		$str = include_once EDUADMIN_PLUGIN_PATH . '/content/template/bookingTemplate/' . $attributes['template'] . '.php';
 	} else {
 		$str = include_once EDUADMIN_PLUGIN_PATH . '/content/template/bookingTemplate/login-view.php';
@@ -286,7 +286,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
 	} else {
 		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
-		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -509,10 +509,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$name     = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
 				$object_interest_page      = get_option( 'eduadmin-interestObjectPage' );
-				$allow_interest_reg_object = get_option( 'eduadmin-allowInterestRegObject', false );
+				$allow_interest_reg_object = EDU()->is_checked( 'eduadmin-allowInterestRegObject', false );
 
 				$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
-				$allow_interest_reg_event = get_option( 'eduadmin-allowInterestRegEvent', false );
+				$allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
 
 				$ret_str .= '<div class="eduadmin">';
 				$ret_str .= '<div class="event-table eventDays" data-eduwidget="eventlist" ';
@@ -527,13 +527,13 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$ret_str .= ( isset( $_REQUEST['eid'] ) ? ' data-event="' . intval( $_REQUEST['eid'] ) . '"' : '' );
 				$ret_str .= ' data-order="' . esc_attr( $custom_order_by ) . '"';
 				$ret_str .= ' data-orderby="' . esc_attr( $custom_order_by_order ) . '"';
-				$ret_str .= ' data-showvenue="' . esc_attr( get_option( 'eduadmin-showEventVenueName', false ) ) . '"';
-				$ret_str .= ' data-eventinquiry="' . esc_attr( get_option( 'eduadmin-allowInterestRegEvent', false ) ) . '"';
+				$ret_str .= ' data-showvenue="' . esc_attr( EDU()->is_checked( 'eduadmin-showEventVenueName', false ) ) . '"';
+				$ret_str .= ' data-eventinquiry="' . esc_attr( EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false ) ) . '"';
 				$ret_str .= '>';
 
 				$i                = 0;
 				$has_hidden_dates = false;
-				$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+				$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 
 				$event_interest_page = get_option( 'eduadmin-interestEventPage' );
 

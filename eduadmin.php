@@ -161,30 +161,47 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		 * @param bool|null $default
 		 * @return bool
 		 */
-		public function is_checked( $optionValue, $default = false ) {
+		public function is_checked( $optionName, $default = false ) {
+			$t           = $this->start_timer( __METHOD__ . '::' . $optionName );
+			$optionValue = get_option( $optionName, $default );
+
 			if ( empty( $optionValue ) ) {
+				$this->stop_timer( $t );
+
 				return $default;
 			}
 			if ( 'on' === $optionValue ) {
+				$this->stop_timer( $t );
+
 				return true;
 			}
 			if ( true === $optionValue ) {
+				$this->stop_timer( $t );
+
 				return true;
 			}
 			if ( 'true' === $optionValue ) {
+				$this->stop_timer( $t );
+
 				return true;
 			}
 			if ( 1 === $optionValue ) {
+				$this->stop_timer( $t );
+
 				return true;
 			}
 			if ( '1' === $optionValue ) {
+				$this->stop_timer( $t );
+
 				return true;
 			}
+
+			$this->stop_timer( $t );
 
 			return $default;
 		}
 
-		public function is_selected( $optionValue, $currentValue, $defaultValue ) {
+		public function is_selected( $optionValue, $currentValue ) {
 			return ! empty( $optionValue ) && $optionValue === $currentValue;
 		}
 

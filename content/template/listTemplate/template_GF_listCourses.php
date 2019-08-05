@@ -38,7 +38,7 @@ if ( ! empty( $courses ) ) {
 		$show_events_with_events_only = $attributes[ 'onlyevents' ];
 		$show_events_without_events_only = $attributes[ 'onlyempty' ];
 
-		$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+		$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 
 		if ( $show_events_with_events_only && empty( $sorted_events ) ) {
 					continue;

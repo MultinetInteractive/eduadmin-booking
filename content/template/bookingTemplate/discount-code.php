@@ -1,5 +1,5 @@
 <?php
-if ( get_option( 'eduadmin-allowDiscountCode', false ) ) :
+if ( EDU()->is_checked( 'eduadmin-allowDiscountCode', false ) ) :
 	?>
 	<div class="discountView">
 		<label>

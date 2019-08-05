@@ -1,6 +1,6 @@
 <?php
 // phpcs:disable WordPress.NamingConventions,Squiz
-$block_edit_if_logged_in = get_option( 'eduadmin-blockEditIfLoggedIn', true );
+$block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 
 if ( ! empty( $customer->BillingInfo ) ) {
@@ -63,7 +63,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			</div>
 		</label>
 	<?php } ?>
-	<?php if ( get_option( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) { ?>
+	<?php if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && ! $contact->CanLogin ) { ?>
 		<label class="edu-book-singleParticipant-contactPassword">
 			<div class="inputLabel">
 				<?php echo esc_html_x( 'Please enter a password', 'frontend', 'eduadmin-booking' ); ?>
@@ -203,7 +203,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 			</div>
 		</label>
 	</div>
-	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+	<?php if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && EDU()->is_checked( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
 		<div class="edu-book-singleParticipant-customerOverwriteData">
 			<div class="inputHolder">
 				<label class="inline-checkbox" for="overwriteCustomerData">

@@ -1,16 +1,16 @@
 <?php
-$allow_region_search = get_option( 'eduadmin-allowRegionSearch', false );
+$allow_region_search = EDU()->is_checked( 'eduadmin-allowRegionSearch', false );
 
-$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 $always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 $object_interest_page      = get_option( 'eduadmin-interestObjectPage' );
-$allow_interest_reg_object = get_option( 'eduadmin-allowInterestRegObject', false );
+$allow_interest_reg_object = EDU()->is_checked( 'eduadmin-allowInterestRegObject', false );
 
 $event_interest_page      = get_option( 'eduadmin-interestEventPage' );
-$allow_interest_reg_event = get_option( 'eduadmin-allowInterestRegEvent', false );
+$allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
 $show_more                = ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : -1;
 
 $has_hidden_dates = false;

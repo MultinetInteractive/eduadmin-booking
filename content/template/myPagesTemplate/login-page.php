@@ -39,7 +39,7 @@
 			</label>
 			<?php
 			$click = '';
-			if ( 'CivicRegistrationNumber' === $selected_login_field && get_option( 'eduadmin-validateCivicRegNo', false ) === 'true' ) {
+			if ( 'CivicRegistrationNumber' === $selected_login_field && EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ) {
 				$click = 'if(!eduBookingView.ValidateCivicRegNo()) { alert(\'' . _x( 'Please enter a valid swedish civic registration number.', 'frontend', 'eduadmin-booking' ) . '\');  return false; }';
 			}
 			?>

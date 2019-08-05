@@ -11,7 +11,7 @@ class EduAdmin_BookingHandler {
 
 	public function check_price() {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'checkPrice' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
-			$single_person_booking = get_option( 'eduadmin-singlePersonBooking', false );
+			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
 
 			$price_info = $single_person_booking ? $this->check_single_participant() : $this->check_multiple_participants();
 			echo wp_json_encode( $price_info );
@@ -29,7 +29,7 @@ class EduAdmin_BookingHandler {
 
 	public function process_booking() {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
-			$single_person_booking = get_option( 'eduadmin-singlePersonBooking', false );
+			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
 
 			$booking_info = $single_person_booking ? $this->book_single_participant() : $this->book_multiple_participants();
 
@@ -431,7 +431,7 @@ class EduAdmin_BookingHandler {
 			$contact->PriceNameId = intval( $_POST['contactPriceName'] ); // Var input okay.
 		}
 
-		$contact->CanLogin     = ! ! get_option( 'eduadmin-useLogin', false );
+		$contact->CanLogin     = EDU()->is_checked( 'eduadmin-useLogin', false );
 		$contact->Answers      = $this->get_contact_questions();
 		$contact->CustomFields = $this->get_contact_custom_fields();
 		$contact->Sessions     = $this->get_contact_sessions();
