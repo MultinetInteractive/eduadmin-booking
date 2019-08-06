@@ -1,5 +1,5 @@
 "use strict";
-wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "" };
+wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false" };
 var edu = window["edu"] ? window["edu"] : {};
 edu.apiclient = {
     baseUrl: null,

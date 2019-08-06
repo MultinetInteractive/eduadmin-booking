@@ -181,8 +181,6 @@ $show_week_days    = EDU()->is_checked( 'eduadmin-showWeekDays', false );
 
 $org = EDUAPIHelper()->GetOrganization();
 
-$inc_vat = $org['PriceIncVat'];
-
 $show_event_price = EDU()->is_checked( 'eduadmin-showEventPrice', false );
 $currency         = EDU()->is_checked( 'eduadmin-currency', 'SEK' );
 $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );

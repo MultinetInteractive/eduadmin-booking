@@ -1,8 +1,3 @@
-<?php
-$org = EDUAPIHelper()->GetOrganization();
-
-$inc_vat = $org['PriceIncVat'];
-?>
 <div class="eduadmin">
 	<h1><?php echo esc_html( $programme['ProgrammeName'] ); ?></h1>
 	<?php if ( ! empty( $programme['Description'] ) ) : ?>

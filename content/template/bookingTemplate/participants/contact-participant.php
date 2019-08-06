@@ -7,7 +7,7 @@
 			<?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="text" readonly class="contactFirstName first-name" placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>"/><input type="text" readonly class="contactLastName last-name" placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>"/>
+			<input type="text" readonly class="contactFirstName first-name" placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input type="text" readonly class="contactLastName last-name" placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-contactparticipant-contactEmail">
@@ -15,7 +15,7 @@
 			<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="email" readonly class="contactEmail" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>"/>
+			<input type="email" readonly class="contactEmail" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-contactparticipant-contactPhone">
@@ -23,7 +23,7 @@
 			<?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" readonly class="contactPhone" placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>"/>
+			<input type="tel" readonly class="contactPhone" placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-contactparticipant-contactMobile">
@@ -31,7 +31,7 @@
 			<?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" readonly class="contactMobile" placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>"/>
+			<input type="tel" readonly class="contactMobile" placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] ) { ?>
@@ -40,7 +40,7 @@
 				<?php echo esc_html_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" readonly data-required="true" class="contactCivReg" placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>"/>
+				<input type="text" readonly data-required="true" class="contactCivReg" placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>" />
 			</div>
 		</label>
 	<?php } ?>
@@ -57,9 +57,9 @@
 							<?php if ( $price['MaxParticipantNumber'] > 0 && $price['NumberOfParticipants'] >= $price['MaxParticipantNumber'] ) { ?>
 								disabled
 							<?php } ?>
-								value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
+							value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 							<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-							(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ); ?>)
+							(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . edu_get_vat_text() ); ?>)
 						</option>
 					<?php } ?>
 				</select>
@@ -85,7 +85,7 @@
 			echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 			echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
 			echo esc_html( $hide_sub_event_date_info ? '' : ' (' . date( 'd/m H:i', strtotime( $sub_event['StartDate'] ) ) . ' - ' . date( 'd/m H:i', strtotime( $sub_event['EndDate'] ) ) . ') ' );
-			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . '</i>' : '' );
+			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) . edu_get_vat_text() ) . '</i>' : '' );
 			echo "</label>\n";
 		}
 		echo '<br />';

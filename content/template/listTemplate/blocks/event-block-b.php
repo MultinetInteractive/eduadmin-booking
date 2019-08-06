@@ -34,7 +34,7 @@
 			if ( 0 === $event['Price'] ) {
 				echo '<div class="priceInfo">' . esc_html_x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . "</div> ";
 			} else {
-				echo '<div class="priceInfo">' . esc_html( sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . '</div> ';
+				echo '<div class="priceInfo">' . esc_html( sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $event['Price'], $currency ) ) . edu_get_vat_text() ) . '</div> ';
 			}
 		}
 		echo '<div class="spotsLeft"></div>';

@@ -105,9 +105,6 @@ if ( ! $course_level && ! empty( $selected_course['CourseLevelId'] ) ) {
 	set_transient( 'eduadmin-courseLevel-' . $selected_course['CourseTemplateId'] . '__' . EDU()->version, $course_level, HOUR_IN_SECONDS );
 }
 
-$org = EDUAPIHelper()->GetOrganization();
-
-$inc_vat      = $org['PriceIncVat'];
 $show_headers = EDU()->is_checked( 'eduadmin-showDetailHeaders', true );
 
 $hide_sections = array();

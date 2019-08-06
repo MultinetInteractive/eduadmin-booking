@@ -27,10 +27,6 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 	$participant_discount_percent = 0.0;
 	$customer_invoice_email       = '';
 
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
-
 	if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
 		$user     = EDU()->session['eduadmin-loginUser'];
 		$contact  = $user->Contact;
@@ -501,19 +497,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				var pricePerParticipant = <?php echo esc_js( round( $first_price['Price'] - $discount_value, 2 ) ); ?>;
 				var discountPerParticipant = <?php echo esc_js( round( $participant_discount_percent / 100, 2 ) ); ?>;
 				var totalPriceDiscountPercent = <?php echo esc_js( $discount_percent ); ?>;
-				var currency = '<?php echo esc_js( get_option( 'eduadmin-currency', 'SEK' ) ); ?>';
-				var vatText = '<?php echo esc_js( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>';
-				var ShouldValidateCivRegNo = <?php echo esc_js( EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
 
-				var eduTexts = {
-					validationError: '<?php echo esc_js( _x( 'Validation errors, please check your fields', 'backend', 'eduadmin-booking' ) ); ?>'
-				};
-
-				var edu_vat = {
-					inc: '<?php echo esc_js( _x( 'inc vat', 'frontend', 'eduadmin-booking' ) ); ?>',
-					ex: '<?php echo esc_js( _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>',
-					free: '<?php echo esc_js( _x( 'vat free', 'frontend', 'eduadmin-booking' ) ); ?>'
-				};
 				(function () {
 					var title = document.title;
 					title = title.replace('<?php echo esc_js( $original_title ); ?>', '<?php echo esc_js( $new_title ); ?>');

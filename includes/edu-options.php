@@ -19,7 +19,6 @@ add_action( 'add_meta_boxes', 'eduadmin_shortcode_metabox' );
 add_action( 'wp_footer', 'eduadmin_print_javascript' );
 
 function eduadmin_page_title( $title, $sep = '|' ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	global $wp;
 
 	if ( empty( $sep ) ) {
@@ -69,7 +68,6 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 			}
 		}
 	}
-	EDU()->stop_timer( $t );
 
 	return $title;
 }
@@ -195,10 +193,14 @@ function eduadmin_frontend_content() {
 		'eduadmin_apiclient_script',
 		'wp_edu',
 		array(
-			'BaseUrl'        => home_url(),
-			'BaseUrlScripts' => plugins_url( 'content/script', dirname( __FILE__ ) ),
-			'CourseFolder'   => get_option( 'eduadmin-rewriteBaseUrl' ),
-			'AjaxUrl'        => rest_url( 'edu/v1' ),
+			'BaseUrl'                => home_url(),
+			'BaseUrlScripts'         => plugins_url( 'content/script', dirname( __FILE__ ) ),
+			'CourseFolder'           => esc_js( get_option( 'eduadmin-rewriteBaseUrl' ) ),
+			'AjaxUrl'                => rest_url( 'edu/v1' ),
+			'Currency'               => get_option( 'eduadmin-currency', 'SEK' ),
+			'ShouldValidateCivRegNo' => EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false',
+			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
+			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
 		)
 	);
 	wp_enqueue_script( 'eduadmin_apiclient_script', false, array( 'jquery' ) );

@@ -290,10 +290,6 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
 
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
-
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );
 	$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
@@ -367,10 +363,6 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );

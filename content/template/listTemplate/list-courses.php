@@ -99,8 +99,6 @@ $show_event_price      = EDU()->is_checked( 'eduadmin-showEventPrice', false );
 
 $org = EDUAPIHelper()->GetOrganization();
 
-$inc_vat = $org['PriceIncVat'];
-
 $show_course_days  = EDU()->is_checked( 'eduadmin-showCourseDays', true );
 $show_course_times = EDU()->is_checked( 'eduadmin-showCourseTimes', true );
 $show_week_days    = EDU()->is_checked( 'eduadmin-showWeekDays', false );

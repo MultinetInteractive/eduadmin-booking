@@ -15,5 +15,13 @@ const edu_i18n_strings = {
         200: _x('Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking'),
         300: _x('Contact person must have a unique username to be able to login.', 'frontend', 'eduadmin-booking'),
         301: _x('Please enter all required fields on the contact person.', 'frontend', 'eduadmin-booking'),
+    },
+    Generic: {
+        ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking')
+    },
+    VAT: {
+        inc: _x('inc vat', 'frontend', 'eduadmin-booking'),
+        ex: _x('ex vat', 'frontend', 'eduadmin-booking'),
+        free: _x('vat free', 'frontend', 'eduadmin-booking')
     }
 }

@@ -3,10 +3,6 @@ $grouped_programmes = array();
 
 $currency = get_option( 'eduadmin-currency', 'SEK' );
 
-$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
-
-$vat_text = $show_vat ? ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) : '';
-
 foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 	$key = date( 'Y-m', strtotime( $programme_start['StartDate'] ) );
 
@@ -72,7 +68,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 
 		$min_price = min( array_keys( $priceNames ) );
 
-		echo esc_html( convert_to_money( $priceNames[ $min_price ]["Price"], $currency ) . ' ' . $vat_text );
+		echo esc_html( convert_to_money( $priceNames[ $min_price ]["Price"], $currency ) . ' ' . edu_get_vat_text() );
 		echo '</td>';
 		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ) . '</a></td>';
 		echo '</tr>';

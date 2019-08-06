@@ -313,8 +313,6 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			$org = EDUAPIHelper()->GetOrganization();
 
-			$inc_vat = $org['PriceIncVat'];
-
 			if ( isset( $attributes['coursename'] ) ) {
 				$ret_str .= $selected_course['InternalCourseName'];
 			}
@@ -398,10 +396,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "\n";
+					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . edu_get_vat_text() ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() ) . "<br />\n";
 					}
 				}
 			}
@@ -418,10 +416,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "\n";
+					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . edu_get_vat_text() ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() ) . "<br />\n";
 					}
 				}
 			}

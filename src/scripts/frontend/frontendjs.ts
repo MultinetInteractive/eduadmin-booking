@@ -1,7 +1,5 @@
 /** global: edu */
 
-declare var ShouldValidateCivRegNo: boolean;
-
 interface EduBookingView {
     AddedContactPerson: boolean;
     CurrentParticipants: number;
@@ -204,11 +202,7 @@ var eduBookingView: EduBookingView = {
 
             requiredFields.forEach(function (el) {
                 let element = el as HTMLInputElement;
-                if (contact == 1) {
-                    element.required = true;
-                } else {
-                    element.required = false;
-                }
+                element.required = contact == 1;
             });
 
             if (contact == 1 && !this.AddedContactPerson) {
@@ -292,7 +286,7 @@ var eduBookingView: EduBookingView = {
             "participantCivReg[]"
         ];
 
-        if (ShouldValidateCivRegNo && !eduBookingView.ValidateCivicRegNo()) {
+        if (JSON.parse((window as any).wp_edu.ShouldValidateCivRegNo) && !eduBookingView.ValidateCivicRegNo()) {
             return false;
         }
 
@@ -302,14 +296,10 @@ var eduBookingView: EduBookingView = {
 
         let contact = 0;
         if (contactParticipant) {
-            if (contactParticipant.checked) {
-                contact = 1;
-            } else {
-                contact = 0;
-            }
+            contact = contactParticipant.checked ? 1 : 0;
         }
 
-        if (eduBookingView.SingleParticipant) {
+        if (JSON.parse((window as any).wp_edu.SingleParticipant)) {
             contact = 1;
         }
 
@@ -534,6 +524,9 @@ var eduBookingView: EduBookingView = {
         let priceCheckError = jQuery('#edu-warning-pricecheck');
         priceCheckError.hide();
         let d = JSON.parse(data);
+
+        let showVatText = JSON.parse((window as any).wp_edu.ShowVatTexts);
+
         if (d.hasOwnProperty("TotalPriceExVat")) {
             if (
                 d["TotalPriceExVat"] === 0 &&
@@ -545,7 +538,7 @@ var eduBookingView: EduBookingView = {
                         " "
                     ) +
                     " " +
-                    (window as any).currency
+                    (window as any).wp_edu.Currency
                 );
             } else {
                 if (
@@ -558,9 +551,9 @@ var eduBookingView: EduBookingView = {
                             " "
                         ) +
                         " " +
-                        (window as any).currency +
-                        " " +
-                        (window as any).edu_vat.free
+                        (window as any).wp_edu.Currency +
+                        showVatText ? " " +
+                        edu_i18n_strings.VAT.free : ''
                     );
                 } else {
                     jQuery("#sumValue").text(
@@ -569,18 +562,18 @@ var eduBookingView: EduBookingView = {
                             " "
                         ) +
                         " " +
-                        (window as any).currency +
+                        (window as any).wp_edu.Currency +
                         " " +
-                        (window as any).edu_vat.ex +
+                        edu_i18n_strings.VAT.ex +
                         " (" +
                         numberWithSeparator(
                             d["TotalPriceIncVat"],
                             " "
                         ) +
                         " " +
-                        (window as any).currency +
+                        (window as any).wp_edu.Currency +
                         " " +
-                        (window as any).edu_vat.inc +
+                        edu_i18n_strings.VAT.inc +
                         ")"
                     );
                 }
@@ -612,7 +605,7 @@ var eduBookingView: EduBookingView = {
 
         if (d.hasOwnProperty("Errors")) {
             let errorHeader = document.createElement('h3');
-            errorHeader.innerText = (window as any).eduTexts.validationError;
+            errorHeader.innerText = edu_i18n_strings.Generic.ValidationError;
             priceCheckError.empty();
             priceCheckError.append(errorHeader);
 

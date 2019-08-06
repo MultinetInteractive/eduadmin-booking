@@ -285,6 +285,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 			render_attribute( $custom_field, false, 'customer', $data );
 		}
 	}
+
 	?>
 	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
 		<label class="edu-book-singleParticipant-priceName">
@@ -301,7 +302,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 							<?php } ?>
 							value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 							<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-							(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ); ?>)
+							(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . edu_get_vat_text() ); ?>)
 						</option>
 					<?php } ?>
 				</select>

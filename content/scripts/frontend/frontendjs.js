@@ -113,12 +113,7 @@ var eduBookingView = {
             var requiredFields = contactParticipantItem.querySelectorAll('[data-required]');
             requiredFields.forEach(function (el) {
                 var element = el;
-                if (contact == 1) {
-                    element.required = true;
-                }
-                else {
-                    element.required = false;
-                }
+                element.required = contact == 1;
             });
             if (contact == 1 && !this.AddedContactPerson) {
                 var freeParticipant = document.querySelector(".eduadmin .participantItem:not(.template):not(.contactPerson)");
@@ -176,20 +171,15 @@ var eduBookingView = {
             "participantFirstName[]",
             "participantCivReg[]"
         ];
-        if (ShouldValidateCivRegNo && !eduBookingView.ValidateCivicRegNo()) {
+        if (JSON.parse(window.wp_edu.ShouldValidateCivRegNo) && !eduBookingView.ValidateCivicRegNo()) {
             return false;
         }
         var contactParticipant = document.getElementById("contactIsAlsoParticipant");
         var contact = 0;
         if (contactParticipant) {
-            if (contactParticipant.checked) {
-                contact = 1;
-            }
-            else {
-                contact = 0;
-            }
+            contact = contactParticipant.checked ? 1 : 0;
         }
-        if (eduBookingView.SingleParticipant) {
+        if (JSON.parse(window.wp_edu.SingleParticipant)) {
             contact = 1;
         }
         if (participants.length + contact === 0) {
@@ -363,34 +353,35 @@ var eduBookingView = {
         var priceCheckError = jQuery('#edu-warning-pricecheck');
         priceCheckError.hide();
         var d = JSON.parse(data);
+        var showVatText = JSON.parse(window.wp_edu.ShowVatTexts);
         if (d.hasOwnProperty("TotalPriceExVat")) {
             if (d["TotalPriceExVat"] === 0 &&
                 d["TotalPriceIncVat"] === 0) {
                 jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
                     " " +
-                    window.currency);
+                    window.wp_edu.Currency);
             }
             else {
                 if (d["TotalPriceExVat"] ===
                     d["TotalPriceIncVat"]) {
                     jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
                         " " +
-                        window.currency +
-                        " " +
-                        window.edu_vat.free);
+                        window.wp_edu.Currency +
+                        showVatText ? " " +
+                        edu_i18n_strings.VAT.free : '');
                 }
                 else {
                     jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
                         " " +
-                        window.currency +
+                        window.wp_edu.Currency +
                         " " +
-                        window.edu_vat.ex +
+                        edu_i18n_strings.VAT.ex +
                         " (" +
                         numberWithSeparator(d["TotalPriceIncVat"], " ") +
                         " " +
-                        window.currency +
+                        window.wp_edu.Currency +
                         " " +
-                        window.edu_vat.inc +
+                        edu_i18n_strings.VAT.inc +
                         ")");
                 }
             }
@@ -411,14 +402,13 @@ var eduBookingView = {
             priceCheckError.show();
         }
         var getUserFriendlyErrorMessage = function getUserFriendlyErrorMessage(statusCode, originalMessage) {
-            switch (statusCode) {
-                case 301: return edu_i18n_strings.ErrorMessages["301"];
-                default: return originalMessage;
-            }
+            if (edu_i18n_strings.ErrorMessages[statusCode.toString()])
+                return edu_i18n_strings.ErrorMessages[statusCode.toString()];
+            return originalMessage;
         };
         if (d.hasOwnProperty("Errors")) {
             var errorHeader = document.createElement('h3');
-            errorHeader.innerText = window.eduTexts.validationError;
+            errorHeader.innerText = edu_i18n_strings.Generic.ValidationError;
             priceCheckError.empty();
             priceCheckError.append(errorHeader);
             var listOfErrors = document.createElement('ul');

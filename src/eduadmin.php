@@ -93,6 +93,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public $months;
 		/** @var array */
 		public $short_months;
+		/** @var array */
+		public $request_items;
 
 		/**
 		 * @return EduAdmin
@@ -106,9 +108,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function __construct() {
-			$this->timers  = array();
-			$t             = $this->start_timer( __METHOD__ );
-			$this->version = $this->get_version();
+			$this->timers        = array();
+			$t                   = $this->start_timer( __METHOD__ );
+			$this->request_items = array();
+			$this->version       = $this->get_version();
 			$this->includes();
 			$this->init_hooks();
 			do_action( 'eduadmin_loaded' );

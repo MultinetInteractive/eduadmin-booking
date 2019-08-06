@@ -47,7 +47,7 @@
 		if ( $show_event_price && ! empty( $prices ) ) {
 			ksort( $prices );
 			$cheapest = current( $prices );
-			echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $cheapest['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) ) . " " . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) . "</div> ";
+			echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $cheapest['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) ) . edu_get_vat_text() . "</div> ";
 		}
 
 		if ( $object['Days'] > 0 ) {

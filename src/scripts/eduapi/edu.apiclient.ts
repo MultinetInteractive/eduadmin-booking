@@ -3,9 +3,13 @@ declare var wp_edu: {
 	AjaxUrl: string;
 	CourseFolder: string;
 	BaseUrl: string;
+	BaseUrlScripts: string;
+	Currency: string;
+	ShouldValidateCivRegNo: string;
+	SingleParticipant: string;
 };
 
-wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "" };
+wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false" };
 /** global: edu */
 
 interface eduObject {

@@ -299,6 +299,12 @@ class EduAdminAPIHelper {
 		}, DAY_IN_SECONDS );
 	}
 
+	public function GetOrganizationTest() {
+		return EDU()->get_request_item( 'eduadmin-organization', function() {
+			return EDUAPI()->REST->Organisation->GetOrganisation();
+		} );
+	}
+
 	public function GetRegions() {
 		return EDU()->get_transient( 'eduadmin-regions', function() {
 			return EDUAPI()->OData->Regions->Search(
