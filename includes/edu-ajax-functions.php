@@ -246,6 +246,14 @@ function edu_api_listview_eventlist() {
 		}
 	}
 
+	$filter_city = sanitize_text_field( $_POST['filtercity'] );
+
+	if ( ! empty( $filter_city ) ) {
+		$events = array_filter( $events, function( $object ) use ( &$filter_city ) {
+			return mb_stripos( $filter_city, $object['City'] ) !== false;
+		} );
+	}
+
 	if ( ! empty( $_POST['edu-region'] ) ) {
 		$regions = EDUAPIHelper()->GetRegions();
 

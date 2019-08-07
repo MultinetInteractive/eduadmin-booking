@@ -67,6 +67,22 @@ if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 	} );
 }
 
+if ( ! empty( $filter_city ) ) {
+	$courses = array_filter( $courses, function( $object ) use ( &$filter_city ) {
+		if ( empty( $object['Events'] ) ) {
+			return false;
+		}
+
+		$found_city = false;
+		foreach ( $object['Events'] as $ev ) {
+			if(mb_stripos($filter_city, $ev['City']) !== false) {
+				$found_city = true;
+			}
+		}
+		return $found_city;
+	} );
+}
+
 if ( ! empty( $_REQUEST['edu-region'] ) ) {
 	$matching_regions = array_filter( $regions['value'], function( $region ) {
 		$name       = make_slugs( $region['RegionName'] );
