@@ -1,6 +1,6 @@
 <?php
 // phpcs:disable WordPress.NamingConventions,Squiz
-$use_limited_discount = get_option( 'eduadmin-useLimitedDiscount', false );
+$use_limited_discount = EDU()->is_checked( 'eduadmin-useLimitedDiscount', false );
 if ( $use_limited_discount ) {
 	if ( ! empty( $customer->CustomerId ) && ! empty( $contact->PersonId ) && $eventid > 0 ) {
 		$c_cards = EDUAPI()->REST->Customer->GetValidVouchers( $customer->CustomerId, $eventid, $contact->PersonId );

@@ -18,13 +18,13 @@ if ( ! $api_key || empty( $api_key ) ) {
 		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 		<div class="title">
 			<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
-				<img src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>" class="courseImage"/>
+				<img src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>" class="courseImage" />
 			<?php endif; ?>
 			<h1 class="courseTitle"><?php echo esc_html( $name ); ?>
 				<small class="courseLevel"><?php echo esc_html( null !== $course_level ? $course_level['Name'] : '' ); ?></small>
 			</h1>
 		</div>
-		<hr/>
+		<hr />
 		<div class="textblock">
 			<?php
 			if ( ! in_array( 'description', $hide_sections, true ) && ! empty( $selected_course['CourseDescription'] ) ) {
@@ -116,12 +116,12 @@ if ( ! $api_key || empty( $api_key ) ) {
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 
 				if ( 1 === count( $prices ) ) {
-					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
+					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . edu_get_vat_text() );
 				} else {
 					foreach ( $prices as $up ) {
-						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
+						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . edu_get_vat_text() );
 						?>
-						<br/>
+						<br />
 						<?php
 					}
 				}
@@ -133,7 +133,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		include 'blocks/event-list.php';
 		if ( $allow_interest_reg_object && false !== $object_interest_page ) {
 			?>
-			<br/>
+			<br />
 			<div class="inquiry">
 				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/interest/' . edu_get_query_string( '?' ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Send inquiry about this course', 'frontend', 'eduadmin-booking' ); ?></a>
 			</div>

@@ -21,77 +21,59 @@ function edu_render_list_settings_page() {
 							<td valign="top">
 								<h3><?php _ex( 'Template', 'backend', 'eduadmin-booking' ); ?></h3>
 								<select name="eduadmin-listTemplate">
-									<option value="template_A"<?php echo( get_option( 'eduadmin-listTemplate' ) === "template_A" ? " selected=\"selected\"" : "" ); ?>>
+									<option value="template_A"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_A" ); ?>>
 										Layout A
 									</option>
-									<option value="template_B"<?php echo( get_option( 'eduadmin-listTemplate' ) === "template_B" ? " selected=\"selected\"" : "" ); ?>>
+									<option value="template_B"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_B" ); ?>>
 										Layout B
 									</option>
-									<option value="template_GF"<?php echo( get_option( 'eduadmin-listTemplate' ) === "template_GF" ? " selected=\"selected\"" : "" ); ?>>
+									<option value="template_GF"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_GF" ); ?>>
 										Layout GF
 									</option>
 								</select>
 								<h3><?php _ex( 'List settings', 'backend', 'eduadmin-booking' ); ?></h3>
 								<label>
-									<input type="checkbox" id="eduadmin-showEventsInList" name="eduadmin-showEventsInList"<?php if ( get_option( 'eduadmin-showEventsInList', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" id="eduadmin-showEventsInList" name="eduadmin-showEventsInList" <?php checked( get_option( 'eduadmin-showEventsInList', false ), "on" ); ?> />
 									<?php _ex( 'Show events instead of courses', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" id="eduadmin-showCourseImage" name="eduadmin-showCourseImage"<?php if ( get_option( 'eduadmin-showCourseImage', true ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" id="eduadmin-showCourseImage" name="eduadmin-showCourseImage" <?php checked( get_option( 'eduadmin-showCourseImage', true ), "on" ); ?> />
 									<?php _ex( 'Show course images', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showNextEventDate"<?php if ( get_option( 'eduadmin-showNextEventDate', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showNextEventDate" <?php checked( get_option( 'eduadmin-showNextEventDate', false ), "on" ); ?> />
 									<?php _ex( 'Show coming dates (Only course list, not events)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showCourseLocations"<?php if ( get_option( 'eduadmin-showCourseLocations', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showCourseLocations" <?php checked( get_option( 'eduadmin-showCourseLocations', false ), "on" ); ?> />
 									<?php _ex( 'Show locations (Only course list, not events)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showEventVenueName"<?php if ( get_option( 'eduadmin-showEventVenueName', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showEventVenueName" <?php checked( get_option( 'eduadmin-showEventVenueName', false ), "on" ); ?> />
 									<?php _ex( 'Show venue name', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showEventPrice"<?php if ( get_option( 'eduadmin-showEventPrice', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showEventPrice" <?php checked( get_option( 'eduadmin-showEventPrice', false ), "on" ); ?> />
 									<?php _ex( 'Show price', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showCourseDays"<?php if ( get_option( 'eduadmin-showCourseDays', true ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showCourseDays" <?php checked( get_option( 'eduadmin-showCourseDays', true ), "on" ); ?> />
 									<?php _ex( 'Show days', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showCourseTimes"<?php if ( get_option( 'eduadmin-showCourseTimes', true ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showCourseTimes" <?php checked( get_option( 'eduadmin-showCourseTimes', true ), "on" ); ?> />
 									<?php _ex( 'Show time', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
-									<input type="checkbox" name="eduadmin-showWeekDays"<?php if ( get_option( 'eduadmin-showWeekDays', false ) ) {
-										echo " checked=\"checked\"";
-									} ?> />
+									<input type="checkbox" name="eduadmin-showWeekDays" <?php checked( get_option( 'eduadmin-showWeekDays', false ), "on" ); ?> />
 									<?php _ex( 'Show weekday names (Only event list)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
@@ -99,9 +81,7 @@ function edu_render_list_settings_page() {
 									<tr>
 										<td>
 											<label>
-												<input type="checkbox" id="eduadmin-showCourseDescription" name="eduadmin-showCourseDescription"<?php if ( get_option( 'eduadmin-showCourseDescription', true ) ) {
-													echo " checked=\"checked\"";
-												} ?> />
+												<input type="checkbox" id="eduadmin-showCourseDescription" name="eduadmin-showCourseDescription" <?php checked( get_option( 'eduadmin-showCourseDescription', true ), "on" ); ?> />
 												<?php _ex( 'Show course description', 'backend', 'eduadmin-booking' ); ?>
 											</label>
 										</td>
@@ -116,30 +96,18 @@ function edu_render_list_settings_page() {
 											?>
 											<select name="eduadmin-layout-descriptionfield">
 												<optgroup label="<?php _ex( 'Course fields', 'backend', 'eduadmin-booking' ); ?>">
-													<option value="CourseDescriptionShort"<?php echo( $selectedDescriptionField === "CourseDescriptionShort" ? " selected=\"selected\"" : "" ); ?>><?php _ex( 'Short course description', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="CourseDescription"<?php if ( $selectedDescriptionField === "CourseDescription" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'Course description', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="CourseGoal"<?php if ( $selectedDescriptionField === "CourseGoal" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'Course goal', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="TargetGroup"<?php if ( $selectedDescriptionField === "TargetGroup" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'Target group', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="Prerequisites"<?php if ( $selectedDescriptionField === "Prerequisites" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'Prerequisites', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="CourseAfter"<?php if ( $selectedDescriptionField === "CourseAfter" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'After the course', 'backend', 'eduadmin-booking' ); ?></option>
-													<option value="Quote"<?php if ( $selectedDescriptionField === "Quote" ) {
-														echo " selected=\"selected\"";
-													} ?>><?php _ex( 'Quote', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="CourseDescriptionShort"<?php selected( $selectedDescriptionField, "CourseDescriptionShort" ); ?>><?php _ex( 'Short course description', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="CourseDescription" <?php selected( $selectedDescriptionField, "CourseDescription" ); ?>><?php _ex( 'Course description', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="CourseGoal"<?php selected( $selectedDescriptionField, "CourseGoal" ); ?>><?php _ex( 'Course goal', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="TargetGroup"<?php selected( $selectedDescriptionField, "TargetGroup" ); ?>><?php _ex( 'Target group', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="Prerequisites"<?php selected( $selectedDescriptionField, "Prerequisites" ); ?>><?php _ex( 'Prerequisites', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="CourseAfter"<?php selected( $selectedDescriptionField, "CourseAfter" ); ?>><?php _ex( 'After the course', 'backend', 'eduadmin-booking' ); ?></option>
+													<option value="Quote"<?php selected( $selectedDescriptionField, "Quote" ); ?>><?php _ex( 'Quote', 'backend', 'eduadmin-booking' ); ?></option>
 												</optgroup>
 												<?php if ( ! empty( $attributes["value"] ) ) { ?>
 													<optgroup label="<?php _ex( 'Course attributes', 'backend', 'eduadmin-booking' ); ?>">
 														<?php foreach ( $attributes["value"] as $attr ) { ?>
-															<option value="attr_<?php echo $attr["CustomFieldId"]; ?>"<?php echo( $selectedDescriptionField === "attr_" . $attr["CustomFieldId"] ? " selected=\"selected\"" : "" ); ?>><?php echo $attr["CustomFieldName"]; ?></option>
+															<option value="attr_<?php echo $attr["CustomFieldId"]; ?>"<?php selected( $selectedDescriptionField, "attr_" . $attr["CustomFieldId"] ); ?>><?php echo $attr["CustomFieldName"]; ?></option>
 														<?php } ?>
 													</optgroup>
 												<?php } ?>
@@ -156,10 +124,10 @@ function edu_render_list_settings_page() {
 										<td><?php _ex( 'Sort order', 'backend', 'eduadmin-booking' ); ?></td>
 										<td>
 											<select name="eduadmin-listSortOrder">
-												<option value="SortIndex"<?php echo( $sortOrder === "SortIndex" ? " selected=\"selected\"" : "" ); ?>><?php _ex( 'Sort index', 'backend', 'eduadmin-booking' ); ?></option>
-												<option value="CourseName"<?php echo( $sortOrder === "CourseName" ? " selected=\"selected\"" : "" ); ?>><?php _ex( 'Course name', 'backend', 'eduadmin-booking' ); ?></option>
-												<option value="CategoryName"<?php echo( $sortOrder === "CategoryName" ? " selected=\"selected\"" : "" ); ?>><?php _ex( 'Category name', 'backend', 'eduadmin-booking' ); ?></option>
-												<option value="EducationNumber"<?php echo( $sortOrder === "EducationNumber" ? " selected=\"selected\"" : "" ); ?>><?php _ex( 'Item number', 'backend', 'eduadmin-booking' ); ?></option>
+												<option value="SortIndex"<?php selected( $sortOrder, "SortIndex" ); ?>><?php _ex( 'Sort index', 'backend', 'eduadmin-booking' ); ?></option>
+												<option value="CourseName"<?php selected( $sortOrder, "CourseName" ); ?>><?php _ex( 'Course name', 'backend', 'eduadmin-booking' ); ?></option>
+												<option value="CategoryName"<?php selected( $sortOrder, "CategoryName" ); ?>><?php _ex( 'Category name', 'backend', 'eduadmin-booking' ); ?></option>
+												<option value="EducationNumber"<?php selected( $sortOrder, "EducationNumber" ); ?>><?php _ex( 'Item number', 'backend', 'eduadmin-booking' ); ?></option>
 											</select>
 										</td>
 									</tr>

@@ -19,7 +19,6 @@ add_action( 'add_meta_boxes', 'eduadmin_shortcode_metabox' );
 add_action( 'wp_footer', 'eduadmin_print_javascript' );
 
 function eduadmin_page_title( $title, $sep = '|' ) {
-	$t = EDU()->start_timer( __METHOD__ );
 	global $wp;
 
 	if ( empty( $sep ) ) {
@@ -29,7 +28,7 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 	if ( isset( $wp ) && isset( $wp->query_vars ) && isset( $wp->query_vars['courseId'] ) ) {
 		$course_id = $wp->query_vars['courseId'];
 
-		$group_by_city = get_option( 'eduadmin-groupEventsByCity', false );
+		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
@@ -69,7 +68,6 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 			}
 		}
 	}
-	EDU()->stop_timer( $t );
 
 	return $title;
 }
@@ -170,6 +168,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-alwaysFewSpots' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-monthsToFetch' );
+	register_setting( 'eduadmin-rewrite', 'eduadmin-showVatTexts' );
 
 	if ( is_admin() ) {
 		wp_enqueue_script( 'jquery' );
@@ -194,17 +193,27 @@ function eduadmin_frontend_content() {
 		'eduadmin_apiclient_script',
 		'wp_edu',
 		array(
-			'BaseUrl'        => home_url(),
-			'BaseUrlScripts' => plugins_url( 'content/script', dirname( __FILE__ ) ),
-			'CourseFolder'   => get_option( 'eduadmin-rewriteBaseUrl' ),
-			'AjaxUrl'        => rest_url( 'edu/v1' ),
+			'BaseUrl'                => home_url(),
+			'BaseUrlScripts'         => plugins_url( 'content/script', dirname( __FILE__ ) ),
+			'CourseFolder'           => esc_js( get_option( 'eduadmin-rewriteBaseUrl' ) ),
+			'AjaxUrl'                => rest_url( 'edu/v1' ),
+			'Currency'               => get_option( 'eduadmin-currency', 'SEK' ),
+			'ShouldValidateCivRegNo' => EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false',
+			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
+			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
 		)
 	);
 	wp_enqueue_script( 'eduadmin_apiclient_script', false, array( 'jquery' ) );
 
+	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/js_strings.js' );
+	wp_register_script( 'eduadmin_jsstrings_script', plugins_url( 'content/scripts/frontend/js_strings.js', dirname( __FILE__ ) ), array( 'wp-i18n' ), date_version( $script_version ) );
+	wp_enqueue_script( 'eduadmin_jsstrings_script', false, array( 'wp-i18n' ) );
+
+	wp_set_script_translations( 'eduadmin_jsstrings_script', 'eduadmin-booking' );
+
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/frontendjs.js' );
-	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
-	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
+	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), array( 'eduadmin_jsstrings_script' ), date_version( $script_version ) );
+	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery', 'eduadmin_jsstrings_script' ) );
 	EDU()->stop_timer( $t );
 }
 

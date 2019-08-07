@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.7.0
+ * Version:	2.8.0
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -93,6 +93,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public $months;
 		/** @var array */
 		public $short_months;
+		/** @var array */
+		public $request_items;
 
 		/**
 		 * @return EduAdmin
@@ -106,9 +108,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function __construct() {
-			$this->timers  = array();
-			$t             = $this->start_timer( __METHOD__ );
-			$this->version = $this->get_version();
+			$this->timers        = array();
+			$t                   = $this->start_timer( __METHOD__ );
+			$this->request_items = array();
+			$this->version       = $this->get_version();
 			$this->includes();
 			$this->init_hooks();
 			do_action( 'eduadmin_loaded' );
@@ -144,7 +147,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			}
 
 			if ( $as_json ) {
-				echo '<xmp>' . json_encode( $object, JSON_PRETTY_PRINT ) . '</xmp>';
+				echo '<span style="white-space: pre;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
 
 				return;
 			}
@@ -152,7 +155,57 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			ob_start();
 			var_dump( $object );
 
-			echo '<xmp>' . ob_get_clean() . '</xmp>';
+			echo '<span style="white-space: pre;">' . ob_get_clean() . '</span>';
+		}
+
+		/*
+		 * Checks if the current option is checked inside
+		 * @param string|bool|number|null $optionValue
+		 * @param bool|null $default
+		 * @return bool
+		 */
+		public function is_checked( $optionName, $default = false ) {
+			$t           = $this->start_timer( __METHOD__ . '::' . $optionName );
+			$optionValue = get_option( $optionName, $default );
+
+			if ( empty( $optionValue ) ) {
+				$this->stop_timer( $t );
+
+				return false;
+			}
+			if ( 'on' === $optionValue ) {
+				$this->stop_timer( $t );
+
+				return true;
+			}
+			if ( true === $optionValue ) {
+				$this->stop_timer( $t );
+
+				return true;
+			}
+			if ( 'true' === $optionValue ) {
+				$this->stop_timer( $t );
+
+				return true;
+			}
+			if ( 1 === $optionValue ) {
+				$this->stop_timer( $t );
+
+				return true;
+			}
+			if ( '1' === $optionValue ) {
+				$this->stop_timer( $t );
+
+				return true;
+			}
+
+			$this->stop_timer( $t );
+
+			return $default;
+		}
+
+		public function is_selected( $optionValue, $currentValue ) {
+			return ! empty( $optionValue ) && $optionValue === $currentValue;
 		}
 
 		/**

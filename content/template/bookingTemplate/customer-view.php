@@ -200,7 +200,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			</div>
 		</label>
 	<?php } ?>
-	<?php if ( get_option( 'eduadmin-useLogin', false ) && get_option( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
+	<?php if ( EDU()->is_checked( 'eduadmin-useLogin', false ) && EDU()->is_checked( 'eduadmin-allowCustomerUpdate', false ) && isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) { ?>
 		<label class="edu-book-overwriteCustomerData">
 			<div class="inputHolder">
 				<label class="inline-checkbox" for="overwriteCustomerData">

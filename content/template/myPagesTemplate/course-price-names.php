@@ -45,16 +45,12 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	$currency = get_option( 'eduadmin-currency', 'SEK' );
-
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
 	?>
 	<div class="eventInformation">
 		<h3><?php echo esc_html_x( 'Prices', 'frontend', 'eduadmin-booking' ); ?></h3>
 		<?php
 		foreach ( $edo as $price ) {
-			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) );
+			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() );
 			echo '<br />';
 		}
 		?>

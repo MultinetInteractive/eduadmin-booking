@@ -53,6 +53,18 @@ if ( ! function_exists( 'wp_get_timezone_string' ) ) {
 	}
 }
 
+function edu_get_vat_text() {
+	$t   = EDU()->start_timer( __METHOD__ );
+	$org = EDUAPIHelper()->GetOrganization();
+
+	$inc_vat = $org['PriceIncVat'];
+
+	$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
+	EDU()->stop_timer( $t );
+
+	return $show_vat ? ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) : '';
+}
+
 function edu_get_percent_from_values( $current_value, $max_value ) {
 	if ( 0 === $current_value || 0 === $max_value ) {
 		return 'percentUnknown';

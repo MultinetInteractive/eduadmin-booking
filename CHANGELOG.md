@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.7.1...v2.8.0) (2019-08-07)
+
+
+### Features
+
+* 🎸 Added filtercity-attribute to listview. fixes [#80](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/80) ([bf64a10](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bf64a10))
+
+
+
+### [2.7.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.7.0...v2.7.1) (2019-08-06)
+
+
+### Bug Fixes
+
+* 🐛 Fix for is_checked if empty option value ([8260dcc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8260dcc))
+* 🐛 Remove debug-info ([f98f480](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f98f480))
+
+
+
 ## [2.7.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.6.2...v2.7.0) (2019-07-29)
 
 

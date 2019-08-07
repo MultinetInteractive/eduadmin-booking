@@ -246,6 +246,14 @@ function edu_api_listview_eventlist() {
 		}
 	}
 
+	$filter_city = sanitize_text_field( $_POST['filtercity'] );
+
+	if ( ! empty( $filter_city ) ) {
+		$events = array_filter( $events, function( $object ) use ( &$filter_city ) {
+			return mb_stripos( $filter_city, $object['City'] ) !== false;
+		} );
+	}
+
 	if ( ! empty( $_POST['edu-region'] ) ) {
 		$regions = EDUAPIHelper()->GetRegions();
 
@@ -289,10 +297,6 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );
@@ -367,10 +371,6 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
 	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
 	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
-
-	$org = EDUAPIHelper()->GetOrganization();
-
-	$inc_vat = $org['PriceIncVat'];
 
 	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
 	$currency         = get_option( 'eduadmin-currency', 'SEK' );

@@ -99,10 +99,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<?php
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					echo sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) );
+					echo sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . edu_get_vat_text();
 				} else {
 					foreach ( $prices as $up ) {
-						echo sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) );
+						echo sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . edu_get_vat_text();
 						?>
 						<br />
 						<?php

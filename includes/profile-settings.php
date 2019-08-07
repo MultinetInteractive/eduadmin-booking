@@ -15,19 +15,19 @@ function edu_render_profile_settings_page() {
 				<h3><?php _ex( 'Price settings', 'backend', 'eduadmin-booking' ); ?></h3>
 				<?php $selected_price_setting = get_option( 'eduadmin-profile-priceType', 'IncVat' ); ?>
 				<select name="eduadmin-profile-priceType">
-					<option<?php echo( 'IncVat' === $selected_price_setting ? ' selected="selected"' : '' ); ?>
-						value="IncVat"><?php echo esc_html_x( 'VAT Inclusive', 'backend', 'eduadmin-booking' ); ?></option>
-					<option<?php echo( 'ExVat' === $selected_price_setting ? ' selected="selected"' : '' ); ?>
-						value="ExVat"><?php echo esc_html_x( 'VAT Excluded', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $selected_price_setting, 'IncVat' ); ?> value="IncVat">
+						<?php echo esc_html_x( 'VAT Inclusive', 'backend', 'eduadmin-booking' ); ?>
+					</option>
+					<option <?php selected( $selected_price_setting, 'ExVat' ); ?> value="ExVat">
+						<?php echo esc_html_x( 'VAT Excluded', 'backend', 'eduadmin-booking' ); ?>
+					</option>
 				</select>
 				<i><?php _ex( 'Select how you want the logged in users to view the prices in their list of orders/bookings.', 'backend', 'eduadmin-booking' ); ?></i>
 				<br />
 
 				<h4><?php _ex( 'Certificates', 'backend', 'eduadmin-booking' ); ?></h4>
 				<label>
-					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates" name="eduadmin-profile-showCompanyCertificates"<?php if ( get_option( 'eduadmin-profile-showCompanyCertificates', false ) ) {
-						echo " checked=\"checked\"";
-					} ?> />
+					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates" name="eduadmin-profile-showCompanyCertificates" <?php checked( get_option( 'eduadmin-profile-showCompanyCertificates', false ), "on" ); ?> />
 					<?php _ex( 'Show certificates from all persons in the certificates page', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 

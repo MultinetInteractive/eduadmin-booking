@@ -1,5 +1,5 @@
 "use strict";
-wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "" };
+wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false" };
 var edu = window["edu"] ? window["edu"] : {};
 edu.apiclient = {
     baseUrl: null,
@@ -111,7 +111,8 @@ edu.apiclient = {
                 showreadmorebtn: jQuery(target).data("showreadmorebtn"),
                 "edu-region": jQuery(target).data("region"),
                 showimages: jQuery(target).data("showimages"),
-                hideimages: jQuery(target).data("hideimages")
+                hideimages: jQuery(target).data("hideimages"),
+                filtercity: jQuery(target).data("filtercity")
             },
             success: function (d) {
                 jQuery(target).html(d);

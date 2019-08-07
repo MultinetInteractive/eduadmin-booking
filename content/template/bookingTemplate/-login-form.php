@@ -1,7 +1,7 @@
 <div class="checkLoginForm">
 	<input type="hidden" name="edu-login-ver" value="<?php echo esc_attr( wp_create_nonce( 'edu-profile-login' ) ); ?>" />
-	<input type="hidden" name="eduformloginaction" value=""/>
-	<input type="hidden" name="eduReturnUrl" value="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>"/>
+	<input type="hidden" name="eduformloginaction" value="" />
+	<input type="hidden" name="eduReturnUrl" value="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>" />
 	<h3><?php echo esc_html_x( 'Please login to continue.', 'frontend', 'eduadmin-booking' ); ?></h3>
 	<?php
 	$login_value = ! empty( $_POST['eduadminloginEmail'] ) ? sanitize_text_field( $_POST['eduadminloginEmail'] ) : '';
@@ -28,18 +28,18 @@
 		<div class="loginLabel"><?php echo esc_html( $login_label ); ?></div>
 		<div class="loginInput">
 			<input type="<?php echo esc_attr( $field_type ); ?>" name="eduadminloginEmail"<?php echo( 'CivicRegistrationNumber' === $selected_login_field ? ' class="eduadmin-civicRegNo" onblur="eduBookingView.ValidateCivicRegNo();"' : '' ); ?>
-					required autocomplete="off" title="<?php echo esc_attr( sprintf( _x( 'Please enter your %s here', 'frontend', 'eduadmin-booking' ), $login_label ) ); ?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo esc_attr( $login_value ); ?>"/>
+				required autocomplete="off" title="<?php echo esc_attr( sprintf( _x( 'Please enter your %s here', 'frontend', 'eduadmin-booking' ), $login_label ) ); ?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo esc_attr( $login_value ); ?>" />
 		</div>
 	</label>
 	<label>
 		<div class="loginLabel"><?php echo esc_html_x( 'Password', 'frontend', 'eduadmin-booking' ); ?></div>
 		<div class="loginInput">
-			<input type="password" autocomplete="off" autofocus="autofocus" name="eduadminpassword" required title="<?php echo esc_attr_x( 'Please enter your password here', 'frontend', 'eduadmin-booking' ); ?>" placeholder="<?php echo esc_attr_x( 'Password', 'frontend', 'eduadmin-booking' ); ?>"/>
+			<input type="password" autocomplete="off" autofocus="autofocus" name="eduadminpassword" required title="<?php echo esc_attr_x( 'Please enter your password here', 'frontend', 'eduadmin-booking' ); ?>" placeholder="<?php echo esc_attr_x( 'Password', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<?php
 	$click = '';
-	if ( 'CivicRegistrationNumber' === $selected_login_field && get_option( 'eduadmin-validateCivicRegNo', false ) === 'true' ) {
+	if ( 'CivicRegistrationNumber' === $selected_login_field && EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ) {
 		$click = 'if(!eduBookingView.ValidateCivicRegNo()) { alert(\'' . _x( 'Please enter a valid swedish civic registration number.', 'frontend', 'eduadmin-booking' ) . '\');  return false; }';
 	}
 	?>

@@ -39,6 +39,6 @@
 			?>" placeholder="<?php echo esc_attr( $login_label ); ?>" value="<?php echo esc_attr( $login_value ); ?>" />
 		</div>
 	</label>
-	<input type="submit" class="bookingLoginButton cta-btn"<?php echo( 'CivicRegistrationNumber' === $selected_login_field && 'true' === get_option( 'eduadmin-validateCivicRegNo', false ) ? ' onclick="if(!eduBookingView.ValidateCivicRegNo()) { alert(\'' . esc_js( _x( 'Please enter a valid swedish civic registration number.', 'frontend', 'eduadmin-booking' ) ) . '\'); return false; }"' : '' ); ?>
+	<input type="submit" class="bookingLoginButton cta-btn"<?php echo( 'CivicRegistrationNumber' === $selected_login_field && EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? ' onclick="if(!eduBookingView.ValidateCivicRegNo()) { alert(\'' . esc_js( _x( 'Please enter a valid swedish civic registration number.', 'frontend', 'eduadmin-booking' ) ) . '\'); return false; }"' : '' ); ?>
 		value="<?php echo esc_attr_x( 'Continue', 'frontend', 'eduadmin-booking' ); ?>" />
 </div>

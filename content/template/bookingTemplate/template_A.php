@@ -36,10 +36,6 @@ if ( ! $api_key || empty( $api_key ) ) {
 		$participant_discount_percent = 0.0;
 		$customer_invoice_email       = '';
 
-		$org = EDUAPIHelper()->GetOrganization();
-
-		$inc_vat = $org['PriceIncVat'];
-
 		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
 			$user     = EDU()->session['eduadmin-loginUser'];
 			$contact  = $user->Contact;
@@ -56,7 +52,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		// PriceNameVat
 		$first_price = current( $unique_prices );
 
-		$hide_sub_event_date_info = get_option( 'eduadmin-hideSubEventDateTime', false );
+		$hide_sub_event_date_info = EDU()->is_checked( 'eduadmin-hideSubEventDateTime', false );
 		?>
 		<div class="eduadmin booking-page">
 			<form action="" method="post" id="edu-booking-form">
@@ -110,10 +106,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 				}
 				?>
 				<?php
-				$no_invoice_free_events         = get_option( 'eduadmin-noInvoiceFreeEvents', false );
-				$single_person_booking          = get_option( 'eduadmin-singlePersonBooking', false );
-				$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false == $attributes['hideinvoiceemailfield'] : false == get_option( 'eduadmin-hideInvoiceEmailField', false );
-				$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false == $attributes['showinvoiceinformation'] : true == get_option( 'eduadmin-showInvoiceInformation', false );
+				$no_invoice_free_events         = EDU()->is_checked( 'eduadmin-noInvoiceFreeEvents', false );
+				$single_person_booking          = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
+				$show_invoice_email             = isset( $attributes['hideinvoiceemailfield'] ) ? false == $attributes['hideinvoiceemailfield'] : ! EDU()->is_checked( 'eduadmin-hideInvoiceEmailField', false );
+				$force_show_invoice_information = isset( $attributes['showinvoiceinformation'] ) ? false == $attributes['showinvoiceinformation'] : EDU()->is_checked( 'eduadmin-showInvoiceInformation', false );
 				if ( $single_person_booking ) {
 					include_once 'single-person-booking.php';
 				} else {
@@ -140,7 +136,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 									<?php } ?>
 									value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 									<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-									(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) ); ?>
+									(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . edu_get_vat_text() ); ?>
 									)
 								</option>
 							<?php endforeach; ?>
@@ -153,7 +149,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				include_once 'limited-discount-view.php';
 				?>
 				<div class="submitView">
-					<?php if ( get_option( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
+					<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
 						<div class="confirmTermsHolder">
 							<label>
 								<input type="checkbox" id="confirmTerms" name="confirmTerms" value="agree" />
@@ -175,6 +171,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 							<?php echo esc_html_x( 'No free spots left on this event', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 					<?php endif; ?>
+					<div class="edu-modal warning" id="edu-warning-pricecheck"></div>
 					<div class="edu-modal warning" id="edu-warning-terms">
 						<?php echo esc_html_x( 'You must accept Terms and Conditions to continue.', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
@@ -214,15 +211,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			var pricePerParticipant = <?php echo esc_js( round( $first_price['Price'] - $discount_value, 2 ) ); ?>;
 			var discountPerParticipant = <?php echo esc_js( round( $participant_discount_percent / 100, 2 ) ); ?>;
 			var totalPriceDiscountPercent = <?php echo esc_js( $discount_percent ); ?>;
-			var currency = '<?php echo esc_js( get_option( 'eduadmin-currency', 'SEK' ) ); ?>';
-			var vatText = '<?php echo esc_js( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>';
-			var ShouldValidateCivRegNo = <?php echo esc_js( get_option( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false' ); ?>;
 
-			var edu_vat = {
-				inc: '<?php echo esc_js( _x( 'inc vat', 'frontend', 'eduadmin-booking' ) ); ?>',
-				ex: '<?php echo esc_js( _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ); ?>',
-				free: '<?php echo esc_js( _x( 'vat free', 'frontend', 'eduadmin-booking' ) ); ?>'
-			};
 			(function () {
 				var title = document.title;
 				title = title.replace('<?php echo esc_js( $original_title ); ?>', '<?php echo esc_js( $new_title ); ?>');
@@ -230,7 +219,6 @@ if ( ! $api_key || empty( $api_key ) ) {
 				eduBookingView.ProgrammeBooking = false;
 				eduBookingView.ForceContactCivicRegNo = <?php echo( $selected_course['RequireCivicRegistrationNumber'] ? 'true' : 'false' ); ?>;
 				eduBookingView.MaxParticipants = <?php echo esc_js( intval( $event['ParticipantNumberLeft'] ) ); ?>;
-				<?php echo get_option( 'eduadmin-singlePersonBooking', false ) ? 'eduBookingView.SingleParticipant = true;' : ''; ?>
 				eduBookingView.AddParticipant();
 				eduBookingView.CheckPrice(false);
 			})();

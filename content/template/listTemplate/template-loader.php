@@ -10,7 +10,7 @@ if ( ! empty( $attributes['category'] ) ) {
 	$category_id = $attributes['category'];
 }
 
-$show_images = get_option( 'eduadmin-showCourseImage', true );
+$show_images = EDU()->is_checked( 'eduadmin-showCourseImage', true );
 
 if ( ! empty( $attributes['showimages'] ) ) {
 	$show_images = true;

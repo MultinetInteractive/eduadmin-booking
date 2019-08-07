@@ -6,7 +6,7 @@ if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
 } else {
 	$course_id = null;
 }
-$group_by_city       = get_option( 'eduadmin-groupEventsByCity', false );
+$group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 $group_by_city_class = '';
 
 $fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
@@ -105,10 +105,7 @@ if ( ! $course_level && ! empty( $selected_course['CourseLevelId'] ) ) {
 	set_transient( 'eduadmin-courseLevel-' . $selected_course['CourseTemplateId'] . '__' . EDU()->version, $course_level, HOUR_IN_SECONDS );
 }
 
-$org = EDUAPIHelper()->GetOrganization();
-
-$inc_vat      = $org['PriceIncVat'];
-$show_headers = get_option( 'eduadmin-showDetailHeaders', true );
+$show_headers = EDU()->is_checked( 'eduadmin-showDetailHeaders', true );
 
 $hide_sections = array();
 if ( isset( $attributes['hide'] ) ) {
