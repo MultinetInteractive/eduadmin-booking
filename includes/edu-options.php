@@ -10,6 +10,7 @@ require_once 'detail-settings.php';
 require_once 'booking-settings.php';
 require_once 'profile-settings.php';
 require_once 'style-settings.php';
+require_once 'news-page.php';
 
 add_action( 'admin_init', 'eduadmin_settings_init' );
 add_action( 'admin_menu', 'eduadmin_backend_menu' );
@@ -241,6 +242,7 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Style', 'backend', 'eduadmin-booking' ), _x( 'Style settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-style', 'edu_render_style_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Plugins', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-plugins', 'edu_render_plugin_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Api Authentication', 'backend', 'eduadmin-booking' ), _x( 'Api Authentication', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );
+	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - News', 'backend', 'eduadmin-booking' ), _x( 'News', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-news', 'edu_render_news_page' );
 	EDU()->stop_timer( $t );
 }
 

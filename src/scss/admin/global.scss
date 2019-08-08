@@ -7,6 +7,23 @@
 		border: 1px solid #9c9c9c;
 		border-radius: 5px;
 		box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+
+		.news-item {
+			border: 1px solid #9c9c9c;
+			border-radius: 5px;
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 10px;
+
+			ul {
+				list-style: unset;
+				padding-left: 40px;
+			}
+
+			&.update-recommended {
+				background-color: mistyrose;
+			}
+		}
 	}
 
 	input.form-control,
