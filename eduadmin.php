@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.8.0
+ * Version:	2.9.0
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.7
@@ -147,7 +147,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			}
 
 			if ( $as_json ) {
-				echo '<span style="white-space: pre;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
+				echo '<span style="white-space: pre; font-family: Courier New;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
 
 				return;
 			}
@@ -155,7 +155,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			ob_start();
 			var_dump( $object );
 
-			echo '<span style="white-space: pre;">' . ob_get_clean() . '</span>';
+			echo '<span style="white-space: pre; font-family: Courier New;">' . ob_get_clean() . '</span>';
 		}
 
 		/*
@@ -263,6 +263,64 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			return $r;
 		}
 
+		public function get_news() {
+			return EDU()->get_transient( 'eduadmin-wp-news', function() {
+				$user_locale = get_user_locale();
+				$lang        = "en";
+				switch ( $user_locale ) {
+					case "sv_SE":
+						$lang = "sv";
+						break;
+					default:
+						$lang = "en";
+						break;
+				}
+
+				$u                 = wp_get_current_user();
+				$ut                = md5( EDU()->version );
+				$eduadmin_news_url = 'https://productnews.multinet.com/display/json/eduadmin-wp-plugin/live/' . $u->ID . '/' . $ut . '?lang=' . $lang;
+				$resp              = wp_remote_get( $eduadmin_news_url );
+
+				$news_items = json_decode( $resp['body'], true );
+
+				$needs_update = false;
+
+				foreach ( $news_items as $i => $ni ) {
+					$news_items[ $i ]['UpdateRecommended'] = false;
+					if ( mb_stripos( $ni["newsBody"], "<!--" ) !== false ) {
+						if ( preg_match_all( "/<!-- (\{.*?\}) -->/", $ni["newsBody"], $config ) > 0 ) {
+							$news_items[ $i ]["newsBody"]       = trim( str_replace( $config[0][0], '', $ni["newsBody"] ) );
+							$news_items[ $i ]['NewsItemConfig'] = json_decode( $config[1][0], true );
+
+							if ( $news_items[ $i ]['NewsItemConfig']['recommendedVersion'] ) {
+								$recommendedVersion = $news_items[ $i ]['NewsItemConfig']['recommendedVersion'];
+
+								$updateRecommended                      = version_compare( EDU()->version, $recommendedVersion ) < 0;
+								$news_items[ $i ]['UpdateRecommended']  = $updateRecommended;
+								$news_items[ $i ]['RecommendedVersion'] = $recommendedVersion;
+								$needs_update                           = true;
+							}
+						}
+					}
+				}
+
+				if ( $needs_update ) {
+					EDU()->new_version_needed_notice();
+				}
+
+				return $news_items;
+			}, HOUR_IN_SECONDS );
+		}
+
+		private function new_version_needed_notice() {
+			?>
+			<div class="notice notice-error">
+				<p>EduAdmin - <?php echo _x( 'Update needed', 'backend', 'eduadmin-booking' ); ?></p>
+				<p><?php echo _x( 'Please view the news and update the EduAdmin plugin for optimal functionality.', 'backend', 'eduadmin-booking' ); ?></p>
+			</div>
+			<?php
+		}
+
 		public function get_version() {
 			if ( function_exists( 'get_plugin_data' ) ) {
 				$p_data = get_plugin_data( __FILE__ );
@@ -351,6 +409,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			);
 			$call_home_url = 'https://ws10.multinet.se/edu-plugin/wp_phone_home.php';
 			wp_remote_post( $call_home_url, array( 'body' => $usage_data ) );
+
+			EDU()->get_news();
 		}
 
 		private function init_hooks() {
