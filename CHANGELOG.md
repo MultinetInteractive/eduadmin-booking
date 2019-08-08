@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.8.0...v2.9.0) (2019-08-08)
+
+
+### Features
+
+* 🎸 News page with ability to warn if new versions is neede ([a196779](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a196779))
+
+
+
 ## [2.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.7.1...v2.8.0) (2019-08-07)
 
 
