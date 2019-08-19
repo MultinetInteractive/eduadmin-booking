@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.9.0...v2.9.1) (2019-08-19)
+
+
+### Bug Fixes
+
+* 🐛 Fix for <5.0 WP that doesn't have set_script_translation ([5e79191](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5e79191))
+
+
+
 ## [2.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.8.0...v2.9.0) (2019-08-08)
 
 
