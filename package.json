@@ -43,7 +43,7 @@
 		},
 		"eduadmin": {
 			"testedUpTo": "5.2",
-			"requiresAtLeast": "4.7",
+			"requiresAtLeast": "4.9",
 			"minimumPhpVersion": "5.2"
 		}
 	}
