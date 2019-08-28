@@ -16,9 +16,9 @@ class EduAdminToken {
 	 * @var integer|null
 	 */
 	public $ExpiresIn = null;
-	public $UserName = null;
-	public $Issued = null;
-	public $Expires = null;
+	public $UserName  = null;
+	public $Issued    = null;
+	public $Expires   = null;
 
 	/**
 	 * EduAdminToken constructor.
@@ -239,6 +239,8 @@ class EduAdmin_Data_BookingData {
 	public $Notes = null;
 	/** @var string|null $PurchaseOrderNumber */
 	public $PurchaseOrderNumber = null;
+	/** @var string|null $GLN */
+	public $GLN = null;
 	/** @var string|null $CouponCode */
 	public $CouponCode = null;
 	/** @var string|null $PostponedBillingDate */
@@ -305,8 +307,8 @@ class EduAdmin_Data_CustomFields {
  * Class EduAdmin_Data_Answers
  */
 class EduAdmin_Data_Answers {
-	/** @var integer|null $AnswerId */
-	public $AnswerId = null;
+	/** @var integer $AnswerId */
+	public $AnswerId = -1;
 	/** @var object|null $AnswerValue */
 	public $AnswerValue = null;
 	/** @var integer|null $AnswerNumber */
@@ -515,6 +517,10 @@ class EADCUP_NamedUnnamedParticipants {
  * Class EduAdmin_Data_Customer
  */
 class EduAdmin_Data_Customer {
+	/** @var integer|null $CustomerId */
+	public $CustomerId = null;
+	/** @var boolean|null $UpdateCustomerInformation */
+	public $UpdateCustomerInformation = null;
 	/** @var string|null $CustomerName */
 	public $CustomerName = null;
 	/** @var string|null $CustomerNumber */
@@ -545,6 +551,8 @@ class EduAdmin_Data_Customer {
 	public $CustomerGroupId = null;
 	/** @var string|null $CustomerGroupName */
 	public $CustomerGroupName = null;
+	/** @var boolean|null $NonCreditWorthy */
+	public $NonCreditWorthy = null;
 	/** @var EduAdmin_Data_BillingInfo|null $BillingInfo */
 	public $BillingInfo = null;
 	/** @var EduAdmin_Data_CustomFields[]|null $CustomFields */
@@ -573,18 +581,22 @@ class EduAdmin_Data_BillingInfo {
 	public $OrganisationNumber = null;
 	/** @var string|null $VatNumber */
 	public $VatNumber = null;
-	/** @var string|null $Reference */
-	public $Reference = null;
-	/** @var string|null $OurReference */
-	public $OurReference = null;
+	/** @var string|null $BuyerReference */
+	public $BuyerReference = null;
+	/** @var string|null $SellerReference */
+	public $SellerReference = null;
 	/** @var string|null $EdiReference */
 	public $EdiReference = null;
+	/** @var string|null $GLN */
+	public $GLN = null;
 	/** @var string|null $Email */
 	public $Email = null;
 	/** @var boolean|null $NoVat */
 	public $NoVat = null;
 	/** @var integer|null $InvoiceDeliveryMethodId */
 	public $InvoiceDeliveryMethodId = null;
+	/** @var integer|null $PaymentTermId */
+	public $PaymentTermId = null;
 }
 
 /**
@@ -703,6 +715,8 @@ class EduAdmin_Data_ContactPerson {
 	public $Password = null;
 	/** @var integer|null $PriceNameId */
 	public $PriceNameId = null;
+	/** @var string|null $PurchaseOrderNumber */
+	public $PurchaseOrderNumber = null;
 	/** @var string|null $Reference */
 	public $Reference = null;
 	/** @var integer|null $SeatId */
