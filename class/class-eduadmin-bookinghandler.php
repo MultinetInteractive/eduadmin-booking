@@ -275,16 +275,7 @@ class EduAdmin_BookingHandler {
 
 		$contact->AddAsParticipant = true;
 
-		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
-			$user                      = EDU()->session['eduadmin-loginUser'];
-			$contact->PersonId         = $user->Contact->PersonId;
-			$customer->CustomerId      = $user->Customer->CustomerId;
-			$customer->CustomerGroupId = $user->Customer->CustomerGroupId;
-		}
-
-		if ( ! empty( $_POST['edu-customerId'] ) ) { // Var input okay.
-			$customer->CustomerId = intval( $_POST['edu-customerId'] ); // Var input okay.
-		}
+		$this->set_logged_in_user_info( $customer, $contact );
 
 		$first = '';
 		$last  = '';
@@ -330,8 +321,15 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['contactEmail'] ) ) { // Var input okay.
 			$customer->Email = sanitize_email( $_POST['contactEmail'] ); // Var input okay.
 		}
+
+		$customerInvoiceEmailAddress = null;
 		if ( ! empty( $_POST['invoiceEmail'] ) ) { // Var input okay.
 			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
+		}
+
+		$customerInvoiceGLN = null;
+		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
+			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
 		}
 
 		$billing_info = new stdClass();
@@ -377,6 +375,10 @@ class EduAdmin_BookingHandler {
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
 			$billing_info->Email = $customerInvoiceEmailAddress;
+		}
+
+		if ( ! empty( $customerInvoiceGLN ) ) {
+			$billing_info->GLN = $customerInvoiceGLN;
 		}
 
 		$customer->BillingInfo = $billing_info;
@@ -450,56 +452,7 @@ class EduAdmin_BookingHandler {
 
 		$booking_data = $this->get_single_participant_booking();
 
-		$booking = EDUAPI()->REST->Booking->Create( $booking_data );
-
-		if ( isset( $booking['data'] ) && 'Oops! Something went wrong. Please contact eduadmin@multinet.freshdesk.com so we can try to fix it.' === $booking['data'] ) {
-			$error_list = array();
-
-			$std_error                 = array();
-			$std_error['ErrorCode']    = -1;
-			$std_error['ErrorDetails'] = _x( 'An error has occurred, please try again!', 'frontend', 'eduadmin-booking' );
-			$std_error['ErrorText']    = _x( 'General error', 'frontend', 'eduadmin-booking' );
-
-			$error_list['Errors'][] = $std_error;
-
-			return $error_list;
-		}
-
-		if ( ! empty( $booking['ErrorMessages'] ) ) {
-			$error_list = array();
-			foreach ( $booking['ErrorMessages'] as $error ) {
-				$std_error                 = array();
-				$std_error['ErrorCode']    = -1;
-				$std_error['ErrorDetails'] = $error;
-				$std_error['ErrorText']    = $error;
-
-				$error_list['Errors'][] = $std_error;
-			}
-
-			return $error_list;
-		}
-
-		if ( ! empty( $booking['Errors'] ) ) {
-			$error_list           = array();
-			$error_list['Errors'] = $booking['Errors'];
-
-			return $error_list;
-		}
-
-		EDU()->session['eduadmin-printJS'] = true;
-
-		$user = EDU()->login_handler->get_login_user( $booking['ContactPersonId'], $booking['CustomerId'] );
-
-		EDU()->session['eduadmin-loginUser'] = $user;
-
-		$booking_info = array(
-			'BookingId'       => $booking['BookingId'],
-			'EventId'         => $booking['EventId'],
-			'CustomerId'      => $booking['CustomerId'],
-			'ContactPersonId' => $booking['ContactPersonId'],
-		);
-
-		return $booking_info;
+		return $this->create_booking( $booking_data );
 	}
 
 	public function check_single_participant() {
@@ -538,6 +491,19 @@ class EduAdmin_BookingHandler {
 			$booking_data->Reference = $customer->BillingInfo->SellerReference;
 		}
 
+		$this->set_logged_in_user_info( $customer, $contact );
+
+		$booking_data->Customer      = $customer;
+		$booking_data->ContactPerson = $contact;
+
+		$participants = $this->get_participant_data();
+
+		$booking_data->Participants = $participants;
+
+		return $booking_data;
+	}
+
+	private function set_logged_in_user_info( &$customer, &$contact ) {
 		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
 			$user                      = EDU()->session['eduadmin-loginUser'];
 			$contact->PersonId         = $user->Contact->PersonId;
@@ -548,15 +514,6 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['edu-customerId'] ) ) { // Var input okay.
 			$customer->CustomerId = intval( $_POST['edu-customerId'] ); // Var input okay.
 		}
-
-		$booking_data->Customer      = $customer;
-		$booking_data->ContactPerson = $contact;
-
-		$participants = $this->get_participant_data();
-
-		$booking_data->Participants = $participants;
-
-		return $booking_data;
 	}
 
 	private function get_customer() {
@@ -600,6 +557,11 @@ class EduAdmin_BookingHandler {
 		$customerInvoiceEmailAddress = null;
 		if ( ! empty( $_POST['invoiceEmail'] ) ) { // Var input okay.
 			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
+		}
+
+		$customerInvoiceGLN = null;
+		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
+			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
 		}
 
 		$billing_info = new stdClass();
@@ -653,6 +615,10 @@ class EduAdmin_BookingHandler {
 			$billing_info->Email = $customerInvoiceEmailAddress;
 		}
 
+		if ( ! empty( $customerInvoiceGLN ) ) {
+			$billing_info->GLN = $customerInvoiceGLN;
+		}
+
 		$customer->BillingInfo  = $billing_info;
 		$customer->CustomFields = $this->get_customer_custom_fields();
 
@@ -666,6 +632,10 @@ class EduAdmin_BookingHandler {
 
 		$booking_data = $this->get_multiple_participant_booking();
 
+		return $this->create_booking( $booking_data );
+	}
+
+	private function create_booking( $booking_data ) {
 		$booking = EDUAPI()->REST->Booking->Create( $booking_data );
 
 		if ( isset( $booking['data'] ) && 'Oops! Something went wrong. Please contact eduadmin@multinet.freshdesk.com so we can try to fix it.' === $booking['data'] ) {
