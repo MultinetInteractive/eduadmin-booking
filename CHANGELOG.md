@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.9.1...v2.10.0) (2019-08-29)
+
+
+### Bug Fixes
+
+* 🐛 If the version supports it, use set_script_translations ([a210b6f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a210b6f))
+* 🐛 More aggressive transient deletion ([4612268](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4612268))
+
+
+### Features
+
+* 🎸 GLN numbers can now be added to a booking. fixes [#276](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/276) ([e19810c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e19810c))
+* 🎸 Updated EduAdmin API client ([a8b8edd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a8b8edd))
+
+
+
 ### [2.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.9.0...v2.9.1) (2019-08-19)
 
 
