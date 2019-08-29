@@ -221,6 +221,8 @@ class EduAdmin_Data_PatchBooking {
 	public $PurchaseOrderNumber = null;
 	/** @var string|null $PostponedBillingDate */
 	public $PostponedBillingDate = null;
+	/** @var integer|null $PaymentMethodId */
+	public $PaymentMethodId = null;
 }
 
 /**
