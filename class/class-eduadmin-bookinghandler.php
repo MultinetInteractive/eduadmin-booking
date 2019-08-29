@@ -321,8 +321,15 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['contactEmail'] ) ) { // Var input okay.
 			$customer->Email = sanitize_email( $_POST['contactEmail'] ); // Var input okay.
 		}
+
+		$customerInvoiceEmailAddress = null;
 		if ( ! empty( $_POST['invoiceEmail'] ) ) { // Var input okay.
 			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
+		}
+
+		$customerInvoiceGLN = null;
+		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
+			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
 		}
 
 		$billing_info = new stdClass();
@@ -368,6 +375,10 @@ class EduAdmin_BookingHandler {
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
 			$billing_info->Email = $customerInvoiceEmailAddress;
+		}
+
+		if ( ! empty( $customerInvoiceGLN ) ) {
+			$billing_info->GLN = $customerInvoiceGLN;
 		}
 
 		$customer->BillingInfo = $billing_info;
@@ -548,6 +559,11 @@ class EduAdmin_BookingHandler {
 			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
 		}
 
+		$customerInvoiceGLN = null;
+		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
+			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
+		}
+
 		$billing_info = new stdClass();
 
 		if ( ! isset( $_POST['alsoInvoiceCustomer'] ) ) { // Var input okay.
@@ -597,6 +613,10 @@ class EduAdmin_BookingHandler {
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
 			$billing_info->Email = $customerInvoiceEmailAddress;
+		}
+
+		if ( ! empty( $customerInvoiceGLN ) ) {
+			$billing_info->GLN = $customerInvoiceGLN;
 		}
 
 		$customer->BillingInfo  = $billing_info;

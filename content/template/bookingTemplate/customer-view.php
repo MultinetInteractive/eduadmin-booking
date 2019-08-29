@@ -122,6 +122,16 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				</div>
 			</label>
 		</div>
+		<label class="edu-book-invoice-customerInvoiceGLN">
+			<div class="inputLabel">
+				<span title="<?php echo esc_attr_x( 'Global Location Number', 'frontend', 'eduadmin-booking' ); ?>" class="tooltip-element">
+					<?php echo esc_html_x( 'GLN', 'frontend', 'eduadmin-booking' ); ?>
+				</span>
+			</div>
+			<div class="inputHolder">
+				<input type="text" name="invoiceGLN" placeholder="<?php echo esc_attr_x( 'GLN', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->GLN ); ?>" />
+			</div>
+		</label>
 		<?php if ( $show_invoice_email ) { ?>
 			<label class="edu-book-invoice-customerInvoiceEmail">
 				<div class="inputLabel">

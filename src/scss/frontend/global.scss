@@ -37,6 +37,10 @@
 		box-shadow: none;
 	}
 
+	.tooltip-element {
+		border-bottom: 1px dotted #9c9c9c;
+	}
+
 	@import "./parts/buttons.scss";
 	@import "./parts/searchForm.scss";
 

@@ -116,6 +116,16 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 	</div>
 
 	<div class="invoiceView__wrapper">
+		<label class="edu-book-invoice-customerInvoiceGLN">
+			<div class="inputLabel">
+				<span title="<?php echo esc_attr_x( 'Global Location Number', 'frontend', 'eduadmin-booking' ); ?>" class="tooltip-element">
+					<?php echo esc_html_x( 'GLN', 'frontend', 'eduadmin-booking' ); ?>
+				</span>
+			</div>
+			<div class="inputHolder">
+				<input type="text" name="invoiceGLN" placeholder="<?php echo esc_attr_x( 'GLN', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->GLN ); ?>" />
+			</div>
+		</label>
 		<?php if ( $show_invoice_email ) { ?>
 			<label class="edu-book-singleParticipant-customerInvoiceEmail">
 				<div class="inputLabel">
