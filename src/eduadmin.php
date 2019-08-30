@@ -404,6 +404,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				'siteUrl'       => get_site_url(),
 				'siteName'      => get_option( 'blogname' ),
 				'wpVersion'     => $wp_version,
+				'phpVersion'    => PHP_VERSION,
 				'token'         => get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
 			);
