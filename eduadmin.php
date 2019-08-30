@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.10.0
+ * Version:	2.9.1
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.9
@@ -404,6 +404,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				'siteUrl'       => get_site_url(),
 				'siteName'      => get_option( 'blogname' ),
 				'wpVersion'     => $wp_version,
+				'phpVersion'    => PHP_VERSION,
 				'token'         => get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
 			);
