@@ -1,0 +1,4 @@
+[submodule "includes/eduadmin-api-phpclient"]
+	path = includes/eduadmin-api-phpclient
+	url = https://github.com/MultinetInteractive/eduadmin-api-phpclient.git
+	branch = master

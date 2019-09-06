@@ -73,17 +73,11 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		 * @var WP_Session|bool
 		 */
 		public $session = null;
-		/**
-		 * @var array
-		 */
+		/** @var array */
 		public $timers;
-		/**
-		 * @var array
-		 */
+		/** @var array */
 		public $phrases;
-		/**
-		 * @var string
-		 */
+		/** @var string */
 		public $version;
 		/** @var array */
 		public $week_days;
@@ -224,9 +218,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		/**
 		 * @param $name       - The name of the transient
-		 *
 		 * @param $action     callable
-		 *
 		 * @param $expiration int
 		 *
 		 * @return mixed
