@@ -45,6 +45,11 @@ rm -f $PROJECT_ROOT/package.json
 rm -fR $PROJECT_ROOT/scripts
 rm -fR $PROJECT_ROOT/tests
 rm -fR $PROJECT_ROOT/.git
+rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/.git
+rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/.gitignore
+rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/composer.yml
+rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/composer.json
+rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/phpunit.xml
 rm -fR $PROJECT_ROOT/wp-tests
 rm -fR $PROJECT_ROOT/vendor
 rm -fR $PROJECT_ROOT/bin
