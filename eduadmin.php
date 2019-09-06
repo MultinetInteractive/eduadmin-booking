@@ -344,7 +344,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->router = new EduAdminRouter();
 			$this->router->init();
 
-			include_once 'includes/eduadmin-api-client/eduadmin-api-client.php';
+			include_once 'includes/eduadmin-api-phpclient/eduadmin-api-client.php';
 			include_once 'includes/eduapi-helper-functions.php';
 
 			if ( ! class_exists( 'Recursive_ArrayAccess' ) ) {
