@@ -20,6 +20,7 @@ jobs:
           npx tsc
           yarn gulp deploy
   deploy:
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy trunk to SVN
         run: chmod +x $GITHUB_WORKSPACE/scripts/trunk.sh && $GITHUB_WORKSPACE/scripts.trunk.sh
