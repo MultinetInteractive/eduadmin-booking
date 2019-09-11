@@ -1,5 +1,8 @@
-name: check valid php
-on: [push]
+name: check valid php (master)
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -19,8 +22,4 @@ jobs:
   deploy:
     steps:
       - name: Deploy trunk to SVN
-        branch: master
         run: chmod +x $GITHUB_WORKSPACE/scripts/trunk.sh && $GITHUB_WORKSPACE/scripts.trunk.sh
-      - name: Deploy production to SVN
-        branch: production
-        run: chmod +x $GITHUB_WORKSPACE/scripts/deploy.sh && $GITHUB_WORKSPACE/scripts.deploy.sh
