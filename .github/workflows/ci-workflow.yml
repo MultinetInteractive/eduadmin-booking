@@ -1,8 +1,5 @@
 name: check valid php (master)
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
@@ -19,8 +16,10 @@ jobs:
           yarn
           npx tsc
           yarn gulp deploy
-  deploy:
+  deploy_trunk:
     runs-on: ubuntu-latest
+    needs: build
+    branches: master
     steps:
       - name: Deploy trunk to SVN
-        run: chmod +x $GITHUB_WORKSPACE/scripts/trunk.sh && $GITHUB_WORKSPACE/scripts.trunk.sh
+        run: chmod +x ./scripts/trunk.sh && ./scripts/trunk.sh
