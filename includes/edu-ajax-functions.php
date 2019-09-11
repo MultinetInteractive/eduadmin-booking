@@ -573,7 +573,7 @@ function edu_api_eventlist() {
 	$always_few_spots         = $_POST['fewspots'];
 	$show_event_venue         = $_POST['showvenue'];
 	$spot_settings            = $_POST['spotsettings'];
-	$allow_interest_reg_event = ! empty( $_POST['eventinquiry'] ) && 'true' === $_POST['eventinquiry'];
+	$allow_interest_reg_event = ! empty( $_POST['eventinquiry'] ) && '1' === $_POST['eventinquiry'];
 	$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
 
 	echo '<div class="eduadmin"><div class="event-table eventDays">';
