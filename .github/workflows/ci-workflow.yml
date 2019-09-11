@@ -19,10 +19,8 @@ jobs:
   deploy:
     steps:
       - name: Deploy trunk to SVN
-        needs: build
         branch: master
         run: chmod +x $GITHUB_WORKSPACE/scripts/trunk.sh && $GITHUB_WORKSPACE/scripts.trunk.sh
       - name: Deploy production to SVN
-        needs: build
         branch: production
         run: chmod +x $GITHUB_WORKSPACE/scripts/deploy.sh && $GITHUB_WORKSPACE/scripts.deploy.sh
