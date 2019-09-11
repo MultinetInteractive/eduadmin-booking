@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.10.0...v2.10.1) (2019-09-11)
+
+
+### Bug Fixes
+
+* 🐛 Correct path for new submodule ([e060f02](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e060f02))
+* 🐛 eventinquiry check = 1 ([b8e1fcf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b8e1fcf))
+
+
+
 ## [2.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.9.1...v2.10.0) (2019-08-29)
 
 
