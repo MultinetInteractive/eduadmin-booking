@@ -25,4 +25,4 @@ jobs:
     needs: build
     steps:
       - name: Deploy trunk to SVN
-        run: chmod +x ./scripts/trunk.sh && ./scripts/trunk.sh
+        run: $GITHUB_WORKSPACE/scripts/trunk.sh
