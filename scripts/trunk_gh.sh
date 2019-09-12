@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-echo "Not running this now, trying to fix GitHub Actions instead"
-exit 0
-
-if [[ -z "$TRAVIS" ]]; then
-	echo "Script is only to be run by Travis CI" 1>&2
+if [[ -z "$GITHUB_WORKFLOW" ]]; then
+	echo "Script is only to be run by GitHub Actions" 1>&2
 	exit 1
 fi
 
@@ -13,13 +10,13 @@ if [[ -z "$WP_PASSWORD" ]]; then
 	exit 1
 fi
 
-if [[ -z "$TRAVIS_BRANCH" || "$TRAVIS_BRANCH" == "production" ]]; then
-	echo "Build branch is required and must not be a production" 1>&2
+if [[ -z "GITHUB_REF" || "GITHUB_REF" == "refs/heads/production" ]]; then
+	echo "Build branch is required and must not be production" 1>&2
 	exit 0
 fi
 
 PLUGIN="eduadmin-booking"
-PROJECT_ROOT=$TRAVIS_BUILD_DIR
+PROJECT_ROOT=$GITHUB_WORKSPACE
 VERSION="$(cat $PROJECT_ROOT/eduadmin.php | grep Version: | head -1 | cut -d: -f2 | tr -d '[[:space:]]')"
 
 echo "Version: $VERSION of $PLUGIN"

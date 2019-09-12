@@ -22,4 +22,4 @@ jobs:
           yarn gulp deploy
       - name: Deploy trunk to SVN
         run: |
-          $GITHUB_WORKSPACE/scripts/trunk.sh
+          $GITHUB_WORKSPACE/scripts/trunk_gh.sh
