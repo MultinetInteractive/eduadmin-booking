@@ -27,10 +27,8 @@ jobs:
         run: |
           composer global require "squizlabs/php_codesniffer=*"
           composer global require wp-coding-standards/wpcs
-          cd $GITHUB_WORKSPACE
-          ~/.composer/.vendor/bin/phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-
-          ~/.composer/.vendor/bin/phpcs
+          phpcs --config-set installed_paths $HOME/.composer/.vendor/wp-coding-standards/wpcs
+          phpcs
       - name: Deploy trunk to SVN
         env:
           WP_USERNAME: ${{ secrets.WP_USERNAME }}
