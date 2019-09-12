@@ -32,6 +32,7 @@ rm -f $PROJECT_ROOT/.gitignore
 rm -f $PROJECT_ROOT/Gulpfile.js
 rm -f $PROJECT_ROOT/yarn.lock
 rm -f $PROJECT_ROOT/package.json
+rm -fR $PROJECT_ROOT/.github
 rm -fR $PROJECT_ROOT/scripts
 rm -fR $PROJECT_ROOT/tests
 rm -fR $PROJECT_ROOT/.git

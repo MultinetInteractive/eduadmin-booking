@@ -7,7 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Download source
+        uses: actions/checkout@v1
         with:
           fetch-depth: 1
           submodules: true
@@ -22,6 +23,11 @@ jobs:
           yarn
           npx tsc
           yarn gulp deploy
+      - name: Check PHP
+        run: |
+          composer global require wp-coding-standards/wpcs
+          phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
+          phpcs
       - name: Deploy trunk to SVN
         env:
           WP_USERNAME: ${{ secrets.WP_USERNAME }}

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Not running this now, trying to fix GitHub Actions instead"
+exit 0
+
 if [[ -z "$TRAVIS" ]]; then
 	echo "Script is only to be run by Travis CI" 1>&2
 	exit 1
