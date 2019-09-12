@@ -1,4 +1,4 @@
-name: check valid php (master)
+name: Deploy new development / trunk version (master)
 on:
   push:
     branches: master
@@ -23,12 +23,6 @@ jobs:
           yarn
           npx tsc
           yarn gulp deploy
-      - name: Check PHP
-        run: |
-          composer global require "squizlabs/php_codesniffer=*"
-          composer global require wp-coding-standards/wpcs
-          $HOME/.composer/vendor/bin/phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-          $HOME/.composer/vendor/bin/phpcs --standard=WordPress $GITHUB_WORKSPACE
       - name: Deploy trunk to SVN
         env:
           WP_USERNAME: ${{ secrets.WP_USERNAME }}
