@@ -22,7 +22,7 @@ jobs:
           yarn gulp deploy
       - name: Deploy trunk to SVN
         env:
-          wp_username: ${{ secrets.WP_USERNAME }}
-          wp_password: ${{ secrets.WP_PASSWORD }}
+          WP_USERNAME: ${{ secrets.WP_USERNAME }}
+          WP_PASSWORD: ${{ secrets.WP_PASSWORD }}
         run: |
           $GITHUB_WORKSPACE/scripts/trunk_gh.sh

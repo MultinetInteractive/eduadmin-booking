@@ -10,7 +10,7 @@ if [[ -z "$WP_PASSWORD" ]]; then
 	exit 1
 fi
 
-if [[ -z "GITHUB_REF" || "GITHUB_REF" == "refs/heads/production" ]]; then
+if [[ -z "$GITHUB_REF" || "$GITHUB_REF" == "refs/heads/production" ]]; then
 	echo "Build branch is required and must not be production" 1>&2
 	exit 0
 fi
