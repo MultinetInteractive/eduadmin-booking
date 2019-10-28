@@ -46,6 +46,8 @@ rm -fR $PROJECT_ROOT/vendor
 rm -fR $PROJECT_ROOT/bin
 rm -fR $PROJECT_ROOT/node_modules
 rm -fR $PROJECT_ROOT/src
+rm -fR $PROJECT_ROOT/docs
+rm -fR $PROJECT_ROOT/website
 
 # Make sure we are in the project root
 cd $PROJECT_ROOT

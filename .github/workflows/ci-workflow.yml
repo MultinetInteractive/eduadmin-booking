@@ -23,6 +23,8 @@ jobs:
           yarn
           npx tsc
           yarn gulp deploy
+          cd website && yarn install && yarn run publish-gh-pages
+          cd $GITHUB_WORKSPACE
       - name: Deploy trunk to SVN
         env:
           WP_USERNAME: ${{ secrets.WP_USERNAME }}

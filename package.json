@@ -11,6 +11,7 @@
 		"bump-version": "yarn standard-version && yarn gulp debug && git add . && git add . && git commit -m \"chore: versionbump\" && git push --follow-tags"
 	},
 	"dependencies": {
+		"docusaurus-init": "^1.14.0",
 		"gulp": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-cssnano": "^2.1.3",
