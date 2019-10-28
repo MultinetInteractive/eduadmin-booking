@@ -27,8 +27,8 @@ const users = [
 const siteConfig = {
   title: 'EduAdmin plugin',
   tagline: 'EduAdmin integration for WordPress',
-  url: 'https://multinetinteractive.github.io/',
-  baseUrl: '/EduAdmin-WordPress/',
+  url: 'https://wordpress.eduadmin.se/',
+  baseUrl: '/',
   cname: 'wordpress.eduadmin.se',
 
   // Used for publishing and more
