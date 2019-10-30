@@ -12,13 +12,13 @@ class Footer extends React.Component {
     const baseUrl = this.props.config.baseUrl;
     const docsUrl = this.props.config.docsUrl;
     const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
+    const langPart = ''; //`${language ? `${language}/` : ''}`;
     return `${baseUrl}${docsPart}${langPart}${doc}`;
   }
 
   pageUrl(doc, language) {
     const baseUrl = this.props.config.baseUrl;
-    return baseUrl + (language ? `${language}/` : '') + doc;
+    return baseUrl + /*(language ? `${language}/` : '') +*/ doc;
   }
 
   render() {
@@ -37,14 +37,14 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            {/*<a href={this.docUrl('doc1.html', this.props.language)}>
+            <a href={this.docUrl('getting-started', this.props.language)}>
               Getting Started
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
-            </a>*/}
             <a href="https://api.eduadmin.se" target={"_blank"}>
               API Reference
+            </a>
+            <a href={this.docUrl('troubleshooting', this.props.language)}>
+              Troubleshooting
             </a>
           </div>
           <div>

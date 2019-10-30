@@ -5,30 +5,31 @@
     "previous": "Previous",
     "tagline": "EduAdmin integration for WordPress",
     "docs": {
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+      "your-first-custom-template": {
+        "title": "Your first custom template",
+        "sidebar_label": "Your first custom template"
       },
-      "doc2": {
-        "title": "document number 2"
+      "getting-started": {
+        "title": "Getting started",
+        "sidebar_label": "First time setup"
       },
-      "doc3": {
-        "title": "This is document number 3"
+      "shortcodes": {
+        "title": "Shortcodes",
+        "sidebar_label": "Shortcodes"
       },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
+      "troubleshooting": {
+        "title": "Troubleshooting",
+        "sidebar_label": "How to troubleshoot"
       }
     },
     "links": {
+      "Documentation": "Documentation",
       "EduAdmin API": "EduAdmin API"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Getting started": "Getting started",
+      "Custom templates": "Custom templates",
+      "Troubleshooting": "Troubleshooting"
     }
   },
   "pages-strings": {

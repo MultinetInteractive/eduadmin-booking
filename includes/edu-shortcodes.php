@@ -741,7 +741,12 @@ function eduadmin_get_programme_booking( $attributes ) {
 		$programme_id = null;
 	}
 
-	$programmestart_id = $_GET['id'];
+	$programmestart_id = null;
+	if ( ! empty( $attributes['programmestartid'] ) ) {
+		$programmestart_id = $attributes['programmestartid'];
+	} elseif ( ! empty( $_GET['id'] ) ) {
+		$programmestart_id = $_GET['id'];
+	}
 
 	if ( ! empty( $programmestart_id ) ) {
 		$programme = EDUAPI()->OData->ProgrammeStarts->GetItem(

@@ -16,13 +16,13 @@ function Help(props) {
   const {config: siteConfig, language = ''} = props;
   const {baseUrl, docsUrl} = siteConfig;
   const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-  const langPart = `${language ? `${language}/` : ''}`;
+  const langPart = ''; // `${language ? `${language}/` : ''}`;
   const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
 
   const supportLinks = [
     {
       content: `Learn more using the [documentation on this site.](${docUrl(
-        'doc1.html',
+        'getting-started',
       )})`,
       title: 'Browse Docs',
     },
