@@ -752,6 +752,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			'.',
 			'..',
 			'.git',
+			'.editorconfig',
+			'.gitattributes',
 			'.github',
 			'.gitignore',
 			'.gitmodules',
