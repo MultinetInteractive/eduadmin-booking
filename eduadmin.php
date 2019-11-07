@@ -784,25 +784,47 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			'yarn.lock',
 		);
 
+		private function get_sorted_recursive_list( $dir ) {
+			if ( ! is_dir( $dir ) ) {
+				return false;
+			}
+
+			$entries = array();
+			$d       = dir( $dir );
+
+			while ( false !== ( $entry = $d->read() ) ) {
+				if ( ! in_array( $entry, $this->ignored_directories_and_files ) ) {
+					if ( is_dir( $dir . '/' . $entry ) ) {
+						$subDirectoryEntries = $this->get_sorted_recursive_list( $dir . '/' . $entry );
+						foreach ( $subDirectoryEntries as $_entry ) {
+							$entries[] = $_entry;
+						}
+					} else {
+						$entries[] = $dir . '/' . $entry;
+					}
+				}
+			}
+			$d->close();
+			sort( $entries );
+
+			return $entries;
+		}
+
 		private function generate_directory_md5( $dir ) {
 			if ( ! is_dir( $dir ) ) {
 				return false;
 			}
 
-			$filemd5s = array();
-			$d        = dir( $dir );
+			$files = $this->get_sorted_recursive_list( $dir );
 
-			while ( false !== ( $entry = $d->read() ) ) {
-				if ( ! in_array( $entry, $this->ignored_directories_and_files ) ) {
-					if ( is_dir( $dir . '/' . $entry ) ) {
-						$filemd5s[] = $this->generate_directory_md5( $dir . '/' . $entry );
-					} else {
-						$filemd5s[] = md5_file( $dir . '/' . $entry );
-						#echo $dir . "/" . $entry . "<br />\n";
-					}
+			$filemd5s = array();
+
+			foreach ( $files as $file ) {
+				$filemd5s[] = md5_file( $file );
+				if ( isset( $_GET['edu-debug-integrity'] ) ) {
+					echo "<!-- EduAdmin Integrity: $file: " . md5_file( $file ) . " -->\n";
 				}
 			}
-			$d->close();
 
 			return md5( implode( '', $filemd5s ) );
 		}
