@@ -757,7 +757,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			'.gitmodules',
 			'.nvmrc',
 			'.scrutinizer.yml',
-			'.travis.yml',
 			'CHANGELOG.md',
 			'CONTRIBUTING.md',
 			'Gulpfile.js',
@@ -774,6 +773,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			'phpunit.xml',
 			'readme.md',
 			'scripts',
+			'compiled',
 			'src',
 			'tests',
 			'tsconfig.json',
@@ -798,6 +798,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 						$filemd5s[] = $this->generate_directory_md5( $dir . '/' . $entry );
 					} else {
 						$filemd5s[] = md5_file( $dir . '/' . $entry );
+						echo $dir . "/" . $entry . "<br />\n";
 					}
 				}
 			}

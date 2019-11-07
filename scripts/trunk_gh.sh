@@ -24,7 +24,6 @@ echo "Version: $VERSION of $PLUGIN"
 # Remove files not needed in plugin for deployment
 rm -f $PROJECT_ROOT/composer.json
 rm -f $PROJECT_ROOT/.scrutinizer.yml
-rm -f $PROJECT_ROOT/.travis.yml
 rm -f $PROJECT_ROOT/CONTRIBUTING.md
 rm -f $PROJECT_ROOT/LICENSE.md
 rm -f $PROJECT_ROOT/phpunit.xml
@@ -32,6 +31,7 @@ rm -f $PROJECT_ROOT/.gitignore
 rm -f $PROJECT_ROOT/Gulpfile.js
 rm -f $PROJECT_ROOT/yarn.lock
 rm -f $PROJECT_ROOT/package.json
+rm -f $PROJECT_ROOT/readme.md
 rm -fR $PROJECT_ROOT/.github
 rm -fR $PROJECT_ROOT/scripts
 rm -fR $PROJECT_ROOT/tests
