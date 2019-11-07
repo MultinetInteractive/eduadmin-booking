@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.11.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.3...v2.11.4) (2019-11-07)
+
+
+### Bug Fixes
+
+* 🐛 Line endings can be troublesome ([b8e1411](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b8e1411))
+
+
+
 ### [2.11.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.2...v2.11.3) (2019-11-07)
 
 
