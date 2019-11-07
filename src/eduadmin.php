@@ -89,6 +89,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public $short_months;
 		/** @var array */
 		public $request_items;
+		/** @var string */
+		private $storedIntegrityHash;
+		/** @var string */
+		private $currentIntegrityHash;
 
 		/**
 		 * @return EduAdmin
@@ -392,6 +396,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function call_home() {
 			global $wp_version;
+			$this->check_plugin_integrity();
+
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
 				'siteName'      => get_option( 'blogname' ),
@@ -399,6 +405,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				'phpVersion'    => PHP_VERSION,
 				'token'         => get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
+				'storedHash'    => $this->storedIntegrityHash,
+				'currentHash'   => $this->currentIntegrityHash,
 			);
 			$call_home_url = 'https://ws10.multinet.se/edu-plugin/wp_phone_home.php';
 			wp_remote_post( $call_home_url, array( 'body' => $usage_data ) );
@@ -415,6 +423,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			add_action( 'plugins_loaded', array( $this, 'load_language' ) );
 			add_action( 'eduadmin_call_home', array( $this, 'call_home' ) );
 			add_action( 'eduadmin_clear_expired', array( $this, 'clear_expired_transients' ) );
+			add_action( 'wp_footer', array( $this, 'get_integrity_check_footer' ) );
 			add_action( 'wp_footer', 'edu_get_timers' );
 			add_action( 'wp_footer', array( $this, 'get_transient_list' ) );
 			add_action( 'wp_footer', array( $this, 'get_scheduled_tasks' ) );
@@ -432,6 +441,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			);
 
 			return $schedules;
+		}
+
+		public function get_integrity_check_footer() {
+			echo $this->check_plugin_integrity() ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Modified plugin (" . $this->currentIntegrityHash . ") -->\n";
 		}
 
 		public function get_scheduled_tasks() {
@@ -722,6 +735,76 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			EDUAPI()->SetToken( $current_token );
 
 			return null;
+		}
+
+		private function check_plugin_integrity() {
+			$t = $this->start_timer( __METHOD__ );
+
+			$this->storedIntegrityHash  = trim( file_get_contents( EDUADMIN_PLUGIN_PATH . '/PLUGIN-CHECKSUM' ) );
+			$this->currentIntegrityHash = $this->generate_directory_md5( EDUADMIN_PLUGIN_PATH );
+
+			$this->stop_timer( $t );
+
+			return $this->currentIntegrityHash == $this->storedIntegrityHash;
+		}
+
+		private $ignored_directories_and_files = array(
+			'.',
+			'..',
+			'.git',
+			'.github',
+			'.gitignore',
+			'.gitmodules',
+			'.nvmrc',
+			'.scrutinizer.yml',
+			'CHANGELOG.md',
+			'CONTRIBUTING.md',
+			'Gulpfile.js',
+			'LICENSE.md',
+			'PLUGIN-CHECKSUM',
+			'bin',
+			'commitlint.config.js',
+			'composer.json',
+			'composer.yml',
+			'docs',
+			'eduadmin.php',
+			'node_modules',
+			'package.json',
+			'phpunit.xml',
+			'readme.md',
+			'scripts',
+			'compiled',
+			'src',
+			'tests',
+			'tsconfig.json',
+			'vendor',
+			'website',
+			'wp-tests',
+			'yarn-error.log',
+			'yarn.lock',
+		);
+
+		private function generate_directory_md5( $dir ) {
+			if ( ! is_dir( $dir ) ) {
+				return false;
+			}
+
+			$filemd5s = array();
+			$d        = dir( $dir );
+
+			while ( false !== ( $entry = $d->read() ) ) {
+				if ( ! in_array( $entry, $this->ignored_directories_and_files ) ) {
+					if ( is_dir( $dir . '/' . $entry ) ) {
+						$filemd5s[] = $this->generate_directory_md5( $dir . '/' . $entry );
+					} else {
+						$filemd5s[] = md5_file( $dir . '/' . $entry );
+						#echo $dir . "/" . $entry . "<br />\n";
+					}
+				}
+			}
+			$d->close();
+
+			return md5( implode( '', $filemd5s ) );
 		}
 	}
 

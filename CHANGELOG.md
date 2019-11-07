@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.11.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.1...v2.11.2) (2019-11-07)
+
+
+### Bug Fixes
+
+* 🐛 Don't output all checked files ([49bc1af](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/49bc1af))
+
+
+
+### [2.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.0...v2.11.1) (2019-11-07)
+
+
+### Bug Fixes
+
+* 🐛 Removed folder from checksum-check, removed scripts ([1bc3ed1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1bc3ed1))
+
+
+
+## [2.11.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.10.1...v2.11.0) (2019-11-07)
+
+
+### Bug Fixes
+
+* 🐛 Fix for actions ([72ba312](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/72ba312))
+
+
+### Features
+
+* 🎸 Plugin integrity check ([d56608e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d56608e)), closes [#280](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/280)
+
+
+
 ### [2.10.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.10.0...v2.10.1) (2019-09-11)
 
 
