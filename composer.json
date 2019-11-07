@@ -13,5 +13,5 @@
     "php": ">=5.2",
     "composer/installers": "~1"
   },
-  "version": "2.11.4"
+  "version": "2.11.5"
 }
