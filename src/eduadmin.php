@@ -798,7 +798,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 						$filemd5s[] = $this->generate_directory_md5( $dir . '/' . $entry );
 					} else {
 						$filemd5s[] = md5_file( $dir . '/' . $entry );
-						echo $dir . "/" . $entry . "<br />\n";
+						#echo $dir . "/" . $entry . "<br />\n";
 					}
 				}
 			}
