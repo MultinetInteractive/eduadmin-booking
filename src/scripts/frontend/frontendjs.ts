@@ -660,10 +660,10 @@ var eduDetailView = {
 
 const eduGlobalMethods = {
     GoBack: function (fallBackUrl: string) {
-        if (window.history.length > 1) {
+        /*if (window.history.length > 1) {
             window.history.go(-1);
-            return;
-        }
+            return false;
+        }*/ /* Thanks Firefox */
         location.href = fallBackUrl;
     }
 };

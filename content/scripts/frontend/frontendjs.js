@@ -454,10 +454,10 @@ var eduDetailView = {
 };
 var eduGlobalMethods = {
     GoBack: function (fallBackUrl) {
-        if (window.history.length > 1) {
+        /*if (window.history.length > 1) {
             window.history.go(-1);
-            return;
-        }
+            return false;
+        }*/ /* Thanks Firefox */
         location.href = fallBackUrl;
     }
 };
