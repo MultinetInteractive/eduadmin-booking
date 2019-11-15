@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.11.7](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.6...v2.11.7) (2019-11-15)
+
+
+### Bug Fixes
+
+* 🐛 Adding custom CSS in wp_footer instead ([7e725bb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e725bb))
+
+
+
 ### [2.11.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.5...v2.11.6) (2019-11-08)
 
 
