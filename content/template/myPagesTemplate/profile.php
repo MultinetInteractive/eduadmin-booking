@@ -46,43 +46,43 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 		<input type="hidden" name="edu-profile-nonce" value="<?php echo esc_attr( wp_create_nonce( 'edu-save-profile' ) ); ?>" />
 		<div class="eduadminCompanyInformation">
 			<h3><?php echo esc_html_x( 'Company information', 'frontend', 'eduadmin-booking' ); ?></h3>
-			<label>
+			<label class="profile-customer-name">
 				<div class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerName" required placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->CustomerName ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-address1">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerAddress" placeholder="<?php echo esc_attr_x( 'Address', 'backend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Address ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-address2">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerAddress2" placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Address2 ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-postalcode">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerZip" placeholder="<?php echo esc_attr_x( 'Postal code', 'backend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Zip ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-postalcity">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->City ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-emailaddress">
 				<div class="inputLabel"><?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerEmail" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Email ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-customer-phone">
 				<div class="inputLabel"><?php echo esc_html_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerPhone" placeholder="<?php echo esc_attr_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->Phone ); ?>" />
@@ -91,44 +91,44 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 		</div>
 		<div class="eduadminInvoiceInformation">
 			<h3><?php echo esc_html_x( 'Invoice information', 'frontend', 'eduadmin-booking' ); ?></h3>
-			<label>
+			<label class="profile-invoice-customer-name">
 				<div class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceName" placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->CustomerName ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-invoice-customer-address">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceAddress" placeholder="<?php echo esc_attr_x( 'Address', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->Address ); ?>" />
 				</div>
 			</label>
 
-			<label>
+			<label class="profile-invoice-customer-postalcode">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceZip" placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->Zip ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-invoice-customer-postalcity">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->City ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-invoice-customer-orgno">
 				<div class="inputLabel"><?php echo esc_html_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceOrgNr" placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->OrganisationNumber ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-invoice-customer-emailaddress">
 				<div class="inputLabel"><?php echo esc_html_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerInvoiceEmail" placeholder="<?php echo esc_attr_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->Email ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-invoice-customer-reference">
 				<div class="inputLabel"><?php echo esc_html_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="customerReference" placeholder="<?php echo esc_attr_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $invoice_customer->BuyerReference ); ?>" />
@@ -137,26 +137,26 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 		</div>
 		<div class="eduadminContactInformation">
 			<h3><?php echo esc_html_x( 'Contact information', 'frontend', 'eduadmin-booking' ); ?></h3>
-			<label>
+			<label class="profile-contact-name">
 				<div class="inputLabel"><?php echo esc_html_x( 'Contact name', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="contactName" readonly required placeholder="<?php echo esc_attr_x( 'Contact name', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->FirstName . " " . $contact->LastName ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-contact-phone">
 				<div class="inputLabel"><?php echo esc_html_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="contactPhone" placeholder="<?php echo esc_attr_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->Phone ); ?>" />
 				</div>
 			</label>
 
-			<label>
+			<label class="profile-contact-mobile">
 				<div class="inputLabel"><?php echo esc_html_x( 'Mobile', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="contactMobile" placeholder="<?php echo esc_attr_x( 'Mobile', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->Mobile ); ?>" />
 				</div>
 			</label>
-			<label>
+			<label class="profile-contact-emailaddress">
 				<div class="inputLabel"><?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
 					<input type="text" name="contactEmail" readonly required placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $contact->Email ); ?>" />
