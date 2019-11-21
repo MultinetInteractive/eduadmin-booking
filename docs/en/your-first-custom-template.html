@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Your first custom template · EduAdmin plugin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="This guide will show how you can build the `template_A`-template, but as a custom template."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Your first custom template · EduAdmin plugin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://wordpress.eduadmin.se//"/><meta property="og:description" content="This guide will show how you can build the `template_A`-template, but as a custom template."/><meta property="og:image" content="https://wordpress.eduadmin.se/img/eduadmin.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://wordpress.eduadmin.se/img/eduadmin.png"/><link rel="shortcut icon" href="/img/eduadmin.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/en"><img class="logo" src="/img/eduadmin.png" alt="EduAdmin plugin"/><h2 class="headerTitleWithLogo">EduAdmin plugin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/en/getting-started" target="_self">Documentation</a></li><li class=""><a href="https://api.eduadmin.se/" target="_self">EduAdmin API</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>English</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/sv-SE/your-first-custom-template">Svenska</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Custom templates</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/getting-started">First time setup</a></li><li class="navListItem"><a class="navItem" href="/docs/en/shortcodes">Shortcodes</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Custom templates</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/en/your-first-custom-template">Your first custom template</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Troubleshooting</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/en/troubleshooting">How to troubleshoot</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/MultinetInteractive/EduAdmin-WordPress/edit/master/docs/custom-template.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Your first custom template</h1></header><article><div><span><p>This guide will show how you can build the <code>template_A</code>-template, but as a custom template.</p>
+<hr>
+<p>This is how the default detail view is implemented</p>
+<pre><code class="hljs css language-php">[eduadmin-detailview]
+</code></pre>
+<p>That's basically all you need for the detail view to start working,
+and then you can change some settings and add some attributes to modify the default appearance.</p>
+<p>Now, the first modification we will do to make it possible to use custom templates,
+will be adding the attribute <code>customtemplate</code>. Doing this will disable the regular templates.</p>
+<pre><code class="hljs css language-php">[eduadmin-detailview customtemplate]
+</code></pre>
+<p>So, if you reload the detail view of a course template now, it should not show anything at all.
+Don't worry, it is to be expected, since we told the plugin that we are going to use a custom template,
+and didn't add anything else to the page.</p>
+<p>So, let's go recreate the <code>template_A</code>-template, so we get to know the custom templating.</p>
+<p>All the code below should go into a single code block.
+We won't be using the image, because we can only get the image URL,
+not see if it actually contains anything, and we don't want to render broken images.</p>
+<pre><code class="hljs css language-html">[eduadmin-detailview customtemplate]
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eduadmin"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript://"</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"eduGlobalMethods.GoBack('../');"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"backLink"</span>&gt;</span>
+        « Go back
+    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"title"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"courseTitle"</span>&gt;</span>
+            [eduadmin-detailinfo coursepublicname]
+            <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"courseLevel"</span>&gt;</span>
+                [eduadmin-detailinfo courselevel]
+            <span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"textblock"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Course description<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo coursedescription]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Course goal<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo coursegoal]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Target group<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo coursetarget]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Prerequisites<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo courseprerequisites]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>After the course<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo courseafter]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Quotes<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>[eduadmin-detailinfo coursequote]<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eventInformation"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Time<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        [eduadmin-detailinfo coursedays], 
+        [eduadmin-detailinfo coursestarttime] - [eduadmin-detailinfo courseendtime]
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>Price<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        [eduadmin-detailinfo courseprice]
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+[eduadmin-detailinfo courseeventlist]
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"eduadmin"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inquiry"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"inquiry-link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"[eduadmin-detailinfo courseinquiryurl]"</span>&gt;</span>
+            Send inquiry about this course
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/shortcodes"><span class="arrow-prev">← </span><span>Shortcodes</span></a><a class="docs-next button" href="/docs/en/troubleshooting"><span>How to troubleshoot</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/eduadmin.png" alt="EduAdmin plugin" width="58" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/getting-started">Getting Started</a><a href="https://api.eduadmin.se" target="_blank">API Reference</a><a href="/docs/en/troubleshooting">Troubleshooting</a></div><div><h5>Community</h5><a href="https://gitter.im/MultinetInteractive/EduAdmin-WordPress">Project Chat</a></div><div><h5>More</h5><a href="https://github.com/MultinetInteractive/EduAdmin-WordPress">GitHub</a><a class="github-button" href="https://github.com/MultinetInteractive/EduAdmin-WordPress" data-icon="octicon-star" data-count-href="/MultinetInteractive/EduAdmin-WordPress/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 MultiNet Interactive AB</section></footer></div></body></html>

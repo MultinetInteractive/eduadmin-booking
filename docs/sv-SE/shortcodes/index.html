@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="sv-SE"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Shortcodes · EduAdmin plugin</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="På den här sidan har vi en komplett referensguide till alla shortcodes som finns tillgängliga i tillägget,"/><meta name="docsearch:language" content="sv-SE"/><meta property="og:title" content="Shortcodes · EduAdmin plugin"/><meta property="og:type" content="website"/><meta property="og:url" content="https://wordpress.eduadmin.se//"/><meta property="og:description" content="På den här sidan har vi en komplett referensguide till alla shortcodes som finns tillgängliga i tillägget,"/><meta property="og:image" content="https://wordpress.eduadmin.se/img/eduadmin.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://wordpress.eduadmin.se/img/eduadmin.png"/><link rel="shortcut icon" href="/img/eduadmin.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/sv-SE"><img class="logo" src="/img/eduadmin.png" alt="EduAdmin plugin"/><h2 class="headerTitleWithLogo">EduAdmin plugin</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/sv-SE/getting-started" target="_self">Dokumentation</a></li><li class=""><a href="https://api.eduadmin.se/" target="_self">EduAdmin API</a></li><span><li><a id="languages-menu" href="#"><img class="languages-icon" src="/img/language.svg" alt="Languages icon"/>Svenska</a><div id="languages-dropdown" class="hide"><ul id="languages-dropdown-items"><li><a href="/docs/en/shortcodes">English</a></li></ul></div></li><script>
+        const languagesMenuItem = document.getElementById("languages-menu");
+        const languagesDropDown = document.getElementById("languages-dropdown");
+        languagesMenuItem.addEventListener("click", function(event) {
+          event.preventDefault();
+
+          if (languagesDropDown.className == "hide") {
+            languagesDropDown.className = "visible";
+          } else {
+            languagesDropDown.className = "hide";
+          }
+        });
+      </script></span></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Kom igång</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Kom igång</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/sv-SE/getting-started">Installation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/sv-SE/shortcodes">Shortcodes</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Skräddarsydda mallar</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/sv-SE/your-first-custom-template">Din första skräddarsydda mall</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Felsökning</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/sv-SE/troubleshooting">Hur du felsöker</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/MultinetInteractive/EduAdmin-WordPress/edit/master/docs/shortcodes.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Shortcodes</h1></header><article><div><span><p>På den här sidan har vi en komplett referensguide till alla shortcodes som finns tillgängliga i tillägget,
+med alla attribut.</p>
+<ul>
+<li><a href="#eduadmin-bookingview"><code>[eduadmin-bookingview]</code></a></li>
+<li><a href="#eduadmin-coursepublicpricename"><code>[eduadmin-coursepublicpricename]</code></a></li>
+<li><a href="#eduadmin-detailinfo"><code>[eduadmin-detailinfo]</code></a></li>
+<li><a href="#eduadmin-detailview"><code>[eduadmin-detailview]</code></a></li>
+<li><a href="#eduadmin-eventinterest"><code>[eduadmin-eventinterest]</code></a></li>
+<li><a href="#eduadmin-listview"><code>[eduadmin-listview]</code></a></li>
+<li><a href="#eduadmin-loginview"><code>[eduadmin-loginview]</code></a></li>
+<li><a href="#eduadmin-loginwidget"><code>[eduadmin-loginwidget]</code></a></li>
+<li><a href="#eduadmin-objectinterest"><code>[eduadmin-objectinterest]</code></a></li>
+<li><a href="#eduadmin-programme-book"><code>[eduadmin-programme-book]</code></a></li>
+<li><a href="#eduadmin-programme-detail"><code>[eduadmin-programme-detail]</code></a></li>
+<li><a href="#eduadmin-programme-list"><code>[eduadmin-programme-list]</code></a></li>
+</ul>
+<hr>
+<h2><a class="anchor" aria-hidden="true" id="shortcode-referens"></a><a href="#shortcode-referens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shortcode-referens</h2>
+<p>Nästan alla shortcodes nedan kan användas utan attribut,
+var noga med att läsa de specifika instruktionerna för varje shortcode.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-bookingview"></a><a href="#eduadmin-bookingview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-bookingview]</code></h3>
+<p>Shortcoden för att rita ut bokningsformuläret,
+som era slutkunder använder sig av för att genomföra sin bokning.</p>
+<blockquote>
+<p>Tillägget kommer inte fungera utan den. (Ifall ni inte enbart jobbar med intresseanmälningar.)</p>
+</blockquote>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">template</td><td style="text-align:center">sträng (<code>template_A</code>)</td><td style="text-align:center">template_A</td></tr>
+<tr><td style="text-align:left">courseid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">hideinvoiceemailfield</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showinvoiceinformation</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p><code>template</code>-attributet tillåter er att skapa skräddarsydda bokningssidor
+som använder andra mallar. Just nu har vi bara <code>template_A</code> tillgänglig för användning.</p>
+<p><code>courseid</code>-attributet tillåter er att göra bokningssidor för en specifik kursmall.</p>
+<p><code>hideinvoiceemailfield</code>-attributet, om satt till <code>true</code>,
+så gömmer vi e-post-fältet för fakturor</p>
+<p><code>showinvoiceinformation</code>-attributet, om satt till <code>true</code>,
+så öppnar vi faktura-informationen som standard när bokningsformuläret laddats.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-coursepublicpricename"></a><a href="#eduadmin-coursepublicpricename" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-coursepublicpricename]</code></h3>
+<p>Används för att skriva ut alla publika prisnamn för en specifik kursmall.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">courseid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">orderby</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">order</td><td style="text-align:center">sträng (<code>ASC</code>, <code>DESC</code>)</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">numberofprices</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Med <code>courseid</code>-attributet, så kan ni skriva ut alla prisnamn för en specifik kursmall.</p>
+<p><code>orderby</code>-attributet ger er möjligheten att ändra sorteringsordningen på prisnamnen som skrivs ut,
+och <code>order</code>-attributet bestämmer åt vilket håll den borde sortera.</p>
+<p>De fungerar precis som andra <code>orderby</code> och <code>order</code>-attribut, så de är separerade med mellanslag.
+De tillgängliga fälten för sortering finns i <a href="https://api.eduadmin.se/?page=read#operation/GetSingleCourseTemplate"><strong>API-dokumentationen</strong></a>
+under <em>Read only OData version 4.0</em>-sektionen, och sedan <em>CourseTemplates</em>,
+expandera <em>PriceNames</em>-gruppen ute till höger.</p>
+<p>Just nu (vid skrivande tillfälle) är dessa fält tillgängliga</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"PriceNameId"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"PriceNameDescription"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"PublicPriceName"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"GroupPrice"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"Price"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"PriceNameCode"</span>: <span class="hljs-string">"string"</span>
+}
+</code></pre>
+<p><code>numberofprices</code> kommer begränsa mängden synliga prisnamn (om det finns mer än ett angivet),
+till numret ni fyller i attributet.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-detailinfo"></a><a href="#eduadmin-detailinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-detailinfo]</code></h3>
+<p>Den här shortcoden används när ni vill skapa er egna skräddarsydda mall för en <a href="#eduadmin-detailview"><strong>detaljvy</strong></a>.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">courseid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">coursename</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursepublicname</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courselevel</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseimage</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseimagetext</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursedays</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursestarttime</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseendtime</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseprice</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">eventprice</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursedescriptionshort</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursedescription</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursegoal</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursetarget</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseprerequisites</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseafter</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">coursequote</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseeventlist</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">showmore</td><td style="text-align:center">integer</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseattributeid</td><td style="text-align:center">integer</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseeventlistfiltercity</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">pagetitlejs</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">bookurl</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">courseinquiryurl</td><td style="text-align:center">boolean</td><td style="text-align:center">null</td></tr>
+<tr><td style="text-align:left">order</td><td style="text-align:center">sträng (<code>ASC</code>, <code>DESC</code>)</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">orderby</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Vi kommer gå igenom attributen på <a href="/docs/sv-SE/your-first-custom-template"><em>skräddarsydda mallar</em></a>-sidan.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-detailview"></a><a href="#eduadmin-detailview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-detailview]</code></h3>
+<p>Skriver ut standard-detaljvyn, ni kan välja mellan två mallar (<code>template_A</code> och <code>template_B</code>).</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">template</td><td style="text-align:center">sträng (<code>template_A</code>, <code>template_B</code>)</td><td style="text-align:center">template_A</td></tr>
+<tr><td style="text-align:left">courseid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">customtemplate</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showmore</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">hide</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Genom att sätta <code>template</code>-attributet, så kan ni forcera vilken mall ni vill använda.</p>
+<p>Med <code>courseid</code>-attributet, så kan ni skapa en detaljsida för en specifik kursmall.</p>
+<p>Om ni lägger på <code>customtemplate</code>-attributet, så kan ni skapa er egna <a href="/docs/sv-SE/your-first-custom-template"><em>skräddarsydda detaljsida</em></a>.</p>
+<p><code>showmore</code>-attributet kommer begränsa mängden synliga tillfällen i tillfälleslistan
+innan den börjar visa en <em>Visa mer</em>-länk för att visa alla tillfällen</p>
+<p><code>hide</code>-attributet låter er dölja vissa delar från standarddetaljsidan, om ni vill det.</p>
+<p>Sektioner som ni kan dölja är</p>
+<ul>
+<li>description</li>
+<li>goal</li>
+<li>target</li>
+<li>prerequisites</li>
+<li>after</li>
+<li>quote</li>
+<li>time</li>
+<li>price</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-eventinterest"></a><a href="#eduadmin-eventinterest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-eventinterest]</code></h3>
+<p>Den här shortcoden kommer att rita ut intresseanmälanformuläret för en kursmall och ett specifikt tillfälle.</p>
+<p>Just nu har shortcoden inga attribut som kan påverka den.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-listview"></a><a href="#eduadmin-listview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-listview]</code></h3>
+<p>En av huvud-shortcodesen, som visar slutanvändaren en lista av era kurser/tillfällen.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">template</td><td style="text-align:center">sträng (<code>template_A</code>, <code>template_B</code>)</td><td style="text-align:center">template_A</td></tr>
+<tr><td style="text-align:left">category</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">subject</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">subjectid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">hidesearch</td><td style="text-align:center">boolean</td><td style="text-align:center">false</td></tr>
+<tr><td style="text-align:left">onlyevents</td><td style="text-align:center">boolean</td><td style="text-align:center">false</td></tr>
+<tr><td style="text-align:left">onlyempty</td><td style="text-align:center">boolean</td><td style="text-align:center">false</td></tr>
+<tr><td style="text-align:left">numberofevents</td><td style="text-align:center">numeric</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">mode</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">orderby</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">order</td><td style="text-align:center">sträng (<code>ASC</code>, <code>DESC</code>)</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showsearch</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showmore</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showcity</td><td style="text-align:center">boolean</td><td style="text-align:center">true</td></tr>
+<tr><td style="text-align:left">showbookbtn</td><td style="text-align:center">boolean</td><td style="text-align:center">true</td></tr>
+<tr><td style="text-align:left">showreadmorebtn</td><td style="text-align:center">boolean</td><td style="text-align:center">true</td></tr>
+<tr><td style="text-align:left">city</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">courselevel</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">searchCourse</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">filtercity</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">hideimages</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">showimages</td><td style="text-align:center">boolean</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Med <code>template</code>-attributet, så kan ni forcera vilken mall ni vill använda för listsidan.</p>
+<p><code>category</code>-attributet låter er fylla i en sträng för att matcha kategorier i <a href="https://www.eduadmin.se"><strong>EduAdmin</strong></a>,
+så att listan filtrerar resultaten baserat på träffarna.</p>
+<p><code>subject</code>-attributet låter er fylla i en sträng för att matcha på ämnen i <a href="https://www.eduadmin.se"><strong>EduAdmin</strong></a>,
+så att listan filtrerar resultaten baserat på träffarna.</p>
+<p><code>subjectid</code>-attributet låter er filtrera listan på ett specifikt ämne, baserat på dess ID.</p>
+<p>Om ni använder <code>hidesearch</code>-attributet, så kan ni dölja sökfälten.</p>
+<p><code>onlyevents</code>-attributet kommer att filtrera listan, så att bara kursmallar som innehåller tillfällen kommer synas.</p>
+<p><code>onlyempty</code>-attributet kommer bara visa kursmallar som inte har kommande tillfällen.</p>
+<p><code>numberofevents</code>-attributet begränsar antalet synliga tillfällen,
+som standard visar vi alla tillgängliga resultat från APIet.</p>
+<p>Ni kan sätta <code>mode</code>-attributet till antingen <code>event</code> eller <code>course</code>,
+för att få listan att visa antingen tillfällen eller kursmallar.</p>
+<p><code>orderby</code>-attributet ger er möjligheten att justera sorteringsordningen på resultatet,
+och <code>order</code>-attributet bestämmer åt vilket håll den ska sortera.</p>
+<p><code>showsearch</code> kommer göra så att sökfälten visas.</p>
+<p><code>showmore</code> aktiverar <em>Visa mer</em>-länken och begränsar antalet synliga resultat.</p>
+<p><code>showcity</code>-attributet kommer att visa orten där tillfället hålls (om tillämpligt)</p>
+<p>Och <code>showbookbtn</code>-attributet kommer bestämma ifall ni vill visa <em>Boka</em>-knappen i tillfälleslistan.</p>
+<p><code>showreadmorebtn</code>-attributet bestämmer om ni vill visa <em>Läs mer</em>-knappen.</p>
+<p><code>city</code>-attributet kommer filtrera listan till att visa tillfällen som hålls i den specifierade orten (<code>LocationId</code>).</p>
+<p><code>courselevel</code>-attributet filtrerar listan till att visa kursmallar som faller under den valda kursnivån.</p>
+<p><code>searchCourse</code>-attributet kontrollerar fritextsökningen.</p>
+<p>Ifall ni använder <code>filtercity</code>-attributet, så kommer listan att filtreras baserat på det ni fyllt i.</p>
+<p><code>hideimages</code>-attributet kommer att dölja kursbilderna, ifall det var aktiverat i admininställningarna.</p>
+<p><code>showimages</code>-attributet kommer göra så att kursbilderna kommer synas,
+ifall det var avstängt i admininställningarna.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-loginview"></a><a href="#eduadmin-loginview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-loginview]</code></h3>
+<p>Ritar ut inloggning och profilsidorna (ifall inloggning används).</p>
+<p>Har inga attribut för att skräddarsy saker för tillfället.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-loginwidget"></a><a href="#eduadmin-loginwidget" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-loginwidget]</code></h3>
+<p>Den här shortcoden ritar ut en <em>widget</em> för att hantera inloggningsinformation.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">logintext</td><td style="text-align:center">sträng</td><td style="text-align:center">Log in</td></tr>
+<tr><td style="text-align:left">logouttext</td><td style="text-align:center">sträng</td><td style="text-align:center">Log out</td></tr>
+<tr><td style="text-align:left">guesttext</td><td style="text-align:center">sträng</td><td style="text-align:center">Guest</td></tr>
+</tbody>
+</table>
+<p><code>logintext</code>-attributet ändrar texten på <em>Logga in</em>-knappen/länken till det ni fyller i här</p>
+<p><code>logouttext</code>-attributet ändrar texten på <em>Logga ut</em>-knappen/länken till det ni fyller i här</p>
+<p><code>guesttext</code>-attributet ändrar texten på <em>Gäst</em>-elementet till det ni fyller i</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-objectinterest"></a><a href="#eduadmin-objectinterest" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-objectinterest]</code></h3>
+<p>Den här shortcoden kommer rita ut ett intresseanmälningsformulär, för en kursmall.
+Det kan användas med och utan attributet <code>courseid</code>, beroende på hur det ska användas.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">courseid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p><code>courseid</code>-attributet gör att shortcoden kommer rita ut formuläret för en specifik kursmall.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-programme-book"></a><a href="#eduadmin-programme-book" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-programme-book]</code></h3>
+<p>Som med den andra bokningsvyn, så är den här viktig ifall ni vill kunna få in programbokningar från era slutanvändare.
+Den kommer att rita ut ett fördefinierat formulär med all information som behövs för att boka programmet.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">programmeid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">programmestartid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Ni kan också bygga statiska sidor och lägga till attributet <code>programmeid</code> för att göra sidan för ett specifikt program.
+Och ni kan även ange <code>programmestartid</code>, så att det binds till en specifik programstart.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-programme-detail"></a><a href="#eduadmin-programme-detail" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-programme-detail]</code></h3>
+<p>Detta är detaljvyn, för att titta på ett specifikt program,
+det kan användas för att skapa sidor för specifika program,
+eller som standardsida för alla program.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">programmeid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Om ni vill skapa en specifik sida för ett program,
+så kan ni använda er av <code>programmeid</code>-attributet.</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="eduadmin-programme-list"></a><a href="#eduadmin-programme-list" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>[eduadmin-programme-list]</code></h3>
+<p>Som med kurslistvyn, så listar den här vyn de tillgängliga programmen ni skapat i <a href="https://www.eduadmin.se"><strong>EduAdmin</strong></a>.</p>
+<table>
+<thead>
+<tr><th style="text-align:left">Attribut</th><th style="text-align:center">Värdetyp</th><th style="text-align:center">Standardvärde</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align:left">category</td><td style="text-align:center">sträng</td><td style="text-align:center"><em>null</em></td></tr>
+</tbody>
+</table>
+<p>Och ifall ni vill filtrera listan, så kan ni lägga till <code>category</code>-attributet.</p>
+<hr>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/sv-SE/getting-started"><span class="arrow-prev">← </span><span>Installation</span></a><a class="docs-next button" href="/docs/sv-SE/your-first-custom-template"><span>Din första skräddarsydda mall</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#shortcode-referens">Shortcode-referens</a><ul class="toc-headings"><li><a href="#eduadmin-bookingview"><code>[eduadmin-bookingview]</code></a></li><li><a href="#eduadmin-coursepublicpricename"><code>[eduadmin-coursepublicpricename]</code></a></li><li><a href="#eduadmin-detailinfo"><code>[eduadmin-detailinfo]</code></a></li><li><a href="#eduadmin-detailview"><code>[eduadmin-detailview]</code></a></li><li><a href="#eduadmin-eventinterest"><code>[eduadmin-eventinterest]</code></a></li><li><a href="#eduadmin-listview"><code>[eduadmin-listview]</code></a></li><li><a href="#eduadmin-loginview"><code>[eduadmin-loginview]</code></a></li><li><a href="#eduadmin-loginwidget"><code>[eduadmin-loginwidget]</code></a></li><li><a href="#eduadmin-objectinterest"><code>[eduadmin-objectinterest]</code></a></li><li><a href="#eduadmin-programme-book"><code>[eduadmin-programme-book]</code></a></li><li><a href="#eduadmin-programme-detail"><code>[eduadmin-programme-detail]</code></a></li><li><a href="#eduadmin-programme-list"><code>[eduadmin-programme-list]</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/eduadmin.png" alt="EduAdmin plugin" width="58" height="58"/></a><div><h5>Docs</h5><a href="/docs/sv-SE/getting-started">Getting Started</a><a href="https://api.eduadmin.se" target="_blank">API Reference</a><a href="/docs/sv-SE/troubleshooting">Troubleshooting</a></div><div><h5>Community</h5><a href="https://gitter.im/MultinetInteractive/EduAdmin-WordPress">Project Chat</a></div><div><h5>More</h5><a href="https://github.com/MultinetInteractive/EduAdmin-WordPress">GitHub</a><a class="github-button" href="https://github.com/MultinetInteractive/EduAdmin-WordPress" data-icon="octicon-star" data-count-href="/MultinetInteractive/EduAdmin-WordPress/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2019 MultiNet Interactive AB</section></footer></div></body></html>
