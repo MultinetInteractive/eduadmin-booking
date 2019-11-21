@@ -169,7 +169,7 @@ Currently this shortcode doesn't have any attributes to customize it.
 
 ### `[eduadmin-listview]`
 
-One of the main shortcodes, as it shows the end users
+One of the main shortcodes, as it shows the end users a list of your courses/events.
 
 | Attribute | Value type | Default value |
 |:----------|:----------:|:-------------:|

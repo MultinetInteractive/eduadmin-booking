@@ -4,42 +4,43 @@ title: Your first custom template
 sidebar_label: Your first custom template
 ---
 
-This guide will show how you can build the `template_A`-template, but as a custom template.
+Den här guiden kommer visa hur du kan bygga `template_A`-mallen, men som en skräddarsydd mall.
 
 ---
 
-This is how the default detail view is implemented
+Såhär implementerar vi standard-detaljvyn
 
 ```php
 [eduadmin-detailview]
 ```
 
-That's basically all you need for the detail view to start working, 
-and then you can change some settings and add some attributes to modify the default appearance.
+Det är bokstavligen allt som ni behöver för att detaljsidan ska börja fungera,
+och sedan kan ni ändra några inställningar och lägga till attribut för att modifiera standard-utseendet.
 
-Now, the first modification we will do to make it possible to use custom templates, 
-will be adding the attribute `customtemplate`. Doing this will disable the regular templates.
+Den första modifieringen vi ska lägga till för att använda skräddarsydda mallar,
+är att lägga till attributet `customtemplate`. Detta gör att sidan slutar rita ut den vanliga mallen.
 
 ```php
 [eduadmin-detailview customtemplate]
 ```
 
-So, if you reload the detail view of a course template now, it should not show anything at all.
-Don't worry, it is to be expected, since we told the plugin that we are going to use a custom template,
-and didn't add anything else to the page.
+Så, ifall ni laddar om detaljvyn för en kursmall nu, så bör den inte visa något alls.
+Oroa er inte, det är så det ska vara, eftersom vi sa åt tillägget att vi ska använda en skräddarsydd mall,
+och vi la inte till något annat på sidan.
 
-So, let's go recreate the `template_A`-template, so we get to know the custom templating.
+Så, nu ska vi återskapa `template_A`-mallen, så att vi lär känna skräddarsydda mallar.
 
-All the code below should go into a single code block. 
-We won't be using the image, because we can only get the image URL,
-not see if it actually contains anything, and we don't want to render broken images.
+
+All kod nedan ska med fördel läggas in i ett enda kodblock.
+Vi kommer inte använda kursbilden, eftersom vi bara hämtar ut bild-URLen,
+så vi vet inte ifall fältet kommer innehålla något, och vi vill inte rita ut trasiga bilder.
 
 ```html
 [eduadmin-detailview customtemplate]
 
 <div class="eduadmin">
     <a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink">
-        « Go back
+        « Tillbaka
     </a>
     <div class="title">
         <h1 class="courseTitle">
@@ -51,31 +52,31 @@ not see if it actually contains anything, and we don't want to render broken ima
     </div>
     <hr />
     <div class="textblock">
-        <h3>Course description</h3>
+        <h3>Kursbeskrivning</h3>
         <div>[eduadmin-detailinfo coursedescription]</div>
 
-        <h3>Course goal</h3>
+        <h3>Målet med kursen</h3>
         <div>[eduadmin-detailinfo coursegoal]</div>
   
-        <h3>Target group</h3>
+        <h3>Målgrupp</h3>
         <div>[eduadmin-detailinfo coursetarget]</div>
   
-        <h3>Prerequisites</h3>
+        <h3>Förkunskapskrav</h3>
         <div>[eduadmin-detailinfo courseprerequisites]</div>
   
-        <h3>After the course</h3>
+        <h3>Efter genomfört kurstillfälle</h3>
         <div>[eduadmin-detailinfo courseafter]</div>
   
-        <h3>Quotes</h3>
+        <h3>Citat</h3>
         <div>[eduadmin-detailinfo coursequote]</div>
   
     </div>
     <div class="eventInformation">
-        <h3>Time</h3>
+        <h3>Tid</h3>
         [eduadmin-detailinfo coursedays], 
         [eduadmin-detailinfo coursestarttime] - [eduadmin-detailinfo courseendtime]
 
-        <h3>Price</h3>
+        <h3>Prisinformation</h3>
         [eduadmin-detailinfo courseprice]
     </div>
 </div>
@@ -85,7 +86,7 @@ not see if it actually contains anything, and we don't want to render broken ima
 <div class="eduadmin">
     <div class="inquiry">
         <a class="inquiry-link" href="[eduadmin-detailinfo courseinquiryurl]">
-            Send inquiry about this course
+            Skicka intresseanmälan gällande kursen
         </a>
     </div>
 </div>

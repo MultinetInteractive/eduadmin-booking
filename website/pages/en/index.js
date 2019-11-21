@@ -13,6 +13,8 @@ const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
+const translate = require('../../server/translate.js').translate;
+
 class HomeSplash extends React.Component {
 	render() {
 		const {siteConfig, language = ''} = this.props;
@@ -64,7 +66,9 @@ class HomeSplash extends React.Component {
 				<div className="inner">
 					<ProjectTitle siteConfig={siteConfig} />
 					<PromoSection>
-						<Button href="#try">Try It Out</Button>
+						<Button href="#try">
+							<translate>Try It Out</translate>
+						</Button>
 					</PromoSection>
 				</div>
 			</SplashContainer>
@@ -87,16 +91,16 @@ class Index extends React.Component {
 			<Block layout="fourColumn">
 				{[
 					{
-						content: 'Easy to setup and get customers to book through your website',
+						content: <translate>Easy to setup and get customers to book through your website</translate>,
 						image: `${baseUrl}img/undraw_fill_forms_yltj.svg`,
 						imageAlign: 'top',
-						title: 'Ready to go forms',
+						title: <translate>Ready to go forms</translate>,
 					},
 					{
-						content: 'With a few shortcodes, you\'re ready to go',
+						content: <translate>With a few shortcodes, you're ready to go</translate>,
 						image: `${baseUrl}img/undraw_wordpress_utxt.svg`,
 						imageAlign: 'top',
-						title: 'Integrates easily',
+						title: <translate>Integrates easily</translate>,
 					},
 				]}
 			</Block>
@@ -117,12 +121,12 @@ class Index extends React.Component {
 				{[
 					{
 						content:
-							'We have developed the plugin with themes in mind, so we apply very little styling ' +
-							'to the elements that we use, so that it is easier to integrate in your website ' +
-							'with your current themes.',
+							<translate>We have developed the plugin with themes in mind, so we apply very little styling
+to the elements that we use, so that it is easier to integrate in your website
+with your current themes.</translate>,
 						image: `${baseUrl}img/undraw_note_list.svg`,
 						imageAlign: 'right',
-						title: 'Works with (almost) every theme!',
+						title: <translate>Works with (almost) every theme!</translate>,
 					},
 				]}
 			</Block>
@@ -133,12 +137,12 @@ class Index extends React.Component {
 				{[
 					{
 						content:
-							'Get started today by downloading the [**EduAdmin WordPress Plugin**](https://wordpress.org/plugins/eduadmin-booking/)<br />' +
-							'(Note: You have to be a [**EduAdmin**](https://www.eduadmin.se) customer for the plugin to work)<br /><br />' +
-							'Use the built-in templates, or create a custom template for your needs!',
+							<translate>Get started today by downloading the [**EduAdmin WordPress Plugin**](https://wordpress.org/plugins/eduadmin-booking/)<br />
+(Note: You have to be a [**EduAdmin**](https://www.eduadmin.se) customer for the plugin to work)<br /><br />
+Use the built-in templates, or create a custom template for your needs!</translate>,
 						image: `${baseUrl}img/undraw_code_review.svg`,
 						imageAlign: 'left',
-						title: 'Easy to get started',
+						title: <translate>Easy to get started</translate>,
 					},
 				]}
 			</Block>
@@ -149,12 +153,12 @@ class Index extends React.Component {
 				{[
 					{
 						content:
-							'With settings to configure how the plugin behaves, you can\'t go wrong. ' +
-							'You can configure what should be visible and not, templates for lists and details, ' +
-							'among many other settings available in the plugin.',
+							<translate>With settings to configure how the plugin behaves, you can't go wrong.
+You can configure what should be visible and not, templates for lists and details,
+among many other settings available in the plugin.</translate>,
 						image: `${baseUrl}img/undraw_operating_system.svg`,
 						imageAlign: 'right',
-						title: 'Customize it to match your needs',
+						title: <translate>Customize it to match your needs</translate>,
 					},
 				]}
 			</Block>
@@ -177,12 +181,12 @@ class Index extends React.Component {
 
 			return (
 				<div className="productShowcaseSection paddingBottom">
-					<h2>Who is Using This?</h2>
-					<p>This project is used by all these people</p>
+					<h2><translate>Who is Using This?</translate></h2>
+					<p><translate>This project is used by all these people</translate></p>
 					<div className="logos">{showcase}</div>
 					<div className="more-users">
 						<a className="button" href={pageUrl('users.html')}>
-							More {siteConfig.title} Users
+							<translate>More {siteConfig.title} Users</translate>
 						</a>
 					</div>
 				</div>
