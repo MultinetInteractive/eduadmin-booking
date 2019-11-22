@@ -82,10 +82,10 @@ const siteConfig = {
   // docsSideNavCollapsible: true,
 
   // Show documentation's last contributor's name.
-  enableUpdateBy: true,
+  enableUpdateBy: false,
 
   // Show documentation's last update time.
-  enableUpdateTime: true,
+  enableUpdateTime: false,
 
   editUrl: 'https://github.com/MultinetInteractive/EduAdmin-WordPress/edit/master/docs/',
 

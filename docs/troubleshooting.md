@@ -23,6 +23,8 @@ Make sure you are not using any plugins that combine/rearrange stylesheets or ja
 or put our scripts in a whitelist, so they are not combined. Many of these plugins are not
 checking in what order they should be loaded and might put the scripts in the wrong order.
 
+You can always check the "Settings &gt; General" and see what "Site Language" is set to.
+
 ### It's not showing in the correct language
 
 By default, WordPress will download language files for plugins, 
@@ -37,4 +39,4 @@ we get back either an success, or an array of errors.
 The unexpected error means something went wrong, that we do not have a classification for,
 so please **contact us** at our support portal whenever this occurs.
 
-You can find the support portal at [**https://support.multinet.se**](https://support.multinet.se).
+> You can find the support portal at [**https://support.multinet.se**](https://support.multinet.se).
