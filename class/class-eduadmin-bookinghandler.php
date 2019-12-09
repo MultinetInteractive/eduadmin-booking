@@ -102,7 +102,7 @@ class EduAdmin_BookingHandler {
 
 			$GLOBALS['edubookinginfo'] = $ebi;
 
-			if ( $event_booking->PaymentMethodId === 2 ) {
+			if ( $event_booking->PaymentMethodId === 2 && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
 				do_action( 'eduadmin-checkpaymentplugins', $ebi );
 			}
 
@@ -186,7 +186,7 @@ class EduAdmin_BookingHandler {
 
 			$GLOBALS['edubookinginfo'] = $ebi;
 
-			if ( $event_booking->PaymentMethodId === 2 ) {
+			if ( $event_booking->PaymentMethodId === 2 && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
 				do_action( 'eduadmin-checkpaymentplugins', $ebi );
 			}
 
