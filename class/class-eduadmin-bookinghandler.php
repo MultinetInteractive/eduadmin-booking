@@ -203,7 +203,10 @@ class EduAdmin_BookingHandler {
 		$programme_booking_data->Customer         = $this->get_customer();
 		$programme_booking_data->ContactPerson    = $this->get_contact_person();
 		$programme_booking_data->Participants     = $this->get_participant_data();
-		$programme_booking_data->PaymentMethodId  = intval( $_POST['edu-paymentmethodid'] );
+
+		if ( ! empty( $_POST['edu-paymentmethodid'] ) ) { // Var input okay.
+			$programme_booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] ); // Var input okay.
+		}
 
 		$selected_match = get_option( 'eduadmin-customerMatching', 'name-zip-match' );
 
@@ -247,9 +250,12 @@ class EduAdmin_BookingHandler {
 
 		$booking_data->SendConfirmationEmail = $send_info;
 
-		$booking_data->EventId         = $event_id;
-		$booking_data->Reference       = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
-		$booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] );
+		$booking_data->EventId   = $event_id;
+		$booking_data->Reference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+
+		if ( ! empty( $_POST['edu-paymentmethodid'] ) ) { // Var input okay.
+			$booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] ); // Var input okay.
+		}
 
 		if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) && ! empty( $_POST['edu-pricename'] ) && is_numeric( $_POST['edu-pricename'] ) ) { // Var input okay.
 			$booking_data->PriceNameId = intval( $_POST['edu-pricename'] ); // Var input okay.
