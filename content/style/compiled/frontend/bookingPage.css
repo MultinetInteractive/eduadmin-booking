@@ -162,6 +162,56 @@
   margin: 0 0 16px 0;
 }
 
+.eduadmin.booking-page form .paymentMethodsView ul {
+  list-style-type: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: unset;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  display: block;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li input[type="radio"] {
+  display: none;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li:first-child label {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li:last-child label {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li label {
+  display: block;
+  margin: unset;
+  padding: 10px 20px;
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.eduadmin.booking-page form .paymentMethodsView li input[type="radio"]:checked + label {
+  background-color: #f2f2f2;
+}
+
 .eduadmin.booking-page form .submitView {
   display: -ms-flexbox;
   display: flex;
@@ -233,5 +283,37 @@
 
   .eduadmin.booking-page form .submitView .sumTotal {
     margin: 0;
+  }
+
+  .eduadmin.booking-page form .paymentMethodsView ul {
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .eduadmin.booking-page form .paymentMethodsView li {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .eduadmin.booking-page form .paymentMethodsView li input[type="radio"] {
+    display: none;
+  }
+
+  .eduadmin.booking-page form .paymentMethodsView li:first-child label {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-right: 0;
+    border-bottom: 1px solid #ababab;
+  }
+
+  .eduadmin.booking-page form .paymentMethodsView li:last-child label {
+    border-top-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+    border-top: 1px solid #ababab;
   }
 }

@@ -1,203 +1,285 @@
 .eduadmin.booking-page form {
-	.title {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		padding: 16px 0 0;
+  .title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 16px 0 0;
 
-		.courseImage {
-			width: 72px;
-			height: 72px;
-		}
+    .courseImage {
+      width: 72px;
+      height: 72px;
+    }
 
-		.dateInfo {
-			width: 100%;
-			text-align: center;
-			font-size: 1.2rem;
-			font-weight: 500;
-		}
+    .dateInfo {
+      width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
 
-		select.dateInfo {
-			padding: unset;
-		}
+    select.dateInfo {
+      padding: unset;
+    }
 
-		.notUserCheck {
-			text-align: center;
-			color: hsl(0, 0%, 40%);
-			margin: 0 0 56px;
-			font-size: 0.95rem;
+    .notUserCheck {
+      text-align: center;
+      color: hsl(0, 0%, 40%);
+      margin: 0 0 56px;
+      font-size: 0.95rem;
 
-			a {
-				margin: 0 0 0 8px;
-				color: hsl(0, 0%, 40%);
-			}
-		}
-	}
+      a {
+        margin: 0 0 0 8px;
+        color: hsl(0, 0%, 40%);
+      }
+    }
+  }
 
-	h2 {
-		color: hsl(0, 0%, 20%);
-		font-weight: 600;
-		margin: 0 0 24px 0;
-	}
+  h2 {
+    color: hsl(0, 0%, 20%);
+    font-weight: 600;
+    margin: 0 0 24px 0;
+  }
 
-	.contactView,
-	.customerView,
-	.participantView,
-	.questionPanel {
-		margin: 0 0 48px 0;
-	}
+  .contactView,
+  .customerView,
+  .participantView,
+  .questionPanel {
+    margin: 0 0 48px 0;
+  }
 
-	.invoiceView {
-		margin: 48px 0 0 0;
-	}
+  .invoiceView {
+    margin: 48px 0 0 0;
+  }
 
-	label,
-	div.fakeLabel {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		margin: 0 0 16px;
-		/* justify-content: space-between; */
-		align-items: center;
+  label,
+  div.fakeLabel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 16px;
+    /* justify-content: space-between; */
+    align-items: center;
 
-		.inputLabel {
-			&.noHide {
-				display: inherit;
-			}
+    .inputLabel {
+      &.noHide {
+        display: inherit;
+      }
 
-			display: none;
-			margin: 0 0 8px;
-			color: hsl(0, 0%, 20%);
-		}
+      display: none;
+      margin: 0 0 8px;
+      color: hsl(0, 0%, 20%);
+    }
 
-		.inputHolder {
-			width: 100%;
+    .inputHolder {
+      width: 100%;
 
-			.contactFirstName,
-			.first-name {
-				margin-right: 2%;
-			}
+      .contactFirstName,
+      .first-name {
+        margin-right: 2%;
+      }
 
-			.contactLastName,
-			.contactFirstName,
-			.last-name,
-			.first-name {
-				display: inline-block;
-				width: 49%;
-			}
+      .contactLastName,
+      .contactFirstName,
+      .last-name,
+      .first-name {
+        display: inline-block;
+        width: 49%;
+      }
 
-			&.alsoInvoiceCustomer {
-				display: flex;
-			}
+      &.alsoInvoiceCustomer {
+        display: flex;
+      }
 
-			&.contactIsAlsoParticipant {
-				display: flex;
-				align-items: center;
-				padding: 8px 0;
-			}
+      &.contactIsAlsoParticipant {
+        display: flex;
+        align-items: center;
+        padding: 8px 0;
+      }
 
-			select {
-				width: 100%;
-			}
+      select {
+        width: 100%;
+      }
 
-			input[required],
-			input[data-required="true"],
-			textarea[required],
-			textarea[data-required="true"],
-			select[required],
-			select[data-required="true"] {
-				background-color: #feffcc;
-			}
-		}
-	}
+      input[required],
+      input[data-required="true"],
+      textarea[required],
+      textarea[data-required="true"],
+      select[required],
+      select[data-required="true"] {
+        background-color: #feffcc;
+      }
+    }
+  }
 
-	.participantView {
-		h3 {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			color: hsl(0, 0%, 20%);
+  .participantView {
+    h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: hsl(0, 0%, 20%);
 
-			.removeParticipant {
-				color: hsl(0, 0%, 40%);
-				font-size: 1rem;
+      .removeParticipant {
+        color: hsl(0, 0%, 40%);
+        font-size: 1rem;
 
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
 
-		.addParticipantLink {
-			display: inline-block;
-			margin: 0 0 16px 0;
-		}
-	}
+    .addParticipantLink {
+      display: inline-block;
+      margin: 0 0 16px 0;
+    }
+  }
 
-	.submitView {
-		display: flex;
-		flex-direction: column;
-		align-items: stretch;
+  .paymentMethodsView {
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      padding: unset;
+    }
 
-		.sumTotal {
-			font-weight: bold;
-			margin: 0 0 8px 0;
+    li {
+      position: relative;
+      padding: 0;
+      width: 100%;
+      display: block;
 
-			span {
-				font-weight: normal;
-				margin: 0 0 0 8px;
-			}
-		}
-	}
+      input[type="radio"] {
+        display: none;
+      }
 
-	.edu-modal.warning {
-		display: none;
-		width: 100%;
-		padding: 8px 16px;
-		color: hsl(5, 80%, 50%);
-		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-		order: -1;
-		background: hsl(6, 100%, 94%);
-		margin: 0 0 16px 0;
-		border-radius: 3px;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
-	}
+      &:first-child label {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+      }
 
-	.bookButton {
-		padding: 16px 24px;
-	}
+      &:last-child label {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+      }
 
-	.confirmTermsHolder label {
-		display: unset;
-	}
+      label {
+        display: block;
+        margin: unset;
+        padding: 10px 20px;
+        border: 1px solid hsl(0, 0%, 67%);
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      input[type="radio"]:checked + label {
+        background-color: hsl(0, 0%, 95%);
+      }
+    }
+  }
+
+  .submitView {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .sumTotal {
+      font-weight: bold;
+      margin: 0 0 8px 0;
+
+      span {
+        font-weight: normal;
+        margin: 0 0 0 8px;
+      }
+    }
+  }
+
+  .edu-modal.warning {
+    display: none;
+    width: 100%;
+    padding: 8px 16px;
+    color: hsl(5, 80%, 50%);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    order: -1;
+    background: hsl(6, 100%, 94%);
+    margin: 0 0 16px 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+  }
+
+  .bookButton {
+    padding: 16px 24px;
+  }
+
+  .confirmTermsHolder label {
+    display: unset;
+  }
 }
 
 @media (min-width: 800px) {
-	.eduadmin.booking-page form {
-		label .inputLabel {
-			display: inherit;
-			margin: 0;
-			flex: 1;
-		}
+  .eduadmin.booking-page form {
+    label .inputLabel {
+      display: inherit;
+      margin: 0;
+      flex: 1;
+    }
 
-		.title select.dateInfo {
-			padding: unset;
-		}
+    .title select.dateInfo {
+      padding: unset;
+    }
 
-		.notUserCheck {
-			text-align: right;
-			margin: 0;
-			position: relative;
-			bottom: -1.9rem;
-		}
+    .notUserCheck {
+      text-align: right;
+      margin: 0;
+      position: relative;
+      bottom: -1.9rem;
+    }
 
-		.submitView {
-			flex-wrap: wrap;
-			flex-direction: row;
-			justify-content: space-between;
-			.sumTotal {
-				margin: 0;
-			}
-		}
-	}
+    .submitView {
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .sumTotal {
+        margin: 0;
+      }
+    }
+
+    .paymentMethodsView {
+      ul {
+        flex-direction: row;
+      }
+
+      li {
+        position: relative;
+        padding: 0;
+        width: 100%;
+        display: block;
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        &:first-child label {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 5px;
+          border-right: 0;
+          border-bottom: 1px solid hsl(0, 0%, 67%);
+        }
+
+        &:last-child label {
+          border-top-left-radius: 0;
+          border-top-right-radius: 5px;
+          border-bottom-left-radius: 0;
+          border-left: 0;
+          border-top: 1px solid hsl(0, 0%, 67%);
+        }
+      }
+    }
+  }
 }

@@ -147,6 +147,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				include_once 'question-view.php';
 				include_once 'discount-code.php';
 				include_once 'limited-discount-view.php';
+				include_once 'payment-methods.php';
 				?>
 				<div class="submitView">
 					<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
@@ -206,6 +207,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		if ( 0 !== $participant_discount_percent ) {
 			$discount_value = ( $participant_discount_percent / 100 ) * $first_price['Price'];
 		}
+
 		?>
 		<script type="text/javascript">
 			var pricePerParticipant = <?php echo esc_js( round( $first_price['Price'] - $discount_value, 2 ) ); ?>;
@@ -218,7 +220,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				document.title = title;
 				eduBookingView.ProgrammeBooking = false;
 				eduBookingView.ForceContactCivicRegNo = <?php echo( $selected_course['RequireCivicRegistrationNumber'] ? 'true' : 'false' ); ?>;
-				eduBookingView.MaxParticipants = <?php echo esc_js( intval( $event['ParticipantNumberLeft'] ) ); ?>;
+				eduBookingView.MaxParticipants = <?php echo esc_js( $event['ParticipantNumberLeft'] != null ? intval( $event['ParticipantNumberLeft'] ) : -1 ); ?>;
 				eduBookingView.AddParticipant();
 				eduBookingView.CheckPrice(false);
 			})();
