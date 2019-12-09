@@ -102,7 +102,9 @@ class EduAdmin_BookingHandler {
 
 			$GLOBALS['edubookinginfo'] = $ebi;
 
-			do_action( 'eduadmin-checkpaymentplugins', $ebi );
+			if ( $event_booking->PaymentMethodId === 2 ) {
+				do_action( 'eduadmin-checkpaymentplugins', $ebi );
+			}
 
 			if ( ! $ebi->NoRedirect ) {
 				wp_redirect( get_page_link( get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['BookingId'] );
@@ -184,7 +186,9 @@ class EduAdmin_BookingHandler {
 
 			$GLOBALS['edubookinginfo'] = $ebi;
 
-			do_action( 'eduadmin-checkpaymentplugins', $ebi );
+			if ( $event_booking->PaymentMethodId === 2 ) {
+				do_action( 'eduadmin-checkpaymentplugins', $ebi );
+			}
 
 			if ( ! $ebi->NoRedirect ) {
 				wp_redirect( get_page_link( get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['ProgrammeBookingId'] );
@@ -199,6 +203,7 @@ class EduAdmin_BookingHandler {
 		$programme_booking_data->Customer         = $this->get_customer();
 		$programme_booking_data->ContactPerson    = $this->get_contact_person();
 		$programme_booking_data->Participants     = $this->get_participant_data();
+		$programme_booking_data->PaymentMethodId  = intval( $_POST['edu-paymentmethodid'] );
 
 		$selected_match = get_option( 'eduadmin-customerMatching', 'name-zip-match' );
 
@@ -242,8 +247,9 @@ class EduAdmin_BookingHandler {
 
 		$booking_data->SendConfirmationEmail = $send_info;
 
-		$booking_data->EventId   = $event_id;
-		$booking_data->Reference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+		$booking_data->EventId         = $event_id;
+		$booking_data->Reference       = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+		$booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] );
 
 		if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) && ! empty( $_POST['edu-pricename'] ) && is_numeric( $_POST['edu-pricename'] ) ) { // Var input okay.
 			$booking_data->PriceNameId = intval( $_POST['edu-pricename'] ); // Var input okay.
