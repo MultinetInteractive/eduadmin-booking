@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class EDU_Integration {
 	public $id             = '';
 	public $plugin_id      = 'eduadmin_';
+	public $type           = '';
 	public $displayName    = '';
 	public $description    = '';
 	public $setting_fields = array();
@@ -15,6 +16,15 @@ abstract class EDU_Integration {
 	public $data           = array();
 
 	public function __construct() {
+	}
+
+	public function get_plugin_type_label() {
+		switch ( $this->type ) {
+			case 'payment':
+				return __( 'Payment', 'backend', 'eduadmin-booking' );
+			default:
+				return __( 'Plugin', 'backend', 'eduadmin-booking' );
+		}
 	}
 
 	public function get_settings() {
@@ -82,7 +92,7 @@ abstract class EDU_Integration {
 		<label>
 			<input type="checkbox" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
 				<?php checked( $this->get_option( $key ), '1' ); ?>
-					value="1"/>
+				value="1" />
 			<?php echo esc_html( $field['description'] ); ?>
 		</label>
 		<?php
@@ -127,7 +137,7 @@ abstract class EDU_Integration {
 	private function render_text_box( $key, $field ) {
 		$t = EDU()->start_timer( __METHOD__ );
 		?>
-		<input class="regular-text" type="<?php echo esc_attr( $field['type'] ); ?>" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" placeholder="<?php echo esc_attr( $field['placeholder'] ); ?>" value="<?php echo esc_attr( $this->get_option( $key ) ); ?>"/>
+		<input class="regular-text" type="<?php echo esc_attr( $field['type'] ); ?>" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" placeholder="<?php echo esc_attr( $field['placeholder'] ); ?>" value="<?php echo esc_attr( $this->get_option( $key ) ); ?>" />
 		<p class="description"><?php echo esc_html( $field['description'] ); ?></p>
 		<?php
 		EDU()->stop_timer( $t );
