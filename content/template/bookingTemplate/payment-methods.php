@@ -1,9 +1,17 @@
 <?php
+$always_use_payment_plugin = EDU()->is_checked( 'eduadmin-alwaysUsePaymentPlugin', false );
 if ( $event != null && $event['PaymentMethods'] != null && count( $event['PaymentMethods'] ) > 1 ) {
 	$valid_paymentmethod_ids = array(
 		"1" => __( 'Invoice', 'frontend', 'eduadmin-booking' ),
 		"2" => __( 'Card payment', 'frontend', 'eduadmin-booking' ),
 	);
+
+	if ( $always_use_payment_plugin ) {
+		?>
+		<input type="hidden" name="edu-paymentmethodid" value="2" />
+		<?php
+		return;
+	}
 
 	$payment_plugins = EDU()->integrations->get_integrations( function( $integrations ) {
 		$filtered_plugins = array();
@@ -49,15 +57,33 @@ if ( $event != null && $event['PaymentMethods'] != null && count( $event['Paymen
 		</div>
 		<?php
 	} elseif ( count( $valid_paymentmethods ) == 1 ) {
+		if ( $always_use_payment_plugin ) {
+			?>
+			<input type="hidden" name="edu-paymentmethodid" value="2" />
+			<?php
+			return;
+		}
 		?>
 		<input type="hidden" name="edu-paymentmethodid" value="<?php echo esc_attr( $valid_paymentmethods[0]['PaymentMethodId'] ); ?>" />
 		<?php
 	} elseif ( count( $valid_paymentmethods ) == 0 ) {
+		if ( $always_use_payment_plugin ) {
+			?>
+			<input type="hidden" name="edu-paymentmethodid" value="2" />
+			<?php
+			return;
+		}
 		?>
 		<input type="hidden" name="edu-paymentmethodid" value="1" />
 		<?php
 	}
 } else {
+	if ( $always_use_payment_plugin ) {
+		?>
+		<input type="hidden" name="edu-paymentmethodid" value="2" />
+		<?php
+		return;
+	}
 	?>
 	<input type="hidden" name="edu-paymentmethodid" value="<?php echo esc_attr( $event['PaymentMethods'][0]['PaymentMethodId'] ); ?>" />
 	<?php

@@ -138,6 +138,15 @@ function edu_render_booking_settings_page() {
 							value="true" />
 						<?php echo esc_html_x( 'Validate civic registration numbers (Swedish)', 'backend', 'eduadmin-booking' ); ?>
 					</label>
+					<br /><?php
+				$alwaysUsePaymentPlugin = get_option( 'eduadmin-alwaysUsePaymentPlugin', false );
+				?>
+					<label>
+						<input type="checkbox" name="eduadmin-alwaysUsePaymentPlugin"<?php checked( $alwaysUsePaymentPlugin, "true" ); ?>
+							value="true" />
+						<?php echo esc_html_x( 'Always use payment plugin (if applicable) for bookings', 'backend', 'eduadmin-booking' ); ?>
+					</label>
+					<br />
 					<h4><?php echo esc_html_x( 'Field order', 'backend', 'eduadmin-booking' ); ?></h4>                <?php
 				$fieldOrder = get_option( 'eduadmin-fieldOrder', 'contact_customer' );
 				?>
