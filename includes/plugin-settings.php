@@ -13,9 +13,9 @@ function edu_render_plugin_page() {
 				<h3><?php echo esc_html_x( 'Installed plugins', 'backend', 'eduadmin-booking' ); ?></h3>
 				<hr noshade="noshade" />
 				<?php
-				$integrations = EDU()->integrations->integrations;
+				$integrations = EDU()->integrations->get_integrations();
 				foreach ( $integrations as $integration ) {
-					echo '<h3>' . esc_html( $integration->displayName ) . "</h3>\n";
+					echo '<h3>' . esc_html( $integration->displayName ) . ' - ' . esc_html( $integration->get_plugin_type_label() ) . "</h3>\n";
 					echo $integration->get_settings();
 					echo "<hr />\n";
 				}
