@@ -147,7 +147,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 				include_once 'question-view.php';
 				include_once 'discount-code.php';
 				include_once 'limited-discount-view.php';
-				include_once 'payment-methods.php';
+				include_once __DIR__ . '/../payment-methods.php';
+				eduadmin_render_payment_methods( $event );
 				?>
 				<div class="submitView">
 					<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
