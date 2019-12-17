@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.8...v2.12.0) (2019-12-17)
+
+
+### Bug Fixes
+
+* Fixes so that programme bookings get a correct price check even if you don't have any participants/contact person details. ([3734187](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3734187))
+* Moved payment-methods to root-folder of content, because it's used by both programme and normal events. ([d7d1bfe](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d7d1bfe))
+* we fall back to invoice through EduAdmin if there are no available plugins. fix for [#290](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/290) ([e545b4b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e545b4b))
+
+
+### Features
+
+* 🎸 Add optional filter for `get_integrations` ([e1fd75d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e1fd75d))
+* Added plugin type, and method to return a label for said type ([9bf1804](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9bf1804))
+* Do not run payment-plugins if the totalsum is zero ([e2b4493](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e2b4493)), closes [#288](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/288)
+* Only send bookings through payment plugins if they are PaymentMethodId 2 (Card payment). ([6917ff0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6917ff0))
+* Setting to enforce use of payment plugin. ([7fd4114](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7fd4114)), closes [#290](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/290)
+* Showing plugin type label in list of installed plugins ([bb015a3](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bb015a3))
+* The end user now has the possibility to select payment method (if there are multiple available) ([9aaab43](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9aaab43)), closes [#289](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/289)
+
+
+
 ### [2.11.8](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.7...v2.11.8) (2019-11-22)
 
 
