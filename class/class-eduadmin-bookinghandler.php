@@ -734,12 +734,14 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( empty( $booking_data->ContactPerson->FirstName ) ) {
-			$booking_data->ContactPerson->FirstName = 'Empty';
+			$booking_data->ContactPerson->FirstName        = 'Empty';
+			$booking_data->ContactPerson->AddAsParticipant = false;
 		}
 
 		if ( 0 === count( $booking_data->Participants ) && $booking_data->ContactPerson->AddAsParticipant === false ) {
 			$empty_participant            = new stdClass();
-			$empty_participant->FirstName = 'Empty';
+			$empty_participant->FirstName = 'Price';
+			$empty_participant->LastName  = 'Check';
 			$booking_data->Participants[] = $empty_participant;
 		}
 
