@@ -124,6 +124,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-booking', 'eduadmin-validateCivicRegNo' );
 	register_setting( 'eduadmin-booking', 'eduadmin-useLimitedDiscount' );
 	register_setting( 'eduadmin-booking', 'eduadmin-blockEditIfLoggedIn' );
+	register_setting( 'eduadmin-booking', 'eduadmin-alwaysUsePaymentPlugin' );
 
 	/* Style settings */
 	register_setting( 'eduadmin-style', 'eduadmin-style' );

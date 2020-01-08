@@ -436,7 +436,10 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					<?php echo esc_html_x( 'You cannot add any more participants.', 'frontend', 'eduadmin-booking' ); ?>
 				</div>
 			</div>
-
+			<?php
+			include_once __DIR__ . '/../payment-methods.php';
+			eduadmin_render_payment_methods( $programme );
+			?>
 			<div class="submitView">
 				<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
 					<div class="confirmTermsHolder">

@@ -19,7 +19,16 @@ class EDU_IntegrationLoader {
 		EDU()->stop_timer( $t );
 	}
 
-	public function get_integrations() {
+	/**
+	 * @param callable|null $filter
+	 *
+	 * @return array|\EDU_Integration[]
+	 */
+	public function get_integrations( $filter = null ) {
+		if ( $filter != null ) {
+			return $filter( $this->integrations );
+		}
+
 		return $this->integrations;
 	}
 }

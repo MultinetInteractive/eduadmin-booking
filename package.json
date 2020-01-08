@@ -1,7 +1,7 @@
 {
 	"name": "eduadmin-wordpress-plugin",
 	"private": true,
-	"version": "2.11.8",
+	"version": "2.12.0",
 	"repository": "https://github.com/MultinetInteractive/EduAdmin-WordPress.git",
 	"author": "Chris Gårdenberg <chga@multinet.se>",
 	"license": "MIT",
@@ -26,17 +26,11 @@
 		"@types/jquery": "^3.3.30",
 		"concurrently": "^4.1.1",
 		"cz-conventional-changelog": "2.1.0",
-		"husky": "^2.7.0",
 		"js-yaml": "3.13.1",
 		"lodash": "^4.17.14",
 		"lodash.template": "4.5.0",
 		"standard-version": "^6.0.1",
 		"typescript": "^3.5.3"
-	},
-	"husky": {
-		"hooks": {
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
 	},
 	"config": {
 		"commitizen": {

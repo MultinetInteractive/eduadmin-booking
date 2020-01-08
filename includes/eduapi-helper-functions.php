@@ -44,7 +44,9 @@ class EduAdminAPIHelper {
 				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
 				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
 				';' .
-				'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;),Sessions($expand=PriceNames($filter=PublicPriceName;);$filter=HasPublicPriceName;),PaymentMethods' .
+				'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),' .
+				'EventDates($orderby=StartDate;$select=StartDate,EndDate;),' .
+				'Sessions($expand=PriceNames($filter=PublicPriceName;);$filter=HasPublicPriceName;),PaymentMethods' .
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
