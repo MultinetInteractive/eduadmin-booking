@@ -63,6 +63,14 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<input type="text" name="customerPostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->City ); ?>" />
 			</div>
 		</label>
+		<label class="edu-book-customerCountry">
+			<div class="inputLabel">
+				<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
+			</div>
+			<div class="inputHolder">
+				<?php edu_get_country_list('customerCountryCode', $customer->CountryCode ); ?>
+			</div>
+		</label>
 		<label class="edu-book-customerEmailAddress">
 			<div class="inputLabel">
 				<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
@@ -119,6 +127,14 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				</div>
 				<div class="inputHolder">
 					<input type="text" name="invoicePostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $billing_customer->City ); ?>" />
+				</div>
+			</label>
+			<label class="edu-book-invoice-customerCountry">
+				<div class="inputLabel">
+					<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
+				</div>
+				<div class="inputHolder">
+					<?php edu_get_country_list('invoiceCountryCode', $billing_customer->CountryCode, false ); ?>
 				</div>
 			</label>
 		</div>
