@@ -88,7 +88,7 @@ class EduAdmin_BookingHandler {
 			$_customer     = EDUAPI()->OData->Customers->GetItem(
 				$booking_info['CustomerId'],
 				null,
-				null,
+				"BillingInfo",
 				false
 			);
 			$_contact      = EDUAPI()->OData->Persons->GetItem(
@@ -328,6 +328,9 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
 			$customer->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
 		}
+		if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
+			$customer->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+		}
 		if ( ! empty( $_POST['contactPhone'] ) ) { // Var input okay.
 			$customer->Phone = sanitize_text_field( $_POST['contactPhone'] ); // Var input okay.
 		}
@@ -364,6 +367,9 @@ class EduAdmin_BookingHandler {
 			if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
 			}
+			if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
+				$billing_info->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+			}
 		} else {
 			if ( ! empty( $_POST['invoiceName'] ) ) { // Var input okay.
 				$billing_info->CustomerName = sanitize_text_field( $_POST['invoiceName'] ); // Var input okay.
@@ -379,6 +385,9 @@ class EduAdmin_BookingHandler {
 			}
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
+			}
+			if ( ! empty( $_POST['invoiceCountryCode'] ) ) { // Var input okay.
+				$billing_info->CountryCode = sanitize_text_field( $_POST['invoiceCountryCode'] ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
 				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
@@ -566,6 +575,9 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
 			$customer->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
 		}
+		if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
+			$customer->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+		}
 		if ( ! empty( $_POST['customerEmail'] ) ) { // Var input okay.
 			$customer->Email = sanitize_email( $_POST['customerEmail'] ); // Var input okay.
 		}
@@ -598,6 +610,9 @@ class EduAdmin_BookingHandler {
 			if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
 			}
+			if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
+				$billing_info->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+			}
 		} else {
 			if ( ! empty( $_POST['invoiceName'] ) ) { // Var input okay.
 				$billing_info->CustomerName = sanitize_text_field( $_POST['invoiceName'] ); // Var input okay.
@@ -613,6 +628,9 @@ class EduAdmin_BookingHandler {
 			}
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
 				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
+			}
+			if ( ! empty( $_POST['invoiceCountryCode'] ) ) { // Var input okay.
+				$billing_info->CountryCode = sanitize_text_field( $_POST['invoiceCountryCode'] ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
 				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
