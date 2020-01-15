@@ -113,6 +113,14 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				<input type="text" name="customerPostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $customer->City ); ?>" />
 			</div>
 		</label>
+		<label class="edu-book-singleParticipant-customerCountry">
+			<div class="inputLabel">
+				<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
+			</div>
+			<div class="inputHolder">
+				<?php edu_get_country_list( 'customerCountryCode', $customer->CountryCode ); ?>
+			</div>
+		</label>
 	</div>
 
 	<div class="invoiceView__wrapper">
@@ -201,6 +209,14 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				</div>
 				<div class="inputHolder">
 					<input type="text" name="invoicePostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo esc_attr( $billing_customer->City ); ?>" />
+				</div>
+			</label>
+			<label class="edu-book-singleParticipant-invoice-customerCountry">
+				<div class="inputLabel">
+					<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
+				</div>
+				<div class="inputHolder">
+					<?php edu_get_country_list( 'invoiceCountryCode', $billing_customer->CountryCode, false ); ?>
 				</div>
 			</label>
 		</div>

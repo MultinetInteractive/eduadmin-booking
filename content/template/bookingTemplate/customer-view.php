@@ -68,7 +68,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<?php edu_get_country_list('customerCountryCode', $customer->CountryCode ); ?>
+				<?php edu_get_country_list( 'customerCountryCode', $customer->CountryCode ); ?>
 			</div>
 		</label>
 		<label class="edu-book-customerEmailAddress">
@@ -134,7 +134,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 					<?php echo esc_html_x( 'Country', 'frontend', 'eduadmin-booking' ); ?>
 				</div>
 				<div class="inputHolder">
-					<?php edu_get_country_list('invoiceCountryCode', $billing_customer->CountryCode, false ); ?>
+					<?php edu_get_country_list( 'invoiceCountryCode', $billing_customer->CountryCode, false ); ?>
 				</div>
 			</label>
 		</div>
