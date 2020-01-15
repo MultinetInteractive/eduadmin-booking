@@ -117,7 +117,8 @@ function edu_get_percent_class( $percent ) {
 
 function edu_get_country_list( $element_name, $selected_value = 'SE', $required = true ) {
 	if ( empty( $selected_value ) ) {
-		$selected_value = 'SE'; // Will be replaced with country from company
+		$orgCountryCode = EDUAPIHelper()->GetOrganization()["CountryCode"];
+		$selected_value = ! empty( $orgCountryCode ) ? $orgCountryCode : 'SE'; // Will be replaced with country from company
 	}
 
 	echo "<select " . ( $required ? "required" : "" ) . " name=\"" . esc_attr( $element_name ) . "\">\n";
@@ -371,7 +372,7 @@ function edu_get_country_list( $element_name, $selected_value = 'SE', $required 
 	<option value="EH"<?php selected( $selected_value, 'EH' ); ?>><?php _ex( 'Western Sahara', 'frontend', 'eduadmin-booking' ); ?></option>
 	<option value="YE"<?php selected( $selected_value, 'YE' ); ?>><?php _ex( 'Yemen', 'frontend', 'eduadmin-booking' ); ?></option>
 	<option value="ZM"<?php selected( $selected_value, 'ZM' ); ?>><?php _ex( 'Zambia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option value="ZW"<?php selected( $selected_value, 'ZW' ); ?>><?php _ex( 'Zimbabwe', 'frontend', 'eduadmin-booking' ); ?></option>	</select><?php
+	<option value="ZW"<?php selected( $selected_value, 'ZW' ); ?>><?php _ex( 'Zimbabwe', 'frontend', 'eduadmin-booking' ); ?></option>    </select><?php
 }
 
 function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
