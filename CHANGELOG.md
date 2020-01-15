@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.12.0...v2.13.0) (2020-01-15)
+
+
+### Features
+
+* Added code so that we send the CountryCode to EduAdmin ([9096904](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9096904))
+* Added country-selector for customer + invoice information (not sending it yet, as it is not supported in the API yet) ([1a98fe6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1a98fe6))
+* Added Country-selector to Single Person-booking ([2216f94](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2216f94))
+* Added CountryCode to ContactPerson-class ([bf40ba7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bf40ba7))
+* If the logged in/new customer doesn't have any country code, we will fetch it from the EduAdmin account, and default to SE if it's missing. ([52afa7f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/52afa7f))
+
+
+
 ## [2.12.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.11.8...v2.12.0) (2019-12-17)
 
 
