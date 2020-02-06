@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.13.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.13.0...v2.13.1) (2020-02-06)
+
+
+### Bug Fixes
+
+* Fixes discount code validation ([0aa14ea](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0aa14ea))
+
+
+
 ## [2.13.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.12.0...v2.13.0) (2020-01-15)
 
 
