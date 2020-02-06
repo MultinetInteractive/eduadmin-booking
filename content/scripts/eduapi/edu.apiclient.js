@@ -188,7 +188,7 @@ edu.apiclient = {
             },
             success: function (d) {
                 if (onData && typeof onData == "function") {
-                    onData(d);
+                    onData(JSON.parse(d.data));
                 }
             }
         });
