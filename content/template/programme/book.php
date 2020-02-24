@@ -49,7 +49,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 	$participant_questions = $questions['ParticipantQuestions'];
 
 	?>
-	<div class="eduadmin booking-page">
+	<div class="eduadmin booking-page" data-courseid="<?php echo esc_attr( $programme['ProgrammeId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['id'] ) ? esc_attr( sanitize_text_field( $_REQUEST['id'] ) ) : '' ); ?>">
 		<form action="" method="post" id="edu-booking-form">
 			<input type="hidden" name="act" value="bookProgramme" />
 			<input type="hidden" name="edu-programme-start" value="<?php echo intval( $_REQUEST['id'] ); ?>" />
