@@ -15,7 +15,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	?>
-	<div class="eduadmin">
+	<div class="eduadmin detail-view" data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
 		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 		<div class="title">
 			<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>

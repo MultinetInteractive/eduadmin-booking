@@ -54,7 +54,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 		$hide_sub_event_date_info = EDU()->is_checked( 'eduadmin-hideSubEventDateTime', false );
 		?>
-		<div class="eduadmin booking-page">
+		<div class="eduadmin booking-page" data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
 			<form action="" method="post" id="edu-booking-form">
 				<input type="hidden" name="act" value="bookCourse" />
 				<input type="hidden" name="edu-valid-form" value="<?php echo esc_attr( wp_create_nonce( 'edu-booking-confirm' ) ); ?>" />
@@ -219,6 +219,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				var title = document.title;
 				title = title.replace('<?php echo esc_js( $original_title ); ?>', '<?php echo esc_js( $new_title ); ?>');
 				document.title = title;
+				eduBookingView.SingleParticipant = <?php echo esc_js( $single_person_booking ? "true" : "false" ); ?>;
 				eduBookingView.ProgrammeBooking = false;
 				eduBookingView.ForceContactCivicRegNo = <?php echo( $selected_course['RequireCivicRegistrationNumber'] ? 'true' : 'false' ); ?>;
 				eduBookingView.MaxParticipants = <?php echo esc_js( $event['ParticipantNumberLeft'] != null ? intval( $event['ParticipantNumberLeft'] ) : -1 ); ?>;

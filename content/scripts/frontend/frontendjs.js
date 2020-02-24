@@ -5,7 +5,7 @@ var eduBookingView = {
     Customer: null,
     ContactPerson: null,
     Participants: [],
-    SingleParticipant: false,
+    SingleParticipant: JSON.parse(window.wp_edu.SingleParticipant),
     ForceContactCivicRegNo: false,
     MaxParticipants: 0,
     CurrentParticipants: 0,
@@ -179,7 +179,7 @@ var eduBookingView = {
         if (contactParticipant) {
             contact = contactParticipant.checked ? 1 : 0;
         }
-        if (JSON.parse(window.wp_edu.SingleParticipant)) {
+        if (eduBookingView.SingleParticipant) {
             contact = 1;
         }
         if (participants.length + contact === 0) {
@@ -367,8 +367,8 @@ var eduBookingView = {
                     jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
                         " " +
                         window.wp_edu.Currency +
-                        showVatText ? " " +
-                        edu_i18n_strings.VAT.free : '');
+                        (showVatText ? " " +
+                            edu_i18n_strings.VAT.free : ''));
                 }
                 else {
                     jQuery("#sumValue").text(numberWithSeparator(d["TotalPriceExVat"], " ") +
