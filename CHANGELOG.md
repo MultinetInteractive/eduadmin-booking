@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.13.1...v2.14.0) (2020-02-24)
+
+
+### Bug Fixes
+
+* Fixed a logic error in the price computation output. ([b7b6211](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b7b6211))
+
+
+### Features
+
+* Added data-attributes for courseid and eventid on detail and booking views, so they can be targeted by CSS (if needed). fixes [#297](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/297) ([bd541f7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bd541f7))
+
+
+
 ### [2.13.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.13.0...v2.13.1) (2020-02-06)
 
 
