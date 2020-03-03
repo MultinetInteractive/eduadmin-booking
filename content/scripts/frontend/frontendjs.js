@@ -453,11 +453,12 @@ var eduDetailView = {
     }
 };
 var eduGlobalMethods = {
-    GoBack: function (fallBackUrl) {
-        /*if (window.history.length > 1) {
+    GoBack: function (fallBackUrl, event) {
+        if (window.history.length > 1) {
+            event.preventDefault();
             window.history.go(-1);
             return false;
-        }*/ /* Thanks Firefox */
+        }
         location.href = fallBackUrl;
     }
 };

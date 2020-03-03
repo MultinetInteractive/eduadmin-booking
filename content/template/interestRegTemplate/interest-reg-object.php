@@ -35,7 +35,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 	?>
 	<div class="eduadmin">
-		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
+		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 		<div class="title">
 			<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
 				<img src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>" class="courseImage" />
