@@ -38,7 +38,7 @@ not see if it actually contains anything, and we don't want to render broken ima
 [eduadmin-detailview customtemplate]
 
 <div class="eduadmin">
-    <a href="javascript://" onclick="eduGlobalMethods.GoBack('../');" class="backLink">
+    <a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);" class="backLink">
         « Go back
     </a>
     <div class="title">

@@ -659,11 +659,12 @@ var eduDetailView = {
 };
 
 const eduGlobalMethods = {
-    GoBack: function (fallBackUrl: string) {
-        /*if (window.history.length > 1) {
+    GoBack: function (fallBackUrl: string, event: any) {
+        if (window.history.length > 1) {
+            event.preventDefault();
             window.history.go(-1);
             return false;
-        }*/ /* Thanks Firefox */
+        }
         location.href = fallBackUrl;
     }
 };
