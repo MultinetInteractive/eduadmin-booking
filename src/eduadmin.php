@@ -39,7 +39,6 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  */
 
 if ( ! class_exists( 'EduAdmin' ) ) :
-
 	final class EduAdmin {
 		/**
 		 * @var EduAdmin
