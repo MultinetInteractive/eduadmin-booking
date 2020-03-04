@@ -5,6 +5,7 @@ const myth = require("gulp-myth");
 const nano = require("gulp-cssnano");
 const pinfo = require("./package.json");
 const exec = require('child_process').exec;
+const changelog = require('./changelog-fixer.js');
 
 /* Debug */
 gulp.task("styles-frontend", function () {
@@ -29,6 +30,7 @@ gulp.task("readme-version", function () {
 		.pipe(replace("$PLUGINVERSION$", pinfo.version))
 		.pipe(replace("$PLUGINATLEAST$", pinfo.config.eduadmin.requiresAtLeast))
 		.pipe(replace("$PLUGINTESTEDTO$", pinfo.config.eduadmin.testedUpTo))
+		.pipe(replace("$CHANGELOG$", changelog()))
 		.pipe(
 			replace(
 				"$PLUGINREQUIREDPHP$",
