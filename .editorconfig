@@ -2,3 +2,12 @@ root = true
 
 [*.php]
 end_of_line = lf
+
+[*.js]
+end_of_line = lf
+
+[*.json]
+end_of_line = lf
+
+[*.md]
+end_of_line = lf
