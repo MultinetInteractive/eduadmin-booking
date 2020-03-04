@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.15.1
+Stable tag: 2.16.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+## [2.16.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.15.1...v2.16.0) (2020-03-04)
+
+
+### Features
+
+* Added Countries to API Client ([e91f109](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e91f109))
+* **changelog:** Added changelog to the readme visible on WordPress with the latest 4 versions ([99890c6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/99890c6))
+
 ### [2.15.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.15.0...v2.15.1) (2020-03-04)
 
 ## [2.15.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.14.1...v2.15.0) (2020-03-04)
@@ -59,17 +67,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Bug Fixes
 
 * Re-added history.go(-1), because some customers used that ([18d62e4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/18d62e4))
-
-## [2.14.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.13.1...v2.14.0) (2020-02-24)
-
-
-### Bug Fixes
-
-* Fixed a logic error in the price computation output. ([b7b6211](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b7b6211))
-
-
-### Features
-
-* Added data-attributes for courseid and eventid on detail and booking views, so they can be targeted by CSS (if needed). fixes [#297](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/297) ([bd541f7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bd541f7))
 
 
