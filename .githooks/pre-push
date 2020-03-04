@@ -1,3 +1,5 @@
 #!/bin/sh; C:/Program\ Files/Git/usr/bin/sh.exe
 
 exec yarn bump-version
+
+exit 0
