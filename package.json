@@ -1,7 +1,7 @@
 {
 	"name": "eduadmin-wordpress-plugin",
 	"private": true,
-	"version": "2.14.1",
+	"version": "2.16.0",
 	"repository": "https://github.com/MultinetInteractive/EduAdmin-WordPress.git",
 	"author": "Chris Gårdenberg <chga@multinet.se>",
 	"license": "MIT",
@@ -37,7 +37,7 @@
 			"path": "./node_modules/cz-conventional-changelog"
 		},
 		"eduadmin": {
-			"testedUpTo": "5.2",
+			"testedUpTo": "5.3",
 			"requiresAtLeast": "4.9",
 			"minimumPhpVersion": "5.2"
 		}

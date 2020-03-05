@@ -39,7 +39,6 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  */
 
 if ( ! class_exists( 'EduAdmin' ) ) :
-
 	final class EduAdmin {
 		/**
 		 * @var EduAdmin
@@ -344,6 +343,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		private function includes() {
 			$t = $this->start_timer( __METHOD__ );
+			include_once 'libraries/plugin-checksum.php';
 			include_once 'class/class-eduadminrouter.php';
 			$this->router = new EduAdminRouter();
 			$this->router->init();
@@ -396,7 +396,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function call_home() {
 			global $wp_version;
-			$this->check_plugin_integrity();
+			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
 
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
@@ -405,8 +405,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				'phpVersion'    => PHP_VERSION,
 				'token'         => get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
-				'storedHash'    => $this->storedIntegrityHash,
-				'currentHash'   => $this->currentIntegrityHash,
+				'storedHash'    => $integrity->storedIntegrityHash,
+				'currentHash'   => $integrity->currentIntegrityHash,
 			);
 			$call_home_url = 'https://ws10.multinet.se/edu-plugin/wp_phone_home.php';
 			wp_remote_post( $call_home_url, array( 'body' => $usage_data ) );
@@ -444,7 +444,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function get_integrity_check_footer() {
-			echo $this->check_plugin_integrity() ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Modified plugin (" . $this->currentIntegrityHash . ") -->\n";
+			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
+			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
 		}
 
 		public function get_scheduled_tasks() {
@@ -735,100 +736,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			EDUAPI()->SetToken( $current_token );
 
 			return null;
-		}
-
-		private function check_plugin_integrity() {
-			$t = $this->start_timer( __METHOD__ );
-
-			$this->storedIntegrityHash  = trim( file_get_contents( EDUADMIN_PLUGIN_PATH . '/PLUGIN-CHECKSUM' ) );
-			$this->currentIntegrityHash = $this->generate_directory_md5( EDUADMIN_PLUGIN_PATH );
-
-			$this->stop_timer( $t );
-
-			return $this->currentIntegrityHash == $this->storedIntegrityHash;
-		}
-
-		private $ignored_directories_and_files = array(
-			'.',
-			'..',
-			'.git',
-			'.editorconfig',
-			'.gitattributes',
-			'.github',
-			'.gitignore',
-			'.gitmodules',
-			'.nvmrc',
-			'.scrutinizer.yml',
-			'CHANGELOG.md',
-			'CONTRIBUTING.md',
-			'Gulpfile.js',
-			'LICENSE.md',
-			'PLUGIN-CHECKSUM',
-			'bin',
-			'commitlint.config.js',
-			'composer.json',
-			'composer.yml',
-			'docs',
-			'eduadmin.php',
-			'node_modules',
-			'package.json',
-			'phpunit.xml',
-			'readme.md',
-			'scripts',
-			'compiled',
-			'src',
-			'tests',
-			'tsconfig.json',
-			'vendor',
-			'website',
-			'wp-tests',
-			'yarn-error.log',
-			'yarn.lock',
-		);
-
-		private function get_sorted_recursive_list( $dir ) {
-			if ( ! is_dir( $dir ) ) {
-				return false;
-			}
-
-			$entries = array();
-			$d       = dir( $dir );
-
-			while ( false !== ( $entry = $d->read() ) ) {
-				if ( ! in_array( $entry, $this->ignored_directories_and_files ) ) {
-					if ( is_dir( $dir . '/' . $entry ) ) {
-						$subDirectoryEntries = $this->get_sorted_recursive_list( $dir . '/' . $entry );
-						foreach ( $subDirectoryEntries as $_entry ) {
-							$entries[] = $_entry;
-						}
-					} else {
-						$entries[] = $dir . '/' . $entry;
-					}
-				}
-			}
-			$d->close();
-			sort( $entries );
-
-			return $entries;
-		}
-
-		private function generate_directory_md5( $dir ) {
-			if ( ! is_dir( $dir ) ) {
-				return false;
-			}
-
-			$files = $this->get_sorted_recursive_list( $dir );
-
-			$filemd5s = array();
-
-			foreach ( $files as $file ) {
-				$filemd5s[] = md5_file( $file );
-				if ( isset( $_GET['edu-debug-integrity'] ) ) {
-					echo "<!-- EduAdmin Integrity: $file: " . md5_file( $file ) . " -->\n";
-				}
-			}
-
-			return md5( implode( '', $filemd5s ) );
 		}
 	}
 
