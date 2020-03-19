@@ -104,7 +104,7 @@ class EduAdmin_BookingHandler {
 
 			$always_use_payment_plugin = EDU()->is_checked( 'eduadmin-alwaysUsePaymentPlugin', false );
 
-			if ( ( $event_booking->PaymentMethodId === 2 || $always_use_payment_plugin ) && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
+			if ( ( $event_booking['PaymentMethodId'] === 2 || $always_use_payment_plugin ) && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
 				do_action( 'eduadmin-checkpaymentplugins', $ebi );
 			}
 
