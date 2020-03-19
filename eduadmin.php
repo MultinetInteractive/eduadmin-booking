@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.15.1
+ * Version:	2.16.1
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 4.9
@@ -396,7 +396,12 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function call_home() {
 			global $wp_version;
-			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
+			$integrity             = EduAdminPluginIntegrityChecker::check_plugin_integrity();
+			$installedIntegrations = array();
+
+			foreach ( $this->integrations->integrations as $k => $v ) {
+				$installedIntegrations[] = $k;
+			}
 
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
@@ -407,6 +412,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				'pluginVersion' => $this->version,
 				'storedHash'    => $integrity->storedIntegrityHash,
 				'currentHash'   => $integrity->currentIntegrityHash,
+				'integrations'  => $installedIntegrations,
 			);
 			$call_home_url = 'https://ws10.multinet.se/edu-plugin/wp_phone_home.php';
 			wp_remote_post( $call_home_url, array( 'body' => $usage_data ) );
