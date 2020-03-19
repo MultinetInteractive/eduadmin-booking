@@ -15,8 +15,8 @@ if ( ! function_exists( 'eduadmin_render_payment_methods' ) ) {
 		} );
 
 		$valid_paymentmethod_ids = array(
-			"1" => __( 'Invoice', 'frontend', 'eduadmin-booking' ),
-			"2" => __( 'Card payment', 'frontend', 'eduadmin-booking' ),
+			"1" => _x( 'Invoice', 'frontend', 'eduadmin-booking' ),
+			"2" => _x( 'Card payment', 'frontend', 'eduadmin-booking' ),
 		);
 
 		if ( count( $payment_plugins ) === 0 ) {
