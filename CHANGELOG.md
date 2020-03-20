@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.2...v2.17.0) (2020-03-20)
+
+
+### Features
+
+* Ability to stop sending confirmation emails ([37f9ff6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/37f9ff6))
+
+
+
 ### [2.16.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.1...v2.16.2) (2020-03-19)
 
 
