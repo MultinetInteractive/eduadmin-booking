@@ -146,6 +146,14 @@ function edu_render_booking_settings_page() {
 							value="true" />
 						<?php echo esc_html_x( 'Always use payment plugin (if applicable) for bookings', 'backend', 'eduadmin-booking' ); ?>
 					</label>
+					<br /><?php
+				$dontSendConfirmation = get_option( 'eduadmin-dontSendConfirmation', false );
+				?>
+					<label>
+						<input type="checkbox" name="eduadmin-dontSendConfirmation"<?php checked( $dontSendConfirmation, "true" ); ?>
+							value="true" />
+						<?php echo esc_html_x( 'Do not send confirmation emails (if you use automatic emails in EduAdmin)', 'backend', 'eduadmin-booking' ); ?>
+					</label>
 					<br />
 					<h4><?php echo esc_html_x( 'Field order', 'backend', 'eduadmin-booking' ); ?></h4>                <?php
 				$fieldOrder = get_option( 'eduadmin-fieldOrder', 'contact_customer' );
