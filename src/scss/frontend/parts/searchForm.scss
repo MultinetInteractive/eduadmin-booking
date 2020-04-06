@@ -58,7 +58,7 @@
 		}
 
 		.search-dropdown {
-			flex: 1;
+			flex: auto;
 			margin-right: 8px;
 			min-width: 190px;
 
@@ -70,7 +70,7 @@
 		.search-item {
 			&.search-text {
 				margin-right: 8px;
-				flex: 1;
+				flex: auto;
 			}
 		}
 	}

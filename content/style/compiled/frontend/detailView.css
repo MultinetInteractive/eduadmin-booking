@@ -70,7 +70,7 @@
   .eduadmin .eventItem .eventDate,
   .eduadmin .eventItem .eventCity {
     margin: 0;
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 }
