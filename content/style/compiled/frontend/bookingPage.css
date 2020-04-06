@@ -257,8 +257,8 @@
   .eduadmin.booking-page form label .inputLabel {
     display: inherit;
     margin: 0;
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 
   .eduadmin.booking-page form .title select.dateInfo {

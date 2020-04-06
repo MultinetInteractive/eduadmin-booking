@@ -153,8 +153,8 @@
   }
 
   .eduadmin .objectItem .objectInfoHolder {
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 
   .eduadmin .objectItem .objectDescription {

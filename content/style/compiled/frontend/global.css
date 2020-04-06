@@ -144,8 +144,8 @@
   }
 
   .eduadmin .search-form .search-dropdown {
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
     margin-right: 8px;
     min-width: 190px;
   }
@@ -156,8 +156,8 @@
 
   .eduadmin .search-form .search-item.search-text {
     margin-right: 8px;
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 
   .eduadmin .search-regionitems {
@@ -275,8 +275,8 @@
   .eduadmin div.fakeLabel .inputLabel {
     display: inherit;
     margin: 0;
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
   }
 
   .eduadmin label .inputHolder,
@@ -366,8 +366,8 @@
   }
 
   .eduadmin.loginForm form .title .checkEmailForm label .inputHolder {
-    -ms-flex: 1;
-    flex: 1;
+    -ms-flex: auto;
+    flex: auto;
     width: 350px;
     margin: 0 16px 0 0;
   }
