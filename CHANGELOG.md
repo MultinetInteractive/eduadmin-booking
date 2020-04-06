@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.17.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.0...v2.17.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* **css:** Changed from `flex: 1` to `flex: auto`, because IE11 broke otherwise. ([76b681b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/76b681b))
+
+
+
 ## [2.17.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.2...v2.17.0) (2020-03-20)
 
 
