@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.17.0
+Stable tag: 2.17.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.17.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.0...v2.17.1) (2020-04-06)
+
+
+### Bug Fixes
+
+* **css:** Changed from `flex: 1` to `flex: auto`, because IE11 broke otherwise. ([76b681b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/76b681b))
+
 ## [2.17.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.2...v2.17.0) (2020-03-20)
 
 
@@ -64,13 +71,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Bug Fixes
 
 * **payment:** Properly check for PaymentMethodId ([8a526d1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8a526d1))
-
-## [2.16.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.15.1...v2.16.0) (2020-03-04)
-
-
-### Features
-
-* Added Countries to API Client ([e91f109](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e91f109))
-* **changelog:** Added changelog to the readme visible on WordPress with the latest 4 versions ([99890c6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/99890c6))
 
 
