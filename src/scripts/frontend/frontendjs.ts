@@ -674,7 +674,7 @@ function numberWithSeparator(x: string, sep: string) {
 }
 
 let oldonload = window.onload as any;
-window.onload = function (ev) {
+window.onload = function (ev : Event) {
     if (oldonload) {
         oldonload(ev);
     }
