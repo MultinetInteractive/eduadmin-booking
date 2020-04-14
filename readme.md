@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.17.1
+Stable tag: 2.18.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+## [2.18.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.1...v2.18.0) (2020-04-14)
+
+
+### Features
+
+* Added canonical URL for programme as well ([9be5bff](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9be5bff2d25dfd67625a2c8a13b0396b4d9ef45d))
+* Setting canonical URLs for detail/booking ([cbfec72](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cbfec7218d5e3d53482f80365ac397eb0104d979))
+
 ### [2.17.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.0...v2.17.1) (2020-04-06)
 
 
@@ -64,12 +72,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Bug Fixes
 
 * Wrong translation method used for payment methods ([78216eb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/78216eb))
-
-### [2.16.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.0...v2.16.1) (2020-03-19)
-
-
-### Bug Fixes
-
-* **payment:** Properly check for PaymentMethodId ([8a526d1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8a526d1))
 
 
