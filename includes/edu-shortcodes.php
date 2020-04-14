@@ -178,13 +178,15 @@ function edu_no_index() {
 	EDU()->stop_timer( $t );
 }
 
-function edu_set_canonical_url() {
+function edu_set_canonical_url( $canonical_url ) {
 	$t = EDU()->start_timer( __METHOD__ );
 
 	global $wp_query;
 	$detailpage = get_option( 'eduadmin-detailViewPage' );
-	if ( isset( $wp_query->queried_object ) && isset( $wp_query->query['courseId'] ) ) {
+	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
 		echo "<link rel=\"canonical\" href=\"" . get_home_url() . $_SERVER['REQUEST_URI'] . "\" />\n";
+	} else {
+		echo "<link rel=\"canonical\" href=\"" . $canonical_url . "\" />\n";
 	}
 
 	EDU()->stop_timer( $t );
