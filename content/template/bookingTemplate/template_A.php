@@ -8,7 +8,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
 } else {
 	include_once 'course-info.php';
-	if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) {
+
+	if ( ! empty( $_REQUEST['edu-valid-form'] ) && wp_verify_nonce( $_REQUEST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_REQUEST['act'] ) && 'bookCourse' === sanitize_text_field( $_REQUEST['act'] ) ) {
 		$error_list = apply_filters( 'edu-booking-error', array() );
 		if ( ! empty( $error_list ) ) {
 			echo '<div class="eduadmin">';
@@ -22,11 +23,56 @@ if ( ! $api_key || empty( $api_key ) ) {
 			do_action( 'eduadmin-bookingerror', $error_list );
 			echo '</div>';
 		} else {
-			$ebi = $GLOBALS['edubookinginfo'];
+			if ( ! empty( $GLOBALS['edubookinginfo'] ) ) {
+				$ebi = $GLOBALS['edubookinginfo'];
+			} else {
+				$booking_id           = intval( $_GET['booking_id'] );
+				$programme_booking_id = intval( $_GET['programme_booking_id'] );
+
+				if ( $booking_id > 0 ) {
+					$event_booking = EDUAPI()->OData->Bookings->GetItem(
+						$booking_id,
+						null,
+						'Customer($select=CustomerId;),ContactPerson($select=PersonId;),OrderRows',
+						false
+					);
+				} elseif ( $programme_booking_id > 0 ) {
+					$event_booking = EDUAPI()->OData->ProgrammeBookings->GetItem(
+						$programme_booking_id,
+						null,
+						'Customer($select=CustomerId;),ContactPerson($select=PersonId;),OrderRows',
+						false
+					);
+				}
+
+				if ( $event_booking['@curl']['http_code'] === 404 ) {
+					// The booking does not exist any longer (probably removed)
+					include_once __DIR__ . '/views/booking-deleted.php';
+
+					return;
+				}
+
+				$_customer = EDUAPI()->OData->Customers->GetItem(
+					$event_booking['Customer']['CustomerId'],
+					null,
+					"BillingInfo",
+					false
+				);
+
+				$_contact = EDUAPI()->OData->Persons->GetItem(
+					$event_booking['ContactPerson']['PersonId'],
+					null,
+					null,
+					false
+				);
+
+				$ebi                       = new EduAdmin_BookingInfo( $event_booking, $_customer, $_contact );
+				$GLOBALS['edubookinginfo'] = $ebi;
+			}
 			do_action( 'eduadmin-processbooking', $ebi );
 			do_action( 'eduadmin-bookingcompleted' );
 		}
-	} elseif ( ! empty( $_GET['edu-valid-form'] ) && wp_verify_nonce( $_GET['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_GET['act'] ) && 'paymentCompleted' === sanitize_text_field( $_GET['act'] ) ) {
+	} elseif ( ! empty( $_REQUEST['edu-valid-form'] ) && wp_verify_nonce( $_REQUEST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_REQUEST['act'] ) && 'paymentCompleted' === sanitize_text_field( $_REQUEST['act'] ) ) {
 		do_action( 'eduadmin-bookingcompleted' );
 	} else {
 		$contact  = new EduAdmin_Data_ContactPerson();
