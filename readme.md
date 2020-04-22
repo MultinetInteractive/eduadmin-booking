@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.18.0
+Stable tag: 2.18.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.18.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.18.0...v2.18.1) (2020-04-22)
+
+
+### Bug Fixes
+
+* Changing how we verify the nonce while paying. ([ce6027e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ce6027e287314a8cbb26c87f23e6d34fe904a9dc))
+
 ## [2.18.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.1...v2.18.0) (2020-04-14)
 
 
@@ -65,12 +72,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Features
 
 * Ability to stop sending confirmation emails ([37f9ff6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/37f9ff6))
-
-### [2.16.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.16.1...v2.16.2) (2020-03-19)
-
-
-### Bug Fixes
-
-* Wrong translation method used for payment methods ([78216eb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/78216eb))
 
 
