@@ -51,7 +51,9 @@ if ( $show_company_certificates ) {
 						<tr>
 							<td align="left"><?php echo esc_html( $certificate['CertificateName'] ); ?></td>
 							<td align="left"><?php echo esc_html( date( 'Y-m-d', strtotime( $certificate['CertificateDate'] ) ) ); ?></td>
-							<td align="left"><?php echo wp_kses_post( get_old_start_end_display_date( $certificate['ValidFrom'], $certificate['ValidTo'] ) ); ?></td>
+							<td align="left"><?php echo esc_html( ( ! empty( $certificate['ValidFrom'] ) ?
+								                                      date( 'Y-m-d', strtotime( $certificate['ValidFrom'] ) ) . ' - ' : '' ) .
+							                                      date( 'Y-m-d', strtotime( $certificate['ValidTo'] ) ) ); ?></td>
 						</tr>
 						<?php
 					}
