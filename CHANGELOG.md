@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.19.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.18.1...v2.19.0) (2020-05-13)
+
+
+### Features
+
+* Added missing method to delete programme bookings ([94f21d2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/94f21d28a1cf22b11c3eb921072556356aba437d))
+
+
+### Bug Fixes
+
+* Don't show tabs for certificates or discount cards, if the end customer doesn't have one. ([9d67661](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9d67661f842f6868c1a7bd5a8193f0240bdd41af))
+* Show certificate dates in YYYY-MM-DD instead. And only show ValidFrom if it's available. ([6f83515](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6f835157a59d647c8ca13575d1bbf4f5ad3f1edb))
+
 ### [2.18.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.18.0...v2.18.1) (2020-04-22)
 
 
