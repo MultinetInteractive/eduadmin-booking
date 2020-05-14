@@ -21,6 +21,22 @@ if ( $show_company_certificates ) {
 	);
 }
 
+function edu_write_certificate_date( $start_date, $end_date ) {
+	$date_str = '';
+
+	if ( ! empty( $start_date ) ) {
+		$date_str = date( 'YYYY-mm-dd', strtotime( $start_date ) ) . ' - ';
+	}
+
+	if ( ! empty( $end_date ) ) {
+		$date_str .= date( 'YYYY-mm-dd', strtotime( $end_date ) );
+	} else {
+		$date_str .= _x( 'Ongoing', 'frontend', 'eduadmin-booking' );
+	}
+
+	return $date_str;
+}
+
 ?>
 <div class="eduadmin">
 	<?php
@@ -51,9 +67,7 @@ if ( $show_company_certificates ) {
 						<tr>
 							<td align="left"><?php echo esc_html( $certificate['CertificateName'] ); ?></td>
 							<td align="left"><?php echo esc_html( date( 'Y-m-d', strtotime( $certificate['CertificateDate'] ) ) ); ?></td>
-							<td align="left"><?php echo esc_html( ( ! empty( $certificate['ValidFrom'] ) ?
-								                                      date( 'Y-m-d', strtotime( $certificate['ValidFrom'] ) ) . ' - ' : '' ) .
-							                                      date( 'Y-m-d', strtotime( $certificate['ValidTo'] ) ) ); ?></td>
+							<td align="left"><?php echo esc_html( edu_write_certificate_date( $certificate['ValidFrom'], $certificate['ValidTo'] ) ); ?></td>
 						</tr>
 						<?php
 					}
