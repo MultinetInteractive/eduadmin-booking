@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.19.0
+Stable tag: 2.19.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.19.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.0...v2.19.1) (2020-05-14)
+
+
+### Bug Fixes
+
+* Changed output for certificate dates into a separate function, to handle missing start and end dates. ([cba1e2b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cba1e2b539b4f2e18a40809485e7c562903c5fb2))
+
 ## [2.19.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.18.1...v2.19.0) (2020-05-13)
 
 
@@ -71,12 +78,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Added canonical URL for programme as well ([9be5bff](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9be5bff2d25dfd67625a2c8a13b0396b4d9ef45d))
 * Setting canonical URLs for detail/booking ([cbfec72](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cbfec7218d5e3d53482f80365ac397eb0104d979))
-
-### [2.17.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.17.0...v2.17.1) (2020-04-06)
-
-
-### Bug Fixes
-
-* **css:** Changed from `flex: 1` to `flex: auto`, because IE11 broke otherwise. ([76b681b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/76b681b))
 
 
