@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.19.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.2...v2.19.3) (2020-07-02)
+
+
+### Bug Fixes
+
+* Fixed so that the booking form cares about MaxParticipantNumber being set to zero (unlimited) ([25017be](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/25017be90314e517d6bba2bb15f71fd70a1739e4))
+* Removed the use of setting timezone. ([fa63461](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fa63461318f564d821afaf4797cb79fe53cced0e))
+
 ### [2.19.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.1...v2.19.2) (2020-05-15)
 
 
