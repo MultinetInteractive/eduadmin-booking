@@ -753,7 +753,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 	}
 
 	$GLOBALS['eduadmin'] = EDU();
-	if ( function_exists( 'wp_get_timezone_string' ) ) {
+	/*if ( function_exists( 'wp_get_timezone_string' ) ) {
 		date_default_timezone_set( wp_get_timezone_string() );
 		if ( false === @ini_set( 'date.timezone', wp_get_timezone_string() ) ) {
 			add_action( 'admin_notices', function() {
@@ -764,7 +764,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				<?php
 			} );
 		}
-	}
+	}*/
 
 	/* Handle plugin-settings */
 	add_action(
