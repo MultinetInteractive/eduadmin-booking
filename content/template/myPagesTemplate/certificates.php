@@ -25,11 +25,11 @@ function edu_write_certificate_date( $start_date, $end_date ) {
 	$date_str = '';
 
 	if ( ! empty( $start_date ) ) {
-		$date_str = date( 'Y-m-d', strtotime( $start_date ) ) . ' - ';
+		$date_str = date_i18n( 'Y-m-d', strtotime( $start_date ) ) . ' - ';
 	}
 
 	if ( ! empty( $end_date ) ) {
-		$date_str .= date( 'Y-m-d', strtotime( $end_date ) );
+		$date_str .= date_i18n( 'Y-m-d', strtotime( $end_date ) );
 	} else {
 		$date_str .= _x( 'Ongoing', 'frontend', 'eduadmin-booking' );
 	}
@@ -65,7 +65,7 @@ function edu_write_certificate_date( $start_date, $end_date ) {
 						?>
 						<tr>
 							<td align="left"><?php echo esc_html( $certificate['CertificateName'] ); ?></td>
-							<td align="left"><?php echo esc_html( date( 'Y-m-d', strtotime( $certificate['CertificateDate'] ) ) ); ?></td>
+							<td align="left"><?php echo esc_html( date_i18n( 'Y-m-d', strtotime( $certificate['CertificateDate'] ) ) ); ?></td>
 							<td align="left"><?php echo esc_html( edu_write_certificate_date( $certificate['ValidFrom'], $certificate['ValidTo'] ) ); ?></td>
 						</tr>
 						<?php

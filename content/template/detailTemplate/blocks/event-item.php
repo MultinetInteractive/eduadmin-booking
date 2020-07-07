@@ -22,7 +22,7 @@ if ( ! empty( $ev['EventDates'] ) ) {
 	<div class="eventDate<?php echo esc_attr( $group_by_city_class ); ?>">
 		<?php
 		echo isset( $event_dates[ $ev['EventId'] ] ) ? get_logical_date_groups( $event_dates[ $ev['EventId'] ] ) : wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'] ) );
-		echo ! isset( $event_dates[ $ev['EventId'] ] ) || 1 === count( $event_dates[ $ev['EventId'] ] ) ? '<span class="eventTime">, ' . esc_html( date( 'H:i', strtotime( $ev['StartDate'] ) ) ) . ' - ' . esc_html( date( 'H:i', strtotime( $ev['EndDate'] ) ) ) . '</span>' : '';
+		echo ! isset( $event_dates[ $ev['EventId'] ] ) || 1 === count( $event_dates[ $ev['EventId'] ] ) ? '<span class="eventTime">, ' . esc_html( date_i18n( 'H:i', strtotime( $ev['StartDate'] ) ) ) . ' - ' . esc_html( date_i18n( 'H:i', strtotime( $ev['EndDate'] ) ) ) . '</span>' : '';
 		?>
 	</div>
 	<?php if ( ! $group_by_city ) { ?>

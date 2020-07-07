@@ -40,9 +40,9 @@ class EduAdminAPIHelper {
 				' and StatusId eq 1' .
 				' and CustomerId eq null' .
 				' and CompanySpecific eq false' .
-				' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
-				' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-				' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+				' and LastApplicationDate ge ' . date_i18n( 'c', strtotime( 'now 23:59:59' ) ) .
+				' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+				' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
 				';' .
 				'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),' .
 				'EventDates($orderby=StartDate;$select=StartDate,EndDate;),' .
@@ -109,9 +109,9 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
-			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+			' and LastApplicationDate ge ' . date_i18n( 'c', strtotime( 'now 23:59:59' ) ) .
+			' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+			' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;)' .
 			';' .
@@ -218,9 +218,9 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . date( 'c', strtotime( 'now 23:59:59' ) ) .
-			' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-			' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+			' and LastApplicationDate ge ' . date_i18n( 'c', strtotime( 'now 23:59:59' ) ) .
+			' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+			' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 			';' .
