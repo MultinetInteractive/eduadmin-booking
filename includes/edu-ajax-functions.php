@@ -23,9 +23,9 @@ function edu_listview_courselist() {
 		' and StatusId eq 1' .
 		' and CustomerId eq null' .
 		' and CompanySpecific eq false' .
-		' and LastApplicationDate ge ' . date( 'c' ) .
-		' and StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-		' and EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+		' and LastApplicationDate ge ' . date_i18n( 'c' ) .
+		' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+		' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
 		';' .
 		'$top=1' .
 		';' .
@@ -56,7 +56,7 @@ function edu_listview_courselist() {
 	foreach ( $courses as $event ) {
 		if ( ! isset( $return_value[ $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
-			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date( 'Y-m-d', strtotime( $event['Events'][0]['StartDate'] ) ) ) . ' ' . $event['Events'][0]['City'];
+			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date_i18n( 'Y-m-d', strtotime( $event['Events'][0]['StartDate'] ) ) ) . ' ' . $event['Events'][0]['City'];
 		}
 	}
 
@@ -101,9 +101,9 @@ function edu_api_listview_eventlist() {
 	$event_filters[] = 'StatusId eq 1';
 	$event_filters[] = 'CustomerId eq null';
 	$event_filters[] = 'CompanySpecific eq false';
-	$event_filters[] = 'LastApplicationDate ge ' . date( 'c' );
-	$event_filters[] = 'StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) );
-	$event_filters[] = 'EndDate ge ' . date( 'c', strtotime( 'now' ) );
+	$event_filters[] = 'LastApplicationDate ge ' . date_i18n( 'c' );
+	$event_filters[] = 'StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) );
+	$event_filters[] = 'EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) );
 
 	$filters[] = 'ShowOnWeb';
 
@@ -147,9 +147,9 @@ function edu_api_listview_eventlist() {
 	             ' and b/StatusId eq 1' .
 	             ' and b/CustomerId eq null' .
 	             ' and b/CompanySpecific eq false' .
-	             ' and b/LastApplicationDate ge ' . date( 'c' ) .
-	             ' and b/StartDate le ' . date( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-	             ' and b/EndDate ge ' . date( 'c', strtotime( 'now' ) ) .
+	             ' and b/LastApplicationDate ge ' . date_i18n( 'c' ) .
+	             ' and b/StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
+	             ' and b/EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
 	             ')';
 
 	$order_by              = array();

@@ -4,7 +4,7 @@ $grouped_programmes = array();
 $currency = get_option( 'eduadmin-currency', 'SEK' );
 
 foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
-	$key = date( 'Y-m', strtotime( $programme_start['StartDate'] ) );
+	$key = date_i18n( 'Y-m', strtotime( $programme_start['StartDate'] ) );
 
 	$grouped_programmes[ $key ][] = $programme_start;
 }
@@ -39,15 +39,15 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 			echo '<div class="scrollable-full-height">';
 			$events_per_day = array();
 			foreach ( $programme_start['Events'] as $event ) {
-				$events_per_day[ date( 'Y-m-d', strtotime( $event['StartDate'] ) ) ][] = $event;
+				$events_per_day[ date_i18n( 'Y-m-d', strtotime( $event['StartDate'] ) ) ][] = $event;
 			}
 
 			foreach ( $events_per_day as $day => $_events ) {
 				echo '<b>' . esc_html( $day ) . '</b><br />';
 				foreach ( $_events as $ev ) {
 					echo esc_html(
-						     date( 'H:i', strtotime( $ev['StartDate'] ) ) . '-' .
-						     date( 'H:i', strtotime( $ev['EndDate'] ) ) . ' ' .
+						     date_i18n( 'H:i', strtotime( $ev['StartDate'] ) ) . '-' .
+						     date_i18n( 'H:i', strtotime( $ev['EndDate'] ) ) . ' ' .
 						     $ev['EventName']
 					     ) . '<br />';
 				}

@@ -26,9 +26,9 @@
 					echo '<div class="dayInfo">';
 					echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) .
 					                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
-					     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? date( "H:i", strtotime( $event['StartDate'] ) ) .
+					     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? date_i18n( "H:i", strtotime( $event['StartDate'] ) ) .
 					                                                                                                                                    ' - ' .
-					                                                                                                                                    date( "H:i", strtotime( $event['EndDate'] ) ) : '' );
+					                                                                                                                                    date_i18n( "H:i", strtotime( $event['EndDate'] ) ) : '' );
 					echo '</div>';
 				}
 

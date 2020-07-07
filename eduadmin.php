@@ -466,7 +466,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 					if ( stristr( key( $task ), "eduadmin" ) == true ) {
 						$_task = array();
 
-						$_task['next_execution']    = date( "Y-m-d H:i:s", $nextExecution );
+						$_task['next_execution']    = date_i18n( "Y-m-d H:i:s", $nextExecution );
 						$_task['action_to_execute'] = key( $task );
 						$_task['schedule_name']     = current( current( $task ) )["schedule"];
 						$_task['schedule_interval'] = current( current( $task ) )["interval"];

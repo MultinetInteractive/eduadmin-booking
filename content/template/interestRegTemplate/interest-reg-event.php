@@ -63,11 +63,11 @@ if ( ! $api_key || empty( $api_key ) ) {
 		</div>
 		<?php
 		echo '<div class="dateInfo">' . wp_kses_post( get_old_start_end_display_date( $event['StartDate'], $event['EndDate'] ) ) . ', ';
-		echo esc_html( date( 'H:i', strtotime( $event['StartDate'] ) ) );
+		echo esc_html( date_i18n( 'H:i', strtotime( $event['StartDate'] ) ) );
 		?>
 		-
 		<?php
-		echo esc_html( date( 'H:i', strtotime( $event['EndDate'] ) ) );
+		echo esc_html( date_i18n( 'H:i', strtotime( $event['EndDate'] ) ) );
 
 		echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), '&nbsp;' ) );
 

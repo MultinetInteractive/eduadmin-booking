@@ -90,7 +90,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<h3><?php _ex( 'Time', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php
 				echo ( $selected_course['Days'] > 0 ? sprintf( _n( '%1$d day', '%1$d days', $selected_course['Days'], 'eduadmin-booking' ), $selected_course['Days'] ) . ', ' : '' ) .
-				     date( 'H:i', strtotime( $selected_course['StartTime'] ) ) . ' - ' . date( 'H:i', strtotime( $selected_course['EndTime'] ) );
+				     date_i18n( 'H:i', strtotime( $selected_course['StartTime'] ) ) . ' - ' . date_i18n( 'H:i', strtotime( $selected_course['EndTime'] ) );
 			}
 
 			if ( ! in_array( 'price', $hide_sections, true ) && ! empty( $prices ) ) {
