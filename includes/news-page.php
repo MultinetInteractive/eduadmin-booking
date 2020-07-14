@@ -27,7 +27,7 @@ function edu_render_news_item( $item ) {
 	?>
 <div class="news-item<?php echo $item["UpdateRecommended"] ? " update-recommended" : ""; ?>">        <h3>
 		<u><?php echo esc_html( $item["newsHeader"] ); ?></u> -
-		<i><?php echo date_i18n( "Y-m-d", strtotime( $item['liveDate'] ) ); ?></i></h3>
+		<i><?php echo edu_get_timezoned_date( "Y-m-d", $item['liveDate'] ); ?></i></h3>
 	<hr />
 	<?php echo wp_kses( $item['newsBody'], array(
 		'p'  => array(),

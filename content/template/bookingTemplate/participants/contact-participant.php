@@ -84,7 +84,7 @@
 			echo( $sub_event['MandatoryParticipation'] ? ' disabled="disabled"' : '' );
 			echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 			echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
-			echo esc_html( $hide_sub_event_date_info ? '' : ' (' . date_i18n( 'd/m H:i', strtotime( $sub_event['StartDate'] ) ) . ' - ' . date_i18n( 'd/m H:i', strtotime( $sub_event['EndDate'] ) ) . ') ' );
+			echo esc_html( $hide_sub_event_date_info ? '' : ' (' . edu_get_timezoned_date( 'd/m H:i', $sub_event['StartDate'] ) . ' - ' . edu_get_timezoned_date( 'd/m H:i', $sub_event['EndDate'] ) . ') ' );
 			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) . edu_get_vat_text() ) . '</i>' : '' );
 			echo "</label>\n";
 		}

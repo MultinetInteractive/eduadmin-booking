@@ -34,7 +34,7 @@
 		if ( $show_next_event_date ) {
 			echo '<div class="nextEventDate" data-eduwidget="courseitem-date" data-objectid="' . esc_attr( $object['CourseTemplateId'] ) . '">';
 			if ( ! empty( $sorted_events ) ) {
-				echo sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date_i18n( 'Y-m-d', strtotime( current( $sorted_events )['StartDate'] ) ) ) . " " . current( $sorted_events )["City"];
+				echo sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', current( $sorted_events )['StartDate'] ) ) . " " . current( $sorted_events )["City"];
 				if ( $show_event_venue ) {
 					echo '<span class="venueInfo">, ' . current( $sorted_events )['AddressName'] . '</span>';
 				}
@@ -54,9 +54,9 @@
 			echo
 				'<div class="dayInfo">' .
 				( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) . ( $show_course_times ? ', ' : '' ) : '' ) .
-				( $show_course_times ? date_i18n( 'H:i', strtotime( $object['StartTime'] ) ) .
+				( $show_course_times ? edu_get_timezoned_date( 'H:i', $object['StartTime'] ) .
 				                       ' - ' .
-				                       date_i18n( 'H:i', strtotime( $object['EndTime'] ) ) : '' ) .
+				                       edu_get_timezoned_date( 'H:i', $object['EndTime'] ) : '' ) .
 				'</div>';
 		}
 		?>

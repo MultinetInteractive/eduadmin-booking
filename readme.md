@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.19.4
+Stable tag: 2.19.5
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.19.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.4...v2.19.5) (2020-07-14)
+
+
+### Bug Fixes
+
+* **dates:** Using another method from WP to present dates instead.. ([560df4b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/560df4b25255b56e1d497274ae2960fabfabe6f8))
+
 ### [2.19.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.3...v2.19.4) (2020-07-07)
 
 
@@ -65,12 +72,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Bug Fixes
 
 * Correct date format. ([28ab52f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/28ab52f6436e9a16a85f276866fd2c201f6f2030))
-
-### [2.19.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.0...v2.19.1) (2020-05-14)
-
-
-### Bug Fixes
-
-* Changed output for certificate dates into a separate function, to handle missing start and end dates. ([cba1e2b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cba1e2b539b4f2e18a40809485e7c562903c5fb2))
 
 

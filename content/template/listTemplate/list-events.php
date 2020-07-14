@@ -37,8 +37,8 @@ $expands['Events']     =
 	' and CustomerId eq null' .
 	' and CompanySpecific eq false' .
 	' and LastApplicationDate ge ' . date_i18n( 'c' ) .
-	' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-	' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
+	' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
+	' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 	';' .
 	'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 	';' .

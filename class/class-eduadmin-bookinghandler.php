@@ -847,7 +847,7 @@ class EduAdmin_BookingHandler {
 					} elseif ( 'number' === $custom_field_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
 						$answer->CustomFieldValue = intval( $_POST[ $key ] ); // Var input okay.
 					} elseif ( 'date' === $custom_field_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
-						$answer->CustomFieldValue = date_i18n( 'c', strtotime( $_POST[ $key ] ) ); // Var input okay.
+						$answer->CustomFieldValue = edu_get_timezoned_date( 'c', $_POST[ $key ] ); // Var input okay.
 					} else {
 						$answer->CustomFieldValue = null;
 					}
@@ -931,7 +931,7 @@ class EduAdmin_BookingHandler {
 					} elseif ( 'number' === $question_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
 						$answer->AnswerValue = intval( $_POST[ $key ] ); // Var input okay.
 					} elseif ( 'date' === $question_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
-						$answer->AnswerValue = date_i18n( 'c', strtotime( $_POST[ $key ] ) ); // Var input okay.
+						$answer->AnswerValue = edu_get_timezoned_date( 'c', $_POST[ $key ] ); // Var input okay.
 					} else {
 						$answer->AnswerValue = null;
 					}

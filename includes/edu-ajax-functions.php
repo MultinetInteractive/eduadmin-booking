@@ -24,8 +24,8 @@ function edu_listview_courselist() {
 		' and CustomerId eq null' .
 		' and CompanySpecific eq false' .
 		' and LastApplicationDate ge ' . date_i18n( 'c' ) .
-		' and StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-		' and EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
+		' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
+		' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 		';' .
 		'$top=1' .
 		';' .
@@ -56,7 +56,7 @@ function edu_listview_courselist() {
 	foreach ( $courses as $event ) {
 		if ( ! isset( $return_value[ $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
-			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), date_i18n( 'Y-m-d', strtotime( $event['Events'][0]['StartDate'] ) ) ) . ' ' . $event['Events'][0]['City'];
+			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
 		}
 	}
 
@@ -102,8 +102,8 @@ function edu_api_listview_eventlist() {
 	$event_filters[] = 'CustomerId eq null';
 	$event_filters[] = 'CompanySpecific eq false';
 	$event_filters[] = 'LastApplicationDate ge ' . date_i18n( 'c' );
-	$event_filters[] = 'StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) );
-	$event_filters[] = 'EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) );
+	$event_filters[] = 'StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' );
+	$event_filters[] = 'EndDate ge ' . edu_get_timezoned_date( 'c', 'now' );
 
 	$filters[] = 'ShowOnWeb';
 
@@ -148,8 +148,8 @@ function edu_api_listview_eventlist() {
 	             ' and b/CustomerId eq null' .
 	             ' and b/CompanySpecific eq false' .
 	             ' and b/LastApplicationDate ge ' . date_i18n( 'c' ) .
-	             ' and b/StartDate le ' . date_i18n( 'c', strtotime( 'now 23:59:59 +' . $fetch_months . ' months' ) ) .
-	             ' and b/EndDate ge ' . date_i18n( 'c', strtotime( 'now' ) ) .
+	             ' and b/StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
+	             ' and b/EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 	             ')';
 
 	$order_by              = array();
