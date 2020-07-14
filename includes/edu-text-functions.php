@@ -488,13 +488,21 @@ function convert_to_money( $value, $currency = 'SEK', $decimal = ',', $thousand 
 	return $d;
 }
 
+function edu_get_timezoned_date( $dateformat, $input_date ) {
+	return get_date_from_gmt( $input_date, $dateformat );
+}
+
 function get_display_date( $in_date, $short = true ) {
 	$months = $short ? EDU()->short_months : EDU()->months;
 
-	$year     = date_i18n( 'Y', strtotime( $in_date ) );
-	$now_year = date_i18n( 'Y' );
+	$year     = edu_get_timezoned_date( 'Y', $in_date );
+	$now_year = date( 'Y' );
 
-	return '<span class="eduadmin-dateText" data-date="' . esc_attr( $in_date ) . '">' . date_i18n( 'd', strtotime( $in_date ) ) . ' ' . $months[ date_i18n( 'n', strtotime( $in_date ) ) ] . ( $now_year !== $year ? ' ' . $year : '' ) . '</span>';
+	return '<span class="eduadmin-dateText" data-date="' . esc_attr( $in_date ) . '">' .
+	       edu_get_timezoned_date( 'd', $in_date ) . ' ' .
+	       $months[ edu_get_timezoned_date( 'n', $in_date ) ] .
+	       ( $now_year !== $year ? ' ' . $year : '' ) .
+	       '</span>';
 }
 
 function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false ) {
@@ -522,7 +530,7 @@ function edu_get_date_range( $days, $short, $event, $show_days ) {
 	for ( $x = 0; $x < $total_days; $x++ ) {
 		$day = $days[ $x ];
 
-		$added_dates[ date_i18n( 'H:i', strtotime( $day['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $day['EndDate'] ) ) ][] = $day;
+		$added_dates[ edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] ) ][] = $day;
 	}
 
 	$ordered_dategroups = array();
@@ -566,77 +574,77 @@ function get_start_end_display_date( $start_date, $end_date, $short = false, $ev
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
-	$start_year  = date_i18n( 'Y', strtotime( $start_date['StartDate'] ) );
-	$start_month = date_i18n( 'n', strtotime( $start_date['StartDate'] ) );
-	$end_year    = date_i18n( 'Y', strtotime( $end_date['EndDate'] ) );
-	$end_month   = date_i18n( 'n', strtotime( $end_date['EndDate'] ) );
-	$now_year    = date_i18n( 'Y' );
+	$start_year  = edu_get_timezoned_date( 'Y', $start_date['StartDate'] );
+	$start_month = edu_get_timezoned_date( 'n', $start_date['StartDate'] );
+	$end_year    = edu_get_timezoned_date( 'Y', $end_date['EndDate'] );
+	$end_month   = edu_get_timezoned_date( 'n', $end_date['EndDate'] );
+	$now_year    = edu_get_timezoned_date( 'Y' );
 
 	$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">';
 
 	if ( $show_days ) {
-		$str .= $week_days[ date_i18n( 'N', strtotime( $start_date['StartDate'] ) ) ] . ' ';
+		$str .= $week_days[ edu_get_timezoned_date( 'N', $start_date['StartDate'] ) ] . ' ';
 	}
-	$str .= date_i18n( 'd', strtotime( $start_date['StartDate'] ) );
-	if ( date_i18n( 'Y-m-d', strtotime( $start_date['StartDate'] ) ) !== date_i18n( 'Y-m-d', strtotime( $end_date['EndDate'] ) ) ) {
+	$str .= edu_get_timezoned_date( 'd', $start_date['StartDate'] );
+	if ( edu_get_timezoned_date( 'Y-m-d', $start_date['StartDate'] ) !== edu_get_timezoned_date( 'Y-m-d', $end_date['EndDate'] ) ) {
 		if ( $start_year === $end_year ) {
 			if ( $start_month === $end_month ) {
-				if ( $show_days && ( date_i18n( 'H:i', strtotime( $start_date['StartDate'] ) ) !== date_i18n( 'H:i', strtotime( $end_date['StartDate'] ) ) && date_i18n( 'H:i', strtotime( $start_date['EndDate'] ) ) !== date_i18n( 'H:i', strtotime( $end_date['EndDate'] ) ) )
+				if ( $show_days && ( edu_get_timezoned_date( 'H:i', $start_date['StartDate'] ) !== edu_get_timezoned_date( 'H:i', $end_date['StartDate'] ) && edu_get_timezoned_date( 'H:i', $start_date['EndDate'] ) !== edu_get_timezoned_date( 'H:i', $end_date['EndDate'] ) )
 				) {
-					$str .= ' ' . date_i18n( 'H:i', strtotime( $start_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $start_date['EndDate'] ) );
+					$str .= ' ' . edu_get_timezoned_date( 'H:i', $start_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $start_date['EndDate'] );
 				}
 				$str .= ' - ';
 				if ( $show_days ) {
-					$str .= $week_days[ date_i18n( 'N', strtotime( $end_date['EndDate'] ) ) ] . ' ';
+					$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date['EndDate'] ) ] . ' ';
 				}
-				$str .= date_i18n( 'd', strtotime( $end_date['EndDate'] ) );
+				$str .= edu_get_timezoned_date( 'd', $end_date['EndDate'] );
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $start_date['StartDate'] ) ) ];
+				$str .= $months[ edu_get_timezoned_date( 'n', $start_date['StartDate'] ) ];
 				$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 				if ( $show_days ) {
-					$str .= ' ' . date_i18n( 'H:i', strtotime( $end_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $end_date['EndDate'] ) );
+					$str .= ' ' . edu_get_timezoned_date( 'H:i', $end_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $end_date['EndDate'] );
 				}
 			} else {
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $start_date['StartDate'] ) ) ];
-				if ( $show_days && ( date_i18n( 'H:i', strtotime( $start_date['StartDate'] ) ) !== date_i18n( 'H:i', strtotime( $end_date['StartDate'] ) ) && date_i18n( 'H:i', strtotime( $start_date['EndDate'] ) ) !== date_i18n( 'H:i', strtotime( $end_date['EndDate'] ) ) )
+				$str .= $months[ edu_get_timezoned_date( 'n', $start_date['StartDate'] ) ];
+				if ( $show_days && ( edu_get_timezoned_date( 'H:i', $start_date['StartDate'] ) !== edu_get_timezoned_date( 'H:i', $end_date['StartDate'] ) && edu_get_timezoned_date( 'H:i', $start_date['EndDate'] ) !== edu_get_timezoned_date( 'H:i', $end_date['EndDate'] ) )
 				) {
-					$str .= ' ' . date_i18n( 'H:i', strtotime( $start_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $start_date['EndDate'] ) );
+					$str .= ' ' . edu_get_timezoned_date( 'H:i', $start_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $start_date['EndDate'] );
 				}
 				$str .= ' - ';
 				if ( $show_days ) {
-					$str .= $week_days[ date_i18n( 'N', strtotime( $end_date['EndDate'] ) ) ] . ' ';
+					$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date['EndDate'] ) ] . ' ';
 				}
-				$str .= date_i18n( 'd', strtotime( $end_date['EndDate'] ) );
+				$str .= edu_get_timezoned_date( 'd', $end_date['EndDate'] );
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $end_date['EndDate'] ) ) ];
+				$str .= $months[ edu_get_timezoned_date( 'n', $end_date['EndDate'] ) ];
 				$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 				if ( $show_days ) {
-					$str .= ' ' . date_i18n( 'H:i', strtotime( $end_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $end_date['EndDate'] ) );
+					$str .= ' ' . edu_get_timezoned_date( 'H:i', $end_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $end_date['EndDate'] );
 				}
 			}
 		} else {
 			$str .= ' ';
-			$str .= $months[ date_i18n( 'n', strtotime( $start_date['StartDate'] ) ) ];
+			$str .= $months[ edu_get_timezoned_date( 'n', $start_date['StartDate'] ) ];
 			$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 			$str .= ' - ';
 			if ( $show_days ) {
-				$str .= $week_days[ date_i18n( 'N', strtotime( $end_date['EndDate'] ) ) ] . ' ';
+				$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date['EndDate'] ) ] . ' ';
 			}
-			$str .= date_i18n( 'd', strtotime( $end_date['EndDate'] ) );
+			$str .= edu_get_timezoned_date( 'd', $end_date['EndDate'] );
 			$str .= ' ';
-			$str .= $months[ date_i18n( 'n', strtotime( $end_date['EndDate'] ) ) ];
+			$str .= $months[ edu_get_timezoned_date( 'n', $end_date['EndDate'] ) ];
 			$str .= ( $now_year !== $end_year ? ' ' . $end_year : '' );
 			if ( $show_days ) {
-				$str .= ' ' . date_i18n( 'H:i', strtotime( $end_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $end_date['EndDate'] ) );
+				$str .= ' ' . edu_get_timezoned_date( 'H:i', $end_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $end_date['EndDate'] );
 			}
 		}
 	} else {
 		$str .= ' ';
-		$str .= $months[ date_i18n( 'n', strtotime( $start_date['EndDate'] ) ) ];
+		$str .= $months[ edu_get_timezoned_date( 'n', $start_date['EndDate'] ) ];
 		$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 		if ( $show_days ) {
-			$str .= ' ' . date_i18n( 'H:i', strtotime( $start_date['StartDate'] ) ) . '-' . date_i18n( 'H:i', strtotime( $start_date['EndDate'] ) );
+			$str .= ' ' . edu_get_timezoned_date( 'H:i', $start_date['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $start_date['EndDate'] );
 		}
 	}
 
@@ -657,55 +665,55 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
-	$start_year  = date_i18n( 'Y', strtotime( $start_date ) );
-	$start_month = date_i18n( 'n', strtotime( $start_date ) );
-	$end_year    = date_i18n( 'Y', strtotime( $end_date ) );
-	$end_month   = date_i18n( 'n', strtotime( $end_date ) );
+	$start_year  = edu_get_timezoned_date( 'Y', $start_date );
+	$start_month = edu_get_timezoned_date( 'n', $start_date );
+	$end_year    = edu_get_timezoned_date( 'Y', $end_date );
+	$end_month   = edu_get_timezoned_date( 'n', $end_date );
 	$now_year    = date_i18n( 'Y' );
 	$str         = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">';
 	if ( $show_week_days ) {
-		$str .= $week_days[ date_i18n( 'N', strtotime( $start_date ) ) ] . ' ';
+		$str .= $week_days[ edu_get_timezoned_date( 'N', $start_date ) ] . ' ';
 	}
-	$str .= date_i18n( 'd', strtotime( $start_date ) );
-	if ( date_i18n( 'Y-m-d', strtotime( $start_date ) ) !== date_i18n( 'Y-m-d', strtotime( $end_date ) ) ) {
+	$str .= edu_get_timezoned_date( 'd', $start_date );
+	if ( edu_get_timezoned_date( 'Y-m-d', $start_date ) !== edu_get_timezoned_date( 'Y-m-d', $end_date ) ) {
 		if ( $start_year === $end_year ) {
 			if ( $start_month === $end_month ) {
 				$str .= '-';
 				if ( $show_week_days ) {
-					$str .= $week_days[ date_i18n( 'N', strtotime( $end_date ) ) ] . ' ';
+					$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date ) ] . ' ';
 				}
-				$str .= date_i18n( 'd', strtotime( $end_date ) );
+				$str .= edu_get_timezoned_date( 'd', $end_date );
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $start_date ) ) ];
+				$str .= $months[ edu_get_timezoned_date( 'n', $start_date ) ];
 				$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 			} else {
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $start_date ) ) ];
+				$str .= $months[ edu_get_timezoned_date( 'n', $start_date ) ];
 				$str .= ' - ';
 				if ( $show_week_days ) {
-					$str .= $week_days[ date_i18n( 'N', strtotime( $end_date ) ) ] . ' ';
+					$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date ) ] . ' ';
 				}
-				$str .= date_i18n( 'd', strtotime( $end_date ) );
+				$str .= edu_get_timezoned_date( 'd', $end_date );
 				$str .= ' ';
-				$str .= $months[ date_i18n( 'n', strtotime( $end_date ) ) ];
+				$str .= $months[ edu_get_timezoned_date( 'n', $end_date ) ];
 				$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 			}
 		} else {
 			$str .= ' ';
-			$str .= $months[ date_i18n( 'n', strtotime( $start_date ) ) ];
+			$str .= $months[ edu_get_timezoned_date( 'n', $start_date ) ];
 			$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 			$str .= ' - ';
 			if ( $show_week_days ) {
-				$str .= $week_days[ date_i18n( 'N', strtotime( $end_date ) ) ] . ' ';
+				$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date ) ] . ' ';
 			}
-			$str .= date_i18n( 'd', strtotime( $end_date ) );
+			$str .= edu_get_timezoned_date( 'd', $end_date );
 			$str .= ' ';
-			$str .= $months[ date_i18n( 'n', strtotime( $end_date ) ) ];
+			$str .= $months[ edu_get_timezoned_date( 'n', $end_date ) ];
 			$str .= ( $now_year !== $end_year ? ' ' . $end_year : '' );
 		}
 	} else {
 		$str .= ' ';
-		$str .= $months[ date_i18n( 'n', strtotime( $start_date ) ) ];
+		$str .= $months[ edu_get_timezoned_date( 'n', $start_date ) ];
 		$str .= ( $now_year !== $start_year ? ' ' . $start_year : '' );
 	}
 	$str .= '</span>';
@@ -714,8 +722,8 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 }
 
 function DateComparer( $a, $b ) {
-	$a_date = date_i18n( 'Y-m-d H:i:s', strtotime( $a['StartDate'] ) );
-	$b_date = date_i18n( 'Y-m-d H:i:s', strtotime( $b['StartDate'] ) );
+	$a_date = edu_get_timezoned_date( 'Y-m-d H:i:s', $a['StartDate'] );
+	$b_date = edu_get_timezoned_date( 'Y-m-d H:i:s', $b['StartDate'] );
 	if ( $a_date === $b_date ) {
 		return 0;
 	}
