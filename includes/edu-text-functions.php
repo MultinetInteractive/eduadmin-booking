@@ -525,15 +525,17 @@ function edu_get_timezoned_date( $dateformat, $input_date = null ) {
 		$input_date = date( "c", strtotime( substr( edu_now_date(), 0, 10 ) . " " . substr( $input_date, 4 ) ) );
 	}
 
-	/*echo "<!-- " . print_r( [
-		                        $dateformat,
-		                        $orig_input,
-		                        $input_date,
-		                        get_date_from_gmt( $input_date, $dateformat ),
-		                        edu_timezone_shim(),
-		                        date( "Z" ),
-		                        debug_backtrace()[1]['function'],
-	                        ], true ) . "-->\n";*/
+	if ( ! empty( $_GET['edu-debugdates'] ) && '1' === $_GET['edu-debugdates'] ) { // Input var okay.
+		echo "<!-- " . print_r( [
+			                        $dateformat,
+			                        $orig_input,
+			                        $input_date,
+			                        get_date_from_gmt( $input_date, $dateformat ),
+			                        edu_timezone_shim(),
+			                        date( "Z" ),
+			                        debug_backtrace()[1]['function'],
+		                        ], true ) . "-->\n";
+	}
 
 	return get_date_from_gmt( $input_date, $dateformat );
 }
