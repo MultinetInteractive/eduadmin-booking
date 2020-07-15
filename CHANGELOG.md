@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.19.7](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.6...v2.19.7) (2020-07-15)
+
+
+### Bug Fixes
+
+* Found an instance where we shouldn't add the timezone to the dates, because.. it's impossible. ([29c75df](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/29c75dfe9c45e97ad0356ff3b85ccc3e14740674))
+
 ### [2.19.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.5...v2.19.6) (2020-07-15)
 
 
