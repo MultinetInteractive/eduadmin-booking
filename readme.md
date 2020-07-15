@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.19.5
+Stable tag: 2.19.6
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.19.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.5...v2.19.6) (2020-07-15)
+
+
+### Bug Fixes
+
+* Rolling with our own date methods, since the built in didn't do what I expected ([e57e2dc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e57e2dc5c046edb8127d758078465dc1c215330b))
+
 ### [2.19.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.4...v2.19.5) (2020-07-14)
 
 
@@ -65,12 +72,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Fixed so that the booking form cares about MaxParticipantNumber being set to zero (unlimited) ([25017be](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/25017be90314e517d6bba2bb15f71fd70a1739e4))
 * Removed the use of setting timezone. ([fa63461](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fa63461318f564d821afaf4797cb79fe53cced0e))
-
-### [2.19.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.1...v2.19.2) (2020-05-15)
-
-
-### Bug Fixes
-
-* Correct date format. ([28ab52f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/28ab52f6436e9a16a85f276866fd2c201f6f2030))
 
 
