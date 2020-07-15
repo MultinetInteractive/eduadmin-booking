@@ -54,9 +54,9 @@
 			echo
 				'<div class="dayInfo">' .
 				( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) . ( $show_course_times ? ', ' : '' ) : '' ) .
-				( $show_course_times ? edu_get_timezoned_date( 'H:i', $object['StartTime'] ) .
+				( $show_course_times ? $object['StartTime'] .
 				                       ' - ' .
-				                       edu_get_timezoned_date( 'H:i', $object['EndTime'] ) : '' ) .
+				                       $object['EndTime'] : '' ) .
 				'</div>';
 		}
 		?>
