@@ -488,7 +488,53 @@ function convert_to_money( $value, $currency = 'SEK', $decimal = ',', $thousand 
 	return $d;
 }
 
-function edu_get_timezoned_date( $dateformat, $input_date ) {
+function edu_timezone_shim() {
+	$offset  = (float) get_option( 'gmt_offset' );
+	$hours   = (int) $offset;
+	$minutes = ( $offset - $hours );
+
+	$sign     = ( $offset < 0 ) ? '-' : '+';
+	$abs_hour = abs( $hours );
+	$abs_mins = abs( $minutes * 60 );
+
+	return sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
+}
+
+function edu_now_date() {
+	$timezone_string = get_option( 'timezone_string' );
+	if ( $timezone_string ) {
+		date_default_timezone_set( $timezone_string );
+	}
+	$offset    = (float) get_option( 'gmt_offset' );
+	$timestamp = time() + $offset;
+
+	return date( "Y-m-d\TH:i:s", $timestamp ) . edu_timezone_shim();
+}
+
+function edu_get_timezoned_date( $dateformat, $input_date = null ) {
+	$orig_input = $input_date;
+	if ( $input_date == null || $input_date == "" ) {
+		$input_date = edu_now_date();
+	}
+
+	if ( stripos( $input_date, "now" ) !== false ) {
+		if ( $input_date === "now" ) {
+			$offset     = (float) get_option( 'gmt_offset' );
+			$input_date = "now " . date( "H:i:s", strtotime( "now" ) + $offset );
+		}
+		$input_date = date( "c", strtotime( substr( edu_now_date(), 0, 10 ) . " " . substr( $input_date, 4 ) ) );
+	}
+
+	/*echo "<!-- " . print_r( [
+		                        $dateformat,
+		                        $orig_input,
+		                        $input_date,
+		                        get_date_from_gmt( $input_date, $dateformat ),
+		                        edu_timezone_shim(),
+		                        date( "Z" ),
+		                        debug_backtrace()[1]['function'],
+	                        ], true ) . "-->\n";*/
+
 	return get_date_from_gmt( $input_date, $dateformat );
 }
 
@@ -580,7 +626,7 @@ function get_start_end_display_date( $start_date, $end_date, $short = false, $ev
 	$end_month   = edu_get_timezoned_date( 'n', $end_date['EndDate'] );
 	$now_year    = edu_get_timezoned_date( 'Y' );
 
-	$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">';
+	$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date['StartDate'] ) . '" data-enddate="' . esc_attr( $end_date['EndDate'] ) . '">';
 
 	if ( $show_days ) {
 		$str .= $week_days[ edu_get_timezoned_date( 'N', $start_date['StartDate'] ) ] . ' ';
