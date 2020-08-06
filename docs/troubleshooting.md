@@ -13,7 +13,7 @@ or compatibility problem with other WordPress plugins.
 > If a feature is missing, it's probably because no one have asked for it, so it's not a bug.
 > If you want to request a feature, you can do so by creating a
 > [issue](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/new/choose)
-> or contacting our [support](https://support.multinet.se)
+> or contacting our [support](https://support.eduadmin.se/en/support/tickets/new)
 
 ### The website is showing old data
 
@@ -62,7 +62,7 @@ we get back either an success, or an array of errors.
 The unexpected error means something went wrong, that we do not have a classification for,
 so please **contact us** at our support portal whenever this occurs.
 
-> You can find the support portal at [**https://support.multinet.se**](https://support.multinet.se).
+> You can find the support portal at [**https://support.eduadmin.se/en/support/tickets/new**](https://support.eduadmin.se/en/support/tickets/new).
 
 ### The dates shown on my website are wrong
 
