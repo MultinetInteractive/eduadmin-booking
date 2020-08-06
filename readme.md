@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.19.7
+Stable tag: 2.20.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+## [2.20.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.7...v2.20.0) (2020-08-06)
+
+
+### Features
+
+* Added Programme-image to detail view. ([b3cc17c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b3cc17cd0b4aca2ecef508bc3b4a58f4241bad1e)), closes [#330](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/330)
+
 ### [2.19.7](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.6...v2.19.7) (2020-07-15)
 
 
@@ -64,12 +71,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 ### Bug Fixes
 
 * **dates:** Using another method from WP to present dates instead.. ([560df4b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/560df4b25255b56e1d497274ae2960fabfabe6f8))
-
-### [2.19.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.3...v2.19.4) (2020-07-07)
-
-
-### Bug Fixes
-
-* Use `date_i18n` instead of `date` to get the correct timezone as well! ([7f2083f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7f2083f630048b0eabf78c7af51bab9f4b8e5044))
 
 
