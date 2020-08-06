@@ -1,5 +1,8 @@
 <div class="eduadmin" data-courseid="<?php echo esc_attr( $programme['ProgrammeId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['id'] ) ? esc_attr( sanitize_text_field( $_REQUEST['id'] ) ) : '' ); ?>">
-	<h1><?php echo esc_html( $programme['ProgrammeName'] ); ?></h1>
+	<?php if ( ! empty( $programme['ImageUrl'] ) ) : ?>
+		<img src="<?php echo esc_url( $programme['ImageUrl'] ); ?>" class="courseImage" />
+	<?php endif; ?>
+	<h1 class="courseTitle"><?php echo esc_html( $programme['ProgrammeName'] ); ?></h1>
 	<?php if ( ! empty( $programme['Description'] ) ) : ?>
 		<h2><?php echo esc_html_x( 'Description', 'frontend', 'eduadmin-booking' ); ?></h2>
 		<?php echo wp_kses_post( $programme['Description'] ); ?><?php endif; ?>
