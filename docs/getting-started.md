@@ -10,9 +10,12 @@ This guide will focus on get you started with the [**EduAdmin WordPress Plugin**
 > consider contacting our support.
 >
 > [**EduAdmin**](https://www.eduadmin.se) is not a free service, 
-> and the API key comes with a monthly fee.  
+> and the API key comes with a monthly fee.
 
 If you have your API key ready, let us go through the steps below!
+
+> If you need the ability to customize things more than we have the ability to, 
+> we recommend that you look into creating your own integration with our API.
 
 ## Installing the plugin
 
