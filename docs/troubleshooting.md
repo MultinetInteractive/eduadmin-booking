@@ -41,13 +41,13 @@ Make sure you are not using any plugins that combine/rearrange stylesheets or ja
 or put our scripts in a whitelist, so they are not combined. Many of these plugins are not
 checking in what order they should be loaded and might put the scripts in the wrong order.
 
-You can always check the "Settings &gt; General" and see what "Site Language" is set to.
-
 ### It's not showing in the correct language
 
 By default, WordPress will download language files for plugins, 
 but we have noticed in some instances that it either fails to do so,
 or another translation plugin is prohibiting the translation to work properly.
+
+You can always check the "Settings &gt; General" and see what "Site Language" is set to.
 
 ### Whenever I try to complete a booking, an unexpected error occurs
 
