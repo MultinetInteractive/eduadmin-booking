@@ -37,7 +37,7 @@ function edu_render_note_question( $question, $multiple, $suffix ) {
 	echo '<label class="edu-question-note questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noteQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' ) . '</div>';
 	echo '<div class="inputHolder">';
-	echo '<textarea placeholder="' . esc_attr( $question['QuestionText'] ) . '"';
+	echo '<textarea autocomplete="off" placeholder="' . esc_attr( $question['QuestionText'] ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_note' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -82,7 +82,7 @@ function edu_render_date_question( $question, $multiple, $suffix ) {
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' );
 	echo '</div>';
 	echo '<div class="inputHolder">';
-	echo '<input type="date" class="questionDate" data-type="date" onchange="eduBookingView.UpdatePrice();"';
+	echo '<input type="date" autocomplete="off" class="questionDate" data-type="date" onchange="eduBookingView.UpdatePrice();"';
 	echo ' data-price="' . esc_attr( $question['Price'] ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' );
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
@@ -107,7 +107,7 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) );
 	echo '</div>';
 	echo '<div class="inputHolder">';
-	echo '<select class="questionDropdown" onchange="eduBookingView.UpdatePrice();"' . ( $question['Mandatory'] ? ' data-required="true"' : '' );
+	echo '<select class="questionDropdown" autocomplete="off" onchange="eduBookingView.UpdatePrice();"' . ( $question['Mandatory'] ? ' data-required="true"' : '' );
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -133,7 +133,7 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) );
 	echo '</div>';
 	echo '<div class="inputHolder">';
-	echo '<input type="number" class="questionText" onchange="eduBookingView.UpdatePrice();"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' data-price="' . esc_attr( $question['Price'] ) . '" min="0" data-type="number"';
+	echo '<input type="number" autocomplete="off" class="questionText" onchange="eduBookingView.UpdatePrice();"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' data-price="' . esc_attr( $question['Price'] ) . '" min="0" data-type="number"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -186,7 +186,7 @@ function edu_render_text_question( $question, $multiple, $suffix ) {
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' );
 	echo '</div>';
 	echo '<div class="inputHolder">';
-	echo '<input type="text" data-price="' . esc_attr( $question['Price'] ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' onchange="eduBookingView.UpdatePrice();" data-type="text" class="questionText"';
+	echo '<input type="text" autocomplete="off" data-price="' . esc_attr( $question['Price'] ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' onchange="eduBookingView.UpdatePrice();" data-type="text" class="questionText"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_text' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';

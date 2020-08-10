@@ -55,7 +55,7 @@ function render_text_field( $attribute, $multiple, $suffix, $data ) {
 	echo '<label class="edu-attribute-text attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
-	echo '<input type="text" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
+	echo '<input type="text" autocomplete="off" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_text' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -69,7 +69,7 @@ function render_number_field( $attribute, $multiple, $suffix, $data ) {
 	echo '<label class="edu-attribute-number attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
-	echo '<input type="number" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
+	echo '<input type="number" autocomplete="off" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -83,7 +83,7 @@ function render_date_field( $attribute, $multiple, $suffix, $data ) {
 	echo '<label class="edu-attribute-date attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
-	echo '<input type="date" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
+	echo '<input type="date" autocomplete="off" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_date' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -97,7 +97,7 @@ function render_textarea_field( $attribute, $multiple, $suffix, $data ) {
 	echo '<label class="edu-attribute-textarea attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
-	echo '<textarea placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
+	echo '<textarea autocomplete="off" placeholder="' . esc_attr( wp_strip_all_tags( $attribute['CustomFieldName'] ) ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_note' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
@@ -112,7 +112,7 @@ function render_select_field( $attribute, $multiple, $suffix, $data ) {
 	echo '<label class="edu-attribute-select attribute_id_' . esc_attr( $attribute['CustomFieldId'] ) . '"><div class="inputLabel">';
 	echo wp_kses_post( $attribute['CustomFieldName'] );
 	echo '</div><div class="inputHolder">';
-	echo '<select name="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '"';
+	echo '<select autocomplete="off" name="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? '_-1' : '' ) ) . '"';
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
 		echo ' data-name-template="edu-attr_' . esc_attr( $attribute['CustomFieldId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
