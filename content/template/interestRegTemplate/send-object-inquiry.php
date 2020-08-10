@@ -21,7 +21,9 @@ if ( wp_verify_nonce( $_POST['edu-interest-nonce'], 'edu-object-interest' ) ) {
 	} else {
 		$inquiry                       = new EduAdmin_Data_InterestRegistrationBasic();
 		$inquiry->CourseTemplateId     = intval( $_POST['objectid'] ); // Input var okay
-		$inquiry->NumberOfParticipants = intval( $_POST['edu-participants'] ); // Input var okay
+		if ( ! empty( $_POST['edu-participants'] ) ) {  // Input var okay
+			$inquiry->NumberOfParticipants = intval( $_POST['edu-participants'] ); // Input var okay
+		}
 		$inquiry->CompanyName          = sanitize_text_field( $_POST['edu-companyName'] ); // Input var okay
 		$inquiry->FirstName            = sanitize_text_field( $_POST['edu-contactFirstName'] ); // Input var okay
 		$inquiry->LastName             = sanitize_text_field( $_POST['edu-contactLastName'] ); // Input var okay
