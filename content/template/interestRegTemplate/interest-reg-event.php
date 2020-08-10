@@ -126,7 +126,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<label>
 						<div class="inputLabel"><?php echo esc_html_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?> *</div>
 						<div class="inputHolder">
-							<input type="number" min="1" required name="edu-participants" placeholder="<?php echo esc_attr_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?>" />
+							<input type="number" name="edu-participants" placeholder="<?php echo esc_attr_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?>" />
 						</div>
 					</label>
 				<?php } ?>
