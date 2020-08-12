@@ -204,6 +204,8 @@ so that the list filters the results based on the matches.
 
 If you want to show all sub-categories, you can use the `categorydeep`-attribute instead.
 
+> Only one of the category-attributes can be used at a time, and `categorydeep` will always be used if both are supplied.
+
 The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.se), 
 so that the list filters the results based on the matches.
 
