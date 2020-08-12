@@ -230,6 +230,7 @@ before it starts showing a <em>Show more</em>-link to show all events.</p>
 <tbody>
 <tr><td style="text-align:left">template</td><td style="text-align:center">string (<code>template_A</code>, <code>template_B</code>)</td><td style="text-align:center">template_A</td></tr>
 <tr><td style="text-align:left">category</td><td style="text-align:center">string</td><td style="text-align:center"><em>null</em></td></tr>
+<tr><td style="text-align:left">categorydeep</td><td style="text-align:center">string</td><td style="text-align:center"><em>null</em></td></tr>
 <tr><td style="text-align:left">subject</td><td style="text-align:center">string</td><td style="text-align:center"><em>null</em></td></tr>
 <tr><td style="text-align:left">subjectid</td><td style="text-align:center">integer</td><td style="text-align:center"><em>null</em></td></tr>
 <tr><td style="text-align:left">hidesearch</td><td style="text-align:center">boolean</td><td style="text-align:center">false</td></tr>
@@ -255,6 +256,7 @@ before it starts showing a <em>Show more</em>-link to show all events.</p>
 <p>The <code>template</code>-attribute lets you override the default setting for what template the list should use.</p>
 <p>The <code>category</code>-attribute lets you enter a string to match for categories in <a href="https://www.eduadmin.se"><strong>EduAdmin</strong></a>,
 so that the list filters the results based on the matches.</p>
+<p>If you want to show all sub-categories, you can use the <code>categorydeep</code>-attribute instead.</p>
 <p>The <code>subject</code>-attribute lets you enter a string to match subjects in <a href="https://www.eduadmin.se"><strong>EduAdmin</strong></a>,
 so that the list filters the results based on the matches.</p>
 <p>The <code>subjectid</code>-attribute lets you filter the list on a specific subject, based on its ID.</p>
