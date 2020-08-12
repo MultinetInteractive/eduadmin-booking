@@ -53,6 +53,7 @@ function eduadmin_get_list_view( $attributes ) {
 			'filtercity'      => null,
 			'hideimages'      => null,
 			'showimages'      => null,
+			'categorydeep'    => null,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'

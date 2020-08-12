@@ -15,6 +15,7 @@ class EduAdmin_APIController {
 			'args'     => array(
 				'city'         => array(),
 				'category'     => array(),
+				'categorydeep' => array(),
 				'subject'      => array(),
 				'subjectid'    => array(),
 				'courselevel'  => array(),
@@ -35,6 +36,7 @@ class EduAdmin_APIController {
 				'fetchmonths'    => array(),
 				'city'           => array(),
 				'category'       => array(),
+				'categorydeep'   => array(),
 				'subject'        => array(),
 				'subjectid'      => array(),
 				'courselevel'    => array(),

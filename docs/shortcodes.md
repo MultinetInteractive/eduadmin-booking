@@ -175,6 +175,7 @@ One of the main shortcodes, as it shows the end users a list of your courses/eve
 |:----------|:----------:|:-------------:|
 | template | string (`template_A`, `template_B`) | template_A |
 | category | string | _null_ |
+| categorydeep | string | _null_ |
 | subject | string | _null_ |
 | subjectid | integer | _null_ |
 | hidesearch | boolean | false |
@@ -200,6 +201,8 @@ The `template`-attribute lets you override the default setting for what template
 
 The `category`-attribute lets you enter a string to match for categories in [**EduAdmin**](https://www.eduadmin.se), 
 so that the list filters the results based on the matches.
+
+If you want to show all sub-categories, you can use the `categorydeep`-attribute instead.
 
 The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.se), 
 so that the list filters the results based on the matches.

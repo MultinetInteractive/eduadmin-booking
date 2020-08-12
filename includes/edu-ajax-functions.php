@@ -35,6 +35,35 @@ function edu_listview_courselist() {
 
 	$filters[] = 'ShowOnWeb';
 
+	$category_id = sanitize_text_field( $_POST['category'] );
+
+	if ( ! empty( $_POST['categorydeep'] ) ) {
+		$category_id = 'deep-' . sanitize_text_field( $_POST['categorydeep'] );
+	}
+
+	if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
+		$filters[] = 'CategoryId eq ' . $category_id;
+	} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
+		$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+	}
+
+	if ( ! empty( $_POST['city'] ) && is_numeric( $_POST['city'] ) ) {
+		$filters[]       = 'Events/any(e:e/LocationId eq ' . intval( $_POST['city'] ) . ')';
+		$event_filters[] = 'LocationId eq ' . intval( $_POST['city'] );
+	}
+
+	if ( ! empty( $_POST['subject'] ) ) {
+		$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $_POST['subject'] ) . '\')';
+	}
+
+	if ( ! empty( $_POST['subjectid'] ) ) {
+		$filters[] = 'Subjects/any(s:s/SubjectId eq ' . intval( $_POST['subjectid'] ) . ')';
+	}
+
+	if ( ! empty( $_POST['courselevel'] ) ) {
+		$filters[] = 'CourseLevelId eq ' . intval( sanitize_text_field( $_POST['courselevel'] ) );
+	}
+
 	$expand_arr = array();
 	foreach ( $expands as $key => $value ) {
 		if ( empty( $value ) ) {
@@ -107,8 +136,16 @@ function edu_api_listview_eventlist() {
 
 	$filters[] = 'ShowOnWeb';
 
-	if ( ! empty( $_POST['category'] ) ) {
-		$filters[] = 'CategoryId eq ' . intval( sanitize_text_field( $_POST['category'] ) );
+	$category_id = sanitize_text_field( $_POST['category'] );
+
+	if ( ! empty( $_POST['categorydeep'] ) ) {
+		$category_id = 'deep-' . sanitize_text_field( $_POST['categorydeep'] );
+	}
+
+	if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
+		$filters[] = 'CategoryId eq ' . $category_id;
+	} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
+		$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
 	}
 
 	if ( ! empty( $_POST['city'] ) && is_numeric( $_POST['city'] ) ) {
@@ -116,12 +153,12 @@ function edu_api_listview_eventlist() {
 		$event_filters[] = 'LocationId eq ' . intval( $_POST['city'] );
 	}
 
-	if ( ! empty( $_POST['subjectid'] ) ) {
-		$filters[] = 'Subjects/any(s:s/SubjectId eq ' . intval( $_POST['subjectid'] ) . ')';
-	}
-
 	if ( ! empty( $_POST['subject'] ) ) {
 		$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $_POST['subject'] ) . '\')';
+	}
+
+	if ( ! empty( $_POST['subjectid'] ) ) {
+		$filters[] = 'Subjects/any(s:s/SubjectId eq ' . intval( $_POST['subjectid'] ) . ')';
 	}
 
 	if ( ! empty( $_POST['courselevel'] ) ) {

@@ -123,8 +123,10 @@ class EduAdminAPIHelper {
 
 		$filters[] = 'ShowOnWeb';
 
-		if ( ! empty( $category_id ) ) {
+		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
 			$filters[] = 'CategoryId eq ' . $category_id;
+		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
@@ -173,6 +175,7 @@ class EduAdminAPIHelper {
 				$expand_arr[] = $key . '(' . $value . ')';
 			}
 		}
+
 
 		return EDU()->get_transient( 'eduadmin-listcourses-courses', function() use ( $selects, $filters, $expand_arr, $sorting ) {
 			return EDUAPI()->OData->CourseTemplates->Search(
@@ -232,8 +235,10 @@ class EduAdminAPIHelper {
 
 		$filters[] = 'ShowOnWeb';
 
-		if ( ! empty( $category_id ) ) {
+		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
 			$filters[] = 'CategoryId eq ' . $category_id;
+		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
