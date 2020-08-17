@@ -107,6 +107,7 @@ edu.apiclient = {
 			data: {
 				city: _options.data("city"),
 				category: _options.data("category"),
+				categorydeep: _options.data("categorydeep"),
 				subject: _options.data("subject"),
 				subjectid: _options.data("subjectid"),
 				courselevel: _options.data("courselevel"),
@@ -145,6 +146,7 @@ edu.apiclient = {
 			data: {
 				city: jQuery(target).data("city"),
 				category: jQuery(target).data("category"),
+				categorydeep: jQuery(target).data("categorydeep"),
 				subject: jQuery(target).data("subject"),
 				subjectid: jQuery(target).data("subjectid"),
 				courselevel: jQuery(target).data("courselevel"),

@@ -28,7 +28,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="customerVatNo" placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->OrganisationNumber ); ?>" />
+				<input type="text" autocomplete="off" name="customerVatNo" placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->OrganisationNumber ); ?>" />
 			</div>
 		</label>
 		<label class="edu-book-customerAddress1">
@@ -36,7 +36,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="customerAddress1" placeholder="<?php echo esc_attr_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address ); ?>" />
+				<input type="text" autocomplete="off" name="customerAddress1" placeholder="<?php echo esc_attr_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address ); ?>" />
 			</div>
 		</label>
 		<label class="edu-book-customerAddress2">
@@ -44,7 +44,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="customerAddress2" placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address2 ); ?>" />
+				<input type="text" autocomplete="off" name="customerAddress2" placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Address2 ); ?>" />
 			</div>
 		</label>
 		<label class="edu-book-customerPostalCode">
@@ -52,7 +52,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="customerPostalCode" placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Zip ); ?>" />
+				<input type="text" autocomplete="off" name="customerPostalCode" placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->Zip ); ?>" />
 			</div>
 		</label>
 		<label class="edu-book-customerPostalCity">
@@ -60,7 +60,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 				<?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" name="customerPostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->City ); ?>" />
+				<input type="text" autocomplete="off" name="customerPostalCity" placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>" value="<?php echo @esc_attr( $customer->City ); ?>" />
 			</div>
 		</label>
 		<label class="edu-book-customerCountry">

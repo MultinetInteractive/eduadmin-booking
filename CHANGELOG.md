@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.22.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.21.0...v2.22.0) (2020-08-17)
+
+
+### Features
+
+* Adds attribute to make the listviews able to show sub-categories by specifying categorydeep. fixes [#303](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/303) ([5f19a6e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5f19a6ee0f7f48cd4442760c145a24a6abbd3e62))
+
+
+### Bug Fixes
+
+* Disabling all autocomplete ([9080625](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/90806255128748c612c149043002ce51f2ed19de)), closes [#317](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/317)
+
 ## [2.21.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.20.0...v2.21.0) (2020-08-10)
 
 

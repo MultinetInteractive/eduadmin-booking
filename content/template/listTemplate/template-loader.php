@@ -10,6 +10,10 @@ if ( ! empty( $attributes['category'] ) ) {
 	$category_id = $attributes['category'];
 }
 
+if ( ! empty( $attributes['categorydeep'] ) ) {
+	$category_id = "deep-" . $attributes['categorydeep'];
+}
+
 $show_images = EDU()->is_checked( 'eduadmin-showCourseImage', true );
 
 if ( ! empty( $attributes['showimages'] ) ) {

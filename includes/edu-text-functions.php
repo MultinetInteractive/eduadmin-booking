@@ -121,7 +121,7 @@ function edu_get_country_list( $element_name, $selected_value = 'SE', $required 
 		$selected_value = ! empty( $orgCountryCode ) ? $orgCountryCode : 'SE'; // Will be replaced with country from company
 	}
 
-	echo "<select " . ( $required ? "required" : "" ) . " name=\"" . esc_attr( $element_name ) . "\">\n";
+	echo "<select " . ( $required ? "required" : "" ) . " autocomplete=\"off\" name=\"" . esc_attr( $element_name ) . "\">\n";
 	?>
 	<option><?php _ex( '-- Select country --', 'frontend', 'eduadmin-booking' ); ?></option>
 	<option value="AF"<?php selected( $selected_value, 'AF' ); ?>><?php _ex( 'Afghanistan', 'frontend', 'eduadmin-booking' ); ?></option>

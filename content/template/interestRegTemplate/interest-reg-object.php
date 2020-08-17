@@ -46,7 +46,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		<div class="textblock">
 			<?php echo esc_html_x( 'Please fill out the form below to send a inquiry to us about this course.', 'frontend', 'eduadmin-booking' ); ?>
 			<hr />
-			<form action="" method="POST">
+			<form action="" method="POST" autocomplete="off">
 				<input type="hidden" name="edu-interest-nonce" value="<?php echo esc_attr( wp_create_nonce( 'edu-object-interest' ) ); ?>" />
 				<input type="hidden" name="objectid" value="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" />
 				<input type="hidden" name="act" value="objectInquiry" />
@@ -54,38 +54,38 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<label class="edu-interest-company">
 					<div class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?> *</div>
 					<div class="inputHolder">
-						<input type="text" required name="edu-companyName" placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="text" autocomplete="off" required name="edu-companyName" placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-contact">
 					<div class="inputLabel"><?php echo esc_html_x( 'Contact name', 'frontend', 'eduadmin-booking' ); ?> *</div>
 					<div class="inputHolder" style="display: flex;">
-						<input type="text" required name="edu-contactFirstName" class="first-name" placeholder="<?php echo esc_attr_x( 'Contact first name', 'frontend', 'eduadmin-booking' ); ?>" />
-						<input type="text" required name="edu-contactLastName" class="last-name" placeholder="<?php echo esc_attr_x( 'Contact surname', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="text" autocomplete="off" required name="edu-contactFirstName" class="first-name" placeholder="<?php echo esc_attr_x( 'Contact first name', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="text" autocomplete="off" required name="edu-contactLastName" class="last-name" placeholder="<?php echo esc_attr_x( 'Contact surname', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-email">
 					<div class="inputLabel"><?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?> *</div>
 					<div class="inputHolder">
-						<input type="email" required name="edu-emailAddress" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="email" autocomplete="off" required name="edu-emailAddress" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-phone">
 					<div class="inputLabel"><?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<input type="tel" name="edu-phone" placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="tel" autocomplete="off" name="edu-phone" placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-mobile">
 					<div class="inputLabel"><?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<input type="tel" name="edu-mobile" placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="tel" autocomplete="off" name="edu-mobile" placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-notes">
 					<div class="inputLabel"><?php echo esc_html_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<textarea name="edu-notes" placeholder="<?php echo esc_attr_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?>"></textarea>
+						<textarea name="edu-notes" autocomplete="off" placeholder="<?php echo esc_attr_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?>"></textarea>
 					</div>
 				</label>
 				<?php if ( EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ) { ?>
@@ -94,7 +94,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<label class="edu-interest-participants">
 						<div class="inputLabel"><?php echo esc_html_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?> *</div>
 						<div class="inputHolder">
-							<input type="number" name="edu-participants" placeholder="<?php echo esc_attr_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?>" />
+							<input type="number" autocomplete="off" name="edu-participants" placeholder="<?php echo esc_attr_x( 'Number of participants', 'frontend', 'eduadmin-booking' ); ?>" />
 						</div>
 					</label>
 				<?php } ?>
