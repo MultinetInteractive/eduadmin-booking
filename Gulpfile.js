@@ -2,7 +2,8 @@ const gulp = require("gulp");
 const replace = require("gulp-replace");
 const sass = require("gulp-sass");
 const myth = require("gulp-myth");
-const nano = require("gulp-cssnano");
+const postcss = require('gulp-postcss');
+const nano = require("cssnano");
 const pinfo = require("./package.json");
 const exec = require('child_process').exec;
 const changelog = require('./changelog-fixer.js');
@@ -65,7 +66,7 @@ gulp.task("styles-frontend-nano", function () {
 	return gulp
 		.src("src/scss/frontend/*.scss")
 		.pipe(sass().on("error", sass.logError))
-		.pipe(nano())
+		.pipe(postcss([nano()]))
 		.pipe(gulp.dest("./content/style/compiled/frontend/"));
 });
 
@@ -73,7 +74,7 @@ gulp.task("styles-admin-nano", function () {
 	return gulp
 		.src("src/scss/admin/*.scss")
 		.pipe(sass().on("error", sass.logError))
-		.pipe(nano())
+		.pipe(postcss([nano()]))
 		.pipe(gulp.dest("./content/style/compiled/admin/"));
 });
 
