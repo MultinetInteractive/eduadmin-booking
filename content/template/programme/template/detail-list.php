@@ -39,17 +39,25 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 			echo '<div class="scrollable-full-height">';
 			$events_per_day = array();
 			foreach ( $programme_start['Events'] as $event ) {
-				$events_per_day[ edu_get_timezoned_date( 'Y-m-d', $event['StartDate'] ) ][] = $event;
+				$events_per_day[ get_old_start_end_display_date( $event['StartDate'], $event['EndDate'] ) ][] = $event;
 			}
 
 			foreach ( $events_per_day as $day => $_events ) {
-				echo '<b>' . esc_html( $day ) . '</b><br />';
+				echo '<b>' . wp_kses_post( $day ) . '</b><br />';
 				foreach ( $_events as $ev ) {
-					echo esc_html(
-						     edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) . '-' .
-						     edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) . ' ' .
-						     $ev['EventName']
-					     ) . '<br />';
+					if ( count( $ev['EventDates'] ) > 0 ) {
+						foreach ( $ev['EventDates'] as $evdate ) {
+							echo wp_kses_post(
+								     get_start_end_display_date( $evdate, $evdate, false, $ev, true ) . ' ' .
+								     $ev['EventName']
+							     ) . '<br />';
+						}
+					} else {
+						echo wp_kses_post(
+							     get_start_end_display_date( $ev, $ev, false, $ev, true ) . ' ' .
+							     $ev['EventName']
+						     ) . '<br />';
+					}
 				}
 			}
 			echo '</div>';

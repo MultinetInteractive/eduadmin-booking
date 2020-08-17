@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.23.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.22.1...v2.23.0) (2020-08-17)
+
+
+### Features
+
+* Use same method of showing dates for programmes as with course days.master ([9cc1948](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9cc19483695854fd35f72397f7ea968d9c2e7ef2)), closes [#319](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/319)
+
 ### [2.22.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.22.0...v2.22.1) (2020-08-17)
 
 

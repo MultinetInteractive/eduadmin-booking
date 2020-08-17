@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.3
-Stable tag: 2.22.1
+Stable tag: 2.23.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+## [2.23.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.22.1...v2.23.0) (2020-08-17)
+
+
+### Features
+
+* Use same method of showing dates for programmes as with course days.master ([9cc1948](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9cc19483695854fd35f72397f7ea968d9c2e7ef2)), closes [#319](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/319)
+
 ### [2.22.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.22.0...v2.22.1) (2020-08-17)
 
 
@@ -70,12 +77,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Added CSS-classes to interest registration pages. ([9916936](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9916936624d542562e2b431b5c6a9038e1786027)), closes [#329](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/329)
 * Removed requirement for number of participants on interest registrations. ([3de2847](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3de28470bf3374305094620453b4550ac64e1383)), closes [#328](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/328)
-
-## [2.20.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.19.7...v2.20.0) (2020-08-06)
-
-
-### Features
-
-* Added Programme-image to detail view. ([b3cc17c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b3cc17cd0b4aca2ecef508bc3b4a58f4241bad1e)), closes [#330](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/330)
 
 
