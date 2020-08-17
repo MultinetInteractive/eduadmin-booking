@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.22.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.22.0...v2.22.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* **detail:** Don't use the timezone-reformatting code on the course information time-variables, they don't know what timezone they belong to.master ([0ec92e9](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ec92e9a128eaa73f6b65a9475145c31e7061ad0)), closes [#335](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/335)
+
 ## [2.22.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.21.0...v2.22.0) (2020-08-17)
 
 
