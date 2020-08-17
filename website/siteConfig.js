@@ -38,6 +38,7 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'getting-started', label: 'Documentation'},
+    {href: 'https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md', label: 'Changelog', target: '_blank'},
     {href: 'https://api.eduadmin.se/', label: 'EduAdmin API', target: '_blank'},
     /*{page: 'help', label: 'Help'},*/
     /*{blog: true, label: 'Blog'},*/
