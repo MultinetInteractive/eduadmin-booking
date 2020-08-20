@@ -95,7 +95,7 @@
 			echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 			echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
 			echo esc_html( $hide_sub_event_date_info ? '' : ' (' . edu_get_timezoned_date( 'd/m H:i', $sub_event['StartDate'] ) . ' - ' . edu_get_timezoned_date( 'd/m H:i', $sub_event['EndDate'] ) . ') ' );
-			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( edu_get_price( $s, $sub_event['ParticipantVat'] ) ) . '</i>' : '' );
+			echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( edu_get_price( $s, $event['ParticipantVat'] ) ) . '</i>' : '' );
 			echo "</label>\n";
 		}
 		echo '<br />';
