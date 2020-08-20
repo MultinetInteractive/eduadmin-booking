@@ -101,10 +101,5 @@ rm -fR svn
 
 curl -X POST \
 -H 'Content-type: application/json' \
---data '{"username": "Travis CI", "channel":"#wordpress-eduadmin", "icon_url": "https://a.slack-edge.com/0180/img/services/travis_48.png","text": "EduAdmin Booking plugin version '"$VERSION"' deployed to <https://sv.wordpress.org/plugins/eduadmin-booking/|wp.org> :tada:"}' \
+--data '{"username": "GitHub Actions", "channel":"#wordpress-eduadmin", "icon_url": "https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2017-12-19/288981919427_f45f04edd92902a96859_512.png","text": "EduAdmin Booking plugin version '"$VERSION"' deployed to <https://sv.wordpress.org/plugins/eduadmin-booking/|wp.org> :tada:"}' \
 $SLACK_HOOKURL
-
-#curl -X POST \
-#-H 'Content-type: application/json' \
-#--data '{ "fromUser": { "username": "TravisCI", "displayName": "Travis CI", "avatarUrlSmall": "https://a.slack-edge.com/0180/img/services/travis_48.png", "avatarUrlMedium": "https://a.slack-edge.com/0180/img/services/travis_48.png" }, "text": "EduAdmin Booking plugin version '"$VERSION"' deployed to [wp.org](https://sv.wordpress.org/plugins/eduadmin-booking/) :tada:" }' \
-#$GITTER_API
