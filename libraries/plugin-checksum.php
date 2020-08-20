@@ -22,6 +22,7 @@ define( 'EDU_IGNORED_FILES_AND_DIRECTORIES', array(
 	'commitlint.config.js',
 	'composer.json',
 	'composer.yml',
+	'changelog-fixer.js',
 	'docs',
 	'eduadmin.php',
 	'node_modules',

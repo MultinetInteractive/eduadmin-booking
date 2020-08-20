@@ -410,13 +410,12 @@ function eduadmin_get_detailinfo( $attributes ) {
 				foreach ( $selected_course['PriceNames'] as $pn ) {
 					$prices[ $pn['PriceNameId'] ] = $pn;
 				}
-
-				$currency = get_option( 'eduadmin-currency', 'SEK' );
+				
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . edu_get_vat_text() ) . "\n";
+					$ret_str .= esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ) ) . "<br />\n";
 					}
 				}
 			}
@@ -431,12 +430,11 @@ function eduadmin_get_detailinfo( $attributes ) {
 					}
 				}
 
-				$currency = get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= esc_html( convert_to_money( current( $prices )['Price'], $currency ) . edu_get_vat_text() ) . "\n";
+					$ret_str .= esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) . "\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() ) . "<br />\n";
+						$ret_str .= esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ) ) . "<br />\n";
 					}
 				}
 			}

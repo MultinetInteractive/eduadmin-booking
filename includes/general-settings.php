@@ -68,6 +68,27 @@ function edu_render_general_settings() {
 					<?php echo esc_html_x( 'Show VAT texts on prices', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
+				<br />
+				<strong><?php echo esc_html_x( 'How should we output the prices? (Overrides above setting)', 'backend', 'eduadmin-booking' ); ?></strong>
+				<br />
+				<?php
+				$showPricesAsSelected = get_option( 'eduadmin-showPricesAsSelected', '' );
+				?>
+				<select name="eduadmin-showPricesAsSelected">
+					<option <?php selected( $showPricesAsSelected, "" ); ?> value="">
+						<?php echo esc_html_x( 'Use above option', 'backend', 'eduadmin-booking' ); ?>
+					</option>
+					<option <?php selected( $showPricesAsSelected, "inclVat" ); ?> value="inclVat">
+						<?php echo esc_html_x( 'Show prices including VAT', 'backend', 'eduadmin-booking' ); ?>
+					</option>
+					<option <?php selected( $showPricesAsSelected, "exclVat" ); ?> value="exclVat">
+						<?php echo esc_html_x( 'Show prices excluding VAT', 'backend', 'eduadmin-booking' ); ?>
+					</option>
+					<option <?php selected( $showPricesAsSelected, "both" ); ?> value="both">
+						<?php echo esc_html_x( 'Show prices including and excluding VAT', 'backend', 'eduadmin-booking' ); ?>
+					</option>
+				</select>
+				<br />
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>

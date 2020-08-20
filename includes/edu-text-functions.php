@@ -53,16 +53,54 @@ if ( ! function_exists( 'wp_get_timezone_string' ) ) {
 	}
 }
 
-function edu_get_vat_text() {
-	$t   = EDU()->start_timer( __METHOD__ );
+function edu_get_price( $price, $vatPercent ) {
+	$t = EDU()->start_timer( __METHOD__ );
+
+	$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
+
 	$org = EDUAPIHelper()->GetOrganization();
 
 	$inc_vat = $org['PriceIncVat'];
 
-	$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
+	$forcePriceAs = get_option( 'eduadmin-showPricesAsSelected', '' );
+
+	$currency = EDURequestCache::GetItem( 'currency', function() {
+		return get_option( 'eduadmin-currency', 'SEK' );
+	} );
+
+	$priceExcl = convert_to_money( $inc_vat ? $price / ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );
+	$priceIncl = convert_to_money( ! $inc_vat ? $price * ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );
+
+	$returnString = '';
+
+	switch ( $forcePriceAs ) {
+		case 'both':
+			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' ) .
+			                ' / ' .
+			                $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			break;
+		case 'inclVat':
+			$returnString = $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			break;
+		case 'exclVat':
+			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' );
+			break;
+		default:
+			// The old way
+			$returnString = convert_to_money( $price, $currency ) .
+			                ( $show_vat ?
+				                ' ' . ( $inc_vat ?
+					                _x( 'inc vat', 'frontend', 'eduadmin-booking' ) :
+					                _x( 'ex vat', 'frontend', 'eduadmin-booking' )
+				                ) :
+				                ''
+			                );
+			break;
+	}
+
 	EDU()->stop_timer( $t );
 
-	return $show_vat ? ' ' . ( $inc_vat ? _x( 'inc vat', 'frontend', 'eduadmin-booking' ) : _x( 'ex vat', 'frontend', 'eduadmin-booking' ) ) : '';
+	return $returnString;
 }
 
 function edu_get_percent_from_values( $current_value, $max_value ) {
@@ -512,6 +550,7 @@ function edu_now_date() {
 }
 
 function edu_get_timezoned_date( $dateformat, $input_date = null ) {
+	$t          = EDU()->start_timer( __METHOD__ );
 	$orig_input = $input_date;
 	if ( $input_date == null || $input_date == "" ) {
 		$input_date = edu_now_date();
@@ -536,6 +575,7 @@ function edu_get_timezoned_date( $dateformat, $input_date = null ) {
 			                        debug_backtrace()[1]['function'],
 		                        ], true ) . "-->\n";
 	}
+	EDU()->stop_timer( $t );
 
 	return get_date_from_gmt( $input_date, $dateformat );
 }

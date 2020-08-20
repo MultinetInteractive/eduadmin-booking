@@ -35,7 +35,7 @@ function render_question( $question, $multiple = false, $suffix = '' ) {
 
 function edu_render_note_question( $question, $multiple, $suffix ) {
 	echo '<label class="edu-question-note questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
-	echo '<div class="inputLabel noteQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' ) . '</div>';
+	echo '<div class="inputLabel noteQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( edu_get_price( $question['Price'], $question['VatPercent'] ) ) . ')</i>' : '' ) . '</div>';
 	echo '<div class="inputHolder">';
 	echo '<textarea autocomplete="off" placeholder="' . esc_attr( $question['QuestionText'] ) . '"';
 	if ( $multiple ) {
@@ -68,7 +68,7 @@ function edu_render_checkbox_question( $question, $multiple, $suffix ) {
 		echo ' name="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' <i class="priceLabel">(' . esc_html( convert_to_money( $q['Price'] ) ) . ')</i>';
+			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')</i>';
 		}
 		echo '</div>';
 		echo '</label>';
@@ -117,7 +117,7 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 		echo '<option value="' . esc_attr( $q['AnswerId'] ) . '"' . ( $q['Selected'] ? ' selected="selected"' : '' ) . ' data-type="dropdown" data-price="' . esc_attr( $q['Price'] ) . '">';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' (' . esc_html( convert_to_money( $q['Price'] ) ) . ')';
+			echo ' (' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')';
 		}
 		echo '</option>';
 	}
@@ -141,7 +141,7 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 	echo ' name="question_' . esc_attr( $question['AnswerId'] . '_number' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" placeholder="' . esc_attr_x( 'Quantity', 'frontend', 'eduadmin-booking' ) . '" />';
 	if ( ! empty( $question['Price'] ) ) {
 		/* translators: 1: Price */
-		echo ' <i class="priceLabel">(' . esc_html( sprintf( _x( '%1$s / pcs', 'frontend', 'eduadmin-booking' ), convert_to_money( $question['Price'] ) ) ) . ')</i>';
+		echo ' <i class="priceLabel">(' . esc_html( sprintf( _x( '%1$s / pcs', 'frontend', 'eduadmin-booking' ), edu_get_price( $question['Price'], $question['VatPercent'] ) ) ) . ')</i>';
 	}
 	echo '</div>';
 	echo '</label>';
@@ -172,7 +172,7 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 		echo ' name="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' <i class="priceLabel">(' . esc_html( convert_to_money( $q['Price'] ) ) . ')</i>';
+			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')</i>';
 		}
 		echo '</div>';
 		echo '</label>';
@@ -183,7 +183,7 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 function edu_render_text_question( $question, $multiple, $suffix ) {
 	echo '<label class="edu-question-text questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
-	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( convert_to_money( $question['Price'] ) ) . ')</i>' : '' );
+	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . ( ! empty( $question['Price'] ) ? ' <i class="priceLabel">(' . esc_html( edu_get_price( $question['Price'], $question['VatPercent'] ) ) . ')</i>' : '' );
 	echo '</div>';
 	echo '<div class="inputHolder">';
 	echo '<input type="text" autocomplete="off" data-price="' . esc_attr( $question['Price'] ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' onchange="eduBookingView.UpdatePrice();" data-type="text" class="questionText"';

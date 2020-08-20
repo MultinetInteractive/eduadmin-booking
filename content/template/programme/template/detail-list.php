@@ -76,7 +76,8 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 
 		$min_price = min( array_keys( $priceNames ) );
 
-		echo esc_html( convert_to_money( $priceNames[ $min_price ]["Price"], $currency ) . ' ' . edu_get_vat_text() );
+		echo edu_get_price( $priceNames[ $min_price ]["Price"], $programme_start['ParticipantVat'] );
+
 		echo '</td>';
 		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ) . '</a></td>';
 		echo '</tr>';

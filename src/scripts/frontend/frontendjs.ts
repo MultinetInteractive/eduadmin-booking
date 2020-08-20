@@ -42,7 +42,7 @@ var eduBookingView: EduBookingView = {
     CurrentParticipants: 0,
     DiscountPercent: 0,
     AddParticipant: function () {
-        if (!eduBookingView.SingleParticipant) {
+        if (!eduBookingView.SingleParticipant || eduBookingView.ProgrammeBooking) {
             if (
                 eduBookingView.MaxParticipants === -1 ||
                 eduBookingView.CurrentParticipants <
