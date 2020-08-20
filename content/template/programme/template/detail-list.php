@@ -65,7 +65,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		}
 
 		echo '</td>';
-		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 ? _x( 'Yes', 'frontend', 'eduadmin-booking' ) : _x( 'No', 'frontend', 'eduadmin-booking' ) ) . '</td>';
+		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 || intval( $programme_start['MaxParticipantNumber'] ) == 0 ? _x( 'Yes', 'frontend', 'eduadmin-booking' ) : _x( 'No', 'frontend', 'eduadmin-booking' ) ) . '</td>';
 		echo '<td>';
 
 		$priceNames = array();
