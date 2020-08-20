@@ -50,7 +50,7 @@
 			if ( $show_event_price && ! empty( $prices ) ) {
 				ksort( $prices );
 				$cheapest = current( $prices );
-				echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), convert_to_money( $cheapest['Price'], $currency ) ) . edu_get_vat_text() . '</div> ';
+				echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), edu_get_price( $cheapest['Price'], $object['ParticipantVat'] ) ) . '</div> ';
 			}
 
 			if ( $object['Days'] > 0 ) {

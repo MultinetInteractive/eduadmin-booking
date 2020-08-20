@@ -9,6 +9,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 } else {
 	include_once 'course-info.php';
 
+	$currency = get_option( 'eduadmin-currency', 'SEK' );
+
 	if ( ! empty( $_REQUEST['edu-valid-form'] ) && wp_verify_nonce( $_REQUEST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_REQUEST['act'] ) && 'bookCourse' === sanitize_text_field( $_REQUEST['act'] ) ) {
 		$error_list = apply_filters( 'edu-booking-error', array() );
 		if ( ! empty( $error_list ) ) {
@@ -182,7 +184,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 									<?php } ?>
 									value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 									<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-									(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . edu_get_vat_text() ); ?>
+									(<?php echo esc_html( edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ); ?>
 									)
 								</option>
 							<?php endforeach; ?>

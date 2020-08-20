@@ -247,12 +247,14 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$args = array_reverse( $args );
 
 			$h = $name . '_' . $this->generate_transient_hash( $name, $args );
+
 			$r = \get_transient( $h );
 
 			if ( ! $r ) {
 				$r = $action();
 				\set_transient( $h, $r, $expiration );
 			}
+
 			$this->stop_timer( $t );
 
 			return $r;
@@ -344,6 +346,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		private function includes() {
 			$t = $this->start_timer( __METHOD__ );
 			include_once 'libraries/plugin-checksum.php';
+			include_once 'libraries/EDURequestCache.php';
 			include_once 'class/class-eduadminrouter.php';
 			$this->router = new EduAdminRouter();
 			$this->router->init();
@@ -753,18 +756,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 	}
 
 	$GLOBALS['eduadmin'] = EDU();
-	/*if ( function_exists( 'wp_get_timezone_string' ) ) {
-		date_default_timezone_set( wp_get_timezone_string() );
-		if ( false === @ini_set( 'date.timezone', wp_get_timezone_string() ) ) {
-			add_action( 'admin_notices', function() {
-				?>
-				<div class="notice notice-warning is-dismissable">
-					<p><?php echo esc_html_x( 'Could not set timezone', 'backend', 'eduadmin-booking' ); ?></p>
-				</div>
-				<?php
-			} );
-		}
-	}*/
 
 	/* Handle plugin-settings */
 	add_action(

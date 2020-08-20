@@ -116,10 +116,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 				$currency = get_option( 'eduadmin-currency', 'SEK' );
 
 				if ( 1 === count( $prices ) ) {
-					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], convert_to_money( current( $prices )['Price'], $currency ) ) . edu_get_vat_text() );
+					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) );
 				} else {
 					foreach ( $prices as $up ) {
-						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], convert_to_money( $up['Price'], $currency ) ) . edu_get_vat_text() );
+						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], edu_get_price( $up['Price'], $selected_course['ParticipantVat'] ) ) );
 						?>
 						<br />
 						<?php

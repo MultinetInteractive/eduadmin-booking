@@ -30,6 +30,7 @@ class EduAdminAPIHelper {
 			$selects[] = 'StartTime';
 			$selects[] = 'EndTime';
 			$selects[] = 'RequireCivicRegistrationNumber';
+			$selects[] = 'ParticipantVat';
 
 			$expands['Subjects']   = '$select=SubjectName;';
 			$expands['Categories'] = '$select=CategoryName;';
@@ -50,7 +51,7 @@ class EduAdminAPIHelper {
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
-				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId';
+				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -99,6 +100,7 @@ class EduAdminAPIHelper {
 		$selects[] = 'StartTime';
 		$selects[] = 'EndTime';
 		$selects[] = 'RequireCivicRegistrationNumber';
+		$selects[] = 'ParticipantVat';
 
 		$expands['Subjects']   = '$select=SubjectName;';
 		$expands['Categories'] = '$select=CategoryName;';
@@ -117,7 +119,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -211,6 +213,7 @@ class EduAdminAPIHelper {
 		$selects[] = 'StartTime';
 		$selects[] = 'EndTime';
 		$selects[] = 'RequireCivicRegistrationNumber';
+		$selects[] = 'ParticipantVat';
 
 		$expands['Subjects']   = '$select=SubjectName;';
 		$expands['Categories'] = '$select=CategoryName;';
@@ -229,7 +232,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 

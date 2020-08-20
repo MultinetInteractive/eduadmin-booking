@@ -3,6 +3,8 @@
 $block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 
+$currency = get_option( 'eduadmin-currency', 'SEK' );
+
 if ( ! empty( $customer->BillingInfo ) ) {
 	$billing_customer = $customer->BillingInfo;
 } else {
@@ -238,8 +240,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				</label>
 			</div>
 		</div>
-	<?php } ?>
-<?php } ?>
+	<?php } ?><?php } ?>
 <div class="attributeView">
 	<?php
 	$contact_custom_fields = get_transient( 'eduadmin-customfields_person' . '__' . EDU()->version );
@@ -328,7 +329,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 							<?php } ?>
 							value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 							<?php echo esc_html( $price['PriceNameDescription'] ); ?>
-							(<?php echo esc_html( convert_to_money( $price['Price'], get_option( 'eduadmin-currency', 'SEK' ) ) . edu_get_vat_text() ); ?>)
+							(<?php echo esc_html( edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ); ?>)
 						</option>
 					<?php } ?>
 				</select>
@@ -355,7 +356,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 				echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
 				echo esc_html( $hide_sub_event_date_info ? '' : ' (' . edu_get_timezoned_date( 'd/m H:i', $sub_event['StartDate'] ) . ' - ' . edu_get_timezoned_date( 'd/m H:i', $sub_event['EndDate'] ) . ') ' );
-				echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( convert_to_money( $s ) ) . '</i>' : '' );
+				echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( edu_get_price( $s, $selected_course['ParticipantVat'] ) ) . '</i>' : '' );
 				echo "</label>\n";
 			}
 			echo '<br />';

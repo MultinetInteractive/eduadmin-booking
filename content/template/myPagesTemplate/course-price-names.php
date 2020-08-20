@@ -35,13 +35,15 @@ if ( ! $api_key || empty( $api_key ) ) {
 	$edo = EDU()->get_transient( 'eduadmin-objectpublicpricename', function() use ( $course_id, $sorting ) {
 		return EDUAPI()->OData->CourseTemplates->GetItem(
 			$course_id,
-			'CourseTemplateId',
+			'CourseTemplateId,ParticipantVat',
 			'PriceNames($filter=PublicPriceName;$orderby=' . join( ',', $sorting ) . ')'
-		)['PriceNames'];
+		);
 	}, 10, $course_id );
 
+	$price_names = $edo['PriceNames'];
+
 	if ( ! empty( $attributes['numberofprices'] ) ) {
-		$edo = array_slice( $edo, 0, $attributes['numberofprices'], true );
+		$price_names = array_slice( $price_names, 0, $attributes['numberofprices'], true );
 	}
 
 	$currency = get_option( 'eduadmin-currency', 'SEK' );
@@ -49,8 +51,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 	<div class="eventInformation">
 		<h3><?php echo esc_html_x( 'Prices', 'frontend', 'eduadmin-booking' ); ?></h3>
 		<?php
-		foreach ( $edo as $price ) {
-			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], convert_to_money( $price['Price'], $currency ) ) . edu_get_vat_text() );
+		foreach ( $price_names as $price ) {
+			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'] ) ) );
 			echo '<br />';
 		}
 		?>

@@ -174,6 +174,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-alwaysFewSpots' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-monthsToFetch' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-showVatTexts' );
+	register_setting( 'eduadmin-rewrite', 'eduadmin-showPricesAsSelected' );
 
 	if ( is_admin() ) {
 		wp_enqueue_script( 'jquery' );
@@ -204,6 +205,7 @@ function eduadmin_frontend_content() {
 			'ShouldValidateCivRegNo' => EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false',
 			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
 			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
+			'ShowPricesAsSelected'   => get_option( 'eduadmin-showPricesAsSelected', null ),
 		)
 	);
 
