@@ -221,6 +221,16 @@ class EduAdmin_BookingHandler {
 			$programme_booking_data->Options               = $booking_options;
 		}
 
+		if ( ! EDU()->is_checked( 'eduadmin-dontSendConfirmation', false ) ) {
+			$send_info = new EduAdmin_Data_Mail();
+
+			$send_info->SendToParticipants    = true;
+			$send_info->SendToCustomer        = true;
+			$send_info->SendToCustomerContact = true;
+
+			$programme_booking_data->SendConfirmationEmail = $send_info;
+		}
+
 		return $programme_booking_data;
 	}
 
