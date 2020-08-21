@@ -410,7 +410,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				foreach ( $selected_course['PriceNames'] as $pn ) {
 					$prices[ $pn['PriceNameId'] ] = $pn;
 				}
-				
+
 				if ( 1 === count( $prices ) ) {
 					$ret_str .= esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) . "\n";
 				} else {
@@ -719,7 +719,7 @@ function eduadmin_get_programme_details( $attributes ) {
 			';' .
 			'$expand=' .
 			'Courses,Events($expand=EventDates),PriceNames' .
-			'),Courses,PriceNames'
+			'),Courses($orderby=ProgrammeCourseSortIndex),PriceNames'
 		);
 
 		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/detail.php';
