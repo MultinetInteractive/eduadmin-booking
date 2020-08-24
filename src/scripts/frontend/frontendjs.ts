@@ -91,6 +91,16 @@ var eduBookingView: EduBookingView = {
                 requiredFields[index].required = true;
             }
         }
+
+        let questionPanel = document.querySelector('.eduadmin .questionPanel') as HTMLDivElement;
+        let requiredFields = questionPanel.querySelectorAll(
+            "[data-required]"
+        ) as NodeListOf<HTMLInputElement>;
+        for (let index = 0; index < requiredFields.length; index++) {
+            requiredFields[index].setAttribute("required", "");
+            requiredFields[index].required = true;
+        }
+
         this.CheckPrice(false);
     },
     RemoveParticipant: function (obj: any) {

@@ -20,10 +20,10 @@ var eduBookingView = {
                 var cloned = tmpl.cloneNode(true);
                 cloned.style.display = "block";
                 cloned.className = cloned.className.replace(" template", "");
-                var requiredFields = cloned.querySelectorAll("[data-required]");
-                for (var index = 0; index < requiredFields.length; index++) {
-                    requiredFields[index].setAttribute("required", "");
-                    requiredFields[index].required = true;
+                var requiredFields_1 = cloned.querySelectorAll("[data-required]");
+                for (var index = 0; index < requiredFields_1.length; index++) {
+                    requiredFields_1[index].setAttribute("required", "");
+                    requiredFields_1[index].required = true;
                 }
                 holder.appendChild(cloned);
             }
@@ -40,11 +40,17 @@ var eduBookingView = {
         }
         else if (eduBookingView.SingleParticipant || eduBookingView.ProgrammeBooking) {
             var bookingForm = document.querySelector('.eduadmin.booking-page');
-            var requiredFields = bookingForm.querySelectorAll("[data-required]");
-            for (var index = 0; index < requiredFields.length; index++) {
-                requiredFields[index].setAttribute("required", "");
-                requiredFields[index].required = true;
+            var requiredFields_2 = bookingForm.querySelectorAll("[data-required]");
+            for (var index = 0; index < requiredFields_2.length; index++) {
+                requiredFields_2[index].setAttribute("required", "");
+                requiredFields_2[index].required = true;
             }
+        }
+        var questionPanel = document.querySelector('.eduadmin .questionPanel');
+        var requiredFields = questionPanel.querySelectorAll("[data-required]");
+        for (var index = 0; index < requiredFields.length; index++) {
+            requiredFields[index].setAttribute("required", "");
+            requiredFields[index].required = true;
         }
         this.CheckPrice(false);
     },

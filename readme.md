@@ -2,8 +2,8 @@
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
-Tested up to: 5.3
-Stable tag: 2.24.3
+Tested up to: 5.5
+Stable tag: 2.24.4
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.24.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.3...v2.24.4) (2020-08-24)
+
+
+### Bug Fixes
+
+* Fixes required-fields-bug that was introduced when we started adding the `data-required` attribute since hidden required-fields was bad practice ([c39bce1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c39bce161cbb8caef3621f7973631edd2e3ccfd5))
+
 ### [2.24.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.2...v2.24.3) (2020-08-24)
 
 
@@ -66,17 +73,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * If the MaxNumberParticipants on a programme is 0, we should let people book. ([37ccfba](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/37ccfbafbb4834e5e6084569677d2872d4912bf8)), closes [#339](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/339)
 * ParticipantVat is not available on sessions/sub events ([acbfc94](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/acbfc942670f9798b71fdac120ed1d5834d326fe))
-
-## [2.24.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.23.0...v2.24.0) (2020-08-20)
-
-
-### Features
-
-* Changing how we output prices in accordance to the new setting ([0d56f66](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0d56f66408c823a392dcdc766d1b7067c62cfc6b)), closes [#327](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/327)
-
-
-### Bug Fixes
-
-* We should allow the use of AddParticipant if it's a programme. ([7a14206](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7a1420616670c35d3e28c525f29787304e629bc6)), closes [#338](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/338)
 
 

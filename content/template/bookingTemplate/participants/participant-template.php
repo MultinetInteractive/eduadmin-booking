@@ -85,7 +85,7 @@
 				$s = 0;
 			}
 
-			echo '<label class="edu-book-participant-participantSubEvent>';
+			echo '<label class="edu-book-participant-participantSubEvent">';
 			echo '<input class="subEventCheckBox" data-price="' . esc_attr( $s ) . '" onchange=eduBookingView.UpdatePrice();" data-replace="name|index" ';
 			echo 'data-name-template="participantSubEvent_' . esc_attr( $sub_event['SessionId'] ) . '_{{index}}" ';
 			echo 'name="participantSubEvent_' . esc_attr( $sub_event['SessionId'] ) . '_-1" ';
