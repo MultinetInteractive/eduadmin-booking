@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.24.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.2...v2.24.3) (2020-08-24)
+
+
+### Bug Fixes
+
+* If you use SingleParticipant, required fields/questions should now work properly again. ([03d2c37](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/03d2c37529e1ccf38092850cca75236a4d54f84a)), closes [#346](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/346)
+
 ### [2.24.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.1...v2.24.2) (2020-08-21)
 
 
