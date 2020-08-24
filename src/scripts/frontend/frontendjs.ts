@@ -81,6 +81,15 @@ var eduBookingView: EduBookingView = {
                     }, 5000);
                 }
             }
+        } else if (eduBookingView.SingleParticipant || eduBookingView.ProgrammeBooking) {
+            let bookingForm = document.querySelector('.eduadmin.booking-page') as HTMLDivElement;
+            let requiredFields = bookingForm.querySelectorAll(
+                "[data-required]"
+            ) as NodeListOf<HTMLInputElement>;
+            for (let index = 0; index < requiredFields.length; index++) {
+                requiredFields[index].setAttribute("required", "");
+                requiredFields[index].required = true;
+            }
         }
         this.CheckPrice(false);
     },
