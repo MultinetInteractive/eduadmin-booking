@@ -38,6 +38,14 @@ var eduBookingView = {
                 }
             }
         }
+        else if (eduBookingView.SingleParticipant || eduBookingView.ProgrammeBooking) {
+            var bookingForm = document.querySelector('.eduadmin.booking-page');
+            var requiredFields = bookingForm.querySelectorAll("[data-required]");
+            for (var index = 0; index < requiredFields.length; index++) {
+                requiredFields[index].setAttribute("required", "");
+                requiredFields[index].required = true;
+            }
+        }
         this.CheckPrice(false);
     },
     RemoveParticipant: function (obj) {

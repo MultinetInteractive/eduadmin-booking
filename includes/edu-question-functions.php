@@ -54,7 +54,7 @@ function edu_render_note_question( $question, $multiple, $suffix ) {
 }
 
 function edu_render_checkbox_question( $question, $multiple, $suffix ) {
-	echo '<div class="edu-question-checkbox questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<div class="edu-question-checkbox questionanswer_id_q' . esc_attr( $question['QuestionId'] ) . '">';
 	echo '<div class="inputLabel checkBoxQuestion noHide">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
 	foreach ( $question['Alternatives'] as $q ) {
 		echo '<label>';
