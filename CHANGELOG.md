@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
+
+
+### Features
+
+* Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
+
+
+### Bug Fixes
+
+* Fixes missing CSS for required participant fields ([5867ba5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5867ba500ecc76f99ee0859249529233cfad9fe5)), closes [#350](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/350)
+
 ### [2.24.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.3...v2.24.4) (2020-08-24)
 
 

@@ -129,12 +129,16 @@
 .eduadmin.booking-page form label .inputHolder textarea[data-required="true"],
 .eduadmin.booking-page form label .inputHolder select[required],
 .eduadmin.booking-page form label .inputHolder select[data-required="true"],
+.eduadmin.booking-page form label .inputHolder input.first-name,
+.eduadmin.booking-page form label .inputHolder input.last-name,
 .eduadmin.booking-page form div.fakeLabel .inputHolder input[required],
 .eduadmin.booking-page form div.fakeLabel .inputHolder input[data-required="true"],
 .eduadmin.booking-page form div.fakeLabel .inputHolder textarea[required],
 .eduadmin.booking-page form div.fakeLabel .inputHolder textarea[data-required="true"],
 .eduadmin.booking-page form div.fakeLabel .inputHolder select[required],
-.eduadmin.booking-page form div.fakeLabel .inputHolder select[data-required="true"] {
+.eduadmin.booking-page form div.fakeLabel .inputHolder select[data-required="true"],
+.eduadmin.booking-page form div.fakeLabel .inputHolder input.first-name,
+.eduadmin.booking-page form div.fakeLabel .inputHolder input.last-name {
   background-color: #feffcc;
 }
 

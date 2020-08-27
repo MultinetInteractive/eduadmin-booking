@@ -453,6 +453,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				</div>
 			</div>
 			<?php
+			include_once 'coupon-code.php';
 			include_once __DIR__ . '/../payment-methods.php';
 			eduadmin_render_payment_methods( $programme );
 			?>

@@ -705,3 +705,11 @@ function edu_api_check_coupon_code() {
 
 	return rest_ensure_response( $vcode );
 }
+
+function edu_api_check_programme_coupon_code() {
+	$programme_start_id = $_POST['programmeStartId'];
+	$code     = $_POST['code'];
+	$vcode    = EDUAPI()->REST->Coupon->ProgrammeStartCouponIsValid( $programme_start_id, $code );
+
+	return rest_ensure_response( $vcode );
+}

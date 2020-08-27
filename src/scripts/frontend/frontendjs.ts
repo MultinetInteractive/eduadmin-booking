@@ -27,6 +27,7 @@ interface EduBookingView {
     UpdatePrice: Function;
     ValidateCivicRegNo: Function;
     ValidateDiscountCode: Function;
+    ValidateProgrammeDiscountCode: Function;
 
     SetPriceField: Function;
 }
@@ -257,6 +258,31 @@ var eduBookingView: EduBookingView = {
         edu.apiclient.CheckCouponCode(
             jQuery("#edu-discountCode").val(),
             jQuery(".validateDiscount").data("eventid"),
+            function (data: any) {
+                if (data) {
+                    eduBookingView.UpdatePrice();
+                } else {
+                    // Invalid code
+                    let codeWarning = document.getElementById(
+                        "edu-warning-discount"
+                    );
+                    if (codeWarning) {
+                        codeWarning.style.display = "block";
+                        setTimeout(function () {
+                            let codeWarning = document.getElementById(
+                                "edu-warning-discount"
+                            ) as HTMLDivElement;
+                            codeWarning.style.display = "";
+                        }, 5000);
+                    }
+                }
+            }
+        );
+    },
+    ValidateProgrammeDiscountCode: function () {
+        edu.apiclient.CheckProgrammeCouponCode(
+            jQuery("#edu-discountCode").val(),
+            jQuery(".validateDiscount").data("programmestartid"),
             function (data: any) {
                 if (data) {
                     eduBookingView.UpdatePrice();

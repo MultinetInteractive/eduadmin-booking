@@ -105,7 +105,9 @@
       textarea[required],
       textarea[data-required="true"],
       select[required],
-      select[data-required="true"] {
+      select[data-required="true"],
+      input.first-name,
+      input.last-name {
         background-color: #feffcc;
       }
     }

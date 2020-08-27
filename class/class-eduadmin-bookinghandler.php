@@ -212,6 +212,10 @@ class EduAdmin_BookingHandler {
 			$programme_booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] ); // Var input okay.
 		}
 
+		if ( ! empty( $_POST['edu-discountCode'] ) ) { // Var input okay.
+			$programme_booking_data->CouponCode = sanitize_text_field( $_POST['edu-discountCode'] ); // Var input okay.
+		}
+
 		$selected_match = get_option( 'eduadmin-customerMatching', 'name-zip-match' );
 
 		if ( 'no-match' === $selected_match ) {
