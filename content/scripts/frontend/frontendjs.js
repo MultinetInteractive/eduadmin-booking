@@ -165,6 +165,24 @@ var eduBookingView = {
             }
         });
     },
+    ValidateProgrammeDiscountCode: function () {
+        edu.apiclient.CheckProgrammeCouponCode(jQuery("#edu-discountCode").val(), jQuery(".validateDiscount").data("programmestartid"), function (data) {
+            if (data) {
+                eduBookingView.UpdatePrice();
+            }
+            else {
+                // Invalid code
+                var codeWarning = document.getElementById("edu-warning-discount");
+                if (codeWarning) {
+                    codeWarning.style.display = "block";
+                    setTimeout(function () {
+                        var codeWarning = document.getElementById("edu-warning-discount");
+                        codeWarning.style.display = "";
+                    }, 5000);
+                }
+            }
+        });
+    },
     CheckValidation: function (ignoreTerms) {
         var terms = document.getElementById("confirmTerms");
         if (terms) {

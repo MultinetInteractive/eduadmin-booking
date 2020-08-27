@@ -195,6 +195,21 @@ edu.apiclient = {
             }
         });
     },
+    CheckProgrammeCouponCode: function (code, programmeStartId, onData) {
+        jQuery.ajax({
+            url: edu.apiclient.baseUrl + "/coupon/programme/check",
+            type: "POST",
+            data: {
+                code: code,
+                programmeStartId: programmeStartId
+            },
+            success: function (d) {
+                if (onData && typeof onData == "function") {
+                    onData(JSON.parse(d.data));
+                }
+            }
+        });
+    },
     GetCookie: function (name) {
         try {
             var cookie = document.cookie;

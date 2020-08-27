@@ -31,6 +31,7 @@ interface eduObject {
 		getCourseEventList: Function;
 		RunAfterUpdate: Function;
 		CheckCouponCode: Function;
+		CheckProgrammeCouponCode: Function;
 		GetCookie: Function;
 		SetCookie: Function;
 		CanSetCookies: Function;
@@ -240,6 +241,21 @@ edu.apiclient = {
 			data: {
 				code: code,
 				eventId: eventId
+			},
+			success: function(d) {
+				if (onData && typeof onData == "function") {
+					onData(JSON.parse(d.data));
+				}
+			}
+		});
+	},
+	CheckProgrammeCouponCode: function(code: string, programmeStartId: number, onData: Function) {
+		jQuery.ajax({
+			url: edu.apiclient.baseUrl + "/coupon/programme/check",
+			type: "POST",
+			data: {
+				code: code,
+				programmeStartId: programmeStartId
 			},
 			success: function(d) {
 				if (onData && typeof onData == "function") {

@@ -91,5 +91,14 @@ class EduAdmin_APIController {
 				'eventId' => array( 'required' => true ),
 			),
 		) );
+
+		register_rest_route( $this->namespace, '/coupon/programme/check', array(
+			'methods'  => 'POST',
+			'callback' => 'edu_api_check_programme_coupon_code',
+			'args'     => array(
+				'code'    => array( 'required' => true ),
+				'programmeStartId' => array( 'required' => true ),
+			),
+		) );
 	}
 }
