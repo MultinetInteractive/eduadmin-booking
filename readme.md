@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.24.4
+Stable tag: 2.25.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+## [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
+
+
+### Features
+
+* Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
+
+
+### Bug Fixes
+
+* Fixes missing CSS for required participant fields ([5867ba5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5867ba500ecc76f99ee0859249529233cfad9fe5)), closes [#350](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/350)
+
 ### [2.24.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.3...v2.24.4) (2020-08-24)
 
 
@@ -65,13 +77,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Force sort on ProgrammeCourseSortIndex to keep the configured sort index in EduAdmin. ([21f1298](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/21f12987d821b5a7b83316e0d06e7eafdc13fe32)), closes [#344](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/344)
 * Send confirmation email options on programme bookings as well. ([41ba93b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/41ba93be71a67e8ce46feb1682c5c715b416054c)), closes [#343](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/343)
-
-### [2.24.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.0...v2.24.1) (2020-08-21)
-
-
-### Bug Fixes
-
-* If the MaxNumberParticipants on a programme is 0, we should let people book. ([37ccfba](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/37ccfbafbb4834e5e6084569677d2872d4912bf8)), closes [#339](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/339)
-* ParticipantVat is not available on sessions/sub events ([acbfc94](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/acbfc942670f9798b71fdac120ed1d5834d326fe))
 
 
