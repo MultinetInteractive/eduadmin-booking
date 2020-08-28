@@ -41,7 +41,6 @@ function edu_logout_user() {
 	unset( EDU()->session['needsLogin'] );
 	unset( EDU()->session['checkEmail'] );
 	EDU()->session->regenerate_id( true );
-	unset( $_COOKIE['eduadmin-loginUser'] );
 	wp_redirect( $base_url . edu_get_query_string() );
 	EDU()->stop_timer( $t );
 	exit();
