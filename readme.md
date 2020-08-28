@@ -44,36 +44,36 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
-## [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
+### [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
 
 
-### Features
+#### Features
 
 * Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
 
 
-### Bug Fixes
+#### Bug Fixes
 
 * Fixes missing CSS for required participant fields ([5867ba5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5867ba500ecc76f99ee0859249529233cfad9fe5)), closes [#350](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/350)
 
 ### [2.24.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.3...v2.24.4) (2020-08-24)
 
 
-### Bug Fixes
+#### Bug Fixes
 
 * Fixes required-fields-bug that was introduced when we started adding the `data-required` attribute since hidden required-fields was bad practice ([c39bce1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c39bce161cbb8caef3621f7973631edd2e3ccfd5))
 
 ### [2.24.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.2...v2.24.3) (2020-08-24)
 
 
-### Bug Fixes
+#### Bug Fixes
 
 * If you use SingleParticipant, required fields/questions should now work properly again. ([03d2c37](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/03d2c37529e1ccf38092850cca75236a4d54f84a)), closes [#346](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/346)
 
 ### [2.24.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.1...v2.24.2) (2020-08-21)
 
 
-### Bug Fixes
+#### Bug Fixes
 
 * Force sort on ProgrammeCourseSortIndex to keep the configured sort index in EduAdmin. ([21f1298](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/21f12987d821b5a7b83316e0d06e7eafdc13fe32)), closes [#344](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/344)
 * Send confirmation email options on programme bookings as well. ([41ba93b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/41ba93be71a67e8ce46feb1682c5c715b416054c)), closes [#343](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/343)
