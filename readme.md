@@ -54,7 +54,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 ### [2.26.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.25.0...v2.26.0) (2020-09-17)
 
-
 #### Features
 
 * Added support to make the search form react on query parameters as well, and not only posted variables. ([45b3fb2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45b3fb25d8f2003b942e43e0e8c0b26c956ec337))
@@ -67,11 +66,10 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 ### [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
 
-
 #### Features
 
-* Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
 
+* Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
 
 #### Bug Fixes
 
@@ -84,4 +82,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Fixes required-fields-bug that was introduced when we started adding the `data-required` attribute since hidden required-fields was bad practice ([c39bce1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c39bce161cbb8caef3621f7973631edd2e3ccfd5))
 
+=======
 
