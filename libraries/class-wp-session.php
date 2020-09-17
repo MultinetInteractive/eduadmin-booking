@@ -149,8 +149,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 				"Expires=" . date( "D, d M Y H:i:s", $this->expires ) . "; " .
 				"Path=" . COOKIEPATH . "; " .
 				"Domain=" . COOKIE_DOMAIN . "; " .
-				( $is_secure ? "Secure; " : "" ) .
-				"SameSite=None"
+				( $is_secure ? "Secure; SameSite=None" : "" )
 			);
 		}
 
