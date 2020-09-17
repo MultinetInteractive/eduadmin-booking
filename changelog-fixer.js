@@ -13,13 +13,15 @@ module.exports = function() {
 			_VersionTree[lastVersion].endOfVersion = md.indexOf(version);
 		}
 
-		_VersionTree[version] = {
-			version: version,
-			startOfVersion: md.indexOf(version),
+		let fixedVersion = version.replace(/#/g, '').trim();
+
+		_VersionTree[fixedVersion] = {
+			version: fixedVersion,
+			startOfVersion: md.indexOf(fixedVersion),
 			endOfVersion: !!lastVersion ? md.indexOf(lastVersion) : -1
 		};
 
-		lastVersion = version;
+		lastVersion = fixedVersion;
 	}
 
 	delete _VersionTree[lastVersion];
@@ -28,14 +30,14 @@ module.exports = function() {
 
 	for (let version in _VersionTree) {
 
-		let _md = md.substring(_VersionTree[version].startOfVersion, _VersionTree[version].endOfVersion).trim();
+		let _md = md.substring(_VersionTree[version].startOfVersion, _VersionTree[version].endOfVersion).replace(/### /g, '#### ').trim();
 
 		_VersionTree[version] = {
 			..._VersionTree[version],
 			MarkdownContent: _md
 		};
 
-		outputChangelog += _md + '\n\n';
+		outputChangelog += '### ' + _md + '\n\n';
 	}
 
 	return outputChangelog;

@@ -72,27 +72,34 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 */
 	protected function __construct() {
 		if ( isset( $_COOKIE[ WP_SESSION_COOKIE ] ) ) {
-			$cookie        = stripslashes( $_COOKIE[ WP_SESSION_COOKIE ] );
-			$cookie_crumbs = explode( '||', $cookie );
-			if ( $this->is_valid_md5( $cookie_crumbs[0] ) ) {
-				$this->session_id = $cookie_crumbs[0];
-			} else {
-				$this->regenerate_id( true );
-			}
-			$this->expires     = $cookie_crumbs[1];
-			$this->exp_variant = $cookie_crumbs[2];
-			// Update the session expiration if we're past the variant time
-			if ( time() > $this->exp_variant ) {
-				$this->set_expiration();
-				delete_option( "_wp_session_expires_{$this->session_id}" );
-				add_option( "_wp_session_expires_{$this->session_id}", $this->expires, '', 'no' );
-			}
+			$cookie = stripslashes( $_COOKIE[ WP_SESSION_COOKIE ] );
+			$this->construct_cookie( $cookie );
+		} elseif ( isset( $_COOKIE[ WP_SESSION_COOKIE . '-legacy' ] ) ) {
+			$cookie = stripslashes( $_COOKIE[ WP_SESSION_COOKIE . '-legacy' ] );
+			$this->construct_cookie( $cookie );
 		} else {
 			$this->session_id = $this->generate_id();
 			$this->set_expiration();
 		}
 		$this->read_data();
 		$this->set_cookie();
+	}
+
+	private function construct_cookie( $cookie ) {
+		$cookie_crumbs = explode( '||', $cookie );
+		if ( $this->is_valid_md5( $cookie_crumbs[0] ) ) {
+			$this->session_id = $cookie_crumbs[0];
+		} else {
+			$this->regenerate_id( true );
+		}
+		$this->expires     = $cookie_crumbs[1];
+		$this->exp_variant = $cookie_crumbs[2];
+		// Update the session expiration if we're past the variant time
+		if ( time() > $this->exp_variant ) {
+			$this->set_expiration();
+			delete_option( "_wp_session_expires_{$this->session_id}" );
+			add_option( "_wp_session_expires_{$this->session_id}", $this->expires, '', 'no' );
+		}
 	}
 
 	/**
@@ -122,7 +129,38 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 * Set the session cookie
 	 */
 	protected function set_cookie() {
-		@setcookie( WP_SESSION_COOKIE, $this->session_id . '||' . $this->expires . '||' . $this->exp_variant, $this->expires, COOKIEPATH, COOKIE_DOMAIN );
+		$is_secure    = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== "off" ) || $_SERVER['SERVER_PORT'] === 443;
+		$cookie_value = $this->session_id . '||' . $this->expires . '||' . $this->exp_variant;
+		if ( PHP_VERSION_ID >= 70300 ) {
+			setcookie(
+				WP_SESSION_COOKIE,
+				$cookie_value,
+				array(
+					'expires'  => $this->expires,
+					'path'     => COOKIEPATH,
+					'domain'   => COOKIE_DOMAIN,
+					'secure'   => $is_secure,
+					'samesite' => 'None',
+				)
+			);
+		} else {
+			header(
+				"Set-Cookie: " . urlencode( WP_SESSION_COOKIE ) . "=" . urlencode( $cookie_value ) . "; " .
+				"Expires=" . date( "D, d M Y H:i:s", $this->expires ) . "; " .
+				"Path=" . COOKIEPATH . "; " .
+				"Domain=" . COOKIE_DOMAIN . "; " .
+				( $is_secure ? "Secure; " : "" ) .
+				"SameSite=None"
+			);
+		}
+
+		setcookie(
+			WP_SESSION_COOKIE . '-legacy',
+			$cookie_value,
+			$this->expires,
+			COOKIEPATH,
+			COOKIE_DOMAIN
+		);
 	}
 
 	/**

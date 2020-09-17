@@ -11,7 +11,7 @@
 							foreach ( $addresses['value'] as $address ) {
 								$city = trim( $address['City'] );
 								if ( ! in_array( $address['LocationId'], $added_cities, true ) && ! empty( $city ) ) {
-									echo '<option value="' . intval( $address['LocationId'] ) . '"' . ( ! empty( $_POST['eduadmin-city'] ) && intval( $_POST['eduadmin-city'] ) === $address['LocationId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $address['City'] ) . '</option>';  // Input var okay.
+									echo '<option value="' . intval( $address['LocationId'] ) . '"' . ( ! empty( $_REQUEST['eduadmin-city'] ) && intval( $_REQUEST['eduadmin-city'] ) === $address['LocationId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $address['City'] ) . '</option>';  // Input var okay.
 									$added_cities[] = $address['LocationId'];
 								}
 							}
@@ -25,7 +25,7 @@
 							<option value=""><?php echo esc_html_x( 'Choose subject', 'frontend', 'eduadmin-booking' ); ?></option>
 							<?php
 							foreach ( $distinct_subjects as $subj => $val ) {
-								echo '<option value="' . intval( $subj ) . '"' . ( ! empty( $_POST['eduadmin-subject'] ) && intval( $_POST['eduadmin-subject'] ) === $subj ? ' selected="selected"' : '' ) . '>' . esc_html( $val ) . '</option>'; // Input var okay.
+								echo '<option value="' . intval( $subj ) . '"' . ( ! empty( $_REQUEST['eduadmin-subject'] ) && intval( $_REQUEST['eduadmin-subject'] ) === $subj ? ' selected="selected"' : '' ) . '>' . esc_html( $val ) . '</option>'; // Input var okay.
 							}
 							?>
 						</select>
@@ -37,7 +37,7 @@
 							<option value=""><?php echo esc_html_x( 'Choose category', 'frontend', 'eduadmin-booking' ); ?></option>
 							<?php
 							foreach ( $categories['value'] as $subj ) {
-								echo '<option value="' . intval( $subj['CategoryId'] ) . '"' . ( ! empty( $_POST['eduadmin-category'] ) && intval( $_POST['eduadmin-category'] ) === $subj['CategoryId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $subj['CategoryName'] ) . '</option>'; // Input var okay.
+								echo '<option value="' . intval( $subj['CategoryId'] ) . '"' . ( ! empty( $_REQUEST['eduadmin-category'] ) && intval( $_REQUEST['eduadmin-category'] ) === $subj['CategoryId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $subj['CategoryName'] ) . '</option>'; // Input var okay.
 							}
 							?>
 						</select>
@@ -49,7 +49,7 @@
 							<option value=""><?php echo esc_html_x( 'Choose course level', 'frontend', 'eduadmin-booking' ); ?></option>
 							<?php
 							foreach ( $levels['value'] as $level ) {
-								echo '<option value="' . intval( $level['CourseLevelId'] ) . '"' . ( ! empty( $_POST['eduadmin-level'] ) && intval( $_POST['eduadmin-level'] ) === $level['CourseLevelId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $level['Name'] ) . '</option>'; // Input var okay.
+								echo '<option value="' . intval( $level['CourseLevelId'] ) . '"' . ( ! empty( $_REQUEST['eduadmin-level'] ) && intval( $_REQUEST['eduadmin-level'] ) === $level['CourseLevelId'] ? ' selected="selected"' : '' ) . '>' . esc_html( $level['Name'] ) . '</option>'; // Input var okay.
 							}
 							?>
 						</select>
@@ -65,8 +65,8 @@
 			<?php endif; ?>
 			<div class="search-box">
 				<div class="search-item search-text">
-					<input class="edu-searchTextBox" type="search" name="searchCourses" results="10" placeholder="<?php echo esc_attr_x( 'Search courses', 'frontend', 'eduadmin-booking' ); ?>"<?php if ( isset( $_POST['searchCourses'] ) ) { // Input var okay.
-						echo ' value="' . esc_attr( sanitize_text_field( wp_unslash( $_POST['searchCourses'] ) ) ) . '"'; // Input var okay.
+					<input class="edu-searchTextBox" type="search" name="searchCourses" results="10" placeholder="<?php echo esc_attr_x( 'Search courses', 'frontend', 'eduadmin-booking' ); ?>"<?php if ( isset( $_REQUEST['searchCourses'] ) ) { // Input var okay.
+						echo ' value="' . esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['searchCourses'] ) ) ) . '"'; // Input var okay.
 					} ?> />
 				</div>
 				<div class="search-item search-button">
