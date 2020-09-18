@@ -718,8 +718,8 @@ function eduadmin_get_programme_details( $attributes ) {
 			'StartDate' .
 			';' .
 			'$expand=' .
-			'Courses,Events($expand=EventDates),PriceNames' .
-			'),Courses($orderby=ProgrammeCourseSortIndex),PriceNames'
+			'Courses($orderby=ProgrammeCourseSortIndex),Events($expand=EventDates($orderby=StartDate;$select=StartDate,EndDate;);$orderby=ProgrammeCourseSortIndex),PriceNames' .
+			'),PriceNames'
 		);
 
 		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/detail.php';

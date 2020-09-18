@@ -22,6 +22,14 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<th></th>';
 	echo '</tr>';
 	foreach ( $grouped_programme as $programme_start ) {
+		$sorted_events = array();
+
+		foreach ( $programme_start['Events'] as $event ) {
+			$sorted_events[ $event['ProgrammeCourseSortIndex'] ] = $event;
+		}
+
+		ksort( $sorted_events );
+
 		echo '<tr>';
 		echo '<td>' . wp_kses_post( get_display_date( $programme_start['StartDate'] ) ) . '</td>';
 		echo '<td>' . ( ! empty( $programme_start['City'] ) ? esc_html( $programme_start['City'] ) : '' ) . '</td>';
@@ -38,7 +46,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 			echo '<a style="float: right;" href="javascript://" onclick="edu_closeDatePopup(event, this);">' . esc_html_x( 'Close', 'frontend', 'eduadmin-booking' ) . '</a>';
 			echo '<div class="scrollable-full-height">';
 			$events_per_day = array();
-			foreach ( $programme_start['Events'] as $event ) {
+			foreach ( $sorted_events as $event ) {
 				$events_per_day[ get_old_start_end_display_date( $event['StartDate'], $event['EndDate'] ) ][] = $event;
 			}
 

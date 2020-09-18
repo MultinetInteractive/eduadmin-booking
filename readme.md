@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.26.0
+Stable tag: 2.26.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.26.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.0...v2.26.1) (2020-09-17)
+
+
+#### Bug Fixes
+
+* Additional fix for old version of PHP cookies. ([118870e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/118870e4d3d06a617366fde19eaa48b83ec1d698))
+* Sorting programme events by ProgrammeCourseSortIndex ([b2f7bd4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b2f7bd465f84a857813331d4705ef5e7bea4cdde))
+
 ### [2.26.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.25.0...v2.26.0) (2020-09-17)
 
 
@@ -75,12 +83,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Fixes required-fields-bug that was introduced when we started adding the `data-required` attribute since hidden required-fields was bad practice ([c39bce1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c39bce161cbb8caef3621f7973631edd2e3ccfd5))
-
-### [2.24.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.2...v2.24.3) (2020-08-24)
-
-
-#### Bug Fixes
-
-* If you use SingleParticipant, required fields/questions should now work properly again. ([03d2c37](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/03d2c37529e1ccf38092850cca75236a4d54f84a)), closes [#346](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/346)
 
 
