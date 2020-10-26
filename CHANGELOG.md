@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.26.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.1...v2.26.2) (2020-10-26)
+
+
+### Bug Fixes
+
+* Fixing date output in detail template ([25f64ab](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/25f64abdeddce2e8490ec8774c6f19f281112950))
+* Hiding warnings from inability of setting headers ([6557b10](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6557b10f7079cb4ae1ef6a78ed09381f06d1d2a4))
 
 ### [2.26.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.0...v2.26.1) (2020-09-17)
 
