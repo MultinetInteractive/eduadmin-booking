@@ -766,7 +766,7 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 	if ( edu_get_timezoned_date( 'Y-m-d', $start_date ) !== edu_get_timezoned_date( 'Y-m-d', $end_date ) ) {
 		if ( $start_year === $end_year ) {
 			if ( $start_month === $end_month ) {
-				$str .= '-';
+				$str .= ' - ';
 				if ( $show_week_days ) {
 					$str .= $week_days[ edu_get_timezoned_date( 'N', $end_date ) ] . ' ';
 				}
