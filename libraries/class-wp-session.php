@@ -132,7 +132,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 		$is_secure    = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== "off" ) || $_SERVER['SERVER_PORT'] === 443;
 		$cookie_value = $this->session_id . '||' . $this->expires . '||' . $this->exp_variant;
 		if ( PHP_VERSION_ID >= 70300 ) {
-			setcookie(
+			@setcookie(
 				WP_SESSION_COOKIE,
 				$cookie_value,
 				array(
@@ -144,7 +144,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 				)
 			);
 		} else {
-			header(
+			@header(
 				"Set-Cookie: " . urlencode( WP_SESSION_COOKIE ) . "=" . urlencode( $cookie_value ) . "; " .
 				"Expires=" . date( "D, d M Y H:i:s", $this->expires ) . "; " .
 				"Path=" . COOKIEPATH . "; " .
@@ -153,7 +153,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 			);
 		}
 
-		setcookie(
+		@setcookie(
 			WP_SESSION_COOKIE . '-legacy',
 			$cookie_value,
 			$this->expires,
