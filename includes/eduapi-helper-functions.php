@@ -178,7 +178,6 @@ class EduAdminAPIHelper {
 			}
 		}
 
-
 		return EDU()->get_transient( 'eduadmin-listcourses-courses', function() use ( $selects, $filters, $expand_arr, $sorting ) {
 			return EDUAPI()->OData->CourseTemplates->Search(
 				join( ',', $selects ),

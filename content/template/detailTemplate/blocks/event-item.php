@@ -18,7 +18,8 @@ if ( ! empty( $ev['EventDates'] ) ) {
 }
 
 ?>
-<div data-groupid="eduev<?php echo( $group_by_city ? '-' . esc_attr( $ev['City'] ) : '' ); ?>" class="eventItem<?php echo( $show_more > 0 && $i >= $show_more ? ' showMoreHidden' : '' ); ?>">
+<div data-groupid="eduev<?php echo( $group_by_city ? '-' . esc_attr( $ev['City'] ) : '' ); ?>"
+     class="eventItem<?php echo( $show_more > 0 && $i >= $show_more ? ' showMoreHidden' : '' ); ?>">
 	<div class="eventDate<?php echo esc_attr( $group_by_city_class ); ?>">
 		<?php
 		echo isset( $event_dates[ $ev['EventId'] ] ) ?
@@ -40,12 +41,11 @@ if ( ! empty( $ev['EventDates'] ) ) {
 		</div>
 	<?php } ?>
 	<div class="eventStatus<?php echo esc_attr( $group_by_city_class ); ?>"
-		data-spots-left="<?php echo esc_attr(intval($ev['ParticipantNumberLeft'])); ?>"
-		data-max-spots="<?php echo esc_attr(intval( $ev['MaxParticipantNumber'] )); ?>"
-		data-spots-left-option="<?php echo esc_attr($spot_left_option); ?>"
-		data-spots-settings="<?php echo esc_attr($spot_settings); ?>"
-		data-always-few-spots="<?php echo esc_attr($always_few_spots); ?>"
-	>
+	     data-spots-left="<?php echo esc_attr( intval( $ev['ParticipantNumberLeft'] ) ); ?>"
+	     data-max-spots="<?php echo esc_attr( intval( $ev['MaxParticipantNumber'] ) ); ?>"
+	     data-spots-left-option="<?php echo esc_attr( $spot_left_option ); ?>"
+	     data-spots-settings="<?php echo esc_attr( $spot_settings ); ?>"
+	     data-always-few-spots="<?php echo esc_attr( $always_few_spots ); ?>">
 		<?php
 		$spots_left = intval( $ev['ParticipantNumberLeft'] );
 		echo '<span class="spotsLeftInfo">' . esc_html( get_spots_left( $spots_left, intval( $ev['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) ) . '</span>';
@@ -55,12 +55,14 @@ if ( ! empty( $ev['EventDates'] ) ) {
 		<?php
 		if ( 0 === intval( $ev['MaxParticipantNumber'] ) || $spots_left > 0 ) {
 			?>
-			<a class="bookButton book-link cta-btn" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+			<a class="bookButton book-link cta-btn"
+			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
 			<?php
 		} else {
 			if ( $allow_interest_reg_event && false !== $event_interest_page ) {
 				?>
-				<a class="inquiry-link" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/interest/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></a>
+				<a class="inquiry-link"
+				   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/interest/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></a>
 				<?php
 			}
 			?>

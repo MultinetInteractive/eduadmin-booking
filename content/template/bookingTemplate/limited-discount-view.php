@@ -23,7 +23,7 @@ if ( $use_limited_discount ) {
 									<?php if ( ! $enough_credits ) : ?>
 										disabled readonly title="<?php echo esc_attr_x( 'Not enough uses left on this card.', 'frontend', 'eduadmin-booking' ); ?>"
 									<?php endif; ?>
-									value="<?php echo esc_attr( $card['VoucherId'] ); ?>" />
+									   value="<?php echo esc_attr( $card['VoucherId'] ); ?>" />
 								<?php echo esc_html( $card['Description'] ); ?>&nbsp;
 								<i>(<?php echo esc_html( sprintf( _n( 'Valid for %s participant', 'Valid for %s participants', $card['ValidForNumberOfParticipants'], 'eduadmin-booking' ), $card['ValidForNumberOfParticipants'] ) ); ?>)</i>
 							</label>

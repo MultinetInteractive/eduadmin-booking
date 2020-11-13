@@ -33,29 +33,36 @@ if ( isset( $_POST['eduaction'] ) && 'savePassword' === sanitize_text_field( $_P
 	?>
 	<h2><?php echo esc_html_x( 'Change password', 'frontend', 'eduadmin-booking' ); ?></h2>
 	<form action="" method="POST">
-		<input type="hidden" name="eduaction" value="savePassword"/>
+		<input type="hidden" name="eduaction" value="savePassword" />
 		<div class="eduadminContactInformation">
 			<h3><?php echo esc_html_x( 'Contact information', 'frontend', 'eduadmin-booking' ); ?></h3>
 			<label>
-				<div class="inputLabel"><?php echo esc_html_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?></div>
+				<div
+					class="inputLabel"><?php echo esc_html_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="currentPassword" required placeholder="<?php echo esc_attr_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?>"/>
+					<input type="password" name="currentPassword" required
+					       placeholder="<?php echo esc_attr_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>
 			<label>
-				<div class="inputLabel"><?php echo esc_html_x( 'New password', 'frontend', 'eduadmin-booking' ); ?></div>
+				<div
+					class="inputLabel"><?php echo esc_html_x( 'New password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="newPassword" required placeholder="<?php echo esc_attr_x( 'New password', 'frontend', 'eduadmin-booking' ); ?>"/>
+					<input type="password" name="newPassword" required
+					       placeholder="<?php echo esc_attr_x( 'New password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>
 			<label>
-				<div class="inputLabel"><?php echo esc_html_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?></div>
+				<div
+					class="inputLabel"><?php echo esc_html_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="confirmPassword" required placeholder="<?php echo esc_attr_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?>"/>
+					<input type="password" name="confirmPassword" required
+					       placeholder="<?php echo esc_attr_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>
 		</div>
-		<button class="profileSaveButton cta-btn"><?php echo esc_html_x( 'Save', 'frontend', 'eduadmin-booking' ); ?></button>
+		<button
+			class="profileSaveButton cta-btn"><?php echo esc_html_x( 'Save', 'frontend', 'eduadmin-booking' ); ?></button>
 	</form>
 	<?php if ( isset( $msg ) ) { ?>
 		<div class="edu-modal warning" style="display: block; clear: both;">

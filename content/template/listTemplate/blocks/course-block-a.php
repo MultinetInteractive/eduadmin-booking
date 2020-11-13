@@ -1,6 +1,8 @@
 <div class="objectItem" data-objectid="<?php echo esc_attr( $object['CourseTemplateId'] ); ?>">
 	<?php if ( $show_images && ! empty( $object['ImageUrl'] ) ) { ?>
-		<div class="objectImage" onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>';" style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
+		<div class="objectImage"
+		     onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>';"
+		     style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
 	<?php } ?>
 	<div class="objectInfoHolder">
 		<div class="objectName">
@@ -66,7 +68,8 @@
 	</div>
 	<div class="objectBook">
 		<?php if ( $show_read_more_btn ) : ?>
-			<a class="readMoreButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
+			<a class="readMoreButton cta-btn"
+			   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/<?php echo edu_get_query_string(); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 		<?php endif; ?>
 	</div>
 </div>

@@ -32,7 +32,7 @@ elseif ( 1 === count( $events ) ) :
 	echo esc_html( edu_get_timezoned_date( 'H:i', $event['EndDate'] ) ) . '</span>';
 	echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), ', ' ) );
 	echo '</div>';
-	if ( !isset( $_GET['eid'] ) || !is_numeric( $_GET['eid'] ) ) :
+	if ( ! isset( $_GET['eid'] ) || ! is_numeric( $_GET['eid'] ) ) :
 		?><input type="hidden" name="eid" value="<?php echo esc_attr( $event['EventId'] ); ?>" /><?php
 	endif;
 else :

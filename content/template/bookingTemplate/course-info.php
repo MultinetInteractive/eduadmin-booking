@@ -20,11 +20,11 @@ if ( $edo ) {
 	$name            = ( ! empty( $edo['CourseName'] ) ? $edo['CourseName'] : $edo['InternalCourseName'] );
 }
 
-$noAvailableDates = false;
+$noAvailableDates            = false;
 $GLOBALS['noAvailableDates'] = false;
 
 if ( ! $selected_course || 0 === count( $selected_course['Events'] ) ) {
-	$noAvailableDates = true;
+	$noAvailableDates            = true;
 	$GLOBALS['noAvailableDates'] = true;
 }
 $event  = null;
@@ -45,7 +45,7 @@ if ( ! $noAvailableDates ) {
 	}
 
 	$event_id = $event['EventId'];
-	$eventid = $event_id;
+	$eventid  = $event_id;
 
 	$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
 		return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );

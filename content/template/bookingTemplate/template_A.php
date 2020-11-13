@@ -102,11 +102,15 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 		$hide_sub_event_date_info = EDU()->is_checked( 'eduadmin-hideSubEventDateTime', false );
 		?>
-		<div class="eduadmin booking-page" data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
+		<div class="eduadmin booking-page"
+		     data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>"
+		     data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
 			<form action="" method="post" id="edu-booking-form">
 				<input type="hidden" name="act" value="bookCourse" />
-				<input type="hidden" name="edu-valid-form" value="<?php echo esc_attr( wp_create_nonce( 'edu-booking-confirm' ) ); ?>" />
-				<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
+				<input type="hidden" name="edu-valid-form"
+				       value="<?php echo esc_attr( wp_create_nonce( 'edu-booking-confirm' ) ); ?>" />
+				<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);"
+				   class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 
 				<div class="title">
 					<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
@@ -175,14 +179,20 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<?php if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) : ?>
 					<div class="priceView">
 						<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>
-						<select id="edu-pricename" name="edu-pricename" required class="edudropdown edu-pricename" onchange="eduBookingView.UpdatePrice();">
-							<option data-price="0" value=""><?php echo esc_html_x( 'Choose price', 'frontend', 'eduadmin-booking' ); ?></option>
+						<select id="edu-pricename" name="edu-pricename" required class="edudropdown edu-pricename"
+						        onchange="eduBookingView.UpdatePrice();">
+							<option data-price="0"
+							        value=""><?php echo esc_html_x( 'Choose price', 'frontend', 'eduadmin-booking' ); ?></option>
 							<?php foreach ( $event['PriceNames'] as $price ) : ?>
-								<option data-price="<?php echo esc_attr( $price['Price'] ); ?>" date-discountpercent="<?php echo esc_attr( $price['DiscountPercent'] ); ?>" data-pricelnkid="<?php echo esc_attr( $price['PriceNameId'] ); ?>" data-maxparticipants="<?php echo esc_attr( $price['MaxParticipantNumber'] ); ?>" data-currentparticipants="<?php echo esc_attr( $price['NumberOfParticipants'] ); ?>"
+								<option data-price="<?php echo esc_attr( $price['Price'] ); ?>"
+								        date-discountpercent="<?php echo esc_attr( $price['DiscountPercent'] ); ?>"
+								        data-pricelnkid="<?php echo esc_attr( $price['PriceNameId'] ); ?>"
+								        data-maxparticipants="<?php echo esc_attr( $price['MaxParticipantNumber'] ); ?>"
+								        data-currentparticipants="<?php echo esc_attr( $price['NumberOfParticipants'] ); ?>"
 									<?php if ( ! empty( $price['MaxParticipantNumber'] ) && $price['NumberOfParticipants'] >= $price['MaxParticipantNumber'] ) { ?>
 										disabled
 									<?php } ?>
-									value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
+									    value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 									<?php echo esc_html( $price['PriceNameDescription'] ); ?>
 									(<?php echo esc_html( edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ); ?>
 									)
@@ -215,7 +225,9 @@ if ( ! $api_key || empty( $api_key ) ) {
 						<span id="sumValue" class="sumValue"></span>
 					</div>
 					<?php if ( 0 === intval( $event['MaxParticipantNumber'] ) || 0 !== $event['ParticipantNumberLeft'] ) : ?>
-						<input type="submit" class="bookButton cta-btn" id="edu-book-btn" onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;" value="<?php echo esc_attr_x( 'Book now', 'frontend', 'eduadmin-booking' ); ?>" />
+						<input type="submit" class="bookButton cta-btn" id="edu-book-btn"
+						       onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;"
+						       value="<?php echo esc_attr_x( 'Book now', 'frontend', 'eduadmin-booking' ); ?>" />
 					<?php else : ?>
 						<div class="bookButton neutral-btn cta-disabled">
 							<?php echo esc_html_x( 'No free spots left on this event', 'frontend', 'eduadmin-booking' ); ?>

@@ -46,7 +46,8 @@ $customer = $user->Customer;
 		if ( empty( $bookings ) ) {
 			?>
 			<tr>
-				<td colspan="5" align="center"><i><?php echo esc_html_x( 'No courses booked', 'frontend', 'eduadmin-booking' ); ?></i>
+				<td colspan="5" align="center">
+					<i><?php echo esc_html_x( 'No courses booked', 'frontend', 'eduadmin-booking' ); ?></i>
 				</td>
 			</tr>
 			<?php
@@ -71,9 +72,12 @@ $customer = $user->Customer;
 						<td colspan="5">
 							<table class="edu-event-participantList">
 								<tr>
-									<th align="left" class="edu-participantList-name"><?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?></th>
-									<th align="center" class="edu-participantList-arrived"><?php echo esc_html_x( 'Arrived', 'frontend', 'eduadmin-booking' ); ?></th>
-									<th align="right" class="edu-participantList-grade"><?php echo esc_html_x( 'Grade', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th align="left"
+									    class="edu-participantList-name"><?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th align="center"
+									    class="edu-participantList-arrived"><?php echo esc_html_x( 'Arrived', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th align="right"
+									    class="edu-participantList-grade"><?php echo esc_html_x( 'Grade', 'frontend', 'eduadmin-booking' ); ?></th>
 								</tr>
 								<?php
 								foreach ( $book['Participants'] as $participant ) {

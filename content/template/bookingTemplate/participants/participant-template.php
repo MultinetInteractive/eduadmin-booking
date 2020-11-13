@@ -1,14 +1,20 @@
 <div class="participantItem template" style="display: none;">
 	<h3>
 		<?php echo esc_html_x( 'Participant', 'frontend', 'eduadmin-booking' ); ?>
-		<div class="removeParticipant" onclick="eduBookingView.RemoveParticipant(this);"><?php echo esc_html_x( 'Remove', 'frontend', 'eduadmin-booking' ); ?></div>
+		<div class="removeParticipant"
+		     onclick="eduBookingView.RemoveParticipant(this);"><?php echo esc_html_x( 'Remove', 'frontend', 'eduadmin-booking' ); ?></div>
 	</h3>
 	<label onclick="event.preventDefault()" class="edu-book-participant-participantName">
 		<div class="inputLabel">
 			<?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="text" autocomplete="off" class="participantFirstName first-name" onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]" placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input type="text" class="participantLastName last-name" onchange="eduBookingView.CheckPrice(false);" name="participantLastName[]" placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
+			<input type="text" autocomplete="off" class="participantFirstName first-name"
+			       onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]"
+			       placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input
+				type="text" class="participantLastName last-name" onchange="eduBookingView.CheckPrice(false);"
+				name="participantLastName[]"
+				placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-participant-participantEmail">
@@ -16,7 +22,9 @@
 			<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="email" autocomplete="off" name="participantEmail[]" onchange="eduBookingView.CheckPrice(false);" placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
+			<input type="email" autocomplete="off" name="participantEmail[]"
+			       onchange="eduBookingView.CheckPrice(false);"
+			       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-participant-participantPhone">
@@ -24,7 +32,8 @@
 			<?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" name="participantPhone[]" placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
+			<input type="tel" autocomplete="off" name="participantPhone[]"
+			       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<label class="edu-book-participant-participantMobile">
@@ -32,7 +41,8 @@
 			<?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" name="participantMobile[]" placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
+			<input type="tel" autocomplete="off" name="participantMobile[]"
+			       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] ) { ?>
@@ -41,7 +51,9 @@
 				<?php echo esc_html_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" autocomplete="off" data-required="true" name="participantCivReg[]" pattern="(\d{2,4})-?(\d{2,2})-?(\d{2,2})-?(\d{4,4})" class="eduadmin-civicRegNo" placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>" />
+				<input type="text" autocomplete="off" data-required="true" name="participantCivReg[]"
+				       pattern="(\d{2,4})-?(\d{2,2})-?(\d{2,2})-?(\d{4,4})" class="eduadmin-civicRegNo"
+				       placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>" />
 			</div>
 		</label>
 	<?php } ?>
@@ -59,14 +71,19 @@
 				<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<select name="participantPriceName[]" autocomplete="off" data-required="true" class="edudropdown participantPriceName edu-pricename" onchange="eduBookingView.UpdatePrice();">
-					<option data-price="0" value=""><?php echo esc_html_x( 'Choose price', 'frontend', 'eduadmin-booking' ); ?></option>
+				<select name="participantPriceName[]" autocomplete="off" data-required="true"
+				        class="edudropdown participantPriceName edu-pricename" onchange="eduBookingView.UpdatePrice();">
+					<option data-price="0"
+					        value=""><?php echo esc_html_x( 'Choose price', 'frontend', 'eduadmin-booking' ); ?></option>
 					<?php foreach ( $unique_prices as $price ) { ?>
-						<option data-price="<?php echo esc_attr( $price['Price'] ); ?>" date-discountpercent="<?php echo esc_attr( $price['DiscountPercent'] ); ?>" data-maxparticipants="<?php echo esc_attr( $price['MaxParticipantNumber'] ); ?>" data-currentparticipants="<?php echo esc_attr( $price['NumberOfParticipants'] ); ?>"
+						<option data-price="<?php echo esc_attr( $price['Price'] ); ?>"
+						        date-discountpercent="<?php echo esc_attr( $price['DiscountPercent'] ); ?>"
+						        data-maxparticipants="<?php echo esc_attr( $price['MaxParticipantNumber'] ); ?>"
+						        data-currentparticipants="<?php echo esc_attr( $price['NumberOfParticipants'] ); ?>"
 							<?php if ( $price['MaxParticipantNumber'] > 0 && $price['NumberOfParticipants'] >= $price['MaxParticipantNumber'] ) { ?>
 								disabled
 							<?php } ?>
-							value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
+							    value="<?php echo esc_attr( $price['PriceNameId'] ); ?>">
 							<?php echo esc_html( $price['PriceNameDescription'] ); ?>
 							(<?php echo esc_html( edu_get_price( $price['Price'], $event['ParticipantVat'] ) ); ?>)
 						</option>

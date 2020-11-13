@@ -49,7 +49,9 @@ if ( ! $api_key || empty( $api_key ) ) {
 	$currency = get_option( 'eduadmin-currency', 'SEK' );
 	?>
 	<div class="eventInformation">
-		<h3><?php echo esc_html_x( 'Prices', 'frontend', 'eduadmin-booking' ); ?></h3>
+		<h3>
+			<?php echo esc_html_x( 'Prices', 'frontend', 'eduadmin-booking' ); ?>
+		</h3>
 		<?php
 		foreach ( $price_names as $price ) {
 			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'] ) ) );

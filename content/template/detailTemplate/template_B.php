@@ -15,14 +15,17 @@ if ( ! $api_key || empty( $api_key ) ) {
 	}
 
 	?>
-	<div class="eduadmin detail-view" data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
-		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);" class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
+	<div class="eduadmin detail-view" data-courseid="<?php echo esc_attr( $selected_course['CourseTemplateId'] ); ?>"
+	     data-eventid="<?php echo( isset( $_REQUEST['eid'] ) ? esc_attr( sanitize_text_field( $_REQUEST['eid'] ) ) : '' ); ?>">
+		<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);"
+		   class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 		<div class="title">
 			<?php if ( ! empty( $selected_course['ImageUrl'] ) ) : ?>
 				<img src="<?php echo esc_url( $selected_course['ImageUrl'] ); ?>" class="courseImage" />
 			<?php endif; ?>
 			<h1 class="courseTitle"><?php echo esc_html( $name ); ?>
-				<small class="courseLevel"><?php echo esc_html( null !== $course_level ? $course_level['Name'] : '' ); ?></small>
+				<small
+					class="courseLevel"><?php echo esc_html( null !== $course_level ? $course_level['Name'] : '' ); ?></small>
 			</h1>
 		</div>
 		<hr />
@@ -117,7 +120,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 			?>
 			<br />
 			<div class="inquiry">
-				<a class="inquiry-link" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $selected_course['CourseTemplateId']; ?>/interest/<?php echo edu_get_query_string( '?' ) . '&_=' . time(); ?>"><?php _ex( 'Send inquiry about this course', 'frontend', 'eduadmin-booking' ); ?></a>
+				<a class="inquiry-link"
+				   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $selected_course['CourseTemplateId']; ?>/interest/<?php echo edu_get_query_string( '?' ) . '&_=' . time(); ?>"><?php _ex( 'Send inquiry about this course', 'frontend', 'eduadmin-booking' ); ?></a>
 			</div>
 			<?php
 		}

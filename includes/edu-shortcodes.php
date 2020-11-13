@@ -164,7 +164,7 @@ function eduadmin_get_course_public_pricename( $attributes ) {
 	}
 	EDU()->stop_timer( $t );
 
-	return include_once EDUADMIN_PLUGIN_PATH . '/content/template/myPagesTemplate/course-price-names.php';
+	return include_once EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/course-price-names.php';
 }
 
 function edu_no_index() {
