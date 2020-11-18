@@ -11,6 +11,7 @@ require_once 'booking-settings.php';
 require_once 'profile-settings.php';
 require_once 'style-settings.php';
 require_once 'news-page.php';
+require_once 'edu-date-settings.php';
 
 add_action( 'admin_init', 'eduadmin_settings_init' );
 add_action( 'admin_menu', 'eduadmin_backend_menu' );
@@ -168,6 +169,15 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-priceType' );
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-showCompanyCertificates' );
 
+	/* Date settings */
+
+	// Contains if the user wants to use the default settings, like the plugin normally works (to not break anything)
+	// or if they want custom settings, force them to specify settings for all types of dates
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDateFormatSetting' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithoutCourseDays' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithCourseDays' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-programmeCourse' );
+
 	/* Global settings */
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsLeft' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
@@ -278,6 +288,7 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Booking view', 'backend', 'eduadmin-booking' ), _x( 'Booking settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-booking', 'edu_render_booking_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Profile view', 'backend', 'eduadmin-booking' ), _x( 'Profile settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-profile', 'edu_render_profile_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Style', 'backend', 'eduadmin-booking' ), _x( 'Style settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-style', 'edu_render_style_settings_page' );
+	//add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Date settings', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-date', 'edu_render_date_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Plugins', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-plugins', 'edu_render_plugin_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Api Authentication', 'backend', 'eduadmin-booking' ), _x( 'Api Authentication', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - News', 'backend', 'eduadmin-booking' ), _x( 'News', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-news', 'edu_render_news_page' );
