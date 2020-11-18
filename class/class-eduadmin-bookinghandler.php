@@ -27,6 +27,36 @@ class EduAdmin_BookingHandler {
 		}
 	}
 
+	public function verify_recaptcha() {
+		$recaptcha_enabled   = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
+		$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
+
+		if ( $recaptcha_enabled && ! empty( $recaptcha_secretkey ) ) {
+			if ( ! empty( $_POST['g-recaptcha-response'] ) ) {
+				$c = curl_init( 'https://www.google.com/recaptcha/api/siteverify' );
+
+				$verifydata = http_build_query( [
+					                                "secret"   => $recaptcha_secretkey,
+					                                "response" => sanitize_text_field( $_POST['g-recaptcha-response'] ),
+				                                ] );
+
+				curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
+				curl_setopt( $c, CURLOPT_CUSTOMREQUEST, 'POST' );
+				curl_setopt( $c, CURLOPT_SSLVERSION, 6 );
+				curl_setopt( $c, CURLOPT_POSTFIELDS, $verifydata );
+
+				$response = curl_exec( $c );
+				$response = json_decode( $response, true );
+
+				return $response['success'];
+			}
+
+			return false;
+		}
+
+		return true;
+	}
+
 	public function process_booking() {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
@@ -71,6 +101,10 @@ class EduAdmin_BookingHandler {
 								$errors[] = $error['ErrorText'];
 								break;
 						}
+					}
+
+					if ( ! $this->verify_recaptcha() ) {
+						$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 					}
 
 					return $errors;
@@ -157,6 +191,10 @@ class EduAdmin_BookingHandler {
 								$errors[] = $error['ErrorText'];
 								break;
 						}
+					}
+
+					if ( ! $this->verify_recaptcha() ) {
+						$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 					}
 
 					return $errors;

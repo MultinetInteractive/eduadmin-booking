@@ -525,7 +525,9 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			<?php
 			include_once 'coupon-code.php';
 			include_once __DIR__ . '/../payment-methods.php';
+			include_once __DIR__ . '/../recaptcha-form.php';
 			eduadmin_render_payment_methods( $programme );
+			eduadmin_render_recaptcha_form();
 			?>
 			<div class="submitView">
 				<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
