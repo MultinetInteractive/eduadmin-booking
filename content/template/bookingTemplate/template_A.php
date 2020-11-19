@@ -109,6 +109,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<input type="hidden" name="act" value="bookCourse" />
 				<input type="hidden" name="edu-valid-form"
 				       value="<?php echo esc_attr( wp_create_nonce( 'edu-booking-confirm' ) ); ?>" />
+				<div class="not-a-good-idea">
+					<input type="text" name="username" />
+					<input type="text" name="email" />
+				</div>
 				<a href="javascript://" onclick="eduGlobalMethods.GoBack('../', event);"
 				   class="backLink"><?php echo esc_html_x( '« Go back', 'frontend', 'eduadmin-booking' ); ?></a>
 

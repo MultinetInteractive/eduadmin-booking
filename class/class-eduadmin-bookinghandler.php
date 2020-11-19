@@ -58,6 +58,11 @@ class EduAdmin_BookingHandler {
 	}
 
 	public function process_booking() {
+		if ( ! empty( $_POST['username'] ) || ! empty( $_POST['email'] ) ) {
+			wp_redirect( get_page_link( '/' ) );
+			exit( 0 );
+		}
+
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
 
@@ -156,6 +161,11 @@ class EduAdmin_BookingHandler {
 	}
 
 	public function process_programme_booking() {
+		if ( ! empty( $_POST['username'] ) || ! empty( $_POST['email'] ) ) {
+			wp_redirect( get_page_link( '/' ) );
+			exit( 0 );
+		}
+
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookProgramme' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 
 			if ( ! $this->verify_recaptcha() ) {

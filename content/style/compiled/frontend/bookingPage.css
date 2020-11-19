@@ -293,6 +293,10 @@
     margin: 0;
   }
 
+  .eduadmin.booking-page form .not-a-good-idea {
+    display: none;
+  }
+
   .eduadmin.booking-page form .paymentMethodsView ul {
     -ms-flex-direction: row;
     flex-direction: row;
