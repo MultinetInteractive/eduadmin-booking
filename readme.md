@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.26.2
+Stable tag: 2.27.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.27.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.2...v2.27.0) (2020-11-19)
+
+
+#### Features
+
+* Added basic support for reCAPTCHA v2 Checkbox. (Only booking form, not interest registration) ref [#157](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/157) ([b357789](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b3577894ba092b5cfad23883ddca58f6b50bfefc))
+* Added more honeypots to booking form ([6efadc1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6efadc1c569ff4c01041392a02556ac9fb8f7d62)), closes [#157](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/157)
+
 ### [2.26.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.1...v2.26.2) (2020-10-26)
 
 
@@ -72,17 +80,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Removed unused $_COOKIE, since everything works through EDU()->session now ([4a31776](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4a31776992adb8b9e36875ca138b15f7dc664d13))
 * Rewrote session/cookie lib to work with samesite and other things.. ([47c5fda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/47c5fda02b9cf20698816a9059e4e884cb25232e))
-
-### [2.25.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.24.4...v2.25.0) (2020-08-27)
-
-
-#### Features
-
-* Added ability to post coupon codes on programme bookings as well. ([3852568](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3852568443961b1b079bac1e06231c474a59b515)), closes [#349](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/349)
-
-
-#### Bug Fixes
-
-* Fixes missing CSS for required participant fields ([5867ba5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5867ba500ecc76f99ee0859249529233cfad9fe5)), closes [#350](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/350)
 
 
