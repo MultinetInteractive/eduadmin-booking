@@ -61,6 +61,16 @@ class EduAdmin_BookingHandler {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
 
+			if ( ! $this->verify_recaptcha() ) {
+				add_filter( 'edu-booking-error', function( $errors ) {
+					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
+
+					return $errors;
+				}, 10, 1 );
+
+				return;
+			}
+
 			$booking_info = $single_person_booking ? $this->book_single_participant() : $this->book_multiple_participants();
 
 			if ( ! empty( $booking_info['Errors'] ) ) {
@@ -101,10 +111,6 @@ class EduAdmin_BookingHandler {
 								$errors[] = $error['ErrorText'];
 								break;
 						}
-					}
-
-					if ( ! $this->verify_recaptcha() ) {
-						$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 					}
 
 					return $errors;
@@ -151,6 +157,17 @@ class EduAdmin_BookingHandler {
 
 	public function process_programme_booking() {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookProgramme' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
+
+			if ( ! $this->verify_recaptcha() ) {
+				add_filter( 'edu-booking-error', function( $errors ) {
+					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
+
+					return $errors;
+				}, 10, 1 );
+
+				return;
+			}
+
 			$booking_info = $this->get_programme_booking();
 
 			if ( ! empty( $booking_info['Errors'] ) ) {
@@ -191,10 +208,6 @@ class EduAdmin_BookingHandler {
 								$errors[] = $error['ErrorText'];
 								break;
 						}
-					}
-
-					if ( ! $this->verify_recaptcha() ) {
-						$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 					}
 
 					return $errors;

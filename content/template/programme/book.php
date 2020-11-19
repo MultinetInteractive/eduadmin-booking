@@ -555,6 +555,9 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					</div>
 				<?php endif; ?>
 				<div class="edu-modal warning" id="edu-warning-pricecheck"></div>
+				<div class="edu-modal warning" id="edu-warning-recaptcha">
+					<?php echo esc_html_x( 'You must confirm that you are not a bot before continuing.', 'frontend', 'eduadmin-booking' ); ?>
+				</div>
 				<div class="edu-modal warning" id="edu-warning-terms">
 					<?php echo esc_html_x( 'You must accept Terms and Conditions to continue.', 'frontend', 'eduadmin-booking' ); ?>
 				</div>

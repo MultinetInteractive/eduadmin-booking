@@ -305,6 +305,25 @@ var eduBookingView: EduBookingView = {
         );
     },
     CheckValidation: function (ignoreTerms: boolean) {
+        if((window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
+            let captchaResponse = (window as any).grecaptcha.getResponse();
+            if(captchaResponse == '') {
+                let noCaptcha = document.getElementById(
+                    "edu-warning-recaptcha"
+                );
+                if (noCaptcha) {
+                    noCaptcha.style.display = "block";
+                    setTimeout(function () {
+                        let noCaptcha = document.getElementById(
+                            "edu-warning-recaptcha"
+                        ) as HTMLDivElement;
+                        noCaptcha.style.display = "";
+                    }, 5000);
+                }
+                return false;
+            }
+        }
+
         let terms = document.getElementById("confirmTerms") as HTMLInputElement;
         if (terms) {
             if (!ignoreTerms && !terms.checked) {
