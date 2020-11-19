@@ -27,9 +27,54 @@ class EduAdmin_BookingHandler {
 		}
 	}
 
+	public function verify_recaptcha() {
+		$recaptcha_enabled   = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
+		$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
+
+		if ( $recaptcha_enabled && ! empty( $recaptcha_secretkey ) ) {
+			if ( ! empty( $_POST['g-recaptcha-response'] ) ) {
+				$c = curl_init( 'https://www.google.com/recaptcha/api/siteverify' );
+
+				$verifydata = http_build_query( [
+					                                "secret"   => $recaptcha_secretkey,
+					                                "response" => sanitize_text_field( $_POST['g-recaptcha-response'] ),
+				                                ] );
+
+				curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
+				curl_setopt( $c, CURLOPT_CUSTOMREQUEST, 'POST' );
+				curl_setopt( $c, CURLOPT_SSLVERSION, 6 );
+				curl_setopt( $c, CURLOPT_POSTFIELDS, $verifydata );
+
+				$response = curl_exec( $c );
+				$response = json_decode( $response, true );
+
+				return $response['success'];
+			}
+
+			return false;
+		}
+
+		return true;
+	}
+
 	public function process_booking() {
+		if ( ! empty( $_POST['username'] ) || ! empty( $_POST['email'] ) ) {
+			wp_redirect( get_page_link( '/' ) );
+			exit( 0 );
+		}
+
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 			$single_person_booking = EDU()->is_checked( 'eduadmin-singlePersonBooking', false );
+
+			if ( ! $this->verify_recaptcha() ) {
+				add_filter( 'edu-booking-error', function( $errors ) {
+					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
+
+					return $errors;
+				}, 10, 1 );
+
+				return;
+			}
 
 			$booking_info = $single_person_booking ? $this->book_single_participant() : $this->book_multiple_participants();
 
@@ -116,7 +161,23 @@ class EduAdmin_BookingHandler {
 	}
 
 	public function process_programme_booking() {
+		if ( ! empty( $_POST['username'] ) || ! empty( $_POST['email'] ) ) {
+			wp_redirect( get_page_link( '/' ) );
+			exit( 0 );
+		}
+
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookProgramme' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
+
+			if ( ! $this->verify_recaptcha() ) {
+				add_filter( 'edu-booking-error', function( $errors ) {
+					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
+
+					return $errors;
+				}, 10, 1 );
+
+				return;
+			}
+
 			$booking_info = $this->get_programme_booking();
 
 			if ( ! empty( $booking_info['Errors'] ) ) {

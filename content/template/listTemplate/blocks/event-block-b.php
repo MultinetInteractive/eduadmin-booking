@@ -1,6 +1,9 @@
-<div class="objectBlock brick <?php echo edu_get_percent_from_values( $spots_left, $event['MaxParticipantNumber'] ); ?>">
+<div
+	class="objectBlock brick <?php echo edu_get_percent_from_values( $spots_left, $event['MaxParticipantNumber'] ); ?>">
 	<?php if ( $show_images && ! empty( $object['ImageUrl'] ) ) { ?>
-		<div class="objectImage" onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>';" style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
+		<div class="objectImage"
+		     onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>';"
+		     style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
 	<?php } ?>
 	<div class="objectName">
 		<a href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php
@@ -43,7 +46,8 @@
 	</div>
 	<div class="objectBook">
 		<?php if ( $show_read_more_btn ) : ?>
-			<a class="readMoreButton cta-btn" href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $object['CourseTemplateId'] . '/?eid=' . $event['EventId'] . edu_get_query_string( '&' ) ); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
+			<a class="readMoreButton cta-btn"
+			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $object['CourseTemplateId'] . '/?eid=' . $event['EventId'] . edu_get_query_string( '&' ) ); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 		<?php endif; ?>
 	</div>
 </div>

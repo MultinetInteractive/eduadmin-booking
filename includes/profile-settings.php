@@ -27,12 +27,14 @@ function edu_render_profile_settings_page() {
 
 				<h4><?php _ex( 'Certificates', 'backend', 'eduadmin-booking' ); ?></h4>
 				<label>
-					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates" name="eduadmin-profile-showCompanyCertificates" <?php checked( get_option( 'eduadmin-profile-showCompanyCertificates', false ), "on" ); ?> />
+					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates"
+					       name="eduadmin-profile-showCompanyCertificates" <?php checked( get_option( 'eduadmin-profile-showCompanyCertificates', false ), "on" ); ?> />
 					<?php _ex( 'Show certificates from all persons in the certificates page', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo _x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary"
+					       value="<?php echo _x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>

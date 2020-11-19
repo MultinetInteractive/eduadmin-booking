@@ -54,7 +54,8 @@ abstract class EDU_Integration {
 		?>
 		<tr valign="top">
 			<th scope="row">
-				<label for="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"><?php echo wp_kses_post( $field['title'] ); ?></label>
+				<label
+					for="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"><?php echo wp_kses_post( $field['title'] ); ?></label>
 			</th>
 			<td>
 				<fieldset>
@@ -90,9 +91,10 @@ abstract class EDU_Integration {
 		$t = EDU()->start_timer( __METHOD__ );
 		?>
 		<label>
-			<input type="checkbox" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
+			<input type="checkbox" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
+			       id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
 				<?php checked( $this->get_option( $key ), '1' ); ?>
-				value="1" />
+				   value="1" />
 			<?php echo esc_html( $field['description'] ); ?>
 		</label>
 		<?php
@@ -137,8 +139,12 @@ abstract class EDU_Integration {
 	private function render_text_box( $key, $field ) {
 		$t = EDU()->start_timer( __METHOD__ );
 		?>
-		<input class="regular-text" type="<?php echo esc_attr( $field['type'] ); ?>" name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>" placeholder="<?php echo esc_attr( $field['placeholder'] ); ?>" value="<?php echo esc_attr( $this->get_option( $key ) ); ?>" />
-		<p class="description"><?php echo esc_html( $field['description'] ); ?></p>
+		<input class="regular-text" type="<?php echo esc_attr( $field['type'] ); ?>"
+		       name="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
+		       id="<?php echo esc_attr( $this->get_field_key( $key ) ); ?>"
+		       placeholder="<?php echo esc_attr( $field['placeholder'] ); ?>"
+		       value="<?php echo esc_attr( $this->get_option( $key ) ); ?>" />		<p
+			class="description"><?php echo esc_html( $field['description'] ); ?></p>
 		<?php
 		EDU()->stop_timer( $t );
 	}

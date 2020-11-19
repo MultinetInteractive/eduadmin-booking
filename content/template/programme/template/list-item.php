@@ -36,7 +36,8 @@
 		?>
 	</div>
 	<div class="programme-buttons">
-		<a href="<?php echo esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/' ); ?>" class="cta-btn">
+		<a href="<?php echo esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/' ); ?>"
+		   class="cta-btn">
 			<?php echo esc_html_x( 'Details', 'frontend', 'eduadmin-booking' ); ?>
 		</a>
 	</div>

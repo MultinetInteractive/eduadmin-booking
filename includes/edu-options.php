@@ -11,6 +11,8 @@ require_once 'booking-settings.php';
 require_once 'profile-settings.php';
 require_once 'style-settings.php';
 require_once 'news-page.php';
+require_once 'edu-date-settings.php';
+require_once 'edu-security-settings.php';
 
 add_action( 'admin_init', 'eduadmin_settings_init' );
 add_action( 'admin_menu', 'eduadmin_backend_menu' );
@@ -168,6 +170,21 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-priceType' );
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-showCompanyCertificates' );
 
+	/* Date settings */
+
+	// Contains if the user wants to use the default settings, like the plugin normally works (to not break anything)
+	// or if they want custom settings, force them to specify settings for all types of dates
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDateFormatSetting' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithoutCourseDays' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithCourseDays' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-programmeCourse' );
+
+	/* Security settings */
+
+	register_setting( 'eduadmin-security', 'eduadmin-recaptcha-enabled' );
+	register_setting( 'eduadmin-security', 'eduadmin-recaptcha-sitekey' );
+	register_setting( 'eduadmin-security', 'eduadmin-recaptcha-secretkey' );
+
 	/* Global settings */
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsLeft' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-spotsSettings' );
@@ -253,6 +270,15 @@ function eduadmin_frontend_content() {
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/frontend/frontendjs.js' );
 	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), null, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
+
+	$recaptcha_enabled   = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
+	$recaptcha_sitekey   = get_option( 'eduadmin-recaptcha-sitekey', '' );
+	$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
+
+	if ( $recaptcha_enabled && ! empty( $recaptcha_sitekey ) && ! empty( $recaptcha_secretkey ) ) {
+		wp_enqueue_script( 'edu-recaptcha', 'https://www.google.com/recaptcha/api.js', array( 'eduadmin_frontend_script' ), NULL, false );
+	}
+
 	EDU()->stop_timer( $t );
 }
 
@@ -278,6 +304,8 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Booking view', 'backend', 'eduadmin-booking' ), _x( 'Booking settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-booking', 'edu_render_booking_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Profile view', 'backend', 'eduadmin-booking' ), _x( 'Profile settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-profile', 'edu_render_profile_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Style', 'backend', 'eduadmin-booking' ), _x( 'Style settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-style', 'edu_render_style_settings_page' );
+	//add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Date settings', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-date', 'edu_render_date_settings_page' );
+	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Security settings', 'backend', 'eduadmin-booking' ), _x( 'Security settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-security', 'edu_render_security_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Plugins', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-plugins', 'edu_render_plugin_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Api Authentication', 'backend', 'eduadmin-booking' ), _x( 'Api Authentication', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - News', 'backend', 'eduadmin-booking' ), _x( 'News', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-news', 'edu_render_news_page' );

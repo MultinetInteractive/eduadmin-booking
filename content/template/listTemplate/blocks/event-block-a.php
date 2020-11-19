@@ -1,7 +1,10 @@
 <?php $_t = EDU()->start_timer( 'render-event-block-a' ); ?>
-	<div class="objectItem <?php echo edu_get_percent_from_values( $spots_left, intval( $event['MaxParticipantNumber'] ) ); ?>">
+	<div
+		class="objectItem <?php echo edu_get_percent_from_values( $spots_left, intval( $event['MaxParticipantNumber'] ) ); ?>">
 		<?php if ( $show_images && ! empty( $object["ImageUrl"] ) ) { ?>
-			<div class="objectImage" onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>';" style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
+			<div class="objectImage"
+			     onclick="location.href = '<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>';"
+			     style="background-image: url('<?php echo esc_url( $object['ImageUrl'] ); ?>');"></div>
 		<?php } ?>
 		<div class="objectInfoHolder">
 			<div class="objectName">
@@ -49,7 +52,8 @@
 			if ( $show_book_btn ) {
 				if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
 					?>
-					<a class="bookButton cta-btn" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+					<a class="bookButton cta-btn"
+					   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
 					<?php
 				} else {
 					?>
@@ -59,7 +63,8 @@
 			}
 			?>
 			<?php if ( $show_read_more_btn ) : ?>
-				<a class="readMoreButton" href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php _ex( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
+				<a class="readMoreButton"
+				   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ); ?>"><?php _ex( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
 				<br />
 			<?php endif; ?>
 		</div>

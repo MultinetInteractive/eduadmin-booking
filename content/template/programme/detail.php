@@ -1,4 +1,5 @@
-<div class="eduadmin" data-courseid="<?php echo esc_attr( $programme['ProgrammeId'] ); ?>" data-eventid="<?php echo( isset( $_REQUEST['id'] ) ? esc_attr( sanitize_text_field( $_REQUEST['id'] ) ) : '' ); ?>">
+<div class="eduadmin" data-courseid="<?php echo esc_attr( $programme['ProgrammeId'] ); ?>"
+     data-eventid="<?php echo( isset( $_REQUEST['id'] ) ? esc_attr( sanitize_text_field( $_REQUEST['id'] ) ) : '' ); ?>">
 	<?php if ( ! empty( $programme['ImageUrl'] ) ) : ?>
 		<img src="<?php echo esc_url( $programme['ImageUrl'] ); ?>" class="courseImage" />
 	<?php endif; ?>

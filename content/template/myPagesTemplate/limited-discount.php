@@ -18,11 +18,21 @@ $currency = get_option( 'eduadmin-currency', 'SEK' );
 	?>
 	<table class="myReservationsTable">
 		<tr>
-			<th align="left"><?php echo esc_html_x( 'Card name', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php echo esc_html_x( 'Valid', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php echo esc_html_x( 'Credits', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php echo esc_html_x( 'Discount', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th align="left">
+				<?php echo esc_html_x( 'Card name', 'frontend', 'eduadmin-booking' ); ?>
+			</th>
+			<th align="left">
+				<?php echo esc_html_x( 'Valid', 'frontend', 'eduadmin-booking' ); ?>
+			</th>
+			<th align="right">
+				<?php echo esc_html_x( 'Credits', 'frontend', 'eduadmin-booking' ); ?>
+			</th>
+			<th align="right">
+				<?php echo esc_html_x( 'Discount', 'frontend', 'eduadmin-booking' ); ?>
+			</th>
+			<th align="right">
+				<?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?>
+			</th>
 		</tr>
 		<?php
 		if ( empty( $cards ) ) {

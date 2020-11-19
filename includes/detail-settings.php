@@ -11,13 +11,16 @@ function edu_render_detail_settings_page() {
 			<div class="block">
 				<h3><?php echo esc_html_x( 'Template', 'backend', 'eduadmin-booking' ); ?></h3>
 				<select name="eduadmin-detailTemplate">
-					<option value="template_A"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_A' ); ?>><?php _ex( 'One column layout', 'backend', 'eduadmin-booking' ); ?></option>
-					<option value="template_B"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_B' ); ?>><?php _ex( 'Two column layout', 'backend', 'eduadmin-booking' ); ?></option>
+					<option
+						value="template_A"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_A' ); ?>><?php _ex( 'One column layout', 'backend', 'eduadmin-booking' ); ?></option>
+					<option
+						value="template_B"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_B' ); ?>><?php _ex( 'Two column layout', 'backend', 'eduadmin-booking' ); ?></option>
 				</select>
 				<br />
 				<br />
 				<label>
-					<input type="checkbox" name="eduadmin-showDetailHeaders" value="true"<?php checked( get_option( 'eduadmin-showDetailHeaders', true ), "true" ); ?> />
+					<input type="checkbox" name="eduadmin-showDetailHeaders"
+					       value="true"<?php checked( get_option( 'eduadmin-showDetailHeaders', true ), "true" ); ?> />
 					<?php echo esc_html_x( 'Show headers in detail view', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -25,7 +28,8 @@ function edu_render_detail_settings_page() {
 				<br />
 				<br />
 				<label>
-					<input type="checkbox" name="eduadmin-groupEventsByCity" value="true"<?php checked( get_option( 'eduadmin-groupEventsByCity', false ), "true" ); ?> />
+					<input type="checkbox" name="eduadmin-groupEventsByCity"
+					       value="true"<?php checked( get_option( 'eduadmin-groupEventsByCity', false ), "true" ); ?> />
 					<?php echo esc_html_x( 'Group events by city', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -48,13 +52,16 @@ function edu_render_detail_settings_page() {
 						<option value="CourseName"<?php selected( $selectedDescriptionField, 'CourseName' ); ?>>
 							<?php echo esc_html_x( 'Public name', 'backend', 'eduadmin-booking' ); ?>
 						</option>
-						<option value="InternalCourseName"<?php selected( $selectedDescriptionField, 'InternalCourseName' ); ?>>
+						<option
+							value="InternalCourseName"<?php selected( $selectedDescriptionField, 'InternalCourseName' ); ?>>
 							<?php echo esc_html_x( 'Object name', 'backend', 'eduadmin-booking' ); ?>
 						</option>
-						<option value="CourseDescriptionShort"<?php selected( $selectedDescriptionField, 'CourseDescriptionShort' ); ?>>
+						<option
+							value="CourseDescriptionShort"<?php selected( $selectedDescriptionField, 'CourseDescriptionShort' ); ?>>
 							<?php echo esc_html_x( 'Short course description', 'backend', 'eduadmin-booking' ); ?>
 						</option>
-						<option value="CourseDescription"<?php selected( $selectedDescriptionField, 'CourseDescription' ); ?>>
+						<option
+							value="CourseDescription"<?php selected( $selectedDescriptionField, 'CourseDescription' ); ?>>
 							<?php echo esc_html_x( 'Course description', 'backend', 'eduadmin-booking' ); ?>
 						</option>
 						<option value="CourseGoal"<?php selected( $selectedDescriptionField, "CourseGoal" ); ?>>
@@ -63,7 +70,8 @@ function edu_render_detail_settings_page() {
 						<option value="CourseTarget"<?php selected( $selectedDescriptionField, "CourseTarget" ); ?>>
 							<?php echo esc_html_x( 'Target group', 'backend', 'eduadmin-booking' ); ?>
 						</option>
-						<option value="CoursePrerequisites"<?php selected( $selectedDescriptionField, "CoursePrerequisites" ); ?>>
+						<option
+							value="CoursePrerequisites"<?php selected( $selectedDescriptionField, "CoursePrerequisites" ); ?>>
 							<?php echo esc_html_x( 'Prerequisites', 'backend', 'eduadmin-booking' ); ?>
 						</option>
 						<option value="CourseAfter"<?php selected( $selectedDescriptionField, "CourseAfter" ); ?>>
@@ -76,14 +84,16 @@ function edu_render_detail_settings_page() {
 					<?php if ( ! empty( $attributes["value"] ) ) { ?>
 						<optgroup label="<?php _ex( 'Course attributes', 'backend', 'eduadmin-booking' ); ?>">
 							<?php foreach ( $attributes['value'] as $attr ) { ?>
-								<option value="attr_<?php echo esc_attr( $attr['CustomFieldId'] ); ?>"<?php selected( $selectedDescriptionField, 'attr_' . $attr['CustomFieldId'] ); ?>><?php echo esc_html( $attr['CustomFieldName'] ); ?></option>
+								<option
+									value="attr_<?php echo esc_attr( $attr['CustomFieldId'] ); ?>"<?php selected( $selectedDescriptionField, 'attr_' . $attr['CustomFieldId'] ); ?>><?php echo esc_html( $attr['CustomFieldName'] ); ?></option>
 							<?php } ?>
 						</optgroup>
 					<?php } ?>
 				</select>
 
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary"
+					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>

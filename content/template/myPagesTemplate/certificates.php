@@ -56,7 +56,8 @@ function edu_write_certificate_date( $start_date, $end_date ) {
 				if ( $show_company_certificates ) {
 					?>
 					<tr>
-						<th align="left" colspan="3"><?php echo esc_html( $certificateHolder['FirstName'] . ' ' . $certificateHolder['LastName'] ); ?></th>
+						<th align="left"
+						    colspan="3"><?php echo esc_html( $certificateHolder['FirstName'] . ' ' . $certificateHolder['LastName'] ); ?></th>
 					</tr>
 					<?php
 				}

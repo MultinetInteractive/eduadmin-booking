@@ -46,7 +46,10 @@ if ( ! function_exists( 'eduadmin_render_payment_methods' ) ) {
 						foreach ( $valid_paymentmethods as $pm ) {
 							?>
 							<li>
-								<input type="radio" id="payment-method-<?php echo esc_attr( $pm['PaymentMethodId'] ); ?>" name="edu-paymentmethodid" onchange="eduBookingView.UpdatePrice();" value="<?php echo esc_attr( $pm['PaymentMethodId'] ); ?>"
+								<input type="radio"
+								       id="payment-method-<?php echo esc_attr( $pm['PaymentMethodId'] ); ?>"
+								       name="edu-paymentmethodid" onchange="eduBookingView.UpdatePrice();"
+								       value="<?php echo esc_attr( $pm['PaymentMethodId'] ); ?>"
 									<?php echo $pm['PaymentMethodId'] == "1" ? ' checked="checked"' : ""; ?>
 								/>
 								<label for="payment-method-<?php echo esc_attr( $pm['PaymentMethodId'] ); ?>">
@@ -61,7 +64,8 @@ if ( ! function_exists( 'eduadmin_render_payment_methods' ) ) {
 				<?php
 			} elseif ( count( $valid_paymentmethods ) == 1 ) {
 				?>
-				<input type="hidden" name="edu-paymentmethodid" value="<?php echo esc_attr( $valid_paymentmethods[0]['PaymentMethodId'] ); ?>" />
+				<input type="hidden" name="edu-paymentmethodid"
+				       value="<?php echo esc_attr( $valid_paymentmethods[0]['PaymentMethodId'] ); ?>" />
 				<?php
 			} elseif ( count( $valid_paymentmethods ) == 0 ) {
 				if ( count( $payment_plugins ) > 0 && $always_use_payment_plugin ) {
@@ -82,7 +86,8 @@ if ( ! function_exists( 'eduadmin_render_payment_methods' ) ) {
 				return;
 			}
 			?>
-			<input type="hidden" name="edu-paymentmethodid" value="<?php echo esc_attr( $data['PaymentMethods'][0]['PaymentMethodId'] ); ?>" />
+			<input type="hidden" name="edu-paymentmethodid"
+			       value="<?php echo esc_attr( $data['PaymentMethods'][0]['PaymentMethodId'] ); ?>" />
 			<?php
 		}
 	}

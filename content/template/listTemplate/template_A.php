@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 global $wp_query;
 $api_key = get_option( 'eduadmin-api-key' );

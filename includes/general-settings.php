@@ -33,10 +33,14 @@ function edu_render_general_settings() {
 				$spotLeft = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 				?>
 				<select class="eduadmin-spotsLeft" name="eduadmin-spotsLeft" onchange="EduAdmin.SpotExampleText();">
-					<option <?php selected( $spotLeft, "exactNumbers" ); ?> value="exactNumbers"><?php _ex( 'Exact numbers', 'backend', 'eduadmin-booking' ); ?></option>
-					<option <?php selected( $spotLeft, "onlyText" ); ?> value="onlyText"><?php _ex( 'Only text (Spots left/ Few spots / No spots left)', 'backend', 'eduadmin-booking' ); ?></option>
-					<option <?php selected( $spotLeft, "intervals" ); ?> value="intervals"><?php _ex( 'Interval (Please specify below)', 'backend', 'eduadmin-booking' ); ?></option>
-					<option <?php selected( $spotLeft, "alwaysFewSpots" ); ?> value="alwaysFewSpots"><?php _ex( 'Always few spots', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "exactNumbers" ); ?>
+						value="exactNumbers"><?php _ex( 'Exact numbers', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "onlyText" ); ?>
+						value="onlyText"><?php _ex( 'Only text (Spots left/ Few spots / No spots left)', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "intervals" ); ?>
+						value="intervals"><?php _ex( 'Interval (Please specify below)', 'backend', 'eduadmin-booking' ); ?></option>
+					<option <?php selected( $spotLeft, "alwaysFewSpots" ); ?>
+						value="alwaysFewSpots"><?php _ex( 'Always few spots', 'backend', 'eduadmin-booking' ); ?></option>
 				</select> <span id="eduadmin-spotExampleText"></span>
 				<br />
 				<div class="eduadmin-spotsSettings">
@@ -46,25 +50,29 @@ function edu_render_general_settings() {
 						<br />
 						<?php echo esc_html_x( 'Insert one interval range per row (1-3, 4-10, 10+)', 'backend', 'eduadmin-booking' ); ?>
 						<br />
-						<textarea name="eduadmin-spotsSettings" class="form-control" rows="5" cols="30"><?php echo get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
+						<textarea name="eduadmin-spotsSettings" class="form-control" rows="5"
+						          cols="30"><?php echo get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
 					</div>
 					<div id="eduadmin-alwaysFewSpots">
 						<br />
 						<b><?php echo esc_html_x( 'Number of participants before showing as \"Few spots left\"', 'backend', 'eduadmin-booking' ); ?></b>
 						<br />
-						<input type="number" name="eduadmin-alwaysFewSpots" value="<?php echo esc_attr( get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
+						<input type="number" name="eduadmin-alwaysFewSpots"
+						       value="<?php echo esc_attr( get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
 					</div>
 				</div>
 				<br />
 				<?php echo esc_html_x( 'Number of months to fetch events for', 'backend', 'eduadmin-booking' ); ?>
 				<br />
-				<input type="number" name="eduadmin-monthsToFetch" value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
+				<input type="number" name="eduadmin-monthsToFetch"
+				       value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<br />
 				<?php echo esc_html_x( 'VAT text options', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<label>
-					<input type="checkbox" name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
+					<input type="checkbox"
+					       name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
 					<?php echo esc_html_x( 'Show VAT texts on prices', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -90,13 +98,17 @@ function edu_render_general_settings() {
 				</select>
 				<br />
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary"
+					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 				<h3><?php echo esc_html_x( 'Rewrite settings', 'backend', 'eduadmin-booking' ); ?></h3>
 				<p>
 					<?php echo esc_html_x( 'Enter the URL you want to use with the application (please check that the URL does not exists)', 'backend', 'eduadmin-booking' ); ?>
 				</p>
-				<?php echo home_url(); ?>/<input style="width: 200px;" type="text" class="form-control folder" name="eduadmin-rewriteBaseUrl" id="eduadmin-rewriteBaseUrl" value="<?php echo esc_attr( get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>" placeholder="<?php echo _x( 'URL', 'backend', 'eduadmin-booking' ); ?>" />/
+				<?php echo home_url(); ?>/<input style="width: 200px;" type="text" class="form-control folder"
+				                                 name="eduadmin-rewriteBaseUrl" id="eduadmin-rewriteBaseUrl"
+				                                 value="<?php echo esc_attr( get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>"
+				                                 placeholder="<?php echo _x( 'URL', 'backend', 'eduadmin-booking' ); ?>" />/
 				<?php
 				$pages    = get_pages();
 				$eduPages = array();
@@ -115,8 +127,10 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo esc_html_x( 'List view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-listViewPage" id="eduadmin-listViewPage">
-								<option value="">-- <?php echo esc_html_x( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
+							<select class="form-control" style="width: 300px;" name="eduadmin-listViewPage"
+							        id="eduadmin-listViewPage">
+								<option
+									value="">-- <?php echo esc_html_x( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
 								$listPage = get_option( 'eduadmin-listViewPage' );
@@ -140,7 +154,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo _x( 'Details view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-detailViewPage" id="eduadmin-detailViewPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-detailViewPage"
+							        id="eduadmin-detailViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -165,7 +180,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo _x( 'Booking view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-bookingViewPage" id="eduadmin-bookingViewPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-bookingViewPage"
+							        id="eduadmin-bookingViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -190,7 +206,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php _ex( 'Thank you page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-thankYouPage" id="eduadmin-thankYouPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-thankYouPage"
+							        id="eduadmin-thankYouPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -208,7 +225,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo _x( 'Login page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-loginViewPage" id="eduadmin-loginViewPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-loginViewPage"
+							        id="eduadmin-loginViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -233,7 +251,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo _x( 'Course interest page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-interestObjectPage" id="eduadmin-interestObjectPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-interestObjectPage"
+							        id="eduadmin-interestObjectPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -258,7 +277,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php echo _x( 'Event interest page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-interestEventPage" id="eduadmin-interestEventPage">
+							<select class="form-control" style="width: 300px;" name="eduadmin-interestEventPage"
+							        id="eduadmin-interestEventPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -299,7 +319,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php _ex( 'List view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-programme-list" id="eduadmin-programme-list">
+							<select class="form-control" style="width: 300px;" name="eduadmin-programme-list"
+							        id="eduadmin-programme-list">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -324,7 +345,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php _ex( 'Detail view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-programme-detail" id="eduadmin-programme-detail">
+							<select class="form-control" style="width: 300px;" name="eduadmin-programme-detail"
+							        id="eduadmin-programme-detail">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -349,7 +371,8 @@ function edu_render_general_settings() {
 					<tr>
 						<td><?php _ex( 'Booking view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
-							<select class="form-control" style="width: 300px;" name="eduadmin-programme-book" id="eduadmin-programme-book">
+							<select class="form-control" style="width: 300px;" name="eduadmin-programme-book"
+							        id="eduadmin-programme-book">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -375,13 +398,15 @@ function edu_render_general_settings() {
 
 				<input type="hidden" name="eduadmin-options_have_changed" value="true" />
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary"
+					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>
 		<form action="" method="POST">
 			<input type="hidden" name="act" value="clearTransients" />
-			<input type="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Clear transients/cache', 'backend', 'eduadmin-booking' ); ?>" />
+			<input type="submit" class="button button-primary"
+			       value="<?php echo esc_attr_x( 'Clear transients/cache', 'backend', 'eduadmin-booking' ); ?>" />
 		</form>
 	</div>
 	<script type="text/javascript">

@@ -184,6 +184,20 @@ var eduBookingView = {
         });
     },
     CheckValidation: function (ignoreTerms) {
+        if (window.grecaptcha && window.grecaptcha.getResponse) {
+            var captchaResponse = window.grecaptcha.getResponse();
+            if (captchaResponse == '') {
+                var noCaptcha = document.getElementById("edu-warning-recaptcha");
+                if (noCaptcha) {
+                    noCaptcha.style.display = "block";
+                    setTimeout(function () {
+                        var noCaptcha = document.getElementById("edu-warning-recaptcha");
+                        noCaptcha.style.display = "";
+                    }, 5000);
+                }
+                return false;
+            }
+        }
         var terms = document.getElementById("confirmTerms");
         if (terms) {
             if (!ignoreTerms && !terms.checked) {

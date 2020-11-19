@@ -21,10 +21,15 @@ function edu_render_settings_page() {
 				<p>
 					<?php echo wp_kses( sprintf( _x( 'You can get these details by contacting %s', 'backend', 'eduadmin-booking' ), sprintf( '<a href="http://support.multinet.se" target="_blank">%s</a>', _x( 'our support', 'backend', 'eduadmin-booking' ) ) ), wp_kses_allowed_html( 'post' ) ); ?>
 				</p>
-				<input type="text" readonly class="form-control api_hash" name="eduadmin-api-key" id="eduadmin-api-key" value="<?php echo esc_attr( get_option( 'eduadmin-api-key' ) ); ?>" placeholder="<?php echo esc_attr_x( 'Api key for WordPress plugin', 'backend', 'eduadmin-booking' ); ?>" />
-				<span id="edu-unlockButton" title="<?php echo esc_attr_x( 'Click here to unlock the Api Authentication-fields', 'backend', 'eduadmin-booking' ); ?>" class="dashicons dashicons-lock" onclick="EduAdmin.UnlockApiAuthentication();"></span>
+				<input type="text" readonly class="form-control api_hash" name="eduadmin-api-key" id="eduadmin-api-key"
+				       value="<?php echo esc_attr( get_option( 'eduadmin-api-key' ) ); ?>"
+				       placeholder="<?php echo esc_attr_x( 'Api key for WordPress plugin', 'backend', 'eduadmin-booking' ); ?>" />
+				<span id="edu-unlockButton"
+				      title="<?php echo esc_attr_x( 'Click here to unlock the Api Authentication-fields', 'backend', 'eduadmin-booking' ); ?>"
+				      class="dashicons dashicons-lock" onclick="EduAdmin.UnlockApiAuthentication();"></span>
 				<p class="submit">
-					<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+					<input type="submit" name="submit" id="submit" class="button button-primary"
+					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>

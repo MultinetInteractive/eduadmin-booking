@@ -6,7 +6,8 @@ function edu_render_plugin_page() {
 		<h2><?php echo esc_html( sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ) ) ); ?></h2>
 
 		<form method="post">
-			<input type="hidden" name="plugin-settings-nonce" value="<?php echo esc_attr( wp_create_nonce( 'eduadmin-plugin-settings' ) ); ?>" />
+			<input type="hidden" name="plugin-settings-nonce"
+			       value="<?php echo esc_attr( wp_create_nonce( 'eduadmin-plugin-settings' ) ); ?>" />
 			<?php settings_fields( 'eduadmin-plugin-settings' ); ?>
 			<?php do_settings_sections( 'eduadmin-plugin-settings' ); ?>
 			<div class="block">
@@ -22,7 +23,8 @@ function edu_render_plugin_page() {
 				?>
 			</div>
 			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button button-primary" value="<?php echo esc_attr_x( 'Save changes', 'backend', 'eduadmin-booking' ); ?>" />
+				<input type="submit" name="submit" id="submit" class="button button-primary"
+				       value="<?php echo esc_attr_x( 'Save changes', 'backend', 'eduadmin-booking' ); ?>" />
 			</p>
 		</form>
 	</div>
