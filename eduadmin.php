@@ -423,6 +423,12 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			EDU()->get_news();
 		}
 
+		public function call_home_now() {
+			if ( ! empty( $_GET['edu-callhome'] ) && '1' === $_GET['edu-callhome'] ) {
+				$this->call_home();
+			}
+		}
+
 		private function init_hooks() {
 			$t = $this->start_timer( __METHOD__ );
 			register_activation_hook( __FILE__, array( $this, 'activate' ) );
@@ -436,6 +442,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			add_action( 'wp_footer', 'edu_get_timers' );
 			add_action( 'wp_footer', array( $this, 'get_transient_list' ) );
 			add_action( 'wp_footer', array( $this, 'get_scheduled_tasks' ) );
+			add_action( 'wp_footer', array( $this, 'call_home_now' ) );
 
 			add_filter( 'cron_schedules', array( $this, 'add_cron_schedule' ) );
 
