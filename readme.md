@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.27.0
+Stable tag: 2.28.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.28.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.27.0...v2.28.0) (2020-11-23)
+
+
+#### Features
+
+* Added method for MultiNet to fetch diagnostics info ([94e20f1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/94e20f12f1097e5acc15cef61df25f922bff568b))
+
 ### [2.27.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.2...v2.27.0) (2020-11-19)
 
 
@@ -67,18 +74,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Additional fix for old version of PHP cookies. ([118870e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/118870e4d3d06a617366fde19eaa48b83ec1d698))
 * Sorting programme events by ProgrammeCourseSortIndex ([b2f7bd4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b2f7bd465f84a857813331d4705ef5e7bea4cdde))
-
-### [2.26.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.25.0...v2.26.0) (2020-09-17)
-
-
-#### Features
-
-* Added support to make the search form react on query parameters as well, and not only posted variables. ([45b3fb2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45b3fb25d8f2003b942e43e0e8c0b26c956ec337))
-
-
-#### Bug Fixes
-
-* Removed unused $_COOKIE, since everything works through EDU()->session now ([4a31776](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4a31776992adb8b9e36875ca138b15f7dc664d13))
-* Rewrote session/cookie lib to work with samesite and other things.. ([47c5fda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/47c5fda02b9cf20698816a9059e4e884cb25232e))
 
 
