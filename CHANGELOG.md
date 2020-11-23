@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.28.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.27.0...v2.28.0) (2020-11-23)
+
+
+### Features
+
+* Added method for MultiNet to fetch diagnostics info ([94e20f1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/94e20f12f1097e5acc15cef61df25f922bff568b))
+
 ## [2.27.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.2...v2.27.0) (2020-11-19)
 
 
