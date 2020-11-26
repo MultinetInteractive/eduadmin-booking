@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.28.0
+Stable tag: 2.28.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.28.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.0...v2.28.1) (2020-11-26)
+
+
+#### Bug Fixes
+
+* Removing double output of start/end time if there's an event with a single day ([d91d2e8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d91d2e84783525193c24043c15f791327894c52c))
+
 ### [2.28.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.27.0...v2.28.0) (2020-11-23)
 
 
@@ -66,13 +73,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Fixing date output in detail template ([25f64ab](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/25f64abdeddce2e8490ec8774c6f19f281112950))
 * Hiding warnings from inability of setting headers ([6557b10](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6557b10f7079cb4ae1ef6a78ed09381f06d1d2a4))
-
-### [2.26.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.0...v2.26.1) (2020-09-17)
-
-
-#### Bug Fixes
-
-* Additional fix for old version of PHP cookies. ([118870e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/118870e4d3d06a617366fde19eaa48b83ec1d698))
-* Sorting programme events by ProgrammeCourseSortIndex ([b2f7bd4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b2f7bd465f84a857813331d4705ef5e7bea4cdde))
 
 
