@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.28.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.0...v2.28.1) (2020-11-26)
+
+
+### Bug Fixes
+
+* Removing double output of start/end time if there's an event with a single day ([d91d2e8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d91d2e84783525193c24043c15f791327894c52c))
+
 ## [2.28.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.27.0...v2.28.0) (2020-11-23)
 
 
