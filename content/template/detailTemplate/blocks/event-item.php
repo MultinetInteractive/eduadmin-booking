@@ -25,7 +25,7 @@ if ( ! empty( $ev['EventDates'] ) ) {
 		echo isset( $event_dates[ $ev['EventId'] ] ) ?
 			get_logical_date_groups( $event_dates[ $ev['EventId'] ], false, null, true ) :
 			wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'] ) );
-		echo ! isset( $event_dates[ $ev['EventId'] ] ) || 1 === count( $event_dates[ $ev['EventId'] ] ) ?
+		echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
 			'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
 			'';
 		?>
