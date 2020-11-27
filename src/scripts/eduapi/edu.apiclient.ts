@@ -7,9 +7,10 @@ declare var wp_edu: {
 	Currency: string;
 	ShouldValidateCivRegNo: string;
 	SingleParticipant: string;
+	RecaptchaEnabled: string;
 };
 
-wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false" };
+wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false", RecaptchaEnabled: "false" };
 /** global: edu */
 
 interface eduObject {

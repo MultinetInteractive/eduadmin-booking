@@ -210,6 +210,9 @@ function eduadmin_frontend_content() {
 
 	$script_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/scripts/eduapi/edu.apiclient.js' );
 	wp_register_script( 'eduadmin_apiclient_script', plugins_url( 'content/scripts/eduapi/edu.apiclient.js', dirname( __FILE__ ) ), false, date_version( $script_version ) );
+
+	$recaptcha_enabled = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
+
 	wp_localize_script(
 		'eduadmin_apiclient_script',
 		'wp_edu',
@@ -223,6 +226,7 @@ function eduadmin_frontend_content() {
 			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
 			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
 			'ShowPricesAsSelected'   => get_option( 'eduadmin-showPricesAsSelected', null ),
+			'RecaptchaEnabled'       => EDU()->is_checked( 'eduadmin-recaptcha-enabled', false ) ? 'true' : 'false',
 		)
 	);
 
@@ -271,12 +275,11 @@ function eduadmin_frontend_content() {
 	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), null, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
 
-	$recaptcha_enabled   = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
 	$recaptcha_sitekey   = get_option( 'eduadmin-recaptcha-sitekey', '' );
 	$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
 
 	if ( $recaptcha_enabled && ! empty( $recaptcha_sitekey ) && ! empty( $recaptcha_secretkey ) ) {
-		wp_enqueue_script( 'edu-recaptcha', 'https://www.google.com/recaptcha/api.js', array( 'eduadmin_frontend_script' ), NULL, false );
+		wp_enqueue_script( 'edu-recaptcha', 'https://www.google.com/recaptcha/api.js', array( 'eduadmin_frontend_script' ), null, false );
 	}
 
 	EDU()->stop_timer( $t );

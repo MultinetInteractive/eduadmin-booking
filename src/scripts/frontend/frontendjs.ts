@@ -305,7 +305,7 @@ var eduBookingView: EduBookingView = {
         );
     },
     CheckValidation: function (ignoreTerms: boolean) {
-        if((window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
+        if(wp_edu.RecaptchaEnabled === 'true' && (window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
             let captchaResponse = (window as any).grecaptcha.getResponse();
             if(captchaResponse == '') {
                 let noCaptcha = document.getElementById(
