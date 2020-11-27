@@ -184,7 +184,7 @@ var eduBookingView = {
         });
     },
     CheckValidation: function (ignoreTerms) {
-        if (window.grecaptcha && window.grecaptcha.getResponse) {
+        if (wp_edu.RecaptchaEnabled === 'true' && window.grecaptcha && window.grecaptcha.getResponse) {
             var captchaResponse = window.grecaptcha.getResponse();
             if (captchaResponse == '') {
                 var noCaptcha = document.getElementById("edu-warning-recaptcha");
