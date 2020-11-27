@@ -159,7 +159,7 @@ function edu_render_info_text( $question ) {
 }
 
 function edu_render_radio_question( $question, $multiple, $suffix ) {
-	echo '<div class="edu-question-note questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<div class="edu-question-note questionanswer_id_q' . esc_attr( $question['QuestionId'] ) . '">';
 	echo '<div class="inputLabel radioQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
 	foreach ( $question['Alternatives'] as $q ) {
 		echo '<label class="questionRadioVertical">';
@@ -167,7 +167,7 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 		echo '<input type="radio" class="questionRadio" data-type="radio"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' data-price="' . esc_attr( $q['Price'] ) . '"';
 		if ( $multiple ) {
 			echo ' data-replace="name|index"';
-			echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
+			echo ' data-name-template="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 		}
 		echo ' name="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
