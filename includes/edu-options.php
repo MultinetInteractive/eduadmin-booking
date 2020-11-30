@@ -313,6 +313,7 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Api Authentication', 'backend', 'eduadmin-booking' ), _x( 'Api Authentication', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - News', 'backend', 'eduadmin-booking' ), _x( 'News', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-news', 'edu_render_news_page' );
 	EDU()->stop_timer( $t );
+
 }
 
 function eduadmin_shortcode_metabox() {
