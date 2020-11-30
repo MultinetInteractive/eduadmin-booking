@@ -1,4 +1,9 @@
 .eduadmin.booking-page form {
+
+  .not-a-good-idea {
+    display: none;
+  }
+
   .title {
     display: flex;
     flex-direction: row;
@@ -253,10 +258,6 @@
       .sumTotal {
         margin: 0;
       }
-    }
-
-    .not-a-good-idea {
-      display: none;
     }
 
     .paymentMethodsView {

@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 4.9
 Tested up to: 5.5
-Stable tag: 2.28.2
+Stable tag: 2.28.3
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.28.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.2...v2.28.3) (2020-11-30)
+
+
+#### Bug Fixes
+
+* Hide the captcha-fields on all devices. ([1def084](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1def0842f4bd0d77c6b61d420f5ba243eef73315))
+
 ### [2.28.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.1...v2.28.2) (2020-11-27)
 
 
@@ -65,13 +72,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Features
 
 * Added method for MultiNet to fetch diagnostics info ([94e20f1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/94e20f12f1097e5acc15cef61df25f922bff568b))
-
-### [2.27.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.26.2...v2.27.0) (2020-11-19)
-
-
-#### Features
-
-* Added basic support for reCAPTCHA v2 Checkbox. (Only booking form, not interest registration) ref [#157](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/157) ([b357789](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b3577894ba092b5cfad23883ddca58f6b50bfefc))
-* Added more honeypots to booking form ([6efadc1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6efadc1c569ff4c01041392a02556ac9fb8f7d62)), closes [#157](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/157)
 
 
