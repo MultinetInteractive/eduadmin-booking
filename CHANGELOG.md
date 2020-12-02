@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.28.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.3...v2.28.4) (2020-12-02)
+
+
+### Bug Fixes
+
+* Added permission_callback to register_rest_route (Thanks wordpress, I hate you) ([50859d2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/50859d21c7a55b2e49683fbe065328d031eb626d))
+
 ### [2.28.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.2...v2.28.3) (2020-11-30)
 
 
