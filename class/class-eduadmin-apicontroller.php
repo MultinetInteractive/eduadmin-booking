@@ -10,9 +10,9 @@ class EduAdmin_APIController {
 
 	public function register_routes() {
 		register_rest_route( $this->namespace, '/courselist', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_listview_courselist',
-			'args'     => array(
+			'methods'             => 'POST',
+			'callback'            => 'edu_listview_courselist',
+			'args'                => array(
 				'city'         => array(),
 				'category'     => array(),
 				'categorydeep' => array(),
@@ -27,12 +27,13 @@ class EduAdmin_APIController {
 				'order'        => array(),
 				'edu-region'   => array(),
 			),
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( $this->namespace, '/courselist/events', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_api_listview_eventlist',
-			'args'     => array(
+			'methods'             => 'POST',
+			'callback'            => 'edu_api_listview_eventlist',
+			'args'                => array(
 				'fetchmonths'    => array(),
 				'city'           => array(),
 				'category'       => array(),
@@ -49,12 +50,13 @@ class EduAdmin_APIController {
 				'order'          => array(),
 				'edu-region'     => array(),
 			),
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( $this->namespace, '/eventlist', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_api_eventlist',
-			'args'     => array(
+			'methods'             => 'POST',
+			'callback'            => 'edu_api_eventlist',
+			'args'                => array(
 				'objectid'       => array( 'required' => true ),
 				'city'           => array(),
 				'groupbycity'    => array(),
@@ -71,34 +73,38 @@ class EduAdmin_APIController {
 				'eventinquiry'   => array(),
 				'edu-region'     => array(),
 			),
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( $this->namespace, '/loginwidget', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_api_loginwidget',
-			'args'     => array(
+			'methods'             => 'POST',
+			'callback'            => 'edu_api_loginwidget',
+			'args'                => array(
 				'logintext'  => array(),
 				'logouttext' => array(),
 				'guesttext'  => array(),
 			),
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( $this->namespace, '/coupon/check', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_api_check_coupon_code',
-			'args'     => array(
+			'methods'             => 'POST',
+			'callback'            => 'edu_api_check_coupon_code',
+			'args'                => array(
 				'code'    => array( 'required' => true ),
 				'eventId' => array( 'required' => true ),
 			),
+			'permission_callback' => '__return_true',
 		) );
 
 		register_rest_route( $this->namespace, '/coupon/programme/check', array(
-			'methods'  => 'POST',
-			'callback' => 'edu_api_check_programme_coupon_code',
-			'args'     => array(
-				'code'    => array( 'required' => true ),
+			'methods'             => 'POST',
+			'callback'            => 'edu_api_check_programme_coupon_code',
+			'args'                => array(
+				'code'             => array( 'required' => true ),
 				'programmeStartId' => array( 'required' => true ),
 			),
+			'permission_callback' => '__return_true',
 		) );
 	}
 }
