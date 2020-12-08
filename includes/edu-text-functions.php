@@ -844,6 +844,7 @@ function get_display_date( $in_date, $short = true ) {
 
 function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false ) {
 	if ( count( $dates ) > 3 ) {
+		// TODO: Setting to override short names and show days
 		$short     = true;
 		$show_days = true;
 	}
@@ -886,6 +887,7 @@ function edu_get_date_range( $days, $short, $event, $show_days ) {
 
 	ksort( $ordered_dategroups );
 
+	// TODO: Date setting: Always show schedule
 	if ( count( $ordered_dategroups ) > 3 ) {
 		$n_res = array();
 		$ret   =

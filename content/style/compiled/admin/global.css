@@ -1,3 +1,20 @@
+.eduadmin .block-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.eduadmin .date-customformat {
+  margin-left: 23px;
+  margin-top: 5px;
+  width: 250px;
+}
+
+.eduadmin .edu-date-customsettings {
+  margin-left: 23px;
+}
+
 .eduadmin .block {
   display: inline-block;
   padding: 20px;
