@@ -10,6 +10,28 @@ function edu_render_date_settings_page() {
 
 		return;
 	} else {
+		if ( isset( $_REQUEST['act'] ) && $_REQUEST['act'] == "edu-reset-date-settings" ) {
+			delete_option( 'eduadmin-date-eventDates-detail' );
+			delete_option( 'eduadmin-date-eventDates-detail-short' );
+			delete_option( 'eduadmin-date-eventDates-detail-show-daynames' );
+			delete_option( 'eduadmin-date-eventDates-detail-show-time' );
+
+			delete_option( 'eduadmin-date-eventDates-list' );
+			delete_option( 'eduadmin-date-eventDates-list-short' );
+			delete_option( 'eduadmin-date-eventDates-list-show-daynames' );
+			delete_option( 'eduadmin-date-eventDates-list-show-time' );
+
+			delete_option( 'eduadmin-date-programmeDates' );
+			delete_option( 'eduadmin-date-programmeDates-short' );
+			delete_option( 'eduadmin-date-programmeDates-show-daynames' );
+			delete_option( 'eduadmin-date-programmeDates-show-time' );
+
+			delete_option( 'eduadmin-date-courseDays' );
+			delete_option( 'eduadmin-date-courseDays-alwaysNumbers' );
+
+			wp_cache_flush();
+		}
+
 		$edu_eventDate_detail_setting = get_option( 'eduadmin-date-eventDates-detail', 'default' );
 		$event_detail_date_short      = get_option( 'eduadmin-date-eventDates-detail-short' );
 		$event_detail_show_day_name   = get_option( 'eduadmin-date-eventDates-detail-show-daynames', 'show-dayname' );
@@ -25,7 +47,8 @@ function edu_render_date_settings_page() {
 		$programme_show_day_name = get_option( 'eduadmin-date-programmeDates-show-daynames', 'show-dayname' );
 		$programme_show_time     = get_option( 'eduadmin-date-programmeDates-show-time', 'show-time' );
 
-		$eduCourseDaySetting = get_option( 'eduadmin-date-courseDays', 'default' );
+		$eduCourseDaySetting       = get_option( 'eduadmin-date-courseDays', 'default' );
+		$course_day_always_numbers = get_option( 'eduadmin-date-courseDays-alwaysNumbers' );
 		?>
 		<div class="eduadmin wrap">
 			<h2><?php echo sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ) ); ?></h2>
