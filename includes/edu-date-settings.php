@@ -15,11 +15,19 @@ function edu_render_date_settings_page() {
 			delete_option( 'eduadmin-date-eventDates-detail-short' );
 			delete_option( 'eduadmin-date-eventDates-detail-show-daynames' );
 			delete_option( 'eduadmin-date-eventDates-detail-show-time' );
+			delete_option( 'eduadmin-date-eventDates-detail-custom-format' );
 
 			delete_option( 'eduadmin-date-eventDates-list' );
 			delete_option( 'eduadmin-date-eventDates-list-short' );
 			delete_option( 'eduadmin-date-eventDates-list-show-daynames' );
 			delete_option( 'eduadmin-date-eventDates-list-show-time' );
+			delete_option( 'eduadmin-date-eventDates-list-custom-format' );
+
+			delete_option( 'eduadmin-date-courseDate-list' );
+			delete_option( 'eduadmin-date-courseDate-list-short' );
+			delete_option( 'eduadmin-date-courseDate-list-show-daynames' );
+			delete_option( 'eduadmin-date-courseDate-list-show-time' );
+			delete_option( 'eduadmin-date-courseDate-list-custom-format' );
 
 			delete_option( 'eduadmin-date-programmeDates' );
 			delete_option( 'eduadmin-date-programmeDates-short' );
@@ -36,16 +44,25 @@ function edu_render_date_settings_page() {
 		$event_detail_date_short      = get_option( 'eduadmin-date-eventDates-detail-short' );
 		$event_detail_show_day_name   = get_option( 'eduadmin-date-eventDates-detail-show-daynames', 'show-dayname' );
 		$event_detail_show_time       = get_option( 'eduadmin-date-eventDates-detail-show-time', 'show-time' );
+		$event_detail_custom_format   = get_option( 'eduadmin-date-eventDates-detail-custom-format' );
 
 		$edu_eventDate_list_setting = get_option( 'eduadmin-date-eventDates-list', 'default' );
 		$event_list_date_short      = get_option( 'eduadmin-date-eventDates-list-short' );
 		$event_list_show_day_name   = get_option( 'eduadmin-date-eventDates-list-show-daynames', 'show-dayname' );
 		$event_list_show_time       = get_option( 'eduadmin-date-eventDates-list-show-time', 'show-time' );
+		$event_list_custom_format   = get_option( 'eduadmin-date-eventDates-list-custom-format' );
+
+		$edu_courseDate_list_setting = get_option( 'eduadmin-date-courseDate-list', 'default' );
+		$course_list_date_short      = get_option( 'eduadmin-date-courseDate-list-short' );
+		$course_list_show_day_name   = get_option( 'eduadmin-date-courseDate-list-show-daynames', 'show-dayname' );
+		$course_list_show_time       = get_option( 'eduadmin-date-courseDate-list-show-time', 'show-time' );
+		$course_list_custom_format   = get_option( 'eduadmin-date-courseDate-list-custom-format' );
 
 		$eduProgrammeDateSetting = get_option( 'eduadmin-date-programmeDates', 'default' );
 		$programme_date_short    = get_option( 'eduadmin-date-programmeDates-short' );
 		$programme_show_day_name = get_option( 'eduadmin-date-programmeDates-show-daynames', 'show-dayname' );
 		$programme_show_time     = get_option( 'eduadmin-date-programmeDates-show-time', 'show-time' );
+		$programme_custom_format = get_option( 'eduadmin-date-programmeDates-custom' );
 
 		$eduCourseDaySetting       = get_option( 'eduadmin-date-courseDays', 'default' );
 		$course_day_always_numbers = get_option( 'eduadmin-date-courseDays-alwaysNumbers' );
@@ -111,7 +128,7 @@ function edu_render_date_settings_page() {
 							<input type="text" class="date-customformat"
 							       name="eduadmin-date-eventDates-detail-custom-format"
 							       id="eduadmin-date-eventDates-detail-custom-format" placeholder="Custom date format"
-							       value="<?php esc_attr( get_option( 'eduadmin-date-eventDates-detail-custom-format', '' ) ); ?>" />
+							       value="<?php esc_attr( $event_detail_custom_format ); ?>" />
 							<br />
 							<br />
 							<strong><?php echo _x( 'List settings', 'backend', 'eduadmin-booking' ); ?></strong>
@@ -160,7 +177,58 @@ function edu_render_date_settings_page() {
 							<input type="text" class="date-customformat"
 							       name="eduadmin-date-eventDates-list-custom-format"
 							       id="eduadmin-date-eventDates-list-custom-format" placeholder="Custom date format"
-							       value="<?php esc_attr( get_option( 'eduadmin-date-eventDates-list-custom-format', '' ) ); ?>" />
+							       value="<?php esc_attr( $event_list_custom_format ); ?>" />
+							<br />
+							<br />
+							<h3><?php echo _x( 'Date format (Course dates)', 'backend', 'eduadmin-booking' ); ?></h3>
+							<em><?php echo _x( 'These settings will make changes to where dates for courses are shown in lists (not events).', 'backend', 'eduadmin-booking' ); ?></em>
+							<br />
+							<br />
+							<label>
+								<input type="radio"<?php checked( $edu_courseDate_list_setting, 'default' ); ?>
+								       name="eduadmin-date-courseDates-list" value="default" />
+								<?php echo _x( 'Default settings', 'backend', 'eduadmin-booking' ); ?>
+							</label>
+							<br />
+							<label>
+								<input type="radio"<?php checked( $edu_courseDate_list_setting, 'customSettings' ); ?>
+								       name="eduadmin-date-courseDates-list" value="customSettings" />
+								<?php echo _x( 'Custom settings', 'backend', 'eduadmin-booking' ); ?>
+							</label>
+							<br />
+							<div class="edu-date-customsettings">
+								<label>
+									<input type="checkbox" name="eduadmin-date-courseDates-list-short"
+										<?php checked( $course_list_date_short, 'short' ); ?>
+										   value="short" />
+									<?php echo _x( 'Show short names for months and weekdays', 'backend', 'eduadmin-booking' ); ?>
+								</label>
+								<br />
+								<label>
+									<input type="checkbox" name="eduadmin-date-courseDates-list-show-daynames"
+										<?php checked( $course_list_show_day_name, 'show-dayname' ); ?>
+										   value="show-dayname" />
+									<?php echo _x( 'Show name of days', 'backend', 'eduadmin-booking' ); ?>
+								</label>
+								<br />
+								<label>
+									<input type="checkbox" name="eduadmin-date-courseDates-list-show-time"
+										<?php checked( $course_list_show_time, 'show-time' ); ?>
+										   value="show-time" />
+									<?php echo _x( 'Show event time', 'backend', 'eduadmin-booking' ); ?>
+								</label>
+							</div>
+							<label>
+								<input type="radio"
+									<?php checked( $edu_courseDate_list_setting, 'customFormat' ); ?>
+									   name="eduadmin-date-courseDates-list" value="customFormat" />
+								<?php echo _x( 'Custom date format <em>(will override all formatting options)</em>', 'backend', 'eduadmin-booking' ); ?>
+							</label>
+							<br />
+							<input type="text" class="date-customformat"
+							       name="eduadmin-date-courseDates-list-custom-format"
+							       id="eduadmin-date-courseDates-list-custom-format" placeholder="Custom date format"
+							       value="<?php esc_attr( $course_list_custom_format ); ?>" />
 							<br />
 							<br />
 							<h3><?php echo _x( 'Date format (Programme dates)', 'backend', 'eduadmin-booking' ); ?></h3>

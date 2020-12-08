@@ -186,6 +186,12 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-show-time' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-custom-format' );
 
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-short' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-show-daynames' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-show-time' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-custom-format' );
+
 	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates-short' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates-show-daynames' );
