@@ -12,7 +12,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Version:	2.28.4
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
- * Requires at least: 4.9
+ * Requires at least: 5.0
  * Tested up to: 5.5
  * Author:	Chris Gårdenberg, MultiNet Interactive AB
  * Author URI:	https://www.multinet.com
@@ -144,15 +144,21 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			}
 
 			if ( $as_json ) {
-				echo '<span style="white-space: pre; font-family: Courier New;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
+				echo '<div style="white-space: pre; font-family: Courier New; clear:both; background-color: #c9c9c9; padding: 10px; margin-bottom: 10px;">' . \json_encode( $object, JSON_PRETTY_PRINT ) . '</div>';
 
 				return;
 			}
 
 			ob_start();
-			var_dump( $object );
+			\var_dump( $object );
 
 			echo '<span style="white-space: pre; font-family: Courier New;">' . ob_get_clean() . '</span>';
+		}
+
+		public function get_option( $optionName, $default = false ) {
+			return EDURequestCache::GetItem( 'wp-option-' . $optionName, function() use ( $optionName, $default ) {
+				return get_option( $optionName, $default );
+			} );
 		}
 
 		/*
@@ -163,7 +169,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		 */
 		public function is_checked( $optionName, $default = false ) {
 			$t           = $this->start_timer( __METHOD__ . '::' . $optionName );
-			$optionValue = get_option( $optionName, $default );
+			$optionValue = $this->get_option( $optionName, $default );
 
 			if ( empty( $optionValue ) ) {
 				$this->stop_timer( $t );
@@ -199,10 +205,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->stop_timer( $t );
 
 			return $default;
-		}
-
-		public function is_selected( $optionValue, $currentValue ) {
-			return ! empty( $optionValue ) && $optionValue === $currentValue;
 		}
 
 		/**
@@ -408,10 +410,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
-				'siteName'      => get_option( 'blogname' ),
+				'siteName'      => EDU()->get_option( 'blogname' ),
 				'wpVersion'     => $wp_version,
 				'phpVersion'    => PHP_VERSION,
-				'token'         => get_option( 'eduadmin-api-key' ),
+				'token'         => EDU()->get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
 				'storedHash'    => $integrity->storedIntegrityHash,
 				'currentHash'   => $integrity->currentIntegrityHash,
@@ -461,7 +463,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function get_integrity_check_footer() {
 			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
-			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
+			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Potentially modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
 		}
 
 		public function get_scheduled_tasks() {
@@ -720,13 +722,13 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		private function get_new_api_token() {
-			$new_key = get_option( 'eduadmin-newapi-key', null );
+			$new_key = EDU()->get_option( 'eduadmin-newapi-key', null );
 
 			if ( null !== $new_key && ! empty( $new_key ) ) {
 				$key = edu_decrypt_api_key( $new_key );
 				EDUAPI()->SetCredentials( $key->UserId, $key->Hash );
 			} else {
-				$old_key = get_option( 'eduadmin-api-key', null );
+				$old_key = EDU()->get_option( 'eduadmin-api-key', null );
 				if ( null !== $old_key && ! empty( $old_key ) ) {
 					$key = edu_decrypt_api_key( $old_key );
 					EDUAPI()->SetCredentials( $key->UserId, $key->Hash );
