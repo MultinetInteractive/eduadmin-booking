@@ -33,7 +33,7 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 		$course_id = $wp->query_vars['courseId'];
 
 		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
-		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months  = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -186,18 +186,9 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-show-time' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-custom-format' );
 
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-short' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-show-daynames' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-show-time' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDate-list-custom-format' );
-
-	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates-short' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates-show-daynames' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-programmeDates-show-time' );
-
-	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-alwaysNumbers' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-neverGroup' );
 
 	/* Security settings */
 
@@ -239,13 +230,13 @@ function eduadmin_frontend_content() {
 		array(
 			'BaseUrl'                => home_url(),
 			'BaseUrlScripts'         => plugins_url( 'content/script', dirname( __FILE__ ) ),
-			'CourseFolder'           => esc_js( get_option( 'eduadmin-rewriteBaseUrl' ) ),
+			'CourseFolder'           => esc_js( EDU()->get_option( 'eduadmin-rewriteBaseUrl' ) ),
 			'AjaxUrl'                => rest_url( 'edu/v1' ),
-			'Currency'               => get_option( 'eduadmin-currency', 'SEK' ),
+			'Currency'               => EDU()->get_option( 'eduadmin-currency', 'SEK' ),
 			'ShouldValidateCivRegNo' => EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false',
 			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
 			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
-			'ShowPricesAsSelected'   => get_option( 'eduadmin-showPricesAsSelected', null ),
+			'ShowPricesAsSelected'   => EDU()->get_option( 'eduadmin-showPricesAsSelected', null ),
 			'RecaptchaEnabled'       => EDU()->is_checked( 'eduadmin-recaptcha-enabled', false ) ? 'true' : 'false',
 		)
 	);

@@ -31,8 +31,8 @@ $customer = $user->Customer;
 
 	krsort( $bookings );
 
-	$currency               = get_option( 'eduadmin-currency', 'SEK' );
-	$selected_price_setting = get_option( 'eduadmin-profile-priceType', 'IncVat' );
+	$currency               = EDU()->get_option( 'eduadmin-currency', 'SEK' );
+	$selected_price_setting = EDU()->get_option( 'eduadmin-profile-priceType', 'IncVat' );
 	?>
 	<table class="myReservationsTable">
 		<tr>

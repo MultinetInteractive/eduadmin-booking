@@ -51,7 +51,7 @@
 			</div>
 		</label>
 	<?php } ?>
-	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
+	<?php if ( 'selectParticipant' === EDU()->get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
 		<label class="edu-book-contactparticipant-contactPriceName">
 			<div class="inputLabel">
 				<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>

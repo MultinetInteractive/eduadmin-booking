@@ -1,9 +1,9 @@
 <?php
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
+$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;
 
-$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
@@ -83,7 +83,7 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 
 $order_by     = array();
 $order        = array( 1 );
-$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+$order_option = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 if ( null !== $custom_order_by ) {
 	$order_by = explode( ' ', $custom_order_by );
@@ -109,7 +109,7 @@ $courses = $edo['value'];
 if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 	$courses = array_filter( $courses, function( $object ) {
 		$name        = ( ! empty( $object['CourseName'] ) ? $object['CourseName'] : $object['InternalCourseName'] );
-		$descr_field = get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
+		$descr_field = EDU()->get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
 		$descr       = '';
 		if ( stripos( $descr_field, 'attr_' ) !== false ) {
 			$attrId = intval( substr( $descr_field, 5 ) );
@@ -191,9 +191,9 @@ $show_event_price = EDU()->is_checked( 'eduadmin-showEventPrice', false );
 $currency         = EDU()->is_checked( 'eduadmin-currency', 'SEK' );
 $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 
-$spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
-$always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
-$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 ?>
 <div class="eventListTable" data-eduwidget="listview-eventlist"
      data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>"

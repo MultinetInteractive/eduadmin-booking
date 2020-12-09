@@ -1,7 +1,7 @@
 === EduAdmin Booking ===
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
-Requires at least: 4.9
+Requires at least: 5.0
 Tested up to: 5.5
 Stable tag: 2.28.4
 Requires PHP: 5.2

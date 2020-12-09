@@ -54,16 +54,16 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 			 * Course template routes
 			 */
 
-			$list_view            = get_option( 'eduadmin-listViewPage' );
-			$details_view         = get_option( 'eduadmin-detailViewPage' );
-			$booking_view         = get_option( 'eduadmin-bookingViewPage' );
-			$object_interest_page = get_option( 'eduadmin-interestObjectPage' );
-			$event_interest_page  = get_option( 'eduadmin-interestEventPage' );
+			$list_view            = EDU()->get_option( 'eduadmin-listViewPage' );
+			$details_view         = EDU()->get_option( 'eduadmin-detailViewPage' );
+			$booking_view         = EDU()->get_option( 'eduadmin-bookingViewPage' );
+			$object_interest_page = EDU()->get_option( 'eduadmin-interestObjectPage' );
+			$event_interest_page  = EDU()->get_option( 'eduadmin-interestEventPage' );
 
 			add_rewrite_tag( '%courseSlug%', '([^&]+)' );
 			add_rewrite_tag( '%courseId%', '([^&]+)' );
 
-			$course_folder = get_option( 'eduadmin-rewriteBaseUrl' );
+			$course_folder = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 			$course_folder = trim( $course_folder );
 
 			if ( false !== $course_folder && ! empty( $course_folder ) ) {
@@ -92,7 +92,7 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 			 * Profile routes
 			 */
 
-			$login_view = get_option( 'eduadmin-loginViewPage' );
+			$login_view = EDU()->get_option( 'eduadmin-loginViewPage' );
 
 			add_rewrite_tag( '%edu-login%', '([^&]+)' );
 			add_rewrite_tag( '%edu-profile%', '([^&]+)' );
@@ -102,7 +102,7 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 			add_rewrite_tag( '%edu-logout%', '([^&]+)' );
 			add_rewrite_tag( '%edu-password%', '([^&]+)' );
 
-			$course_folder = get_option( 'eduadmin-rewriteBaseUrl' );
+			$course_folder = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 			$course_folder = trim( $course_folder );
 
 			if ( false !== $course_folder && ! empty( $course_folder ) ) {
@@ -121,9 +121,9 @@ if ( ! class_exists( 'EduAdminRouter' ) ) {
 			 * Programme routes
 			 */
 
-			$programme_list_id   = get_option( 'eduadmin-programme-list' );
-			$programme_detail_id = get_option( 'eduadmin-programme-detail' );
-			$programme_book_id   = get_option( 'eduadmin-programme-book' );
+			$programme_list_id   = EDU()->get_option( 'eduadmin-programme-list' );
+			$programme_detail_id = EDU()->get_option( 'eduadmin-programme-detail' );
+			$programme_book_id   = EDU()->get_option( 'eduadmin-programme-book' );
 
 			add_rewrite_tag( '%edu_programme%', '([^&]+)' );
 

@@ -7,7 +7,7 @@
 	<?php
 	$login_value = ! empty( $_POST['eduadminloginEmail'] ) ? sanitize_text_field( $_POST['eduadminloginEmail'] ) : '';
 
-	$selected_login_field = get_option( 'eduadmin-loginField', 'Email' );
+	$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 	$login_label          = _x( 'E-mail address', 'frontend', 'eduadmin-booking' );
 	$field_type           = 'text';
 	switch ( $selected_login_field ) {

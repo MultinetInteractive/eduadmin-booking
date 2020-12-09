@@ -29,7 +29,7 @@ class EduAdmin_BookingHandler {
 
 	public function verify_recaptcha() {
 		$recaptcha_enabled   = EDU()->is_checked( 'eduadmin-recaptcha-enabled', false );
-		$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
+		$recaptcha_secretkey = EDU()->get_option( 'eduadmin-recaptcha-secretkey', '' );
 
 		if ( $recaptcha_enabled && ! empty( $recaptcha_secretkey ) ) {
 			if ( ! empty( $_POST['g-recaptcha-response'] ) ) {
@@ -154,7 +154,7 @@ class EduAdmin_BookingHandler {
 			}
 
 			if ( ! $ebi->NoRedirect ) {
-				wp_redirect( get_page_link( get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['BookingId'] );
+				wp_redirect( get_page_link( EDU()->get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['BookingId'] );
 				exit( 0 );
 			}
 		}
@@ -256,7 +256,7 @@ class EduAdmin_BookingHandler {
 			}
 
 			if ( ! $ebi->NoRedirect ) {
-				wp_redirect( get_page_link( get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['ProgrammeBookingId'] );
+				wp_redirect( get_page_link( EDU()->get_option( 'eduadmin-thankYouPage', '/' ) ) . '?edu-thankyou=' . $booking_info['ProgrammeBookingId'] );
 				exit( 0 );
 			}
 		}
@@ -277,7 +277,7 @@ class EduAdmin_BookingHandler {
 			$programme_booking_data->CouponCode = sanitize_text_field( $_POST['edu-discountCode'] ); // Var input okay.
 		}
 
-		$selected_match = get_option( 'eduadmin-customerMatching', 'name-zip-match' );
+		$selected_match = EDU()->get_option( 'eduadmin-customerMatching', 'name-zip-match' );
 
 		if ( 'no-match' === $selected_match ) {
 			$booking_options                               = new EduAdmin_Data_Options();
@@ -312,7 +312,7 @@ class EduAdmin_BookingHandler {
 			return null;
 		}
 
-		$selected_match = get_option( 'eduadmin-customerMatching', 'name-zip-match' );
+		$selected_match = EDU()->get_option( 'eduadmin-customerMatching', 'name-zip-match' );
 
 		if ( 'no-match' === $selected_match ) {
 			$booking_options                               = new EduAdmin_Data_Options();
@@ -338,7 +338,7 @@ class EduAdmin_BookingHandler {
 			$booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] ); // Var input okay.
 		}
 
-		if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) && ! empty( $_POST['edu-pricename'] ) && is_numeric( $_POST['edu-pricename'] ) ) { // Var input okay.
+		if ( 'selectWholeEvent' === EDU()->get_option( 'eduadmin-selectPricename', 'firstPublic' ) && ! empty( $_POST['edu-pricename'] ) && is_numeric( $_POST['edu-pricename'] ) ) { // Var input okay.
 			$booking_data->PriceNameId = intval( $_POST['edu-pricename'] ); // Var input okay.
 		}
 
@@ -387,7 +387,7 @@ class EduAdmin_BookingHandler {
 		$customer->CustomerName = $first . ' ' . $last;
 
 		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
-			$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
+			$customer->CustomerGroupId = intval( EDU()->get_option( 'eduadmin-customerGroupId', null ) );
 		}
 
 		if ( ! empty( $_POST['contactCivRegNr'] ) ) { // Var input okay.
@@ -634,7 +634,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
-			$customer->CustomerGroupId = intval( get_option( 'eduadmin-customerGroupId', null ) );
+			$customer->CustomerGroupId = intval( EDU()->get_option( 'eduadmin-customerGroupId', null ) );
 		}
 
 		if ( ! empty( $_POST['customerVatNo'] ) ) { // Var input okay.

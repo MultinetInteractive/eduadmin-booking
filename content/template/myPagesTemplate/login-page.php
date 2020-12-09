@@ -8,7 +8,7 @@
 			<input type="hidden" name="eduReturnUrl"
 			       value="<?php echo esc_attr( ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '' ); ?>" />
 			<?php
-			$selected_login_field = get_option( 'eduadmin-loginField', 'Email' );
+			$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 			$login_label          = _x( 'E-mail address', 'frontend', 'eduadmin-booking' );
 			$field_type           = 'text';
 			switch ( $selected_login_field ) {

@@ -156,9 +156,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function get_option( $optionName, $default = false ) {
-			return EDURequestCache::GetItem( 'wp-option-' . $optionName, function() use ( $optionName, $default ) {
+			return \get_option( $optionName, $default );
+			/*return EDURequestCache::GetItem( 'wp-option-' . $optionName, function() use ( $optionName, $default ) {
 				return get_option( $optionName, $default );
-			} );
+			} );*/
 		}
 
 		/*
@@ -410,10 +411,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
-				'siteName'      => EDU()->get_option( 'blogname' ),
+				'siteName'      => get_option( 'blogname' ),
 				'wpVersion'     => $wp_version,
 				'phpVersion'    => PHP_VERSION,
-				'token'         => EDU()->get_option( 'eduadmin-api-key' ),
+				'token'         => get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
 				'storedHash'    => $integrity->storedIntegrityHash,
 				'currentHash'   => $integrity->currentIntegrityHash,
@@ -722,13 +723,13 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		private function get_new_api_token() {
-			$new_key = EDU()->get_option( 'eduadmin-newapi-key', null );
+			$new_key = get_option( 'eduadmin-newapi-key', null );
 
 			if ( null !== $new_key && ! empty( $new_key ) ) {
 				$key = edu_decrypt_api_key( $new_key );
 				EDUAPI()->SetCredentials( $key->UserId, $key->Hash );
 			} else {
-				$old_key = EDU()->get_option( 'eduadmin-api-key', null );
+				$old_key = get_option( 'eduadmin-api-key', null );
 				if ( null !== $old_key && ! empty( $old_key ) ) {
 					$key = edu_decrypt_api_key( $old_key );
 					EDUAPI()->SetCredentials( $key->UserId, $key->Hash );

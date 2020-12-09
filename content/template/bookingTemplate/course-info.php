@@ -4,7 +4,7 @@ ${$r}          = EDU()->start_timer( 'Booking info' );
 $course_id     = $wp_query->query_vars['courseId'];
 $group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 
-$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }

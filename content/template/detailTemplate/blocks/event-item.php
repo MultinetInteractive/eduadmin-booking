@@ -21,14 +21,7 @@ if ( ! empty( $ev['EventDates'] ) ) {
 <div data-groupid="eduev<?php echo( $group_by_city ? '-' . esc_attr( $ev['City'] ) : '' ); ?>"
      class="eventItem<?php echo( $show_more > 0 && $i >= $show_more ? ' showMoreHidden' : '' ); ?>">
 	<div class="eventDate<?php echo esc_attr( $group_by_city_class ); ?>">
-		<?php
-		echo isset( $event_dates[ $ev['EventId'] ] ) ?
-			get_logical_date_groups( $event_dates[ $ev['EventId'] ], false, null, true ) :
-			wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'] ) );
-		echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
-			'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
-			'';
-		?>
+		<?php echo edu_event_item_date( $ev, $event_dates ); ?>
 	</div>
 	<?php if ( ! $group_by_city ) { ?>
 		<div class="eventCity">

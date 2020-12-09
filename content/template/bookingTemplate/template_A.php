@@ -2,14 +2,14 @@
 // phpcs:disable WordPress.NamingConventions,Squiz
 ob_start();
 global $wp_query;
-$api_key = get_option( 'eduadmin-api-key' );
+$api_key = EDU()->get_option( 'eduadmin-api-key' );
 
 if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
 } else {
 	include_once 'course-info.php';
 
-	$currency = get_option( 'eduadmin-currency', 'SEK' );
+	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 	if ( ! empty( $_REQUEST['edu-valid-form'] ) && wp_verify_nonce( $_REQUEST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_REQUEST['act'] ) && 'bookCourse' === sanitize_text_field( $_REQUEST['act'] ) ) {
 		$error_list = apply_filters( 'edu-booking-error', array() );
@@ -133,7 +133,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					if ( isset( $contact->PersonId ) && $contact->PersonId > 0 ) {
 						$user_val = trim( $contact->FirstName . ' ' . $contact->LastName );
 					} else {
-						$selected_login_field = get_option( 'eduadmin-loginField', 'Email' );
+						$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 						switch ( $selected_login_field ) {
 							case 'Email':
 								$user_val = $contact->Email;
@@ -147,7 +147,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 						}
 					}
 					$surl     = get_home_url();
-					$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+					$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 					$base_url = $surl . '/' . $cat;
 					?>
 					<div class="notUserCheck">
@@ -169,7 +169,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				if ( $single_person_booking ) {
 					include_once 'single-person-booking.php';
 				} else {
-					$field_order = get_option( 'eduadmin-fieldOrder', 'contact_customer' );
+					$field_order = EDU()->get_option( 'eduadmin-fieldOrder', 'contact_customer' );
 					if ( 'contact_customer' === $field_order ) {
 						include_once 'contact-view.php';
 						include_once 'customer-view.php';
@@ -180,7 +180,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					include_once 'participant-view.php';
 				}
 				?>
-				<?php if ( 'selectWholeEvent' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) : ?>
+				<?php if ( 'selectWholeEvent' === EDU()->get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) : ?>
 					<div class="priceView">
 						<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>
 						<select id="edu-pricename" name="edu-pricename" required class="edudropdown edu-pricename"
@@ -215,7 +215,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				eduadmin_render_recaptcha_form();
 				?>
 				<div class="submitView">
-					<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
+					<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = EDU()->get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
 						<div class="confirmTermsHolder">
 							<label>
 								<input type="checkbox" id="confirmTerms" name="confirmTerms" value="agree" />

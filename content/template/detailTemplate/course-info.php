@@ -9,7 +9,7 @@ if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
 $group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 $group_by_city_class = '';
 
-$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
@@ -24,7 +24,7 @@ if ( $edo ) {
 }
 
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 $base_url = $surl . '/' . $cat;
 
 $events = array();
