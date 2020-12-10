@@ -157,9 +157,9 @@ function edu_render_date_settings_page() {
 							       name="eduadmin-date-eventDates-list-custom-format"
 							       id="eduadmin-date-eventDates-list-custom-format" placeholder="Custom date format"
 							       value="<?php echo esc_attr( $event_list_custom_format ); ?>" />-->
+
 							<br />
-							<br />
-							<h3><?php echo _x( 'Date format (Schedule for programmes and events)', 'backend', 'eduadmin-booking' ); ?></h3>
+							<h3><?php echo _x( 'Date format (Schedule for events)', 'backend', 'eduadmin-booking' ); ?></h3>
 							<em><?php echo _x( 'These settings will change the displayed format for the schedule popup', 'backend', 'eduadmin-booking' ); ?></em>
 							<br />
 							<br />
