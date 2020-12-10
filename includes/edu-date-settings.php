@@ -98,7 +98,7 @@ function edu_render_date_settings_page() {
 									<?php echo _x( 'Show event time', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 							</div>
-							<label>
+							<!--<label>
 								<input type="radio"<?php checked( $edu_eventDate_detail_setting, 'customFormat' ); ?>
 								       name="eduadmin-date-eventDates-detail" value="customFormat" />
 								<?php echo _x( 'Custom date format <em>(will override all formatting options)</em>', 'backend', 'eduadmin-booking' ); ?>
@@ -107,7 +107,7 @@ function edu_render_date_settings_page() {
 							<input type="text" class="date-customformat"
 							       name="eduadmin-date-eventDates-detail-custom-format"
 							       id="eduadmin-date-eventDates-detail-custom-format" placeholder="Custom date format"
-							       value="<?php echo esc_attr( $event_detail_custom_format ); ?>" />
+							       value="<?php echo esc_attr( $event_detail_custom_format ); ?>" />-->
 							<br />
 							<br />
 							<strong><?php echo _x( 'List settings', 'backend', 'eduadmin-booking' ); ?></strong>
@@ -146,7 +146,7 @@ function edu_render_date_settings_page() {
 									<?php echo _x( 'Show event time', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 							</div>
-							<label>
+							<!--<label>
 								<input type="radio"
 									<?php checked( $edu_eventDate_list_setting, 'customFormat' ); ?>
 									   name="eduadmin-date-eventDates-list" value="customFormat" />
@@ -156,7 +156,7 @@ function edu_render_date_settings_page() {
 							<input type="text" class="date-customformat"
 							       name="eduadmin-date-eventDates-list-custom-format"
 							       id="eduadmin-date-eventDates-list-custom-format" placeholder="Custom date format"
-							       value="<?php echo esc_attr( $event_list_custom_format ); ?>" />
+							       value="<?php echo esc_attr( $event_list_custom_format ); ?>" />-->
 							<br />
 							<br />
 							<h3><?php echo _x( 'Date format (Schedule for programmes and events)', 'backend', 'eduadmin-booking' ); ?></h3>
@@ -206,19 +206,19 @@ function edu_render_date_settings_page() {
 					</form>
 				</div>
 
-				<div class="right-container">
+				<!--<div class="right-container">
 					<div class="block">
 						<strong><?php echo _x( 'Date formatting variables', 'backend', 'eduadmin-booking' ); ?></strong>
 						<br />
 						<br />
 						<em>(to be filled in)</em>
-						<!--
+
 						Developer-variables, or for sneaky people who view the source :)
 
 						{text("text to be written")}
-						-->
+
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 		<?php
