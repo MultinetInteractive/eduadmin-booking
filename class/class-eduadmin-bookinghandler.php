@@ -362,6 +362,12 @@ class EduAdmin_BookingHandler {
 
 		$this->get_basic_booking_data( $booking_data, $event_id );
 
+		$_event = EDUAPI()->OData->Events->GetItem( $booking_data->EventId );
+
+		if ( $_event != null && $_event['EventId'] == $booking_data->EventId && date( "Y-m-d H:i:s", strtotime( $_event['StartDate'] ) ) < date( "Y-m-d H:i:s" ) ) {
+			return null;
+		}
+
 		$customer = new stdClass();
 		$contact  = $this->get_contact_person();
 
@@ -580,6 +586,12 @@ class EduAdmin_BookingHandler {
 		$booking_data = new EduAdmin_Data_BookingData();
 
 		$this->get_basic_booking_data( $booking_data, $event_id );
+
+		$_event = EDUAPI()->OData->Events->GetItem( $booking_data->EventId );
+
+		if ( $_event != null && $_event['EventId'] == $booking_data->EventId && date( "Y-m-d H:i:s", strtotime( $_event['StartDate'] ) ) < date( "Y-m-d H:i:s" ) ) {
+			return null;
+		}
 
 		$customer = $this->get_customer();
 		$contact  = $this->get_contact_person();
