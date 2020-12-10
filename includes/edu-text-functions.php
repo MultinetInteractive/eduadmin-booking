@@ -1135,9 +1135,9 @@ if ( ! function_exists( 'edu_event_listitem_date' ) ) {
 		$__t = EDU()->start_timer( __METHOD__ );
 
 		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-list', 'default' );
-		$use_short            = false;
+		$use_short            = true;
 		$show_names           = false;
-		$show_time            = true;
+		$show_time            = false;
 
 		$overridden = false;
 
