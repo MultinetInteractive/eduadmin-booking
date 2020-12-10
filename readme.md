@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 2.29.0
+Stable tag: 2.29.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.29.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.29.0...v2.29.1) (2020-12-10)
+
+
+#### Bug Fixes
+
+* And same fix for Programme bookings (not being able to create WP-users) ([1b017a7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1b017a780752dc00b7025e65456c16bcb8074713))
+
 ### [2.29.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.4...v2.29.0) (2020-12-10)
 
 
@@ -77,13 +84,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Hide the captcha-fields on all devices. ([1def084](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1def0842f4bd0d77c6b61d420f5ba243eef73315))
-
-### [2.28.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.1...v2.28.2) (2020-11-27)
-
-
-#### Bug Fixes
-
-* Added extra check for reCAPTCHA in javascript, since sites can load multiple recaptchas. ([3dd86df](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3dd86dfed1cb22124a77d02c88a4cd0af1f8a999))
-* Fixed question handling for radio buttons ([4b61b73](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4b61b73264bb813fd66eb9213c768aaf9e93e634))
 
 
