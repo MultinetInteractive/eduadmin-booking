@@ -35,7 +35,7 @@ if ( ! $noAvailableDates ) {
 	if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
 		$eventid = intval( $_GET['eid'] );
 		foreach ( $events as $ev ) {
-			if ( $eventid === $ev['EventId'] ) {
+			if ( $eventid === $ev['EventId'] && $ev['StartDate'] > date( "Y-m-d H:i:s" ) ) {
 				$event    = $ev;
 				$events   = array();
 				$events[] = $ev;
@@ -44,15 +44,20 @@ if ( ! $noAvailableDates ) {
 		}
 	}
 
-	$event_id = $event['EventId'];
-	$eventid  = $event_id;
+	if ( count( $events ) != 0 ) {
+		$event_id = $event['EventId'];
+		$eventid  = $event_id;
 
-	$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
-		return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
-	}, DAY_IN_SECONDS, $event_id );
+		$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
+			return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
+		}, DAY_IN_SECONDS, $event_id );
 
-	$booking_questions     = $questions['BookingQuestions'];
-	$participant_questions = $questions['ParticipantQuestions'];
+		$booking_questions     = $questions['BookingQuestions'];
+		$participant_questions = $questions['ParticipantQuestions'];
+	} else {
+		$noAvailableDates            = true;
+		$GLOBALS['noAvailableDates'] = true;
+	}
 }
 
 EDU()->stop_timer( ${$r} );
