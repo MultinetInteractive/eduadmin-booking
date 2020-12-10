@@ -1130,6 +1130,42 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 	}
 }
 
+if ( ! function_exists( 'edu_event_listitem_date' ) ) {
+	function edu_event_listitem_date( $ev ) {
+		$__t = EDU()->start_timer( __METHOD__ );
+
+		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-list', 'default' );
+		$use_short            = false;
+		$show_names           = false;
+		$show_time            = true;
+
+		$overridden = false;
+
+		switch ( $event_detail_setting ) {
+			case 'customSettings':
+				$use_short  = EDU()->is_checked( 'eduadmin-date-eventDates-list-short' );
+				$show_names = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-daynames' );
+				$show_time  = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-time' );
+				$overridden = true;
+				break;
+			case 'customFormat':
+				$event_detail_custom_format = EDU()->get_option( 'eduadmin-date-eventDates-list-custom-format' );
+				if ( ! empty( trim( $event_detail_custom_format ) ) ) {
+					echo $event_detail_custom_format;
+
+					return;
+				}
+		}
+
+		echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+		if ( $show_time ) {
+			echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+		}
+
+		EDU()->stop_timer( $__t );
+	}
+}
+
 if ( ! function_exists( 'my_str_split' ) ) {
 	// Credits go to https://code.google.com/p/php-slugs/
 	function my_str_split( $string ) {
