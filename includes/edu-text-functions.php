@@ -64,9 +64,7 @@ function edu_get_price( $price, $vatPercent ) {
 
 	$forcePriceAs = EDU()->get_option( 'eduadmin-showPricesAsSelected', '' );
 
-	$currency = EDURequestCache::GetItem( 'currency', function() {
-		return get_option( 'eduadmin-currency', 'SEK' );
-	} );
+	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 	$priceExcl = convert_to_money( $inc_vat ? $price / ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );
 	$priceIncl = convert_to_money( ! $inc_vat ? $price * ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );

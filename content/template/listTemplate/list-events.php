@@ -17,6 +17,7 @@ $selects[] = 'CourseName';
 $selects[] = 'InternalCourseName';
 $selects[] = 'ImageUrl';
 $selects[] = 'CourseDescription';
+$selects[] = 'CourseDescriptionShort';
 $selects[] = 'CourseGoal';
 $selects[] = 'TargetGroup';
 $selects[] = 'Prerequisites';
@@ -26,6 +27,7 @@ $selects[] = 'Days';
 $selects[] = 'StartTime';
 $selects[] = 'EndTime';
 $selects[] = 'RequireCivicRegistrationNumber';
+$selects[] = 'ParticipantVat';
 
 $expands['Subjects']   = '$select=SubjectName;';
 $expands['Categories'] = '$select=CategoryName;';
@@ -44,7 +46,7 @@ $expands['Events']     =
 	';' .
 	'$orderby=StartDate asc' .
 	';' .
-	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
+	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
 
 $expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
