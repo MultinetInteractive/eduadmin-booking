@@ -58,7 +58,7 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 			       value="<?php echo @esc_attr( $contact->Mobile ); ?>" />
 		</div>
 	</label>
-	<?php $selected_login_field = get_option( 'eduadmin-loginField', 'Email' ); ?>
+	<?php $selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' ); ?>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] || 'CivicRegistrationNumber' === $selected_login_field ) { ?>
 		<label class="edu-book-contact-contactCivicRegNo">
 			<div class="inputLabel">

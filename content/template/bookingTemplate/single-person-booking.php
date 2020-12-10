@@ -3,7 +3,7 @@
 $block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 
-$currency = get_option( 'eduadmin-currency', 'SEK' );
+$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 if ( ! empty( $customer->BillingInfo ) ) {
 	$billing_customer = $customer->BillingInfo;
@@ -70,7 +70,7 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 			       value="<?php echo esc_attr( $contact->Mobile ); ?>" />
 		</div>
 	</label>
-	<?php $selected_login_field = get_option( 'eduadmin-loginField', 'Email' ); ?>
+	<?php $selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' ); ?>
 	<?php if ( $selected_course['RequireCivicRegistrationNumber'] || 'CivicRegistrationNumber' === $selected_login_field ) { ?>
 		<label class="edu-book-singleParticipant-contactCivicRegNo">
 			<div class="inputLabel">
@@ -367,7 +367,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 	}
 
 	?>
-	<?php if ( 'selectParticipant' === get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
+	<?php if ( 'selectParticipant' === EDU()->get_option( 'eduadmin-selectPricename', 'firstPublic' ) ) { ?>
 		<label class="edu-book-singleParticipant-priceName">
 			<div class="inputLabel">
 				<?php echo esc_html_x( 'Price name', 'frontend', 'eduadmin-booking' ); ?>

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 global $wp_query;
-$api_key = get_option( 'eduadmin-api-key' );
+$api_key = EDU()->get_option( 'eduadmin-api-key' );
 
 if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
@@ -12,7 +12,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 
 	$course_id     = $wp_query->query_vars['courseId'];
 	$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
-	$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+	$fetch_months  = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 	if ( ! is_numeric( $fetch_months ) ) {
 		$fetch_months = 6;
 	}
@@ -62,18 +62,11 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<?php endif; ?>
 			<h1 class="courseTitle"><?php echo esc_html( $name ); ?> - <?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></h1>
 		</div>
-		<?php
-		echo '<div class="dateInfo">' . wp_kses_post( get_old_start_end_display_date( $event['StartDate'], $event['EndDate'] ) ) . ', ';
-		echo esc_html( edu_get_timezoned_date( 'H:i', $event['StartDate'] ) );
-		?>
-		-
-		<?php
-		echo esc_html( edu_get_timezoned_date( 'H:i', $event['EndDate'] ) );
-
-		echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), '&nbsp;' ) );
-
-		echo '</div>';
-		?>
+		<div class="dateInfo">
+			<?php echo edu_event_item_date( $event, null );
+			echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), '&nbsp;' ) );
+			?>
+		</div>
 		<hr />
 		<div class="textblock">
 			<?php echo esc_html_x( 'Please fill out the form below to send a inquiry to us about this course.', 'frontend', 'eduadmin-booking' ); ?>

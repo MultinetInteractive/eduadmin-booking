@@ -33,7 +33,7 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 		$course_id = $wp->query_vars['courseId'];
 
 		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
-		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months  = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -174,10 +174,21 @@ function eduadmin_settings_init() {
 
 	// Contains if the user wants to use the default settings, like the plugin normally works (to not break anything)
 	// or if they want custom settings, force them to specify settings for all types of dates
-	register_setting( 'eduadmin-date', 'eduadmin-date-eventDateFormatSetting' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithoutCourseDays' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-eventWithCourseDays' );
-	register_setting( 'eduadmin-date', 'eduadmin-date-programmeCourse' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-detail' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-detail-short' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-detail-show-daynames' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-detail-show-time' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-detail-custom-format' );
+
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-short' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-show-daynames' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-show-time' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-eventDates-list-custom-format' );
+
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-alwaysNumbers' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-neverGroup' );
 
 	/* Security settings */
 
@@ -219,13 +230,13 @@ function eduadmin_frontend_content() {
 		array(
 			'BaseUrl'                => home_url(),
 			'BaseUrlScripts'         => plugins_url( 'content/script', dirname( __FILE__ ) ),
-			'CourseFolder'           => esc_js( get_option( 'eduadmin-rewriteBaseUrl' ) ),
+			'CourseFolder'           => esc_js( EDU()->get_option( 'eduadmin-rewriteBaseUrl' ) ),
 			'AjaxUrl'                => rest_url( 'edu/v1' ),
-			'Currency'               => get_option( 'eduadmin-currency', 'SEK' ),
+			'Currency'               => EDU()->get_option( 'eduadmin-currency', 'SEK' ),
 			'ShouldValidateCivRegNo' => EDU()->is_checked( 'eduadmin-validateCivicRegNo', false ) ? 'true' : 'false',
 			'SingleParticipant'      => EDU()->is_checked( 'eduadmin-singlePersonBooking', false ) ? 'true' : 'false',
 			'ShowVatTexts'           => EDU()->is_checked( 'eduadmin-showVatTexts', true ) ? 'true' : 'false',
-			'ShowPricesAsSelected'   => get_option( 'eduadmin-showPricesAsSelected', null ),
+			'ShowPricesAsSelected'   => EDU()->get_option( 'eduadmin-showPricesAsSelected', null ),
 			'RecaptchaEnabled'       => EDU()->is_checked( 'eduadmin-recaptcha-enabled', false ) ? 'true' : 'false',
 		)
 	);
@@ -307,13 +318,12 @@ function eduadmin_backend_menu() {
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Booking view', 'backend', 'eduadmin-booking' ), _x( 'Booking settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-booking', 'edu_render_booking_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Profile view', 'backend', 'eduadmin-booking' ), _x( 'Profile settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-profile', 'edu_render_profile_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Style', 'backend', 'eduadmin-booking' ), _x( 'Style settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-style', 'edu_render_style_settings_page' );
-	//add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Date settings', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-date', 'edu_render_date_settings_page' );
+	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Date settings', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-date', 'edu_render_date_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Security settings', 'backend', 'eduadmin-booking' ), _x( 'Security settings', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-security', 'edu_render_security_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Plugins', 'backend', 'eduadmin-booking' ), _x( 'Plugins', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-plugins', 'edu_render_plugin_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - Api Authentication', 'backend', 'eduadmin-booking' ), _x( 'Api Authentication', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-api', 'edu_render_settings_page' );
 	add_submenu_page( 'eduadmin-settings', _x( 'EduAdmin - News', 'backend', 'eduadmin-booking' ), _x( 'News', 'backend', 'eduadmin-booking' ), $level, 'eduadmin-settings-news', 'edu_render_news_page' );
 	EDU()->stop_timer( $t );
-
 }
 
 function eduadmin_shortcode_metabox() {

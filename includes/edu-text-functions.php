@@ -62,11 +62,9 @@ function edu_get_price( $price, $vatPercent ) {
 
 	$inc_vat = $org['PriceIncVat'];
 
-	$forcePriceAs = get_option( 'eduadmin-showPricesAsSelected', '' );
+	$forcePriceAs = EDU()->get_option( 'eduadmin-showPricesAsSelected', '' );
 
-	$currency = EDURequestCache::GetItem( 'currency', function() {
-		return get_option( 'eduadmin-currency', 'SEK' );
-	} );
+	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 	$priceExcl = convert_to_money( $inc_vat ? $price / ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );
 	$priceIncl = convert_to_money( ! $inc_vat ? $price * ( 1 + ( $vatPercent / 100 ) ) : $price, $currency );
@@ -842,18 +840,18 @@ function get_display_date( $in_date, $short = true ) {
 	       '</span>';
 }
 
-function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false ) {
-	if ( count( $dates ) > 3 ) {
+function get_logical_date_groups( $dates, $short = false, $event = null, $show_days = false, $overridden = false, $always_show_schedule = false, $never_group = false ) {
+	if ( count( $dates ) > 3 && ! $overridden ) {
 		$short     = true;
 		$show_days = true;
 	}
 
-	$n_dates = edu_get_date_range( $dates, $short, $event, $show_days );
+	$n_dates = edu_get_date_range( $dates, $short, $event, $show_days, $always_show_schedule, $never_group );
 
 	return join( '<span class="edu-dateSeparator"></span>', $n_dates );
 }
 
-function edu_get_date_range( $days, $short, $event, $show_days ) {
+function edu_get_date_range( $days, $short, $event, $show_days, $always_show_schedule = false, $never_group = false ) {
 	usort( $days, "DateComparer" );
 
 	if ( 1 === count( $days ) ) {
@@ -872,21 +870,27 @@ function edu_get_date_range( $days, $short, $event, $show_days ) {
 
 	$ordered_dategroups = array();
 
-	foreach ( $added_dates as $time => $_days ) {
-		$start_date  = $_days[0];
-		$finish_date = $_days[ count( $_days ) - 1 ];
-		foreach ( $_days as $key => $date ) {
-			if ( $key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
-				$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $_days[ $key - 1 ], $short, $event, $show_days );
-				$start_date                                     = $date;
-			}
+	if ( $never_group ) {
+		foreach ( $days as $day ) {
+			$ordered_dategroups[ $day["StartDate"] ] = get_start_end_display_date( $day, $day, $short, $event, $show_days );
 		}
-		$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
+	} else {
+		foreach ( $added_dates as $time => $_days ) {
+			$start_date  = $_days[0];
+			$finish_date = $_days[ count( $_days ) - 1 ];
+			foreach ( $_days as $key => $date ) {
+				if ( $key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
+					$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $_days[ $key - 1 ], $short, $event, $show_days );
+					$start_date                                     = $date;
+				}
+			}
+			$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days );
+		}
 	}
 
 	ksort( $ordered_dategroups );
 
-	if ( count( $ordered_dategroups ) > 3 ) {
+	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$n_res = array();
 		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
@@ -1072,6 +1076,94 @@ function KeySort( $key ) {
 	return function( $a, $b ) use ( $key ) {
 		return strcmp( $a->{$key}, $b->{$key} );
 	};
+}
+
+if ( ! function_exists( 'edu_event_item_date' ) ) {
+	function edu_event_item_date( $ev, $event_dates ) {
+		$__t = EDU()->start_timer( __METHOD__ );
+
+		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-detail', 'default' );
+		$use_short            = false;
+		$show_names           = false;
+		$show_time            = true;
+
+		$overridden = false;
+
+		switch ( $event_detail_setting ) {
+			case 'customSettings':
+				$use_short  = EDU()->is_checked( 'eduadmin-date-eventDates-detail-short' );
+				$show_names = EDU()->is_checked( 'eduadmin-date-eventDates-detail-show-daynames' );
+				$show_time  = EDU()->is_checked( 'eduadmin-date-eventDates-detail-show-time' );
+				$overridden = true;
+				break;
+			case 'customFormat':
+				$event_detail_custom_format = EDU()->get_option( 'eduadmin-date-eventDates-detail-custom-format' );
+				if ( ! empty( trim( $event_detail_custom_format ) ) ) {
+					echo $event_detail_custom_format;
+
+					return;
+				}
+		}
+
+		$event_date_setting = EDU()->get_option( 'eduadmin-date-courseDays-event', 'default' );
+
+		$always_show_schedule = false;
+		$never_group          = false;
+
+		switch ( $event_date_setting ) {
+			case 'customSettings':
+				$always_show_schedule = EDU()->is_checked( 'eduadmin-date-courseDays-event-alwaysNumbers' );
+				$never_group          = EDU()->is_checked( 'eduadmin-date-courseDays-event-neverGroup' );
+				break;
+		}
+
+		echo isset( $event_dates[ $ev['EventId'] ] ) ?
+			get_logical_date_groups( $event_dates[ $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
+			wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+		if ( $show_time ) {
+			echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
+				'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
+				'';
+		}
+
+		EDU()->stop_timer( $__t );
+	}
+}
+
+if ( ! function_exists( 'edu_event_listitem_date' ) ) {
+	function edu_event_listitem_date( $ev ) {
+		$__t = EDU()->start_timer( __METHOD__ );
+
+		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-list', 'default' );
+		$use_short            = true;
+		$show_names           = false;
+		$show_time            = false;
+
+		$overridden = false;
+
+		switch ( $event_detail_setting ) {
+			case 'customSettings':
+				$use_short  = EDU()->is_checked( 'eduadmin-date-eventDates-list-short' );
+				$show_names = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-daynames' );
+				$show_time  = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-time' );
+				$overridden = true;
+				break;
+			case 'customFormat':
+				$event_detail_custom_format = EDU()->get_option( 'eduadmin-date-eventDates-list-custom-format' );
+				if ( ! empty( trim( $event_detail_custom_format ) ) ) {
+					echo $event_detail_custom_format;
+
+					return;
+				}
+		}
+
+		echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+		if ( $show_time ) {
+			echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+		}
+
+		EDU()->stop_timer( $__t );
+	}
 }
 
 if ( ! function_exists( 'my_str_split' ) ) {

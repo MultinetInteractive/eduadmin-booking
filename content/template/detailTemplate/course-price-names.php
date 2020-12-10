@@ -1,5 +1,5 @@
 <?php
-$api_key = get_option( 'eduadmin-api-key' );
+$api_key = EDU()->get_option( 'eduadmin-api-key' );
 ob_start();
 
 if ( ! $api_key || empty( $api_key ) ) {
@@ -46,7 +46,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 		$price_names = array_slice( $price_names, 0, $attributes['numberofprices'], true );
 	}
 
-	$currency = get_option( 'eduadmin-currency', 'SEK' );
+	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 	?>
 	<div class="eventInformation">
 		<h3>

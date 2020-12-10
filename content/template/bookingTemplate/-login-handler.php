@@ -2,10 +2,10 @@
 // phpcs:disable WordPress.NamingConventions,Squiz
 if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ver'], 'edu-profile-login' ) && ! empty( $_POST['eduformloginaction'] ) ) {
 	if ( 'checkEmail' === $_POST['eduformloginaction'] && ! empty( $_POST['eduadminloginEmail'] ) ) {
-		$selected_login_field        = get_option( 'eduadmin-loginField', 'Email' );
+		$selected_login_field        = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 		$allow_customer_registration = EDU()->is_checked( 'eduadmin-allowCustomerRegistration', true );
 
-		$login_field = get_option( 'eduadmin-loginField', 'Email' );
+		$login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 
 		$possible_persons = EDUAPI()->OData->Persons->Search(
 			null,
@@ -62,7 +62,7 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 
 		if ( $allow_customer_registration && empty( $matching_contacts ) ) {
 			$contact              = new EduAdmin_Data_Person();
-			$selected_login_field = get_option( 'eduadmin-loginField', 'Email' );
+			$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 			switch ( $selected_login_field ) {
 				case 'Email':
 					$contact->Email = sanitize_email( $_POST['eduadminloginEmail'] );

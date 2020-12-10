@@ -3,7 +3,7 @@ $user     = EDU()->session['eduadmin-loginUser'];
 $contact  = $user->Contact;
 $customer = $user->Customer;
 
-$currency = get_option( 'eduadmin-currency', 'SEK' );
+$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 ?>
 <div class="eduadmin">
 	<?php

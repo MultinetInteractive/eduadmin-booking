@@ -1,4 +1,19 @@
 .eduadmin {
+	.block-container {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.date-customformat {
+		margin-left: 23px;
+		margin-top: 5px;
+		width: 250px;
+	}
+
+	.edu-date-customsettings {
+		margin-left: 23px;
+	}
+
 	.block {
 		display: inline-block;
 		padding: 20px;

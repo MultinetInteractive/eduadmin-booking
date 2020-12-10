@@ -136,7 +136,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						       value="<?php echo esc_attr( $contact->Mobile ); ?>" />
 					</div>
 				</label>
-				<?php $selected_login_field = get_option( 'eduadmin-loginField', 'Email' ); ?>
+				<?php $selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' ); ?>
 				<?php if ( 'CivicRegistrationNumber' === $selected_login_field ) { ?>
 					<label class="edu-book-contact-contactCivicRegNo">
 						<div class="inputLabel">
@@ -534,7 +534,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			eduadmin_render_recaptcha_form();
 			?>
 			<div class="submitView">
-				<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
+				<?php if ( EDU()->is_checked( 'eduadmin-useBookingTermsCheckbox', false ) && $link = EDU()->get_option( 'eduadmin-bookingTermsLink', '' ) ): ?>
 					<div class="confirmTermsHolder">
 						<label>
 							<input type="checkbox" id="confirmTerms" name="confirmTerms" value="agree" />

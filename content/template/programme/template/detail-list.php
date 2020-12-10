@@ -1,7 +1,7 @@
 <?php
 $grouped_programmes = array();
 
-$currency = get_option( 'eduadmin-currency', 'SEK' );
+$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 	$key = edu_get_timezoned_date( 'Y-m', $programme_start['StartDate'] );

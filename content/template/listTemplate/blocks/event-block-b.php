@@ -12,7 +12,7 @@
 	</div>
 	<div class="objectDescription">
 		<?php
-		echo get_old_start_end_display_date( $event['StartDate'], $event['EndDate'], true, $show_week_days );
+		edu_event_listitem_date( $event );
 
 		if ( ! empty( $event['City'] ) && $show_city ) {
 			echo ' <span class="cityInfo">';
@@ -23,16 +23,20 @@
 			echo '</span>';
 		}
 
-		if ( $object['Days'] > 0 ) {
-			echo
-				'<div class="dayInfo">' .
-				( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) .
-				                      ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
-				( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
-				                                                                                                                               ' - ' .
-				                                                                                                                               edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' ) .
-				'</div>';
+		if ( $object['Days'] > 0 || count( $event['EventDates'] ) > 0 ) {
+			$dayCount = $object['Days'];
+			if ( count( $event['EventDates'] ) > 0 ) {
+				$dayCount = count( $event['EventDates'] );
+			}
+			echo '<div class="dayInfo">';
+			echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
+			                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
+			     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
+			                                                                                                                                    ' - ' .
+			                                                                                                                                    edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
+			echo "</div>\n";
 		}
+		
 		if ( $show_event_price && isset( $event['Price'] ) ) {
 			if ( 0 === $event['Price'] ) {
 				echo '<div class="priceInfo">' . esc_html_x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . "</div> ";

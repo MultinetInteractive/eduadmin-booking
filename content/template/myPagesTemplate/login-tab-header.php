@@ -1,6 +1,6 @@
 <?php
 $surl = get_home_url();
-$cat  = get_option( 'eduadmin-rewriteBaseUrl' );
+$cat  = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 $base_url = $surl . '/' . $cat;
 
@@ -34,7 +34,7 @@ $show_discount = count( $cards ) > 0;
 
 function edu_profile_menu_item( $url, $text, $active ) {
 	$surl = get_home_url();
-	$cat  = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat  = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 	$base_url = $surl . '/' . $cat;
 

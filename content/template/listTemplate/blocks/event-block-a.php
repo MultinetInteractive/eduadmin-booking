@@ -14,7 +14,7 @@
 			</div>
 			<div class="objectDescription">
 				<?php
-				echo get_old_start_end_display_date( $event['StartDate'], $event['EndDate'], true, $show_week_days );
+				edu_event_listitem_date( $event );
 
 				if ( ! empty( $event['City'] ) && $show_city ) {
 					echo ' <span class="cityInfo">';
@@ -22,28 +22,32 @@
 					if ( $show_event_venue && ! empty( $event['AddressName'] ) ) {
 						echo '<span class="venueInfo">, ' . $event['AddressName'] . '</span>';
 					}
-					echo '</span>';
+					echo "</span>\n";
 				}
 
-				if ( $object['Days'] > 0 ) {
+				if ( $object['Days'] > 0 || count( $event['EventDates'] ) > 0 ) {
+					$dayCount = $object['Days'];
+					if ( count( $event['EventDates'] ) > 0 ) {
+						$dayCount = count( $event['EventDates'] );
+					}
 					echo '<div class="dayInfo">';
-					echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) .
+					echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
 					                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
 					     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
 					                                                                                                                                    ' - ' .
 					                                                                                                                                    edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
-					echo '</div>';
+					echo "</div>\n";
 				}
 
 				if ( $show_event_price && isset( $event['Price'] ) ) {
 					if ( 0 === $event['Price'] ) {
-						echo '<div class="priceInfo">' . _x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . '</div> ';
+						echo '<div class="priceInfo">' . _x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . "</div> \n";
 					} else {
-						echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), edu_get_price( $event['Price'], $event['ParticipantVat'] ) ) . '</div> ';
+						echo '<div class="priceInfo">' . sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), edu_get_price( $event['Price'], $event['ParticipantVat'] ) ) . "</div> \n";
 					}
 				}
 
-				echo "<span class=\"spotsLeftInfo\">" . get_spots_left( $spots_left, intval( $event['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>";
+				echo "<span class=\"spotsLeftInfo\">" . get_spots_left( $spots_left, intval( $event['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>\n";
 
 				?></div>
 		</div>

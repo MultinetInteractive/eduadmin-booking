@@ -9,11 +9,11 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin, lega online
- * Version:	2.28.4
+ * Version:	2.29.0
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
- * Requires at least: 4.9
- * Tested up to: 5.5
+ * Requires at least: 5.0
+ * Tested up to: 5.6
  * Author:	Chris Gårdenberg, MultiNet Interactive AB
  * Author URI:	https://www.multinet.com
  * License:	GPL3
@@ -144,15 +144,22 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			}
 
 			if ( $as_json ) {
-				echo '<span style="white-space: pre; font-family: Courier New;">' . json_encode( $object, JSON_PRETTY_PRINT ) . '</span>';
+				echo '<div style="white-space: pre; font-family: Courier New; clear:both; background-color: #c9c9c9; padding: 10px; margin-bottom: 10px;">' . \json_encode( $object, JSON_PRETTY_PRINT ) . '</div>';
 
 				return;
 			}
 
 			ob_start();
-			var_dump( $object );
+			\var_dump( $object );
 
 			echo '<span style="white-space: pre; font-family: Courier New;">' . ob_get_clean() . '</span>';
+		}
+
+		public function get_option( $optionName, $default = false ) {
+			return \get_option( $optionName, $default );
+			/*return EDURequestCache::GetItem( 'wp-option-' . $optionName, function() use ( $optionName, $default ) {
+				return get_option( $optionName, $default );
+			} );*/
 		}
 
 		/*
@@ -163,7 +170,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		 */
 		public function is_checked( $optionName, $default = false ) {
 			$t           = $this->start_timer( __METHOD__ . '::' . $optionName );
-			$optionValue = get_option( $optionName, $default );
+			$optionValue = $this->get_option( $optionName, $default );
 
 			if ( empty( $optionValue ) ) {
 				$this->stop_timer( $t );
@@ -199,10 +206,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->stop_timer( $t );
 
 			return $default;
-		}
-
-		public function is_selected( $optionValue, $currentValue ) {
-			return ! empty( $optionValue ) && $optionValue === $currentValue;
 		}
 
 		/**
@@ -461,7 +464,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function get_integrity_check_footer() {
 			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
-			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
+			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Potentially modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
 		}
 
 		public function get_scheduled_tasks() {

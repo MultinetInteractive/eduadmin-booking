@@ -203,6 +203,7 @@ class EduAdminAPIHelper {
 		$selects[] = 'InternalCourseName';
 		$selects[] = 'ImageUrl';
 		$selects[] = 'CourseDescription';
+		$selects[] = 'CourseDescriptionShort';
 		$selects[] = 'CourseGoal';
 		$selects[] = 'TargetGroup';
 		$selects[] = 'Prerequisites';

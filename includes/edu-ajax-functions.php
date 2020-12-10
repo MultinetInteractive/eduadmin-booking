@@ -125,6 +125,7 @@ function edu_api_listview_eventlist() {
 	$selects[] = 'StartTime';
 	$selects[] = 'EndTime';
 	$selects[] = 'RequireCivicRegistrationNumber';
+	$selects[] = 'ParticipantVat';
 
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
@@ -176,7 +177,7 @@ function edu_api_listview_eventlist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName';
+		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 

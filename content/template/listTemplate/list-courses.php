@@ -1,9 +1,9 @@
 <?php
 $surl     = get_home_url();
-$cat      = get_option( 'eduadmin-rewriteBaseUrl', '' );
+$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;
 
-$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
@@ -46,7 +46,7 @@ $courses = $edo['value'];
 if ( ! empty( $_REQUEST['searchCourses'] ) ) {
 	$courses = array_filter( $courses, function( $object ) {
 		$name        = ( ! empty( $object['CourseName'] ) ? $object['CourseName'] : $object['InternalCourseName'] );
-		$descr_field = get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
+		$descr_field = EDU()->get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
 		$descr       = '';
 		if ( stripos( $descr_field, 'attr_' ) !== false ) {
 			$attr_id = intval( substr( $descr_field, 5 ) );
@@ -122,6 +122,6 @@ $show_week_days    = EDU()->is_checked( 'eduadmin-showWeekDays', false );
 
 $show_descr       = EDU()->is_checked( 'eduadmin-showCourseDescription', true );
 $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
-$currency         = get_option( 'eduadmin-currency', 'SEK' );
+$currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 ?>
 <div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-categorydeep="<?php echo esc_attr( $attributes['categorydeep'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>" data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"></div>

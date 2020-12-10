@@ -1,7 +1,7 @@
 <?php
 ob_start();
 global $wp_query;
-$api_key = get_option( 'eduadmin-api-key' );
+$api_key = EDU()->get_option( 'eduadmin-api-key' );
 
 if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
@@ -100,7 +100,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				?>
 				<h3><?php _ex( 'Price', 'frontend', 'eduadmin-booking' ); ?></h3>
 				<?php
-				$currency = get_option( 'eduadmin-currency', 'SEK' );
+				$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
 					echo sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) );
 				} else {
