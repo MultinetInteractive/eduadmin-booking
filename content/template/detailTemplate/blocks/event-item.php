@@ -21,7 +21,7 @@ if ( ! empty( $ev['EventDates'] ) ) {
 <div data-groupid="eduev<?php echo( $group_by_city ? '-' . esc_attr( $ev['City'] ) : '' ); ?>"
      class="eventItem<?php echo( $show_more > 0 && $i >= $show_more ? ' showMoreHidden' : '' ); ?>">
 	<div class="eventDate<?php echo esc_attr( $group_by_city_class ); ?>">
-		<?php echo edu_event_item_date( $ev, $event_dates ); ?>
+		<?php edu_event_item_date( $ev, $event_dates ); ?>
 	</div>
 	<?php if ( ! $group_by_city ) { ?>
 		<div class="eventCity">
