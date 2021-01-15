@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.30.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.30.0...v2.30.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* Removed the strange occurrence of a closing div-tag. fixes [#371](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/371) ([b187e1c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b187e1c4dea873d15d0a2eecfbf4512e9fff7df3))
+
 ## [2.30.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.29.1...v2.30.0) (2020-12-10)
 
 
