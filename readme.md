@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 2.30.0
+Stable tag: 2.30.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.30.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.30.0...v2.30.1) (2021-01-15)
+
+
+#### Bug Fixes
+
+* Removed the strange occurrence of a closing div-tag. fixes [#371](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/371) ([b187e1c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b187e1c4dea873d15d0a2eecfbf4512e9fff7df3))
+
 ### [2.30.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.29.1...v2.30.0) (2020-12-10)
 
 
@@ -77,12 +84,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Fixed a bug where the ParticipantVat went missing after an ajax reload in event lists (listview, not detail) ([34d7976](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/34d79768a70eaf8c2ab325c6249a41518fbb65a6))
 * Move robot-check into the other checks first, to not block creation of users in WP ([3dbd5e7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3dbd5e75d2a7850a8812b48ffed5ba5e54da5ec0))
-
-### [2.28.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.28.3...v2.28.4) (2020-12-02)
-
-
-#### Bug Fixes
-
-* Added permission_callback to register_rest_route (Thanks wordpress, I hate you) ([50859d2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/50859d21c7a55b2e49683fbe065328d031eb626d))
 
 
