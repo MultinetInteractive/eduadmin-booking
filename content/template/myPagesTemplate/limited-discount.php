@@ -44,12 +44,45 @@ $currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 			</tr>
 			<?php
 		} else {
+			$expiredLimitedDiscounts = array();
 			foreach ( $cards as $card ) {
+				$expired = false;
+
+				if ( ! empty( $card['ValidTo'] ) && date( "Y-m-d" ) > date( "Y-m-d", strtotime( $card['ValidTo'] ) ) ) {
+					$expired = true;
+				}
+
+				$amountText = $card['CreditsLeft'] > $card['CreditsStartValue'] ? esc_html_x( 'Unlimited', 'frontend', 'eduadmin-booking' ) : esc_html( $card['CreditsLeft'] . ' / ' . $card['CreditsStartValue'] );
+
+				if ( $card['CreditsLeft'] <= 0 ) {
+					$expired = true;
+				}
+
+				if ( ! $expired ) {
+					?>
+					<tr>
+						<td><?php echo esc_html( $card['Description'] ); ?></td>
+						<td><?php echo wp_kses_post( get_old_start_end_display_date( $card['ValidFrom'], $card['ValidTo'], true ) ); ?></td>
+						<td align="right"><?php echo $amountText; ?></td>
+						<td align="right"><?php echo esc_html( $card['DiscountPercent'] ); ?> %</td>
+						<td align="right"><?php echo esc_html( convert_to_money( $card['Price'], $currency ) ); ?></td>
+					</tr>
+					<?php
+				} else {
+					$expiredLimitedDiscounts[] = $card;
+				}
+			}
+
+			foreach ( $expiredLimitedDiscounts as $card ) {
+				$amountText = $card['CreditsLeft'] > $card['CreditsStartValue'] ? esc_html_x( 'Unlimited', 'frontend', 'eduadmin-booking' ) : esc_html( $card['CreditsLeft'] . ' / ' . $card['CreditsStartValue'] );
 				?>
-				<tr>
-					<td><?php echo esc_html( $card['Description'] ); ?></td>
-					<td><?php echo wp_kses_post( get_old_start_end_display_date( $card['ValidFrom'], $card['ValidTo'], true ) ); ?></td>
-					<td align="right"><?php echo esc_html( $card['CreditsLeft'] . ' / ' . $card['CreditsStartValue'] ); ?></td>
+				<tr class="expired-discount-cards">
+					<td>
+						<del><?php echo esc_html( $card['Description'] ); ?></del>
+					</td>
+					<td><?php echo wp_kses_post( get_old_start_end_display_date( $card['ValidFrom'], $card['ValidTo'], true ) ); ?>
+						<em>(<?php echo esc_html_x( 'Expired', 'frontend', 'eduadmin-booking' ); ?>)</em></td>
+					<td align="right"><?php echo $amountText; ?></td>
 					<td align="right"><?php echo esc_html( $card['DiscountPercent'] ); ?> %</td>
 					<td align="right"><?php echo esc_html( convert_to_money( $card['Price'], $currency ) ); ?></td>
 				</tr>

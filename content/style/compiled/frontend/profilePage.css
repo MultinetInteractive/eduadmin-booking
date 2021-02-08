@@ -31,3 +31,7 @@
 .eduadmin .myReservationsTable td {
   padding: 5px;
 }
+
+.eduadmin .expired-discount-cards {
+  opacity: 50%;
+}
