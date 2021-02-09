@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.32.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.31.0...v2.32.0) (2021-02-09)
+
+
+### Features
+
+* The return of the Info text-field. fixes [#375](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/375) ([3d4644d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3d4644df31d2013b7ccaa1bc9a943768988160cd))
+
 ## [2.31.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.30.1...v2.31.0) (2021-02-08)
 
 
