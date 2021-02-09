@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 2.31.0
+Stable tag: 2.32.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.32.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.31.0...v2.32.0) (2021-02-09)
+
+
+#### Features
+
+* The return of the Info text-field. fixes [#375](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/375) ([3d4644d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3d4644df31d2013b7ccaa1bc9a943768988160cd))
+
 ### [2.31.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.30.1...v2.31.0) (2021-02-08)
 
 
@@ -64,12 +71,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Features
 
 * Added some protection against booking events that have already past their start date ([03a5423](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/03a542306926c767d056d7e2001a2d821e51e3a1)), closes [#357](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/357)
-
-### [2.29.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.29.0...v2.29.1) (2020-12-10)
-
-
-#### Bug Fixes
-
-* And same fix for Programme bookings (not being able to create WP-users) ([1b017a7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/1b017a780752dc00b7025e65456c16bcb8074713))
 
 
