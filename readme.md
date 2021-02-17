@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 2.32.1
+Stable tag: 2.32.2
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,8 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.32.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.32.1...v2.32.2) (2021-02-17)
+
 ### [2.32.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.32.0...v2.32.1) (2021-02-17)
 
 
@@ -64,12 +66,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Features
 
 * Added separation of expired/used up limited discount cards. fixes [#373](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/373) ([6aca7d0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6aca7d090a0c07ee6bf6d3972013dc7e9f1c2370))
-
-### [2.30.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.30.0...v2.30.1) (2021-01-15)
-
-
-#### Bug Fixes
-
-* Removed the strange occurrence of a closing div-tag. fixes [#371](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/371) ([b187e1c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b187e1c4dea873d15d0a2eecfbf4512e9fff7df3))
 
 
