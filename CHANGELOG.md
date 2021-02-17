@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.32.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.32.0...v2.32.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* Added extra check for Events in the booking form, so we can detect if there are any available events or not. fixes [#377](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/377) ([ac5df01](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ac5df01b2da5c64d302bbde6af7a9928cdf96b4f))
+
 ## [2.32.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.31.0...v2.32.0) (2021-02-09)
 
 
