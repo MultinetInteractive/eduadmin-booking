@@ -23,7 +23,7 @@ if ( $edo ) {
 $noAvailableDates            = false;
 $GLOBALS['noAvailableDates'] = false;
 
-if ( ! $selected_course || 0 === count( $selected_course['Events'] ) ) {
+if ( ! $selected_course || ! isset( $selected_course['Events'] ) || 0 === count( $selected_course['Events'] ) ) {
 	$noAvailableDates            = true;
 	$GLOBALS['noAvailableDates'] = true;
 }
