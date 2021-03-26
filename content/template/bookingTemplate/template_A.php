@@ -7,6 +7,10 @@ $api_key = EDU()->get_option( 'eduadmin-api-key' );
 if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
 } else {
+	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+		/* TODO: Block booking page from showing up */
+	}
+
 	include_once 'course-info.php';
 
 	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );

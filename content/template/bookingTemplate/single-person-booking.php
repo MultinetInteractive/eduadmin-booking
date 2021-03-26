@@ -1,5 +1,9 @@
 <?php
 // phpcs:disable WordPress.NamingConventions,Squiz
+if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+	/* TODO: Block booking page from showing up */
+}
+
 $block_edit_if_logged_in = EDU()->is_checked( 'eduadmin-blockEditIfLoggedIn', true );
 $__block                 = ( $block_edit_if_logged_in && ! empty( $contact->PersonId ) );
 

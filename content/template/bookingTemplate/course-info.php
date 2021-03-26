@@ -9,6 +9,10 @@ if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
 
+if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+	/* TODO: Block booking page from showing up */
+}
+
 $edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
 
 $selected_course = false;
