@@ -102,6 +102,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-programme-book' );
 
 	/* Booking settings */
+	register_setting( 'eduadmin-booking', 'eduadmin-useBookingFormFromApi' );
 	register_setting( 'eduadmin-booking', 'eduadmin-useLogin' );
 	register_setting( 'eduadmin-booking', 'eduadmin-allowCustomerRegistration' );
 	register_setting( 'eduadmin-booking', 'eduadmin-loginField' );
