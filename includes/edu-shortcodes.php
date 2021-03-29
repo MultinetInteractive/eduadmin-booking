@@ -203,6 +203,10 @@ function eduadmin_get_booking_view( $attributes ) {
 		define( 'DONOTCACHEPAGE', true );
 	}
 
+	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+		return '<script type="text/javascript">location.href = "' . get_home_url() . '";</script>';
+	}
+
 	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/bookingPage.css' );
 	wp_register_style(
 		'eduadmin_frontend_booking',

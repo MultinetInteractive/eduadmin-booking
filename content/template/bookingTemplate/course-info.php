@@ -10,7 +10,8 @@ if ( ! is_numeric( $fetch_months ) ) {
 }
 
 if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
-	/* TODO: Block booking page from showing up */
+	echo '<script type="text/javascript">location.href = "' . get_home_url() . '";</script>';
+	return;
 }
 
 $edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );

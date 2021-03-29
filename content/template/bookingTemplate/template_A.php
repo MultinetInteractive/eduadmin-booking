@@ -8,7 +8,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
 } else {
 	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
-		/* TODO: Block booking page from showing up */
+		echo '<script type="text/javascript">location.href = "' . get_home_url() . '";</script>';
+		return;
 	}
 
 	include_once 'course-info.php';
