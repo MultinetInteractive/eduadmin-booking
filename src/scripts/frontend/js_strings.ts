@@ -17,7 +17,8 @@ const edu_i18n_strings = {
         301: _x('Please enter all required fields on the contact person.', 'frontend', 'eduadmin-booking'),
     },
     Generic: {
-        ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking')
+        ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking'),
+        Close: _x('Close', 'frontend', 'eduadmin-booking')
     },
     VAT: {
         inc: _x('inc vat', 'frontend', 'eduadmin-booking'),
