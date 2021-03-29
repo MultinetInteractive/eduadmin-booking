@@ -11,6 +11,7 @@ if ( ! is_numeric( $fetch_months ) ) {
 
 if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
 	echo '<script type="text/javascript">location.href = "' . get_home_url() . '";</script>';
+
 	return;
 }
 
