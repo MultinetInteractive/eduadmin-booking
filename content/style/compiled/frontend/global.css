@@ -215,6 +215,12 @@
   padding-right: 10px;
 }
 
+.edu-bookingform-page-frame {
+  width: 100vw;
+  height: 100vh;
+  border: 0;
+}
+
 .edu-bookingform-modal-backdrop {
   position: fixed;
   top: 0;

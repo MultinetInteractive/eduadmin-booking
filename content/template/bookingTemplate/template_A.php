@@ -7,13 +7,14 @@ $api_key = EDU()->get_option( 'eduadmin-api-key' );
 if ( ! $api_key || empty( $api_key ) ) {
 	echo 'Please complete the configuration: <a href="' . esc_url( admin_url() . 'admin.php?page=eduadmin-settings' ) . '">EduAdmin - Api Authentication</a>';
 } else {
-	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
-		echo '<script type="text/javascript">location.href = "' . get_home_url() . '";</script>';
+	include_once 'course-info.php';
 
+	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+		?>
+		<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame" src="<?php echo esc_attr( $event['BookingFormUrl'] ); ?>"></iframe>
+		<?php
 		return;
 	}
-
-	include_once 'course-info.php';
 
 	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
