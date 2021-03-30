@@ -53,7 +53,7 @@ The details view, will show the course information and the available course date
 
 It is also possible to build a custom template to use, instead of the two default themes we have.
 
-### `[eduadmin-bookingview]`
+### `[eduadmin-bookingview]` (or use the EduAdmin Booking Forms)
 
 This page is probably the most important one, since it's the page used to post the bookings into [**EduAdmin**](https://www.eduadmin.se).
 
