@@ -10,9 +10,15 @@ if ( ! $api_key || empty( $api_key ) ) {
 	include_once 'course-info.php';
 
 	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
-		?>
-		<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame" src="<?php echo esc_attr( $event['BookingFormUrl'] ); ?>"></iframe>
-		<?php
+		if ( ! empty( $event['BookingFormUrl'] ) ) {
+			?>
+			<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame"
+			        src="<?php echo esc_attr( $event['BookingFormUrl'] ); ?>"></iframe>
+			<?php
+		} else {
+			echo _x( 'The booking form needs configuration in EduAdmin before this works.', 'frontend', 'eduadmin-booking' );
+		}
+
 		return;
 	}
 
