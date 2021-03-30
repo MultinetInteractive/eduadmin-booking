@@ -485,6 +485,10 @@ function edu_openDatePopup(obj) {
     });
 }
 function edu_OpenEduBookingFormModal(url) {
+    if (!url || url.length == 0) {
+        alert(edu_i18n_strings.ErrorMessages.MissingSetupForBookingForm);
+        return;
+    }
     if (document.querySelectorAll('.edu-bookingform-modal').length == 0) {
         edu_createBookingFormModal();
     }
