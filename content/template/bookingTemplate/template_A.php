@@ -9,6 +9,19 @@ if ( ! $api_key || empty( $api_key ) ) {
 } else {
 	include_once 'course-info.php';
 
+	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+		if ( ! empty( $event['BookingFormUrl'] ) ) {
+			?>
+			<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame"
+			        src="<?php echo esc_attr( $event['BookingFormUrl'] ); ?>"></iframe>
+			<?php
+		} else {
+			echo _x( 'The booking form needs configuration in EduAdmin before this works.', 'frontend', 'eduadmin-booking' );
+		}
+
+		return;
+	}
+
 	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 	if ( ! empty( $_REQUEST['edu-valid-form'] ) && wp_verify_nonce( $_REQUEST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_REQUEST['act'] ) && 'bookCourse' === sanitize_text_field( $_REQUEST['act'] ) ) {

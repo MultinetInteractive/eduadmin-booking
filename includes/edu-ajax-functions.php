@@ -31,7 +31,7 @@ function edu_listview_courselist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=StartDate,City';
+		'$select=StartDate,City,BookingFormUrl';
 
 	$filters[] = 'ShowOnWeb';
 
@@ -177,7 +177,7 @@ function edu_api_listview_eventlist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
+		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -346,6 +346,8 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 
 	$show_images = get_option( 'eduadmin-showCourseImage', true );
 
+	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
+
 	if ( ! empty( $request['showimages'] ) ) {
 		$show_images = true;
 	}
@@ -419,6 +421,8 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 	$show_images = get_option( 'eduadmin-showCourseImage', true );
+
+	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
 	if ( ! empty( $request['showimages'] ) ) {
 		$show_images = true;
@@ -613,6 +617,8 @@ function edu_api_eventlist() {
 	$spot_settings            = $_POST['spotsettings'];
 	$allow_interest_reg_event = ! empty( $_POST['eventinquiry'] ) && '1' === $_POST['eventinquiry'];
 	$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
+
+	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
 	echo '<div class="eduadmin"><div class="event-table eventDays">';
 	$i                = 0;

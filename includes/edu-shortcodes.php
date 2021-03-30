@@ -124,6 +124,8 @@ function eduadmin_get_detail_view( $attributes ) {
 		unset( EDU()->session['eduadmin-loginUser']->NewCustomer );
 	}
 
+	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
+
 	EDU()->session->regenerate_id( true );
 	if ( empty( $attributes['customtemplate'] ) || 1 !== intval( $attributes['customtemplate'] ) ) {
 		$str = include_once EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/' . $attributes['template'] . '.php';
@@ -526,6 +528,8 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
 				$allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
+
+				$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
 				$ret_str .= '<div class="eduadmin">';
 				$ret_str .= '<div class="event-table eventDays" data-eduwidget="eventlist" ';

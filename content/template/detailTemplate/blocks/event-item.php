@@ -47,10 +47,17 @@ if ( ! empty( $ev['EventDates'] ) ) {
 	<div class="eventBook<?php echo esc_attr( $group_by_city_class ); ?>">
 		<?php
 		if ( 0 === intval( $ev['MaxParticipantNumber'] ) || $spots_left > 0 ) {
-			?>
-			<a class="bookButton book-link cta-btn"
-			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
-			<?php
+			if ( $use_eduadmin_form ) {
+				?>
+				<a class="bookButton cta-btn" href="javascript://"
+				   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $ev['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+				<?php
+			} else {
+				?>
+				<a class="bookButton book-link cta-btn"
+				   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+				<?php
+			}
 		} else {
 			if ( $allow_interest_reg_event && false !== $event_interest_page ) {
 				?>

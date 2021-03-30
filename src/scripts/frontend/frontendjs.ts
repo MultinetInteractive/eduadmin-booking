@@ -305,9 +305,9 @@ var eduBookingView: EduBookingView = {
         );
     },
     CheckValidation: function (ignoreTerms: boolean) {
-        if(wp_edu.RecaptchaEnabled === 'true' && (window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
+        if (wp_edu.RecaptchaEnabled === 'true' && (window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
             let captchaResponse = (window as any).grecaptcha.getResponse();
-            if(captchaResponse == '') {
+            if (captchaResponse == '') {
                 let noCaptcha = document.getElementById(
                     "edu-warning-recaptcha"
                 );
@@ -705,6 +705,45 @@ function edu_openDatePopup(obj: any) {
     });
 }
 
+function edu_OpenEduBookingFormModal(url: string) {
+
+    if (!url || url.length == 0) {
+        alert(edu_i18n_strings.ErrorMessages.MissingSetupForBookingForm);
+        return;
+    }
+
+    if (document.querySelectorAll('.edu-bookingform-modal').length == 0) {
+        edu_createBookingFormModal();
+    }
+
+    let bookingFrame = document.querySelector('#eduadmin-booking-frame') as HTMLIFrameElement;
+    if (bookingFrame) {
+        bookingFrame.src = url;
+    }
+}
+
+function edu_createBookingFormModal() {
+    let modal = jQuery(`<div class="edu-bookingform-modal-backdrop"></div>
+<div class="edu-bookingform-modal">
+    <div class="edu-bookingform-close">
+        <a href="javascript://" onclick="edu_closeBookingModal()">X</a>
+    </div>
+    <iframe id="eduadmin-booking-frame"></iframe>
+</div>`);
+    modal.appendTo('body');
+}
+
+function edu_closeBookingModal() {
+    let modal = document.querySelector('.edu-bookingform-modal');
+    let modalBackdrop = document.querySelector('.edu-bookingform-modal-backdrop');
+    if (modal) {
+        modal.remove();
+        if (modalBackdrop) {
+            modalBackdrop.remove();
+        }
+    }
+}
+
 function edu_closeDatePopup(e: Event, obj: any) {
     let pop = jQuery(obj.parentElement);
     pop.remove();
@@ -738,7 +777,7 @@ function numberWithSeparator(x: string, sep: string) {
 }
 
 let oldonload = window.onload as any;
-window.onload = function (ev : Event) {
+window.onload = function (ev: Event) {
     if (oldonload) {
         oldonload(ev);
     }

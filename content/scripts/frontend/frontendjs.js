@@ -484,6 +484,33 @@ function edu_openDatePopup(obj) {
         left: pos.left + width + 10 + "px"
     });
 }
+function edu_OpenEduBookingFormModal(url) {
+    if (!url || url.length == 0) {
+        alert(edu_i18n_strings.ErrorMessages.MissingSetupForBookingForm);
+        return;
+    }
+    if (document.querySelectorAll('.edu-bookingform-modal').length == 0) {
+        edu_createBookingFormModal();
+    }
+    var bookingFrame = document.querySelector('#eduadmin-booking-frame');
+    if (bookingFrame) {
+        bookingFrame.src = url;
+    }
+}
+function edu_createBookingFormModal() {
+    var modal = jQuery("<div class=\"edu-bookingform-modal-backdrop\"></div>\n<div class=\"edu-bookingform-modal\">\n    <div class=\"edu-bookingform-close\">\n        <a href=\"javascript://\" onclick=\"edu_closeBookingModal()\">X</a>\n    </div>\n    <iframe id=\"eduadmin-booking-frame\"></iframe>\n</div>");
+    modal.appendTo('body');
+}
+function edu_closeBookingModal() {
+    var modal = document.querySelector('.edu-bookingform-modal');
+    var modalBackdrop = document.querySelector('.edu-bookingform-modal-backdrop');
+    if (modal) {
+        modal.remove();
+        if (modalBackdrop) {
+            modalBackdrop.remove();
+        }
+    }
+}
 function edu_closeDatePopup(e, obj) {
     var pop = jQuery(obj.parentElement);
     pop.remove();

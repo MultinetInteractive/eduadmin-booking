@@ -55,10 +55,17 @@
 			<?php
 			if ( $show_book_btn ) {
 				if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
-					?>
-					<a class="bookButton cta-btn"
-					   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
-					<?php
+					if ( $use_eduadmin_form ) {
+						?>
+						<a class="bookButton cta-btn" href="javascript://"
+						   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $event['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+						<?php
+					} else {
+						?>
+						<a class="bookButton cta-btn"
+						   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+						<?php
+					}
 				} else {
 					?>
 					<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>

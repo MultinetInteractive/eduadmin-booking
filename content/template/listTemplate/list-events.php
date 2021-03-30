@@ -46,7 +46,7 @@ $expands['Events']     =
 	';' .
 	'$orderby=StartDate asc' .
 	';' .
-	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat';
+	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
 
 $expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -196,6 +196,8 @@ $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 $always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+
+$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 ?>
 <div class="eventListTable" data-eduwidget="listview-eventlist"
      data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>"
@@ -216,4 +218,5 @@ $spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+
      data-showreadmorebtn="<?php echo esc_attr( $attributes['showreadmorebtn'] ); ?>"
      data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>"
      data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"
-     data-filtercity="<?php echo esc_attr( $attributes['filtercity'] ); ?>">
+     data-filtercity="<?php echo esc_attr( $attributes['filtercity'] ); ?>"
+     data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>">
