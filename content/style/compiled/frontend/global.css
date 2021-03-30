@@ -200,6 +200,7 @@
   padding: 20px;
   border-radius: 3px;
   border: 1px solid #c9c9c9;
+  box-shadow: 0 2px 5px;
 }
 
 .edu-bookingform-modal iframe {

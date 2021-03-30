@@ -13,6 +13,8 @@ $event_interest_page      = EDU()->get_option( 'eduadmin-interestEventPage' );
 $allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
 $show_more                = ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : -1;
 
+$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
+
 $has_hidden_dates = false;
 
 $last_city = "";
@@ -36,7 +38,8 @@ $last_city = "";
      data-region="<?php echo esc_attr( ( ! empty( $_REQUEST['edu-region'] ) ? sanitize_text_field( $_REQUEST['edu-region'] ) : '' ) ); ?>"
 	<?php echo( isset( $_GET['eid'] ) ? ' data-eid="' . intval( $_GET['eid'] ) . '"' : '' ); ?>
 	 data-showvenue="<?php echo esc_attr( $show_event_venue ); ?>"
-	 data-eventinquiry="<?php echo esc_attr( $allow_interest_reg_event ); ?>">
+	 data-eventinquiry="<?php echo esc_attr( $allow_interest_reg_event ); ?>"
+	 data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>">
 	<?php
 	$i = 0;
 	if ( ! empty( $prices ) ) {
