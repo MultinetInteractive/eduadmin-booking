@@ -652,6 +652,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function activate() {
+			if ( EDU()->get_option( 'eduadmin-bookingViewPage', NIL ) == NIL ) {
+				update_option( 'eduadmin-useBookingFormFromApi', true );
+			}
+
 			$this->clear_transients();
 			wp_cache_flush();
 			eduadmin_activate_rewrite();
