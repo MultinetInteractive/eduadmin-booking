@@ -6,6 +6,7 @@ if ( $use_limited_discount ) {
 		$c_cards = EDUAPI()->REST->Customer->GetValidVouchers( $customer->CustomerId, $eventid, $contact->PersonId );
 		if ( empty( $c_cards['Message'] ) ) {
 			unset( $c_cards['@curl'] );
+			unset( $c_cards['@headers'] );
 			?>
 			<div class="discountCardView">
 				<?php
