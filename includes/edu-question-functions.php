@@ -149,11 +149,8 @@ function edu_render_number_question( $question, $multiple, $suffix ) {
 
 function edu_render_info_text( $question ) {
 	if ( ! empty( $question['QuestionText'] ) ) {
-		echo '<div class="edu-question-info questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+		echo '<div class="edu-question-info questionanswer_id_q' . esc_attr( $question['QuestionId'] ) . '">';
 		echo '<div class="inputLabel questionInfoQuestion">' . esc_html( wp_strip_all_tags( $question['QuestionText'] ) ) . '</div>';
-		echo '<div class="questionInfoText" data-type="infotext">';
-		echo wp_kses( $question->Answers->EventBookingAnswer->AnswerText, wp_kses_allowed_html( 'post' ) );
-		echo '</div></div>';
 	}
 }
 
