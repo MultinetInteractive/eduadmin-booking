@@ -9,6 +9,11 @@ foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 	$grouped_programmes[ $key ][] = $programme_start;
 }
 
+$surl     = get_home_url();
+$base_url = $surl . '/programmes';
+
+$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
+
 foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<h2>' . esc_html( $group ) . '</h2>';
 	echo '<div class="scrollable">';
@@ -87,7 +92,23 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		echo edu_get_price( $priceNames[ $min_price ]["Price"], $programme_start['ParticipantVat'] );
 
 		echo '</td>';
-		echo '<td><a href="' . esc_url( get_home_url() . '/programmes/' . make_slugs( $programme['ProgrammeName'] ) . '_' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ) . '" class="cta-btn submit-programme">' . esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ) . '</a></td>';
+
+		if ( $use_eduadmin_form ) {
+			?>
+			<td>
+			<a class="cta-btn submit-programme" href="javascript://"
+			   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $programme_start['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+			</td>
+			<?php
+		} else {
+			?>
+			<td>
+			<a class="cta-btn submit-programme"
+			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $programme['ProgrammeName'] ) . '__' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+			</td>
+			<?php
+		}
+
 		echo '</tr>';
 	}
 	echo '</table>';
