@@ -185,7 +185,8 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				$contact_custom_fields = EDUAPI()->OData->CustomFields->Search(
 					null,
 					'ShowOnWeb and CustomFieldOwner eq \'Person\'',
-					'CustomFieldAlternatives'
+					'CustomFieldAlternatives',
+					'SortIndex'
 				)['value'];
 
 				foreach ( $contact_custom_fields as $custom_field ) {
@@ -404,7 +405,8 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				$customer_custom_fields = EDUAPI()->OData->CustomFields->Search(
 					null,
 					'ShowOnWeb and CustomFieldOwner eq \'Customer\'',
-					'CustomFieldAlternatives'
+					'CustomFieldAlternatives',
+					'SortIndex'
 				)['value'];
 
 				foreach ( $customer_custom_fields as $custom_field ) {

@@ -226,7 +226,8 @@ if ( isset( $customer->CustomerId ) && 0 !== $customer->CustomerId ) {
 	$customer_custom_fields = EDUAPI()->OData->CustomFields->Search(
 		null,
 		'ShowOnWeb and CustomFieldOwner eq \'Customer\'',
-		'CustomFieldAlternatives'
+		'CustomFieldAlternatives',
+		'SortIndex'
 	)['value'];
 	if ( ! empty( $customer_custom_fields ) ) {
 		foreach ( $customer_custom_fields as $custom_field ) {

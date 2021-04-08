@@ -54,8 +54,8 @@ if ( ! $api_key || empty( $api_key ) ) {
 		</h3>
 		<?php
 		foreach ( $price_names as $price ) {
-			echo esc_html( sprintf( '%1$s: %2$s', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'] ) ) );
-			echo '<br />';
+			echo esc_html( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span>: <span class="pricename-price">%2$s</span></div>', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'] ) ) );
+
 		}
 		?>
 		<hr />

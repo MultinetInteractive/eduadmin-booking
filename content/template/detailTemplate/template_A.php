@@ -122,10 +122,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					echo esc_html( sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) );
 				} else {
 					foreach ( $prices as $up ) {
-						echo esc_html( sprintf( '%1$s %2$s', $up['PriceNameDescription'], edu_get_price( $up['Price'], $selected_course['ParticipantVat'] ) ) );
-						?>
-						<br />
-						<?php
+						echo esc_html( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span>: <span class="pricename-price">%2$s</span></div>', $up['PriceNameDescription'], edu_get_price( $up['Price'], $selected_course['ParticipantVat'] ) ) );
 					}
 				}
 			}

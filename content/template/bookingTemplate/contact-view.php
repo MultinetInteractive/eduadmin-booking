@@ -91,7 +91,8 @@ if ( isset( $contact->PersonId ) && 0 !== $contact->PersonId ) {
 	$contact_custom_fields = EDUAPI()->OData->CustomFields->Search(
 		null,
 		'ShowOnWeb and CustomFieldOwner eq \'Person\'',
-		'CustomFieldAlternatives'
+		'CustomFieldAlternatives',
+		'SortIndex'
 	)['value'];
 	if ( ! empty( $contact_custom_fields ) ) {
 		foreach ( $contact_custom_fields as $custom_field ) {

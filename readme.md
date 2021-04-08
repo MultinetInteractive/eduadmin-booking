@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.34.1
+Stable tag: 2.35.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.35.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.1...v2.35.0) (2021-04-08)
+
+
+#### Features
+
+* Use SortIndex on custom fields ([2d1c15c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2d1c15c56f3a05d97593d291141e5ccb8c0b232c))
+
 ### [2.34.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.0...v2.34.1) (2021-04-08)
 
 
@@ -66,22 +73,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Fixed render info text-function (still not fully converted from old soap) ([4979469](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/49794693913ce6d7c15647f5272572771f279828))
 * Remove [@headers](https://github.com/headers) as well ([7567aa5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7567aa53cd13a2aaaf40b32e1372acb2860a2bbe))
-
-### [2.33.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.32.2...v2.33.0) (2021-03-30)
-
-
-#### Features
-
-* Added methods to open/close booking form modals ([ccb9067](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ccb906759fdec21837e143a3e8fbe4f991dcf931))
-* Added option to switch out the booking form to one from EduAdmin instead ([915dbbf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/915dbbf8e07ba8c01b0d1bbcb7bbcf7a9f5cd97b))
-* Added PaymentTerms, PriceNames to OData and Consent to REST ([c3f7c15](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c3f7c1551fce9c7aaf81fe0c1359bd15911989a4))
-* Added styling for the modal popup + backdrop ([c7e0764](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c7e0764af790423d853ad502696a66352feec326))
-* Added support for booking form in API calls, so we can get the URL. ([0b70304](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0b703044558d6378688d9f697fcd1c5d2cc8d99c))
-* Added support for event lists (listTemplate) to use the new booking form modal ([2645778](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/264577820ff3860f6f70c48b7b958f3a6e3594b8))
-* Added support for the detail view to use the new booking form modal ([fae9d24](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fae9d2460f7005b71d433ff6f133d1c15f4588c1))
-* If the company using the plugin tries to use booking forms without configuring them, show an error in the places that would show the form (Modal variant) ([81fe12a](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/81fe12a2e40902b0e4ed40b2c03e79354940e31d))
-* Instead of redirecting the users if they are explicitly linked to the booking form page, we'll shove an iframe in there. ([8d0a4e7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8d0a4e725f5b38b4098d07dd9e4499c4964056b4))
-* Making it so that when you activate the plugin, and don't have a booking page selected, we'll set the booking form option to true. ([5b3fe54](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5b3fe54e8d36daaf2599f82571288f7f67176a1d))
-* Warn users that booking form needs to be configured in EduAdmin ([9b41947](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9b41947fd7f18c43168c9a3b82eaac75d1bc16e1))
 
 

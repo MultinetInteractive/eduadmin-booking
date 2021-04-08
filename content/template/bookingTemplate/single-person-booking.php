@@ -305,7 +305,8 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 		$contact_custom_fields = EDUAPI()->OData->CustomFields->Search(
 			null,
 			'ShowOnWeb and CustomFieldOwner eq \'Person\'',
-			'CustomFieldAlternatives'
+			'CustomFieldAlternatives',
+			'SortIndex'
 		)['value'];
 		set_transient( 'eduadmin-customfields_person' . '__' . EDU()->version, $contact_custom_fields, DAY_IN_SECONDS );
 	}
@@ -340,7 +341,8 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 		$customer_custom_fields = EDUAPI()->OData->CustomFields->Search(
 			null,
 			'ShowOnWeb and CustomFieldOwner eq \'Customer\'',
-			'CustomFieldAlternatives'
+			'CustomFieldAlternatives',
+			'SortIndex'
 		)['value'];
 		set_transient( 'eduadmin-customfields_customer' . '__' . EDU()->version, $customer_custom_fields, DAY_IN_SECONDS );
 	}
