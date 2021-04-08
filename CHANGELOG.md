@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.35.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.1...v2.35.0) (2021-04-08)
+
+
+### Features
+
+* Use SortIndex on custom fields ([2d1c15c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2d1c15c56f3a05d97593d291141e5ccb8c0b232c))
+
 ### [2.34.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.0...v2.34.1) (2021-04-08)
 
 
