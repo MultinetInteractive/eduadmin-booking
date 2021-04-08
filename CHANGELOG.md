@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.34.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.33.1...v2.34.0) (2021-04-08)
+
+
+### Features
+
+* Book-button now also opens modal with form for programmes ([208d335](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/208d33537ecdb54c3bf0cf6fab4a7addfef63baf))
+* Programme booking should use booking form if possible ([3bd9938](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3bd993889d1ec660c7c10ebd1c63c036e014400f))
+
 ### [2.33.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.33.0...v2.33.1) (2021-04-07)
 
 
