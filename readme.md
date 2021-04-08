@@ -2,8 +2,8 @@
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
-Tested up to: 5.6
-Stable tag: 2.34.0
+Tested up to: 5.7
+Stable tag: 2.34.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.34.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.0...v2.34.1) (2021-04-08)
+
+
+#### Bug Fixes
+
+* Update tested to-variable ([7887b1a](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7887b1a547b3218f7fc2dc0ca8bd00502b64510b))
+
 ### [2.34.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.33.1...v2.34.0) (2021-04-08)
 
 
@@ -76,7 +83,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 * Instead of redirecting the users if they are explicitly linked to the booking form page, we'll shove an iframe in there. ([8d0a4e7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8d0a4e725f5b38b4098d07dd9e4499c4964056b4))
 * Making it so that when you activate the plugin, and don't have a booking page selected, we'll set the booking form option to true. ([5b3fe54](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5b3fe54e8d36daaf2599f82571288f7f67176a1d))
 * Warn users that booking form needs to be configured in EduAdmin ([9b41947](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9b41947fd7f18c43168c9a3b82eaac75d1bc16e1))
-
-### [2.32.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.32.1...v2.32.2) (2021-02-17)
 
 
