@@ -42,7 +42,9 @@ function edu_render_detail_settings_page() {
 				$attributes               = EDUAPI()->OData->CustomFields->Search(
 					null,
 					"ShowOnWeb and CustomFieldOwner eq 'Product' and CustomFieldSubOwner eq 'CourseTemplate'" .
-					" and (CustomFieldType eq 'Text' or CustomFieldType eq 'Html' or CustomFieldType eq 'Textarea')"
+					" and (CustomFieldType eq 'Text' or CustomFieldType eq 'Html' or CustomFieldType eq 'Textarea')",
+					null,
+					'SortIndex'
 				);
 				?>
 				<i><?php echo esc_html_x( 'Select which field in EduAdmin that should be shown in the page title', 'backend', 'eduadmin-booking' ); ?></i>

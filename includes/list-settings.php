@@ -104,7 +104,9 @@ function edu_render_list_settings_page() {
 											$attributes               = EDUAPI()->OData->CustomFields->Search(
 												null,
 												"ShowOnWeb and CustomFieldOwner eq 'Product' and CustomFieldSubOwner eq 'CourseTemplate'" .
-												" and (CustomFieldType eq 'Text' or CustomFieldType eq 'Html' or CustomFieldType eq 'Textarea')"
+												" and (CustomFieldType eq 'Text' or CustomFieldType eq 'Html' or CustomFieldType eq 'Textarea')",
+												null,
+												'SortIndex'
 											);
 											?>
 											<select name="eduadmin-layout-descriptionfield">
