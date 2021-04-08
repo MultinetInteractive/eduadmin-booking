@@ -20,6 +20,20 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 		do_action( 'eduadmin-bookingcompleted' );
 	}
 } else {
+
+	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
+		if ( ! empty( $programme['BookingFormUrl'] ) ) {
+			?>
+			<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame"
+			        src="<?php echo esc_attr( $programme['BookingFormUrl'] ); ?>"></iframe>
+			<?php
+		} else {
+			echo _x( 'The booking form needs configuration in EduAdmin before this works.', 'frontend', 'eduadmin-booking' );
+		}
+
+		return;
+	}
+
 	$contact  = new EduAdmin_Data_ContactPerson();
 	$customer = new EduAdmin_Data_Customer();
 

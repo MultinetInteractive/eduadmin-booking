@@ -60,6 +60,12 @@ This page is probably the most important one, since it's the page used to post t
 The form is automatically built by the plugin, and handles custom fields and questions that you can setup in [**EduAdmin**](https://www.eduadmin.se),
 the elements have CSS classes, so it's easy to style the form, the way you want it to be.
 
+---
+
+And as stated in the header, you can also check the box in the top of "Booking settings", to use the booking forms from EduAdmin instead.
+
+All customization for these forms are made directly in EduAdmin, so that you don't have to work inside of WordPress to modify them.
+
 ### Thank you-page
 
 This is a static page that you create as a _Thank you_-page, whenever someone completes a booking.

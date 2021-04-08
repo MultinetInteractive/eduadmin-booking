@@ -13,7 +13,7 @@ with all attributes.
 
 ## Shortcode reference
 
-Almost all of the shortcodes below can be used without attributes, 
+Almost all the shortcodes below can be used without attributes, 
 please view the specific instructions for each shortcode.
 
 ---
@@ -82,7 +82,7 @@ Currently (as of writing this document) these fields are available
 ```
 
 The `numberofprices` will limit the amount of visible price names (if there are more than specified), 
-to the number you enter in this attribute.
+to the number you enter into this attribute.
 
 ---
 
