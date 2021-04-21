@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.35.0
+Stable tag: 2.36.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.36.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.35.0...v2.36.0) (2021-04-21)
+
+
+#### Features
+
+* Contain price names in elements for easier styling ([ab700c5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ab700c58c3e68c75c9c25edaf77dbdc42c6180c2)), closes [#264](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/264)
+
+
+#### Bug Fixes
+
+* Remove an `a` that shouldn't have been in the price names. ([45f3ec7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45f3ec758bb0b81d6b292f65e4b61771acc0c793))
+
 ### [2.35.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.1...v2.35.0) (2021-04-08)
 
 
@@ -65,13 +77,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Book-button now also opens modal with form for programmes ([208d335](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/208d33537ecdb54c3bf0cf6fab4a7addfef63baf))
 * Programme booking should use booking form if possible ([3bd9938](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3bd993889d1ec660c7c10ebd1c63c036e014400f))
-
-### [2.33.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.33.0...v2.33.1) (2021-04-07)
-
-
-#### Bug Fixes
-
-* Fixed render info text-function (still not fully converted from old soap) ([4979469](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/49794693913ce6d7c15647f5272572771f279828))
-* Remove [@headers](https://github.com/headers) as well ([7567aa5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7567aa53cd13a2aaaf40b32e1372acb2860a2bbe))
 
 
