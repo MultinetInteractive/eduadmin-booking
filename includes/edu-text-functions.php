@@ -854,7 +854,7 @@ function get_logical_date_groups( $dates, $short = false, $event = null, $show_d
 function edu_get_date_range( $days, $short, $event, $show_days, $always_show_schedule = false, $never_group = false ) {
 	usort( $days, "DateComparer" );
 
-	if ( 1 === count( $days ) ) {
+	if ( 1 === count( $days ) && ! $always_show_schedule ) {
 		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days ) );
 	}
 
