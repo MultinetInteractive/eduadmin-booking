@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.36.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.35.0...v2.36.0) (2021-04-21)
+
+
+### Features
+
+* Contain price names in elements for easier styling ([ab700c5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ab700c58c3e68c75c9c25edaf77dbdc42c6180c2)), closes [#264](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/264)
+
+
+### Bug Fixes
+
+* Remove an `a` that shouldn't have been in the price names. ([45f3ec7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45f3ec758bb0b81d6b292f65e4b61771acc0c793))
+
 ## [2.35.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.34.1...v2.35.0) (2021-04-08)
 
 

@@ -102,10 +102,10 @@ if ( ! $api_key || empty( $api_key ) ) {
 				<?php
 				$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 				if ( 1 === count( $prices ) ) {
-					echo sprintf( '%1$s %2$s', current( $prices )['PriceNameDescription'], edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) );
+					echo wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', current( $prices )['PriceNameDescription'], edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) );
 				} else {
 					foreach ( $prices as $up ) {
-						echo esc_html( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span>: <span class="pricename-price">%2$s</span></div>', $up['PriceNameDescription'], edu_get_price( $up['Price'], $selected_course['ParticipantVat'] ) ) );
+						echo wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', $up['PriceNameDescription'], edu_get_price( $up['Price'], $selected_course['ParticipantVat'] ) ) );
 					}
 				}
 			}
