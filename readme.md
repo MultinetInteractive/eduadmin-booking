@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.36.0
+Stable tag: 2.36.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.36.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.36.0...v2.36.1) (2021-05-06)
+
+
+#### Bug Fixes
+
+* Using percent instead of view-width/height. ([e4e58bb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e4e58bbf5ce1189bca0b8885555858ab490ef797))
+
 ### [2.36.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.35.0...v2.36.0) (2021-04-21)
 
 
@@ -69,13 +76,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Update tested to-variable ([7887b1a](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7887b1a547b3218f7fc2dc0ca8bd00502b64510b))
-
-### [2.34.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.33.1...v2.34.0) (2021-04-08)
-
-
-#### Features
-
-* Book-button now also opens modal with form for programmes ([208d335](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/208d33537ecdb54c3bf0cf6fab4a7addfef63baf))
-* Programme booking should use booking form if possible ([3bd9938](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3bd993889d1ec660c7c10ebd1c63c036e014400f))
 
 
