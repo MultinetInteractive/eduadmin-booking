@@ -181,6 +181,36 @@ function edu_render_booking_settings_page() {
 							<?php echo esc_html_x( 'Do not send confirmation emails (if you use automatic emails in EduAdmin)', 'backend', 'eduadmin-booking' ); ?>
 						</label>
 						<br />
+
+						<h4><?php echo esc_html_x( 'Confirmation settings', 'backend', 'eduadmin-booking' ); ?></h4>
+						<?php
+						$confirmationSettingsParticipants    = EDU()->get_option( 'eduadmin-confirmationSettings-participants', "true" );
+						$confirmationSettingsCustomer        = EDU()->get_option( 'eduadmin-confirmationSettings-customer', "true" );
+						$confirmationSettingsCustomerContact = EDU()->get_option( 'eduadmin-confirmationSettings-customercontact', "true" );
+						?>
+						<p><?php echo esc_html_x( 'Decide who gets the confirmation after a booking is completed.', 'backend', 'eduadmin-booking' ); ?></p>
+						<label>
+							<input type="checkbox"
+							       name="eduadmin-confirmationSettings-participants"<?php checked( $confirmationSettingsParticipants, 'true' ); ?>
+							       value="true" />
+							<?php echo esc_html_x( 'Send confirmation to all participants', 'backend', 'eduadmin-booking' ); ?>
+						</label>
+						<br />
+						<label>
+							<input type="checkbox"
+							       name="eduadmin-confirmationSettings-customer"<?php checked( $confirmationSettingsCustomer, 'true' ); ?>
+							       value="true" />
+							<?php echo esc_html_x( 'Send confirmation to the customer email', 'backend', 'eduadmin-booking' ); ?>
+						</label>
+						<br />
+						<label>
+							<input type="checkbox"
+							       name="eduadmin-confirmationSettings-customercontact"<?php checked( $confirmationSettingsCustomerContact, 'true' ); ?>
+							       value="true" />
+							<?php echo esc_html_x( 'Send confirmation to the customer contact', 'backend', 'eduadmin-booking' ); ?>
+						</label>
+						<br />
+
 						<h4><?php echo esc_html_x( 'Field order', 'backend', 'eduadmin-booking' ); ?></h4> <?php
 						$fieldOrder = get_option( 'eduadmin-fieldOrder', 'contact_customer' );
 						?>

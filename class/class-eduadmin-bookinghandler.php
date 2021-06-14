@@ -288,9 +288,13 @@ class EduAdmin_BookingHandler {
 		if ( ! EDU()->is_checked( 'eduadmin-dontSendConfirmation', false ) ) {
 			$send_info = new EduAdmin_Data_Mail();
 
-			$send_info->SendToParticipants    = true;
-			$send_info->SendToCustomer        = true;
-			$send_info->SendToCustomerContact = true;
+			$confirmationSettingsParticipants    = EDU()->is_checked( 'eduadmin-confirmationSettings-participants', true );
+			$confirmationSettingsCustomer        = EDU()->is_checked( 'eduadmin-confirmationSettings-customer', true );
+			$confirmationSettingsCustomerContact = EDU()->is_checked( 'eduadmin-confirmationSettings-customercontact', true );
+
+			$send_info->SendToParticipants    = $confirmationSettingsParticipants;
+			$send_info->SendToCustomer        = $confirmationSettingsCustomer;
+			$send_info->SendToCustomerContact = $confirmationSettingsCustomerContact;
 
 			$programme_booking_data->SendConfirmationEmail = $send_info;
 		}
@@ -323,9 +327,14 @@ class EduAdmin_BookingHandler {
 		if ( ! EDU()->is_checked( 'eduadmin-dontSendConfirmation', false ) ) {
 			$send_info = new EduAdmin_Data_Mail();
 
-			$send_info->SendToParticipants    = true;
-			$send_info->SendToCustomer        = true;
-			$send_info->SendToCustomerContact = true;
+			$confirmationSettingsParticipants    = EDU()->is_checked( 'eduadmin-confirmationSettings-participants', true );
+			$confirmationSettingsCustomer        = EDU()->is_checked( 'eduadmin-confirmationSettings-customer', true );
+			$confirmationSettingsCustomerContact = EDU()->is_checked( 'eduadmin-confirmationSettings-customercontact', true );
+
+			$send_info->SendToParticipants    = $confirmationSettingsParticipants;
+			$send_info->SendToCustomer        = $confirmationSettingsCustomer;
+			$send_info->SendToCustomerContact = $confirmationSettingsCustomerContact;
+
 
 			$booking_data->SendConfirmationEmail = $send_info;
 		}
