@@ -103,8 +103,8 @@ gulp.task(
 gulp.task(
 	"deploy",
 	gulp.series(
-		"styles-frontend-nano",
-		"styles-admin-nano",
+		"styles-frontend",
+		"styles-admin",
 		"readme-version",
 		"eduadmin-version",
 		"update-checksum"

@@ -131,6 +131,10 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-booking', 'eduadmin-blockEditIfLoggedIn' );
 	register_setting( 'eduadmin-booking', 'eduadmin-alwaysUsePaymentPlugin' );
 
+	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-participants' );
+	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-customer' );
+	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-customercontact' );
+
 	/* Style settings */
 	register_setting( 'eduadmin-style', 'eduadmin-style' );
 
