@@ -250,7 +250,7 @@ class EduAdmin_BookingHandler {
 
 			$always_use_payment_plugin = EDU()->is_checked( 'eduadmin-alwaysUsePaymentPlugin', false );
 
-			if ( ( $event_booking->PaymentMethodId === 2 || $always_use_payment_plugin ) && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
+			if ( ( $event_booking['PaymentMethodId'] === 2 || $always_use_payment_plugin ) && intval( $event_booking['TotalPriceExVat'] ) > 0 ) {
 				do_action( 'eduadmin-checkpaymentplugins', $ebi );
 			}
 
@@ -334,7 +334,6 @@ class EduAdmin_BookingHandler {
 			$send_info->SendToParticipants    = $confirmationSettingsParticipants;
 			$send_info->SendToCustomer        = $confirmationSettingsCustomer;
 			$send_info->SendToCustomerContact = $confirmationSettingsCustomerContact;
-
 
 			$booking_data->SendConfirmationEmail = $send_info;
 		}
