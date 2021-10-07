@@ -261,6 +261,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 			'courseeventlist'           => null,
 			'showmore'                  => null,
 			'courseattributeid'         => null,
+			'courseattributehasvalue'   => null,
 			'courseeventlistfiltercity' => null,
 			'pagetitlejs'               => null,
 			'bookurl'                   => null,
@@ -379,6 +380,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				}
 				$ret_str .= join( ', ', $subject_names );
 			}
+
 			if ( isset( $attributes['courselevel'] ) ) {
 				if ( ! empty( $selected_course['CourseLevelId'] ) ) {
 					$course_level = EDUAPI()->OData->CourseLevels->GetItem( $selected_course['CourseLevelId'] );
@@ -387,6 +389,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 					}
 				}
 			}
+
 			if ( isset( $attributes['courseattributeid'] ) ) {
 				$attrid = intval( $attributes['courseattributeid'] );
 				foreach ( $selected_course['CustomFields'] as $cf ) {
@@ -400,10 +403,36 @@ function eduadmin_get_detailinfo( $attributes ) {
 							case 'Dropdown':
 								$ret_str .= wp_kses_post( $cf['CustomFieldAlternativeValue'] );
 								break;
+							case 'Checkbox':
+								$ret_str .= wp_kses_post( $cf['CustomFieldChecked'] ?
+									                          _x( "Checked", 'frontend', 'eduadmin-booking' ) :
+									                          _x( "Not Checked", 'frontend', 'eduadmin-booking' ) );
+								break;
 						}
 						break;
 					}
 				}
+			}
+
+			if ( isset( $attributes['courseattributehasvalue'] ) ) {
+				$attrid = intval( $attributes['courseattributehasvalue'] );
+				foreach ( $selected_course['CustomFields'] as $cf ) {
+					if ( $cf['CustomFieldId'] === $attrid ) {
+						switch ( $cf['CustomFieldType'] ) {
+							case 'Text':
+							case 'Html':
+							case 'Textarea':
+								return strlen( $cf['CustomFieldValue'] ) > 0;
+							case 'Dropdown':
+								return strlen( $cf['CustomFieldAlternativeValue'] ) > 0;
+							case 'Checkbox':
+								return $cf['CustomFieldChecked'];
+						}
+						break;
+					}
+				}
+
+				return false;
 			}
 
 			if ( isset( $attributes['courseprice'] ) ) {
