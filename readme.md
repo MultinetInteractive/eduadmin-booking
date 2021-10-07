@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.37.1
+Stable tag: 2.38.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.38.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.37.1...v2.38.0) (2021-10-07)
+
+
+#### Features
+
+* Added attribute `courseattributehasvalue` to allow a user to check if an attribute/CustomField is set/checked ([79f50d5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/79f50d571f2f2fc6af0ad7ef6e98a70e6bcc8044))
+* Added support for `Checkbox` in `courseattributeid`-attribute, that will output a translatable string depending if it's checked or not. ([0ffd5ce](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ffd5cec0059d41824b1099e3766ee460ebd2f5a))
+
 ### [2.37.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.37.0...v2.37.1) (2021-07-29)
 
 ### [2.37.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.36.1...v2.37.0) (2021-06-14)
@@ -59,17 +67,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Using percent instead of view-width/height. ([e4e58bb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e4e58bbf5ce1189bca0b8885555858ab490ef797))
-
-### [2.36.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.35.0...v2.36.0) (2021-04-21)
-
-
-#### Features
-
-* Contain price names in elements for easier styling ([ab700c5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ab700c58c3e68c75c9c25edaf77dbdc42c6180c2)), closes [#264](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/264)
-
-
-#### Bug Fixes
-
-* Remove an `a` that shouldn't have been in the price names. ([45f3ec7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45f3ec758bb0b81d6b292f65e4b61771acc0c793))
 
 
