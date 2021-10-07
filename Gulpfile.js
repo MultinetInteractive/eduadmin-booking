@@ -1,9 +1,6 @@
 const gulp = require("gulp");
 const replace = require("gulp-replace");
-const sass = require("gulp-sass");
-const myth = require("gulp-myth");
-const postcss = require('gulp-postcss');
-const nano = require("cssnano");
+const sass = require("gulp-sass")(require('sass'));
 const pinfo = require("./package.json");
 const exec = require('child_process').exec;
 const changelog = require('./changelog-fixer.js');
@@ -12,16 +9,14 @@ const changelog = require('./changelog-fixer.js');
 gulp.task("styles-frontend", function () {
 	return gulp
 		.src("src/scss/frontend/*.scss")
-		.pipe(sass().on("error", sass.logError))
-		.pipe(myth())
+		.pipe(sass.sync().on("error", sass.logError))
 		.pipe(gulp.dest("./content/style/compiled/frontend/"));
 });
 
 gulp.task("styles-admin", function () {
 	return gulp
 		.src("src/scss/admin/*.scss")
-		.pipe(sass().on("error", sass.logError))
-		.pipe(myth())
+		.pipe(sass.sync().on("error", sass.logError))
 		.pipe(gulp.dest("./content/style/compiled/admin/"));
 });
 
@@ -65,16 +60,14 @@ gulp.task("update-checksum", function (cb) {
 gulp.task("styles-frontend-nano", function () {
 	return gulp
 		.src("src/scss/frontend/*.scss")
-		.pipe(sass().on("error", sass.logError))
-		.pipe(postcss([nano()]))
+		.pipe(sass.sync({outputStyle: 'compressed'}).on("error", sass.logError))
 		.pipe(gulp.dest("./content/style/compiled/frontend/"));
 });
 
 gulp.task("styles-admin-nano", function () {
 	return gulp
 		.src("src/scss/admin/*.scss")
-		.pipe(sass().on("error", sass.logError))
-		.pipe(postcss([nano()]))
+		.pipe(sass.sync({outputStyle: 'compressed'}).on("error", sass.logError))
 		.pipe(gulp.dest("./content/style/compiled/admin/"));
 });
 
@@ -103,8 +96,8 @@ gulp.task(
 gulp.task(
 	"deploy",
 	gulp.series(
-		"styles-frontend",
-		"styles-admin",
+		"styles-frontend-nano",
+		"styles-admin-nano",
 		"readme-version",
 		"eduadmin-version",
 		"update-checksum"
