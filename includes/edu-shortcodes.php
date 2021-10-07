@@ -403,6 +403,11 @@ function eduadmin_get_detailinfo( $attributes ) {
 							case 'Dropdown':
 								$ret_str .= wp_kses_post( $cf['CustomFieldAlternativeValue'] );
 								break;
+							case 'Checkbox':
+								$ret_str .= wp_kses_post( $cf['CustomFieldChecked'] ?
+									                          _x( "Checked", 'frontend', 'eduadmin-booking' ) :
+									                          _x( "Not Checked", 'frontend', 'eduadmin-booking' ) );
+								break;
 						}
 						break;
 					}
