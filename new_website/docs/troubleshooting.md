@@ -3,7 +3,6 @@ id: troubleshooting
 title: Troubleshooting
 sidebar_label: How to troubleshoot
 ---
-
 ## Common issues
 
 These issues have been reported most of all, 
@@ -28,16 +27,18 @@ and it will output some comments in the source code, that will tell you everythi
 The output will look something like this
 
 ```html
-<!-- EduAdmin Booking (<version>) Transients -->
-<!-- eduadmin-locations_<hash>__<version>: Expires in: 24 hours -->
-<!-- eduadmin-categories_<hash>__<version>: Expires in: 24 hours -->
-<!-- eduadmin-levels_<hash>__<version>: Expires in: 24 hours -->
-<!-- eduadmin-listcourses-courses_<hash>__<version>: Expires in: 5 minutes -->
-<!-- eduadmin-organization_<hash>__<version>: Expires in: 24 hours -->
-<!-- eduadmin-newapi-token__<version>: Expires in: 7 days -->
-<!-- eduadmin-subjects_<hash>__<version>: Expires in: 1 day -->
-<!-- eduadmin-regions_<hash>__<version>: Expires in: 1 day -->
-<!-- /EduAdmin Booking Transients -->
+
+<!-- EduAdmin Booking (<version>) Transients 
+ eduadmin-locations_<hash>__<version>: Expires in: 24 hours 
+ eduadmin-categories_<hash>__<version>: Expires in: 24 hours 
+ eduadmin-levels_<hash>__<version>: Expires in: 24 hours 
+ eduadmin-listcourses-courses_<hash>__<version>: Expires in: 5 minutes 
+ eduadmin-organization_<hash>__<version>: Expires in: 24 hours 
+ eduadmin-newapi-token__<version>: Expires in: 7 days 
+ eduadmin-subjects_<hash>__<version>: Expires in: 1 day 
+ eduadmin-regions_<hash>__<version>: Expires in: 1 day 
+ /EduAdmin Booking Transients -->
+
 ```
 
 ### Nothing happens when I click anything
@@ -73,6 +74,7 @@ And if you want to check how we handle the dates, you can append `?edu-debugdate
 and then you will see (in the source), something like this:
 
 ```html
+
 <!-- Array
 (
     [0] => Y-m-d                        // The format of the date
@@ -84,4 +86,5 @@ and then you will see (in the source), something like this:
     [6] => include                      // This is an approximation of where the code is used
 )
 -->
+
 ```

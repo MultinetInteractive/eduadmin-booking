@@ -1,0 +1,248 @@
+:root {
+    --ifm-color-primary-lightest: #E4384A;
+    --ifm-color-primary-lighter: #DE1E31;
+    --ifm-color-primary-light: #D41D2F;
+    --ifm-color-primary: #c11a2b;
+    --ifm-color-primary-dark: #AE1727;
+    --ifm-color-primary-darker: #A41625;
+    --ifm-color-primary-darkest: #87121E;
+}
+
+.homeContainer {
+    text-align: center;
+}
+
+.homeContainer .homeWrapper {
+    padding: 2em 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeContainer .homeWrapper .projectLogo img {
+    height: 100px;
+    margin-bottom: 0;
+}
+
+.projectTitle {
+    color: #c11a2b;
+    font-size: 250%;
+    line-height: 1em;
+}
+
+.projectTitle>small {
+    display: block;
+    font-weight: 400;
+    font-size: 50%;
+    line-height: 1em;
+    margin: .7em 0 1.3em;
+}
+
+.projectLogo {
+    display: none;
+    pointer-events: none;
+}
+
+.promoSection {
+    display: flex;
+    flex-flow: column wrap;
+    font-size: 125%;
+    line-height: 1.6em;
+    position: relative;
+    z-index: 99;
+}
+
+.promoSection .promoRow {
+    padding: 10px 0;
+}
+
+.promoSection .promoRow .pluginRowBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -2px;
+}
+
+.promoSection .promoRow .pluginRowBlock .pluginWrapper {
+    padding: 0 2px;
+}
+
+.promoSection .promoRow .pluginWrapper {
+    display: block;
+}
+
+.lightBackground {
+    background: #f7f7f733;
+}
+
+.button {
+    border: 1px solid #c11a2b;
+    border-radius: 3px;
+    color: #c11a2b;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.2em;
+    padding: 10px;
+    text-decoration: none!important;
+    text-transform: uppercase;
+    transition: background .3s,color .3s;
+}
+
+img {
+    border-style: none;
+    box-sizing: content-box;
+    max-width: 100%;
+}
+
+.container.paddingTop {
+    padding-top: 80px;
+}
+
+.container.paddingBottom {
+    padding-top: 80px;
+}
+
+.gridBlock {
+    padding: 0;
+}
+
+.mainContainer {
+    flex: 1 1 0%;
+    max-width: 100%;
+    padding: 40px 0;
+}
+
+.imageAlignTop.alignCenter .blockImage {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.imageAlignTop .blockImage {
+    margin-bottom: 20px;
+    max-width: 80px;
+}
+
+.blockImage {
+    max-width: 730px;
+}
+
+.gridBlock .fourByGridBlock img, .gridBlock .threeByGridBlock img, .gridBlock .twoByGridBlock img {
+    max-width: 100%;
+}
+
+.imageAlignSide {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.imageAlignLeft .blockImage {
+    margin-right: 40px;
+}
+
+.container .wrapper .imageAlignSide p {
+    margin: 0 0 40px;
+    max-width: 560px;
+}
+
+.container .gridBlock .blockContent p {
+    padding: 0;
+}
+
+.imageAlignSide .blockContent {
+    flex: 1 1;
+}
+
+.container .wrapper .imageAlignSide h2 {
+    text-align: left;
+}
+
+.container .wrapper .imageAlignSide p {
+    margin: 0 0 40px;
+    max-width: 560px;
+}
+
+.imageAlignRight .blockImage {
+    margin-left: 40px;
+}
+.imageAlignSide .blockImage {
+    flex: 0 1 500px;
+    max-width: 500px;
+}
+
+@media only screen and (min-width: 1500px) {
+    .homeContainer .homeWrapper {
+        max-width: 1400px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .homeContainer .homeWrapper .projectLogo {
+
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        justify-content: flex-end;
+        left: 0;
+        padding: 2em 100px 4em;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .homeContainer .homeWrapper .projectLogo img {
+        height: 100%;
+        max-height: 250px;
+    }
+
+    .gridBlock {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (min-width: 736px) {
+    .homeContainer .homeWrapper {
+        position: relative;
+    }
+
+    .gridBlock .fourByGridBlock {
+        flex: 1 0 20%;
+    }
+
+    .gridBlock .twoByGridBlock {
+        flex: 1 0 40%;
+    }
+
+    .gridBlock {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .gridBlock>:first-child {
+        margin-left: 0;
+    }
+
+    .gridBlock>:last-child {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .homeContainer .homeWrapper {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .projectLogo img {
+        height: 200px;
+        margin-bottom: 10px;
+    }
+
+    .projectTitle {
+        font-size: 300%;
+        margin: .3em 0;
+    }
+}
+
