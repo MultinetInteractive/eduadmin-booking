@@ -23,14 +23,14 @@ module.exports = {
 					"showLastUpdateAuthor": true,
 					"showLastUpdateTime": true,
 					"editUrl": "https://github.com/MultinetInteractive/EduAdmin-WordPress/edit/master/new_website/",
-					"path": ".\\docs",
-					"sidebarPath": ".\\sidebars.json"
+					"path": "./docs",
+					"sidebarPath": "./sidebars.json"
 				},
 				"blog": {
 					"path": "blog"
 				},
 				"theme": {
-					"customCss": "..\\src\\css\\customTheme.css"
+					"customCss": "../src/css/customTheme.css"
 				}
 			}
 		]
