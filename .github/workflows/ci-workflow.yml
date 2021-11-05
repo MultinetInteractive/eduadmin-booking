@@ -13,10 +13,10 @@ jobs:
           fetch-depth: 1
           submodules: true
           lfs: true
-      - name: Get Node 10.x
+      - name: Get Node 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: 10.x
+          node-version: 12.x
       - name: Build source files
         shell: bash
         run: |
@@ -26,7 +26,7 @@ jobs:
           git config --global user.email "chga@multinet.se"
           git config --global user.name "Chris Gårdenberg"
           echo "machine github.com login itssimple password ${{ secrets.ITSSIMPLE_TOKEN }}" > ~/.netrc
-          cd website && yarn install && GIT_USER=itssimple yarn run publish-gh-pages
+          cd new_website && yarn install && GIT_USER=itssimple yarn run deploy
           cd ..
       - name: Deploy trunk to SVN
         env:

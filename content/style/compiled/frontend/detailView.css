@@ -1,56 +1,44 @@
 .eduadmin div.title {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
   align-items: center;
   padding: 16px 0;
 }
-
 .eduadmin div.title .courseTitle {
   color: #4d4d4d;
   font-weight: 600;
   margin: 0;
   padding: 0;
 }
-
 .eduadmin div.title .courseImage {
   width: 72px;
   height: 72px;
   margin: 0 16px 0 0;
 }
-
 .eduadmin .textblock {
   color: #595959;
 }
-
 .eduadmin .eventInformation {
   margin: 0 0 48px 0;
   color: #595959;
 }
-
 .eduadmin .event-table.eventDays .eventSeparator {
   margin-top: 1rem;
   font-size: 1.4rem;
   font-weight: 500;
 }
-
 .eduadmin .eventItem {
   padding: 16px 0;
   border-bottom: 1px solid #f2f2f2;
 }
-
 .eduadmin .eventItem:first-child {
   border-top: 1px solid #f2f2f2;
 }
-
 .eduadmin .eventItem:last-child {
   border: none;
 }
-
 .eduadmin .eventItem .eventStatus {
   margin: 0 0 16px 0;
 }
-
 .eduadmin .eventItem .eventDate,
 .eduadmin .eventItem .eventCity {
   margin: 0 0 8px 0;
@@ -58,19 +46,14 @@
 
 @media (min-width: 800px) {
   .eduadmin .eventItem {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -ms-flex-align: center;
     align-items: center;
   }
-
   .eduadmin .eventItem .eventStatus,
-  .eduadmin .eventItem .eventDate,
-  .eduadmin .eventItem .eventCity {
+.eduadmin .eventItem .eventDate,
+.eduadmin .eventItem .eventCity {
     margin: 0;
-    -ms-flex: auto;
     flex: auto;
   }
 }

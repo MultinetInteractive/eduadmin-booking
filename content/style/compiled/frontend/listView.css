@@ -1,30 +1,20 @@
-.eduadmin .eventListTable[data-template="A"] {
-  display: -ms-flexbox;
+.eduadmin .eventListTable[data-template=A] {
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
-
-.eduadmin .eventListTable[data-template="B"] {
-  display: -ms-flexbox;
+.eduadmin .eventListTable[data-template=B] {
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-pack: start;
   justify-content: flex-start;
 }
-
 .eduadmin .objectItem {
   padding: 24px 8px;
   border-bottom: 1px solid #f2f2f2;
 }
-
 .eduadmin .objectItem:last-child .objectInfoHolder {
   border-bottom: none;
 }
-
 .eduadmin .objectItem .objectImage {
   display: none;
   background-size: cover;
@@ -32,55 +22,42 @@
   border-radius: 1px;
   margin: 0 0 16px 0;
 }
-
 .eduadmin .objectItem .objectName {
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 16px 0;
 }
-
 .eduadmin .objectItem .objectName a {
   color: #4d4d4d;
 }
-
 .eduadmin .objectItem .objectDescription {
   color: #595959;
   margin: 0 0 16px 0;
 }
-
 .eduadmin .objectItem .objectDescription .eduadmin-dateText,
 .eduadmin .objectItem .objectDescription .cityInfo {
   display: inline-block;
   margin: 0 0 8px 0;
 }
-
 .eduadmin .objectItem .objectDescription .spotsLeftInfo {
   display: block;
   margin: 24px 0 32px 0;
 }
-
 .eduadmin .objectItem .objectBook {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-align: baseline;
   align-items: baseline;
 }
-
 .eduadmin .objectItem .objectBook a.bookButton {
   margin: 0 16px 0 0;
 }
-
 .eduadmin .objectItem .objectBook a.readMoreButton:not(.cta-btn) {
   color: #666666;
   font-style: italic;
 }
-
 .eduadmin .objectItem .objectBook a.readMoreButton:not(.cta-btn):hover {
   color: #262626;
 }
-
 .eduadmin .objectBlock.brick {
   width: 100%;
   min-height: 300px;
@@ -90,14 +67,10 @@
   padding: 16px;
   border-radius: 3px;
   background: #fefefe;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 }
-
 .eduadmin .objectBlock.brick .objectImage {
   height: 160px;
   background-size: cover;
@@ -105,30 +78,24 @@
   margin: 0 0 16px 0;
   border-radius: 1px;
 }
-
 .eduadmin .objectBlock.brick .objectName {
   font-size: 20px;
   font-weight: 600;
   margin: 0 0 16px 0;
 }
-
 .eduadmin .objectBlock.brick .objectName a {
   color: #4d4d4d;
 }
-
 .eduadmin .objectBlock.brick .objectDescription {
   color: #595959;
 }
-
 .eduadmin .objectBlock.brick .objectDescription .spotsLeft {
   display: none;
 }
-
 .eduadmin .objectBlock.brick .objectDescription .spotsLeftInfo {
   display: block;
   margin: 24px 0 32px 0;
 }
-
 .eduadmin .objectBlock.brick .objectDescription .eduadmin-dateText,
 .eduadmin .objectBlock.brick .objectDescription .cityInfo {
   display: inline-block;
@@ -136,64 +103,46 @@
 }
 
 /* Desktop */
-
 @media (min-width: 800px) {
   .eduadmin .objectItem {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-align: stretch;
     align-items: stretch;
   }
-
   .eduadmin .objectItem .objectImage {
     display: block;
     width: 170px;
     /* height: 72px; */
     margin: 0 32px 0 0;
   }
-
   .eduadmin .objectItem .objectInfoHolder {
-    -ms-flex: auto;
     flex: auto;
   }
-
   .eduadmin .objectItem .objectDescription {
     margin: 0;
   }
-
   .eduadmin .objectItem .objectDescription .spotsLeftInfo {
     margin: 24px 0 0 0;
   }
-
   .eduadmin .objectItem .objectBook {
-    -ms-flex-direction: column;
     flex-direction: column;
-    -ms-flex-align: center;
     align-items: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
-
   .eduadmin .objectItem .objectBook a.bookButton {
-    -ms-flex-order: -1;
     order: -1;
     margin: 0 0 16px 0;
   }
-
   .eduadmin .objectItem .readMoreButton {
     width: 100%;
   }
 
   .eduadmin .course-holder.tmpl_A .objectItem {
-    -ms-flex-align: center;
     align-items: center;
   }
-
   .eduadmin .course-holder.tmpl_A .objectImage {
     width: 56px;
     height: 56px;
   }
-
   .eduadmin .objectBlock.brick {
     max-width: 350px;
     margin: 0 16px 16px 0;

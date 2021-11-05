@@ -27,13 +27,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<th></th>';
 	echo '</tr>';
 	foreach ( $grouped_programme as $programme_start ) {
-		$sorted_events = array();
-
-		foreach ( $programme_start['Events'] as $event ) {
-			$sorted_events[ $event['ProgrammeCourseSortIndex'] ] = $event;
-		}
-
-		ksort( $sorted_events );
+		$sorted_events = sortEvents( $programme_start['Events'], [ 'ProgrammeCourseSortIndex' ], [ 1 ] );
 
 		echo '<tr>';
 		echo '<td>' . wp_kses_post( get_display_date( $programme_start['StartDate'] ) ) . '</td>';
@@ -96,15 +90,15 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		if ( $use_eduadmin_form ) {
 			?>
 			<td>
-			<a class="cta-btn submit-programme" href="javascript://"
-			   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $programme_start['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+				<a class="cta-btn submit-programme" href="javascript://"
+				   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $programme_start['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
 			</td>
 			<?php
 		} else {
 			?>
 			<td>
-			<a class="cta-btn submit-programme"
-			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $programme['ProgrammeName'] ) . '__' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+				<a class="cta-btn submit-programme"
+				   href="<?php echo esc_url( $base_url . '/' . make_slugs( $programme['ProgrammeName'] ) . '__' . $programme['ProgrammeId'] . '/book/?id=' . $programme_start['ProgrammeStartId'] . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
 			</td>
 			<?php
 		}

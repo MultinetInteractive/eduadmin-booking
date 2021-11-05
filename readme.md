@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.38.0
+Stable tag: 2.38.1
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,22 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.38.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.0...v2.38.1) (2021-11-05)
+
+
+#### Bug Fixes
+
+* **Course booking:** Filtering available events, to not include events that are fully booked. ([bf014de](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bf014de3e99db0ad6b9c7a5a71c505d8e5371bb5))
+* **Course booking:** If the end user visits the booking page without a selected event, select it in the dropdown, if available ([0ec0db0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ec0db0e1363926f3d85068918d62304ad4164a9)), closes [#405](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/405)
+* **Documentation:** Added CNAME file in static-folder for GitHub Pages, fixed paths in config ([2f8cc2b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2f8cc2bd683b84353e1b101b9a1fb9994291c3cd))
+* **Programme:** Fixed so that duplicate sort index-keys won't remove courses. ([578a636](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/578a63650d0feef595b2c26793127c34523b0f7b))
+
+
+#### Refactoring
+
+* **Changelog:** Added .versionrc file to repo, so that we get more info in the changelog depending on what we've done ([e342b02](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e342b028760544dd6bcc2e781e5d574e9f49d636))
+* Migrated documentation to new version of Docusaurus. ([44fafce](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/44fafce999ca25f61349096fe19eb68627fc8c3a))
+
 ### [2.38.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.37.1...v2.38.0) (2021-10-07)
 
 
@@ -60,12 +76,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Features
 
 * Ability to change who gets the booking confirmations after a completed booking ([d36075a](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d36075a4253fd495c2987fabc4891de4fed29596)), closes [#218](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/218)
-
-### [2.36.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.36.0...v2.36.1) (2021-05-06)
-
-
-#### Bug Fixes
-
-* Using percent instead of view-width/height. ([e4e58bb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e4e58bbf5ce1189bca0b8885555858ab490ef797))
 
 

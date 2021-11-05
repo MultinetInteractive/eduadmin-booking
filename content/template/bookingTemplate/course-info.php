@@ -30,6 +30,17 @@ if ( ! $selected_course || ! isset( $selected_course['Events'] ) || empty( $sele
 $event  = null;
 $events = $selected_course['Events'];
 
+$filtered_events = [];
+
+foreach ( $events as $_event ) {
+	if ( $_event['ParticipantNumberLeft'] == 0 && $_event['MaxParticipantNumber'] != 0 ) {
+	} else {
+		$filtered_events[] = $_event;
+	}
+}
+
+$events = $filtered_events;
+
 if ( ! $noAvailableDates ) {
 	$event = $events[0];
 	if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {

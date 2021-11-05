@@ -3,15 +3,16 @@ id: your-first-custom-template
 title: Your first custom template
 sidebar_label: Your first custom template
 ---
-
 This guide will show how you can build the `template_A`-template, but as a custom template.
 
----
+* * *
 
 This is how the default detail view is implemented
 
 ```php
+
 [eduadmin-detailview]
+
 ```
 
 That's basically all you need for the detail view to start working, 
@@ -21,7 +22,9 @@ Now, the first modification we will do to make it possible to use custom templat
 will be adding the attribute `customtemplate`. Doing this will disable the regular templates.
 
 ```php
+
 [eduadmin-detailview customtemplate]
+
 ```
 
 So, if you reload the detail view of a course template now, it should not show anything at all.
@@ -35,6 +38,7 @@ We won't be using the image, because we can only get the image URL,
 not see if it actually contains anything, and we don't want to render broken images.
 
 ```html
+
 [eduadmin-detailview customtemplate]
 
 <div class="eduadmin">
@@ -89,4 +93,5 @@ not see if it actually contains anything, and we don't want to render broken ima
         </a>
     </div>
 </div>
+
 ```

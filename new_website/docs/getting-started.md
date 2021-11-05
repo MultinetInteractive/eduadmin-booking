@@ -2,8 +2,8 @@
 id: getting-started
 title: Getting started
 sidebar_label: First time setup
+slug: /
 ---
-
 This guide will focus on get you started with the [**EduAdmin WordPress Plugin**](https://wordpress.org/plugins/eduadmin-booking/), with default templates and settings so your visitors can start booking directly from your [**WordPress**](https://www.wordpress.org) webpage.
 
 > If you do not have an API key for [**EduAdmin**](https://www.eduadmin.se) yet, 
@@ -20,14 +20,14 @@ If you have your API key ready, let us go through the steps below!
 ## Installing the plugin
 
 Make sure you are logged in to WordPress with a user, that has access to install new plugins.
-From the plugin view, click **Add New** and search for *EduAdmin*, the one you want is "[**EduAdmin Booking**](https://wordpress.org/plugins/eduadmin-booking/)" by [**MultiNet Interactive AB**](https://www.multinet.com).
+From the plugin view, click **Add New** and search for _EduAdmin_, the one you want is "[**EduAdmin Booking**](https://wordpress.org/plugins/eduadmin-booking/)" by [**MultiNet Interactive AB**](https://www.multinet.com).
 
 > Don't forget to activate the newly installed plugin
 
 ## Setting the API key
 
-When you activate the plugin, a new menu item (*EduAdmin*) will appear in the left menu, 
-to set your API key, navigate to the *Api Authentication* and enter the API key you got from [**MultiNet Interactive AB**](https://www.multinet.com)
+When you activate the plugin, a new menu item (_EduAdmin_) will appear in the left menu, 
+to set your API key, navigate to the _Api Authentication_ and enter the API key you got from [**MultiNet Interactive AB**](https://www.multinet.com)
 (or if you got one from the company you're building the website for.)
 
 ## Creating all the required pages
@@ -60,7 +60,7 @@ This page is probably the most important one, since it's the page used to post t
 The form is automatically built by the plugin, and handles custom fields and questions that you can setup in [**EduAdmin**](https://www.eduadmin.se),
 the elements have CSS classes, so it's easy to style the form, the way you want it to be.
 
----
+* * *
 
 And as stated in the header, you can also check the box in the top of "Booking settings", to use the booking forms from EduAdmin instead.
 

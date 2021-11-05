@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @param $events   array
+ * @param $order_by array
+ * @param $order    array
+ *
+ * @return mixed
+ */
 function sortEvents( $events, $order_by, $order ) {
 	$t = EDU()->start_timer( 'sortEvents' );
 	usort( $events, function( $evA, $evB ) use ( $order_by, $order ) {

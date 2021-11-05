@@ -1,20 +1,15 @@
 .eduadmin .block-container {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
 }
-
 .eduadmin .date-customformat {
   margin-left: 23px;
   margin-top: 5px;
   width: 250px;
 }
-
 .eduadmin .edu-date-customsettings {
   margin-left: 23px;
 }
-
 .eduadmin .block {
   display: inline-block;
   padding: 20px;
@@ -24,7 +19,6 @@
   border-radius: 5px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 }
-
 .eduadmin .block .news-item {
   border: 1px solid #9c9c9c;
   border-radius: 5px;
@@ -32,16 +26,13 @@
   padding-right: 10px;
   padding-bottom: 10px;
 }
-
 .eduadmin .block .news-item ul {
   list-style: unset;
   padding-left: 40px;
 }
-
 .eduadmin .block .news-item.update-recommended {
   background-color: mistyrose;
 }
-
 .eduadmin input.form-control,
 .eduadmin select.form-control,
 .eduadmin textarea.form-control {
@@ -52,21 +43,17 @@
   border-radius: 5px;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
 }
-
 .eduadmin input.form-control.full-width,
 .eduadmin select.form-control.full-width,
 .eduadmin textarea.form-control.full-width {
   width: 100%;
 }
-
 .eduadmin .api_user_id {
   width: 90px;
 }
-
 .eduadmin .api_hash {
   width: 300px;
 }
-
 .eduadmin .eduWindow {
   position: absolute;
   left: 100px;
@@ -76,15 +63,12 @@
   border-radius: 10px;
   padding: 20px;
 }
-
 .eduadmin .eduWindow table tr th {
   border-bottom: 1px solid #9c9c9c;
 }
-
 .eduadmin .eduWindow table tr:nth-child(even) {
   background-color: #f0f0f0;
 }
-
 .eduadmin .eduadmin-forceLogin {
   display: none;
 }
