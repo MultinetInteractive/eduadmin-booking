@@ -21,6 +21,9 @@ switch ( $event_detail_setting ) {
 			return;
 		}
 }
+
+$first_event = true;
+
 ?><?php if ( count( $events ) > 1 ) : ?>
 	<div class="dateSelectLabel">
 		<?php echo esc_html_x( 'Select the event you want to book', 'frontend', 'eduadmin-booking' ); ?>
@@ -29,7 +32,7 @@ switch ( $event_detail_setting ) {
 	<select name="eid" required class="dateInfo" onchange="eduBookingView.SelectEvent(this);">
 		<option value=""><?php echo esc_html_x( 'Select event', 'frontend', 'eduadmin-booking' ); ?></option>
 		<?php foreach ( $events as $ev ) : ?>
-			<option value="<?php echo esc_attr( $ev['EventId'] ); ?>">
+			<option value="<?php echo esc_attr( $ev['EventId'] ); ?>" <?php selected( $first_event ); ?>>
 				<?php
 				echo esc_html( wp_strip_all_tags( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) ) );
 				if ( $show_time ) {
@@ -40,6 +43,7 @@ switch ( $event_detail_setting ) {
 					echo esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) );
 				}
 				echo esc_html( edu_output_event_venue( array( $ev['AddressName'], $ev['City'] ), ', ' ) );
+				$first_event = false;
 				?>
 			</option>
 		<?php endforeach; ?>
