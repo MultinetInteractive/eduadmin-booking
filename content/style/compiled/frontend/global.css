@@ -1,28 +1,23 @@
 .eduadmin * {
   box-sizing: border-box;
 }
-
 .eduadmin .eduadmin-courselistoptions {
   display: none;
 }
-
 .eduadmin ul,
 .eduadmin ol {
   padding: 0 0 0 32px;
 }
-
 .eduadmin h1,
 .eduadmin h2 {
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 100%;
 }
-
 .eduadmin h3 {
   color: #595959;
   font-weight: 600;
 }
-
 .eduadmin h1.courseTitle,
 .eduadmin h1.courseTitle:hover,
 .eduadmin .objectName a,
@@ -35,11 +30,9 @@
   outline: none;
   box-shadow: none;
 }
-
 .eduadmin .tooltip-element {
   border-bottom: 1px dotted #9c9c9c;
 }
-
 .eduadmin .cta-btn {
   padding: 8px 16px;
   display: inline-block;
@@ -49,12 +42,10 @@
   background: #55aa55;
   color: white;
 }
-
 .eduadmin .cta-btn:hover {
   color: white;
   background: #6bb266;
 }
-
 .eduadmin .neutral-btn {
   padding: 8px 16px;
   display: inline-block;
@@ -66,106 +57,76 @@
   background: transparent;
   box-shadow: unset;
 }
-
 .eduadmin .neutral-btn:hover {
   background: rgba(242, 242, 242, 0.88);
   box-shadow: unset;
 }
-
 .eduadmin .neutral-btn.active {
   background: rgba(242, 242, 242, 0.88);
   box-shadow: unset;
 }
-
 .eduadmin .search-form {
   margin: 0 0 32px 0;
 }
-
 .eduadmin .search-form .search-row {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
-
 .eduadmin .search-form .search-row select {
   width: 100%;
 }
-
 .eduadmin .search-form .search-row .search-dropdowns {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
-
 .eduadmin .search-form .search-row .searchButton {
   height: 100%;
 }
-
 .eduadmin .search-form .search-item {
   margin: 0 0 16px 0;
 }
-
 .eduadmin .search-regionitems {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-direction: column;
   flex-direction: column;
   justify-items: stretch;
   margin-right: -10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 .eduadmin .search-regionitems .edu-regionbutton {
-  -ms-flex: 1 0 20%;
   flex: 1 0 20%;
   margin: 0 10px 10px 0;
   padding: 8px;
   text-align: center;
   cursor: pointer;
 }
-
 @media (min-width: 800px) {
   .eduadmin .search-form .search-row .search-dropdowns {
-    -ms-flex-direction: row;
     flex-direction: row;
-    -ms-flex-pack: justify;
     justify-content: space-between;
   }
-
   .eduadmin .search-form .search-row .search-box {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
     flex-direction: row;
   }
-
   .eduadmin .search-form .search-dropdown {
-    -ms-flex: auto;
     flex: auto;
     margin-right: 8px;
     min-width: 190px;
   }
-
   .eduadmin .search-form .search-dropdown:last-child {
     margin-right: 0;
   }
-
   .eduadmin .search-form .search-item.search-text {
     margin-right: 8px;
-    -ms-flex: auto;
     flex: auto;
   }
-
   .eduadmin .search-regionitems {
-    -ms-flex-direction: row;
     flex-direction: row;
   }
 }
-
 .eduadmin .edu-modal.warning {
   width: 100%;
   padding: 8px 16px;
@@ -176,11 +137,9 @@
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
-
 .eduadmin .edu-dateSeparator::before {
   content: ", ";
 }
-
 .eduadmin .eventItem.showMoreHidden {
   display: none;
 }
@@ -202,14 +161,12 @@
   border: 1px solid #c9c9c9;
   box-shadow: 0 2px 5px;
 }
-
 .edu-bookingform-modal iframe {
   width: 100%;
   height: 95%;
   border: 0;
   border-radius: 3px;
 }
-
 .edu-bookingform-modal .edu-bookingform-close {
   text-align: right;
   padding-right: 10px;
@@ -229,7 +186,7 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  content: '';
+  content: "";
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -246,7 +203,6 @@
   z-index: 1000000;
   white-space: nowrap;
 }
-
 .edu-DayPopup.cloned .scrollable-full-height {
   overflow: auto;
   max-height: 400px;
@@ -260,94 +216,75 @@
     right: 0 !important;
     bottom: 0 !important;
   }
-
   .edu-DayPopup.cloned .scrollable-full-height {
     overflow: auto;
     max-height: 90%;
   }
 }
-
 .eduadmin label,
 .eduadmin div.fakeLabel {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin: 0 0 16px;
   /* justify-content: space-between; */
-  -ms-flex-align: center;
   align-items: center;
 }
-
 .eduadmin label .inputLabel,
 .eduadmin div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
   color: #333333;
 }
-
 .eduadmin label .inputLabel.noHide,
 .eduadmin div.fakeLabel .inputLabel.noHide {
   display: inherit;
 }
-
 .eduadmin label .inputHolder,
 .eduadmin div.fakeLabel .inputHolder {
   width: 100%;
 }
-
 .eduadmin label .inputHolder select,
 .eduadmin div.fakeLabel .inputHolder select {
   width: 100%;
 }
-
 .eduadmin label .inputHolder input[required],
-.eduadmin label .inputHolder input[data-required="true"],
+.eduadmin label .inputHolder input[data-required=true],
 .eduadmin label .inputHolder textarea[required],
-.eduadmin label .inputHolder textarea[data-required="true"],
+.eduadmin label .inputHolder textarea[data-required=true],
 .eduadmin label .inputHolder select[required],
-.eduadmin label .inputHolder select[data-required="true"],
+.eduadmin label .inputHolder select[data-required=true],
 .eduadmin div.fakeLabel .inputHolder input[required],
-.eduadmin div.fakeLabel .inputHolder input[data-required="true"],
+.eduadmin div.fakeLabel .inputHolder input[data-required=true],
 .eduadmin div.fakeLabel .inputHolder textarea[required],
-.eduadmin div.fakeLabel .inputHolder textarea[data-required="true"],
+.eduadmin div.fakeLabel .inputHolder textarea[data-required=true],
 .eduadmin div.fakeLabel .inputHolder select[required],
-.eduadmin div.fakeLabel .inputHolder select[data-required="true"] {
+.eduadmin div.fakeLabel .inputHolder select[data-required=true] {
   background-color: #feffcc;
 }
-
 @media (min-width: 800px) {
   .eduadmin label .inputLabel,
-  .eduadmin div.fakeLabel .inputLabel {
+.eduadmin div.fakeLabel .inputLabel {
     display: inherit;
     margin: 0;
-    -ms-flex: auto;
     flex: auto;
   }
-
   .eduadmin label .inputHolder,
-  .eduadmin div.fakeLabel .inputHolder {
+.eduadmin div.fakeLabel .inputHolder {
     width: 100%;
     max-width: 400px;
   }
 }
 
 .eduadmin.loginForm form .title {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
   flex-direction: row;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-
 .eduadmin.loginForm form .title .courseImage {
   width: 72px;
   height: 72px;
 }
-
 .eduadmin.loginForm form .title .dateInfo {
   width: 100%;
   padding: 48px 0;
@@ -355,19 +292,14 @@
   font-size: 20px;
   font-weight: 500;
 }
-
 .eduadmin.loginForm form .title select.dateInfo {
   padding: unset;
 }
-
 .eduadmin.loginForm form .title .checkEmailForm {
   width: 100%;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
 }
-
 .eduadmin.loginForm form .title .checkEmailForm h3 {
   font-weight: normal;
   color: #666666;
@@ -376,15 +308,12 @@
   margin: 0 0 16px 0;
   padding: 0;
 }
-
 .eduadmin.loginForm form .title .checkEmailForm .inputLabel {
   display: none;
 }
-
 .eduadmin.loginForm form .title .checkEmailForm .inputHolder {
   margin: 0 0 16px 0;
 }
-
 .eduadmin.loginForm form .title .checkEmailForm .bookingLoginButton {
   padding: 16px 24px;
 }
@@ -392,38 +321,27 @@
 @media (min-width: 700px) {
   .eduadmin.loginForm form .title .checkEmailForm {
     width: 100%;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    -ms-flex-align: center;
     align-items: center;
   }
-
   .eduadmin.loginForm form .title .checkEmailForm h3 {
     width: 100%;
   }
-
   .eduadmin.loginForm form .title .checkEmailForm .bookingLoginButton {
-    -ms-flex-item-align: end;
     align-self: flex-end;
   }
-
   .eduadmin.loginForm form .title .checkEmailForm label {
     margin: 0;
   }
-
   .eduadmin.loginForm form .title .checkEmailForm label .inputHolder {
-    -ms-flex: auto;
     flex: auto;
     width: 350px;
     margin: 0 16px 0 0;
   }
-
   .eduadmin.loginForm form .title .dateInfo {
     text-align: left;
   }
-
   .eduadmin.loginForm form .title select.dateInfo {
     padding: unset;
   }
