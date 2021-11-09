@@ -270,9 +270,9 @@ function eduadmin_frontend_content() {
 					'ValidationError' => _x( 'Validation errors, please check your fields', 'backend', 'eduadmin-booking' ),
 				),
 				'VAT'           => array(
-					'inc'  => _x( 'inc vat', 'frontend', 'eduadmin-booking' ),
-					'ex'   => _x( 'ex vat', 'frontend', 'eduadmin-booking' ),
-					'free' => _x( 'vat free', 'frontend', 'eduadmin-booking' ),
+					'inc'  => _x( 'inc VAT', 'frontend', 'eduadmin-booking' ),
+					'ex'   => _x( 'ex VAT', 'frontend', 'eduadmin-booking' ),
+					'free' => _x( 'VAT free', 'frontend', 'eduadmin-booking' ),
 				),
 			)
 		);

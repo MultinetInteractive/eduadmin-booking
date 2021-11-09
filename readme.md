@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.38.1
+Stable tag: 2.38.2
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.38.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.1...v2.38.2) (2021-11-09)
+
+
+#### Bug Fixes
+
+* Fixed VAT-text to be uppercase ([7878cbd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7878cbddca383d05e5b132a61258c33b33a30765))
+
 ### [2.38.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.0...v2.38.1) (2021-11-05)
 
 
@@ -69,12 +76,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 * Added support for `Checkbox` in `courseattributeid`-attribute, that will output a translatable string depending if it's checked or not. ([0ffd5ce](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ffd5cec0059d41824b1099e3766ee460ebd2f5a))
 
 ### [2.37.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.37.0...v2.37.1) (2021-07-29)
-
-### [2.37.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.36.1...v2.37.0) (2021-06-14)
-
-
-#### Features
-
-* Ability to change who gets the booking confirmations after a completed booking ([d36075a](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d36075a4253fd495c2987fabc4891de4fed29596)), closes [#218](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/218)
 
 

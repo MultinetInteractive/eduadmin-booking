@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.38.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.1...v2.38.2) (2021-11-09)
+
+
+### Bug Fixes
+
+* Fixed VAT-text to be uppercase ([7878cbd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7878cbddca383d05e5b132a61258c33b33a30765))
+
 ### [2.38.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.0...v2.38.1) (2021-11-05)
 
 
