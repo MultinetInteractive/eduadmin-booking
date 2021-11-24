@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.39.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.2...v2.39.0) (2021-11-24)
+
+
+### Features
+
+* Added MNNaturalize to make strings and numbers sortable in a better way ([2b45e0e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2b45e0e5102b78ca90148b7dd338f86f03705d78))
+
+
+### Bug Fixes
+
+* Fixed sorting of events ([125daeb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/125daebe66e2c1d0153d151704422975f7197fa5))
+
+
+### Refactoring
+
+* Simplified reading of the code ([008f472](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/008f47245337a0eda111134c596c3509ecd4e303))
+
 ### [2.38.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.1...v2.38.2) (2021-11-09)
 
 
