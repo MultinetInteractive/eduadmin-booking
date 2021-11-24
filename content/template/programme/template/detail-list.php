@@ -27,7 +27,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 	echo '<th></th>';
 	echo '</tr>';
 	foreach ( $grouped_programme as $programme_start ) {
-		$sorted_events = sortEvents( $programme_start['Events'], [ 'ProgrammeCourseSortIndex' ], [ 1 ] );
+		$sorted_events = sortEvents( $programme_start['Events'], [ 'ProgrammeCourseSortIndex' ], [ 0 ] );
 
 		echo '<tr>';
 		echo '<td>' . wp_kses_post( get_display_date( $programme_start['StartDate'] ) ) . '</td>';
