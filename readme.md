@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.7
-Stable tag: 2.38.2
+Stable tag: 2.39.0
 Requires PHP: 5.2
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,23 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.39.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.2...v2.39.0) (2021-11-24)
+
+
+#### Features
+
+* Added MNNaturalize to make strings and numbers sortable in a better way ([2b45e0e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2b45e0e5102b78ca90148b7dd338f86f03705d78))
+
+
+#### Bug Fixes
+
+* Fixed sorting of events ([125daeb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/125daebe66e2c1d0153d151704422975f7197fa5))
+
+
+#### Refactoring
+
+* Simplified reading of the code ([008f472](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/008f47245337a0eda111134c596c3509ecd4e303))
+
 ### [2.38.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.1...v2.38.2) (2021-11-09)
 
 
@@ -74,7 +91,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Added attribute `courseattributehasvalue` to allow a user to check if an attribute/CustomField is set/checked ([79f50d5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/79f50d571f2f2fc6af0ad7ef6e98a70e6bcc8044))
 * Added support for `Checkbox` in `courseattributeid`-attribute, that will output a translatable string depending if it's checked or not. ([0ffd5ce](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ffd5cec0059d41824b1099e3766ee460ebd2f5a))
-
-### [2.37.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.37.0...v2.37.1) (2021-07-29)
 
 
