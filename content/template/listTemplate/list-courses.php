@@ -124,4 +124,13 @@ $show_descr       = EDU()->is_checked( 'eduadmin-showCourseDescription', true );
 $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 ?>
-<div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>" data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>" data-category="<?php echo esc_attr( $attributes['category'] ); ?>" data-categorydeep="<?php echo esc_attr( $attributes['categorydeep'] ); ?>" data-city="<?php echo esc_attr( $attributes['city'] ); ?>" data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>" data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>" data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>" data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>" data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"></div>
+<div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>"
+     data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>"
+     data-category="<?php echo esc_attr( $attributes['category'] ); ?>"
+     data-categorydeep="<?php echo esc_attr( $attributes['categorydeep'] ); ?>"
+     data-city="<?php echo esc_attr( $attributes['city'] ); ?>"
+     data-courselevel="<?php echo esc_attr( $attributes['courselevel'] ); ?>"
+     data-search="<?php echo esc_attr( ( ! empty( $_REQUEST['searchCourses'] ) ? sanitize_text_field( $_REQUEST['searchCourses'] ) : '' ) ); ?>"
+     data-numberofevents="<?php echo esc_attr( $attributes['numberofevents'] ); ?>"
+     data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>"
+     data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"></div>
