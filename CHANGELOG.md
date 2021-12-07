@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.39.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.0...v2.39.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* Missing replacement of lower case VAT-text ([5e2b83b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5e2b83b063236335d02739f399732e4659d0d57b))
+
 ## [2.39.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.2...v2.39.0) (2021-11-24)
 
 
