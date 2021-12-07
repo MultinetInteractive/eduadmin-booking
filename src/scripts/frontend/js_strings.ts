@@ -22,8 +22,8 @@ const edu_i18n_strings = {
         Close: _x('Close', 'frontend', 'eduadmin-booking')
     },
     VAT: {
-        inc: _x('inc vat', 'frontend', 'eduadmin-booking'),
-        ex: _x('ex vat', 'frontend', 'eduadmin-booking'),
-        free: _x('vat free', 'frontend', 'eduadmin-booking')
+        inc: _x('inc VAT', 'frontend', 'eduadmin-booking'),
+        ex: _x('ex VAT', 'frontend', 'eduadmin-booking'),
+        free: _x('VAT free', 'frontend', 'eduadmin-booking')
     }
 }
