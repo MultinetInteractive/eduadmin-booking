@@ -1172,7 +1172,7 @@ if ( ! function_exists( 'my_str_split' ) ) {
 		$s_array = array();
 		$slen    = strlen( $string );
 		for ( $i = 0; $i < $slen; $i++ ) {
-			$s_array[ $i ] = $string{$i};
+			$s_array[ $i ] = $string[ $i ];
 		}
 
 		return $s_array;
