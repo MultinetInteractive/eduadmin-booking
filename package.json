@@ -29,9 +29,9 @@
 			"path": "./node_modules/cz-conventional-changelog"
 		},
 		"eduadmin": {
-			"testedUpTo": "5.7",
+			"testedUpTo": "5.8",
 			"requiresAtLeast": "5.0",
-			"minimumPhpVersion": "5.2"
+			"minimumPhpVersion": "7.0"
 		}
 	}
 }
