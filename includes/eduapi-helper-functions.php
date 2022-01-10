@@ -31,6 +31,8 @@ class EduAdminAPIHelper {
 			$selects[] = 'EndTime';
 			$selects[] = 'RequireCivicRegistrationNumber';
 			$selects[] = 'ParticipantVat';
+			$selects[] = 'OnDemand';
+			$selects[] = 'OnDemandAccessDays';
 
 			$expands['Subjects']   = '$select=SubjectName;';
 			$expands['Categories'] = '$select=CategoryName;';
@@ -51,7 +53,7 @@ class EduAdminAPIHelper {
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
-				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl';
+				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -101,6 +103,8 @@ class EduAdminAPIHelper {
 		$selects[] = 'EndTime';
 		$selects[] = 'RequireCivicRegistrationNumber';
 		$selects[] = 'ParticipantVat';
+		$selects[] = 'OnDemand';
+		$selects[] = 'OnDemandAccessDays';
 
 		$expands['Subjects']   = '$select=SubjectName;';
 		$expands['Categories'] = '$select=CategoryName;';
@@ -114,16 +118,18 @@ class EduAdminAPIHelper {
 			' and LastApplicationDate ge ' . edu_get_timezoned_date( 'c', 'now 23:59:59' ) .
 			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
+			' and OnDemand eq false' .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;)' .
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
 		$filters[] = 'ShowOnWeb';
+		$filters[] = 'OnDemand eq false';
 
 		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
 			$filters[] = 'CategoryId eq ' . $category_id;
@@ -188,6 +194,126 @@ class EduAdminAPIHelper {
 		}, 300, $selects, $filters, $sorting );
 	}
 
+	public function GetOnDemandCourseList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
+		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		if ( ! is_numeric( $fetch_months ) ) {
+			$fetch_months = 6;
+		}
+
+		$filters = array();
+		$expands = array();
+		$selects = array();
+		$sorting = array();
+
+		$selects[] = 'CourseTemplateId';
+		$selects[] = 'CourseName';
+		$selects[] = 'CategoryId';
+		$selects[] = 'CategoryName';
+		$selects[] = 'InternalCourseName';
+		$selects[] = 'ImageUrl';
+		$selects[] = 'CourseDescription';
+		$selects[] = 'CourseDescriptionShort';
+		$selects[] = 'CourseGoal';
+		$selects[] = 'TargetGroup';
+		$selects[] = 'Prerequisites';
+		$selects[] = 'CourseAfter';
+		$selects[] = 'Quote';
+		$selects[] = 'Days';
+		$selects[] = 'StartTime';
+		$selects[] = 'EndTime';
+		$selects[] = 'RequireCivicRegistrationNumber';
+		$selects[] = 'ParticipantVat';
+		$selects[] = 'OnDemand';
+		$selects[] = 'OnDemandAccessDays';
+
+		$expands['Subjects']   = '$select=SubjectName;';
+		$expands['Categories'] = '$select=CategoryName;';
+		$expands['PriceNames'] = '$filter=PublicPriceName';
+		$expands['Events']     =
+			'$filter=' .
+			'HasPublicPriceName' .
+			' and StatusId eq 1' .
+			' and CustomerId eq null' .
+			' and CompanySpecific eq false' .
+			' and LastApplicationDate ge ' . edu_get_timezoned_date( 'c', 'now 23:59:59' ) .
+			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
+			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
+			' and OnDemand eq true' .
+			';' .
+			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;)' .
+			';' .
+			'$orderby=StartDate asc' .
+			';' .
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+
+		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
+
+		$filters[] = 'ShowOnWeb';
+		$filters[] = 'OnDemand eq true';
+
+		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
+			$filters[] = 'CategoryId eq ' . $category_id;
+		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+		}
+
+		if ( ! empty( $city ) ) {
+			$filters[] = 'Events/any(e:e/LocationId eq ' . intval( $city ) . ')';
+		}
+
+		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
+			$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
+		}
+
+		if ( ! empty( $subjectid ) ) {
+			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . $subjectid . ')';
+			$attributes['subjectid'] = $subjectid;
+		}
+
+		if ( ! empty( $courselevel ) ) {
+			$filters[] = 'CourseLevelId eq ' . $courselevel;
+		}
+
+		$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+
+		if ( null !== $custom_order_by ) {
+			$orderby   = explode( ' ', $custom_order_by );
+			$sortorder = explode( ' ', $custom_order_by_order );
+			foreach ( $orderby as $od => $v ) {
+				if ( isset( $sortorder[ $od ] ) ) {
+					$or = $sortorder[ $od ];
+				} else {
+					$or = 'asc';
+				}
+
+				if ( edu_validate_column( 'course', $v ) !== false ) {
+					$sorting[] = $v . ' ' . strtolower( $or );
+				}
+			}
+		}
+		if ( edu_validate_column( 'course', $sort_order ) !== false ) {
+			$sorting[] = $sort_order . ' asc';
+		}
+
+		$expand_arr = array();
+		foreach ( $expands as $key => $value ) {
+			if ( empty( $value ) ) {
+				$expand_arr[] = $key;
+			} else {
+				$expand_arr[] = $key . '(' . $value . ')';
+			}
+		}
+
+		return EDU()->get_transient( 'eduadmin-listondemandcourses-courses', function() use ( $selects, $filters, $expand_arr, $sorting ) {
+			return EDUAPI()->OData->CourseTemplates->Search(
+				join( ',', $selects ),
+				join( ' and ', $filters ),
+				join( ',', $expand_arr ),
+				join( ',', $sorting )
+			);
+		}, 300, $selects, $filters, $sorting );
+	}
+
 	public function GetEventList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
 		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
@@ -214,6 +340,8 @@ class EduAdminAPIHelper {
 		$selects[] = 'EndTime';
 		$selects[] = 'RequireCivicRegistrationNumber';
 		$selects[] = 'ParticipantVat';
+		$selects[] = 'OnDemand';
+		$selects[] = 'OnDemandAccessDays';
 
 		$expands['Subjects']   = '$select=SubjectName;';
 		$expands['Categories'] = '$select=CategoryName;';
@@ -232,7 +360,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -307,12 +435,6 @@ class EduAdminAPIHelper {
 		return EDU()->get_transient( 'eduadmin-organization', function() {
 			return EDUAPI()->REST->Organisation->GetOrganisation();
 		}, DAY_IN_SECONDS );
-	}
-
-	public function GetOrganizationTest() {
-		return EDU()->get_request_item( 'eduadmin-organization', function() {
-			return EDUAPI()->REST->Organisation->GetOrganisation();
-		} );
 	}
 
 	public function GetRegions() {
