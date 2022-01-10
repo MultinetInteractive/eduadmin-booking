@@ -51,28 +51,28 @@ function edu_render_general_settings() {
 						<?php echo esc_html_x( 'Insert one interval range per row (1-3, 4-10, 10+)', 'backend', 'eduadmin-booking' ); ?>
 						<br />
 						<textarea name="eduadmin-spotsSettings" class="form-control" rows="5"
-						          cols="30"><?php echo get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
+								  cols="30"><?php echo get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
 					</div>
 					<div id="eduadmin-alwaysFewSpots">
 						<br />
 						<b><?php echo esc_html_x( 'Number of participants before showing as \"Few spots left\"', 'backend', 'eduadmin-booking' ); ?></b>
 						<br />
 						<input type="number" name="eduadmin-alwaysFewSpots"
-						       value="<?php echo esc_attr( get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
+							   value="<?php echo esc_attr( get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
 					</div>
 				</div>
 				<br />
 				<?php echo esc_html_x( 'Number of months to fetch events for', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<input type="number" name="eduadmin-monthsToFetch"
-				       value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
+					   value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<br />
 				<?php echo esc_html_x( 'VAT text options', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<label>
 					<input type="checkbox"
-					       name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
+						   name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
 					<?php echo esc_html_x( 'Show VAT texts on prices', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -99,16 +99,16 @@ function edu_render_general_settings() {
 				<br />
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary"
-					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+						   value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 				<h3><?php echo esc_html_x( 'Rewrite settings', 'backend', 'eduadmin-booking' ); ?></h3>
 				<p>
 					<?php echo esc_html_x( 'Enter the URL you want to use with the application (please check that the URL does not exists)', 'backend', 'eduadmin-booking' ); ?>
 				</p>
 				<?php echo home_url(); ?>/<input style="width: 200px;" type="text" class="form-control folder"
-				                                 name="eduadmin-rewriteBaseUrl" id="eduadmin-rewriteBaseUrl"
-				                                 value="<?php echo esc_attr( get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>"
-				                                 placeholder="<?php echo _x( 'URL', 'backend', 'eduadmin-booking' ); ?>" />/
+												 name="eduadmin-rewriteBaseUrl" id="eduadmin-rewriteBaseUrl"
+												 value="<?php echo esc_attr( get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>"
+												 placeholder="<?php echo _x( 'URL', 'backend', 'eduadmin-booking' ); ?>" />/
 				<?php
 				$pages    = get_pages();
 				$eduPages = array();
@@ -128,7 +128,7 @@ function edu_render_general_settings() {
 						<td><?php echo esc_html_x( 'List view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-listViewPage"
-							        id="eduadmin-listViewPage">
+									id="eduadmin-listViewPage">
 								<option
 									value="">-- <?php echo esc_html_x( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
@@ -140,9 +140,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option " . ( $listPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -155,7 +155,7 @@ function edu_render_general_settings() {
 						<td><?php echo _x( 'Details view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-detailViewPage"
-							        id="eduadmin-detailViewPage">
+									id="eduadmin-detailViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -166,9 +166,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $detailPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -181,7 +181,7 @@ function edu_render_general_settings() {
 						<td><?php echo _x( 'Booking view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-bookingViewPage"
-							        id="eduadmin-bookingViewPage">
+									id="eduadmin-bookingViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -192,9 +192,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $bookingPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -207,15 +207,15 @@ function edu_render_general_settings() {
 						<td><?php _ex( 'Thank you page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-thankYouPage"
-							        id="eduadmin-thankYouPage">
+									id="eduadmin-thankYouPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
 								$thankPage = get_option( 'eduadmin-thankYouPage' );
 								foreach ( $pages as $p ) {
 									echo "\t\t\t\t\t\t\t<option" . ( $thankPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -226,7 +226,7 @@ function edu_render_general_settings() {
 						<td><?php echo _x( 'Login page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-loginViewPage"
-							        id="eduadmin-loginViewPage">
+									id="eduadmin-loginViewPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -237,9 +237,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $loginPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -252,7 +252,7 @@ function edu_render_general_settings() {
 						<td><?php echo _x( 'Course interest page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-interestObjectPage"
-							        id="eduadmin-interestObjectPage">
+									id="eduadmin-interestObjectPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -263,9 +263,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $objectInterestPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -278,7 +278,7 @@ function edu_render_general_settings() {
 						<td><?php echo _x( 'Event interest page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-interestEventPage"
-							        id="eduadmin-interestEventPage">
+									id="eduadmin-interestEventPage">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -289,9 +289,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $eventInterestPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -320,7 +320,7 @@ function edu_render_general_settings() {
 						<td><?php _ex( 'List view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-programme-list"
-							        id="eduadmin-programme-list">
+									id="eduadmin-programme-list">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -331,9 +331,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $list_page == $p->ID ? ' selected="selected"' : '' ) . ' value="' . $p->ID . '">' .
-									     htmlentities( $p->post_title . ' (ID: ' . $p->ID . ')' ) .
-									     ( $suggested ? ' (' . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . ' (ID: ' . $p->ID . ')' ) .
+										 ( $suggested ? ' (' . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -346,7 +346,7 @@ function edu_render_general_settings() {
 						<td><?php _ex( 'Detail view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-programme-detail"
-							        id="eduadmin-programme-detail">
+									id="eduadmin-programme-detail">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -357,9 +357,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $detail_page == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -372,7 +372,7 @@ function edu_render_general_settings() {
 						<td><?php _ex( 'Booking view page', 'backend', 'eduadmin-booking' ); ?></td>
 						<td>
 							<select class="form-control" style="width: 300px;" name="eduadmin-programme-book"
-							        id="eduadmin-programme-book">
+									id="eduadmin-programme-book">
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
@@ -383,9 +383,9 @@ function edu_render_general_settings() {
 										$suggested = true;
 									}
 									echo "\t\t\t\t\t\t\t<option" . ( $book_page == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
-									     htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
-									     ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
-									     "</option>\n";
+										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
+										 ( $suggested ? " (" . _x( 'suggested', 'backend', 'eduadmin-booking' ) . ")" : "" ) .
+										 "</option>\n";
 								}
 								?>
 							</select>
@@ -399,14 +399,14 @@ function edu_render_general_settings() {
 				<input type="hidden" name="eduadmin-options_have_changed" value="true" />
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary"
-					       value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
+						   value="<?php echo esc_attr_x( 'Save settings', 'backend', 'eduadmin-booking' ); ?>" />
 				</p>
 			</div>
 		</form>
 		<form action="" method="POST">
 			<input type="hidden" name="act" value="clearTransients" />
 			<input type="submit" class="button button-primary"
-			       value="<?php echo esc_attr_x( 'Clear transients/cache', 'backend', 'eduadmin-booking' ); ?>" />
+				   value="<?php echo esc_attr_x( 'Clear transients/cache', 'backend', 'eduadmin-booking' ); ?>" />
 		</form>
 	</div>
 	<script type="text/javascript">

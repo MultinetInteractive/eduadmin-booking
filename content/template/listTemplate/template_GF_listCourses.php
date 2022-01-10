@@ -85,10 +85,10 @@ if ( ! empty( $courses ) ) {
 		<?php
 			$count = 4;
 			if ( $show_course_locations && ! empty( $event_cities ) ) {
-			    if( $object['Days'] > 0 ) {
-				    $days = sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) . ', ';
+				if( $object['Days'] > 0 ) {
+					$days = sprintf( _n( '%1$d day', '%1$d days', $object['Days'], 'eduadmin-booking' ), $object['Days'] ) . ', ';
 				} else {
-			        $days = '';
+					$days = '';
 				}
 
 
