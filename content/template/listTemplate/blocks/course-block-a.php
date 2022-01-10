@@ -39,10 +39,8 @@
 				echo '<div class="nextEventDate" data-eduwidget="courseitem-date" data-objectid="' . esc_attr( $object['CourseTemplateId'] ) . '">';
 
 				if ( ! empty( $sorted_events ) ) {
-					echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', current( $sorted_events )['StartDate'] ) ) . ' ' . current( $sorted_events )['City'] );
-					if ( $show_event_venue && ! empty( current( $sorted_events )['AddressName'] ) ) {
-						echo '<span class="venueInfo">, ' . esc_html( current( $sorted_events )['AddressName'] ) . '</span>';
-					}
+					$next_event = current( $sorted_events );
+					edu_course_listitem_nextdate( $next_event );
 				} else {
 					echo '<i>' . esc_html_x( 'No coming events', 'frontend', 'eduadmin-booking' ) . '</i>';
 				}

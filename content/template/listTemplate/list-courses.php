@@ -39,7 +39,11 @@ if ( ! empty( $_REQUEST['eduadmin-level'] ) ) {
 	$course_level = intval( sanitize_text_field( $_REQUEST['eduadmin-level'] ) );
 }
 
-$edo = EDUAPIHelper()->GetCourseList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+if ( ! $show_ondemand ) {
+	$edo = EDUAPIHelper()->GetCourseList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+} else {
+	$edo = EDUAPIHelper()->GetOnDemandCourseList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+}
 
 $courses = $edo['value'];
 

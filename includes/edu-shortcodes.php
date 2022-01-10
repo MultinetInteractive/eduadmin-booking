@@ -54,6 +54,7 @@ function eduadmin_get_list_view( $attributes ) {
 			'hideimages'      => null,
 			'showimages'      => null,
 			'categorydeep'    => null,
+			'ondemand'        => false,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'

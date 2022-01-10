@@ -1117,16 +1117,35 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 				break;
 		}
 
-		echo isset( $event_dates[ $ev['EventId'] ] ) ?
-			get_logical_date_groups( $event_dates[ $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
-			wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
-		if ( $show_time ) {
-			echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
-				'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
-				'';
+		if ( $ev['OnDemand'] ) {
+			echo '<span class="eduadmin-dateText">' . esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' ) . '</span>';
+		} else {
+			echo isset( $event_dates[ $ev['EventId'] ] ) ?
+				get_logical_date_groups( $event_dates[ $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
+				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			if ( $show_time ) {
+				echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
+					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
+					'';
+			}
 		}
 
 		EDU()->stop_timer( $__t );
+	}
+}
+
+if ( ! function_exists( 'edu_course_listitem_nextdate' ) ) {
+	function edu_course_listitem_nextdate( $next_event ) {
+		$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
+
+		if ( $next_event['OnDemand'] ) {
+			echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
+		} else {
+			echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $next_event['StartDate'] ) ) . ' ' . $next_event['City'] );
+			if ( $show_event_venue && ! empty( $next_event['AddressName'] ) ) {
+				echo '<span class="venueInfo">, ' . esc_html( $next_event['AddressName'] ) . '</span>';
+			}
+		}
 	}
 }
 
@@ -1157,9 +1176,13 @@ if ( ! function_exists( 'edu_event_listitem_date' ) ) {
 				}
 		}
 
-		echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
-		if ( $show_time ) {
-			echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+		if ( $ev['OnDemand'] ) {
+			echo _x( 'On-demand', 'frontend', 'eduadmin-booking' );
+		} else {
+			echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			if ( $show_time ) {
+				echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+			}
 		}
 
 		EDU()->stop_timer( $__t );

@@ -31,7 +31,7 @@ function edu_listview_courselist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=StartDate,City,BookingFormUrl';
+		'$select=StartDate,City,BookingFormUrl,OnDemand,OnDemandPublished';
 
 	$filters[] = 'ShowOnWeb';
 
@@ -74,7 +74,7 @@ function edu_listview_courselist() {
 	}
 
 	$edo     = EDUAPI()->OData->CourseTemplates->Search(
-		'CourseTemplateId',
+		'CourseTemplateId,OnDemand',
 		join( ' and ', $filters ),
 		join( ',', $expand_arr ),
 		join( ',', $sorting )
@@ -85,7 +85,11 @@ function edu_listview_courselist() {
 	foreach ( $courses as $event ) {
 		if ( ! isset( $return_value[ $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
-			$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
+			if ( $event['OnDemand'] ) {
+				$return_value[ $event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
+			} else {
+				$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
+			}
 		}
 	}
 
@@ -104,6 +108,8 @@ function edu_api_listview_eventlist() {
 	if ( ! is_numeric( $fetch_months ) || 0 === $fetch_months ) {
 		$fetch_months = 6;
 	}
+
+	$ondemand = $_POST['ondemand'];
 
 	$filters       = array();
 	$selects       = array();
@@ -126,14 +132,24 @@ function edu_api_listview_eventlist() {
 	$selects[] = 'EndTime';
 	$selects[] = 'RequireCivicRegistrationNumber';
 	$selects[] = 'ParticipantVat';
+	$selects[] = 'OnDemand';
+	$selects[] = 'OnDemandAccessDays';
 
 	$event_filters[] = 'HasPublicPriceName';
 	$event_filters[] = 'StatusId eq 1';
 	$event_filters[] = 'CustomerId eq null';
 	$event_filters[] = 'CompanySpecific eq false';
-	$event_filters[] = 'LastApplicationDate ge ' . date_i18n( 'c' );
-	$event_filters[] = 'StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' );
-	$event_filters[] = 'EndDate ge ' . edu_get_timezoned_date( 'c', 'now' );
+
+	if ( ! $ondemand ) {
+		$event_filters[] = 'LastApplicationDate ge ' . date_i18n( 'c' );
+		$event_filters[] = 'StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' );
+		$event_filters[] = 'EndDate ge ' . edu_get_timezoned_date( 'c', 'now' );
+	} else {
+		$event_filters[] = 'OnDemand';
+		$event_filters[] = 'OnDemandPublished';
+
+		$filters[] = 'OnDemand';
+	}
 
 	$filters[] = 'ShowOnWeb';
 
@@ -177,18 +193,28 @@ function edu_api_listview_eventlist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
+		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
-	$filters[] = 'Events/any(b:b/HasPublicPriceName' .
-	             ' and b/StatusId eq 1' .
-	             ' and b/CustomerId eq null' .
-	             ' and b/CompanySpecific eq false' .
-	             ' and b/LastApplicationDate ge ' . date_i18n( 'c' ) .
-	             ' and b/StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
-	             ' and b/EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
-	             ')';
+	if(!$ondemand) {
+		$filters[] = 'Events/any(b:b/HasPublicPriceName' .
+		             ' and b/StatusId eq 1' .
+		             ' and b/CustomerId eq null' .
+		             ' and b/CompanySpecific eq false' .
+		             ' and b/LastApplicationDate ge ' . date_i18n( 'c' ) .
+		             ' and b/StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
+		             ' and b/EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
+		             ')';
+	} else {
+		$filters[] = 'Events/any(b:b/HasPublicPriceName' .
+		             ' and b/StatusId eq 1' .
+		             ' and b/CustomerId eq null' .
+		             ' and b/CompanySpecific eq false' .
+		             ' and b/OnDemand' .
+		             ' and b/OnDemandPublished' .
+		             ')';
+	}
 
 	$order_by              = array();
 	$order                 = array( 1 );
