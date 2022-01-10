@@ -27,7 +27,7 @@ function multiSort( $evA, $evB, $order_by, $order, $idx ) {
 		return @( strcmp( MNNaturalize( $evA[ $order_by[ $idx ] ] ), MNNaturalize( $evB[ $order_by[ $idx ] ] ) ) ) * ( $order[ $idx ] !== null ? $order[ $idx ] : 1 );
 	}
 
-	return false;
+	return -1;
 }
 
 function MNNaturalize( $val ) {
