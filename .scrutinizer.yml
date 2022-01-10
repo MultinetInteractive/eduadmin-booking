@@ -1,6 +1,9 @@
 build:
     nodes:
         analysis:
+            environment:
+                node:
+                    version: '12.22.8'
             dependencies:
                 before:
                     - composer require --dev johnpbloch/wordpress
