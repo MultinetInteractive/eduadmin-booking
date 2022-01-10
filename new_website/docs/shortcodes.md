@@ -1,5 +1,7 @@
 ---
-id: shortcodes title: Shortcodes sidebar_label: Shortcodes
+id: shortcodes 
+title: Shortcodes 
+sidebar_label: Shortcodes
 ---
 Here we have a complete reference guide to all shortcodes available in the plugin, with all attributes.
 
