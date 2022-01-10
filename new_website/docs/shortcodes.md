@@ -1,7 +1,5 @@
 ---
-id: shortcodes
-title: Shortcodes
-sidebar_label: Shortcodes
+id: shortcodes title: Shortcodes sidebar_label: Shortcodes
 ---
 Here we have a complete reference guide to all shortcodes available in the plugin, with all attributes.
 
@@ -193,6 +191,7 @@ One of the main shortcodes, as it shows the end users a list of your courses/eve
 | filtercity      |                       string                      |     _null_    |
 | hideimages      |                      boolean                      |     _null_    |
 | showimages      |                      boolean                      |     _null_    |
+| ondemand        |                      boolean                      |     false     |
 
 The `template`-attribute lets you override the default setting for what template the list should use.
 
@@ -201,8 +200,7 @@ that the list filters the results based on the matches.
 
 If you want to show all sub-categories, you can use the `categorydeep`-attribute instead.
 
-> Only one of the category-attributes can be used at a time, and `categorydeep` will always be used if both are
-supplied.
+> Only one of the category-attributes can be used at a time, and `categorydeep` will always be used if both are supplied.
 
 The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.se), so that
 the list filters the results based on the matches.
@@ -244,6 +242,8 @@ If you enter the `filtercity`-attribute, the list will be filtered based on the 
 The `hideimages`-attribute will hide the images for course templates, if it was enabled by backend settings.
 
 The `showimages`-attribute will show the images for course templates, if it was disabled by backend settings.
+
+The `ondemand`-attribute will determine if you show either courses with planned events, or on demand courses
 
 * * *
 
