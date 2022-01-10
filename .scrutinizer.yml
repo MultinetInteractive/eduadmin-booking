@@ -4,6 +4,8 @@ build:
             environment:
                 node:
                     version: '12.22.8'
+                php:
+                    version: 8.0
             dependencies:
                 before:
                     - composer require --dev johnpbloch/wordpress
