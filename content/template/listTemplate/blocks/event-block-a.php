@@ -47,7 +47,9 @@
 					}
 				}
 
-				echo "<span class=\"spotsLeftInfo\">" . get_spots_left( $spots_left, intval( $event['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>\n";
+				if ( ! $event['OnDemand'] ) {
+					echo "<span class=\"spotsLeftInfo\">" . get_spots_left( $spots_left, intval( $event['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>\n";
+				}
 
 				?></div>
 		</div>

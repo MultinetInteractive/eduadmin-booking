@@ -8,50 +8,6 @@ if ( ! is_numeric( $fetch_months ) ) {
 	$fetch_months = 6;
 }
 
-$filters = array();
-$expands = array();
-$selects = array();
-
-$selects[] = 'CourseTemplateId';
-$selects[] = 'CourseName';
-$selects[] = 'InternalCourseName';
-$selects[] = 'ImageUrl';
-$selects[] = 'CourseDescription';
-$selects[] = 'CourseDescriptionShort';
-$selects[] = 'CourseGoal';
-$selects[] = 'TargetGroup';
-$selects[] = 'Prerequisites';
-$selects[] = 'CourseAfter';
-$selects[] = 'Quote';
-$selects[] = 'Days';
-$selects[] = 'StartTime';
-$selects[] = 'EndTime';
-$selects[] = 'RequireCivicRegistrationNumber';
-$selects[] = 'ParticipantVat';
-
-$expands['Subjects']   = '$select=SubjectName;';
-$expands['Categories'] = '$select=CategoryName;';
-$expands['PriceNames'] = '$filter=PublicPriceName';
-$expands['Events']     =
-	'$filter=' .
-	'HasPublicPriceName' .
-	' and StatusId eq 1' .
-	' and CustomerId eq null' .
-	' and CompanySpecific eq false' .
-	' and LastApplicationDate ge ' . date_i18n( 'c' ) .
-	' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
-	' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
-	';' .
-	'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
-	';' .
-	'$orderby=StartDate asc' .
-	';' .
-	'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl';
-
-$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
-
-$filters[] = 'ShowOnWeb';
-
 $showEventsWithEventsOnly    = $attributes['onlyevents'];
 $showEventsWithoutEventsOnly = $attributes['onlyempty'];
 
@@ -104,7 +60,11 @@ if ( null !== $custom_order_by ) {
 	array_push( $order, 1 );
 }
 
-$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+if ( ! $show_ondemand ) {
+	$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+} else {
+	$edo = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+}
 
 $courses = $edo['value'];
 
@@ -219,4 +179,5 @@ $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
      data-showimages="<?php echo esc_attr( $attributes['showimages'] ); ?>"
      data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"
      data-filtercity="<?php echo esc_attr( $attributes['filtercity'] ); ?>"
-     data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>">
+     data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>"
+     data-ondemand="<?php echo esc_attr( $attributes['ondemand'] ); ?>">
