@@ -911,7 +911,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	return $ordered_dategroups;
 }
 
-function get_start_end_display_date( $start_date, $end_date, $short = false, $event, $show_days = false ) {
+function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false ) {
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
