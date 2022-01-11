@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.40.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.0...v2.40.1) (2022-01-11)
+
+
+### Bug Fixes
+
+* Get OnDemand info if the coursetemplate is OnDemand ([075be39](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/075be3967467808ec22d284230623a58da2053b3))
+
+
+### Documentation
+
+* Add attribute ondemand to detailinfo ([35c5363](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/35c5363cea1992c46e499de42a34655d075e92c2))
+
 ## [2.40.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.1...v2.40.0) (2022-01-11)
 
 

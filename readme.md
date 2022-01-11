@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 2.40.0
+Stable tag: 2.40.1
 Requires PHP: 7.0
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -43,6 +43,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 == Changelog ==
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
+
+### [2.40.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.0...v2.40.1) (2022-01-11)
+
+
+#### Bug Fixes
+
+* Get OnDemand info if the coursetemplate is OnDemand ([075be39](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/075be3967467808ec22d284230623a58da2053b3))
+
+
+#### Documentation
+
+* Add attribute ondemand to detailinfo ([35c5363](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/35c5363cea1992c46e499de42a34655d075e92c2))
 
 ### [2.40.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.1...v2.40.0) (2022-01-11)
 
@@ -97,12 +109,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Refactoring
 
 * Simplified reading of the code ([008f472](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/008f47245337a0eda111134c596c3509ecd4e303))
-
-### [2.38.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.1...v2.38.2) (2021-11-09)
-
-
-#### Bug Fixes
-
-* Fixed VAT-text to be uppercase ([7878cbd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7878cbddca383d05e5b132a61258c33b33a30765))
 
 
