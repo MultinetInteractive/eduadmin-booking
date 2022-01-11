@@ -112,9 +112,11 @@ function edu_get_percent_from_values( $current_value, $max_value ) {
 
 function edu_output_event_venue( $parts, $prefix = null ) {
 	$empty = true;
+	$new_parts = [];
 	foreach ( $parts as $part ) {
 		if ( ! empty( $part ) ) {
 			$empty = false;
+			$new_parts[] = $part;
 		}
 	}
 
@@ -122,7 +124,7 @@ function edu_output_event_venue( $parts, $prefix = null ) {
 		return '';
 	}
 
-	return $prefix . join( ', ', $parts );
+	return $prefix . join( ', ', $new_parts );
 }
 
 function edu_get_percent_class( $percent ) {
