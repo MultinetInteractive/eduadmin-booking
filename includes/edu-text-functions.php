@@ -73,23 +73,23 @@ function edu_get_price( $price, $vatPercent ) {
 
 	switch ( $forcePriceAs ) {
 		case 'both':
-			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' ) .
+			$returnString = $priceExcl . ' ' . _x( 'ex VAT', 'frontend', 'eduadmin-booking' ) .
 			                ' / ' .
-			                $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			                $priceIncl . ' ' . _x( 'inc VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		case 'inclVat':
-			$returnString = $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			$returnString = $priceIncl . ' ' . _x( 'inc VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		case 'exclVat':
-			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' );
+			$returnString = $priceExcl . ' ' . _x( 'ex VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		default:
 			// The old way
 			$returnString = convert_to_money( $price, $currency ) .
 			                ( $show_vat ?
 				                ' ' . ( $inc_vat ?
-					                _x( 'inc vat', 'frontend', 'eduadmin-booking' ) :
-					                _x( 'ex vat', 'frontend', 'eduadmin-booking' )
+					                _x( 'inc VAT', 'frontend', 'eduadmin-booking' ) :
+					                _x( 'ex VAT', 'frontend', 'eduadmin-booking' )
 				                ) :
 				                ''
 			                );
