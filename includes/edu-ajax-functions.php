@@ -531,7 +531,14 @@ function edu_api_eventlist() {
 		$fetch_months = 6;
 	}
 
-	$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
+	$ondemand = $_POST['ondemand'];
+
+	if(!$ondemand) {
+		$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
+	} else {
+		$edo = EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city );
+	}
+
 
 	$selected_course = false;
 	$name            = '';

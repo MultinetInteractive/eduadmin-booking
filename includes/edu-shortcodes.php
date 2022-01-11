@@ -269,6 +269,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 			'courseinquiryurl'          => null,
 			'order'                     => null,
 			'orderby'                   => null,
+			'ondemand'                  => false,
 			//'coursesubject' => null
 		),
 		normalize_empty_atts( $attributes ),
@@ -312,7 +313,11 @@ function eduadmin_get_detailinfo( $attributes ) {
 			$fetch_months = 6;
 		}
 
-		$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
+		if ( ! $attributes['ondemand'] ) {
+			$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
+		} else {
+			$edo = EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city );
+		}
 
 		$selected_course = false;
 
@@ -440,7 +445,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$prices = array();
 
 				foreach ( $selected_course['PriceNames'] as $pn ) {
-					$prices[ (string)$pn['PriceNameId'] ] = $pn;
+					$prices[ (string) $pn['PriceNameId'] ] = $pn;
 				}
 
 				if ( 1 === count( $prices ) ) {
@@ -458,7 +463,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				foreach ( $events as $e ) {
 					foreach ( $e['PriceNames'] as $pn ) {
-						$prices[ (string)$pn['PriceNameId'] ] = $pn;
+						$prices[ (string) $pn['PriceNameId'] ] = $pn;
 					}
 				}
 
@@ -576,6 +581,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$ret_str .= ' data-orderby="' . esc_attr( $custom_order_by_order ) . '"';
 				$ret_str .= ' data-showvenue="' . esc_attr( EDU()->is_checked( 'eduadmin-showEventVenueName', false ) ) . '"';
 				$ret_str .= ' data-eventinquiry="' . esc_attr( EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false ) ) . '"';
+				$ret_str .= ' data-ondemand="' . esc_attr( $attributes['ondemand'] ) . '"';
 				$ret_str .= '>';
 
 				$i                = 0;

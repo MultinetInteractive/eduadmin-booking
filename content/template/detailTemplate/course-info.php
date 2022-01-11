@@ -23,6 +23,12 @@ if ( $edo ) {
 	$name            = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 }
 
+$is_ondemand = $selected_course['OnDemand'];
+
+if ( $is_ondemand ) {
+	$selected_course = json_decode( EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city ), true );
+}
+
 $surl     = get_home_url();
 $cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 $base_url = $surl . '/' . $cat;
