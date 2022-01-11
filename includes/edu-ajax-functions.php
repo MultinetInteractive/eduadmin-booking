@@ -551,16 +551,19 @@ function edu_api_eventlist() {
 		unset( $event['CourseTemplate']['Events'] );
 
 		$pricenames = array();
+		$prices = array();
 		foreach ( $selected_course['PriceNames'] as $pn ) {
-			$pricenames[] = $pn['Price'];
+			$pricenames[] = $pn;
+			$prices[] = $pn['Price'];
 		}
 		foreach ( $event['PriceNames'] as $pn ) {
-			$pricenames[] = $pn['Price'];
+			$pricenames[] = $pn;
+			$prices[] = $pn['Price'];
 		}
 
 		$event = array_merge( $event['CourseTemplate'], $event );
 
-		$min_price           = min( $pricenames );
+		$min_price           = min( $prices );
 		$event['Price']      = $min_price;
 		$event['PriceNames'] = $pricenames;
 
