@@ -39,6 +39,11 @@ if ( ! empty( $attributes['mode'] ) ) {
 	$custom_mode = $attributes['mode'];
 }
 
+$show_ondemand = false;
+if ( ! empty( $attributes['ondemand'] ) ) {
+	$show_ondemand = $attributes['ondemand'];
+}
+
 if ( null !== $custom_mode ) {
 	if ( 'event' === $custom_mode ) {
 		$str = include $attributes['template'] . '_listEvents.php';

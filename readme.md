@@ -2,9 +2,9 @@
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
-Tested up to: 5.7
-Stable tag: 2.39.1
-Requires PHP: 5.2
+Tested up to: 5.8
+Stable tag: 2.40.0
+Requires PHP: 7.0
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 EduAdmin plugin to allow visitors to book courses at your website. Requires EduAdmin-account.
@@ -44,6 +44,36 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [2.40.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.1...v2.40.0) (2022-01-11)
+
+
+#### Features
+
+* **Booking:** Support for OnDemand in the event selector on the booking page ([3416712](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/34167122ae0f60afd8266aad1da81425f27bded9))
+* **EDUApiHelper:** Added extra fields for OnDemand, added extra method to fetch OnDemand courses, added filter to block OnDemand from showing up in normal course lists. ([11c6c53](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/11c6c531270b3b371db46550ee70e67a1e21ad37))
+* Hide non-on-demand events from event lists ([208f982](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/208f982c7f5df4dd9e9a0297c2a6b10888d9f35f))
+* OnDemand support for more views ([ee2d927](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ee2d92748132bc190a351d6d27f6bdd41afe8ef3))
+* **Programme:** Hide headers based on course detail setting to hide headers. ([a5baeb0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a5baeb073f5e6e0b9c9fbfb8d64d3f59f37d461e)), closes [#414](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/414)
+
+
+#### Bug Fixes
+
+* **ApiHelper:** Added LocationId to fix issue with region filtering ([2f012b9](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2f012b9ca1cb36cd0badcb6054476425ae0fef5b))
+* Changed from curly brace to brackets to fix error in PHP 8.0 ([175dca0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/175dca0af713eff97ff66fa4f55e59ff35ca3edd))
+* **Detail template:** Change code that checks `$course_level` ([a8e7562](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a8e7562e3f955c7fe87e69bd0917a8eda2a815e5))
+* **docs:** Formatting the document was a bad idea ([7e89d27](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e89d27fc076813ca531fb0452fccf3723032830))
+* Fix ajax method that fetches minimum price ([71a4c80](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/71a4c802e0beb96d9ec2bf68cd8111c05ee4ce76))
+* Fixed casing for VAT texts ([5c5c7ae](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5c5c7ae884ad014749750925748637cba03d179e))
+* How about we use the correct version with nvmrc, update composer installer ([0fef61e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0fef61eceb2a0c32ec192081a8e5fc5f131163ae))
+* Output only non-empty parts in the venue info. ([aca146f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/aca146f784a20785b7bb241d72fae472892d0c8e))
+* **Programme/Book:** Added null check for contact and customfields before looping over it. ([f633bd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f633bd8cdde2691ee852af2d5ca8634b56d24e30))
+* Remove default value from parameter always sent ([f610d1c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f610d1c08a82b919753da81b1c83b7eca1aca828))
+
+
+#### Documentation
+
+* Added info about `ondemand` attribute for listview shortcode ([baa625d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/baa625dff4ef7997398423a4e0ccc056570aae1b))
+
 ### [2.39.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.0...v2.39.1) (2021-12-07)
 
 
@@ -74,21 +104,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Fixed VAT-text to be uppercase ([7878cbd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7878cbddca383d05e5b132a61258c33b33a30765))
-
-### [2.38.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.0...v2.38.1) (2021-11-05)
-
-
-#### Bug Fixes
-
-* **Course booking:** Filtering available events, to not include events that are fully booked. ([bf014de](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/bf014de3e99db0ad6b9c7a5a71c505d8e5371bb5))
-* **Course booking:** If the end user visits the booking page without a selected event, select it in the dropdown, if available ([0ec0db0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0ec0db0e1363926f3d85068918d62304ad4164a9)), closes [#405](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/405)
-* **Documentation:** Added CNAME file in static-folder for GitHub Pages, fixed paths in config ([2f8cc2b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2f8cc2bd683b84353e1b101b9a1fb9994291c3cd))
-* **Programme:** Fixed so that duplicate sort index-keys won't remove courses. ([578a636](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/578a63650d0feef595b2c26793127c34523b0f7b))
-
-
-#### Refactoring
-
-* **Changelog:** Added .versionrc file to repo, so that we get more info in the changelog depending on what we've done ([e342b02](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e342b028760544dd6bcc2e781e5d574e9f49d636))
-* Migrated documentation to new version of Docusaurus. ([44fafce](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/44fafce999ca25f61349096fe19eb68627fc8c3a))
 
 

@@ -54,6 +54,7 @@ function eduadmin_get_list_view( $attributes ) {
 			'hideimages'      => null,
 			'showimages'      => null,
 			'categorydeep'    => null,
+			'ondemand'        => false,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
@@ -439,7 +440,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$prices = array();
 
 				foreach ( $selected_course['PriceNames'] as $pn ) {
-					$prices[ $pn['PriceNameId'] ] = $pn;
+					$prices[ (string)$pn['PriceNameId'] ] = $pn;
 				}
 
 				if ( 1 === count( $prices ) ) {
@@ -457,7 +458,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				foreach ( $events as $e ) {
 					foreach ( $e['PriceNames'] as $pn ) {
-						$prices[ $pn['PriceNameId'] ] = $pn;
+						$prices[ (string)$pn['PriceNameId'] ] = $pn;
 					}
 				}
 

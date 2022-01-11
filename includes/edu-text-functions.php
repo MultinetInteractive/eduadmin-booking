@@ -73,23 +73,23 @@ function edu_get_price( $price, $vatPercent ) {
 
 	switch ( $forcePriceAs ) {
 		case 'both':
-			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' ) .
+			$returnString = $priceExcl . ' ' . _x( 'ex VAT', 'frontend', 'eduadmin-booking' ) .
 			                ' / ' .
-			                $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			                $priceIncl . ' ' . _x( 'inc VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		case 'inclVat':
-			$returnString = $priceIncl . ' ' . _x( 'inc vat', 'frontend', 'eduadmin-booking' );
+			$returnString = $priceIncl . ' ' . _x( 'inc VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		case 'exclVat':
-			$returnString = $priceExcl . ' ' . _x( 'ex vat', 'frontend', 'eduadmin-booking' );
+			$returnString = $priceExcl . ' ' . _x( 'ex VAT', 'frontend', 'eduadmin-booking' );
 			break;
 		default:
 			// The old way
 			$returnString = convert_to_money( $price, $currency ) .
 			                ( $show_vat ?
 				                ' ' . ( $inc_vat ?
-					                _x( 'inc vat', 'frontend', 'eduadmin-booking' ) :
-					                _x( 'ex vat', 'frontend', 'eduadmin-booking' )
+					                _x( 'inc VAT', 'frontend', 'eduadmin-booking' ) :
+					                _x( 'ex VAT', 'frontend', 'eduadmin-booking' )
 				                ) :
 				                ''
 			                );
@@ -112,9 +112,11 @@ function edu_get_percent_from_values( $current_value, $max_value ) {
 
 function edu_output_event_venue( $parts, $prefix = null ) {
 	$empty = true;
+	$new_parts = [];
 	foreach ( $parts as $part ) {
 		if ( ! empty( $part ) ) {
 			$empty = false;
+			$new_parts[] = $part;
 		}
 	}
 
@@ -122,7 +124,7 @@ function edu_output_event_venue( $parts, $prefix = null ) {
 		return '';
 	}
 
-	return $prefix . join( ', ', $parts );
+	return $prefix . join( ', ', $new_parts );
 }
 
 function edu_get_percent_class( $percent ) {
@@ -911,7 +913,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	return $ordered_dategroups;
 }
 
-function get_start_end_display_date( $start_date, $end_date, $short = false, $event, $show_days = false ) {
+function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false ) {
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
@@ -1117,16 +1119,35 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 				break;
 		}
 
-		echo isset( $event_dates[ $ev['EventId'] ] ) ?
-			get_logical_date_groups( $event_dates[ $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
-			wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
-		if ( $show_time ) {
-			echo ! isset( $event_dates[ $ev['EventId'] ] ) ?
-				'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
-				'';
+		if ( $ev['OnDemand'] ) {
+			echo '<span class="eduadmin-dateText">' . esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' ) . '</span>';
+		} else {
+			echo isset( $event_dates[ (string)$ev['EventId'] ] ) ?
+				get_logical_date_groups( $event_dates[ (string)$ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
+				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			if ( $show_time ) {
+				echo ! isset( $event_dates[ (string)$ev['EventId'] ] ) ?
+					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
+					'';
+			}
 		}
 
 		EDU()->stop_timer( $__t );
+	}
+}
+
+if ( ! function_exists( 'edu_course_listitem_nextdate' ) ) {
+	function edu_course_listitem_nextdate( $next_event ) {
+		$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
+
+		if ( $next_event['OnDemand'] ) {
+			echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
+		} else {
+			echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $next_event['StartDate'] ) ) . ' ' . $next_event['City'] );
+			if ( $show_event_venue && ! empty( $next_event['AddressName'] ) ) {
+				echo '<span class="venueInfo">, ' . esc_html( $next_event['AddressName'] ) . '</span>';
+			}
+		}
 	}
 }
 
@@ -1157,9 +1178,13 @@ if ( ! function_exists( 'edu_event_listitem_date' ) ) {
 				}
 		}
 
-		echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
-		if ( $show_time ) {
-			echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+		if ( $ev['OnDemand'] ) {
+			echo _x( 'On-demand', 'frontend', 'eduadmin-booking' );
+		} else {
+			echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			if ( $show_time ) {
+				echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+			}
 		}
 
 		EDU()->stop_timer( $__t );
@@ -1172,7 +1197,7 @@ if ( ! function_exists( 'my_str_split' ) ) {
 		$s_array = array();
 		$slen    = strlen( $string );
 		for ( $i = 0; $i < $slen; $i++ ) {
-			$s_array[ $i ] = $string{$i};
+			$s_array[ (string)$i ] = $string[ $i ];
 		}
 
 		return $s_array;
@@ -1669,9 +1694,7 @@ if ( ! function_exists( 'no_diacritics' ) ) {
 		$from = array_merge( $from, $cyrylic_from );
 		$to   = array_merge( $to, $cyrylic_to );
 
-		$newstring = str_replace( $from, $to, $string );
-
-		return $newstring;
+		return str_replace( $from, $to, $string );
 	}
 }
 

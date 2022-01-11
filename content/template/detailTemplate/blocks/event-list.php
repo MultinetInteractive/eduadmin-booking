@@ -19,8 +19,10 @@ $has_hidden_dates = false;
 
 $last_city = "";
 
+$is_ondemand = $selected_course['OnDemand'];
+
 ?>
-<?php if ( $allow_region_search && empty( $_GET['eid'] ) ) : ?>
+<?php if ( $allow_region_search && empty( $_GET['eid'] ) && ! $is_ondemand ) : ?>
 	<h3><?php esc_html_e( 'Region', 'eduadmin-booking' ); ?></h3>
 	<div class="search-regionitems">
 		<?php
@@ -39,7 +41,8 @@ $last_city = "";
 	<?php echo( isset( $_GET['eid'] ) ? ' data-eid="' . intval( $_GET['eid'] ) . '"' : '' ); ?>
 	 data-showvenue="<?php echo esc_attr( $show_event_venue ); ?>"
 	 data-eventinquiry="<?php echo esc_attr( $allow_interest_reg_event ); ?>"
-	 data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>">
+	 data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>"
+	 data-ondemand="<?php echo esc_attr( $selected_course['OnDemand'] ); ?>">
 	<?php
 	$i = 0;
 	if ( ! empty( $prices ) ) {

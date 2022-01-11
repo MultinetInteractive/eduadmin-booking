@@ -14,7 +14,7 @@ if ( $show_more > 0 && $i >= $show_more ) {
 
 $event_dates = array();
 if ( ! empty( $ev['EventDates'] ) ) {
-	$event_dates[ $ev['EventId'] ] = $ev['EventDates'];
+	$event_dates[ (string) $ev['EventId'] ] = $ev['EventDates'];
 }
 
 ?>
@@ -41,7 +41,9 @@ if ( ! empty( $ev['EventDates'] ) ) {
 	     data-always-few-spots="<?php echo esc_attr( $always_few_spots ); ?>">
 		<?php
 		$spots_left = intval( $ev['ParticipantNumberLeft'] );
-		echo '<span class="spotsLeftInfo">' . esc_html( get_spots_left( $spots_left, intval( $ev['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) ) . '</span>';
+		if ( ! $ev['OnDemand'] ) {
+			echo '<span class="spotsLeftInfo">' . esc_html( get_spots_left( $spots_left, intval( $ev['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) ) . '</span>';
+		}
 		?>
 	</div>
 	<div class="eventBook<?php echo esc_attr( $group_by_city_class ); ?>">

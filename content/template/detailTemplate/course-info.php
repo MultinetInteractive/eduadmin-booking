@@ -89,13 +89,13 @@ $prices = array();
 
 if ( ! empty( $selected_course['PriceNames'] ) ) {
 	foreach ( $selected_course['PriceNames'] as $pn ) {
-		$prices[ $pn['PriceNameId'] ] = $pn;
+		$prices[ (string) $pn['PriceNameId'] ] = $pn;
 	}
 }
 
 foreach ( $events as $e ) {
 	foreach ( $e['PriceNames'] as $pn ) {
-		$prices[ $pn['PriceNameId'] ] = $pn;
+		$prices[ (string) $pn['PriceNameId'] ] = $pn;
 	}
 }
 

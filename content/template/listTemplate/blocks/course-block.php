@@ -12,7 +12,7 @@ foreach ( $events as $ev ) {
 		$event_cities[ $ev['City'] ] = $ev;
 	}
 	foreach ( $ev['PriceNames'] as $pr ) {
-		$prices[ $pr['Price'] ] = $pr;
+		$prices[ (string) $pr['Price'] ] = $pr;
 	}
 }
 

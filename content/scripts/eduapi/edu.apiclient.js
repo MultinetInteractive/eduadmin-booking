@@ -114,7 +114,8 @@ edu.apiclient = {
                 "edu-region": jQuery(target).data("region"),
                 showimages: jQuery(target).data("showimages"),
                 hideimages: jQuery(target).data("hideimages"),
-                filtercity: jQuery(target).data("filtercity")
+                filtercity: jQuery(target).data("filtercity"),
+                ondemand: jQuery(target).data('ondemand')
             },
             success: function (d) {
                 jQuery(target).html(d);
@@ -139,7 +140,8 @@ edu.apiclient = {
                 fetchmonths: jQuery(target).data("fetchmonths"),
                 showvenue: jQuery(target).data("showvenue"),
                 eventinquiry: jQuery(target).data("eventinquiry"),
-                "edu-region": jQuery(target).data("region")
+                "edu-region": jQuery(target).data("region"),
+                ondemand: jQuery(target).data('ondemand')
             },
             success: function (d) {
                 jQuery(target).replaceWith(d);

@@ -30,13 +30,13 @@
 			}
 			echo '<div class="dayInfo">';
 			echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
-			                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
-			     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
+			                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
+			     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
 			                                                                                                                                    ' - ' .
 			                                                                                                                                    edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
 			echo "</div>\n";
 		}
-		
+
 		if ( $show_event_price && isset( $event['Price'] ) ) {
 			if ( 0 === $event['Price'] ) {
 				echo '<div class="priceInfo">' . esc_html_x( 'Free of charge', 'The course/event has no cost', 'eduadmin-booking' ) . "</div> ";
@@ -44,8 +44,10 @@
 				echo '<div class="priceInfo">' . esc_html( sprintf( _x( 'From %1$s', 'frontend', 'eduadmin-booking' ), edu_get_price( $event['Price'], $event['ParticipantVat'] ) ) ) . '</div> ';
 			}
 		}
-		echo '<div class="spotsLeft"></div>';
-		echo '<span class="spotsLeftInfo">' . get_spots_left( $spots_left, $event['MaxParticipantNumber'], $spot_left_option, $spot_settings, $always_few_spots ) . '</span>';
+		if ( ! $event['OnDemand'] ) {
+			echo '<div class="spotsLeft"></div>';
+			echo '<span class="spotsLeftInfo">' . get_spots_left( $spots_left, $event['MaxParticipantNumber'], $spot_left_option, $spot_settings, $always_few_spots ) . '</span>';
+		}
 		?>
 	</div>
 	<div class="objectBook">

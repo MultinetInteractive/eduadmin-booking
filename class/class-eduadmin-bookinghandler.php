@@ -889,6 +889,8 @@ class EduAdmin_BookingHandler {
 
 			return $customer_answers;
 		}
+
+		return null;
 	}
 
 	private function get_contact_custom_fields() {
@@ -918,6 +920,8 @@ class EduAdmin_BookingHandler {
 
 			return $customer_answers;
 		}
+
+		return null;
 	}
 
 	private function get_custom_field_data( $key, $custom_field_id, $custom_field_type ) {
@@ -951,6 +955,8 @@ class EduAdmin_BookingHandler {
 
 			return $answer;
 		}
+
+		return null;
 	}
 
 	private function get_contact_sessions() {
@@ -976,6 +982,8 @@ class EduAdmin_BookingHandler {
 
 			return $sessions;
 		}
+
+		return null;
 	}
 
 	private function get_contact_questions() {
@@ -1005,6 +1013,8 @@ class EduAdmin_BookingHandler {
 
 			return $contact_qanswers;
 		}
+
+		return null;
 	}
 
 	private function get_answer_data( $key, $question_answer_id, $question_type ) {
@@ -1035,6 +1045,8 @@ class EduAdmin_BookingHandler {
 
 			return $answer;
 		}
+
+		return null;
 	}
 
 	private function get_booking_questions() {
@@ -1062,6 +1074,8 @@ class EduAdmin_BookingHandler {
 
 			return $booking_qanswers;
 		}
+
+		return null;
 	}
 
 	private function get_participant_data() {

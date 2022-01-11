@@ -8,13 +8,18 @@ foreach ( $events as $event ) {
 	if ( null !== $number_of_events && $number_of_events > 0 && $current_events >= $number_of_events ) {
 		break;
 	}
+
+	if ( $show_ondemand && ! $event['OnDemand'] ) {
+		continue;
+	}
+
 	$name       = $event['EventName'];
 	$spots_left = $event['ParticipantNumberLeft'];
 	$object     = $event['CourseTemplate'];
 
 	$event_dates = array();
 	if ( ! empty( $event['EventDates'] ) ) {
-		$event_dates[ $event['EventId'] ] = $event['EventDates'];
+		$event_dates[ (string) $event['EventId'] ] = $event['EventDates'];
 	}
 	include 'blocks/event-block-b.php';
 	$current_events++;

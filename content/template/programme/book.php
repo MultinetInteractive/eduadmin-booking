@@ -20,7 +20,6 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 		do_action( 'eduadmin-bookingcompleted' );
 	}
 } else {
-
 	if ( EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ) {
 		if ( ! empty( $programme['BookingFormUrl'] ) ) {
 			?>
@@ -191,20 +190,22 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 
 				foreach ( $contact_custom_fields as $custom_field ) {
 					$data = null;
-					foreach ( $contact->CustomFields as $cf ) {
-						if ( $cf->CustomFieldId === $custom_field['CustomFieldId'] ) {
-							switch ( $cf->CustomFieldType ) {
-								case 'Checkbox':
-									$data = $cf->CustomFieldChecked;
-									break;
-								case 'Dropdown':
-									$data = $cf->CustomFieldAlternativeId;
-									break;
-								default:
-									$data = $cf->CustomFieldValue;
-									break;
+					if ( null !== $contact && null !== $contact->CustomFields ) {
+						foreach ( $contact->CustomFields as $cf ) {
+							if ( $cf->CustomFieldId === $custom_field['CustomFieldId'] ) {
+								switch ( $cf->CustomFieldType ) {
+									case 'Checkbox':
+										$data = $cf->CustomFieldChecked;
+										break;
+									case 'Dropdown':
+										$data = $cf->CustomFieldAlternativeId;
+										break;
+									default:
+										$data = $cf->CustomFieldValue;
+										break;
+								}
+								break;
 							}
-							break;
 						}
 					}
 					render_attribute( $custom_field, false, 'contact', $data );

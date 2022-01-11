@@ -1,7 +1,0 @@
-{
-  "docs": {
-    "Getting started": ["getting-started", "shortcodes"],
-    "Custom templates": ["your-first-custom-template"],
-    "Troubleshooting": ["troubleshooting"]
-  }
-}

@@ -24,7 +24,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<?php endif; ?>
 			<h1 class="courseTitle"><?php echo esc_html( $name ); ?>
 				<small
-					class="courseLevel"><?php echo esc_html( null !== $course_level ? $course_level['Name'] : '' ); ?></small>
+					class="courseLevel"><?php echo esc_html( false !== $course_level ? $course_level['Name'] : '' ); ?></small>
 			</h1>
 		</div>
 		<hr />
