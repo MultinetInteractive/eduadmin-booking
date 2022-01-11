@@ -187,7 +187,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -305,7 +305,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -422,7 +422,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -535,7 +535,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
