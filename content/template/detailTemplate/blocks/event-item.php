@@ -14,7 +14,7 @@ if ( $show_more > 0 && $i >= $show_more ) {
 
 $event_dates = array();
 if ( ! empty( $ev['EventDates'] ) ) {
-	$event_dates[ $ev['EventId'] ] = $ev['EventDates'];
+	$event_dates[ (string) $ev['EventId'] ] = $ev['EventDates'];
 }
 
 ?>

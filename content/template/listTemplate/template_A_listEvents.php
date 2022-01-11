@@ -19,7 +19,7 @@ foreach ( $events as $event ) {
 
 	$event_dates = array();
 	if ( ! empty( $event['EventDates'] ) ) {
-		$event_dates[ $event['EventId'] ] = $event['EventDates'];
+		$event_dates[ (string) $event['EventId'] ] = $event['EventDates'];
 	}
 
 	include 'blocks/event-block-a.php';

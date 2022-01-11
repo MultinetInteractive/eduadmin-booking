@@ -45,19 +45,19 @@ function edu_render_booking_settings_page() {
 
 						$level_stack = array();
 						foreach ( $cg['value'] as $g ) {
-							$level_stack[ $g['ParentCustomerGroupId'] ][] = $g;
+							$level_stack[ (string)$g['ParentCustomerGroupId'] ][] = $g;
 						}
 
 						$depth = 0;
 
 						function edu_write_options( $g, $array, $depth, $selected_option ) {
-							echo '<option value="' . esc_attr( $g['CustomerGroupId'] ) . '"' . ( intval( $selected_option ) === intval( $g['CustomerGroupId'] ) ? ' selected="selected"' : '' ) . '>' .
+							echo '<option value="' . esc_attr( $g['CustomerGroupId'] ) . '"' . ( $selected_option === (string)$g['CustomerGroupId'] ? ' selected="selected"' : '' ) . '>' .
 							     str_repeat( '&nbsp;', $depth * 4 ) .
 							     esc_html( wp_strip_all_tags( $g['CustomerGroupName'] ) ) .
 							     "</option>\n";
-							if ( array_key_exists( $g['CustomerGroupId'], $array ) ) {
+							if ( array_key_exists( (string)$g['CustomerGroupId'], $array ) ) {
 								$depth++;
-								foreach ( $array[ $g['CustomerGroupId'] ] as $ng ) {
+								foreach ( $array[ (string)$g['CustomerGroupId'] ] as $ng ) {
 									edu_write_options( $ng, $array, $depth, $selected_option );
 								}
 								$depth--;

@@ -83,12 +83,12 @@ function edu_listview_courselist() {
 
 	$return_value = array();
 	foreach ( $courses as $event ) {
-		if ( ! isset( $return_value[ $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
+		if ( ! isset( $return_value[ (string)$event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
 			if ( $event['OnDemand'] ) {
-				$return_value[ $event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
+				$return_value[ (string)$event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
 			} else {
-				$return_value[ $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
+				$return_value[ (string)$event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
 			}
 		}
 	}
@@ -420,7 +420,7 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 
 		$event_dates = array();
 		if ( ! empty( $event['EventDates'] ) ) {
-			$event_dates[ $event['EventId'] ] = $event['EventDates'];
+			$event_dates[ (string)$event['EventId'] ] = $event['EventDates'];
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-a.php';
@@ -496,7 +496,7 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 
 		$event_dates = array();
 		if ( ! empty( $event['EventDates'] ) ) {
-			$event_dates[ $event['EventId'] ] = $event['EventDates'];
+			$event_dates[ (string)$event['EventId'] ] = $event['EventDates'];
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-b.php';
@@ -592,12 +592,12 @@ function edu_api_eventlist() {
 	$prices = array();
 
 	foreach ( $selected_course['PriceNames'] as $pn ) {
-		$prices[ $pn['PriceNameId'] ] = $pn;
+		$prices[ (string)$pn['PriceNameId'] ] = $pn;
 	}
 
 	foreach ( $events as $e ) {
 		foreach ( $e['PriceNames'] as $pn ) {
-			$prices[ $pn['PriceNameId'] ] = $pn;
+			$prices[ (string)$pn['PriceNameId'] ] = $pn;
 		}
 	}
 

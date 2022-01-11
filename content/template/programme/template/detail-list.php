@@ -78,7 +78,7 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 		$priceNames = array();
 
 		foreach ( $programme_start['PriceNames'] as $pn ) {
-			$priceNames[ $pn['Price'] ] = $pn;
+			$priceNames[ (string) $pn['Price'] ] = $pn;
 		}
 
 		$min_price = min( array_keys( $priceNames ) );
