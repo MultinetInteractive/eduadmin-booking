@@ -127,6 +127,8 @@ $show_week_days    = EDU()->is_checked( 'eduadmin-showWeekDays', false );
 $show_descr       = EDU()->is_checked( 'eduadmin-showCourseDescription', true );
 $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
+
+$has_hidden_dates = false;
 ?>
 <div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>"
      data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>"
