@@ -51,6 +51,27 @@
 		?>
 	</div>
 	<div class="objectBook">
+		<?php
+		if ( $show_book_btn ) {
+			if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
+				if ( $use_eduadmin_form ) {
+					?>
+					<a class="bookButton cta-btn" href="javascript://"
+					   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $event['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+					<?php
+				} else {
+					?>
+					<a class="bookButton cta-btn"
+					   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+					<?php
+				}
+			} else {
+				?>
+				<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
+				<?php
+			}
+		}
+		?>
 		<?php if ( $show_read_more_btn ) : ?>
 			<a class="readMoreButton cta-btn"
 			   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $object['CourseTemplateId'] . '/?eid=' . $event['EventId'] . edu_get_query_string( '&' ) ); ?>"><?php echo esc_html_x( 'Read more', 'frontend', 'eduadmin-booking' ); ?></a>
