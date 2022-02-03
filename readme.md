@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 2.40.1
+Stable tag: 2.40.2
 Requires PHP: 7.0
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -43,6 +43,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 == Changelog ==
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
+
+### [2.40.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.1...v2.40.2) (2022-02-03)
+
+
+#### Bug Fixes
+
+* Added Book-button to template B (event) ([f760e70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f760e700ee131266c49ddf3c593e81b35dbc335a)), closes [#418](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/418)
+
+
+#### Documentation
+
+* Update documentation, remove `showmore` from listview, as it was never implemented ([b37c0ad](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b37c0ad790242c0edf9b425095fc5cfe782f514d))
 
 ### [2.40.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.0...v2.40.1) (2022-01-11)
 
@@ -92,22 +104,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Missing replacement of lower case VAT-text ([5e2b83b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5e2b83b063236335d02739f399732e4659d0d57b))
-
-### [2.39.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.38.2...v2.39.0) (2021-11-24)
-
-
-#### Features
-
-* Added MNNaturalize to make strings and numbers sortable in a better way ([2b45e0e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2b45e0e5102b78ca90148b7dd338f86f03705d78))
-
-
-#### Bug Fixes
-
-* Fixed sorting of events ([125daeb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/125daebe66e2c1d0153d151704422975f7197fa5))
-
-
-#### Refactoring
-
-* Simplified reading of the code ([008f472](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/008f47245337a0eda111134c596c3509ecd4e303))
 
 

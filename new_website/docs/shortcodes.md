@@ -169,32 +169,31 @@ Currently this shortcode doesn't have any attributes to customize it.
 
 One of the main shortcodes, as it shows the end users a list of your courses/events.
 
-| Attribute       |                     Value type                    | Default value |
-| :-------------- | :-----------------------------------------------: | :-----------: |
+| Attribute       |             Value type              | Default value |
+| :-------------- |:-----------------------------------:| :-----------: |
 | template        | string (`template_A`, `template_B`) |   template_A  |
-| category        |                       string                      |     _null_    |
-| categorydeep    |                       string                      |     _null_    |
-| subject         |                       string                      |     _null_    |
-| subjectid       |                      integer                      |     _null_    |
-| hidesearch      |                      boolean                      |     false     |
-| onlyevents      |                      boolean                      |     false     |
-| onlyempty       |                      boolean                      |     false     |
-| numberofevents  |                      numeric                      |     _null_    |
-| mode            |                       string                      |     _null_    |
-| orderby         |                       string                      |     _null_    |
-| order           |        string (`ASC`, `DESC`)       |     _null_    |
-| showsearch      |                      boolean                      |     _null_    |
-| showmore        |                      boolean                      |     _null_    |
-| showcity        |                      boolean                      |      true     |
-| showbookbtn     |                      boolean                      |      true     |
-| showreadmorebtn |                      boolean                      |      true     |
-| city            |                      integer                      |     _null_    |
-| courselevel     |                      integer                      |     _null_    |
-| searchCourse    |                       string                      |     _null_    |
-| filtercity      |                       string                      |     _null_    |
-| hideimages      |                      boolean                      |     _null_    |
-| showimages      |                      boolean                      |     _null_    |
-| ondemand        |                      boolean                      |     false     |
+| category        |               string                |     _null_    |
+| categorydeep    |               string                |     _null_    |
+| subject         |               string                |     _null_    |
+| subjectid       |               integer               |     _null_    |
+| hidesearch      |               boolean               |     false     |
+| onlyevents      |               boolean               |     false     |
+| onlyempty       |               boolean               |     false     |
+| numberofevents  |               numeric               |     _null_    |
+| mode            |               string                |     _null_    |
+| orderby         |               string                |     _null_    |
+| order           |       string (`ASC`, `DESC`)        |     _null_    |
+| showsearch      |               boolean               |     _null_    |
+| showcity        |               boolean               |      true     |
+| showbookbtn     |               boolean               |      true     |
+| showreadmorebtn |               boolean               |      true     |
+| city            |               integer               |     _null_    |
+| courselevel     |               integer               |     _null_    |
+| searchCourse    |               string                |     _null_    |
+| filtercity      |               string                |     _null_    |
+| hideimages      |               boolean               |     _null_    |
+| showimages      |               boolean               |     _null_    |
+| ondemand        |               boolean               |     false     |
 
 The `template`-attribute lets you override the default setting for what template the list should use.
 
@@ -225,8 +224,6 @@ The `orderby`-attribute gives you the possibility to change the sort order of th
 -attribute decides in which way it should sort.
 
 `showsearch` will force the search bar to be visible.
-
-`showmore` will enable the _Show more_ link and limit the amount of visible results.
 
 The `showcity`-attribute will show the city where the event is held (if applicable)
 
