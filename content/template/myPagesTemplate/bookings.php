@@ -15,7 +15,7 @@ $customer = $user->Customer;
 	$events = EDUAPI()->OData->Events->Search(
 		null,
 		'Bookings/any(b:b/Customer/CustomerId eq ' . $customer->CustomerId . ') and StatusId eq 1',
-		'Bookings($expand=Participants;$filter=Customer/CustomerId eq ' . $customer->CustomerId . ' and NumberOfParticipants gt 0;)'
+		'Bookings($expand=Participants,UnnamedParticipants;$filter=Customer/CustomerId eq ' . $customer->CustomerId . ' and NumberOfParticipants gt 0;)'
 	);
 
 	$bookings = array();
@@ -33,20 +33,21 @@ $customer = $user->Customer;
 
 	$currency               = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 	$selected_price_setting = EDU()->get_option( 'eduadmin-profile-priceType', 'IncVat' );
+
 	?>
 	<table class="myReservationsTable">
 		<tr>
-			<th align="left"><?php echo esc_html_x( 'Booked', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php echo esc_html_x( 'Course', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="left"><?php echo esc_html_x( 'Dates', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php echo esc_html_x( 'Participants', 'frontend', 'eduadmin-booking' ); ?></th>
-			<th align="right"><?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th class="edu-table-left table-booked-date"><?php echo esc_html_x( 'Booked', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th class="edu-table-left table-course"><?php echo esc_html_x( 'Course', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th class="edu-table-right table-dates"><?php echo esc_html_x( 'Dates', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th class="edu-table-right table-participants"><?php echo esc_html_x( 'Participants', 'frontend', 'eduadmin-booking' ); ?></th>
+			<th class="edu-table-right table-price"><?php echo esc_html_x( 'Price', 'frontend', 'eduadmin-booking' ); ?></th>
 		</tr>
 		<?php
 		if ( empty( $bookings ) ) {
 			?>
 			<tr>
-				<td colspan="5" align="center">
+				<td colspan="5" class="edu-table-center">
 					<i><?php echo esc_html_x( 'No courses booked', 'frontend', 'eduadmin-booking' ); ?></i>
 				</td>
 			</tr>
@@ -59,33 +60,65 @@ $customer = $user->Customer;
 				}
 				?>
 				<tr>
-					<td><?php echo wp_kses_post( get_display_date( $book['Created'], true ) ); ?></td>
-					<td><?php echo esc_html( $name ); ?></td>
-					<td><?php echo wp_kses_post( get_old_start_end_display_date( $book['Event']['StartDate'], $book['Event']['EndDate'], true ) ); ?></td>
-					<td align="right"><?php echo esc_html( $book['NumberOfParticipants'] ); ?></td>
-					<td align="right"><?php echo esc_html( convert_to_money( ( 'IncVat' === $selected_price_setting ? $book['TotalPriceIncVat'] : $book['TotalPriceExVat'] ), $currency ) ); ?></td>
+					<td class="table-booked-date">
+						<?php echo wp_kses_post( get_display_date( $book['Created'], true ) ); ?>
+					</td>
+					<td class="table-course" title="<?php echo esc_attr( $name ); ?>">
+						<?php echo esc_html( $name ); ?>
+					</td>
+					<td class="edu-table-right table-dates">
+						<?php
+						if ( $book['Event']['OnDemand'] ) {
+							echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
+						} else {
+							echo wp_kses_post( get_old_start_end_display_date( $book['Event']['StartDate'], $book['Event']['EndDate'], true ) );
+						}
+						?>
+					</td>
+					<td class="edu-table-right table-participants">
+						<?php echo esc_html( $book['NumberOfParticipants'] ); ?>
+					</td>
+					<td class="edu-table-right table-price">
+						<?php echo esc_html( convert_to_money( ( 'IncVat' === $selected_price_setting ? $book['TotalPriceIncVat'] : $book['TotalPriceExVat'] ), $currency ) ); ?>
+					</td>
 				</tr>
 				<?php
-				if ( ! empty( $book['Participants'] ) ) {
+				if ( $book['NumberOfParticipants'] > 0 ) {
 					?>
 					<tr class="edu-participants-row">
 						<td colspan="5">
 							<table class="edu-event-participantList">
 								<tr>
-									<th align="left"
-									    class="edu-participantList-name"><?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?></th>
-									<th align="center"
-									    class="edu-participantList-arrived"><?php echo esc_html_x( 'Arrived', 'frontend', 'eduadmin-booking' ); ?></th>
-									<th align="right"
-									    class="edu-participantList-grade"><?php echo esc_html_x( 'Grade', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th class="edu-table-left edu-participantList-name"><?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th class="edu-table-center edu-participantList-arrived"><?php echo esc_html_x( 'Arrived', 'frontend', 'eduadmin-booking' ); ?></th>
+									<th class="edu-table-right edu-participantList-grade"><?php echo esc_html_x( 'Grade', 'frontend', 'eduadmin-booking' ); ?></th>
 								</tr>
 								<?php
 								foreach ( $book['Participants'] as $participant ) {
 									?>
 									<tr>
-										<td align="left"><?php echo esc_html( $participant['FirstName'] . ' ' . $participant['LastName'] ); ?></td>
-										<td align="center"><?php echo true === $participant['Arrived'] ? '&#9745;' : '&#9744;'; ?></td>
-										<td align="right"><?php echo( ! empty( $participant['GradeName'] ) ? esc_html( $participant['GradeName'] ) : '<i>' . esc_html_x( 'Not graded', 'frontend', 'eduadmin-booking' ) . '</i>' ); ?></td>
+										<td class="edu-table-left edu-participantList-name"><?php echo esc_html( $participant['FirstName'] . ' ' . $participant['LastName'] ); ?></td>
+										<td class="edu-table-center edu-participantList-arrived"><?php echo true === $participant['Arrived'] ? '&#9745;' : '&#9744;'; ?></td>
+										<td class="edu-table-right edu-participantList-grade"><?php echo( ! empty( $participant['GradeName'] ) ? esc_html( $participant['GradeName'] ) : '<i>' . esc_html_x( 'Not graded', 'frontend', 'eduadmin-booking' ) . '</i>' ); ?></td>
+									</tr>
+									<?php
+								}
+
+								if ( ! empty( $book['UnnamedParticipants'] ) ) {
+									$number_of_unnamed_participants = 0;
+									foreach ( $book['UnnamedParticipants'] as $unnamed_booking ) {
+										$number_of_unnamed_participants += $unnamed_booking['Quantity'];
+									}
+									?>
+									<tr>
+										<td class="edu-table-left">
+											<em><?php echo sprintf(
+													_n( '%s unnamed participant', '%s unnamed participants', $number_of_unnamed_participants, 'eduadmin-booking' ),
+													number_format_i18n( $number_of_unnamed_participants )
+												); ?></em>
+										</td>
+										<td class="edu-table-center">&nbsp;</td>
+										<td class="edu-table-right">&nbsp;</td>
 									</tr>
 									<?php
 								}

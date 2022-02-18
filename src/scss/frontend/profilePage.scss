@@ -1,40 +1,107 @@
 .eduadmin {
-	.tab_container {
-		&.tabhead {
-			border-bottom: 1px solid hsl(0, 0%, 82%);
-		}
+  .tab_container {
+    &.tabhead {
+      border-bottom: 1px solid hsl(0, 0%, 82%);
+    }
 
-		.tab_item {
-			padding: 5px 10px 4px 10px;
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			border: 1px solid rgba(0, 0, 0, 0);
-			&:hover {
-				border: 1px solid hsl(0, 0%, 72%);
-				border-bottom: 0;
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-			}
-			&.active {
-				border: 1px solid hsl(0, 0%, 82%);
-				border-bottom: 0;
-				border-top-left-radius: 10px;
-				border-top-right-radius: 10px;
-			}
-		}
+    .tab_item {
+      padding: 5px 10px 4px 10px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0);
 
-		a.tab_item {
-			text-decoration: none;
-			box-shadow: unset;
-		}
-	}
-	.myReservationsTable th,
-	.myReservationsTable td {
-		padding: 5px;
-	}
+      &:hover {
+        border: 1px solid hsl(0, 0%, 72%);
+        border-bottom: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
 
-	.expired-discount-cards {
-		opacity: 50%;
-	}
+      &.active {
+        border: 1px solid hsl(0, 0%, 82%);
+        border-bottom: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+    }
+
+    a.tab_item {
+      text-decoration: none;
+      box-shadow: unset;
+    }
+  }
+
+  .header-with-button {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .myReservationsTable {
+    max-width: 100%;
+
+    .edu-table-left {
+      text-align: left;
+    }
+
+    .edu-table-center {
+      text-align: center;
+    }
+
+    .edu-table-right {
+      text-align: right;
+    }
+
+    .table-booked-date {
+      width: 8em;
+    }
+
+    .table-course {
+      max-width: 13em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+    }
+
+    .table-dates {
+      width: 15em;
+    }
+
+    .table-participants {
+      width: 4em;
+    }
+
+    .table-price {
+      width: 7em;
+    }
+
+    .edu-event-participantList {
+      .edu-participantList-name {
+        width: 25em;
+      }
+
+      .edu-participantList-arrived {
+        width: 4em;
+      }
+
+      .edu-participantList-grade {
+        width: 6em;
+      }
+    }
+
+    .export-button {
+      margin-bottom: 1em;
+      float: right;
+    }
+  }
+
+  .myReservationsTable th,
+  .myReservationsTable td {
+    padding: 5px;
+  }
+
+  .expired-discount-cards {
+    opacity: 50%;
+  }
 }
