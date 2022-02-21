@@ -27,7 +27,11 @@ module.exports = {
 					"sidebarPath": "./sidebars.json"
 				},
 				"blog": {
-					"path": "blog"
+					"path": "blog",
+					"feedOptions": {
+						"type": 'all',
+						"copyright": `Copyright © $(new Date().getFullYear()} MultiNet Interactive AB`
+					}
 				},
 				"theme": {
 					"customCss": "../src/css/customTheme.css"
@@ -46,6 +50,11 @@ module.exports = {
 				{
 					"to": "docs/",
 					"label": "Documentation",
+					"position": "right"
+				},
+				{
+					"to": "blog/",
+					"label": "Blog",
 					"position": "right"
 				},
 				{
@@ -68,7 +77,8 @@ module.exports = {
 					items: [
 						{label: 'Getting Started', to: 'docs/'},
 						{label: 'API Reference', href: 'https://api.eduadmin.se'},
-						{label: 'Troubleshooting', to: 'docs/troubleshooting'}
+						{label: 'Troubleshooting', to: 'docs/troubleshooting'},
+						{label: 'Blog', to: 'blog/'}
 					]
 				}
 			],

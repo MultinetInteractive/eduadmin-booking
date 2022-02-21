@@ -6,23 +6,35 @@ slug: /
 ---
 This guide will focus on get you started with the [**EduAdmin WordPress Plugin**](https://wordpress.org/plugins/eduadmin-booking/), with default templates and settings so your visitors can start booking directly from your [**WordPress**](https://www.wordpress.org) webpage.
 
-> If you do not have an API key for [**EduAdmin**](https://www.eduadmin.se) yet, 
-> consider contacting our support.
->
-> [**EduAdmin**](https://www.eduadmin.se) is not a free service, 
-> and the API key comes with a monthly fee.
+:::info EduAdmin API Key
+
+If you do not have an API key for [**EduAdmin**](https://www.eduadmin.se) yet, 
+consider contacting our support.
+
+[**EduAdmin**](https://www.eduadmin.se) is not a free service, 
+and the API key comes with a monthly fee.
+
+:::
 
 If you have your API key ready, let us go through the steps below!
 
-> If you need the ability to customize things more than we have the ability to, 
-> we recommend that you look into creating your own integration with our API.
+:::tip Need more customization?
+
+If you need the ability to customize things more than we have the ability to, 
+we recommend that you look into creating your own integration with our API.
+
+:::
 
 ## Installing the plugin
 
 Make sure you are logged in to WordPress with a user, that has access to install new plugins.
 From the plugin view, click **Add New** and search for _EduAdmin_, the one you want is "[**EduAdmin Booking**](https://wordpress.org/plugins/eduadmin-booking/)" by [**MultiNet Interactive AB**](https://www.multinet.com).
 
-> Don't forget to activate the newly installed plugin
+:::tip
+
+Don't forget to activate the newly installed plugin
+
+:::
 
 ## Setting the API key
 
@@ -35,8 +47,12 @@ to set your API key, navigate to the _Api Authentication_ and enter the API key 
 After setting the API key, we now need to create the bare minimum of required pages and set some settings,
 so your customers can browse the available courses and if available book themselves.
 
-> For all pages to work, you have to select them in the proper setting on _General settings_,
-> and set which URL/folder the plugin should work under.
+:::note
+
+For all pages to work, you have to select them in the proper setting on _General settings_,
+and set which URL/folder the plugin should work under.
+
+:::
 
 The shortcodes we go through below can be viewed in detail on the [shortcode](shortcodes.md)-page
 
