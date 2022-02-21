@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.2...v3.0.0) (2022-02-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Login page:** Will probably break any custom styling to the login page.
+
+### Features
+
+* **My Profile/Bookings:** Export bookings into Excel (CSV) ([68c66aa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/68c66aaca009f17ed5254363d084b43a8ff44555)), closes [#426](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/426)
+* **My Profile/Bookings:** Show unnamed participants in list of bookings. ([64d1bd4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/64d1bd49a31de31f18d2c24f73bdb8e5b1eaa4c4)), closes [#428](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/428)
+
+
+### Bug Fixes
+
+* **Checksum:** Fix calculation of checksum, forgot to add some files it should ignore, so it generated a faulty hash ([cf05b24](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cf05b24e19ac9e12b152cae78e64d7ca116dfa27))
+
+
+### Refactoring
+
+* **Login page:** Remade the login page, so that it looks better on desktop and mobile ([8931993](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/89319935b04cfba88d5b2802078346392d4b7dc2))
+
+
+### Documentation
+
+* Updated documentation with new styles, enabled blog, wrote our first entry ([ecee658](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ecee6581b186bd30afc39ae95ae28ae38311f19a))
+
 ### [2.40.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.1...v2.40.2) (2022-02-03)
 
 
