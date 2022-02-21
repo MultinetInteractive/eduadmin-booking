@@ -533,6 +533,97 @@ var eduGlobalMethods = {
             return false;
         }
         location.href = fallBackUrl;
+    },
+    GetBookingExport: function (bookingId) {
+        var exportData = [];
+        function getRowData(row) {
+            if (!!row && !!row.dataset.courseData) {
+                return JSON.parse(row.dataset.courseData);
+            }
+            return null;
+        }
+        function getExcelRows(dataObject) {
+            var rows = [];
+            for (var _i = 0, _a = dataObject.Participants; _i < _a.length; _i++) {
+                var participant = _a[_i];
+                var row = {
+                    CourseName: dataObject.Event.EventName,
+                    BookingDate: dataObject.Created,
+                    OnDemand: dataObject.Event.OnDemand,
+                    StartDate: dataObject.Event.OnDemand ? null : dataObject.Event.StartDate,
+                    EndDate: dataObject.Event.OnDemand ? null : dataObject.Event.EndDate,
+                    ParticipantName: (participant.FirstName + " " + participant.LastName).trim(),
+                    ParticipantGrade: participant.GradeName,
+                    ParticipantArrived: participant.Arrived
+                };
+                rows.push(row);
+            }
+            var unnamedParticipantCount = 0;
+            dataObject.UnnamedParticipants.forEach(function (unnamedParticipant) {
+                unnamedParticipantCount += unnamedParticipant.Quantity;
+            });
+            if (unnamedParticipantCount > 0) {
+                var row = {
+                    CourseName: dataObject.Event.EventName,
+                    BookingDate: dataObject.Created,
+                    OnDemand: dataObject.Event.OnDemand,
+                    StartDate: dataObject.Event.OnDemand ? null : dataObject.Event.StartDate,
+                    EndDate: dataObject.Event.OnDemand ? null : dataObject.Event.EndDate,
+                    ParticipantName: edu_i18n_strings.Generic.UnnamedParticipant(unnamedParticipantCount),
+                    ParticipantGrade: null,
+                    ParticipantArrived: null
+                };
+                rows.push(row);
+            }
+            return rows;
+        }
+        if (bookingId === -1) {
+            // Export all the things
+            var bookingInfos = document.querySelectorAll("tr[data-bookingid]");
+            bookingInfos.forEach(function (bookingInfo) {
+                var bookingData = getRowData(bookingInfo);
+                if (!!bookingData) {
+                    exportData.push.apply(exportData, getExcelRows(bookingData));
+                }
+            });
+        }
+        else {
+            // Export a single booking
+            var bookingInfo = document.querySelector("tr[data-bookingid=\"" + bookingId + "\"]");
+            var bookingData = getRowData(bookingInfo);
+            if (!!bookingData) {
+                exportData.push.apply(exportData, getExcelRows(bookingData));
+            }
+        }
+        function getCsvBase64Data(dataRows) {
+            var exportCsv = '\uFEFF' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.CourseName) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.StartDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.EndDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.ParticipantName) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.BookingDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.Arrived) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.Grade) + "\"\n";
+            function csvEscape(data) {
+                return '=""' + (data !== null && data !== void 0 ? data : "").replace(/"/g, '""""') + '""';
+            }
+            dataRows.forEach(function (row) {
+                var _a, _b, _c, _d;
+                exportCsv += '"' + csvEscape(row.CourseName) + '";' +
+                    '"' + ((_a = row.StartDate) !== null && _a !== void 0 ? _a : (row.OnDemand ? csvEscape(edu_i18n_strings.ExportTable.OnDemand) : "")) + '";' +
+                    '"' + ((_b = row.EndDate) !== null && _b !== void 0 ? _b : "") + '";' +
+                    '"' + csvEscape(row.ParticipantName) + '";' +
+                    '"' + row.BookingDate + '";' +
+                    '"' + ((_c = row.ParticipantArrived) !== null && _c !== void 0 ? _c : "") + '";' +
+                    '"' + ((_d = csvEscape(row.ParticipantGrade)) !== null && _d !== void 0 ? _d : "") + "\"\n";
+            });
+            return window.btoa(unescape(encodeURIComponent(exportCsv)));
+        }
+        var uri = 'data:text/csv;charset=utf-8;base64,';
+        var downloadLink = document.createElement('a');
+        downloadLink.download = 'BookingExport.csv';
+        downloadLink.href = "" + uri + getCsvBase64Data(exportData);
+        downloadLink.click();
     }
 };
 function numberWithSeparator(x, sep) {

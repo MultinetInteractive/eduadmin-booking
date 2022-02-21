@@ -1,5 +1,5 @@
 "use strict";
-var _a = window.wp.i18n, __ = _a.__, _x = _a._x, _n = _a._n, _nx = _a._nx;
+var _a = window.wp.i18n, __ = _a.__, _x = _a._x, _n = _a._n, sprintf = _a.sprintf;
 var edu_i18n_strings = {
     ErrorMessages: {
         ///40 = Not enough spots left. See ErrorDetails
@@ -19,7 +19,20 @@ var edu_i18n_strings = {
     },
     Generic: {
         ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking'),
-        Close: _x('Close', 'frontend', 'eduadmin-booking')
+        Close: _x('Close', 'frontend', 'eduadmin-booking'),
+        UnnamedParticipant: function (number) {
+            return sprintf(_n('One unnamed participant', '%s unnamed participants', number, 'eduadmin-booking'), number);
+        }
+    },
+    ExportTable: {
+        CourseName: _x('Course name', 'frontend', 'eduadmin-booking'),
+        ParticipantName: _x('Participant name', 'frontend', 'eduadmin-booking'),
+        StartDate: _x('Start date', 'frontend', 'eduadmin-booking'),
+        EndDate: _x('End date', 'frontend', 'eduadmin-booking'),
+        OnDemand: _x('On-demand', 'frontend', 'eduadmin-booking'),
+        BookingDate: _x('Booking date', 'frontend', 'eduadmin-booking'),
+        Arrived: _x('Arrived', 'frontend', 'eduadmin-booking'),
+        Grade: _x('Grade', 'frontend', 'eduadmin-booking')
     },
     VAT: {
         inc: _x('inc VAT', 'frontend', 'eduadmin-booking'),

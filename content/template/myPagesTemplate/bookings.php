@@ -9,13 +9,18 @@ $customer = $user->Customer;
 	$tab = 'bookings';
 	require_once 'login-tab-header.php';
 	?>
-	<h2><?php echo esc_html_x( 'Reservations', 'frontend', 'eduadmin-booking' ); ?></h2>
+	<h2 class="header-with-button">
+		<?php echo esc_html_x( 'Reservations', 'frontend', 'eduadmin-booking' ); ?>
+		<button class="cta-btn" onclick="eduGlobalMethods.GetBookingExport(-1);">
+			<?php echo esc_html( 'Export to Excel (All)', 'frontend', 'eduadmin-booking' ); ?>
+		</button>
+	</h2>
 	<?php
 
 	$events = EDUAPI()->OData->Events->Search(
-		null,
+		'EventId,EventName,CourseName,InternalCourseName,OnDemand,StartDate,EndDate',
 		'Bookings/any(b:b/Customer/CustomerId eq ' . $customer->CustomerId . ') and StatusId eq 1',
-		'Bookings($expand=Participants,UnnamedParticipants;$filter=Customer/CustomerId eq ' . $customer->CustomerId . ' and NumberOfParticipants gt 0;)'
+		'Bookings($expand=Participants($select=FirstName,LastName,Arrived,GradeName,Canceled,PriceNameId),UnnamedParticipants($select=PriceNameId,Quantity,Canceled);$filter=Customer/CustomerId eq ' . $customer->CustomerId . ' and NumberOfParticipants gt 0;$select=BookingId,Created,NumberOfParticipants,TotalPriceIncVat,TotalPriceExVat)'
 	);
 
 	$bookings = array();
@@ -59,7 +64,7 @@ $customer = $user->Customer;
 					$name = $book['Event']['InternalCourseName'];
 				}
 				?>
-				<tr>
+				<tr data-bookingid="<?php echo esc_attr( $book['BookingId'] ); ?>" data-course-data="<?php echo esc_attr( json_encode( $book ) ); ?>">
 					<td class="table-booked-date">
 						<?php echo wp_kses_post( get_display_date( $book['Created'], true ) ); ?>
 					</td>
@@ -124,6 +129,10 @@ $customer = $user->Customer;
 								}
 								?>
 							</table>
+							<button class="cta-btn export-button"
+							        onclick="eduGlobalMethods.GetBookingExport(<?php echo esc_js( $book['BookingId'] ); ?>);">
+								<?php echo esc_html( 'Export to Excel', 'frontend', 'eduadmin-booking' ); ?>
+							</button>
 						</td>
 					</tr>
 					<?php

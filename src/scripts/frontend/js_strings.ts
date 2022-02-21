@@ -1,4 +1,4 @@
-const {__, _x, _n, _nx} = (window as any).wp.i18n;
+const {__, _x, _n, sprintf} = (window as any).wp.i18n;
 
 const edu_i18n_strings = {
     ErrorMessages: {
@@ -19,7 +19,20 @@ const edu_i18n_strings = {
     },
     Generic: {
         ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking'),
-        Close: _x('Close', 'frontend', 'eduadmin-booking')
+        Close: _x('Close', 'frontend', 'eduadmin-booking'),
+        UnnamedParticipant: function (number: number) {
+            return sprintf(_n('One unnamed participant', '%s unnamed participants', number, 'eduadmin-booking'), number);
+        }
+    },
+    ExportTable: {
+      CourseName: _x('Course name', 'frontend', 'eduadmin-booking'),
+      ParticipantName: _x('Participant name', 'frontend', 'eduadmin-booking'),
+      StartDate: _x('Start date', 'frontend', 'eduadmin-booking'),
+      EndDate: _x('End date', 'frontend', 'eduadmin-booking'),
+      OnDemand: _x('On-demand', 'frontend', 'eduadmin-booking'),
+      BookingDate: _x('Booking date', 'frontend', 'eduadmin-booking'),
+      Arrived: _x('Arrived', 'frontend', 'eduadmin-booking'),
+      Grade: _x('Grade', 'frontend', 'eduadmin-booking')
     },
     VAT: {
         inc: _x('inc VAT', 'frontend', 'eduadmin-booking'),
