@@ -31,7 +31,7 @@ module.exports = {
 					"path": "blog",
 					"feedOptions": {
 						"type": 'all',
-						"copyright": `Copyright © $(new Date().getFullYear()} MultiNet Interactive AB`
+						"copyright": `Copyright © ${new Date().getFullYear()} MultiNet Interactive AB`
 					}
 				},
 				"theme": {
