@@ -41,13 +41,20 @@ rm -f $PROJECT_ROOT/CONTRIBUTING.md
 rm -f $PROJECT_ROOT/LICENSE.md
 rm -f $PROJECT_ROOT/phpunit.xml
 rm -f $PROJECT_ROOT/.gitignore
+rm -f $PROJECT_ROOT/.gitmodules
+rm -f $PROJECT_ROOT/.gitattributes
+rm -f $PROJECT_ROOT/.nvmrc
 rm -f $PROJECT_ROOT/Gulpfile.js
 rm -f $PROJECT_ROOT/yarn.lock
 rm -f $PROJECT_ROOT/package.json
+rm -f $PROJECT_ROOT/readme.md
+rm -f $PROJECT_ROOT/.versionrc
+rm -f $PROJECT_ROOT/.editorconfig
 rm -fR $PROJECT_ROOT/.github
 rm -fR $PROJECT_ROOT/scripts
 rm -fR $PROJECT_ROOT/tests
 rm -fR $PROJECT_ROOT/.git
+rm -fR $PROJECT_ROOT/.idea
 rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/.git
 rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/.gitignore
 rm -fR $PROJECT_ROOT/eduadmin-api-phpclient/composer.yml
@@ -59,7 +66,6 @@ rm -fR $PROJECT_ROOT/bin
 rm -fR $PROJECT_ROOT/node_modules
 rm -fR $PROJECT_ROOT/src
 rm -fR $PROJECT_ROOT/docs
-rm -fR $PROJECT_ROOT/website
 rm -fR $PROJECT_ROOT/new_website
 
 # Make sure we are in the project root

@@ -9,10 +9,14 @@ These issues have been reported most of all,
 and is likely a configuration problem, 
 or compatibility problem with other WordPress plugins.
 
-> If a feature is missing, it's probably because no one have asked for it, so it's not a bug.
-> If you want to request a feature, you can do so by creating a
-> [issue](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/new/choose)
-> or contacting our [support](https://support.eduadmin.se/en/support/tickets/new)
+:::info Missing features are not bugs
+
+If a feature is missing, it's probably because no one have asked for it, so it's not a bug.
+If you want to request a feature, you can do so by creating an
+[issue](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/new/choose)
+or contacting our [support](https://support.eduadmin.se/en/support/tickets/new)
+
+:::
 
 ### The website is showing old data
 
@@ -26,7 +30,7 @@ and it will output some comments in the source code, that will tell you everythi
 
 The output will look something like this
 
-```html
+```html title="Example output from plugin when showing transients"
 
 <!-- EduAdmin Booking (<version>) Transients 
  eduadmin-locations_<hash>__<version>: Expires in: 24 hours 
@@ -58,12 +62,16 @@ You can always check the "Settings &gt; General" and see what "Site Language" is
 ### Whenever I try to complete a booking, an unexpected error occurs
 
 Most of the time, when the plugin connects to [**EduAdmin**](https://www.eduadmin.se) to complete the booking,
-we get back either an success, or an array of errors.
+we get back either a success, or an array of errors.
 
 The unexpected error means something went wrong, that we do not have a classification for,
 so please **contact us** at our support portal whenever this occurs.
 
-> You can find the support portal at [**https://support.eduadmin.se/en/support/tickets/new**](https://support.eduadmin.se/en/support/tickets/new).
+:::tip Want support? Find us here!
+
+You can find the support portal at [**https://support.eduadmin.se/en/support/tickets/new**](https://support.eduadmin.se/en/support/tickets/new).
+
+:::
 
 ### The dates shown on my website are wrong
 
@@ -73,7 +81,7 @@ we try to convert the dates from the EduAdmin API, to fit your WordPress setting
 And if you want to check how we handle the dates, you can append `?edu-debugdates=1` to the URL,
 and then you will see (in the source), something like this:
 
-```html
+```html title="Example output from plugin when debugging dates"
 
 <!-- Array
 (

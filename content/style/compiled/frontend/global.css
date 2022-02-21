@@ -346,3 +346,20 @@
     padding: unset;
   }
 }
+.eduadmin.loginForm .loginBox form div.fields {
+  display: flex;
+  flex-direction: column;
+}
+.eduadmin.loginForm .loginBox form div.fields .login-field {
+  flex-direction: column;
+  align-items: unset;
+}
+@media (max-width: 480px) {
+  .eduadmin.loginForm .loginBox form div.fields .login-field.buttons {
+    flex-direction: column;
+    display: flex;
+  }
+  .eduadmin.loginForm .loginBox form div.fields .login-field.buttons button {
+    margin-bottom: 1rem;
+  }
+}

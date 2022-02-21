@@ -84,3 +84,26 @@
 		}
 	}
 }
+
+.eduadmin.loginForm {
+	.loginBox form div.fields {
+		display: flex;
+		flex-direction: column;
+
+		.login-field {
+			flex-direction: column;
+			align-items: unset;
+
+			&.buttons {
+				@media(max-width: 480px) {
+					flex-direction: column;
+					display: flex;
+
+					button {
+						margin-bottom: 1rem;
+					}
+				}
+			}
+		}
+	}
+}

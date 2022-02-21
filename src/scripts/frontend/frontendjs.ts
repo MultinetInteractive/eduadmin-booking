@@ -769,6 +769,155 @@ const eduGlobalMethods = {
             return false;
         }
         location.href = fallBackUrl;
+    },
+    GetBookingExport: function (bookingId: number) {
+        let exportData: csvRow[] = [];
+
+        type dataRow = {
+            BookingId: number;
+            Created: Date;
+            NumberOfParticipants: number;
+            TotalPriceExVat: number;
+            TotalPriceIncVat: number;
+            Event: {
+                CourseName: string;
+                EventId: number;
+                EventName: string;
+                InternalCourseName: string;
+                OnDemand: boolean;
+                StartDate: Date;
+                EndDate: Date;
+            },
+            Participants: {
+                FirstName: string;
+                LastName: string;
+                Arrived: boolean;
+                GradeName: string;
+                Canceled: boolean;
+                PriceNameId: number;
+            }[],
+            UnnamedParticipants: {
+                PriceNameId: number;
+                Quantity: number;
+                Canceled: false;
+            }[]
+        };
+
+        function getRowData(row: HTMLElement | undefined): dataRow | null {
+            if (!!row && !!row.dataset.courseData) {
+                return JSON.parse(row.dataset.courseData);
+            }
+
+            return null;
+        }
+
+        type csvRow = {
+            CourseName: string;
+            BookingDate: Date | null | undefined;
+            OnDemand: boolean;
+            StartDate: Date | null | undefined;
+            EndDate: Date | null | undefined;
+            ParticipantName: string | undefined;
+            ParticipantGrade: string | null | undefined;
+            ParticipantArrived: boolean | null | undefined;
+        };
+
+        function getExcelRows(dataObject: dataRow): csvRow[] {
+            let rows: csvRow[] = [];
+
+            for (let participant of dataObject.Participants) {
+                let row: csvRow = {
+                    CourseName: dataObject.Event.EventName,
+                    BookingDate: dataObject.Created,
+                    OnDemand: dataObject.Event.OnDemand,
+                    StartDate: dataObject.Event.OnDemand ? null : dataObject.Event.StartDate,
+                    EndDate: dataObject.Event.OnDemand ? null : dataObject.Event.EndDate,
+                    ParticipantName: `${participant.FirstName} ${participant.LastName}`.trim(),
+                    ParticipantGrade: participant.GradeName,
+                    ParticipantArrived: participant.Arrived
+                };
+
+                rows.push(row);
+            }
+
+            let unnamedParticipantCount = 0;
+
+            dataObject.UnnamedParticipants.forEach(unnamedParticipant => {
+                unnamedParticipantCount += unnamedParticipant.Quantity;
+            });
+
+            if (unnamedParticipantCount > 0) {
+                let row: csvRow = {
+                    CourseName: dataObject.Event.EventName,
+                    BookingDate: dataObject.Created,
+                    OnDemand: dataObject.Event.OnDemand,
+                    StartDate: dataObject.Event.OnDemand ? null : dataObject.Event.StartDate,
+                    EndDate: dataObject.Event.OnDemand ? null : dataObject.Event.EndDate,
+                    ParticipantName: edu_i18n_strings.Generic.UnnamedParticipant(unnamedParticipantCount),
+                    ParticipantGrade: null,
+                    ParticipantArrived: null
+                };
+
+                rows.push(row);
+            }
+
+            return rows;
+        }
+
+        if (bookingId === -1) {
+            // Export all the things
+            let bookingInfos = document.querySelectorAll(`tr[data-bookingid]`) as NodeListOf<HTMLElement>;
+            bookingInfos.forEach(bookingInfo => {
+                let bookingData = getRowData(bookingInfo);
+                if (!!bookingData) {
+                    exportData.push(...getExcelRows(bookingData));
+                }
+            });
+        } else {
+            // Export a single booking
+            let bookingInfo = document.querySelector(`tr[data-bookingid="${bookingId}"]`) as HTMLElement;
+            let bookingData = getRowData(bookingInfo);
+
+            if (!!bookingData) {
+                exportData.push(...getExcelRows(bookingData));
+            }
+        }
+
+        function getCsvBase64Data(dataRows: csvRow[]): string {
+            let exportCsv: string = '\uFEFF' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.CourseName) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.StartDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.EndDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.ParticipantName) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.BookingDate) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.Arrived) + '";' +
+                '"' + csvEscape(edu_i18n_strings.ExportTable.Grade) + "\"\n";
+
+            function csvEscape(data: string | null | undefined) {
+                return '=""' + (data ?? "").replace(/"/g, '""""') + '""';
+            }
+
+            dataRows.forEach(row => {
+                exportCsv += '"' + csvEscape(row.CourseName) + '";' +
+                    '"' + (row.StartDate ?? (row.OnDemand ? csvEscape(edu_i18n_strings.ExportTable.OnDemand) : "")) + '";' +
+                    '"' + (row.EndDate ?? "") + '";' +
+                    '"' + csvEscape(row.ParticipantName) + '";' +
+                    '"' + row.BookingDate + '";' +
+                    '"' + (row.ParticipantArrived ?? "") + '";' +
+                    '"' + (csvEscape(row.ParticipantGrade) ?? "") + "\"\n";
+            });
+
+            return window.btoa(unescape(encodeURIComponent(exportCsv)));
+        }
+
+        const uri = 'data:text/csv;charset=utf-8;base64,';
+
+        let downloadLink = document.createElement('a');
+
+        downloadLink.download = 'BookingExport.csv';
+        downloadLink.href = `${uri}${getCsvBase64Data(exportData)}`;
+
+        downloadLink.click();
     }
 };
 

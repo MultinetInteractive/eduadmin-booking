@@ -24,6 +24,54 @@
   text-decoration: none;
   box-shadow: unset;
 }
+.eduadmin .header-with-button {
+  display: flex;
+  justify-content: space-between;
+}
+.eduadmin .myReservationsTable {
+  max-width: 100%;
+}
+.eduadmin .myReservationsTable .edu-table-left {
+  text-align: left;
+}
+.eduadmin .myReservationsTable .edu-table-center {
+  text-align: center;
+}
+.eduadmin .myReservationsTable .edu-table-right {
+  text-align: right;
+}
+.eduadmin .myReservationsTable .table-booked-date {
+  width: 8em;
+}
+.eduadmin .myReservationsTable .table-course {
+  max-width: 13em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.eduadmin .myReservationsTable .table-dates {
+  width: 15em;
+}
+.eduadmin .myReservationsTable .table-participants {
+  width: 4em;
+}
+.eduadmin .myReservationsTable .table-price {
+  width: 7em;
+}
+.eduadmin .myReservationsTable .edu-event-participantList .edu-participantList-name {
+  width: 25em;
+}
+.eduadmin .myReservationsTable .edu-event-participantList .edu-participantList-arrived {
+  width: 4em;
+}
+.eduadmin .myReservationsTable .edu-event-participantList .edu-participantList-grade {
+  width: 6em;
+}
+.eduadmin .myReservationsTable .export-button {
+  margin-bottom: 1em;
+  float: right;
+}
 .eduadmin .myReservationsTable th,
 .eduadmin .myReservationsTable td {
   padding: 5px;

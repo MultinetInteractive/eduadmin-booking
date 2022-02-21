@@ -18,7 +18,11 @@ shortcode.
 
 The booking view shortcode renders the actual form, that end users use when they want to complete their booking.
 
-> The plugin will not work without it. (Unless if you only work with interest registration.)
+:::caution
+
+The plugin will not work without it. (Unless if you only work with interest registration.)
+
+:::
 
 | Attribute              |          Value type          | Default value |
 | :--------------------- | :--------------------------: | :-----------: |
@@ -202,7 +206,11 @@ that the list filters the results based on the matches.
 
 If you want to show all sub-categories, you can use the `categorydeep`-attribute instead.
 
-> Only one of the category-attributes can be used at a time, and `categorydeep` will always be used if both are supplied.
+:::note
+
+Only one of the category-attributes can be used at a time, and `categorydeep` will always be used if both are supplied.
+
+:::
 
 The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.se), so that
 the list filters the results based on the matches.
