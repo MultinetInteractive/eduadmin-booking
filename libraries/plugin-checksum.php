@@ -1,6 +1,6 @@
 <?php
 defined( 'EDUADMIN_PLUGIN_PATH' ) || define( 'EDUADMIN_PLUGIN_PATH', dirname( __FILE__, 2 ) );
-define( 'EDU_IGNORED_FILES_AND_DIRECTORIES', array(
+const EDU_IGNORED_FILES_AND_DIRECTORIES = array(
 	'.',
 	'..',
 	'.git',
@@ -13,6 +13,7 @@ define( 'EDU_IGNORED_FILES_AND_DIRECTORIES', array(
 	'.nvmrc',
 	'.scrutinizer.yml',
 	'.vscode',
+	'.versionrc',
 	'CHANGELOG.md',
 	'CONTRIBUTING.md',
 	'Gulpfile.js',
@@ -35,11 +36,12 @@ define( 'EDU_IGNORED_FILES_AND_DIRECTORIES', array(
 	'tests',
 	'tsconfig.json',
 	'vendor',
+	'new_website',
 	'website',
 	'wp-tests',
 	'yarn-error.log',
 	'yarn.lock',
-) );
+);
 
 class EduAdminPluginIntegrityChecker {
 	public static function check_plugin_integrity() {
