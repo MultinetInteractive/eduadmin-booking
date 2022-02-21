@@ -7,7 +7,7 @@
         <lastBuildDate>Mon, 21 Feb 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
-        <copyright>Copyright © $(new Date().getFullYear()} MultiNet Interactive AB</copyright>
+        <copyright>Copyright © 2022 MultiNet Interactive AB</copyright>
         <item>
             <title><![CDATA[Upgrade to My Profile]]></title>
             <link>https://wordpress.eduadmin.se/blog/2022/02/21/upgrade-to-my-profile</link>
