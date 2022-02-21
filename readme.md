@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 2.40.2
+Stable tag: 3.0.0
 Requires PHP: 7.0
 License: GPL3
 License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -43,6 +43,33 @@ If you notice that your API key doesn't work any more, you have to contact us.
 == Changelog ==
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
+
+### [3.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.2...v3.0.0) (2022-02-21)
+
+
+#### ⚠ BREAKING CHANGES
+
+* **Login page:** Will probably break any custom styling to the login page.
+
+#### Features
+
+* **My Profile/Bookings:** Export bookings into Excel (CSV) ([68c66aa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/68c66aaca009f17ed5254363d084b43a8ff44555)), closes [#426](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/426)
+* **My Profile/Bookings:** Show unnamed participants in list of bookings. ([64d1bd4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/64d1bd49a31de31f18d2c24f73bdb8e5b1eaa4c4)), closes [#428](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/428)
+
+
+#### Bug Fixes
+
+* **Checksum:** Fix calculation of checksum, forgot to add some files it should ignore, so it generated a faulty hash ([cf05b24](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cf05b24e19ac9e12b152cae78e64d7ca116dfa27))
+
+
+#### Refactoring
+
+* **Login page:** Remade the login page, so that it looks better on desktop and mobile ([8931993](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/89319935b04cfba88d5b2802078346392d4b7dc2))
+
+
+#### Documentation
+
+* Updated documentation with new styles, enabled blog, wrote our first entry ([ecee658](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ecee6581b186bd30afc39ae95ae28ae38311f19a))
 
 ### [2.40.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.1...v2.40.2) (2022-02-03)
 
@@ -97,12 +124,5 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Documentation
 
 * Added info about `ondemand` attribute for listview shortcode ([baa625d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/baa625dff4ef7997398423a4e0ccc056570aae1b))
-
-### [2.39.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.0...v2.39.1) (2021-12-07)
-
-
-#### Bug Fixes
-
-* Missing replacement of lower case VAT-text ([5e2b83b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5e2b83b063236335d02739f399732e4659d0d57b))
 
 
