@@ -13,6 +13,7 @@ module.exports = {
 		"users": [],
 		"repoUrl": "https://github.com/MultinetInteractive/EduAdmin-WordPress"
 	},
+	"trailingSlash": true,
 	"onBrokenLinks": "log",
 	"onBrokenMarkdownLinks": "log",
 	"presets": [
