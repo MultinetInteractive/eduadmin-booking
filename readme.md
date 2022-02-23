@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 5.9
-Stable tag: 3.0.0
+Stable tag: 3.1.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -49,6 +49,25 @@ If you notice that your API key doesn't work any more, you have to contact us.
 == Changelog ==
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
+
+### [3.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.0.0...v3.1.0) (2022-02-23)
+
+
+#### Features
+
+* **My Profile/Bookings:** Ability to sort bookings either by Created (booking) or Event Start Date ([58b85c8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/58b85c832707d8594c9aeac2e00d773655940e6c)), closes [#427](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/427)
+* **My Profile/Bookings:** Added wp-hook/filter for `edu_bookings`, so that external plugins/code can customize the booking list. ([26d0590](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/26d0590fda156ea046debceba5257c1d505bb5fe)), closes [MultinetInteractive/EduAdmin-WordPress/issues/427#issuecomment-1048621038](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/427/issues/issuecomment-1048621038)
+
+
+#### Bug Fixes
+
+* Fixed translation for Export-button in Bookings ([57b7b25](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/57b7b2504002c80a4382bbaec06b54e58f8dce93))
+
+
+#### Documentation
+
+* Fix Copyright notice in RSS-feed ([a69ffd2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a69ffd2b163f88f5b3c3a5b6792cb1deb887cd54))
+* More info for the blog, for better SEO ([7f967b6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7f967b609a1fa95a2d136e1a5e5acc99d61dd5a0))
 
 ### [3.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.2...v3.0.0) (2022-02-21)
 
@@ -100,36 +119,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Documentation
 
 * Add attribute ondemand to detailinfo ([35c5363](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/35c5363cea1992c46e499de42a34655d075e92c2))
-
-### [2.40.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.39.1...v2.40.0) (2022-01-11)
-
-
-#### Features
-
-* **Booking:** Support for OnDemand in the event selector on the booking page ([3416712](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/34167122ae0f60afd8266aad1da81425f27bded9))
-* **EDUApiHelper:** Added extra fields for OnDemand, added extra method to fetch OnDemand courses, added filter to block OnDemand from showing up in normal course lists. ([11c6c53](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/11c6c531270b3b371db46550ee70e67a1e21ad37))
-* Hide non-on-demand events from event lists ([208f982](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/208f982c7f5df4dd9e9a0297c2a6b10888d9f35f))
-* OnDemand support for more views ([ee2d927](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ee2d92748132bc190a351d6d27f6bdd41afe8ef3))
-* **Programme:** Hide headers based on course detail setting to hide headers. ([a5baeb0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a5baeb073f5e6e0b9c9fbfb8d64d3f59f37d461e)), closes [#414](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/414)
-
-
-#### Bug Fixes
-
-* **ApiHelper:** Added LocationId to fix issue with region filtering ([2f012b9](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2f012b9ca1cb36cd0badcb6054476425ae0fef5b))
-* Changed from curly brace to brackets to fix error in PHP 8.0 ([175dca0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/175dca0af713eff97ff66fa4f55e59ff35ca3edd))
-* **Detail template:** Change code that checks `$course_level` ([a8e7562](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a8e7562e3f955c7fe87e69bd0917a8eda2a815e5))
-* **docs:** Formatting the document was a bad idea ([7e89d27](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e89d27fc076813ca531fb0452fccf3723032830))
-* Fix ajax method that fetches minimum price ([71a4c80](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/71a4c802e0beb96d9ec2bf68cd8111c05ee4ce76))
-* Fixed casing for VAT texts ([5c5c7ae](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5c5c7ae884ad014749750925748637cba03d179e))
-* How about we use the correct version with nvmrc, update composer installer ([0fef61e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0fef61eceb2a0c32ec192081a8e5fc5f131163ae))
-* Output only non-empty parts in the venue info. ([aca146f](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/aca146f784a20785b7bb241d72fae472892d0c8e))
-* **Programme/Book:** Added null check for contact and customfields before looping over it. ([f633bd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f633bd8cdde2691ee852af2d5ca8634b56d24e30))
-* Remove default value from parameter always sent ([f610d1c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f610d1c08a82b919753da81b1c83b7eca1aca828))
-
-
-#### Documentation
-
-* Added info about `ondemand` attribute for listview shortcode ([baa625d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/baa625dff4ef7997398423a4e0ccc056570aae1b))
 
 
 
