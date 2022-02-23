@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[533],{8017:e=>{e.exports=JSON.parse('{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"previousPage":null,"nextPage":null,"blogDescription":"News/Information about things about the EduAdmin WordPress-plugin","blogTitle":"EduAdmin WordPress-plugin blog"}')}}]);
