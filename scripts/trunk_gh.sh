@@ -37,7 +37,6 @@ rm -f $PROJECT_ROOT/.nvmrc
 rm -f $PROJECT_ROOT/Gulpfile.js
 rm -f $PROJECT_ROOT/yarn.lock
 rm -f $PROJECT_ROOT/package.json
-rm -f $PROJECT_ROOT/readme.md
 rm -f $PROJECT_ROOT/.versionrc
 rm -f $PROJECT_ROOT/.editorconfig
 rm -fR $PROJECT_ROOT/.github
