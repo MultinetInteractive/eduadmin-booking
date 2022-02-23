@@ -42,6 +42,13 @@ gulp.task("eduadmin-version", function () {
 		.pipe(replace("$PLUGINVERSION$", pinfo.version))
 		.pipe(replace("$PLUGINATLEAST$", pinfo.config.eduadmin.requiresAtLeast))
 		.pipe(replace("$PLUGINTESTEDTO$", pinfo.config.eduadmin.testedUpTo))
+		.pipe(
+			replace(
+				"$PLUGINREQUIREDPHP$",
+				pinfo.config.eduadmin.minimumPhpVersion
+			)
+		)
+		.pipe(replace("$CURRENTYEAR$", new Date().getFullYear()))
 		.pipe(gulp.dest("./"));
 });
 

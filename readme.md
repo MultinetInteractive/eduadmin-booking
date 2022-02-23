@@ -1,12 +1,13 @@
 === EduAdmin Booking ===
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
-Requires at least: 5.0
-Tested up to: 5.8
+Requires at least: 5.8
+Tested up to: 5.9
 Stable tag: 3.0.0
 Requires PHP: 7.0
 License: GPL3
-License-URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+
 EduAdmin plugin to allow visitors to book courses at your website. Requires EduAdmin-account.
 
 == Description ==
@@ -36,7 +37,12 @@ Requires the following PHP-modules
 
 == Upgrade Notice ==
 
+= 3.0 =
+
+Styles have been remade for the end user login page, and the booking list page. Please check that any custom styles are still working, or you might need to fix them.
+
 = 2.0 =
+
 We have replaced everything with a new API-client, so some things may be broken. If you experience any bugs (not new feature-requests), please contact the MultiNet Support.
 If you notice that your API key doesn't work any more, you have to contact us.
 
