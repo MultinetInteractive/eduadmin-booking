@@ -27,10 +27,10 @@ const valid_sort_order = [
 	</h2>
 
 	<a href="./?booking-sort=StartDate">
-		<?php echo esc_html_x('Sort by event start date', 'frontend', 'eduadmin-booking'); ?>
+		<?php echo esc_html_x( 'Sort by event start date', 'frontend', 'eduadmin-booking' ); ?>
 	</a>
 	<a href="./?booking-sort=Created">
-		<?php echo esc_html_x('Sort by booking created', 'frontend', 'eduadmin-booking'); ?>
+		<?php echo esc_html_x( 'Sort by booking created', 'frontend', 'eduadmin-booking' ); ?>
 	</a>
 	<hr />
 	<?php
@@ -74,6 +74,8 @@ const valid_sort_order = [
 			krsort( $bookings );
 			break;
 	}
+
+	apply_filters( 'edu_bookings', $bookings );
 
 	$currency               = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 	$selected_price_setting = EDU()->get_option( 'eduadmin-profile-priceType', 'IncVat' );
