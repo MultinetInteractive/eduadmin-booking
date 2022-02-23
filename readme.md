@@ -126,3 +126,4 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 * Added info about `ondemand` attribute for listview shortcode ([baa625d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/baa625dff4ef7997398423a4e0ccc056570aae1b))
 
 
+

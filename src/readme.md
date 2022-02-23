@@ -45,3 +45,4 @@ If you notice that your API key doesn't work any more, you have to contact us.
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
 $CHANGELOG$
+
