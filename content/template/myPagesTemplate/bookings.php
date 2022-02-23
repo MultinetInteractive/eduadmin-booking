@@ -12,7 +12,7 @@ $customer = $user->Customer;
 	<h2 class="header-with-button">
 		<?php echo esc_html_x( 'Reservations', 'frontend', 'eduadmin-booking' ); ?>
 		<button class="cta-btn" onclick="eduGlobalMethods.GetBookingExport(-1);">
-			<?php echo esc_html( 'Export to Excel (All)', 'frontend', 'eduadmin-booking' ); ?>
+			<?php echo esc_html_x( 'Export to Excel (All)', 'frontend', 'eduadmin-booking' ); ?>
 		</button>
 	</h2>
 	<?php
@@ -131,7 +131,7 @@ $customer = $user->Customer;
 							</table>
 							<button class="cta-btn export-button"
 							        onclick="eduGlobalMethods.GetBookingExport(<?php echo esc_js( $book['BookingId'] ); ?>);">
-								<?php echo esc_html( 'Export to Excel', 'frontend', 'eduadmin-booking' ); ?>
+								<?php echo esc_html_x( 'Export to Excel', 'frontend', 'eduadmin-booking' ); ?>
 							</button>
 						</td>
 					</tr>
