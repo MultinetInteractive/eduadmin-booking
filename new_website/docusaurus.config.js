@@ -13,6 +13,7 @@ module.exports = {
 		"users": [],
 		"repoUrl": "https://github.com/MultinetInteractive/EduAdmin-WordPress"
 	},
+	"trailingSlash": true,
 	"onBrokenLinks": "log",
 	"onBrokenMarkdownLinks": "log",
 	"presets": [
@@ -27,10 +28,13 @@ module.exports = {
 					"sidebarPath": "./sidebars.json"
 				},
 				"blog": {
+					"blogTitle": "EduAdmin WordPress-plugin blog",
+					"blogDescription": "News/Information about things about the EduAdmin WordPress-plugin",
 					"path": "blog",
 					"feedOptions": {
 						"type": 'all',
-						"copyright": `Copyright © $(new Date().getFullYear()} MultiNet Interactive AB`
+						"copyright": `Copyright © ${new Date().getFullYear()} MultiNet Interactive AB`,
+						"language": "en"
 					}
 				},
 				"theme": {
