@@ -3,6 +3,16 @@ $user     = EDU()->session['eduadmin-loginUser'];
 $contact  = $user->Contact;
 $customer = $user->Customer;
 
+const valid_sort = [
+	'Created',
+	'StartDate',
+];
+
+const valid_sort_order = [
+	'ASC',
+	'DESC',
+];
+
 ?>
 <div class="eduadmin">
 	<?php
@@ -15,6 +25,14 @@ $customer = $user->Customer;
 			<?php echo esc_html_x( 'Export to Excel (All)', 'frontend', 'eduadmin-booking' ); ?>
 		</button>
 	</h2>
+
+	<a href="./?booking-sort=StartDate">
+		<?php echo esc_html_x('Sort by event start date', 'frontend', 'eduadmin-booking'); ?>
+	</a>
+	<a href="./?booking-sort=Created">
+		<?php echo esc_html_x('Sort by booking created', 'frontend', 'eduadmin-booking'); ?>
+	</a>
+	<hr />
 	<?php
 
 	$events = EDUAPI()->OData->Events->Search(
@@ -30,11 +48,32 @@ $customer = $user->Customer;
 			unset( $ev['Bookings'] );
 			$booking['Event'] = $ev;
 
-			$bookings[ $booking['Created'] . '-' . $booking['BookingId'] ] = $booking;
+			$booking['StartDate'] = $booking['Event']['StartDate'];
+
+			$sorting_field = 'Created';
+
+			if ( ! empty( $_REQUEST['booking-sort'] ) && in_array( $_REQUEST['booking-sort'], valid_sort ) ) {
+				$sorting_field = $_REQUEST['booking-sort'];
+			}
+
+			$bookings[ $booking[ $sorting_field ] . '-' . $booking['BookingId'] ] = $booking;
 		}
 	}
 
-	krsort( $bookings );
+	$sort_order = 'DESC';
+
+	if ( ! empty( $_REQUEST['booking-sort-order'] ) && in_array( $_REQUEST['booking-sort-order'], valid_sort_order ) ) {
+		$sort_order = $_REQUEST['booking-sort-order'];
+	}
+
+	switch ( $sort_order ) {
+		case "ASC":
+			ksort( $bookings );
+			break;
+		case "DESC":
+			krsort( $bookings );
+			break;
+	}
 
 	$currency               = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 	$selected_price_setting = EDU()->get_option( 'eduadmin-profile-priceType', 'IncVat' );
@@ -64,7 +103,8 @@ $customer = $user->Customer;
 					$name = $book['Event']['InternalCourseName'];
 				}
 				?>
-				<tr data-bookingid="<?php echo esc_attr( $book['BookingId'] ); ?>" data-course-data="<?php echo esc_attr( json_encode( $book ) ); ?>">
+				<tr data-bookingid="<?php echo esc_attr( $book['BookingId'] ); ?>"
+				    data-course-data="<?php echo esc_attr( json_encode( $book ) ); ?>">
 					<td class="table-booked-date">
 						<?php echo wp_kses_post( get_display_date( $book['Created'], true ) ); ?>
 					</td>
