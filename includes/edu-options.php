@@ -21,6 +21,69 @@ add_action( 'wp_enqueue_scripts', 'eduadmin_frontend_content', PHP_INT_MAX );
 add_action( 'add_meta_boxes', 'eduadmin_shortcode_metabox' );
 add_action( 'wp_footer', 'eduadmin_custom_styles' );
 add_action( 'wp_footer', 'eduadmin_print_javascript' );
+add_action( 'wp_head', 'eduadmin_get_ld_json' );
+
+function eduadmin_get_ld_json() {
+	$t = EDU()->start_timer( __METHOD__ );
+	global $wp_query;
+
+	if ( isset( $wp_query->queried_object ) ) {
+		if ( stristr( $wp_query->queried_object->post_content, 'eduadmin-detail' ) !== false ) {
+			include_once EDUADMIN_PLUGIN_PATH . '/content/template/data/ld-json.php';
+			EDU()->stop_timer( $t );
+		}
+	}
+
+	EDU()->stop_timer( $t );
+}
+
+/*function edu_set_oembed_endpoint_url( $url ) {
+	$t = EDU()->start_timer( __METHOD__ );
+
+	global $wp_query;
+	$detailpage = get_option( 'eduadmin-detailViewPage' );
+	EDU()->stop_timer( $t );
+	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
+		$out_url = get_oembed_endpoint_url( get_home_url() . $_SERVER['REQUEST_URI'] );
+
+		return '<link rel="alternate" type="application/json+oembed" href="' . $out_url . '" />
+<link rel="alternate" type="text/xml+oembed" href="' . $out_url . '&format=xml" />';
+	} else {
+		return $url;
+	}
+}
+
+add_filter( 'oembed_discovery_links', 'edu_set_oembed_endpoint_url' );*/
+
+function edu_set_canonical_url( $canonical_url ) {
+	$t = EDU()->start_timer( __METHOD__ );
+
+	global $wp_query;
+	$detailpage = get_option( 'eduadmin-detailViewPage' );
+	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
+		echo "<link rel=\"canonical\" href=\"" . get_home_url() . $_SERVER['REQUEST_URI'] . "\" />\n";
+	} else {
+		echo "<link rel=\"canonical\" href=\"" . $canonical_url . "\" />\n";
+	}
+
+	EDU()->stop_timer( $t );
+}
+add_filter( 'get_canonical_url', 'edu_set_canonical_url' );
+
+function edu_no_index() {
+	$t = EDU()->start_timer( __METHOD__ );
+	global $wp_query;
+	$detailpage = intval( EDU()->get_option( 'eduadmin-detailViewPage' ) );
+	if ( isset( $wp_query->queried_object ) ) {
+		if ( $detailpage === $wp_query->queried_object->ID && ! isset( $wp_query->query['courseId'] ) ) {
+			echo '<meta name="robots" content="noindex" />';
+		}
+	}
+	EDU()->stop_timer( $t );
+}
+
+add_action( 'wp_head', 'edu_no_index' );
+add_filter( 'get_shortlink', '__return_empty_string' );
 
 function eduadmin_page_title( $title, $sep = '|' ) {
 	global $wp;
