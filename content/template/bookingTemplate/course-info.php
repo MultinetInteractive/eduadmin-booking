@@ -23,7 +23,7 @@ if ( $edo ) {
 $noAvailableDates            = false;
 $GLOBALS['noAvailableDates'] = false;
 
-if ( ! $selected_course || ! isset( $selected_course['Events'] ) || empty( $selected_course['Events'] ) ) {
+if ( ! $selected_course || empty( $selected_course['Events'] ) ) {
 	$noAvailableDates            = true;
 	$GLOBALS['noAvailableDates'] = true;
 }
@@ -41,15 +41,19 @@ foreach ( $events as $_event ) {
 
 $events = $filtered_events;
 
+$always_allow_change_event = EDU()->is_checked( 'eduadmin-alwaysAllowChangeEvent', false );
+
 if ( ! $noAvailableDates ) {
 	$event = $events[0];
 	if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
 		$eventid = intval( $_GET['eid'] );
 		foreach ( $events as $ev ) {
 			if ( $eventid === $ev['EventId'] && $ev['StartDate'] > date( "Y-m-d H:i:s" ) ) {
-				$event    = $ev;
-				$events   = array();
-				$events[] = $ev;
+				$event = $ev;
+				if ( ! $always_allow_change_event ) {
+					$events   = array();
+					$events[] = $ev;
+				}
 				break;
 			}
 		}
@@ -61,7 +65,7 @@ if ( ! $noAvailableDates ) {
 
 		$questions = EDU()->get_transient( 'eduadmin-event_questions', function() use ( $event_id ) {
 			return EDUAPI()->REST->Event->BookingQuestions( $event_id, true );
-		}, DAY_IN_SECONDS, $event_id );
+		},                                 DAY_IN_SECONDS, $event_id );
 
 		$booking_questions     = $questions['BookingQuestions'];
 		$participant_questions = $questions['ParticipantQuestions'];

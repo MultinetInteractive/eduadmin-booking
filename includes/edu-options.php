@@ -68,6 +68,7 @@ function edu_set_canonical_url( $canonical_url ) {
 
 	EDU()->stop_timer( $t );
 }
+
 add_filter( 'get_canonical_url', 'edu_set_canonical_url' );
 
 function edu_no_index() {
@@ -197,6 +198,8 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-participants' );
 	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-customer' );
 	register_setting( 'eduadmin-booking', 'eduadmin-confirmationSettings-customercontact' );
+
+	register_setting( 'eduadmin-booking', 'eduadmin-alwaysAllowChangeEvent' );
 
 	/* Style settings */
 	register_setting( 'eduadmin-style', 'eduadmin-style' );

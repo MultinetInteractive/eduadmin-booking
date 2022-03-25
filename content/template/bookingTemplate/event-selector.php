@@ -1,4 +1,7 @@
 <?php
+global $events;
+global $event;
+
 $event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-detail', 'default' );
 $use_short            = false;
 $show_names           = false;

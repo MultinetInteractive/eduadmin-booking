@@ -45,19 +45,19 @@ function edu_render_booking_settings_page() {
 
 						$level_stack = array();
 						foreach ( $cg['value'] as $g ) {
-							$level_stack[ (string)$g['ParentCustomerGroupId'] ][] = $g;
+							$level_stack[ (string) $g['ParentCustomerGroupId'] ][] = $g;
 						}
 
 						$depth = 0;
 
 						function edu_write_options( $g, $array, $depth, $selected_option ) {
-							echo '<option value="' . esc_attr( $g['CustomerGroupId'] ) . '"' . ( $selected_option === (string)$g['CustomerGroupId'] ? ' selected="selected"' : '' ) . '>' .
+							echo '<option value="' . esc_attr( $g['CustomerGroupId'] ) . '"' . ( $selected_option === (string) $g['CustomerGroupId'] ? ' selected="selected"' : '' ) . '>' .
 							     str_repeat( '&nbsp;', $depth * 4 ) .
 							     esc_html( wp_strip_all_tags( $g['CustomerGroupName'] ) ) .
 							     "</option>\n";
-							if ( array_key_exists( (string)$g['CustomerGroupId'], $array ) ) {
+							if ( array_key_exists( (string) $g['CustomerGroupId'], $array ) ) {
 								$depth++;
-								foreach ( $array[ (string)$g['CustomerGroupId'] ] as $ng ) {
+								foreach ( $array[ (string) $g['CustomerGroupId'] ] as $ng ) {
 									edu_write_options( $ng, $array, $depth, $selected_option );
 								}
 								$depth--;
@@ -136,6 +136,15 @@ function edu_render_booking_settings_page() {
 							<?php echo esc_html_x( 'Allow end customer to overwrite customer info (requires logged in users)', 'backend', 'eduadmin-booking' ); ?>
 						</label>
 						<br /><?php
+						$alwaysAllowChangeEvent = get_option( 'eduadmin-alwaysAllowChangeEvent', false );
+						?>
+						<label>
+							<input type="checkbox"
+							       name="eduadmin-alwaysAllowChangeEvent"<?php checked( $alwaysAllowChangeEvent, "true" ); ?>
+							       value="true" />
+							<?php echo esc_html_x( 'Allow end customers to always switch between available events', 'backend', 'eduadmin-booking' ); ?>
+						</label>
+						<br /> <?php
 						$allowDiscountCode = get_option( 'eduadmin-allowDiscountCode', false );
 						?>
 						<label>
