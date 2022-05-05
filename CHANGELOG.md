@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.1.0...v3.2.0) (2022-05-05)
+
+
+### Features
+
+* **Booking form:** Setting to always allow changing which event the end user wants to attend/book. ([66b3dc5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/66b3dc5b31de26cfda428f4c75b3f6901d331146)), closes [#300](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/300)
+* **Course details:** Added limited LD-JSON support, to enable better SEO ([4bf95fa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4bf95fafa6ee62ee105f66636ef3c827ce80eee3)), closes [#293](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/293)
+
+
+### Bug Fixes
+
+* **Booking form:** Remove the global-declarations, it messed things up ([8cc59ee](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8cc59ee2bac6d7e51fbd34da583cf23af54187a5))
+* **Booking page:** If the course is OnDemand, we should load the OnDemand variant instead, to get the events properly ([ba1e525](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ba1e525421c1750ed7f3b2e49d20ee092a691131))
+* **Interest registration/Event:** If the course is on demand, we should load that variant, to get the proper events. ([5438067](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/54380675026f5e32d499b6aebf373f98373f2b59))
+* **Profile:** If the query is missing, show the normal profile. ([ea4c3ac](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea4c3acd04bd8f6ba2c1ebaa2417b3ad621b790b))
+* **Security:** Hardened cookies with HttpOnly ([cfa2fca](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cfa2fca974bdf6f5392ba8a421472dceb4d2964e))
+
 ## [3.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.0.0...v3.1.0) (2022-02-23)
 
 

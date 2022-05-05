@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 5.9
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -49,6 +49,23 @@ If you notice that your API key doesn't work any more, you have to contact us.
 == Changelog ==
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
+
+### [3.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.1.0...v3.2.0) (2022-05-05)
+
+
+#### Features
+
+* **Booking form:** Setting to always allow changing which event the end user wants to attend/book. ([66b3dc5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/66b3dc5b31de26cfda428f4c75b3f6901d331146)), closes [#300](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/300)
+* **Course details:** Added limited LD-JSON support, to enable better SEO ([4bf95fa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4bf95fafa6ee62ee105f66636ef3c827ce80eee3)), closes [#293](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/293)
+
+
+#### Bug Fixes
+
+* **Booking form:** Remove the global-declarations, it messed things up ([8cc59ee](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/8cc59ee2bac6d7e51fbd34da583cf23af54187a5))
+* **Booking page:** If the course is OnDemand, we should load the OnDemand variant instead, to get the events properly ([ba1e525](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ba1e525421c1750ed7f3b2e49d20ee092a691131))
+* **Interest registration/Event:** If the course is on demand, we should load that variant, to get the proper events. ([5438067](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/54380675026f5e32d499b6aebf373f98373f2b59))
+* **Profile:** If the query is missing, show the normal profile. ([ea4c3ac](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea4c3acd04bd8f6ba2c1ebaa2417b3ad621b790b))
+* **Security:** Hardened cookies with HttpOnly ([cfa2fca](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cfa2fca974bdf6f5392ba8a421472dceb4d2964e))
 
 ### [3.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.0.0...v3.1.0) (2022-02-23)
 
@@ -107,18 +124,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Documentation
 
 * Update documentation, remove `showmore` from listview, as it was never implemented ([b37c0ad](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b37c0ad790242c0edf9b425095fc5cfe782f514d))
-
-### [2.40.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v2.40.0...v2.40.1) (2022-01-11)
-
-
-#### Bug Fixes
-
-* Get OnDemand info if the coursetemplate is OnDemand ([075be39](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/075be3967467808ec22d284230623a58da2053b3))
-
-
-#### Documentation
-
-* Add attribute ondemand to detailinfo ([35c5363](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/35c5363cea1992c46e499de42a34655d075e92c2))
 
 
 

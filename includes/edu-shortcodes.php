@@ -170,36 +170,6 @@ function eduadmin_get_course_public_pricename( $attributes ) {
 	return include_once EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/course-price-names.php';
 }
 
-function edu_no_index() {
-	$t = EDU()->start_timer( __METHOD__ );
-	global $wp_query;
-	$detailpage = get_option( 'eduadmin-detailViewPage' );
-	if ( isset( $wp_query->queried_object ) ) {
-		if ( false !== $detailpage && $detailpage === $wp_query->queried_object->ID && ! isset( $wp_query->query['courseId'] ) ) {
-			echo '<meta name="robots" content="noindex" />';
-		}
-	}
-	EDU()->stop_timer( $t );
-}
-
-function edu_set_canonical_url( $canonical_url ) {
-	$t = EDU()->start_timer( __METHOD__ );
-
-	global $wp_query;
-	$detailpage = get_option( 'eduadmin-detailViewPage' );
-	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
-		echo "<link rel=\"canonical\" href=\"" . get_home_url() . $_SERVER['REQUEST_URI'] . "\" />\n";
-	} else {
-		echo "<link rel=\"canonical\" href=\"" . $canonical_url . "\" />\n";
-	}
-
-	EDU()->stop_timer( $t );
-}
-
-add_action( 'wp_head', 'edu_no_index' );
-add_filter( 'get_canonical_url', 'edu_set_canonical_url' );
-add_filter( 'get_shortlink', '__return_empty_string' );
-
 function eduadmin_get_booking_view( $attributes ) {
 	$t = EDU()->start_timer( __METHOD__ );
 	if ( ! defined( 'DONOTCACHEPAGE' ) ) {

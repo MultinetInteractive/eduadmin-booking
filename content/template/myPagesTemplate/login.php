@@ -15,6 +15,8 @@ if ( ! empty( EDU()->session['eduadmin-loginUser'] ) && ! empty( EDU()->session[
 		require_once 'certificates.php';
 	} elseif ( isset( $q['edu-password'] ) ) {
 		require_once 'change-password.php';
+	} else {
+		require_once 'profile.php';
 	}
 } else {
 	if ( isset( $q['edu-login'] ) ) {

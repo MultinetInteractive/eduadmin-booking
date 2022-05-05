@@ -925,6 +925,14 @@ function numberWithSeparator(x: string, sep: string) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 }
 
+window.addEventListener('message', (event) => {
+    if (!event.data.type) {
+        return;
+    }
+
+
+});
+
 let oldonload = window.onload as any;
 window.onload = function (ev: Event) {
     if (oldonload) {

@@ -1,4 +1,5 @@
 <?php
+
 $event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-detail', 'default' );
 $use_short            = false;
 $show_names           = false;
@@ -23,7 +24,6 @@ switch ( $event_detail_setting ) {
 }
 
 $first_event = true;
-
 ?><?php if ( count( $events ) > 1 ) : ?>
 	<div class="dateSelectLabel">
 		<?php echo esc_html_x( 'Select the event you want to book', 'frontend', 'eduadmin-booking' ); ?>

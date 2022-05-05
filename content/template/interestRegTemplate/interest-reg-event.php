@@ -25,6 +25,12 @@ if ( ! $api_key || empty( $api_key ) ) {
 		$selected_course = $edo;
 	}
 
+	$is_ondemand = $selected_course['OnDemand'];
+
+	if ( $is_ondemand ) {
+		$selected_course = json_decode( EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city ), true );
+	}
+
 	if ( ! $selected_course ) {
 		?>
 		<script>history.go(-1);</script>
@@ -63,7 +69,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<h1 class="courseTitle"><?php echo esc_html( $name ); ?> - <?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></h1>
 		</div>
 		<div class="dateInfo">
-			<?php echo edu_event_item_date( $event, null );
+			<?php edu_event_item_date( $event, null );
 			echo esc_html( edu_output_event_venue( array( $event['AddressName'], $event['City'] ), '&nbsp;' ) );
 			?>
 		</div>
