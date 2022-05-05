@@ -20,6 +20,12 @@ if ( $edo ) {
 	$name            = ( ! empty( $edo['CourseName'] ) ? $edo['CourseName'] : $edo['InternalCourseName'] );
 }
 
+$is_ondemand = $selected_course['OnDemand'];
+
+if ( $is_ondemand ) {
+	$selected_course = json_decode( EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city ), true );
+}
+
 $noAvailableDates            = false;
 $GLOBALS['noAvailableDates'] = false;
 
