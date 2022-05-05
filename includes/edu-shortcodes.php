@@ -297,7 +297,6 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 		if ( ! is_array( $selected_course ) ) {
 			EDU()->stop_timer( $t );
-			EDU()->write_debug( $attributes );
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
