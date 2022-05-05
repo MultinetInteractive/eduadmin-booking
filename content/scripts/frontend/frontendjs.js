@@ -629,6 +629,11 @@ var eduGlobalMethods = {
 function numberWithSeparator(x, sep) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 }
+window.addEventListener('message', function (event) {
+    if (!event.data.type) {
+        return;
+    }
+});
 var oldonload = window.onload;
 window.onload = function (ev) {
     if (oldonload) {
