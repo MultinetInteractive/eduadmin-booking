@@ -131,35 +131,41 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	protected function set_cookie() {
 		$is_secure    = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== "off" ) || $_SERVER['SERVER_PORT'] === 443;
 		$cookie_value = $this->session_id . '||' . $this->expires . '||' . $this->exp_variant;
-		if ( PHP_VERSION_ID >= 70300 ) {
+		if ( ! headers_sent() ) {
+			if ( PHP_VERSION_ID >= 70300 ) {
+				@setcookie(
+					WP_SESSION_COOKIE,
+					$cookie_value,
+					array(
+						'expires'  => $this->expires,
+						'path'     => COOKIEPATH,
+						'domain'   => COOKIE_DOMAIN,
+						'secure'   => $is_secure,
+						'samesite' => 'None',
+						'httponly' => true,
+					)
+				);
+			} else {
+				@header(
+					"Set-Cookie: " . urlencode( WP_SESSION_COOKIE ) . "=" . urlencode( $cookie_value ) . "; " .
+					"Expires=" . date( "D, d M Y H:i:s", $this->expires ) . "; " .
+					"Path=" . COOKIEPATH . "; " .
+					"Domain=" . COOKIE_DOMAIN . "; " .
+					"HttpOnly; " .
+					( $is_secure ? "Secure; SameSite=None" : "" )
+				);
+			}
+
 			@setcookie(
-				WP_SESSION_COOKIE,
+				WP_SESSION_COOKIE . '-legacy',
 				$cookie_value,
-				array(
-					'expires'  => $this->expires,
-					'path'     => COOKIEPATH,
-					'domain'   => COOKIE_DOMAIN,
-					'secure'   => $is_secure,
-					'samesite' => 'None',
-				)
-			);
-		} else {
-			@header(
-				"Set-Cookie: " . urlencode( WP_SESSION_COOKIE ) . "=" . urlencode( $cookie_value ) . "; " .
-				"Expires=" . date( "D, d M Y H:i:s", $this->expires ) . "; " .
-				"Path=" . COOKIEPATH . "; " .
-				"Domain=" . COOKIE_DOMAIN . "; " .
-				( $is_secure ? "Secure; SameSite=None" : "" )
+				$this->expires,
+				COOKIEPATH,
+				COOKIE_DOMAIN,
+				$is_secure,
+				true
 			);
 		}
-
-		@setcookie(
-			WP_SESSION_COOKIE . '-legacy',
-			$cookie_value,
-			$this->expires,
-			COOKIEPATH,
-			COOKIE_DOMAIN
-		);
 	}
 
 	/**
