@@ -552,7 +552,7 @@ var eduGlobalMethods = {
                     OnDemand: dataObject.Event.OnDemand,
                     StartDate: dataObject.Event.OnDemand ? null : dataObject.Event.StartDate,
                     EndDate: dataObject.Event.OnDemand ? null : dataObject.Event.EndDate,
-                    ParticipantName: (participant.FirstName + " " + participant.LastName).trim(),
+                    ParticipantName: "".concat(participant.FirstName, " ").concat(participant.LastName).trim(),
                     ParticipantGrade: participant.GradeName,
                     ParticipantArrived: participant.Arrived
                 };
@@ -589,7 +589,7 @@ var eduGlobalMethods = {
         }
         else {
             // Export a single booking
-            var bookingInfo = document.querySelector("tr[data-bookingid=\"" + bookingId + "\"]");
+            var bookingInfo = document.querySelector("tr[data-bookingid=\"".concat(bookingId, "\"]"));
             var bookingData = getRowData(bookingInfo);
             if (!!bookingData) {
                 exportData.push.apply(exportData, getExcelRows(bookingData));
@@ -622,7 +622,7 @@ var eduGlobalMethods = {
         var uri = 'data:text/csv;charset=utf-8;base64,';
         var downloadLink = document.createElement('a');
         downloadLink.download = 'BookingExport.csv';
-        downloadLink.href = "" + uri + getCsvBase64Data(exportData);
+        downloadLink.href = "".concat(uri).concat(getCsvBase64Data(exportData));
         downloadLink.click();
     }
 };

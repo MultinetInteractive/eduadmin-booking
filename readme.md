@@ -2,7 +2,7 @@
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
-Tested up to: 5.9
+Tested up to: 6.0.0
 Stable tag: 3.2.0
 Requires PHP: 7.0
 License: GPL3

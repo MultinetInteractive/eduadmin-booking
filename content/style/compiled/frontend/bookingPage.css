@@ -22,16 +22,16 @@
 }
 .eduadmin.booking-page form .title .notUserCheck {
   text-align: center;
-  color: #666666;
+  color: hsl(0deg, 0%, 40%);
   margin: 0 0 56px;
   font-size: 0.95rem;
 }
 .eduadmin.booking-page form .title .notUserCheck a {
   margin: 0 0 0 8px;
-  color: #666666;
+  color: hsl(0deg, 0%, 40%);
 }
 .eduadmin.booking-page form h2 {
-  color: #333333;
+  color: hsl(0deg, 0%, 20%);
   font-weight: 600;
   margin: 0 0 24px 0;
 }
@@ -57,7 +57,7 @@
 .eduadmin.booking-page form div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
-  color: #333333;
+  color: hsl(0deg, 0%, 20%);
 }
 .eduadmin.booking-page form label .inputLabel.noHide,
 .eduadmin.booking-page form div.fakeLabel .inputLabel.noHide {
@@ -120,10 +120,10 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  color: #333333;
+  color: hsl(0deg, 0%, 20%);
 }
 .eduadmin.booking-page form .participantView h3 .removeParticipant {
-  color: #666666;
+  color: hsl(0deg, 0%, 40%);
   font-size: 1rem;
 }
 .eduadmin.booking-page form .participantView h3 .removeParticipant:hover {
@@ -164,13 +164,13 @@
   display: block;
   margin: unset;
   padding: 10px 20px;
-  border: 1px solid #ababab;
+  border: 1px solid hsl(0deg, 0%, 67%);
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
 }
 .eduadmin.booking-page form .paymentMethodsView li input[type=radio]:checked + label {
-  background-color: #f2f2f2;
+  background-color: hsl(0deg, 0%, 95%);
 }
 .eduadmin.booking-page form .recaptchaView {
   margin: 0 0 48px 0;
@@ -192,10 +192,10 @@
   display: none;
   width: 100%;
   padding: 8px 16px;
-  color: #e62b1a;
+  color: hsl(5deg, 80%, 50%);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
   order: -1;
-  background: #ffe3e0;
+  background: hsl(6deg, 100%, 94%);
   margin: 0 0 16px 0;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
@@ -247,13 +247,13 @@
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 5px;
     border-right: 0;
-    border-bottom: 1px solid #ababab;
+    border-bottom: 1px solid hsl(0deg, 0%, 67%);
   }
   .eduadmin.booking-page form .paymentMethodsView li:last-child label {
     border-top-left-radius: 0;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0;
     border-left: 0;
-    border-top: 1px solid #ababab;
+    border-top: 1px solid hsl(0deg, 0%, 67%);
   }
 }

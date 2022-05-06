@@ -15,7 +15,7 @@
   max-width: 100%;
 }
 .eduadmin h3 {
-  color: #595959;
+  color: hsl(0deg, 0%, 35%);
   font-weight: 600;
 }
 .eduadmin h1.courseTitle,
@@ -38,31 +38,31 @@
   display: inline-block;
   box-sizing: border-box;
   border-radius: 3px;
-  border: 1px solid #6bb266;
-  background: #55aa55;
-  color: white;
+  border: 1px solid hsl(116deg, 33%, 55%);
+  background: hsl(120deg, 33%, 50%);
+  color: hsl(0deg, 0%, 100%);
 }
 .eduadmin .cta-btn:hover {
-  color: white;
-  background: #6bb266;
+  color: hsl(0deg, 0%, 100%);
+  background: hsl(116deg, 33%, 55%);
 }
 .eduadmin .neutral-btn {
   padding: 8px 16px;
   display: inline-block;
   box-sizing: border-box;
   border-radius: 3px;
-  color: #707070;
+  color: hsl(0deg, 0%, 44%);
   font-weight: 400;
-  border: 1px solid #ababab;
+  border: 1px solid hsl(0deg, 0%, 67%);
   background: transparent;
   box-shadow: unset;
 }
 .eduadmin .neutral-btn:hover {
-  background: rgba(242, 242, 242, 0.88);
+  background: hsla(0deg, 0%, 95%, 0.88);
   box-shadow: unset;
 }
 .eduadmin .neutral-btn.active {
-  background: rgba(242, 242, 242, 0.88);
+  background: hsla(0deg, 0%, 95%, 0.88);
   box-shadow: unset;
 }
 .eduadmin .search-form {
@@ -130,9 +130,9 @@
 .eduadmin .edu-modal.warning {
   width: 100%;
   padding: 8px 16px;
-  color: #e62b1a;
+  color: hsl(5deg, 80%, 50%);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-  background: #ffe3e0;
+  background: hsl(6deg, 100%, 94%);
   margin: 0 0 16px 0;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
@@ -234,7 +234,7 @@
 .eduadmin div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
-  color: #333333;
+  color: hsl(0deg, 0%, 20%);
 }
 .eduadmin label .inputLabel.noHide,
 .eduadmin div.fakeLabel .inputLabel.noHide {
@@ -302,7 +302,7 @@
 }
 .eduadmin.loginForm form .title .checkEmailForm h3 {
   font-weight: normal;
-  color: #666666;
+  color: hsl(0deg, 0%, 40%);
   font-style: italic;
   font-size: 16px;
   margin: 0 0 16px 0;
