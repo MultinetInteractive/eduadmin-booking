@@ -43,7 +43,7 @@ class EduAdminAPIHelper {
 				' and StatusId eq 1' .
 				' and CustomerId eq null' .
 				' and CompanySpecific eq false' .
-				' and LastApplicationDate ge ' . edu_get_timezoned_date( 'c', 'now 23:59:59' ) .
+				' and LastApplicationDate ge ' . date_i18n( 'c' ) .
 				' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 				' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 				';' .
@@ -53,7 +53,7 @@ class EduAdminAPIHelper {
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
-				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LastApplicationDate';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -71,7 +71,7 @@ class EduAdminAPIHelper {
 				join( ',', $selects ),
 				join( ',', $expand_arr )
 			) );
-		}, 10, $course_id, $fetch_months, $group_by_city );
+		},                           10, $course_id, $fetch_months, $group_by_city );
 	}
 
 	public function GetOnDemandCourseDetailInfo( $course_id, $group_by_city ) {
@@ -134,7 +134,7 @@ class EduAdminAPIHelper {
 				join( ',', $selects ),
 				join( ',', $expand_arr )
 			) );
-		}, 10, $course_id, $group_by_city );
+		},                           10, $course_id, $group_by_city );
 	}
 
 	public function GetCourseList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
@@ -178,7 +178,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . edu_get_timezoned_date( 'c', 'now 23:59:59' ) .
+			' and LastApplicationDate ge ' . date_i18n( 'c' ) .
 			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 			' and OnDemand eq false' .
@@ -187,7 +187,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,LastApplicationDate';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -254,7 +254,7 @@ class EduAdminAPIHelper {
 				join( ',', $expand_arr ),
 				join( ',', $sorting )
 			);
-		}, 300, $selects, $filters, $sorting );
+		},                           300, $selects, $filters, $sorting );
 	}
 
 	public function GetOnDemandCourseList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
@@ -372,7 +372,7 @@ class EduAdminAPIHelper {
 				join( ',', $expand_arr ),
 				join( ',', $sorting )
 			);
-		}, 300, $selects, $filters, $sorting );
+		},                           300, $selects, $filters, $sorting );
 	}
 
 	public function GetEventList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
@@ -413,7 +413,7 @@ class EduAdminAPIHelper {
 			' and StatusId eq 1' .
 			' and CustomerId eq null' .
 			' and CompanySpecific eq false' .
-			' and LastApplicationDate ge ' . edu_get_timezoned_date( 'c', 'now 23:59:59' ) .
+			' and LastApplicationDate ge ' . date_i18n( 'c' ) .
 			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 			' and OnDemand eq false' .
@@ -422,7 +422,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,LastApplicationDate';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -487,7 +487,7 @@ class EduAdminAPIHelper {
 				join( ' and ', $filters ),
 				join( ',', $expand_arr )
 			);
-		}, 300, $selects, $filters );
+		},                           300, $selects, $filters );
 	}
 
 	public function GetOnDemandEventList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
@@ -601,7 +601,7 @@ class EduAdminAPIHelper {
 				join( ' and ', $filters ),
 				join( ',', $expand_arr )
 			);
-		}, 300, $selects, $filters );
+		},                           300, $selects, $filters );
 	}
 
 	/**
@@ -610,7 +610,7 @@ class EduAdminAPIHelper {
 	public function GetOrganization() {
 		return EDU()->get_transient( 'eduadmin-organization', function() {
 			return EDUAPI()->REST->Organisation->GetOrganisation();
-		}, DAY_IN_SECONDS );
+		},                           DAY_IN_SECONDS );
 	}
 
 	public function GetRegions() {
@@ -621,7 +621,7 @@ class EduAdminAPIHelper {
 				'Locations($filter=PublicLocation;$expand=LocationAddresses;$select=LocationId,City,PublicLocation;)',
 				'RegionName asc'
 			);
-		}, DAY_IN_SECONDS );
+		},                           DAY_IN_SECONDS );
 	}
 
 	public static function instance() {

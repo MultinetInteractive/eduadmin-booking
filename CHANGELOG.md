@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.0...v3.2.1) (2022-05-31)
+
+
+### Bug Fixes
+
+* Change method to filter LastApplicationDate ([59a46fc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/59a46fc12b32b01629a631d494283827cc8d19f3)), closes [#444](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/444)
+
 ## [3.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.1.0...v3.2.0) (2022-05-05)
 
 
