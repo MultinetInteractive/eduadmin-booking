@@ -111,11 +111,11 @@ function edu_get_percent_from_values( $current_value, $max_value ) {
 }
 
 function edu_output_event_venue( $parts, $prefix = null ) {
-	$empty = true;
+	$empty     = true;
 	$new_parts = [];
 	foreach ( $parts as $part ) {
 		if ( ! empty( $part ) ) {
-			$empty = false;
+			$empty       = false;
 			$new_parts[] = $part;
 		}
 	}
@@ -154,512 +154,609 @@ function edu_get_percent_class( $percent ) {
 }
 
 function edu_get_country_list( $element_name, $selected_value = 'SE', $required = true ) {
-	if ( empty( $selected_value ) ) {
+	if ( empty( $selected_value ) && $required ) {
 		$orgCountryCode = EDUAPIHelper()->GetOrganization()["CountryCode"];
 		$selected_value = ! empty( $orgCountryCode ) ? $orgCountryCode : 'SE'; // Will be replaced with country from company
 	}
 
-	echo "<select " . ( $required ? "required" : "" ) . " autocomplete=\"off\" name=\"" . esc_attr( $element_name ) . "\">\n";
 	?>
-	<option><?php _ex( '-- Select country --', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AF"<?php selected( $selected_value, 'AF' ); ?>><?php _ex( 'Afghanistan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AX"<?php selected( $selected_value, 'AX' ); ?>><?php _ex( 'Åland Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AL"<?php selected( $selected_value, 'AL' ); ?>><?php _ex( 'Albania', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DZ"<?php selected( $selected_value, 'DZ' ); ?>><?php _ex( 'Algeria', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AS"<?php selected( $selected_value, 'AS' ); ?>><?php _ex( 'American Samoa', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AD"<?php selected( $selected_value, 'AD' ); ?>><?php _ex( 'Andorra', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AO"<?php selected( $selected_value, 'AO' ); ?>><?php _ex( 'Angola', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AI"<?php selected( $selected_value, 'AI' ); ?>><?php _ex( 'Anguilla', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AQ"<?php selected( $selected_value, 'AQ' ); ?>><?php _ex( 'Antarctica', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AG"<?php selected( $selected_value, 'AG' ); ?>><?php _ex( 'Antigua and Barbuda', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AR"<?php selected( $selected_value, 'AR' ); ?>><?php _ex( 'Argentina', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AM"<?php selected( $selected_value, 'AM' ); ?>><?php _ex( 'Armenia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AW"<?php selected( $selected_value, 'AW' ); ?>><?php _ex( 'Aruba', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AU"<?php selected( $selected_value, 'AU' ); ?>><?php _ex( 'Australia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AT"<?php selected( $selected_value, 'AT' ); ?>><?php _ex( 'Austria', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AZ"<?php selected( $selected_value, 'AZ' ); ?>><?php _ex( 'Azerbaijan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BS"<?php selected( $selected_value, 'BS' ); ?>><?php _ex( 'Bahamas', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BH"<?php selected( $selected_value, 'BH' ); ?>><?php _ex( 'Bahrain', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BD"<?php selected( $selected_value, 'BD' ); ?>><?php _ex( 'Bangladesh', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BB"<?php selected( $selected_value, 'BB' ); ?>><?php _ex( 'Barbados', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BY"<?php selected( $selected_value, 'BY' ); ?>><?php _ex( 'Belarus', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BE"<?php selected( $selected_value, 'BE' ); ?>><?php _ex( 'Belgium', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BZ"<?php selected( $selected_value, 'BZ' ); ?>><?php _ex( 'Belize', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BJ"<?php selected( $selected_value, 'BJ' ); ?>><?php _ex( 'Benin', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BM"<?php selected( $selected_value, 'BM' ); ?>><?php _ex( 'Bermuda', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BT"<?php selected( $selected_value, 'BT' ); ?>><?php _ex( 'Bhutan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BO"<?php selected( $selected_value, 'BO' ); ?>><?php _ex( 'Bolivia, Plurinational State of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BQ"<?php selected( $selected_value, 'BQ' ); ?>><?php _ex( 'Bonaire, Sint Eustatius and Saba', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BA"<?php selected( $selected_value, 'BA' ); ?>><?php _ex( 'Bosnia and Herzegovina', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BW"<?php selected( $selected_value, 'BW' ); ?>><?php _ex( 'Botswana', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BV"<?php selected( $selected_value, 'BV' ); ?>><?php _ex( 'Bouvet Island', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BR"<?php selected( $selected_value, 'BR' ); ?>><?php _ex( 'Brazil', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IO"<?php selected( $selected_value, 'IO' ); ?>><?php _ex( 'British Indian Ocean Territory', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BN"<?php selected( $selected_value, 'BN' ); ?>><?php _ex( 'Brunei Darussalam', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BG"<?php selected( $selected_value, 'BG' ); ?>><?php _ex( 'Bulgaria', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BF"<?php selected( $selected_value, 'BF' ); ?>><?php _ex( 'Burkina Faso', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BI"<?php selected( $selected_value, 'BI' ); ?>><?php _ex( 'Burundi', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KH"<?php selected( $selected_value, 'KH' ); ?>><?php _ex( 'Cambodia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CM"<?php selected( $selected_value, 'CM' ); ?>><?php _ex( 'Cameroon', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CA"<?php selected( $selected_value, 'CA' ); ?>><?php _ex( 'Canada', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CV"<?php selected( $selected_value, 'CV' ); ?>><?php _ex( 'Cape Verde', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KY"<?php selected( $selected_value, 'KY' ); ?>><?php _ex( 'Cayman Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CF"<?php selected( $selected_value, 'CF' ); ?>><?php _ex( 'Central African Republic', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TD"<?php selected( $selected_value, 'TD' ); ?>><?php _ex( 'Chad', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CL"<?php selected( $selected_value, 'CL' ); ?>><?php _ex( 'Chile', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CN"<?php selected( $selected_value, 'CN' ); ?>><?php _ex( 'China', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CX"<?php selected( $selected_value, 'CX' ); ?>><?php _ex( 'Christmas Island', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CC"<?php selected( $selected_value, 'CC' ); ?>><?php _ex( 'Cocos (Keeling) Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CO"<?php selected( $selected_value, 'CO' ); ?>><?php _ex( 'Colombia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KM"<?php selected( $selected_value, 'KM' ); ?>><?php _ex( 'Comoros', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CG"<?php selected( $selected_value, 'CG' ); ?>><?php _ex( 'Congo', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CD"<?php selected( $selected_value, 'CD' ); ?>><?php _ex( 'Congo, the Democratic Republic of the', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CK"<?php selected( $selected_value, 'CK' ); ?>><?php _ex( 'Cook Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CR"<?php selected( $selected_value, 'CR' ); ?>><?php _ex( 'Costa Rica', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CI"<?php selected( $selected_value, 'CI' ); ?>><?php _ex( 'Côte d\'Ivoire', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HR"<?php selected( $selected_value, 'HR' ); ?>><?php _ex( 'Croatia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CU"<?php selected( $selected_value, 'CU' ); ?>><?php _ex( 'Cuba', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CW"<?php selected( $selected_value, 'CW' ); ?>><?php _ex( 'Curaçao', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CY"<?php selected( $selected_value, 'CY' ); ?>><?php _ex( 'Cyprus', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CZ"<?php selected( $selected_value, 'CZ' ); ?>><?php _ex( 'Czech Republic', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DK"<?php selected( $selected_value, 'DK' ); ?>><?php _ex( 'Denmark', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DJ"<?php selected( $selected_value, 'DJ' ); ?>><?php _ex( 'Djibouti', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DM"<?php selected( $selected_value, 'DM' ); ?>><?php _ex( 'Dominica', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DO"<?php selected( $selected_value, 'DO' ); ?>><?php _ex( 'Dominican Republic', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="EC"<?php selected( $selected_value, 'EC' ); ?>><?php _ex( 'Ecuador', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="EG"<?php selected( $selected_value, 'EG' ); ?>><?php _ex( 'Egypt', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SV"<?php selected( $selected_value, 'SV' ); ?>><?php _ex( 'El Salvador', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GQ"<?php selected( $selected_value, 'GQ' ); ?>><?php _ex( 'Equatorial Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ER"<?php selected( $selected_value, 'ER' ); ?>><?php _ex( 'Eritrea', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="EE"<?php selected( $selected_value, 'EE' ); ?>><?php _ex( 'Estonia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ET"<?php selected( $selected_value, 'ET' ); ?>><?php _ex( 'Ethiopia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FK"<?php selected( $selected_value, 'FK' ); ?>><?php _ex( 'Falkland Islands (Malvinas)', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FO"<?php selected( $selected_value, 'FO' ); ?>><?php _ex( 'Faroe Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FJ"<?php selected( $selected_value, 'FJ' ); ?>><?php _ex( 'Fiji', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FI"<?php selected( $selected_value, 'FI' ); ?>><?php _ex( 'Finland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FR"<?php selected( $selected_value, 'FR' ); ?>><?php _ex( 'France', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GF"<?php selected( $selected_value, 'GF' ); ?>><?php _ex( 'French Guiana', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PF"<?php selected( $selected_value, 'PF' ); ?>><?php _ex( 'French Polynesia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TF"<?php selected( $selected_value, 'TF' ); ?>><?php _ex( 'French Southern Territories', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GA"<?php selected( $selected_value, 'GA' ); ?>><?php _ex( 'Gabon', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GM"<?php selected( $selected_value, 'GM' ); ?>><?php _ex( 'Gambia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GE"<?php selected( $selected_value, 'GE' ); ?>><?php _ex( 'Georgia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="DE"<?php selected( $selected_value, 'DE' ); ?>><?php _ex( 'Germany', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GH"<?php selected( $selected_value, 'GH' ); ?>><?php _ex( 'Ghana', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GI"<?php selected( $selected_value, 'GI' ); ?>><?php _ex( 'Gibraltar', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GR"<?php selected( $selected_value, 'GR' ); ?>><?php _ex( 'Greece', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GL"<?php selected( $selected_value, 'GL' ); ?>><?php _ex( 'Greenland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GD"<?php selected( $selected_value, 'GD' ); ?>><?php _ex( 'Grenada', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GP"<?php selected( $selected_value, 'GP' ); ?>><?php _ex( 'Guadeloupe', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GU"<?php selected( $selected_value, 'GU' ); ?>><?php _ex( 'Guam', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GT"<?php selected( $selected_value, 'GT' ); ?>><?php _ex( 'Guatemala', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GG"<?php selected( $selected_value, 'GG' ); ?>><?php _ex( 'Guernsey', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GN"<?php selected( $selected_value, 'GN' ); ?>><?php _ex( 'Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GW"<?php selected( $selected_value, 'GW' ); ?>><?php _ex( 'Guinea-Bissau', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GY"<?php selected( $selected_value, 'GY' ); ?>><?php _ex( 'Guyana', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HT"<?php selected( $selected_value, 'HT' ); ?>><?php _ex( 'Haiti', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HM"<?php selected( $selected_value, 'HM' ); ?>><?php _ex( 'Heard Island and McDonald Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VA"<?php selected( $selected_value, 'VA' ); ?>><?php _ex( 'Holy See (Vatican City State)', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HN"<?php selected( $selected_value, 'HN' ); ?>><?php _ex( 'Honduras', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HK"<?php selected( $selected_value, 'HK' ); ?>><?php _ex( 'Hong Kong', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="HU"<?php selected( $selected_value, 'HU' ); ?>><?php _ex( 'Hungary', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IS"<?php selected( $selected_value, 'IS' ); ?>><?php _ex( 'Iceland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IN"<?php selected( $selected_value, 'IN' ); ?>><?php _ex( 'India', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ID"<?php selected( $selected_value, 'ID' ); ?>><?php _ex( 'Indonesia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IR"<?php selected( $selected_value, 'IR' ); ?>><?php _ex( 'Iran, Islamic Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IQ"<?php selected( $selected_value, 'IQ' ); ?>><?php _ex( 'Iraq', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IE"<?php selected( $selected_value, 'IE' ); ?>><?php _ex( 'Ireland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IM"<?php selected( $selected_value, 'IM' ); ?>><?php _ex( 'Isle of Man', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IL"<?php selected( $selected_value, 'IL' ); ?>><?php _ex( 'Israel', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="IT"<?php selected( $selected_value, 'IT' ); ?>><?php _ex( 'Italy', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="JM"<?php selected( $selected_value, 'JM' ); ?>><?php _ex( 'Jamaica', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="JP"<?php selected( $selected_value, 'JP' ); ?>><?php _ex( 'Japan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="JE"<?php selected( $selected_value, 'JE' ); ?>><?php _ex( 'Jersey', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="JO"<?php selected( $selected_value, 'JO' ); ?>><?php _ex( 'Jordan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KZ"<?php selected( $selected_value, 'KZ' ); ?>><?php _ex( 'Kazakhstan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KE"<?php selected( $selected_value, 'KE' ); ?>><?php _ex( 'Kenya', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KI"<?php selected( $selected_value, 'KI' ); ?>><?php _ex( 'Kiribati', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KP"<?php selected( $selected_value, 'KP' ); ?>><?php _ex( 'Korea, Democratic People\'s Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KR"<?php selected( $selected_value, 'KR' ); ?>><?php _ex( 'Korea, Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KW"<?php selected( $selected_value, 'KW' ); ?>><?php _ex( 'Kuwait', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KG"<?php selected( $selected_value, 'KG' ); ?>><?php _ex( 'Kyrgyzstan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LA"<?php selected( $selected_value, 'LA' ); ?>><?php _ex( 'Lao People\'s Democratic Republic', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LV"<?php selected( $selected_value, 'LV' ); ?>><?php _ex( 'Latvia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LB"<?php selected( $selected_value, 'LB' ); ?>><?php _ex( 'Lebanon', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LS"<?php selected( $selected_value, 'LS' ); ?>><?php _ex( 'Lesotho', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LR"<?php selected( $selected_value, 'LR' ); ?>><?php _ex( 'Liberia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LY"<?php selected( $selected_value, 'LY' ); ?>><?php _ex( 'Libya', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LI"<?php selected( $selected_value, 'LI' ); ?>><?php _ex( 'Liechtenstein', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LT"<?php selected( $selected_value, 'LT' ); ?>><?php _ex( 'Lithuania', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LU"<?php selected( $selected_value, 'LU' ); ?>><?php _ex( 'Luxembourg', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MO"<?php selected( $selected_value, 'MO' ); ?>><?php _ex( 'Macao', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MK"<?php selected( $selected_value, 'MK' ); ?>><?php _ex( 'Macedonia, the former Yugoslav Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MG"<?php selected( $selected_value, 'MG' ); ?>><?php _ex( 'Madagascar', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MW"<?php selected( $selected_value, 'MW' ); ?>><?php _ex( 'Malawi', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MY"<?php selected( $selected_value, 'MY' ); ?>><?php _ex( 'Malaysia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MV"<?php selected( $selected_value, 'MV' ); ?>><?php _ex( 'Maldives', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ML"<?php selected( $selected_value, 'ML' ); ?>><?php _ex( 'Mali', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MT"<?php selected( $selected_value, 'MT' ); ?>><?php _ex( 'Malta', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MH"<?php selected( $selected_value, 'MH' ); ?>><?php _ex( 'Marshall Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MQ"<?php selected( $selected_value, 'MQ' ); ?>><?php _ex( 'Martinique', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MR"<?php selected( $selected_value, 'MR' ); ?>><?php _ex( 'Mauritania', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MU"<?php selected( $selected_value, 'MU' ); ?>><?php _ex( 'Mauritius', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="YT"<?php selected( $selected_value, 'YT' ); ?>><?php _ex( 'Mayotte', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MX"<?php selected( $selected_value, 'MX' ); ?>><?php _ex( 'Mexico', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="FM"<?php selected( $selected_value, 'FM' ); ?>><?php _ex( 'Micronesia, Federated States of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MD"<?php selected( $selected_value, 'MD' ); ?>><?php _ex( 'Moldova, Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MC"<?php selected( $selected_value, 'MC' ); ?>><?php _ex( 'Monaco', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MN"<?php selected( $selected_value, 'MN' ); ?>><?php _ex( 'Mongolia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ME"<?php selected( $selected_value, 'ME' ); ?>><?php _ex( 'Montenegro', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MS"<?php selected( $selected_value, 'MS' ); ?>><?php _ex( 'Montserrat', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MA"<?php selected( $selected_value, 'MA' ); ?>><?php _ex( 'Morocco', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MZ"<?php selected( $selected_value, 'MZ' ); ?>><?php _ex( 'Mozambique', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MM"<?php selected( $selected_value, 'MM' ); ?>><?php _ex( 'Myanmar', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NA"<?php selected( $selected_value, 'NA' ); ?>><?php _ex( 'Namibia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NR"<?php selected( $selected_value, 'NR' ); ?>><?php _ex( 'Nauru', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NP"<?php selected( $selected_value, 'NP' ); ?>><?php _ex( 'Nepal', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NL"<?php selected( $selected_value, 'NL' ); ?>><?php _ex( 'Netherlands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NC"<?php selected( $selected_value, 'NC' ); ?>><?php _ex( 'New Caledonia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NZ"<?php selected( $selected_value, 'NZ' ); ?>><?php _ex( 'New Zealand', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NI"<?php selected( $selected_value, 'NI' ); ?>><?php _ex( 'Nicaragua', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NE"<?php selected( $selected_value, 'NE' ); ?>><?php _ex( 'Niger', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NG"<?php selected( $selected_value, 'NG' ); ?>><?php _ex( 'Nigeria', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NU"<?php selected( $selected_value, 'NU' ); ?>><?php _ex( 'Niue', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NF"<?php selected( $selected_value, 'NF' ); ?>><?php _ex( 'Norfolk Island', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MP"<?php selected( $selected_value, 'MP' ); ?>><?php _ex( 'Northern Mariana Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="NO"<?php selected( $selected_value, 'NO' ); ?>><?php _ex( 'Norway', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="OM"<?php selected( $selected_value, 'OM' ); ?>><?php _ex( 'Oman', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PK"<?php selected( $selected_value, 'PK' ); ?>><?php _ex( 'Pakistan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PW"<?php selected( $selected_value, 'PW' ); ?>><?php _ex( 'Palau', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PS"<?php selected( $selected_value, 'PS' ); ?>><?php _ex( 'Palestinian Territory, Occupied', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PA"<?php selected( $selected_value, 'PA' ); ?>><?php _ex( 'Panama', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PG"<?php selected( $selected_value, 'PG' ); ?>><?php _ex( 'Papua New Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PY"<?php selected( $selected_value, 'PY' ); ?>><?php _ex( 'Paraguay', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PE"<?php selected( $selected_value, 'PE' ); ?>><?php _ex( 'Peru', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PH"<?php selected( $selected_value, 'PH' ); ?>><?php _ex( 'Philippines', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PN"<?php selected( $selected_value, 'PN' ); ?>><?php _ex( 'Pitcairn', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PL"<?php selected( $selected_value, 'PL' ); ?>><?php _ex( 'Poland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PT"<?php selected( $selected_value, 'PT' ); ?>><?php _ex( 'Portugal', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PR"<?php selected( $selected_value, 'PR' ); ?>><?php _ex( 'Puerto Rico', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="QA"<?php selected( $selected_value, 'QA' ); ?>><?php _ex( 'Qatar', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="RE"<?php selected( $selected_value, 'RE' ); ?>><?php _ex( 'Réunion', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="RO"<?php selected( $selected_value, 'RO' ); ?>><?php _ex( 'Romania', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="RU"<?php selected( $selected_value, 'RU' ); ?>><?php _ex( 'Russian Federation', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="RW"<?php selected( $selected_value, 'RW' ); ?>><?php _ex( 'Rwanda', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="BL"<?php selected( $selected_value, 'BL' ); ?>><?php _ex( 'Saint Barthélemy', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SH"<?php selected( $selected_value, 'SH' ); ?>><?php _ex( 'Saint Helena, Ascension and Tristan da Cunha', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="KN"<?php selected( $selected_value, 'KN' ); ?>><?php _ex( 'Saint Kitts and Nevis', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LC"<?php selected( $selected_value, 'LC' ); ?>><?php _ex( 'Saint Lucia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="MF"<?php selected( $selected_value, 'MF' ); ?>><?php _ex( 'Saint Martin (French part)', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="PM"<?php selected( $selected_value, 'PM' ); ?>><?php _ex( 'Saint Pierre and Miquelon', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VC"<?php selected( $selected_value, 'VC' ); ?>><?php _ex( 'Saint Vincent and the Grenadines', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="WS"<?php selected( $selected_value, 'WS' ); ?>><?php _ex( 'Samoa', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SM"<?php selected( $selected_value, 'SM' ); ?>><?php _ex( 'San Marino', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ST"<?php selected( $selected_value, 'ST' ); ?>><?php _ex( 'Sao Tome and Principe', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SA"<?php selected( $selected_value, 'SA' ); ?>><?php _ex( 'Saudi Arabia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SN"<?php selected( $selected_value, 'SN' ); ?>><?php _ex( 'Senegal', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="RS"<?php selected( $selected_value, 'RS' ); ?>><?php _ex( 'Serbia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SC"<?php selected( $selected_value, 'SC' ); ?>><?php _ex( 'Seychelles', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SL"<?php selected( $selected_value, 'SL' ); ?>><?php _ex( 'Sierra Leone', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SG"<?php selected( $selected_value, 'SG' ); ?>><?php _ex( 'Singapore', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SX"<?php selected( $selected_value, 'SX' ); ?>><?php _ex( 'Sint Maarten (Dutch part)', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SK"<?php selected( $selected_value, 'SK' ); ?>><?php _ex( 'Slovakia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SI"<?php selected( $selected_value, 'SI' ); ?>><?php _ex( 'Slovenia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SB"<?php selected( $selected_value, 'SB' ); ?>><?php _ex( 'Solomon Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SO"<?php selected( $selected_value, 'SO' ); ?>><?php _ex( 'Somalia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ZA"<?php selected( $selected_value, 'ZA' ); ?>><?php _ex( 'South Africa', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GS"<?php selected( $selected_value, 'GS' ); ?>><?php _ex( 'South Georgia and the South Sandwich Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SS"<?php selected( $selected_value, 'SS' ); ?>><?php _ex( 'South Sudan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ES"<?php selected( $selected_value, 'ES' ); ?>><?php _ex( 'Spain', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="LK"<?php selected( $selected_value, 'LK' ); ?>><?php _ex( 'Sri Lanka', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SD"<?php selected( $selected_value, 'SD' ); ?>><?php _ex( 'Sudan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SR"<?php selected( $selected_value, 'SR' ); ?>><?php _ex( 'Suriname', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SJ"<?php selected( $selected_value, 'SJ' ); ?>><?php _ex( 'Svalbard and Jan Mayen', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SZ"<?php selected( $selected_value, 'SZ' ); ?>><?php _ex( 'Swaziland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SE"<?php selected( $selected_value, 'SE' ); ?>><?php _ex( 'Sweden', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="CH"<?php selected( $selected_value, 'CH' ); ?>><?php _ex( 'Switzerland', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="SY"<?php selected( $selected_value, 'SY' ); ?>><?php _ex( 'Syrian Arab Republic', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TW"<?php selected( $selected_value, 'TW' ); ?>><?php _ex( 'Taiwan, Province of China', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TJ"<?php selected( $selected_value, 'TJ' ); ?>><?php _ex( 'Tajikistan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TZ"<?php selected( $selected_value, 'TZ' ); ?>><?php _ex( 'Tanzania, United Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TH"<?php selected( $selected_value, 'TH' ); ?>><?php _ex( 'Thailand', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TL"<?php selected( $selected_value, 'TL' ); ?>><?php _ex( 'Timor-Leste', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TG"<?php selected( $selected_value, 'TG' ); ?>><?php _ex( 'Togo', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TK"<?php selected( $selected_value, 'TK' ); ?>><?php _ex( 'Tokelau', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TO"<?php selected( $selected_value, 'TO' ); ?>><?php _ex( 'Tonga', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TT"<?php selected( $selected_value, 'TT' ); ?>><?php _ex( 'Trinidad and Tobago', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TN"<?php selected( $selected_value, 'TN' ); ?>><?php _ex( 'Tunisia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TR"<?php selected( $selected_value, 'TR' ); ?>><?php _ex( 'Turkey', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TM"<?php selected( $selected_value, 'TM' ); ?>><?php _ex( 'Turkmenistan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TC"<?php selected( $selected_value, 'TC' ); ?>><?php _ex( 'Turks and Caicos Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="TV"<?php selected( $selected_value, 'TV' ); ?>><?php _ex( 'Tuvalu', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="UG"<?php selected( $selected_value, 'UG' ); ?>><?php _ex( 'Uganda', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="UA"<?php selected( $selected_value, 'UA' ); ?>><?php _ex( 'Ukraine', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="AE"<?php selected( $selected_value, 'AE' ); ?>><?php _ex( 'United Arab Emirates', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="GB"<?php selected( $selected_value, 'GB' ); ?>><?php _ex( 'United Kingdom', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="US"<?php selected( $selected_value, 'US' ); ?>><?php _ex( 'United States', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="UM"<?php selected( $selected_value, 'UM' ); ?>><?php _ex( 'United States Minor Outlying Islands', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="UY"<?php selected( $selected_value, 'UY' ); ?>><?php _ex( 'Uruguay', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="UZ"<?php selected( $selected_value, 'UZ' ); ?>><?php _ex( 'Uzbekistan', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VU"<?php selected( $selected_value, 'VU' ); ?>><?php _ex( 'Vanuatu', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VE"<?php selected( $selected_value, 'VE' ); ?>><?php _ex( 'Venezuela, Bolivarian Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VN"<?php selected( $selected_value, 'VN' ); ?>><?php _ex( 'Viet Nam', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VG"<?php selected( $selected_value, 'VG' ); ?>><?php _ex( 'Virgin Islands, British', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="VI"<?php selected( $selected_value, 'VI' ); ?>><?php _ex( 'Virgin Islands, U.S.', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="WF"<?php selected( $selected_value, 'WF' ); ?>><?php _ex( 'Wallis and Futuna', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="EH"<?php selected( $selected_value, 'EH' ); ?>><?php _ex( 'Western Sahara', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="YE"<?php selected( $selected_value, 'YE' ); ?>><?php _ex( 'Yemen', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ZM"<?php selected( $selected_value, 'ZM' ); ?>><?php _ex( 'Zambia', 'frontend', 'eduadmin-booking' ); ?></option>
-	<option
-		value="ZW"<?php selected( $selected_value, 'ZW' ); ?>><?php _ex( 'Zimbabwe', 'frontend', 'eduadmin-booking' ); ?></option>    </select><?php
+	<select<?php echo( $required ? " required" : "" ); ?>
+		autocomplete="off" name="<?php echo esc_attr( $element_name ); ?>">
+		<option>
+			<?php _ex( '-- Select country --', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AF"<?php selected( $selected_value, 'AF' ); ?>>
+			<?php _ex( 'Afghanistan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AX"<?php selected( $selected_value, 'AX' ); ?>>
+			<?php _ex( 'Åland Islands', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AL"<?php selected( $selected_value, 'AL' ); ?>>
+			<?php _ex( 'Albania', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="DZ"<?php selected( $selected_value, 'DZ' ); ?>>
+			<?php _ex( 'Algeria', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AS"<?php selected( $selected_value, 'AS' ); ?>>
+			<?php _ex( 'American Samoa', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AD"<?php selected( $selected_value, 'AD' ); ?>>
+			<?php _ex( 'Andorra', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AO"<?php selected( $selected_value, 'AO' ); ?>>
+			<?php _ex( 'Angola', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AI"<?php selected( $selected_value, 'AI' ); ?>>
+			<?php _ex( 'Anguilla', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AQ"<?php selected( $selected_value, 'AQ' ); ?>>
+			<?php _ex( 'Antarctica', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AG"<?php selected( $selected_value, 'AG' ); ?>>
+			<?php _ex( 'Antigua and Barbuda', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AR"<?php selected( $selected_value, 'AR' ); ?>>
+			<?php _ex( 'Argentina', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AM"<?php selected( $selected_value, 'AM' ); ?>>
+			<?php _ex( 'Armenia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AW"<?php selected( $selected_value, 'AW' ); ?>>
+			<?php _ex( 'Aruba', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AU"<?php selected( $selected_value, 'AU' ); ?>>
+			<?php _ex( 'Australia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AT"<?php selected( $selected_value, 'AT' ); ?>>
+			<?php _ex( 'Austria', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AZ"<?php selected( $selected_value, 'AZ' ); ?>>
+			<?php _ex( 'Azerbaijan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BS"<?php selected( $selected_value, 'BS' ); ?>>
+			<?php _ex( 'Bahamas', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BH"<?php selected( $selected_value, 'BH' ); ?>>
+			<?php _ex( 'Bahrain', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BD"<?php selected( $selected_value, 'BD' ); ?>>
+			<?php _ex( 'Bangladesh', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BB"<?php selected( $selected_value, 'BB' ); ?>>
+			<?php _ex( 'Barbados', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BY"<?php selected( $selected_value, 'BY' ); ?>>
+			<?php _ex( 'Belarus', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BE"<?php selected( $selected_value, 'BE' ); ?>>
+			<?php _ex( 'Belgium', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BZ"<?php selected( $selected_value, 'BZ' ); ?>>
+			<?php _ex( 'Belize', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BJ"<?php selected( $selected_value, 'BJ' ); ?>>
+			<?php _ex( 'Benin', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BM"<?php selected( $selected_value, 'BM' ); ?>>
+			<?php _ex( 'Bermuda', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BT"<?php selected( $selected_value, 'BT' ); ?>>
+			<?php _ex( 'Bhutan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BO"<?php selected( $selected_value, 'BO' ); ?>>
+			<?php _ex( 'Bolivia, Plurinational State of', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BQ"<?php selected( $selected_value, 'BQ' ); ?>>
+			<?php _ex( 'Bonaire, Sint Eustatius and Saba', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BA"<?php selected( $selected_value, 'BA' ); ?>>
+			<?php _ex( 'Bosnia and Herzegovina', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BW"<?php selected( $selected_value, 'BW' ); ?>>
+			<?php _ex( 'Botswana', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BV"<?php selected( $selected_value, 'BV' ); ?>>
+			<?php _ex( 'Bouvet Island', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="BR"<?php selected( $selected_value, 'BR' ); ?>>
+			<?php _ex( 'Brazil', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option
+			value="IO"<?php selected( $selected_value, 'IO' ); ?>><?php _ex( 'British Indian Ocean Territory', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="BN"<?php selected( $selected_value, 'BN' ); ?>><?php _ex( 'Brunei Darussalam', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="BG"<?php selected( $selected_value, 'BG' ); ?>><?php _ex( 'Bulgaria', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="BF"<?php selected( $selected_value, 'BF' ); ?>><?php _ex( 'Burkina Faso', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="BI"<?php selected( $selected_value, 'BI' ); ?>><?php _ex( 'Burundi', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KH"<?php selected( $selected_value, 'KH' ); ?>><?php _ex( 'Cambodia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CM"<?php selected( $selected_value, 'CM' ); ?>><?php _ex( 'Cameroon', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CA"<?php selected( $selected_value, 'CA' ); ?>><?php _ex( 'Canada', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CV"<?php selected( $selected_value, 'CV' ); ?>><?php _ex( 'Cape Verde', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KY"<?php selected( $selected_value, 'KY' ); ?>><?php _ex( 'Cayman Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CF"<?php selected( $selected_value, 'CF' ); ?>><?php _ex( 'Central African Republic', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="TD"<?php selected( $selected_value, 'TD' ); ?>><?php _ex( 'Chad', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CL"<?php selected( $selected_value, 'CL' ); ?>><?php _ex( 'Chile', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CN"<?php selected( $selected_value, 'CN' ); ?>><?php _ex( 'China', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CX"<?php selected( $selected_value, 'CX' ); ?>><?php _ex( 'Christmas Island', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CC"<?php selected( $selected_value, 'CC' ); ?>><?php _ex( 'Cocos (Keeling) Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CO"<?php selected( $selected_value, 'CO' ); ?>><?php _ex( 'Colombia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KM"<?php selected( $selected_value, 'KM' ); ?>><?php _ex( 'Comoros', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CG"<?php selected( $selected_value, 'CG' ); ?>><?php _ex( 'Congo', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CD"<?php selected( $selected_value, 'CD' ); ?>><?php _ex( 'Congo, the Democratic Republic of the', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CK"<?php selected( $selected_value, 'CK' ); ?>><?php _ex( 'Cook Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CR"<?php selected( $selected_value, 'CR' ); ?>><?php _ex( 'Costa Rica', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CI"<?php selected( $selected_value, 'CI' ); ?>><?php _ex( 'Côte d\'Ivoire', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HR"<?php selected( $selected_value, 'HR' ); ?>><?php _ex( 'Croatia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CU"<?php selected( $selected_value, 'CU' ); ?>><?php _ex( 'Cuba', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CW"<?php selected( $selected_value, 'CW' ); ?>><?php _ex( 'Curaçao', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CY"<?php selected( $selected_value, 'CY' ); ?>><?php _ex( 'Cyprus', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="CZ"<?php selected( $selected_value, 'CZ' ); ?>><?php _ex( 'Czech Republic', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="DK"<?php selected( $selected_value, 'DK' ); ?>><?php _ex( 'Denmark', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="DJ"<?php selected( $selected_value, 'DJ' ); ?>><?php _ex( 'Djibouti', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="DM"<?php selected( $selected_value, 'DM' ); ?>><?php _ex( 'Dominica', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="DO"<?php selected( $selected_value, 'DO' ); ?>><?php _ex( 'Dominican Republic', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="EC"<?php selected( $selected_value, 'EC' ); ?>><?php _ex( 'Ecuador', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="EG"<?php selected( $selected_value, 'EG' ); ?>><?php _ex( 'Egypt', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="SV"<?php selected( $selected_value, 'SV' ); ?>><?php _ex( 'El Salvador', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GQ"<?php selected( $selected_value, 'GQ' ); ?>><?php _ex( 'Equatorial Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="ER"<?php selected( $selected_value, 'ER' ); ?>><?php _ex( 'Eritrea', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="EE"<?php selected( $selected_value, 'EE' ); ?>><?php _ex( 'Estonia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="ET"<?php selected( $selected_value, 'ET' ); ?>><?php _ex( 'Ethiopia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FK"<?php selected( $selected_value, 'FK' ); ?>><?php _ex( 'Falkland Islands (Malvinas)', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FO"<?php selected( $selected_value, 'FO' ); ?>><?php _ex( 'Faroe Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FJ"<?php selected( $selected_value, 'FJ' ); ?>><?php _ex( 'Fiji', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FI"<?php selected( $selected_value, 'FI' ); ?>><?php _ex( 'Finland', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FR"<?php selected( $selected_value, 'FR' ); ?>><?php _ex( 'France', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GF"<?php selected( $selected_value, 'GF' ); ?>><?php _ex( 'French Guiana', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PF"<?php selected( $selected_value, 'PF' ); ?>><?php _ex( 'French Polynesia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="TF"<?php selected( $selected_value, 'TF' ); ?>><?php _ex( 'French Southern Territories', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GA"<?php selected( $selected_value, 'GA' ); ?>><?php _ex( 'Gabon', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GM"<?php selected( $selected_value, 'GM' ); ?>><?php _ex( 'Gambia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GE"<?php selected( $selected_value, 'GE' ); ?>><?php _ex( 'Georgia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="DE"<?php selected( $selected_value, 'DE' ); ?>><?php _ex( 'Germany', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GH"<?php selected( $selected_value, 'GH' ); ?>><?php _ex( 'Ghana', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GI"<?php selected( $selected_value, 'GI' ); ?>><?php _ex( 'Gibraltar', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GR"<?php selected( $selected_value, 'GR' ); ?>><?php _ex( 'Greece', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GL"<?php selected( $selected_value, 'GL' ); ?>><?php _ex( 'Greenland', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GD"<?php selected( $selected_value, 'GD' ); ?>><?php _ex( 'Grenada', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GP"<?php selected( $selected_value, 'GP' ); ?>><?php _ex( 'Guadeloupe', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GU"<?php selected( $selected_value, 'GU' ); ?>><?php _ex( 'Guam', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GT"<?php selected( $selected_value, 'GT' ); ?>><?php _ex( 'Guatemala', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GG"<?php selected( $selected_value, 'GG' ); ?>><?php _ex( 'Guernsey', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GN"<?php selected( $selected_value, 'GN' ); ?>><?php _ex( 'Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GW"<?php selected( $selected_value, 'GW' ); ?>><?php _ex( 'Guinea-Bissau', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="GY"<?php selected( $selected_value, 'GY' ); ?>><?php _ex( 'Guyana', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HT"<?php selected( $selected_value, 'HT' ); ?>><?php _ex( 'Haiti', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HM"<?php selected( $selected_value, 'HM' ); ?>><?php _ex( 'Heard Island and McDonald Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="VA"<?php selected( $selected_value, 'VA' ); ?>><?php _ex( 'Holy See (Vatican City State)', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HN"<?php selected( $selected_value, 'HN' ); ?>><?php _ex( 'Honduras', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HK"<?php selected( $selected_value, 'HK' ); ?>><?php _ex( 'Hong Kong', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="HU"<?php selected( $selected_value, 'HU' ); ?>><?php _ex( 'Hungary', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IS"<?php selected( $selected_value, 'IS' ); ?>><?php _ex( 'Iceland', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IN"<?php selected( $selected_value, 'IN' ); ?>><?php _ex( 'India', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="ID"<?php selected( $selected_value, 'ID' ); ?>><?php _ex( 'Indonesia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IR"<?php selected( $selected_value, 'IR' ); ?>><?php _ex( 'Iran, Islamic Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IQ"<?php selected( $selected_value, 'IQ' ); ?>><?php _ex( 'Iraq', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IE"<?php selected( $selected_value, 'IE' ); ?>><?php _ex( 'Ireland', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IM"<?php selected( $selected_value, 'IM' ); ?>><?php _ex( 'Isle of Man', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IL"<?php selected( $selected_value, 'IL' ); ?>><?php _ex( 'Israel', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="IT"<?php selected( $selected_value, 'IT' ); ?>><?php _ex( 'Italy', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="JM"<?php selected( $selected_value, 'JM' ); ?>><?php _ex( 'Jamaica', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="JP"<?php selected( $selected_value, 'JP' ); ?>><?php _ex( 'Japan', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="JE"<?php selected( $selected_value, 'JE' ); ?>><?php _ex( 'Jersey', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="JO"<?php selected( $selected_value, 'JO' ); ?>><?php _ex( 'Jordan', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KZ"<?php selected( $selected_value, 'KZ' ); ?>><?php _ex( 'Kazakhstan', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KE"<?php selected( $selected_value, 'KE' ); ?>><?php _ex( 'Kenya', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KI"<?php selected( $selected_value, 'KI' ); ?>><?php _ex( 'Kiribati', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KP"<?php selected( $selected_value, 'KP' ); ?>><?php _ex( 'Korea, Democratic People\'s Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KR"<?php selected( $selected_value, 'KR' ); ?>><?php _ex( 'Korea, Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KW"<?php selected( $selected_value, 'KW' ); ?>><?php _ex( 'Kuwait', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KG"<?php selected( $selected_value, 'KG' ); ?>><?php _ex( 'Kyrgyzstan', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LA"<?php selected( $selected_value, 'LA' ); ?>><?php _ex( 'Lao People\'s Democratic Republic', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LV"<?php selected( $selected_value, 'LV' ); ?>><?php _ex( 'Latvia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LB"<?php selected( $selected_value, 'LB' ); ?>><?php _ex( 'Lebanon', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LS"<?php selected( $selected_value, 'LS' ); ?>><?php _ex( 'Lesotho', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LR"<?php selected( $selected_value, 'LR' ); ?>><?php _ex( 'Liberia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LY"<?php selected( $selected_value, 'LY' ); ?>><?php _ex( 'Libya', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LI"<?php selected( $selected_value, 'LI' ); ?>><?php _ex( 'Liechtenstein', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LT"<?php selected( $selected_value, 'LT' ); ?>><?php _ex( 'Lithuania', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LU"<?php selected( $selected_value, 'LU' ); ?>><?php _ex( 'Luxembourg', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MO"<?php selected( $selected_value, 'MO' ); ?>><?php _ex( 'Macao', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MK"<?php selected( $selected_value, 'MK' ); ?>><?php _ex( 'Macedonia, the former Yugoslav Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MG"<?php selected( $selected_value, 'MG' ); ?>><?php _ex( 'Madagascar', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MW"<?php selected( $selected_value, 'MW' ); ?>><?php _ex( 'Malawi', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MY"<?php selected( $selected_value, 'MY' ); ?>><?php _ex( 'Malaysia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MV"<?php selected( $selected_value, 'MV' ); ?>><?php _ex( 'Maldives', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="ML"<?php selected( $selected_value, 'ML' ); ?>><?php _ex( 'Mali', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MT"<?php selected( $selected_value, 'MT' ); ?>><?php _ex( 'Malta', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MH"<?php selected( $selected_value, 'MH' ); ?>><?php _ex( 'Marshall Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MQ"<?php selected( $selected_value, 'MQ' ); ?>><?php _ex( 'Martinique', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MR"<?php selected( $selected_value, 'MR' ); ?>><?php _ex( 'Mauritania', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MU"<?php selected( $selected_value, 'MU' ); ?>><?php _ex( 'Mauritius', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="YT"<?php selected( $selected_value, 'YT' ); ?>><?php _ex( 'Mayotte', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MX"<?php selected( $selected_value, 'MX' ); ?>><?php _ex( 'Mexico', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="FM"<?php selected( $selected_value, 'FM' ); ?>><?php _ex( 'Micronesia, Federated States of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MD"<?php selected( $selected_value, 'MD' ); ?>><?php _ex( 'Moldova, Republic of', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MC"<?php selected( $selected_value, 'MC' ); ?>><?php _ex( 'Monaco', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MN"<?php selected( $selected_value, 'MN' ); ?>><?php _ex( 'Mongolia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="ME"<?php selected( $selected_value, 'ME' ); ?>><?php _ex( 'Montenegro', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MS"<?php selected( $selected_value, 'MS' ); ?>><?php _ex( 'Montserrat', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MA"<?php selected( $selected_value, 'MA' ); ?>><?php _ex( 'Morocco', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MZ"<?php selected( $selected_value, 'MZ' ); ?>><?php _ex( 'Mozambique', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MM"<?php selected( $selected_value, 'MM' ); ?>><?php _ex( 'Myanmar', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NA"<?php selected( $selected_value, 'NA' ); ?>><?php _ex( 'Namibia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NR"<?php selected( $selected_value, 'NR' ); ?>><?php _ex( 'Nauru', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NP"<?php selected( $selected_value, 'NP' ); ?>><?php _ex( 'Nepal', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NL"<?php selected( $selected_value, 'NL' ); ?>><?php _ex( 'Netherlands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NC"<?php selected( $selected_value, 'NC' ); ?>><?php _ex( 'New Caledonia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NZ"<?php selected( $selected_value, 'NZ' ); ?>><?php _ex( 'New Zealand', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NI"<?php selected( $selected_value, 'NI' ); ?>><?php _ex( 'Nicaragua', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NE"<?php selected( $selected_value, 'NE' ); ?>><?php _ex( 'Niger', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NG"<?php selected( $selected_value, 'NG' ); ?>><?php _ex( 'Nigeria', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NU"<?php selected( $selected_value, 'NU' ); ?>><?php _ex( 'Niue', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NF"<?php selected( $selected_value, 'NF' ); ?>><?php _ex( 'Norfolk Island', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MP"<?php selected( $selected_value, 'MP' ); ?>><?php _ex( 'Northern Mariana Islands', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="NO"<?php selected( $selected_value, 'NO' ); ?>><?php _ex( 'Norway', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="OM"<?php selected( $selected_value, 'OM' ); ?>><?php _ex( 'Oman', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PK"<?php selected( $selected_value, 'PK' ); ?>><?php _ex( 'Pakistan', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PW"<?php selected( $selected_value, 'PW' ); ?>><?php _ex( 'Palau', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PS"<?php selected( $selected_value, 'PS' ); ?>><?php _ex( 'Palestinian Territory, Occupied', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PA"<?php selected( $selected_value, 'PA' ); ?>><?php _ex( 'Panama', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PG"<?php selected( $selected_value, 'PG' ); ?>><?php _ex( 'Papua New Guinea', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PY"<?php selected( $selected_value, 'PY' ); ?>><?php _ex( 'Paraguay', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PE"<?php selected( $selected_value, 'PE' ); ?>><?php _ex( 'Peru', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PH"<?php selected( $selected_value, 'PH' ); ?>><?php _ex( 'Philippines', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PN"<?php selected( $selected_value, 'PN' ); ?>><?php _ex( 'Pitcairn', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PL"<?php selected( $selected_value, 'PL' ); ?>><?php _ex( 'Poland', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PT"<?php selected( $selected_value, 'PT' ); ?>><?php _ex( 'Portugal', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="PR"<?php selected( $selected_value, 'PR' ); ?>><?php _ex( 'Puerto Rico', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="QA"<?php selected( $selected_value, 'QA' ); ?>><?php _ex( 'Qatar', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="RE"<?php selected( $selected_value, 'RE' ); ?>><?php _ex( 'Réunion', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="RO"<?php selected( $selected_value, 'RO' ); ?>><?php _ex( 'Romania', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="RU"<?php selected( $selected_value, 'RU' ); ?>><?php _ex( 'Russian Federation', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="RW"<?php selected( $selected_value, 'RW' ); ?>><?php _ex( 'Rwanda', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="BL"<?php selected( $selected_value, 'BL' ); ?>><?php _ex( 'Saint Barthélemy', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="SH"<?php selected( $selected_value, 'SH' ); ?>><?php _ex( 'Saint Helena, Ascension and Tristan da Cunha', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="KN"<?php selected( $selected_value, 'KN' ); ?>><?php _ex( 'Saint Kitts and Nevis', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="LC"<?php selected( $selected_value, 'LC' ); ?>><?php _ex( 'Saint Lucia', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option
+			value="MF"<?php selected( $selected_value, 'MF' ); ?>><?php _ex( 'Saint Martin (French part)', 'frontend', 'eduadmin-booking' ); ?></option>
+		<option value="PM"<?php selected( $selected_value, 'PM' ); ?>>
+			<?php _ex( 'Saint Pierre and Miquelon', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VC"<?php selected( $selected_value, 'VC' ); ?>>
+			<?php _ex( 'Saint Vincent and the Grenadines', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="WS"<?php selected( $selected_value, 'WS' ); ?>>
+			<?php _ex( 'Samoa', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SM"<?php selected( $selected_value, 'SM' ); ?>>
+			<?php _ex( 'San Marino', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="ST"<?php selected( $selected_value, 'ST' ); ?>>
+			<?php _ex( 'Sao Tome and Principe', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SA"<?php selected( $selected_value, 'SA' ); ?>>
+			<?php _ex( 'Saudi Arabia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SN"<?php selected( $selected_value, 'SN' ); ?>>
+			<?php _ex( 'Senegal', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="RS"<?php selected( $selected_value, 'RS' ); ?>>
+			<?php _ex( 'Serbia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SC"<?php selected( $selected_value, 'SC' ); ?>>
+			<?php _ex( 'Seychelles', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SL"<?php selected( $selected_value, 'SL' ); ?>>
+			<?php _ex( 'Sierra Leone', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SG"<?php selected( $selected_value, 'SG' ); ?>>
+			<?php _ex( 'Singapore', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SX"<?php selected( $selected_value, 'SX' ); ?>>
+			<?php _ex( 'Sint Maarten (Dutch part)', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SK"<?php selected( $selected_value, 'SK' ); ?>>
+			<?php _ex( 'Slovakia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SI"<?php selected( $selected_value, 'SI' ); ?>>
+			<?php _ex( 'Slovenia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SB"<?php selected( $selected_value, 'SB' ); ?>>
+			<?php _ex( 'Solomon Islands', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SO"<?php selected( $selected_value, 'SO' ); ?>>
+			<?php _ex( 'Somalia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="ZA"<?php selected( $selected_value, 'ZA' ); ?>>
+			<?php _ex( 'South Africa', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="GS"<?php selected( $selected_value, 'GS' ); ?>>
+			<?php _ex( 'South Georgia and the South Sandwich Islands', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SS"<?php selected( $selected_value, 'SS' ); ?>>
+			<?php _ex( 'South Sudan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="ES"<?php selected( $selected_value, 'ES' ); ?>>
+			<?php _ex( 'Spain', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="LK"<?php selected( $selected_value, 'LK' ); ?>>
+			<?php _ex( 'Sri Lanka', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SD"<?php selected( $selected_value, 'SD' ); ?>>
+			<?php _ex( 'Sudan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SR"<?php selected( $selected_value, 'SR' ); ?>>
+			<?php _ex( 'Suriname', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SJ"<?php selected( $selected_value, 'SJ' ); ?>>
+			<?php _ex( 'Svalbard and Jan Mayen', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SZ"<?php selected( $selected_value, 'SZ' ); ?>>
+			<?php _ex( 'Swaziland', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SE"<?php selected( $selected_value, 'SE' ); ?>>
+			<?php _ex( 'Sweden', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="CH"<?php selected( $selected_value, 'CH' ); ?>>
+			<?php _ex( 'Switzerland', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="SY"<?php selected( $selected_value, 'SY' ); ?>>
+			<?php _ex( 'Syrian Arab Republic', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TW"<?php selected( $selected_value, 'TW' ); ?>>
+			<?php _ex( 'Taiwan, Province of China', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TJ"<?php selected( $selected_value, 'TJ' ); ?>>
+			<?php _ex( 'Tajikistan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TZ"<?php selected( $selected_value, 'TZ' ); ?>>
+			<?php _ex( 'Tanzania, United Republic of', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TH"<?php selected( $selected_value, 'TH' ); ?>>
+			<?php _ex( 'Thailand', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TL"<?php selected( $selected_value, 'TL' ); ?>>
+			<?php _ex( 'Timor-Leste', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TG"<?php selected( $selected_value, 'TG' ); ?>>
+			<?php _ex( 'Togo', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TK"<?php selected( $selected_value, 'TK' ); ?>>
+			<?php _ex( 'Tokelau', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TO"<?php selected( $selected_value, 'TO' ); ?>>
+			<?php _ex( 'Tonga', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TT"<?php selected( $selected_value, 'TT' ); ?>>
+			<?php _ex( 'Trinidad and Tobago', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TN"<?php selected( $selected_value, 'TN' ); ?>>
+			<?php _ex( 'Tunisia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TR"<?php selected( $selected_value, 'TR' ); ?>>
+			<?php _ex( 'Turkey', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TM"<?php selected( $selected_value, 'TM' ); ?>>
+			<?php _ex( 'Turkmenistan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TC"<?php selected( $selected_value, 'TC' ); ?>>
+			<?php _ex( 'Turks and Caicos Islands', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="TV"<?php selected( $selected_value, 'TV' ); ?>>
+			<?php _ex( 'Tuvalu', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="UG"<?php selected( $selected_value, 'UG' ); ?>>
+			<?php _ex( 'Uganda', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="UA"<?php selected( $selected_value, 'UA' ); ?>>
+			<?php _ex( 'Ukraine', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="AE"<?php selected( $selected_value, 'AE' ); ?>>
+			<?php _ex( 'United Arab Emirates', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="GB"<?php selected( $selected_value, 'GB' ); ?>>
+			<?php _ex( 'United Kingdom', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="US"<?php selected( $selected_value, 'US' ); ?>>
+			<?php _ex( 'United States', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="UM"<?php selected( $selected_value, 'UM' ); ?>>
+			<?php _ex( 'United States Minor Outlying Islands', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="UY"<?php selected( $selected_value, 'UY' ); ?>>
+			<?php _ex( 'Uruguay', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="UZ"<?php selected( $selected_value, 'UZ' ); ?>>
+			<?php _ex( 'Uzbekistan', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VU"<?php selected( $selected_value, 'VU' ); ?>>
+			<?php _ex( 'Vanuatu', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VE"<?php selected( $selected_value, 'VE' ); ?>>
+			<?php _ex( 'Venezuela, Bolivarian Republic of', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VN"<?php selected( $selected_value, 'VN' ); ?>>
+			<?php _ex( 'Viet Nam', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VG"<?php selected( $selected_value, 'VG' ); ?>>
+			<?php _ex( 'Virgin Islands, British', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="VI"<?php selected( $selected_value, 'VI' ); ?>>
+			<?php _ex( 'Virgin Islands, U.S.', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="WF"<?php selected( $selected_value, 'WF' ); ?>>
+			<?php _ex( 'Wallis and Futuna', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="EH"<?php selected( $selected_value, 'EH' ); ?>>
+			<?php _ex( 'Western Sahara', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="YE"<?php selected( $selected_value, 'YE' ); ?>>
+			<?php _ex( 'Yemen', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="ZM"<?php selected( $selected_value, 'ZM' ); ?>>
+			<?php _ex( 'Zambia', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+		<option value="ZW"<?php selected( $selected_value, 'ZW' ); ?>>
+			<?php _ex( 'Zimbabwe', 'frontend', 'eduadmin-booking' ); ?>
+		</option>
+	</select>
+	<?php
 }
 
 function edu_get_query_string( $prepend = '?', $remove_parameters = array() ) {
@@ -1122,11 +1219,11 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 		if ( $ev['OnDemand'] ) {
 			echo '<span class="eduadmin-dateText">' . esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' ) . '</span>';
 		} else {
-			echo isset( $event_dates[ (string)$ev['EventId'] ] ) ?
-				get_logical_date_groups( $event_dates[ (string)$ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
+			echo isset( $event_dates[ (string) $ev['EventId'] ] ) ?
+				get_logical_date_groups( $event_dates[ (string) $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
 				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
 			if ( $show_time ) {
-				echo ! isset( $event_dates[ (string)$ev['EventId'] ] ) ?
+				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) ?
 					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
 					'';
 			}
@@ -1197,7 +1294,7 @@ if ( ! function_exists( 'my_str_split' ) ) {
 		$s_array = array();
 		$slen    = strlen( $string );
 		for ( $i = 0; $i < $slen; $i++ ) {
-			$s_array[ (string)$i ] = $string[ $i ];
+			$s_array[ (string) $i ] = $string[ $i ];
 		}
 
 		return $s_array;

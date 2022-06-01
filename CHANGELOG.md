@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.1...v3.2.2) (2022-06-01)
+
+
+### Bug Fixes
+
+* If the country is not required, do not set a default value in the field ([16ed440](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/16ed440cf5b6362ab16281704e491ed0bf3f4162))
+
 ### [3.2.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.0...v3.2.1) (2022-05-31)
 
 
