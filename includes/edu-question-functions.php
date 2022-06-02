@@ -68,7 +68,7 @@ function edu_render_checkbox_question( $question, $multiple, $suffix ) {
 		echo ' name="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')</i>';
+			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $q['VatPercent'] ) ) . ')</i>';
 		}
 		echo '</div>';
 		echo '</label>';
@@ -102,7 +102,7 @@ function edu_render_date_question( $question, $multiple, $suffix ) {
 }
 
 function edu_render_drop_list_question( $question, $multiple, $suffix ) {
-	echo '<label class="edu-question-droplist questionanswer_id_' . esc_attr( $question['AnswerId'] ) . '">';
+	echo '<label class="edu-question-droplist questionanswer_id_q' . esc_attr( $question['QuestionId'] ) . '">';
 	echo '<div class="inputLabel noHide">';
 	echo esc_html( wp_strip_all_tags( $question['QuestionText'] ) );
 	echo '</div>';
@@ -114,10 +114,10 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 	}
 	echo ' name="question_' . esc_attr( md5( $question['QuestionText'] ) . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '">';
 	foreach ( $question['Alternatives'] as $q ) {
-		echo '<option value="' . esc_attr( $q['AnswerId'] ) . '"' . ( $q['Selected'] ? ' selected="selected"' : '' ) . ' data-type="dropdown" data-price="' . esc_attr( $q['Price'] ) . '">';
+		echo '<option value="' . esc_attr( $q['AnswerId'] ) . '"' . ( $q['Selected'] ? ' selected="selected"' : '' ) . ' data-type="dropdown" data-price="' . esc_attr( $q['Price'] ) . '" data-vat="' . esc_attr( $q['VatPercent'] ) . '">';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' (' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')';
+			echo ' (' . esc_html( edu_get_price( $q['Price'], $q['VatPercent'] ) ) . ')';
 		}
 		echo '</option>';
 	}
@@ -168,7 +168,7 @@ function edu_render_radio_question( $question, $multiple, $suffix ) {
 		echo ' name="question_' . esc_attr( $question['QuestionId'] . '_radio' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '" value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
 		if ( ! empty( $q['Price'] ) ) {
-			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $question['VatPercent'] ) ) . ')</i>';
+			echo ' <i class="priceLabel">(' . esc_html( edu_get_price( $q['Price'], $q['VatPercent'] ) ) . ')</i>';
 		}
 		echo '</div>';
 		echo '</label>';
