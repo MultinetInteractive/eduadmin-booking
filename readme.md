@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.0.0
-Stable tag: 3.2.2
+Stable tag: 3.2.3
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.2...v3.2.3) (2022-06-02)
+
+
+#### Bug Fixes
+
+* Enhanced handling of new contacts/customers (can't set the personId or things like that, if they don't exist) ([ea630b5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea630b5a897daac2a0aaf0ce508203028ba53287))
+* Some fixes for Question handling ([c2e4408](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c2e4408722316b8a8ac0e36d543ed781decf37b5))
+
 ### [3.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.1...v3.2.2) (2022-06-01)
 
 
@@ -80,25 +88,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 * **Interest registration/Event:** If the course is on demand, we should load that variant, to get the proper events. ([5438067](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/54380675026f5e32d499b6aebf373f98373f2b59))
 * **Profile:** If the query is missing, show the normal profile. ([ea4c3ac](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea4c3acd04bd8f6ba2c1ebaa2417b3ad621b790b))
 * **Security:** Hardened cookies with HttpOnly ([cfa2fca](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cfa2fca974bdf6f5392ba8a421472dceb4d2964e))
-
-### [3.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.0.0...v3.1.0) (2022-02-23)
-
-
-#### Features
-
-* **My Profile/Bookings:** Ability to sort bookings either by Created (booking) or Event Start Date ([58b85c8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/58b85c832707d8594c9aeac2e00d773655940e6c)), closes [#427](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/427)
-* **My Profile/Bookings:** Added wp-hook/filter for `edu_bookings`, so that external plugins/code can customize the booking list. ([26d0590](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/26d0590fda156ea046debceba5257c1d505bb5fe)), closes [MultinetInteractive/EduAdmin-WordPress/issues/427#issuecomment-1048621038](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/427/issues/issuecomment-1048621038)
-
-
-#### Bug Fixes
-
-* Fixed translation for Export-button in Bookings ([57b7b25](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/57b7b2504002c80a4382bbaec06b54e58f8dce93))
-
-
-#### Documentation
-
-* Fix Copyright notice in RSS-feed ([a69ffd2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a69ffd2b163f88f5b3c3a5b6792cb1deb887cd54))
-* More info for the blog, for better SEO ([7f967b6](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7f967b609a1fa95a2d136e1a5e5acc99d61dd5a0))
 
 
 
