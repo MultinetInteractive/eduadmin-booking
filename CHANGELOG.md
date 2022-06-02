@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.2...v3.2.3) (2022-06-02)
+
+
+### Bug Fixes
+
+* Enhanced handling of new contacts/customers (can't set the personId or things like that, if they don't exist) ([ea630b5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea630b5a897daac2a0aaf0ce508203028ba53287))
+* Some fixes for Question handling ([c2e4408](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c2e4408722316b8a8ac0e36d543ed781decf37b5))
+
 ### [3.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.1...v3.2.2) (2022-06-01)
 
 
