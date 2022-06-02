@@ -71,7 +71,7 @@ class EduAdmin_BookingHandler {
 					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 
 					return $errors;
-				}, 10, 1 );
+				},          10, 1 );
 
 				return;
 			}
@@ -119,7 +119,7 @@ class EduAdmin_BookingHandler {
 					}
 
 					return $errors;
-				}, 10, 1 );
+				},          10, 1 );
 
 				return;
 			}
@@ -172,7 +172,7 @@ class EduAdmin_BookingHandler {
 					$errors[] = _x( 'Failed to validate reCAPTCHA, try again!', 'frontend', 'eduadmin-booking' );
 
 					return $errors;
-				}, 10, 1 );
+				},          10, 1 );
 
 				return;
 			}
@@ -220,7 +220,7 @@ class EduAdmin_BookingHandler {
 					}
 
 					return $errors;
-				}, 10, 1 );
+				},          10, 1 );
 
 				return;
 			}
@@ -626,10 +626,14 @@ class EduAdmin_BookingHandler {
 
 	private function set_logged_in_user_info( &$customer, &$contact ) {
 		if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {
-			$user                      = EDU()->session['eduadmin-loginUser'];
-			$contact->PersonId         = $user->Contact->PersonId;
-			$customer->CustomerId      = $user->Customer->CustomerId;
-			$customer->CustomerGroupId = $user->Customer->CustomerGroupId;
+			$user = EDU()->session['eduadmin-loginUser'];
+			if ( isset( $user->Contact ) && isset( $user->Contact->PersonId ) ) {
+				$contact->PersonId = $user->Contact->PersonId;
+			}
+			if ( isset( $user->Customer ) && isset( $user->Customer->CustomerId ) ) {
+				$customer->CustomerId      = $user->Customer->CustomerId;
+				$customer->CustomerGroupId = $user->Customer->CustomerGroupId;
+			}
 		}
 
 		if ( ! empty( $_POST['edu-customerId'] ) ) { // Var input okay.
