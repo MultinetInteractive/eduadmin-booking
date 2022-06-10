@@ -22,6 +22,7 @@ add_action( 'add_meta_boxes', 'eduadmin_shortcode_metabox' );
 add_action( 'wp_footer', 'eduadmin_custom_styles' );
 add_action( 'wp_footer', 'eduadmin_print_javascript' );
 add_action( 'wp_head', 'eduadmin_get_ld_json' );
+add_action( 'wp_head', 'eduadmin_get_ogp' );
 
 function eduadmin_get_ld_json() {
 	$t = EDU()->start_timer( __METHOD__ );
@@ -30,6 +31,20 @@ function eduadmin_get_ld_json() {
 	if ( isset( $wp_query->queried_object ) ) {
 		if ( stristr( $wp_query->queried_object->post_content, 'eduadmin-detail' ) !== false ) {
 			include_once EDUADMIN_PLUGIN_PATH . '/content/template/data/ld-json.php';
+			EDU()->stop_timer( $t );
+		}
+	}
+
+	EDU()->stop_timer( $t );
+}
+
+function eduadmin_get_ogp() {
+	$t = EDU()->start_timer( __METHOD__ );
+	global $wp_query;
+
+	if ( isset( $wp_query->queried_object ) ) {
+		if ( stristr( $wp_query->queried_object->post_content, 'eduadmin-detail' ) !== false ) {
+			include_once EDUADMIN_PLUGIN_PATH . '/content/template/data/ogp.php';
 			EDU()->stop_timer( $t );
 		}
 	}
