@@ -37,7 +37,7 @@ if ( $edo ) {
 	$description = wp_strip_all_tags(
 		str_replace(
 			[ "<br />", "<br>", "</p>" ],
-			[ "\n", "\n", "</p>\n\n" ],
+			[ "&#xA;", "&#xA;", "</p>&#xA;&#xA;" ],
 			! empty( $selected_course['CourseDescriptionShort'] ) ?
 				$selected_course['CourseDescriptionShort'] :
 				$selected_course['CourseDescription']
