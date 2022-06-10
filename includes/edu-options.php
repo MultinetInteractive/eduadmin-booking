@@ -84,7 +84,24 @@ function edu_set_canonical_url( $canonical_url ) {
 	EDU()->stop_timer( $t );
 }
 
+function edu_oembed_discovery_links( $output ) {
+	global $wp_query;
+	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
+		$output = '';
+
+		if ( is_singular() ) {
+			$output .= '<link rel="alternate" type="application/json+oembed" href="' . esc_url( get_oembed_endpoint_url( get_home_url() . $_SERVER['REQUEST_URI'] ) ) . '" />' . "\n";
+
+			if ( class_exists( 'SimpleXMLElement' ) ) {
+				$output .= '<link rel="alternate" type="text/xml+oembed" href="' . esc_url( get_oembed_endpoint_url( get_home_url() . $_SERVER['REQUEST_URI'], 'xml' ) ) . '" />' . "\n";
+			}
+		}
+	}
+	echo $output;
+}
+
 add_filter( 'get_canonical_url', 'edu_set_canonical_url' );
+add_filter( 'oembed_discovery_links', 'edu_oembed_discovery_links' );
 
 function edu_no_index() {
 	$t = EDU()->start_timer( __METHOD__ );
