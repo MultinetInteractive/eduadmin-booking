@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.3...v3.3.0) (2022-06-10)
+
+
+### Features
+
+* OpenGraph-support in detail views for prettier results on Twitter, Facebook, Slack, Discord and many other platforms that supports the OpenGraph standard (https://ogp.me/) ([e0bc773](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e0bc773e4834ee9d7db26925cdcfa1a4fb71ada8)), closes [#155](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/155)
+
+
+### Bug Fixes
+
+* Better linebreaks (OGP) ([adad674](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/adad6747313211484615386bc90ba209be78b817))
+* Fixes oEmbed canonical links. ([d48f816](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d48f81668d45935494c1cab5f86b2460a5120931)), closes [#310](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/310)
+
 ### [3.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.2...v3.2.3) (2022-06-02)
 
 
