@@ -69,7 +69,7 @@ add_action(
 
 			/* BACKEND FUNCTIONS FOR FORMS */
 			if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ver'], 'edu-profile-login' ) && ! empty( $_POST['eduformloginaction'] ) ) {
-				$act = sanitize_text_field( $_POST['eduformloginaction'] );
+				$act = wp_unslash( sanitize_text_field( $_POST['eduformloginaction'] ) );
 				if ( isset( $_POST['eduadminloginEmail'] ) ) {
 					switch ( $act ) {
 						case 'forgot':

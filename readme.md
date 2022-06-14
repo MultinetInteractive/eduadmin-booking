@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.0.0
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.0...v3.3.1) (2022-06-14)
+
+
+#### Bug Fixes
+
+* Add extra escape-things for input from WordPress, since it adds slashes to everything. ([a07a167](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a07a167ceea8a66c36736bb44728b074a5bb8ae4)), closes [#450](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/450)
+
 ### [3.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.3...v3.3.0) (2022-06-10)
 
 
@@ -77,13 +84,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * If the country is not required, do not set a default value in the field ([16ed440](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/16ed440cf5b6362ab16281704e491ed0bf3f4162))
-
-### [3.2.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.0...v3.2.1) (2022-05-31)
-
-
-#### Bug Fixes
-
-* Change method to filter LastApplicationDate ([59a46fc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/59a46fc12b32b01629a631d494283827cc8d19f3)), closes [#444](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/444)
 
 
 

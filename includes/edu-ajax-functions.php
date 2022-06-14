@@ -35,7 +35,7 @@ function edu_listview_courselist() {
 
 	$filters[] = 'ShowOnWeb';
 
-	$category_id = sanitize_text_field( $_POST['category'] );
+	$category_id = wp_unslash( sanitize_text_field( $_POST['category'] ) );
 
 	if ( ! empty( $_POST['categorydeep'] ) ) {
 		$category_id = 'deep-' . sanitize_text_field( $_POST['categorydeep'] );
@@ -153,7 +153,7 @@ function edu_api_listview_eventlist() {
 
 	$filters[] = 'ShowOnWeb';
 
-	$category_id = sanitize_text_field( $_POST['category'] );
+	$category_id = wp_unslash( sanitize_text_field( $_POST['category'] ) );
 
 	if ( ! empty( $_POST['categorydeep'] ) ) {
 		$category_id = 'deep-' . sanitize_text_field( $_POST['categorydeep'] );
@@ -310,7 +310,7 @@ function edu_api_listview_eventlist() {
 		}
 	}
 
-	$filter_city = sanitize_text_field( $_POST['filtercity'] );
+	$filter_city = wp_unslash( sanitize_text_field( $_POST['filtercity'] ) );
 
 	if ( ! empty( $filter_city ) ) {
 		$events = array_filter( $events, function( $object ) use ( &$filter_city ) {

@@ -273,7 +273,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['edu-discountCode'] ) ) { // Var input okay.
-			$programme_booking_data->CouponCode = sanitize_text_field( $_POST['edu-discountCode'] ); // Var input okay.
+			$programme_booking_data->CouponCode = wp_unslash( sanitize_text_field( $_POST['edu-discountCode'] ) ); // Var input okay.
 		}
 
 		$selected_match = EDU()->get_option( 'eduadmin-customerMatching', 'name-zip-match' );
@@ -339,7 +339,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		$booking_data->EventId   = $event_id;
-		$booking_data->Reference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+		$booking_data->Reference = wp_unslash( sanitize_text_field( $_POST['invoiceReference'] ) ); // Var input okay.
 
 		if ( ! empty( $_POST['edu-paymentmethodid'] ) ) { // Var input okay.
 			$booking_data->PaymentMethodId = intval( $_POST['edu-paymentmethodid'] ); // Var input okay.
@@ -354,7 +354,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['edu-discountCode'] ) ) { // Var input okay.
-			$booking_data->CouponCode = sanitize_text_field( $_POST['edu-discountCode'] ); // Var input okay.
+			$booking_data->CouponCode = wp_unslash( sanitize_text_field( $_POST['edu-discountCode'] ) ); // Var input okay.
 		}
 
 		$booking_data->Answers = $this->get_booking_questions();
@@ -391,10 +391,10 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['contactFirstName'] ) ) { // Var input okay.
-			$first = sanitize_text_field( $_POST['contactFirstName'] ); // Var input okay.
+			$first = wp_unslash( sanitize_text_field( $_POST['contactFirstName'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['contactLastName'] ) ) { // Var input okay.
-			$last = sanitize_text_field( $_POST['contactLastName'] ); // Var input okay.
+			$last = wp_unslash( sanitize_text_field( $_POST['contactLastName'] ) ); // Var input okay.
 		}
 
 		$customer->CustomerName = $first . ' ' . $last;
@@ -404,41 +404,41 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['contactCivRegNr'] ) ) { // Var input okay.
-			$customer->OrganisationNumber = sanitize_text_field( $_POST['contactCivRegNr'] ); // Var input okay.
+			$customer->OrganisationNumber = wp_unslash( sanitize_text_field( $_POST['contactCivRegNr'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerAddress1'] ) ) { // Var input okay.
-			$customer->Address = sanitize_text_field( $_POST['customerAddress1'] ); // Var input okay.
+			$customer->Address = wp_unslash( sanitize_text_field( $_POST['customerAddress1'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerAddress2'] ) ) { // Var input okay.
-			$customer->Address2 = sanitize_text_field( $_POST['customerAddress2'] ); // Var input okay.
+			$customer->Address2 = wp_unslash( sanitize_text_field( $_POST['customerAddress2'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerPostalCode'] ) ) { // Var input okay.
-			$customer->Zip = sanitize_text_field( $_POST['customerPostalCode'] ); // Var input okay.
+			$customer->Zip = wp_unslash( sanitize_text_field( $_POST['customerPostalCode'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
-			$customer->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
+			$customer->City = wp_unslash( sanitize_text_field( $_POST['customerPostalCity'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
-			$customer->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+			$customer->CountryCode = wp_unslash( sanitize_text_field( $_POST['customerCountryCode'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['contactPhone'] ) ) { // Var input okay.
-			$customer->Phone = sanitize_text_field( $_POST['contactPhone'] ); // Var input okay.
+			$customer->Phone = wp_unslash( sanitize_text_field( $_POST['contactPhone'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['contactMobile'] ) ) { // Var input okay.
-			$customer->Mobile = sanitize_text_field( $_POST['contactMobile'] ); // Var input okay.
+			$customer->Mobile = wp_unslash( sanitize_text_field( $_POST['contactMobile'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['contactEmail'] ) ) { // Var input okay.
-			$customer->Email = sanitize_email( $_POST['contactEmail'] ); // Var input okay.
+			$customer->Email = wp_unslash( sanitize_email( $_POST['contactEmail'] ) ); // Var input okay.
 		}
 
 		$customerInvoiceEmailAddress = null;
 		if ( ! empty( $_POST['invoiceEmail'] ) ) { // Var input okay.
-			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
+			$customerInvoiceEmailAddress = wp_unslash( sanitize_email( $_POST['invoiceEmail'] ) ); // Var input okay.
 		}
 
 		$customerInvoiceGLN = null;
 		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
-			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
+			$customerInvoiceGLN = wp_unslash( sanitize_text_field( $_POST['invoiceGLN'] ) ); // Var input okay.
 		}
 
 		$billing_info = new stdClass();
@@ -446,46 +446,46 @@ class EduAdmin_BookingHandler {
 		if ( empty( $_POST['alsoInvoiceCustomer'] ) ) { // Var input okay.
 			$billing_info->CustomerName = $first . ' ' . $last;
 			if ( ! empty( $_POST['customerAddress1'] ) ) { // Var input okay.
-				$billing_info->Address = sanitize_text_field( $_POST['customerAddress1'] ); // Var input okay.
+				$billing_info->Address = wp_unslash( sanitize_text_field( $_POST['customerAddress1'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerAddress2'] ) ) { // Var input okay.
-				$billing_info->Address2 = sanitize_text_field( $_POST['customerAddress2'] ); // Var input okay.
+				$billing_info->Address2 = wp_unslash( sanitize_text_field( $_POST['customerAddress2'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerPostalCode'] ) ) { // Var input okay.
-				$billing_info->Zip = sanitize_text_field( $_POST['customerPostalCode'] ); // Var input okay.
+				$billing_info->Zip = wp_unslash( sanitize_text_field( $_POST['customerPostalCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
-				$billing_info->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
+				$billing_info->City = wp_unslash( sanitize_text_field( $_POST['customerPostalCity'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
-				$billing_info->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+				$billing_info->CountryCode = wp_unslash( sanitize_text_field( $_POST['customerCountryCode'] ) ); // Var input okay.
 			}
 		} else {
 			if ( ! empty( $_POST['invoiceName'] ) ) { // Var input okay.
-				$billing_info->CustomerName = sanitize_text_field( $_POST['invoiceName'] ); // Var input okay.
+				$billing_info->CustomerName = wp_unslash( sanitize_text_field( $_POST['invoiceName'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceAddress1'] ) ) { // Var input okay.
-				$billing_info->Address = sanitize_text_field( $_POST['invoiceAddress1'] ); // Var input okay.
+				$billing_info->Address = wp_unslash( sanitize_text_field( $_POST['invoiceAddress1'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceAddress2'] ) ) { // Var input okay.
-				$billing_info->Address2 = sanitize_text_field( $_POST['invoiceAddress2'] ); // Var input okay.
+				$billing_info->Address2 = wp_unslash( sanitize_text_field( $_POST['invoiceAddress2'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoicePostalCode'] ) ) { // Var input okay.
-				$billing_info->Zip = sanitize_text_field( $_POST['invoicePostalCode'] ); // Var input okay.
+				$billing_info->Zip = wp_unslash( sanitize_text_field( $_POST['invoicePostalCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
-				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
+				$billing_info->City = wp_unslash( sanitize_text_field( $_POST['invoicePostalCity'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceCountryCode'] ) ) { // Var input okay.
-				$billing_info->CountryCode = sanitize_text_field( $_POST['invoiceCountryCode'] ); // Var input okay.
+				$billing_info->CountryCode = wp_unslash( sanitize_text_field( $_POST['invoiceCountryCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
-				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
+				$billing_info->OrganisationNumber = wp_unslash( sanitize_text_field( $_POST['invoiceOrgNo'] ) ); // Var input okay.
 			}
 		}
 
 		if ( ! empty( $_POST['ediReference'] ) ) {
-			$billing_info->EdiReference = sanitize_text_field( $_POST['ediReference'] ); // Var input okay.
+			$billing_info->EdiReference = wp_unslash( sanitize_text_field( $_POST['ediReference'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
@@ -518,30 +518,30 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['contactFirstName'] ) ) { // Var input okay.
-			$contact->FirstName = sanitize_text_field( $_POST['contactFirstName'] ); // Var input okay.
+			$contact->FirstName = wp_unslash( sanitize_text_field( $_POST['contactFirstName'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactLastName'] ) ) { // Var input okay.
-			$contact->LastName = sanitize_text_field( $_POST['contactLastName'] ); // Var input okay.
+			$contact->LastName = wp_unslash( sanitize_text_field( $_POST['contactLastName'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactPhone'] ) ) { // Var input okay.
-			$contact->Phone = sanitize_text_field( $_POST['contactPhone'] ); // Var input okay.
+			$contact->Phone = wp_unslash( sanitize_text_field( $_POST['contactPhone'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactMobile'] ) ) { // Var input okay.
-			$contact->Mobile = sanitize_text_field( $_POST['contactMobile'] ); // Var input okay.
+			$contact->Mobile = wp_unslash( sanitize_text_field( $_POST['contactMobile'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactEmail'] ) ) { // Var input okay.
-			$contact->Email = sanitize_email( $_POST['contactEmail'] ); // Var input okay.
+			$contact->Email = wp_unslash( sanitize_email( $_POST['contactEmail'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactCivReg'] ) ) { // Var input okay.
-			$contact->CivicRegistrationNumber = sanitize_text_field( $_POST['contactCivReg'] ); // Var input okay.
+			$contact->CivicRegistrationNumber = wp_unslash( sanitize_text_field( $_POST['contactCivReg'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['contactPass'] ) ) { // Var input okay.
-			$contact->Password = sanitize_text_field( $_POST['contactPass'] ); // Var input okay.
+			$contact->Password = wp_unslash( sanitize_text_field( $_POST['contactPass'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['contactPriceName'] ) ) { // Var input okay.
@@ -582,7 +582,10 @@ class EduAdmin_BookingHandler {
 			$booking_data->ContactPerson->LastName  = 'Rary';
 		}
 
-		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
+		$retValu                    = EDUAPI()->REST->Booking->CheckPrice( $booking_data );
+		$retValu["BookingDataTemp"] = $booking_data;
+
+		return $retValu;
 	}
 
 	private function get_multiple_participant_booking() {
@@ -605,7 +608,7 @@ class EduAdmin_BookingHandler {
 		$contact  = $this->get_contact_person();
 
 		if ( ! empty( $_POST['purchaseOrderNumber'] ) ) { // Var input okay.
-			$booking_data->PurchaseOrderNumber = sanitize_text_field( $_POST['purchaseOrderNumber'] ); // Var input okay.
+			$booking_data->PurchaseOrderNumber = wp_unslash( sanitize_text_field( $_POST['purchaseOrderNumber'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $customer->BillingInfo->SellerReference ) ) {
@@ -653,7 +656,7 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['customerName'] ) ) { // Var input okay.
-			$customer->CustomerName = sanitize_text_field( $_POST['customerName'] ); // Var input okay.
+			$customer->CustomerName = wp_unslash( sanitize_text_field( $_POST['customerName'] ) ); // Var input okay.
 		}
 
 		if ( empty( $customer->CustomerGroupId ) || ! is_numeric( $customer->CustomerGroupId ) || $customer->CustomerGroupId === 0 ) {
@@ -661,88 +664,88 @@ class EduAdmin_BookingHandler {
 		}
 
 		if ( ! empty( $_POST['customerVatNo'] ) ) { // Var input okay.
-			$customer->OrganisationNumber = sanitize_text_field( $_POST['customerVatNo'] ); // Var input okay.
+			$customer->OrganisationNumber = wp_unslash( sanitize_text_field( $_POST['customerVatNo'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerAddress1'] ) ) { // Var input okay.
-			$customer->Address = sanitize_text_field( $_POST['customerAddress1'] ); // Var input okay.
+			$customer->Address = wp_unslash( sanitize_text_field( $_POST['customerAddress1'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerAddress2'] ) ) { // Var input okay.
-			$customer->Address2 = sanitize_text_field( $_POST['customerAddress2'] ); // Var input okay.
+			$customer->Address2 = wp_unslash( sanitize_text_field( $_POST['customerAddress2'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerPostalCode'] ) ) { // Var input okay.
-			$customer->Zip = sanitize_text_field( $_POST['customerPostalCode'] ); // Var input okay.
+			$customer->Zip = wp_unslash( sanitize_text_field( $_POST['customerPostalCode'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
-			$customer->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
+			$customer->City = wp_unslash( sanitize_text_field( $_POST['customerPostalCity'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
-			$customer->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+			$customer->CountryCode = wp_unslash( sanitize_text_field( $_POST['customerCountryCode'] ) ); // Var input okay.
 		}
 		if ( ! empty( $_POST['customerEmail'] ) ) { // Var input okay.
-			$customer->Email = sanitize_email( $_POST['customerEmail'] ); // Var input okay.
+			$customer->Email = wp_unslash( sanitize_email( $_POST['customerEmail'] ) ); // Var input okay.
 		}
 
 		$customerInvoiceEmailAddress = null;
 		if ( ! empty( $_POST['invoiceEmail'] ) ) { // Var input okay.
-			$customerInvoiceEmailAddress = sanitize_email( $_POST['invoiceEmail'] ); // Var input okay.
+			$customerInvoiceEmailAddress = wp_unslash( sanitize_email( $_POST['invoiceEmail'] ) ); // Var input okay.
 		}
 
 		$customerInvoiceGLN = null;
 		if ( ! empty( $_POST['invoiceGLN'] ) ) { // Var input okay.
-			$customerInvoiceGLN = sanitize_text_field( $_POST['invoiceGLN'] ); // Var input okay.
+			$customerInvoiceGLN = wp_unslash( sanitize_text_field( $_POST['invoiceGLN'] ) ); // Var input okay.
 		}
 
 		$billing_info = new stdClass();
 
 		if ( ! isset( $_POST['alsoInvoiceCustomer'] ) ) { // Var input okay.
 			if ( ! empty( $_POST['customerName'] ) ) { // Var input okay.
-				$billing_info->CustomerName = sanitize_text_field( $_POST['customerName'] ); // Var input okay.
+				$billing_info->CustomerName = wp_unslash( sanitize_text_field( $_POST['customerName'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerAddress1'] ) ) { // Var input okay.
-				$billing_info->Address = sanitize_text_field( $_POST['customerAddress1'] ); // Var input okay.
+				$billing_info->Address = wp_unslash( sanitize_text_field( $_POST['customerAddress1'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerAddress2'] ) ) { // Var input okay.
-				$billing_info->Address2 = sanitize_text_field( $_POST['customerAddress2'] ); // Var input okay.
+				$billing_info->Address2 = wp_unslash( sanitize_text_field( $_POST['customerAddress2'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerPostalCode'] ) ) { // Var input okay.
-				$billing_info->Zip = sanitize_text_field( $_POST['customerPostalCode'] ); // Var input okay.
+				$billing_info->Zip = wp_unslash( sanitize_text_field( $_POST['customerPostalCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerPostalCity'] ) ) { // Var input okay.
-				$billing_info->City = sanitize_text_field( $_POST['customerPostalCity'] ); // Var input okay.
+				$billing_info->City = wp_unslash( sanitize_text_field( $_POST['customerPostalCity'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['customerCountryCode'] ) ) { // Var input okay.
-				$billing_info->CountryCode = sanitize_text_field( $_POST['customerCountryCode'] ); // Var input okay.
+				$billing_info->CountryCode = wp_unslash( sanitize_text_field( $_POST['customerCountryCode'] ) ); // Var input okay.
 			}
 		} else {
 			if ( ! empty( $_POST['invoiceName'] ) ) { // Var input okay.
-				$billing_info->CustomerName = sanitize_text_field( $_POST['invoiceName'] ); // Var input okay.
+				$billing_info->CustomerName = wp_unslash( sanitize_text_field( $_POST['invoiceName'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceAddress1'] ) ) { // Var input okay.
-				$billing_info->Address = sanitize_text_field( $_POST['invoiceAddress1'] ); // Var input okay.
+				$billing_info->Address = wp_unslash( sanitize_text_field( $_POST['invoiceAddress1'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceAddress2'] ) ) { // Var input okay.
-				$billing_info->Address2 = sanitize_text_field( $_POST['invoiceAddress2'] ); // Var input okay.
+				$billing_info->Address2 = wp_unslash( sanitize_text_field( $_POST['invoiceAddress2'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoicePostalCode'] ) ) { // Var input okay.
-				$billing_info->Zip = sanitize_text_field( $_POST['invoicePostalCode'] ); // Var input okay.
+				$billing_info->Zip = wp_unslash( sanitize_text_field( $_POST['invoicePostalCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoicePostalCity'] ) ) { // Var input okay.
-				$billing_info->City = sanitize_text_field( $_POST['invoicePostalCity'] ); // Var input okay.
+				$billing_info->City = wp_unslash( sanitize_text_field( $_POST['invoicePostalCity'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceCountryCode'] ) ) { // Var input okay.
-				$billing_info->CountryCode = sanitize_text_field( $_POST['invoiceCountryCode'] ); // Var input okay.
+				$billing_info->CountryCode = wp_unslash( sanitize_text_field( $_POST['invoiceCountryCode'] ) ); // Var input okay.
 			}
 			if ( ! empty( $_POST['invoiceOrgNo'] ) ) { // Var input okay.
-				$billing_info->OrganisationNumber = sanitize_text_field( $_POST['invoiceOrgNo'] ); // Var input okay.
+				$billing_info->OrganisationNumber = wp_unslash( sanitize_text_field( $_POST['invoiceOrgNo'] ) ); // Var input okay.
 			}
 		}
 
 		if ( ! empty( $_POST['invoiceReference'] ) ) { // Var input okay.
-			$billing_info->BuyerReference = sanitize_text_field( $_POST['invoiceReference'] ); // Var input okay.
+			$billing_info->BuyerReference = wp_unslash( sanitize_text_field( $_POST['invoiceReference'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $_POST['ediReference'] ) ) {
-			$billing_info->EdiReference = sanitize_text_field( $_POST['ediReference'] ); // Var input okay.
+			$billing_info->EdiReference = wp_unslash( sanitize_text_field( $_POST['ediReference'] ) ); // Var input okay.
 		}
 
 		if ( ! empty( $customerInvoiceEmailAddress ) ) {
@@ -837,7 +840,10 @@ class EduAdmin_BookingHandler {
 			$booking_data->Participants[] = $person;
 		}
 
-		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
+		$retValu                    = EDUAPI()->REST->Booking->CheckPrice( $booking_data );
+		$retValu["BookingDataTemp"] = $booking_data;
+
+		return $retValu;
 	}
 
 	public function check_programme() {
@@ -945,7 +951,7 @@ class EduAdmin_BookingHandler {
 				default:
 					$answer->CustomFieldId = intval( $custom_field_id );
 					if ( ( 'note' === $custom_field_type || 'text' === $custom_field_type ) && ! empty( $_POST[ $key ] ) ) { // Var input okay.
-						$answer->CustomFieldValue = sanitize_text_field( $_POST[ $key ] ); // Var input okay.
+						$answer->CustomFieldValue = wp_unslash( sanitize_text_field( $_POST[ $key ] ) ); // Var input okay.
 					} elseif ( 'number' === $custom_field_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
 						$answer->CustomFieldValue = intval( $_POST[ $key ] ); // Var input okay.
 					} elseif ( 'date' === $custom_field_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
@@ -1035,7 +1041,7 @@ class EduAdmin_BookingHandler {
 				default:
 					$answer->AnswerId = intval( $question_answer_id );
 					if ( ( 'note' === $question_type || 'text' === $question_type ) && ! empty( $_POST[ $key ] ) ) { // Var input okay.
-						$answer->AnswerValue = sanitize_text_field( $_POST[ $key ] ); // Var input okay.
+						$answer->AnswerValue = wp_unslash( sanitize_text_field( $_POST[ $key ] ) ); // Var input okay.
 					} elseif ( 'number' === $question_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
 						$answer->AnswerValue = intval( $_POST[ $key ] ); // Var input okay.
 					} elseif ( 'date' === $question_type && ! empty( $_POST[ $key ] ) ) { // Var input okay.
@@ -1096,18 +1102,18 @@ class EduAdmin_BookingHandler {
 
 			if ( ! empty( $_POST['participantFirstName'][ $key ] ) ) { // Var input okay.
 				$person            = new stdClass();
-				$person->FirstName = sanitize_text_field( $_POST['participantFirstName'][ $key ] ); // Var input okay.
+				$person->FirstName = wp_unslash( sanitize_text_field( $_POST['participantFirstName'][ $key ] ) ); // Var input okay.
 				if ( ! empty( $_POST['participantLastName'][ $key ] ) ) { // Var input okay.
-					$person->LastName = sanitize_text_field( $_POST['participantLastName'][ $key ] ); // Var input okay.
+					$person->LastName = wp_unslash( sanitize_text_field( $_POST['participantLastName'][ $key ] ) ); // Var input okay.
 				}
 				if ( ! empty( $_POST['participantEmail'][ $key ] ) ) { // Var input okay.
-					$person->Email = sanitize_email( $_POST['participantEmail'][ $key ] ); // Var input okay.
+					$person->Email = wp_unslash( sanitize_email( $_POST['participantEmail'][ $key ] ) ); // Var input okay.
 				}
 				if ( ! empty( $_POST['participantPhone'][ $key ] ) ) { // Var input okay.
-					$person->Phone = sanitize_text_field( $_POST['participantPhone'][ $key ] ); // Var input okay.
+					$person->Phone = wp_unslash( sanitize_text_field( $_POST['participantPhone'][ $key ] ) ); // Var input okay.
 				}
 				if ( ! empty( $_POST['participantMobile'][ $key ] ) ) { // Var input okay.
-					$person->Mobile = sanitize_text_field( $_POST['participantMobile'][ $key ] ); // Var input okay.
+					$person->Mobile = wp_unslash( sanitize_text_field( $_POST['participantMobile'][ $key ] ) ); // Var input okay.
 				}
 
 				if ( ! empty( $_POST['participantCivReg'][ $key ] ) ) { // Var input okay.
