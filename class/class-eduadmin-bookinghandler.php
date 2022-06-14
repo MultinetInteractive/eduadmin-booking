@@ -582,10 +582,7 @@ class EduAdmin_BookingHandler {
 			$booking_data->ContactPerson->LastName  = 'Rary';
 		}
 
-		$retValu                    = EDUAPI()->REST->Booking->CheckPrice( $booking_data );
-		$retValu["BookingDataTemp"] = $booking_data;
-
-		return $retValu;
+		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
 	}
 
 	private function get_multiple_participant_booking() {
@@ -840,10 +837,7 @@ class EduAdmin_BookingHandler {
 			$booking_data->Participants[] = $person;
 		}
 
-		$retValu                    = EDUAPI()->REST->Booking->CheckPrice( $booking_data );
-		$retValu["BookingDataTemp"] = $booking_data;
-
-		return $retValu;
+		return EDUAPI()->REST->Booking->CheckPrice( $booking_data );
 	}
 
 	public function check_programme() {
