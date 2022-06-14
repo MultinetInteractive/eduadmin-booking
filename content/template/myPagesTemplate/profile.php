@@ -8,27 +8,27 @@ $invoice_customer = $user->Customer->BillingInfo;
 
 if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonce'], 'edu-save-profile' ) && 'saveInfo' === sanitize_text_field( $_POST['eduaction'] ) ) {
 	$patch_customer               = new stdClass();
-	$patch_customer->CustomerName = sanitize_text_field( $_POST['customerName'] );
-	$patch_customer->Address      = sanitize_text_field( $_POST['customerAddress'] );
-	$patch_customer->Address2     = sanitize_text_field( $_POST['customerAddress2'] );
-	$patch_customer->Zip          = sanitize_text_field( $_POST['customerZip'] );
-	$patch_customer->City         = sanitize_text_field( $_POST['customerCity'] );
-	$patch_customer->Phone        = sanitize_text_field( $_POST['customerPhone'] );
-	$patch_customer->Email        = sanitize_email( $_POST['customerEmail'] );
+	$patch_customer->CustomerName = wp_unslash( sanitize_text_field( $_POST['customerName'] ) );
+	$patch_customer->Address      = wp_unslash( sanitize_text_field( $_POST['customerAddress'] ) );
+	$patch_customer->Address2     = wp_unslash( sanitize_text_field( $_POST['customerAddress2'] ) );
+	$patch_customer->Zip          = wp_unslash( sanitize_text_field( $_POST['customerZip'] ) );
+	$patch_customer->City         = wp_unslash( sanitize_text_field( $_POST['customerCity'] ) );
+	$patch_customer->Phone        = wp_unslash( sanitize_text_field( $_POST['customerPhone'] ) );
+	$patch_customer->Email        = wp_unslash( sanitize_email( $_POST['customerEmail'] ) );
 
 	$patch_customer->BillingInfo                     = new stdClass();
-	$patch_customer->BillingInfo->CustomerName       = sanitize_text_field( $_POST['customerInvoiceName'] );
-	$patch_customer->BillingInfo->Address            = sanitize_text_field( $_POST['customerInvoiceAddress'] );
-	$patch_customer->BillingInfo->Zip                = sanitize_text_field( $_POST['customerInvoiceZip'] );
-	$patch_customer->BillingInfo->City               = sanitize_text_field( $_POST['customerInvoiceCity'] );
-	$patch_customer->BillingInfo->OrganisationNumber = sanitize_text_field( $_POST['customerInvoiceOrgNr'] );
-	$patch_customer->BillingInfo->BuyerReference     = sanitize_text_field( $_POST['customerReference'] );
-	$patch_customer->BillingInfo->Email              = sanitize_email( $_POST['customerInvoiceEmail'] );
+	$patch_customer->BillingInfo->CustomerName       = wp_unslash( sanitize_text_field( $_POST['customerInvoiceName'] ) );
+	$patch_customer->BillingInfo->Address            = wp_unslash( sanitize_text_field( $_POST['customerInvoiceAddress'] ) );
+	$patch_customer->BillingInfo->Zip                = wp_unslash( sanitize_text_field( $_POST['customerInvoiceZip'] ) );
+	$patch_customer->BillingInfo->City               = wp_unslash( sanitize_text_field( $_POST['customerInvoiceCity'] ) );
+	$patch_customer->BillingInfo->OrganisationNumber = wp_unslash( sanitize_text_field( $_POST['customerInvoiceOrgNr'] ) );
+	$patch_customer->BillingInfo->BuyerReference     = wp_unslash( sanitize_text_field( $_POST['customerReference'] ) );
+	$patch_customer->BillingInfo->Email              = wp_unslash( sanitize_email( $_POST['customerInvoiceEmail'] ) );
 
 	$patch_contact         = new stdClass();
-	$patch_contact->Phone  = sanitize_text_field( $_POST['contactPhone'] );
-	$patch_contact->Mobile = sanitize_text_field( $_POST['contactMobile'] );
-	$patch_contact->Email  = sanitize_email( $_POST['contactEmail'] );
+	$patch_contact->Phone  = wp_unslash( sanitize_text_field( $_POST['contactPhone'] ) );
+	$patch_contact->Mobile = wp_unslash( sanitize_text_field( $_POST['contactMobile'] ) );
+	$patch_contact->Email  = wp_unslash( sanitize_email( $_POST['contactEmail'] ) );
 
 	EDUAPI()->REST->Customer->Update( $customer->CustomerId, $patch_customer );
 	EDUAPI()->REST->Person->Update( $contact->PersonId, $patch_contact );

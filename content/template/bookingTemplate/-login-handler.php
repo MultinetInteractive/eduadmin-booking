@@ -65,10 +65,10 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 			$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 			switch ( $selected_login_field ) {
 				case 'Email':
-					$contact->Email = sanitize_email( $_POST['eduadminloginEmail'] );
+					$contact->Email = wp_unslash( sanitize_email( $_POST['eduadminloginEmail'] ) );
 					break;
 				case 'CivicRegistrationNumber':
-					$contact->CivicRegistrationNumber = sanitize_text_field( $_POST['eduadminloginEmail'] );
+					$contact->CivicRegistrationNumber = wp_unslash( sanitize_text_field( $_POST['eduadminloginEmail'] ) );
 					break;
 			}
 
