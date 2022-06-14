@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.0...v3.3.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* Add extra escape-things for input from WordPress, since it adds slashes to everything. ([a07a167](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a07a167ceea8a66c36736bb44728b074a5bb8ae4)), closes [#450](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/450)
+
 ## [3.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.3...v3.3.0) (2022-06-10)
 
 
