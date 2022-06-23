@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.1...v3.3.2) (2022-06-23)
+
+
+### Bug Fixes
+
+* Added code to handle use of `eduadmin-bookingview` on a separate page (with attributes) ([f475ee4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f475ee45f058ec0d3c38a23fd370b5ad210d422b))
+
+
+### Documentation
+
+* Added info about cookies ([511f7ae](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/511f7ae28d2d4e6948b307163113191d629f6f10))
+
 ### [3.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.0...v3.3.1) (2022-06-14)
 
 
