@@ -1,7 +1,15 @@
 <?php
-$r             = uniqid( 'eduadmin-timer-' );
-${$r}          = EDU()->start_timer( 'Booking info' );
-$course_id     = $wp_query->query_vars['courseId'];
+$r    = uniqid( 'eduadmin-timer-' );
+${$r} = EDU()->start_timer( 'Booking info' );
+
+if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
+	$course_id = $wp_query->query_vars['courseId'];
+} elseif ( ! empty( $attributes['courseid'] ) ) {
+	$course_id = $attributes['courseid'];
+} else {
+	$course_id = null;
+}
+
 $group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 
 $fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
