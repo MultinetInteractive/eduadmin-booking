@@ -8,7 +8,12 @@ if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
 } else {
 	$course_id = null;
 }
-$group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
+
+if ( $course_id == null ) {
+	return;
+}
+
+$group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity' );
 $group_by_city_class = '';
 
 $fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
