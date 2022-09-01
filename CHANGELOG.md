@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.2...v3.4.0) (2022-09-01)
+
+
+### Features
+
+* Booking page now cares about ApplicationOpenDate. If we're not at/past the date, it can't be selected. ([45af1af](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45af1af2a6ef8a08cbe29f8104146044e368be65)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+* Listview (events) and detailview now removes the "Book"-button, if there is an ApplicationOpenDate, that hasn't passed yet. ([7bbc8aa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7bbc8aa94cc412586624bcd46a2540eaf08cb00d)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+
+
+### Bug Fixes
+
+* If course_id is null, don't try to output any ogp or ld-json. ([28f4f8d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/28f4f8d61801950c7c6dc8587f5d618f3f97e125))
+
+
+### Refactoring
+
+* Add ApplicationOpenDate to available data from the API ([0f49992](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0f499920965e2235297cb5bed21e90513db3629f)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+
 ### [3.3.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.1...v3.3.2) (2022-06-23)
 
 
