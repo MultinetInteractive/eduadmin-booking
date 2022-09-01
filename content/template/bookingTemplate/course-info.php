@@ -10,7 +10,7 @@ if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
 	$course_id = null;
 }
 
-$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
+$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity' );
 
 $fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 if ( ! is_numeric( $fetch_months ) ) {
@@ -47,22 +47,36 @@ $events = $selected_course['Events'];
 $filtered_events = [];
 
 foreach ( $events as $_event ) {
+	$skip_event = false;
+
 	if ( $_event['ParticipantNumberLeft'] == 0 && $_event['MaxParticipantNumber'] != 0 ) {
-	} else {
+		$skip_event = true;
+	}
+
+	if ( null != $_event['ApplicationOpenDate'] ) {
+		$current_time   = current_time( 'Y-m-d H:i' );
+		$event_opendate = edu_get_timezoned_date( 'Y-m-d H:i', $_event['ApplicationOpenDate'] );
+
+		if ( $current_time <= $event_opendate ) {
+			$skip_event = true;
+		}
+	}
+
+	if ( ! $skip_event ) {
 		$filtered_events[] = $_event;
 	}
 }
 
 $events = $filtered_events;
 
-$always_allow_change_event = EDU()->is_checked( 'eduadmin-alwaysAllowChangeEvent', false );
+$always_allow_change_event = EDU()->is_checked( 'eduadmin-alwaysAllowChangeEvent' );
 
 if ( ! $noAvailableDates ) {
 	$event = $events[0];
 	if ( isset( $_GET['eid'] ) && is_numeric( $_GET['eid'] ) ) {
 		$eventid = intval( $_GET['eid'] );
 		foreach ( $events as $ev ) {
-			if ( $eventid === $ev['EventId'] && $ev['StartDate'] > date( "Y-m-d H:i:s" ) ) {
+			if ( $eventid === $ev['EventId'] && edu_get_timezoned_date( 'Y-m-d H:i:s', $ev['StartDate'] ) > current_time( 'Y-m-d H:i:s' ) ) {
 				$event = $ev;
 				if ( ! $always_allow_change_event ) {
 					$events   = array();

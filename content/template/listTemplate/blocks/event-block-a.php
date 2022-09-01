@@ -34,8 +34,8 @@
 					echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
 					                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
 					     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
-					                                                                                                                                    ' - ' .
-					                                                                                                                                    edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
+					                                                                                                                                             ' - ' .
+					                                                                                                                                             edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
 					echo "</div>\n";
 				}
 
@@ -56,22 +56,45 @@
 		<div class="objectBook">
 			<?php
 			if ( $show_book_btn ) {
-				if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
-					if ( $use_eduadmin_form ) {
-						?>
-						<a class="bookButton cta-btn" href="javascript://"
-						   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $event['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
-						<?php
+				$show_button_link = true;
+				if ( null != $event['ApplicationOpenDate'] ) {
+					$current_time   = current_time( 'Y-m-d H:i' );
+					$event_opendate = edu_get_timezoned_date( 'Y-m-d H:i', $event['ApplicationOpenDate'] );
+
+					if ( $current_time <= $event_opendate ) {
+						$show_button_link = false;
+					}
+				}
+
+				if ( $show_button_link ) {
+					if ( $spots_left > 0 || 0 === intval( $event['MaxParticipantNumber'] ) ) {
+						if ( $use_eduadmin_form ) {
+							?>
+							<a class="bookButton cta-btn" href="javascript://"
+							   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $event['BookingFormUrl'] ); ?>');"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+							<?php
+						} else {
+							?>
+							<a class="bookButton cta-btn"
+							   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+							<?php
+						}
 					} else {
 						?>
-						<a class="bookButton cta-btn"
-						   href="<?php echo $base_url; ?>/<?php echo make_slugs( $name ); ?>__<?php echo $object['CourseTemplateId']; ?>/book/?eid=<?php echo $event['EventId']; ?><?php echo edu_get_query_string( "&" ) . '&_=' . time(); ?>"><?php _ex( 'Book', 'frontend', 'eduadmin-booking' ); ?></a>
+						<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
 						<?php
 					}
 				} else {
 					?>
-					<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
+				<i class="applicationNotOpenYet"
+				   title="<?php echo esc_attr( edu_get_timezoned_date( 'Y-m-d H:i', $event['ApplicationOpenDate'] ) ); ?>">
 					<?php
+					echo sprintf(
+						_x( 'Application opens<br />%1$s', 'frontend', 'eduadmin-booking' ),
+						edu_event_listitem_applicationopendate( $event['ApplicationOpenDate'] )
+					);
+					?>
+					</i><?php
 				}
 			}
 			?>

@@ -33,6 +33,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 	EDUAPI()->REST->Customer->Update( $customer->CustomerId, $patch_customer );
 	EDUAPI()->REST->Person->Update( $contact->PersonId, $patch_contact );
 }
+
 ?>
 
 <div class="eduadmin">
