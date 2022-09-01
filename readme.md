@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.0.0
-Stable tag: 3.3.2
+Stable tag: 3.4.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,24 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.2...v3.4.0) (2022-09-01)
+
+
+#### Features
+
+* Booking page now cares about ApplicationOpenDate. If we're not at/past the date, it can't be selected. ([45af1af](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/45af1af2a6ef8a08cbe29f8104146044e368be65)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+* Listview (events) and detailview now removes the "Book"-button, if there is an ApplicationOpenDate, that hasn't passed yet. ([7bbc8aa](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7bbc8aa94cc412586624bcd46a2540eaf08cb00d)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+
+
+#### Bug Fixes
+
+* If course_id is null, don't try to output any ogp or ld-json. ([28f4f8d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/28f4f8d61801950c7c6dc8587f5d618f3f97e125))
+
+
+#### Refactoring
+
+* Add ApplicationOpenDate to available data from the API ([0f49992](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0f499920965e2235297cb5bed21e90513db3629f)), closes [#436](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/436)
+
 ### [3.3.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.1...v3.3.2) (2022-06-23)
 
 
@@ -81,14 +99,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * Better linebreaks (OGP) ([adad674](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/adad6747313211484615386bc90ba209be78b817))
 * Fixes oEmbed canonical links. ([d48f816](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d48f81668d45935494c1cab5f86b2460a5120931)), closes [#310](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/310)
-
-### [3.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.2.2...v3.2.3) (2022-06-02)
-
-
-#### Bug Fixes
-
-* Enhanced handling of new contacts/customers (can't set the personId or things like that, if they don't exist) ([ea630b5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ea630b5a897daac2a0aaf0ce508203028ba53287))
-* Some fixes for Question handling ([c2e4408](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c2e4408722316b8a8ac0e36d543ed781decf37b5))
 
 
 
