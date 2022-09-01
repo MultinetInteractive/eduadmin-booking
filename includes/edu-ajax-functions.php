@@ -31,7 +31,7 @@ function edu_listview_courselist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=StartDate,City,BookingFormUrl,OnDemand,OnDemandPublished';
+		'$select=StartDate,City,BookingFormUrl,OnDemand,OnDemandPublished,ApplicationOpenDate';
 
 	$filters[] = 'ShowOnWeb';
 
@@ -83,12 +83,12 @@ function edu_listview_courselist() {
 
 	$return_value = array();
 	foreach ( $courses as $event ) {
-		if ( ! isset( $return_value[ (string)$event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
+		if ( ! isset( $return_value[ (string) $event['CourseTemplateId'] ] ) && count( $event['Events'] ) > 0 ) {
 			/* translators: 1: Next course/event date */
 			if ( $event['OnDemand'] ) {
-				$return_value[ (string)$event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
+				$return_value[ (string) $event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
 			} else {
-				$return_value[ (string)$event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
+				$return_value[ (string) $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
 			}
 		}
 	}
@@ -193,11 +193,11 @@ function edu_api_listview_eventlist() {
 		';' .
 		'$orderby=StartDate asc' .
 		';' .
-		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays';
+		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate';
 
 	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
-	if(!$ondemand) {
+	if ( ! $ondemand ) {
 		$filters[] = 'Events/any(b:b/HasPublicPriceName' .
 		             ' and b/StatusId eq 1' .
 		             ' and b/CustomerId eq null' .
@@ -420,7 +420,7 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 
 		$event_dates = array();
 		if ( ! empty( $event['EventDates'] ) ) {
-			$event_dates[ (string)$event['EventId'] ] = $event['EventDates'];
+			$event_dates[ (string) $event['EventId'] ] = $event['EventDates'];
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-a.php';
@@ -496,7 +496,7 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 
 		$event_dates = array();
 		if ( ! empty( $event['EventDates'] ) ) {
-			$event_dates[ (string)$event['EventId'] ] = $event['EventDates'];
+			$event_dates[ (string) $event['EventId'] ] = $event['EventDates'];
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-b.php';
@@ -533,12 +533,11 @@ function edu_api_eventlist() {
 
 	$ondemand = $_POST['ondemand'];
 
-	if(!$ondemand) {
+	if ( ! $ondemand ) {
 		$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
 	} else {
 		$edo = EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city );
 	}
-
 
 	$selected_course = false;
 	$name            = '';
@@ -558,14 +557,14 @@ function edu_api_eventlist() {
 		unset( $event['CourseTemplate']['Events'] );
 
 		$pricenames = array();
-		$prices = array();
+		$prices     = array();
 		foreach ( $selected_course['PriceNames'] as $pn ) {
 			$pricenames[] = $pn;
-			$prices[] = $pn['Price'];
+			$prices[]     = $pn['Price'];
 		}
 		foreach ( $event['PriceNames'] as $pn ) {
 			$pricenames[] = $pn;
-			$prices[] = $pn['Price'];
+			$prices[]     = $pn['Price'];
 		}
 
 		$event = array_merge( $event['CourseTemplate'], $event );
@@ -602,12 +601,12 @@ function edu_api_eventlist() {
 	$prices = array();
 
 	foreach ( $selected_course['PriceNames'] as $pn ) {
-		$prices[ (string)$pn['PriceNameId'] ] = $pn;
+		$prices[ (string) $pn['PriceNameId'] ] = $pn;
 	}
 
 	foreach ( $events as $e ) {
 		foreach ( $e['PriceNames'] as $pn ) {
-			$prices[ (string)$pn['PriceNameId'] ] = $pn;
+			$prices[ (string) $pn['PriceNameId'] ] = $pn;
 		}
 	}
 

@@ -1233,6 +1233,44 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 	}
 }
 
+if ( ! function_exists( 'edu_event_item_applicationopendate' ) ) {
+	function edu_event_item_applicationopendate( $application_open_date ) {
+		$__t = EDU()->start_timer( __METHOD__ );
+
+		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-detail', 'default' );
+		$use_short            = false;
+		$show_names           = false;
+		$show_time            = true;
+
+		$overridden = false;
+
+		switch ( $event_detail_setting ) {
+			case 'customSettings':
+				$use_short  = EDU()->is_checked( 'eduadmin-date-eventDates-detail-short' );
+				$show_names = EDU()->is_checked( 'eduadmin-date-eventDates-detail-show-daynames' );
+				$show_time  = EDU()->is_checked( 'eduadmin-date-eventDates-detail-show-time' );
+				$overridden = true;
+				break;
+			case 'customFormat':
+				$event_detail_custom_format = EDU()->get_option( 'eduadmin-date-eventDates-detail-custom-format' );
+				if ( ! empty( trim( $event_detail_custom_format ) ) ) {
+					echo $event_detail_custom_format;
+
+					return;
+				}
+		}
+
+		$retValue = wp_kses_post( get_old_start_end_display_date( $application_open_date, $application_open_date, $use_short, $show_names ) );
+		if ( $show_time ) {
+			$retValue .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $application_open_date ) ) . '</span>';
+		}
+
+		EDU()->stop_timer( $__t );
+
+		return $retValue;
+	}
+}
+
 if ( ! function_exists( 'edu_course_listitem_nextdate' ) ) {
 	function edu_course_listitem_nextdate( $next_event ) {
 		$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
@@ -1285,6 +1323,44 @@ if ( ! function_exists( 'edu_event_listitem_date' ) ) {
 		}
 
 		EDU()->stop_timer( $__t );
+	}
+}
+
+if ( ! function_exists( 'edu_event_listitem_applicationopendate' ) ) {
+	function edu_event_listitem_applicationopendate( $application_open_date ) {
+		$__t = EDU()->start_timer( __METHOD__ );
+
+		$event_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-list', 'default' );
+		$use_short            = true;
+		$show_names           = false;
+		$show_time            = false;
+
+		$overridden = false;
+
+		switch ( $event_detail_setting ) {
+			case 'customSettings':
+				$use_short  = EDU()->is_checked( 'eduadmin-date-eventDates-list-short' );
+				$show_names = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-daynames' );
+				$show_time  = EDU()->is_checked( 'eduadmin-date-eventDates-list-show-time' );
+				$overridden = true;
+				break;
+			case 'customFormat':
+				$event_detail_custom_format = EDU()->get_option( 'eduadmin-date-eventDates-list-custom-format' );
+				if ( ! empty( trim( $event_detail_custom_format ) ) ) {
+					echo $event_detail_custom_format;
+
+					return;
+				}
+		}
+
+		$retVal = wp_kses_post( get_old_start_end_display_date( $application_open_date, $application_open_date, $use_short, $show_names ) );
+		if ( $show_time ) {
+			$retVal .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $application_open_date ) ) . '</span>';
+		}
+
+		EDU()->stop_timer( $__t );
+
+		return $retVal;
 	}
 }
 
