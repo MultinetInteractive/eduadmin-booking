@@ -1,6 +1,6 @@
 ---
-id: shortcodes 
-title: Shortcodes 
+id: shortcodes
+title: Shortcodes
 sidebar_label: Shortcodes
 ---
 Here we have a complete reference guide to all shortcodes available in the plugin, with all attributes.
@@ -89,37 +89,37 @@ enter into this attribute.
 
 This shortcode is used when you want to create your own custom template [**detail view**](#eduadmin-detailview).
 
-| Attribute                 |              Value type              | Default value |
-| :------------------------ | :----------------------------------: | :-----------: |
-| courseid                  |                integer               |     _null_    |
-| coursename                |                boolean               |      null     |
-| coursepublicname          |                boolean               |      null     |
-| courselevel               |                boolean               |      null     |
-| courseimage               |                boolean               |      null     |
-| courseimagetext           |                boolean               |      null     |
-| coursedays                |                boolean               |      null     |
-| coursestarttime           |                boolean               |      null     |
-| courseendtime             |                boolean               |      null     |
-| courseprice               |                boolean               |      null     |
-| eventprice                |                boolean               |      null     |
-| coursedescriptionshort    |                boolean               |      null     |
-| coursedescription         |                boolean               |      null     |
-| coursegoal                |                boolean               |      null     |
-| coursetarget              |                boolean               |      null     |
-| courseprerequisites       |                boolean               |      null     |
-| courseafter               |                boolean               |      null     |
-| coursequote               |                boolean               |      null     |
-| courseeventlist           |                boolean               |      null     |
-| showmore                  |                integer               |      null     |
-| courseattributeid         |                integer               |      null     |
-| courseattributehasvalue   |                integer               |      null     |
-| courseeventlistfiltercity |                boolean               |      null     |
-| pagetitlejs               |                boolean               |      null     |
-| bookurl                   |                boolean               |      null     |
-| courseinquiryurl          |                boolean               |      null     |
-| order                     | string (`ASC`, `DESC`) |     _null_    |
-| orderby                   |                string                |     _null_    |
-| ondemand | boolean | false |
+| Attribute                 |            Value type            |      Default value      |
+| :------------------------ |:--------------------------------:|:-----------------------:|
+| courseid                  |             integer              |         _null_          |
+| coursename                |             boolean              |          null           |
+| coursepublicname          |             boolean              |          null           |
+| courselevel               |             boolean              |          null           |
+| courseimage               |             boolean              |          null           |
+| courseimagetext           |             boolean              |          null           |
+| coursedays                |             boolean              |          null           |
+| coursestarttime           |             boolean              |          null           |
+| courseendtime             |             boolean              |          null           |
+| courseprice               | boolean, string (`both`, `inclVat`, `exclVat`) |      null     |
+| eventprice                |             boolean, string (`both`, `inclVat`, `exclVat`)              |          null           |
+| coursedescriptionshort    |             boolean              |          null           |
+| coursedescription         |             boolean              |          null           |
+| coursegoal                |             boolean              |          null           |
+| coursetarget              |             boolean              |          null           |
+| courseprerequisites       |             boolean              |          null           |
+| courseafter               |             boolean              |          null           |
+| coursequote               |             boolean              |          null           |
+| courseeventlist           |             boolean              |          null           |
+| showmore                  |             integer              |          null           |
+| courseattributeid         |             integer              |          null           |
+| courseattributehasvalue   |             integer              |          null           |
+| courseeventlistfiltercity |             boolean              |          null           |
+| pagetitlejs               |             boolean              |          null           |
+| bookurl                   |             boolean              |          null           |
+| courseinquiryurl          |             boolean              |          null           |
+| order                     |      string (`ASC`, `DESC`)      |         _null_          |
+| orderby                   |              string              |         _null_          |
+| ondemand |             boolean              |          false          |
 
 We will go into each attribute on the [_custom template_](custom-template.md) page.
 

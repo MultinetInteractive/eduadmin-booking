@@ -53,7 +53,7 @@ if ( ! function_exists( 'wp_get_timezone_string' ) ) {
 	}
 }
 
-function edu_get_price( $price, $vatPercent ) {
+function edu_get_price( $price, $vatPercent, $settings_override = '' ) {
 	$t = EDU()->start_timer( __METHOD__ );
 
 	$show_vat = EDU()->is_checked( 'eduadmin-showVatTexts', true );
@@ -63,6 +63,10 @@ function edu_get_price( $price, $vatPercent ) {
 	$inc_vat = $org['PriceIncVat'];
 
 	$forcePriceAs = EDU()->get_option( 'eduadmin-showPricesAsSelected', '' );
+
+	if ( ! empty( $settings_override ) && is_string( $settings_override ) ) {
+		$forcePriceAs = $settings_override;
+	}
 
 	$currency = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 

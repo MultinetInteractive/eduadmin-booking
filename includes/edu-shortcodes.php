@@ -418,10 +418,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 				}
 
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= '<div class="pricename"><span class="pricename-price">' . esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) . "</span></div>\n";
+					$ret_str .= '<div class="pricename"><span class="pricename-price">' . esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'], $attributes['courseprice'] ) ) . "</span></div>\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', $price['PriceNameDescription'], edu_get_price( $price['Price'], $selected_course['ParticipantVat'] ) ) ) . "\n";
+						$ret_str .= wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', $price['PriceNameDescription'], edu_get_price( $price['Price'], $selected_course['ParticipantVat'], $attributes['courseprice'] ) ) ) . "\n";
 					}
 				}
 			}
@@ -437,10 +437,10 @@ function eduadmin_get_detailinfo( $attributes ) {
 				}
 
 				if ( 1 === count( $prices ) ) {
-					$ret_str .= '<div class="pricename"><span class="pricename-price">' . esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'] ) ) . "</span></div>\n";
+					$ret_str .= '<div class="pricename"><span class="pricename-price">' . esc_html( edu_get_price( current( $prices )['Price'], $selected_course['ParticipantVat'], $attributes['eventprice'] ) ) . "</span></div>\n";
 				} else {
 					foreach ( $prices as $price ) {
-						$ret_str .= wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'] ) ) ) . "\n";
+						$ret_str .= wp_kses_post( sprintf( '<div class="pricename"><span class="pricename-description">%1$s</span> <span class="pricename-price">%2$s</span></div>', $price['PriceNameDescription'], edu_get_price( $price['Price'], $edo['ParticipantVat'], $attributes['eventprice'] ) ) ) . "\n";
 					}
 				}
 			}
