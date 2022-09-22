@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.4.0...v3.5.0) (2022-09-22)
+
+
+### Features
+
+* Added Certificates-endpoint for OData ([34e1054](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/34e10545cc8a3107910badda2145b2d18819409b))
+* **Shortcodes:** Added the possibility to override what type of price you show for the `[eduadmin-detailinfo courseprice]` and `[eduadmin-detailinfo eventprice]` shortcodes ([f63724c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f63724ce82f9fddb7ce14fc72053f8eff8ee09c9)), closes [#456](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/456)
+
 ## [3.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.3.2...v3.4.0) (2022-09-01)
 
 
