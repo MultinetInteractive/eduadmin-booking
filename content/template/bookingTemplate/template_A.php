@@ -245,7 +245,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					</div>
 					<?php if ( 0 === intval( $event['MaxParticipantNumber'] ) || 0 !== $event['ParticipantNumberLeft'] ) : ?>
 						<input type="submit" class="bookButton cta-btn" id="edu-book-btn"
-						       onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;"
+						       onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false, false); return validated;"
 						       value="<?php echo esc_attr_x( 'Book now', 'frontend', 'eduadmin-booking' ); ?>" />
 					<?php else : ?>
 						<div class="bookButton neutral-btn cta-disabled">

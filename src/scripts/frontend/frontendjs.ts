@@ -304,23 +304,25 @@ var eduBookingView: EduBookingView = {
             }
         );
     },
-    CheckValidation: function (ignoreTerms: boolean) {
-        if (wp_edu.RecaptchaEnabled === 'true' && (window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
-            let captchaResponse = (window as any).grecaptcha.getResponse();
-            if (captchaResponse == '') {
-                let noCaptcha = document.getElementById(
-                    "edu-warning-recaptcha"
-                );
-                if (noCaptcha) {
-                    noCaptcha.style.display = "block";
-                    setTimeout(function () {
-                        let noCaptcha = document.getElementById(
-                            "edu-warning-recaptcha"
-                        ) as HTMLDivElement;
-                        noCaptcha.style.display = "";
-                    }, 5000);
+    CheckValidation: function (ignoreTerms: boolean, ignoreCaptcha: boolean) {
+        if(!ignoreCaptcha) {
+            if (wp_edu.RecaptchaEnabled === 'true' && (window as any).grecaptcha && (window as any).grecaptcha.getResponse) {
+                let captchaResponse = (window as any).grecaptcha.getResponse();
+                if (captchaResponse == '') {
+                    let noCaptcha = document.getElementById(
+                        "edu-warning-recaptcha"
+                    );
+                    if (noCaptcha) {
+                        noCaptcha.style.display = "block";
+                        setTimeout(function () {
+                            let noCaptcha = document.getElementById(
+                                "edu-warning-recaptcha"
+                            ) as HTMLDivElement;
+                            noCaptcha.style.display = "";
+                        }, 5000);
+                    }
+                    return false;
                 }
-                return false;
             }
         }
 
@@ -459,7 +461,7 @@ var eduBookingView: EduBookingView = {
             eduBookingView.PriceCheckThrottle = setTimeout(function () {
                 let validation = true;
                 if (validate) {
-                    validation = eduBookingView.CheckValidation(true);
+                    validation = eduBookingView.CheckValidation(true, true);
                 }
                 if (validation) {
                     let form = jQuery("#edu-booking-form").serialize();
@@ -481,7 +483,7 @@ var eduBookingView: EduBookingView = {
             eduBookingView.PriceCheckThrottle = setTimeout(function () {
                 let validation = true;
                 if (validate) {
-                    validation = eduBookingView.CheckValidation(true);
+                    validation = eduBookingView.CheckValidation(true, true);
                 }
                 if (validation) {
                     let form = jQuery("#edu-booking-form").serialize();
