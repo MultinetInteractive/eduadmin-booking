@@ -829,7 +829,7 @@ class EduAdmin_BookingHandler {
 
 		$booking_data = $this->get_multiple_participant_booking();
 
-		if ( count( $booking_data->Participants ) === 0 && $booking_data->ContactPerson->AddAsParticipant === false ) {
+		if ( count( $booking_data->Participants ) === 0 && isset( $booking_data->ContactPerson->AddAsParticipant ) && $booking_data->ContactPerson->AddAsParticipant === false ) {
 			$person            = new stdClass();
 			$person->FirstName = "Price";
 			$person->LastName  = "Check";
@@ -856,7 +856,7 @@ class EduAdmin_BookingHandler {
 			$booking_data->ContactPerson->AddAsParticipant = false;
 		}
 
-		if ( 0 === count( $booking_data->Participants ) && $booking_data->ContactPerson->AddAsParticipant === false ) {
+		if ( 0 === count( $booking_data->Participants ) && isset( $booking_data->ContactPerson->AddAsParticipant ) && $booking_data->ContactPerson->AddAsParticipant === false ) {
 			$empty_participant            = new stdClass();
 			$empty_participant->FirstName = 'Price';
 			$empty_participant->LastName  = 'Check';

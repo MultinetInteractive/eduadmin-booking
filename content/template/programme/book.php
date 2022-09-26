@@ -568,7 +568,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 				</div>
 				<?php if ( 0 !== $programme['ParticipantNumberLeft'] ) : ?>
 					<input type="submit" class="bookButton cta-btn" id="edu-book-btn"
-					       onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false); return validated;"
+					       onclick="eduBookingView.UpdatePrice(); var validated = eduBookingView.CheckValidation(false, false); return validated;"
 					       value="<?php echo esc_attr_x( 'Book now', 'frontend', 'eduadmin-booking' ); ?>" />
 				<?php else : ?>
 					<div class="bookButton neutral-btn cta-disabled">
