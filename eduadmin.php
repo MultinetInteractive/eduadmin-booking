@@ -653,7 +653,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function activate() {
-			if ( EDU()->get_option( 'eduadmin-bookingViewPage', NIL ) == NIL ) {
+			if ( EDU()->get_option( 'eduadmin-bookingViewPage', 0 ) == 0 ) {
 				update_option( 'eduadmin-useBookingFormFromApi', true );
 			}
 
