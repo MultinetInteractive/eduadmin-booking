@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.2...v3.5.3) (2022-12-12)
+
+
+### Bug Fixes
+
+* NIL is no longer available in PHP for some reason. ([c45b30e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c45b30e2b410b35d5dcca06a14573b79a194722a))
+
 ### [3.5.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.1...v3.5.2) (2022-12-08)
 
 
