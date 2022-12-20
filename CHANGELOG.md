@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.4...v3.5.5) (2022-12-20)
+
+
+### Bug Fixes
+
+* **Dates:** Better fix for showing the dates, so that it uses the same format regardless if there's event dates or not on the event itself. ([a79feda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a79feda08e000ac3258b2841c522d7cc804997b6))
+
 ### [3.5.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.3...v3.5.4) (2022-12-20)
 
 
