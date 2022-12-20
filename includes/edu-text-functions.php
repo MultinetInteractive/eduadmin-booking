@@ -958,7 +958,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	usort( $days, "DateComparer" );
 
 	if ( 1 === count( $days ) && ! $always_show_schedule ) {
-		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days, true ) );
+		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days ) );
 	}
 
 	$added_dates = array();
@@ -1232,7 +1232,7 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 				get_logical_date_groups( $event_dates[ (string) $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
 				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
 			if ( $show_time ) {
-				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) ?
+				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || count( $event_dates[ (string) $ev['EventId'] ] ) === 1 ?
 					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
 					'';
 			}
