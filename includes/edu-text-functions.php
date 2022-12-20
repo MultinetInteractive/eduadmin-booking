@@ -981,7 +981,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 		foreach ( $added_dates as $time => $_days ) {
 			$start_date  = $_days[0];
 			$finish_date = $_days[ count( $_days ) - 1 ];
-			$show_times = date( "Y-m-d", strtotime( $start_date['StartDate'] ) ) === date( "Y-m-d", strtotime( $finish_date['EndDate'] ) );
+			$show_times  = date( "Y-m-d", strtotime( $start_date['StartDate'] ) ) === date( "Y-m-d", strtotime( $finish_date['EndDate'] ) );
 
 			foreach ( $_days as $key => $date ) {
 				if ( $key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
@@ -989,8 +989,6 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 					$start_date                                     = $date;
 				}
 			}
-
-
 
 			$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days, $show_times );
 		}
@@ -1000,8 +998,9 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$force_show_times = date( "Y-m-d", strtotime( $days[0]['StartDate'] ) ) == date( "Y-m-d", strtotime( end( $days )['EndDate'] ) );
-		$n_res            = array();
-		$ret              =
+
+		$n_res = array();
+		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
 			wp_kses_post( sprintf( _nx( '%1$d day on %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
@@ -1233,7 +1232,7 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 				get_logical_date_groups( $event_dates[ (string) $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
 				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
 			if ( $show_time ) {
-				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) ?
+				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || count( $event_dates[ (string) $ev['EventId'] ] ) === 1 ?
 					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
 					'';
 			}

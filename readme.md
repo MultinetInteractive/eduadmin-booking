@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.0.0
-Stable tag: 3.5.3
+Stable tag: 3.5.5
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,20 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.5.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.4...v3.5.5) (2022-12-20)
+
+
+#### Bug Fixes
+
+* **Dates:** Better fix for showing the dates, so that it uses the same format regardless if there's event dates or not on the event itself. ([a79feda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a79feda08e000ac3258b2841c522d7cc804997b6))
+
+### [3.5.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.3...v3.5.4) (2022-12-20)
+
+
+#### Bug Fixes
+
+* **Dates:** If there's only a single day, we should always show the times ([e58c962](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e58c962887c7181db5ee6e5b9c7ea0f0f62c3fd6))
+
 ### [3.5.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.2...v3.5.3) (2022-12-12)
 
 
@@ -63,21 +77,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * Pluralization, and visible time ([e84e5bd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e84e5bd40ba4f1f087e0a33dd6822b74bd3607a0))
-
-### [3.5.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.0...v3.5.1) (2022-09-26)
-
-
-#### Bug Fixes
-
-* **Booking:** Properly handle vouchers ([f2479c5](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f2479c5411b51779c8256bdf87e7da84715a1043)), closes [#458](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/458)
-
-### [3.5.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.4.0...v3.5.0) (2022-09-22)
-
-
-#### Features
-
-* Added Certificates-endpoint for OData ([34e1054](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/34e10545cc8a3107910badda2145b2d18819409b))
-* **Shortcodes:** Added the possibility to override what type of price you show for the `[eduadmin-detailinfo courseprice]` and `[eduadmin-detailinfo eventprice]` shortcodes ([f63724c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/f63724ce82f9fddb7ce14fc72053f8eff8ee09c9)), closes [#456](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/456)
 
 
 
