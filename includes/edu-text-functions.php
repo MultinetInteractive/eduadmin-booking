@@ -958,7 +958,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	usort( $days, "DateComparer" );
 
 	if ( 1 === count( $days ) && ! $always_show_schedule ) {
-		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days ) );
+		return array( get_start_end_display_date( $days[0], $days[0], $short, $event, $show_days, true ) );
 	}
 
 	$added_dates = array();
@@ -981,7 +981,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 		foreach ( $added_dates as $time => $_days ) {
 			$start_date  = $_days[0];
 			$finish_date = $_days[ count( $_days ) - 1 ];
-			$show_times = date( "Y-m-d", strtotime( $start_date['StartDate'] ) ) === date( "Y-m-d", strtotime( $finish_date['EndDate'] ) );
+			$show_times  = date( "Y-m-d", strtotime( $start_date['StartDate'] ) ) === date( "Y-m-d", strtotime( $finish_date['EndDate'] ) );
 
 			foreach ( $_days as $key => $date ) {
 				if ( $key > 0 && ( strtotime( $date['StartDate'] ) - strtotime( $_days[ $key - 1 ]['StartDate'] ) > 99999 ) ) {
@@ -989,8 +989,6 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 					$start_date                                     = $date;
 				}
 			}
-
-
 
 			$ordered_dategroups[ $start_date['StartDate'] ] = get_start_end_display_date( $start_date, $finish_date, $short, $event, $show_days, $show_times );
 		}
@@ -1000,8 +998,9 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$force_show_times = date( "Y-m-d", strtotime( $days[0]['StartDate'] ) ) == date( "Y-m-d", strtotime( end( $days )['EndDate'] ) );
-		$n_res            = array();
-		$ret              =
+
+		$n_res = array();
+		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
 			wp_kses_post( sprintf( _nx( '%1$d day on %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
