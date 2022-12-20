@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.4](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.3...v3.5.4) (2022-12-20)
+
+
+### Bug Fixes
+
+* **Dates:** If there's only a single day, we should always show the times ([e58c962](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e58c962887c7181db5ee6e5b9c7ea0f0f62c3fd6))
+
 ### [3.5.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.2...v3.5.3) (2022-12-12)
 
 
