@@ -105,12 +105,12 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					<div class="inputHolder"><input type="text" autocomplete="off"
 							<?php echo( $__block ? ' readonly' : '' ); ?>
 							                        required onchange="eduBookingView.ContactAsParticipant();"
-							                        id="edu-contactFirstName" name="contactFirstName" class="first-name"
+							                        id="edu-contactFirstName" name="contactFirstName" class="first-name" maxlength="100"
 							                        placeholder="<?php echo esc_attr_x( 'Contact first name', 'frontend', 'eduadmin-booking' ); ?>"
 							                        value="<?php echo esc_attr( $contact->FirstName ); ?>" /><input
 							type="text" <?php echo( $__block ? ' readonly' : '' ); ?>
 							required onchange="eduBookingView.ContactAsParticipant();" id="edu-contactLastName"
-							class="last-name" name="contactLastName"
+							class="last-name" name="contactLastName" maxlength="100"
 							placeholder="<?php echo esc_attr_x( 'Contact surname', 'frontend', 'eduadmin-booking' ); ?>"
 							value="<?php echo esc_attr( $contact->LastName ); ?>" />
 					</div>
@@ -122,7 +122,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					<div class="inputHolder">
 						<input type="email" autocomplete="off" id="edu-contactEmail" required
 						       name="contactEmail"<?php echo( $__block ? ' readonly' : '' ); ?>
-						       onchange="eduBookingView.ContactAsParticipant();"
+						       onchange="eduBookingView.ContactAsParticipant();" maxlength="200"
 						       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>"
 						       value="<?php echo esc_attr( $contact->Email ); ?>" />
 					</div>
@@ -133,7 +133,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					</div>
 					<div class="inputHolder">
 						<input type="tel" autocomplete="off" id="edu-contactPhone" name="contactPhone"
-						       onchange="eduBookingView.ContactAsParticipant();"
+						       onchange="eduBookingView.ContactAsParticipant();" maxlength="100"
 						       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>"
 						       value="<?php echo esc_attr( $contact->Phone ); ?>" />
 					</div>
@@ -144,7 +144,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 					</div>
 					<div class="inputHolder">
 						<input type="tel" autocomplete="off" id="edu-contactMobile" name="contactMobile"
-						       onchange="eduBookingView.ContactAsParticipant();"
+						       onchange="eduBookingView.ContactAsParticipant();" maxlength="100"
 						       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>"
 						       value="<?php echo esc_attr( $contact->Mobile ); ?>" />
 					</div>
@@ -158,7 +158,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						<div class="inputHolder">
 							<input type="text" autocomplete="off" id="edu-contactCivReg" required name="contactCivReg"
 							       pattern="(\d{2,4})-?(\d{2,2})-?(\d{2,2})-?(\d{4,4})" class="eduadmin-civicRegNo"
-							       onchange="eduBookingView.ContactAsParticipant();"
+							       onchange="eduBookingView.ContactAsParticipant();" maxlength="50"
 							       placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $contact->CivicRegistrationNumber ); ?>" />
 						</div>
@@ -170,7 +170,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Please enter a password', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="password" autocomplete="off" required name="contactPass"
+							<input type="password" autocomplete="off" required name="contactPass" maxlength="50"
 							       placeholder="<?php echo esc_attr_x( 'Please enter a password', 'frontend', 'eduadmin-booking' ); ?>" />
 						</div>
 					</label>
@@ -220,7 +220,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 						<?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>
 					</div>
 					<div class="inputHolder">
-						<input type="text" autocomplete="off" required name="customerName" autocomplete="organization"
+						<input type="text" autocomplete="off" required name="customerName" autocomplete="organization" maxlength="200"
 						       placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>"
 						       value="<?php echo esc_attr( $customer->CustomerName ); ?>" />
 					</div>
@@ -233,7 +233,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerVatNo"
+							<input type="text" autocomplete="off" name="customerVatNo" maxlength="50"
 							       placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->OrganisationNumber ); ?>" />
 						</div>
@@ -243,7 +243,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerAddress1"
+							<input type="text" autocomplete="off" name="customerAddress1" maxlength="200"
 							       placeholder="<?php echo esc_attr_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->Address ); ?>" />
 						</div>
@@ -253,7 +253,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerAddress2"
+							<input type="text" autocomplete="off" name="customerAddress2" maxlength="200"
 							       placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->Address2 ); ?>" />
 						</div>
@@ -263,7 +263,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerPostalCode"
+							<input type="text" autocomplete="off" name="customerPostalCode" maxlength="50"
 							       placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->Zip ); ?>" />
 						</div>
@@ -273,7 +273,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerPostalCity"
+							<input type="text" autocomplete="off" name="customerPostalCity" maxlength="200"
 							       placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->City ); ?>" />
 						</div>
@@ -291,7 +291,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="customerEmail"
+							<input type="text" autocomplete="off" name="customerEmail" maxlength="200"
 							       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( $customer->Email ); ?>" />
 						</div>
@@ -304,7 +304,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoiceName"
+								<input type="text" autocomplete="off" name="invoiceName" maxlength="200"
 								       placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->CustomerName ); ?>" />
 							</div>
@@ -314,7 +314,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoiceAddress1"
+								<input type="text" autocomplete="off" name="invoiceAddress1" maxlength="200"
 								       placeholder="<?php echo esc_attr_x( 'Address 1', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->Address ); ?>" />
 							</div>
@@ -324,7 +324,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoiceAddress2"
+								<input type="text" autocomplete="off" name="invoiceAddress2" maxlength="200"
 								       placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->Address2 ); ?>" />
 							</div>
@@ -334,7 +334,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoicePostalCode"
+								<input type="text" autocomplete="off" name="invoicePostalCode" maxlength="50"
 								       placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->Zip ); ?>" />
 							</div>
@@ -344,7 +344,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoicePostalCity"
+								<input type="text" autocomplete="off" name="invoicePostalCity" maxlength="200"
 								       placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->City ); ?>" />
 							</div>
@@ -364,7 +364,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="text" autocomplete="off" name="invoiceEmail"
+								<input type="text" autocomplete="off" name="invoiceEmail" maxlength="20"
 								       placeholder="<?php echo esc_attr_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?>"
 								       value="<?php echo esc_attr( $billing_customer->Email ); ?>" />
 							</div>
@@ -375,7 +375,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="invoiceReference"
+							<input type="text" autocomplete="off" name="invoiceReference" maxlength="100"
 							       placeholder="<?php echo esc_attr_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( ! empty( $billing_customer->SellerReference ) ? $billing_customer->SellerReference : '' ); ?>" />
 						</div>
@@ -385,7 +385,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'Purchase order number', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="purchaseOrderNumber"
+							<input type="text" autocomplete="off" name="purchaseOrderNumber" maxlength="200"
 							       placeholder="<?php echo esc_attr_x( 'Purchase order number', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( ! empty( $_POST['purchaseOrderNumber'] ) ? $_POST['purchaseOrderNumber'] : '' ); ?>" />
 						</div>
@@ -395,7 +395,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							<?php echo esc_html_x( 'EDI Reference', 'frontend', 'eduadmin-booking' ); ?>
 						</div>
 						<div class="inputHolder">
-							<input type="text" autocomplete="off" name="ediReference"
+							<input type="text" autocomplete="off" name="ediReference" maxlength="100"
 							       placeholder="<?php echo esc_attr_x( 'EDI Reference', 'frontend', 'eduadmin-booking' ); ?>"
 							       value="<?php echo esc_attr( ! empty( $billing_customer->EdiReference ) ? $billing_customer->EdiReference : '' ); ?>" />
 						</div>
@@ -483,10 +483,10 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							</div>
 							<div class="inputHolder">
 								<input type="text" autocomplete="off" class="participantFirstName first-name"
-								       onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]"
+								       onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]" maxlength="100"
 								       placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input
 									type="text" class="participantLastName last-name"
-									onchange="eduBookingView.CheckPrice(false);" name="participantLastName[]"
+									onchange="eduBookingView.CheckPrice(false);" name="participantLastName[]" maxlength="100"
 									placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
 							</div>
 						</label>
@@ -496,7 +496,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 							</div>
 							<div class="inputHolder">
 								<input type="email" autocomplete="off" name="participantEmail[]"
-								       onchange="eduBookingView.CheckPrice(false);"
+								       onchange="eduBookingView.CheckPrice(false);" maxlength="200"
 								       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 							</div>
 						</label>
@@ -505,7 +505,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="tel" autocomplete="off" name="participantPhone[]"
+								<input type="tel" autocomplete="off" name="participantPhone[]" maxlength="100"
 								       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 							</div>
 						</label>
@@ -514,7 +514,7 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 								<?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>
 							</div>
 							<div class="inputHolder">
-								<input type="tel" autocomplete="off" name="participantMobile[]"
+								<input type="tel" autocomplete="off" name="participantMobile[]" maxlength="100"
 								       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 							</div>
 						</label>

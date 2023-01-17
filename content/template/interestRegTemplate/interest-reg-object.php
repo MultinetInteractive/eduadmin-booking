@@ -59,7 +59,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 						class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?> *
 					</div>
 					<div class="inputHolder">
-						<input type="text" autocomplete="off" required name="edu-companyName"
+						<input type="text" autocomplete="off" required name="edu-companyName" maxlength="100"
 						       placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
@@ -68,9 +68,9 @@ if ( ! $api_key || empty( $api_key ) ) {
 						class="inputLabel"><?php echo esc_html_x( 'Contact name', 'frontend', 'eduadmin-booking' ); ?> *
 					</div>
 					<div class="inputHolder" style="display: flex;">
-						<input type="text" autocomplete="off" required name="edu-contactFirstName" class="first-name"
+						<input type="text" autocomplete="off" required name="edu-contactFirstName" class="first-name" maxlength="100"
 						       placeholder="<?php echo esc_attr_x( 'Contact first name', 'frontend', 'eduadmin-booking' ); ?>" />
-						<input type="text" autocomplete="off" required name="edu-contactLastName" class="last-name"
+						<input type="text" autocomplete="off" required name="edu-contactLastName" class="last-name" maxlength="100"
 						       placeholder="<?php echo esc_attr_x( 'Contact surname', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
@@ -79,7 +79,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 						class="inputLabel"><?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?> *
 					</div>
 					<div class="inputHolder">
-						<input type="email" autocomplete="off" required name="edu-emailAddress"
+						<input type="email" autocomplete="off" required name="edu-emailAddress" maxlength="200"
 						       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
@@ -87,7 +87,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<div
 						class="inputLabel"><?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<input type="tel" autocomplete="off" name="edu-phone"
+						<input type="tel" autocomplete="off" name="edu-phone" maxlength="50"
 						       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
@@ -95,14 +95,14 @@ if ( ! $api_key || empty( $api_key ) ) {
 					<div
 						class="inputLabel"><?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<input type="tel" autocomplete="off" name="edu-mobile"
+						<input type="tel" autocomplete="off" name="edu-mobile" maxlength="50"
 						       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 					</div>
 				</label>
 				<label class="edu-interest-notes">
 					<div class="inputLabel"><?php echo esc_html_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?></div>
 					<div class="inputHolder">
-						<textarea name="edu-notes" autocomplete="off"
+						<textarea name="edu-notes" autocomplete="off" maxlength="1000"
 						          placeholder="<?php echo esc_attr_x( 'Notes', 'frontend', 'eduadmin-booking' ); ?>"></textarea>
 					</div>
 				</label>

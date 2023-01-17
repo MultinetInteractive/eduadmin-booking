@@ -57,6 +57,50 @@ class EduAdmin_BookingHandler {
 		return true;
 	}
 
+	private function handle_errors( $booking_info ) {
+		add_filter( 'edu-booking-error', function( $errors ) use ( $booking_info ) {
+			foreach ( $booking_info['Errors'] as $error ) {
+				switch ( $error['ErrorCode'] ) {
+					case -1: // Exception
+						$errors[] = _x( 'An error has occured, please try again later!', 'frontend', 'eduadmin-booking' );
+						break;
+					case 40:
+						$errors[] = _x( 'Not enough spots left.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 45:
+						$errors[] = _x( 'Person already booked on event.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 100:
+						$errors[] = _x( 'The voucher was not found.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 101:
+						$errors[] = _x( 'The voucher is not valid during the event period.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 102:
+						$errors[] = _x( 'The voucher is too small for the number of participants.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 103:
+						$errors[] = _x( 'The voucher belongs to a different customer.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 104:
+						$errors[] = _x( 'The voucher belongs to a different customer contact.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 105:
+						$errors[] = _x( 'The voucher is not valid for this event.', 'frontend', 'eduadmin-booking' );
+						break;
+					case 200:
+						$errors[] = _x( 'Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking' );
+						break;
+					default:
+						$errors[] = $error['ErrorText'];
+						break;
+				}
+			}
+
+			return $errors;
+		},          10, 1 );
+	}
+
 	public function process_booking() {
 		if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && ! empty( $_POST['act'] ) && 'bookCourse' === sanitize_text_field( $_POST['act'] ) ) { // Var input okay.
 			if ( ! empty( $_POST['username'] ) || ! empty( $_POST['email'] ) ) {
@@ -79,48 +123,7 @@ class EduAdmin_BookingHandler {
 			$booking_info = $single_person_booking ? $this->book_single_participant() : $this->book_multiple_participants();
 
 			if ( ! empty( $booking_info['Errors'] ) ) {
-				add_filter( 'edu-booking-error', function( $errors ) use ( $booking_info ) {
-					foreach ( $booking_info['Errors'] as $error ) {
-						switch ( $error['ErrorCode'] ) {
-							case -1: // Exception
-								$errors[] = _x( 'An error has occured, please try again later!', 'frontend', 'eduadmin-booking' );
-								break;
-							case 40:
-								$errors[] = _x( 'Not enough spots left.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 45:
-								$errors[] = _x( 'Person already booked on event.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 100:
-								$errors[] = _x( 'The voucher was not found.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 101:
-								$errors[] = _x( 'The voucher is not valid during the event period.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 102:
-								$errors[] = _x( 'The voucher is too small for the number of participants.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 103:
-								$errors[] = _x( 'The voucher belongs to a different customer.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 104:
-								$errors[] = _x( 'The voucher belongs to a different customer contact.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 105:
-								$errors[] = _x( 'The voucher is not valid for this event.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 200:
-								$errors[] = _x( 'Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking' );
-								break;
-							default:
-								$errors[] = $error['ErrorText'];
-								break;
-						}
-					}
-
-					return $errors;
-				},          10, 1 );
-
+				$this->handle_errors( $booking_info );
 				return;
 			}
 
@@ -180,48 +183,7 @@ class EduAdmin_BookingHandler {
 			$booking_info = $this->get_programme_booking();
 
 			if ( ! empty( $booking_info['Errors'] ) ) {
-				add_filter( 'edu-booking-error', function( $errors ) use ( $booking_info ) {
-					foreach ( $booking_info['Errors'] as $error ) {
-						switch ( $error['ErrorCode'] ) {
-							case -1: // Exception
-								$errors[] = _x( 'An error has occured, please try again later!', 'frontend', 'eduadmin-booking' );
-								break;
-							case 40:
-								$errors[] = _x( 'Not enough spots left.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 45:
-								$errors[] = _x( 'Person already booked on event.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 100:
-								$errors[] = _x( 'The voucher was not found.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 101:
-								$errors[] = _x( 'The voucher is not valid during the event period.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 102:
-								$errors[] = _x( 'The voucher is too small for the number of participants.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 103:
-								$errors[] = _x( 'The voucher belongs to a different customer.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 104:
-								$errors[] = _x( 'The voucher belongs to a different customer contact.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 105:
-								$errors[] = _x( 'The voucher is not valid for this event.', 'frontend', 'eduadmin-booking' );
-								break;
-							case 200:
-								$errors[] = _x( 'Person added on session where dates are overlapping.', 'frontend', 'eduadmin-booking' );
-								break;
-							default:
-								$errors[] = $error['ErrorText'];
-								break;
-						}
-					}
-
-					return $errors;
-				},          10, 1 );
-
+				$this->handle_errors( $booking_info );
 				return;
 			}
 

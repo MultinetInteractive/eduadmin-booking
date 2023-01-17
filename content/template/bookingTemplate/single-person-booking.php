@@ -223,7 +223,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 					<?php echo esc_html_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>
 				</div>
 				<div class="inputHolder">
-					<input type="text" name="invoiceOrgNo" autocomplete="off"
+					<input type="text" name="invoiceOrgNo" autocomplete="off" maxlength="50"
 					       placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo @esc_attr( $billing_customer->OrganisationNumber ); ?>" />
 				</div>

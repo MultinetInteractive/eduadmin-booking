@@ -40,7 +40,7 @@ if ( isset( $_POST['eduaction'] ) && 'savePassword' === sanitize_text_field( $_P
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="currentPassword" required
+					<input type="password" name="currentPassword" required maxlength="50" autocomplete="current-password"
 					       placeholder="<?php echo esc_attr_x( 'Current password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>
@@ -48,7 +48,7 @@ if ( isset( $_POST['eduaction'] ) && 'savePassword' === sanitize_text_field( $_P
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'New password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="newPassword" required
+					<input type="password" name="newPassword" required maxlength="50" autocomplete="new-password"
 					       placeholder="<?php echo esc_attr_x( 'New password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>
@@ -56,7 +56,7 @@ if ( isset( $_POST['eduaction'] ) && 'savePassword' === sanitize_text_field( $_P
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="password" name="confirmPassword" required
+					<input type="password" name="confirmPassword" required maxlength="50" autocomplete="new-password"
 					       placeholder="<?php echo esc_attr_x( 'Confirm password', 'frontend', 'eduadmin-booking' ); ?>" />
 				</div>
 			</label>

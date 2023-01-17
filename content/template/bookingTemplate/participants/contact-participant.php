@@ -7,9 +7,9 @@
 			<?php echo esc_html_x( 'Participant name', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="text" autocomplete="off" readonly class="contactFirstName first-name"
+			<input type="text" autocomplete="off" readonly class="contactFirstName first-name" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input
-				type="text" readonly class="contactLastName last-name"
+				type="text" readonly class="contactLastName last-name" maxlength="100"
 				placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -18,7 +18,7 @@
 			<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="email" autocomplete="off" readonly class="contactEmail"
+			<input type="email" autocomplete="off" readonly class="contactEmail" maxlength="200"
 			       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -27,7 +27,7 @@
 			<?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" readonly class="contactPhone"
+			<input type="tel" autocomplete="off" readonly class="contactPhone" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -36,7 +36,7 @@
 			<?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" readonly class="contactMobile"
+			<input type="tel" autocomplete="off" readonly class="contactMobile" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -46,7 +46,7 @@
 				<?php echo esc_html_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" autocomplete="off" readonly data-required="true" class="contactCivReg"
+				<input type="text" autocomplete="off" readonly data-required="true" class="contactCivReg" maxlength="50"
 				       placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>" />
 			</div>
 		</label>

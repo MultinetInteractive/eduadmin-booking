@@ -469,6 +469,29 @@ var eduBookingView = {
             priceCheckError.append(listOfErrors);
             priceCheckError.show();
         }
+        var getUserFriendlyErrorMessageValidation = function getUserFriendlyErrorMessageValidation(errorKey, errorMessages) {
+            if (edu_i18n_strings.ValidationErrors[errorKey]) {
+                return "".concat(edu_i18n_strings.ValidationErrors[errorKey], ": ").concat(errorMessages.join(", "));
+            }
+            return "".concat(errorKey, ": ").concat(errorMessages.join(", "));
+        };
+        if (d.hasOwnProperty("errors")) {
+            if (d.hasOwnProperty("title")) {
+                var errorHeader = document.createElement('h3');
+                errorHeader.innerText = edu_i18n_strings.Generic.ValidationError;
+                priceCheckError.empty();
+                priceCheckError.append(errorHeader);
+                var listOfErrors = document.createElement('ul');
+                for (var errorKey in d["errors"]) {
+                    var error = d["errors"][errorKey];
+                    var _errorItem = document.createElement('li');
+                    _errorItem.innerText = getUserFriendlyErrorMessageValidation(errorKey, error);
+                    listOfErrors.appendChild(_errorItem);
+                }
+                priceCheckError.append(listOfErrors);
+                priceCheckError.show();
+            }
+        }
     }
 };
 function edu_openDatePopup(obj) {

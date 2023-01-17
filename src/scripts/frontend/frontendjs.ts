@@ -686,6 +686,35 @@ var eduBookingView: EduBookingView = {
 
             priceCheckError.show();
         }
+
+        let getUserFriendlyErrorMessageValidation = function getUserFriendlyErrorMessageValidation(errorKey: string, errorMessages: Array<string>) {
+            if((edu_i18n_strings.ValidationErrors as any)[errorKey]) {
+                return `${(edu_i18n_strings.ValidationErrors as any)[errorKey]}: ${errorMessages.join(", ")}`
+            }
+
+            return `${errorKey}: ${errorMessages.join(", ")}`;
+        }
+
+        if(d.hasOwnProperty("errors")) {
+            if(d.hasOwnProperty("title")) {
+                let errorHeader = document.createElement('h3');
+                errorHeader.innerText = edu_i18n_strings.Generic.ValidationError;
+                priceCheckError.empty();
+                priceCheckError.append(errorHeader);
+
+                let listOfErrors = document.createElement('ul');
+                for (let errorKey in d["errors"]) {
+                    let error = d["errors"][errorKey];
+                    let _errorItem = document.createElement('li');
+                    _errorItem.innerText = getUserFriendlyErrorMessageValidation(errorKey, error);
+                    listOfErrors.appendChild(_errorItem);
+                }
+
+                priceCheckError.append(listOfErrors);
+
+                priceCheckError.show();
+            }
+        }
     }
 };
 
