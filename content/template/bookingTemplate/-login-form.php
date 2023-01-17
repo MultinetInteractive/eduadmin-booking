@@ -30,7 +30,7 @@
 		<div class="loginInput">
 			<input type="<?php echo esc_attr( $field_type ); ?>"
 			       name="eduadminloginEmail"<?php echo( 'CivicRegistrationNumber' === $selected_login_field ? ' class="eduadmin-civicRegNo" onblur="eduBookingView.ValidateCivicRegNo();"' : '' ); ?>
-			       required autocomplete="off"
+			       required autocomplete="off" maxlength="200"
 			       title="<?php echo esc_attr( sprintf( _x( 'Please enter your %s here', 'frontend', 'eduadmin-booking' ), $login_label ) ); ?>"
 			       placeholder="<?php echo esc_attr( $login_label ); ?>"
 			       value="<?php echo esc_attr( $login_value ); ?>" />
@@ -39,7 +39,7 @@
 	<label>
 		<div class="loginLabel"><?php echo esc_html_x( 'Password', 'frontend', 'eduadmin-booking' ); ?></div>
 		<div class="loginInput">
-			<input type="password" autocomplete="off" autofocus="autofocus" name="eduadminpassword" required
+			<input type="password" autocomplete="off" autofocus="autofocus" name="eduadminpassword" required maxlength="50"
 			       title="<?php echo esc_attr_x( 'Please enter your password here', 'frontend', 'eduadmin-booking' ); ?>"
 			       placeholder="<?php echo esc_attr_x( 'Password', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>

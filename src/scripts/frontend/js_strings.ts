@@ -17,6 +17,10 @@ const edu_i18n_strings = {
         301: _x('Please enter all required fields on the contact person.', 'frontend', 'eduadmin-booking'),
         MissingSetupForBookingForm: _x('Configuration needed for the booking forms to work', 'frontend', 'eduadmin-booking')
     },
+    ValidationErrors: {
+        "ContactPerson.FirstName": _x('Contact person, first name', 'frontend', 'eduadmin-booking'),
+        "ContactPerson.LastName": _x('Contact person, last name', 'frontend', 'eduadmin-booking'),
+    },
     Generic: {
         ValidationError: _x('Validation errors, please check your fields', 'backend', 'eduadmin-booking'),
         Close: _x('Close', 'frontend', 'eduadmin-booking'),

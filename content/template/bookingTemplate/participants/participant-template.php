@@ -10,10 +10,10 @@
 		</div>
 		<div class="inputHolder">
 			<input type="text" autocomplete="off" class="participantFirstName first-name"
-			       onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]"
+			       onchange="eduBookingView.CheckPrice(false);" name="participantFirstName[]" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Participant first name', 'frontend', 'eduadmin-booking' ); ?>" /><input
 				type="text" class="participantLastName last-name" onchange="eduBookingView.CheckPrice(false);"
-				name="participantLastName[]"
+				name="participantLastName[]" maxlength="100"
 				placeholder="<?php echo esc_attr_x( 'Participant surname', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -22,7 +22,7 @@
 			<?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="email" autocomplete="off" name="participantEmail[]"
+			<input type="email" autocomplete="off" name="participantEmail[]" maxlength="200"
 			       onchange="eduBookingView.CheckPrice(false);"
 			       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
@@ -32,7 +32,7 @@
 			<?php echo esc_html_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" name="participantPhone[]"
+			<input type="tel" autocomplete="off" name="participantPhone[]" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Phone number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -41,7 +41,7 @@
 			<?php echo esc_html_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>
 		</div>
 		<div class="inputHolder">
-			<input type="tel" autocomplete="off" name="participantMobile[]"
+			<input type="tel" autocomplete="off" name="participantMobile[]" maxlength="100"
 			       placeholder="<?php echo esc_attr_x( 'Mobile number', 'frontend', 'eduadmin-booking' ); ?>" />
 		</div>
 	</label>
@@ -51,7 +51,7 @@
 				<?php echo esc_html_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>
 			</div>
 			<div class="inputHolder">
-				<input type="text" autocomplete="off" data-required="true" name="participantCivReg[]"
+				<input type="text" autocomplete="off" data-required="true" name="participantCivReg[]" maxlength="50"
 				       pattern="(\d{2,4})-?(\d{2,2})-?(\d{2,2})-?(\d{4,4})" class="eduadmin-civicRegNo"
 				       placeholder="<?php echo esc_attr_x( 'Civic Registration Number', 'frontend', 'eduadmin-booking' ); ?>" />
 			</div>

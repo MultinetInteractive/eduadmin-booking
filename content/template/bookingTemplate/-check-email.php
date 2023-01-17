@@ -33,7 +33,7 @@
 	<label>
 		<div class="inputLabel"><?php echo esc_html( $login_label ); ?></div>
 		<div class="inputHolder">
-			<input type="<?php echo esc_attr( $field_type ); ?>"
+			<input type="<?php echo esc_attr( $field_type ); ?>" maxlength="200"
 			       name="eduadminloginEmail"<?php echo( 'CivicRegistrationNumber' === $selected_login_field ? ' class="eduadmin-civicRegNo" onblur="eduBookingView.ValidateCivicRegNo();"' : '' ); ?>
 			       required autocomplete="off" title="<?php
 			/* translators: %s is the chosen field to use for login */

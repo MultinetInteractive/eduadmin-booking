@@ -52,7 +52,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerName" required
+					<input type="text" name="customerName" required maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->CustomerName ); ?>" />
 				</div>
@@ -60,7 +60,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-customer-address1">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerAddress"
+					<input type="text" name="customerAddress" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Address', 'backend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->Address ); ?>" />
 				</div>
@@ -68,7 +68,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-customer-address2">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerAddress2"
+					<input type="text" name="customerAddress2" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Address 2', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->Address2 ); ?>" />
 				</div>
@@ -76,7 +76,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-customer-postalcode">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerZip"
+					<input type="text" name="customerZip" maxlength="50"
 					       placeholder="<?php echo esc_attr_x( 'Postal code', 'backend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->Zip ); ?>" />
 				</div>
@@ -84,7 +84,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-customer-postalcity">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerCity"
+					<input type="text" name="customerCity" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->City ); ?>" />
 				</div>
@@ -93,7 +93,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerEmail"
+					<input type="text" name="customerEmail" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'E-mail address', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->Email ); ?>" />
 				</div>
@@ -101,7 +101,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-customer-phone">
 				<div class="inputLabel"><?php echo esc_html_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerPhone"
+					<input type="text" name="customerPhone" maxlength="100"
 					       placeholder="<?php echo esc_attr_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $customer->Phone ); ?>" />
 				</div>
@@ -113,7 +113,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceName"
+					<input type="text" name="customerInvoiceName" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Customer name', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->CustomerName ); ?>" />
 				</div>
@@ -121,7 +121,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-invoice-customer-address">
 				<div class="inputLabel"><?php echo esc_html_x( 'Address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceAddress"
+					<input type="text" name="customerInvoiceAddress" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Address', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->Address ); ?>" />
 				</div>
@@ -130,7 +130,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-invoice-customer-postalcode">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceZip"
+					<input type="text" name="customerInvoiceZip" maxlength="50"
 					       placeholder="<?php echo esc_attr_x( 'Postal code', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->Zip ); ?>" />
 				</div>
@@ -138,7 +138,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-invoice-customer-postalcity">
 				<div class="inputLabel"><?php echo esc_html_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceCity"
+					<input type="text" name="customerInvoiceCity" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Postal city', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->City ); ?>" />
 				</div>
@@ -146,7 +146,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-invoice-customer-orgno">
 				<div class="inputLabel"><?php echo esc_html_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceOrgNr"
+					<input type="text" name="customerInvoiceOrgNr" maxlength="50"
 					       placeholder="<?php echo esc_attr_x( 'Org.No.', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->OrganisationNumber ); ?>" />
 				</div>
@@ -155,7 +155,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerInvoiceEmail"
+					<input type="text" name="customerInvoiceEmail" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Invoice e-mail address', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->Email ); ?>" />
 				</div>
@@ -164,7 +164,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 				<div
 					class="inputLabel"><?php echo esc_html_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="customerReference"
+					<input type="text" name="customerReference" maxlength="200"
 					       placeholder="<?php echo esc_attr_x( 'Invoice reference', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $invoice_customer->BuyerReference ); ?>" />
 				</div>
@@ -184,7 +184,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-contact-phone">
 				<div class="inputLabel"><?php echo esc_html_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="contactPhone"
+					<input type="text" name="contactPhone" maxlength="100"
 					       placeholder="<?php echo esc_attr_x( 'Phone', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $contact->Phone ); ?>" />
 				</div>
@@ -193,7 +193,7 @@ if ( ! empty( $_POST['eduaction'] ) && wp_verify_nonce( $_POST['edu-profile-nonc
 			<label class="profile-contact-mobile">
 				<div class="inputLabel"><?php echo esc_html_x( 'Mobile', 'frontend', 'eduadmin-booking' ); ?></div>
 				<div class="inputHolder">
-					<input type="text" name="contactMobile"
+					<input type="text" name="contactMobile" maxlength="100"
 					       placeholder="<?php echo esc_attr_x( 'Mobile', 'frontend', 'eduadmin-booking' ); ?>"
 					       value="<?php echo esc_attr( $contact->Mobile ); ?>" />
 				</div>
