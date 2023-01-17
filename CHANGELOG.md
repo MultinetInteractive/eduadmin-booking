@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.5...v3.5.6) (2023-01-17)
+
+
+### Bug Fixes
+
+* **Forms:** Added `maxlength` to most form items, that matches the API specification. ([039631b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/039631b109aafb8c77578de676d36f8868e45037)), closes [#468](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/468)
+
 ### [3.5.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.4...v3.5.5) (2022-12-20)
 
 
