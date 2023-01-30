@@ -24,7 +24,16 @@ function edu_render_profile_settings_page() {
 				</select>
 				<i><?php _ex( 'Select how you want the logged in users to view the prices in their list of orders/bookings.', 'backend', 'eduadmin-booking' ); ?></i>
 				<br />
-
+				<br />
+				<h4><?php _ex( 'Login information', 'backend', 'eduadmin-booking' ); ?></h4>
+				<label>
+					<input type="checkbox" name="eduadmin-redirectLoginToProfile" value="true"
+						<?php echo( get_option( 'eduadmin-redirectLoginToProfile', false ) ? ' checked="checked"' : '' ); ?>
+						   onchange="EduAdmin.ToggleVisibility(this.checked, '.eduadmin-redirectLoginToProfile');" />
+					<?php echo esc_html_x( 'Always redirect login to the user profile', 'backend', 'eduadmin-booking' ); ?>
+				</label>
+				<br />
+				<br />
 				<h4><?php _ex( 'Certificates', 'backend', 'eduadmin-booking' ); ?></h4>
 				<label>
 					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates"

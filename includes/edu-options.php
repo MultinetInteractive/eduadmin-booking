@@ -271,6 +271,7 @@ function eduadmin_settings_init() {
 
 	/* Profile page settings */
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-priceType' );
+	register_setting( 'eduadmin-profile', 'eduadmin-redirectLoginToProfile' );
 	register_setting( 'eduadmin-profile', 'eduadmin-profile-showCompanyCertificates' );
 
 	/* Date settings */
