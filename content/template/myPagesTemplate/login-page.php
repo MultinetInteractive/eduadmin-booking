@@ -5,8 +5,11 @@
 			<input type="hidden" name="edu-login-ver"
 			       value="<?php echo esc_attr( wp_create_nonce( 'edu-profile-login' ) ); ?>" />
 			<input type="hidden" name="eduformloginaction" value="" />
-			<input type="hidden" name="eduReturnUrl"
-			       value="<?php echo esc_attr( ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '' ); ?>" />
+			<?php
+			$redirect_to_profile = EDU()->is_checked( 'eduadmin-redirectLoginToProfile', false );
+			$redirect_url = $redirect_to_profile ? "" : ( ! empty( $_SERVER['HTTP_REFERER'] ) ? $_SERVER['HTTP_REFERER'] : '' );
+			?>
+			<input type="hidden" name="eduReturnUrl" value="<?php echo esc_attr( $redirect_url ); ?>" />
 			<?php
 			$selected_login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 			$login_label          = _x( 'E-mail address', 'frontend', 'eduadmin-booking' );
