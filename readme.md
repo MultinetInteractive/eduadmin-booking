@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.0.0
-Stable tag: 3.5.6
+Stable tag: 3.6.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.6.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.6...v3.6.0) (2023-01-30)
+
+
+#### Features
+
+* **Profile/Login:** Added setting to disable the login redirect to referring page, so it goes directly to the normal profile ([b038ee0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b038ee03f575bcb2f03d8ab56524e99ba329c134)), closes [#470](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/470)
+
 ### [3.5.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.5...v3.5.6) (2023-01-17)
 
 
@@ -70,13 +77,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * **Dates:** If there's only a single day, we should always show the times ([e58c962](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e58c962887c7181db5ee6e5b9c7ea0f0f62c3fd6))
-
-### [3.5.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.2...v3.5.3) (2022-12-12)
-
-
-#### Bug Fixes
-
-* NIL is no longer available in PHP for some reason. ([c45b30e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c45b30e2b410b35d5dcca06a14573b79a194722a))
 
 
 
