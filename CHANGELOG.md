@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.6...v3.6.0) (2023-01-30)
+
+
+### Features
+
+* **Profile/Login:** Added setting to disable the login redirect to referring page, so it goes directly to the normal profile ([b038ee0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b038ee03f575bcb2f03d8ab56524e99ba329c134)), closes [#470](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/470)
+
 ### [3.5.6](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.5...v3.5.6) (2023-01-17)
 
 
