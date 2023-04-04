@@ -79,7 +79,7 @@ if ( ! empty( $filter_city ) ) {
 
 		$found_city = false;
 		foreach ( $object['Events'] as $ev ) {
-			if ( mb_stripos( $filter_city, $ev['City'] ) !== false ) {
+			if ( mb_stripos( $ev['City'], $filter_city ) !== false ) {
 				$found_city = true;
 			}
 		}
