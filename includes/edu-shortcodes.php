@@ -272,7 +272,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 	$api_key = get_option( 'eduadmin-api-key' );
 
-	if ( ! $api_key || empty( $api_key ) ) {
+	if ( empty( $api_key ) ) {
 		EDU()->stop_timer( $t );
 
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';

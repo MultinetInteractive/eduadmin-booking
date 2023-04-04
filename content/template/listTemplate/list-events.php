@@ -117,7 +117,7 @@ foreach ( $courses as $object ) {
 
 if ( ! empty( $filter_city ) ) {
 	$events = array_filter( $events, function( $object ) use ( &$filter_city ) {
-		return mb_stripos( $filter_city, $object['City'] ) !== false;
+		return mb_stripos( $object['City'], $filter_city ) !== false;
 	} );
 }
 
