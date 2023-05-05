@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.3.0
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.1...v3.6.2) (2023-05-05)
+
+
+#### Bug Fixes
+
+* **Booking page:** Fixed so that price recalculation will be done when you click a Discount Card. ([7847bda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7847bda741019eea3c7dcf2e728af79f49a96f0a)), closes [#479](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/479)
+
+
+#### Security
+
+* Update packages to get rid of vulns ([acd5bfd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/acd5bfd9538df4079a8612630d3bc6cfe4ac9e04))
+
 ### [3.6.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.0...v3.6.1) (2023-04-04)
 
 
@@ -70,13 +82,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * **Forms:** Added `maxlength` to most form items, that matches the API specification. ([039631b](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/039631b109aafb8c77578de676d36f8868e45037)), closes [#468](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/468)
-
-### [3.5.5](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.4...v3.5.5) (2022-12-20)
-
-
-#### Bug Fixes
-
-* **Dates:** Better fix for showing the dates, so that it uses the same format regardless if there's event dates or not on the event itself. ([a79feda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a79feda08e000ac3258b2841c522d7cc804997b6))
 
 
 
