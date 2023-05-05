@@ -15,7 +15,7 @@
   max-width: 100%;
 }
 .eduadmin h3 {
-  color: hsl(0deg, 0%, 35%);
+  color: hsl(0, 0%, 35%);
   font-weight: 600;
 }
 .eduadmin h1.courseTitle,
@@ -38,31 +38,31 @@
   display: inline-block;
   box-sizing: border-box;
   border-radius: 3px;
-  border: 1px solid hsl(116deg, 33%, 55%);
-  background: hsl(120deg, 33%, 50%);
-  color: hsl(0deg, 0%, 100%);
+  border: 1px solid hsl(116, 33%, 55%);
+  background: hsl(120, 33%, 50%);
+  color: hsl(0, 0%, 100%);
 }
 .eduadmin .cta-btn:hover {
-  color: hsl(0deg, 0%, 100%);
-  background: hsl(116deg, 33%, 55%);
+  color: hsl(0, 0%, 100%);
+  background: hsl(116, 33%, 55%);
 }
 .eduadmin .neutral-btn {
   padding: 8px 16px;
   display: inline-block;
   box-sizing: border-box;
   border-radius: 3px;
-  color: hsl(0deg, 0%, 44%);
+  color: hsl(0, 0%, 44%);
   font-weight: 400;
-  border: 1px solid hsl(0deg, 0%, 67%);
+  border: 1px solid hsl(0, 0%, 67%);
   background: transparent;
   box-shadow: unset;
 }
 .eduadmin .neutral-btn:hover {
-  background: hsla(0deg, 0%, 95%, 0.88);
+  background: hsla(0, 0%, 95%, 0.88);
   box-shadow: unset;
 }
 .eduadmin .neutral-btn.active {
-  background: hsla(0deg, 0%, 95%, 0.88);
+  background: hsla(0, 0%, 95%, 0.88);
   box-shadow: unset;
 }
 .eduadmin .search-form {
@@ -130,9 +130,9 @@
 .eduadmin .edu-modal.warning {
   width: 100%;
   padding: 8px 16px;
-  color: hsl(5deg, 80%, 50%);
+  color: hsl(5, 80%, 50%);
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-  background: hsl(6deg, 100%, 94%);
+  background: hsl(6, 100%, 94%);
   margin: 0 0 16px 0;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
@@ -234,7 +234,7 @@
 .eduadmin div.fakeLabel .inputLabel {
   display: none;
   margin: 0 0 8px;
-  color: hsl(0deg, 0%, 20%);
+  color: hsl(0, 0%, 20%);
 }
 .eduadmin label .inputLabel.noHide,
 .eduadmin div.fakeLabel .inputLabel.noHide {
@@ -264,13 +264,13 @@
 }
 @media (min-width: 800px) {
   .eduadmin label .inputLabel,
-.eduadmin div.fakeLabel .inputLabel {
+  .eduadmin div.fakeLabel .inputLabel {
     display: inherit;
     margin: 0;
     flex: auto;
   }
   .eduadmin label .inputHolder,
-.eduadmin div.fakeLabel .inputHolder {
+  .eduadmin div.fakeLabel .inputHolder {
     width: 100%;
     max-width: 400px;
   }
@@ -302,7 +302,7 @@
 }
 .eduadmin.loginForm form .title .checkEmailForm h3 {
   font-weight: normal;
-  color: hsl(0deg, 0%, 40%);
+  color: hsl(0, 0%, 40%);
   font-style: italic;
   font-size: 16px;
   margin: 0 0 16px 0;

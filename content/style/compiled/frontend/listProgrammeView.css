@@ -16,14 +16,14 @@
 
 @media (min-width: 800px) {
   .eduadmin .programme-list-item,
-.eduadmin .programme-header {
+  .eduadmin .programme-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
   .eduadmin .programme-list-item > div,
-.eduadmin .programme-header > div {
+  .eduadmin .programme-header > div {
     min-width: 25%;
   }
 }

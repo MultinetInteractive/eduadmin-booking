@@ -13,7 +13,6 @@ if ( $use_limited_discount ) {
 				if ( 0 !== count( $c_cards ) ) {
 					?>
 					<h2><?php echo esc_html_x( 'Discount cards', 'frontend', 'eduadmin-booking' ); ?></h2>
-
 					<?php
 					foreach ( $c_cards as $card ) {
 						if ( $card['ValidForNumberOfParticipants'] > 0 ) {
@@ -25,7 +24,7 @@ if ( $use_limited_discount ) {
 										disabled readonly title="<?php echo esc_attr_x( 'Not enough uses left on this card.', 'frontend', 'eduadmin-booking' ); ?>"
 									<?php endif; ?>
 									   value="<?php echo esc_attr( $card['VoucherId'] ); ?>"
-									   onchange="eduBookingView.UpdatePrice();" />
+									   onclick="eduBookingView.UpdatePrice();" />
 								<?php echo esc_html( $card['Description'] ); ?>&nbsp;
 								<i>(<?php echo esc_html( sprintf( _n( 'Valid for %s participant', 'Valid for %s participants', $card['ValidForNumberOfParticipants'], 'eduadmin-booking' ), $card['ValidForNumberOfParticipants'] ) ); ?>)</i>
 							</label>
