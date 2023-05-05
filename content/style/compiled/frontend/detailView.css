@@ -4,7 +4,7 @@
   padding: 16px 0;
 }
 .eduadmin div.title .courseTitle {
-  color: hsl(0deg, 0%, 30%);
+  color: hsl(0, 0%, 30%);
   font-weight: 600;
   margin: 0;
   padding: 0;
@@ -15,11 +15,11 @@
   margin: 0 16px 0 0;
 }
 .eduadmin .textblock {
-  color: hsl(0deg, 0%, 35%);
+  color: hsl(0, 0%, 35%);
 }
 .eduadmin .eventInformation {
   margin: 0 0 48px 0;
-  color: hsl(0deg, 0%, 35%);
+  color: hsl(0, 0%, 35%);
 }
 .eduadmin .event-table.eventDays .eventSeparator {
   margin-top: 1rem;
@@ -28,10 +28,10 @@
 }
 .eduadmin .eventItem {
   padding: 16px 0;
-  border-bottom: 1px solid hsl(0deg, 0%, 95%);
+  border-bottom: 1px solid hsl(0, 0%, 95%);
 }
 .eduadmin .eventItem:first-child {
-  border-top: 1px solid hsl(0deg, 0%, 95%);
+  border-top: 1px solid hsl(0, 0%, 95%);
 }
 .eduadmin .eventItem:last-child {
   border: none;
@@ -51,8 +51,8 @@
     align-items: center;
   }
   .eduadmin .eventItem .eventStatus,
-.eduadmin .eventItem .eventDate,
-.eduadmin .eventItem .eventCity {
+  .eduadmin .eventItem .eventDate,
+  .eduadmin .eventItem .eventCity {
     margin: 0;
     flex: auto;
   }

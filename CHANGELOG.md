@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.1...v3.6.2) (2023-05-05)
+
+
+### Bug Fixes
+
+* **Booking page:** Fixed so that price recalculation will be done when you click a Discount Card. ([7847bda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7847bda741019eea3c7dcf2e728af79f49a96f0a)), closes [#479](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/479)
+
+
+### Security
+
+* Update packages to get rid of vulns ([acd5bfd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/acd5bfd9538df4079a8612630d3bc6cfe4ac9e04))
+
 ### [3.6.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.0...v3.6.1) (2023-04-04)
 
 
