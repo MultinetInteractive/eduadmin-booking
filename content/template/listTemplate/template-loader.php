@@ -44,6 +44,11 @@ if ( ! empty( $attributes['ondemand'] ) ) {
 	$show_ondemand = $attributes['ondemand'];
 }
 
+$all_courses = false;
+if(!empty($attributes['allcourses'])) {
+	$all_courses = $attributes['allcourses'];
+}
+
 if ( null !== $custom_mode ) {
 	if ( 'event' === $custom_mode ) {
 		$str = include $attributes['template'] . '_listEvents.php';

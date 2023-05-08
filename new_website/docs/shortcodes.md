@@ -24,12 +24,12 @@ The plugin will not work without it. (Unless if you only work with interest regi
 
 :::
 
-| Attribute              |          Value type          | Default value |
-| :--------------------- | :--------------------------: | :-----------: |
-| template               | string (`template_A`) |   template_A  |
-| courseid               |            integer           |     _null_    |
-| hideinvoiceemailfield  |            boolean           |     _null_    |
-| showinvoiceinformation |            boolean           |     _null_    |
+| Attribute              |      Value type       | Default value |
+|:-----------------------|:---------------------:|:-------------:|
+| template               | string (`template_A`) |  template_A   |
+| courseid               |        integer        |    _null_     |
+| hideinvoiceemailfield  |        boolean        |    _null_     |
+| showinvoiceinformation |        boolean        |    _null_     |
 
 The `template`-attribute will allow you to create custom booking pages, that uses different templates. Currently we only
 have `template_A` available for use.
@@ -47,12 +47,12 @@ loaded.
 
 Used to output all available price names for a specific course template.
 
-| Attribute      |              Value type              | Default value |
-| :------------- | :----------------------------------: | :-----------: |
-| courseid       |                integer               |     _null_    |
-| orderby        |                string                |     _null_    |
-| order          | string (`ASC`, `DESC`) |     _null_    |
-| numberofprices |                integer               |     _null_    |
+| Attribute      |       Value type       | Default value |
+|:---------------|:----------------------:|:-------------:|
+| courseid       |        integer         |    _null_     |
+| orderby        |         string         |    _null_     |
+| order          | string (`ASC`, `DESC`) |    _null_     |
+| numberofprices |        integer         |    _null_     |
 
 With the `courseid`-attribute, you can output the price names for a specific course template.
 
@@ -89,37 +89,37 @@ enter into this attribute.
 
 This shortcode is used when you want to create your own custom template [**detail view**](#eduadmin-detailview).
 
-| Attribute                 |            Value type            |      Default value      |
-| :------------------------ |:--------------------------------:|:-----------------------:|
-| courseid                  |             integer              |         _null_          |
-| coursename                |             boolean              |          null           |
-| coursepublicname          |             boolean              |          null           |
-| courselevel               |             boolean              |          null           |
-| courseimage               |             boolean              |          null           |
-| courseimagetext           |             boolean              |          null           |
-| coursedays                |             boolean              |          null           |
-| coursestarttime           |             boolean              |          null           |
-| courseendtime             |             boolean              |          null           |
-| courseprice               | boolean, string (`both`, `inclVat`, `exclVat`) |      null     |
-| eventprice                |             boolean, string (`both`, `inclVat`, `exclVat`)              |          null           |
-| coursedescriptionshort    |             boolean              |          null           |
-| coursedescription         |             boolean              |          null           |
-| coursegoal                |             boolean              |          null           |
-| coursetarget              |             boolean              |          null           |
-| courseprerequisites       |             boolean              |          null           |
-| courseafter               |             boolean              |          null           |
-| coursequote               |             boolean              |          null           |
-| courseeventlist           |             boolean              |          null           |
-| showmore                  |             integer              |          null           |
-| courseattributeid         |             integer              |          null           |
-| courseattributehasvalue   |             integer              |          null           |
-| courseeventlistfiltercity |             boolean              |          null           |
-| pagetitlejs               |             boolean              |          null           |
-| bookurl                   |             boolean              |          null           |
-| courseinquiryurl          |             boolean              |          null           |
-| order                     |      string (`ASC`, `DESC`)      |         _null_          |
-| orderby                   |              string              |         _null_          |
-| ondemand |             boolean              |          false          |
+| Attribute                 |                   Value type                   | Default value |
+|:--------------------------|:----------------------------------------------:|:-------------:|
+| courseid                  |                    integer                     |    _null_     |
+| coursename                |                    boolean                     |     null      |
+| coursepublicname          |                    boolean                     |     null      |
+| courselevel               |                    boolean                     |     null      |
+| courseimage               |                    boolean                     |     null      |
+| courseimagetext           |                    boolean                     |     null      |
+| coursedays                |                    boolean                     |     null      |
+| coursestarttime           |                    boolean                     |     null      |
+| courseendtime             |                    boolean                     |     null      |
+| courseprice               | boolean, string (`both`, `inclVat`, `exclVat`) |     null      |
+| eventprice                | boolean, string (`both`, `inclVat`, `exclVat`) |     null      |
+| coursedescriptionshort    |                    boolean                     |     null      |
+| coursedescription         |                    boolean                     |     null      |
+| coursegoal                |                    boolean                     |     null      |
+| coursetarget              |                    boolean                     |     null      |
+| courseprerequisites       |                    boolean                     |     null      |
+| courseafter               |                    boolean                     |     null      |
+| coursequote               |                    boolean                     |     null      |
+| courseeventlist           |                    boolean                     |     null      |
+| showmore                  |                    integer                     |     null      |
+| courseattributeid         |                    integer                     |     null      |
+| courseattributehasvalue   |                    integer                     |     null      |
+| courseeventlistfiltercity |                    boolean                     |     null      |
+| pagetitlejs               |                    boolean                     |     null      |
+| bookurl                   |                    boolean                     |     null      |
+| courseinquiryurl          |                    boolean                     |     null      |
+| order                     |             string (`ASC`, `DESC`)             |    _null_     |
+| orderby                   |                     string                     |    _null_     |
+| ondemand                  |                    boolean                     |     false     |
 
 We will go into each attribute on the [_custom template_](custom-template.md) page.
 
@@ -129,13 +129,13 @@ We will go into each attribute on the [_custom template_](custom-template.md) pa
 
 This will output the default detail view, you can select from two templates (`template_A` and `template_B`).
 
-| Attribute      |                     Value type                    | Default value |
-| :------------- | :-----------------------------------------------: | :-----------: |
-| template       | string (`template_A`, `template_B`) |   template_A  |
-| courseid       |                      integer                      |     _null_    |
-| customtemplate |                      boolean                      |     _null_    |
-| showmore       |                      integer                      |     _null_    |
-| hide           |                       string                      |     _null_    |
+| Attribute      |             Value type              | Default value |
+|:---------------|:-----------------------------------:|:-------------:|
+| template       | string (`template_A`, `template_B`) |  template_A   |
+| courseid       |               integer               |    _null_     |
+| customtemplate |               boolean               |    _null_     |
+| showmore       |               integer               |    _null_     |
+| hide           |               string                |    _null_     |
 
 By setting the `template`-attribute, you can override the setting in the backend.
 
@@ -174,30 +174,31 @@ Currently this shortcode doesn't have any attributes to customize it.
 One of the main shortcodes, as it shows the end users a list of your courses/events.
 
 | Attribute       |             Value type              | Default value |
-| :-------------- |:-----------------------------------:| :-----------: |
-| template        | string (`template_A`, `template_B`) |   template_A  |
-| category        |               string                |     _null_    |
-| categorydeep    |               string                |     _null_    |
-| subject         |               string                |     _null_    |
-| subjectid       |               integer               |     _null_    |
+|:----------------|:-----------------------------------:|:-------------:|
+| template        | string (`template_A`, `template_B`) |  template_A   |
+| category        |               string                |    _null_     |
+| categorydeep    |               string                |    _null_     |
+| subject         |               string                |    _null_     |
+| subjectid       |               integer               |    _null_     |
 | hidesearch      |               boolean               |     false     |
 | onlyevents      |               boolean               |     false     |
 | onlyempty       |               boolean               |     false     |
-| numberofevents  |               numeric               |     _null_    |
-| mode            |               string                |     _null_    |
-| orderby         |               string                |     _null_    |
-| order           |       string (`ASC`, `DESC`)        |     _null_    |
-| showsearch      |               boolean               |     _null_    |
-| showcity        |               boolean               |      true     |
-| showbookbtn     |               boolean               |      true     |
-| showreadmorebtn |               boolean               |      true     |
-| city            |               integer               |     _null_    |
-| courselevel     |               integer               |     _null_    |
-| searchCourse    |               string                |     _null_    |
-| filtercity      |               string                |     _null_    |
-| hideimages      |               boolean               |     _null_    |
-| showimages      |               boolean               |     _null_    |
+| numberofevents  |               numeric               |    _null_     |
+| mode            |               string                |    _null_     |
+| orderby         |               string                |    _null_     |
+| order           |       string (`ASC`, `DESC`)        |    _null_     |
+| showsearch      |               boolean               |    _null_     |
+| showcity        |               boolean               |     true      |
+| showbookbtn     |               boolean               |     true      |
+| showreadmorebtn |               boolean               |     true      |
+| city            |               integer               |    _null_     |
+| courselevel     |               integer               |    _null_     |
+| searchCourse    |               string                |    _null_     |
+| filtercity      |               string                |    _null_     |
+| hideimages      |               boolean               |    _null_     |
+| showimages      |               boolean               |    _null_     |
 | ondemand        |               boolean               |     false     |
+| allcourses      |               boolean               |     false     |
 
 The `template`-attribute lets you override the default setting for what template the list should use.
 
@@ -251,7 +252,9 @@ The `hideimages`-attribute will hide the images for course templates, if it was 
 
 The `showimages`-attribute will show the images for course templates, if it was disabled by backend settings.
 
-The `ondemand`-attribute will determine if you show either courses with planned events, or on demand courses
+The `ondemand`-attribute will determine if you show either courses with planned events, or on demand courses.
+
+The `allcourses`-attribute will show all courses, regardless if they are on demand or not.
 
 * * *
 
@@ -268,8 +271,8 @@ Does not have any attributes to customize anything at the moment.
 This shortcode renders a _widget_ to handle login information.
 
 | Attribute  | Value type | Default value |
-| :--------- | :--------: | :-----------: |
-| logintext  |   string   |     Log in    |
+|:-----------|:----------:|:-------------:|
+| logintext  |   string   |    Log in     |
 | logouttext |   string   |    Log out    |
 | guesttext  |   string   |     Guest     |
 
@@ -287,8 +290,8 @@ This shortcode will output a interest registration form, for a course template. 
 attribute for `courseid`, depending on the use.
 
 | Attribute | Value type | Default value |
-| :-------- | :--------: | :-----------: |
-| courseid  |   integer  |     _null_    |
+|:----------|:----------:|:-------------:|
+| courseid  |  integer   |    _null_     |
 
 The `courseid`-attribute will make the shortcode output a specific form, for that specific course template.
 
@@ -300,9 +303,9 @@ As with the other booking view, this is important if you want to be able to rece
 will render a predetermined form with all info needed to book a programme.
 
 | Attribute        | Value type | Default value |
-| :--------------- | :--------: | :-----------: |
-| programmeid      |   integer  |     _null_    |
-| programmestartid |   integer  |     _null_    |
+|:-----------------|:----------:|:-------------:|
+| programmeid      |  integer   |    _null_     |
+| programmestartid |  integer   |    _null_     |
 
 You can also build static pages and apply the attribute `programmeid` to make a programme specific form. And if you also
 specify the `programmestartid`, it can be tied to a specific programme start.
@@ -315,8 +318,8 @@ This is the detail view, to view a specific programme, it can be used to create 
 or used as the default view for all programmes.
 
 | Attribute   | Value type | Default value |
-| :---------- | :--------: | :-----------: |
-| programmeid |   integer  |     _null_    |
+|:------------|:----------:|:-------------:|
+| programmeid |  integer   |    _null_     |
 
 And if you want to create a specific page for a programme, you can also use the `programmeid`-attribute.
 
@@ -328,8 +331,8 @@ As with the normal list view, this view lists the available programmes you have 
 EduAdmin**](https://www.eduadmin.se).
 
 | Attribute | Value type | Default value |
-| :-------- | :--------: | :-----------: |
-| category  |   string   |     _null_    |
+|:----------|:----------:|:-------------:|
+| category  |   string   |    _null_     |
 
 And if you want to filter this list, you can apply the `category`-attribute.
 

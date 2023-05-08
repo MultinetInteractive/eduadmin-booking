@@ -1,5 +1,14 @@
 "use strict";
-wp_edu = wp_edu ? wp_edu : { AjaxUrl: "", CourseFolder: "", BaseUrl: "", BaseUrlScripts: "", Currency: "SEK", ShouldValidateCivRegNo: "false", SingleParticipant: "false", RecaptchaEnabled: "false" };
+wp_edu = wp_edu ? wp_edu : {
+    AjaxUrl: "",
+    CourseFolder: "",
+    BaseUrl: "",
+    BaseUrlScripts: "",
+    Currency: "SEK",
+    ShouldValidateCivRegNo: "false",
+    SingleParticipant: "false",
+    RecaptchaEnabled: "false"
+};
 var edu = window["edu"] ? window["edu"] : {};
 edu.apiclient = {
     baseUrl: null,
@@ -115,7 +124,8 @@ edu.apiclient = {
                 showimages: jQuery(target).data("showimages"),
                 hideimages: jQuery(target).data("hideimages"),
                 filtercity: jQuery(target).data("filtercity"),
-                ondemand: jQuery(target).data('ondemand')
+                ondemand: jQuery(target).data('ondemand'),
+                allcourses: jQuery(target).data('allcourses'),
             },
             success: function (d) {
                 jQuery(target).html(d);
@@ -141,7 +151,8 @@ edu.apiclient = {
                 showvenue: jQuery(target).data("showvenue"),
                 eventinquiry: jQuery(target).data("eventinquiry"),
                 "edu-region": jQuery(target).data("region"),
-                ondemand: jQuery(target).data('ondemand')
+                ondemand: jQuery(target).data('ondemand'),
+                allcourses: jQuery(target).data('allcourses'),
             },
             success: function (d) {
                 jQuery(target).replaceWith(d);
@@ -227,7 +238,8 @@ edu.apiclient = {
             }
             return decodeURIComponent(cookie.substring(valueStart, valueEnd));
         }
-        catch (e) { }
+        catch (e) {
+        }
         return null;
     },
     SetCookie: function (name, value, expire) {
