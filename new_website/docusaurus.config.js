@@ -38,7 +38,7 @@ module.exports = {
 					}
 				},
 				"theme": {
-					"customCss": "../src/css/customTheme.css"
+					"customCss": "./src/css/customTheme.css"
 				}
 			}
 		]
