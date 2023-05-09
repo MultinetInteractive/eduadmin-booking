@@ -55,6 +55,7 @@ function eduadmin_get_list_view( $attributes ) {
 			'showimages'      => null,
 			'categorydeep'    => null,
 			'ondemand'        => false,
+			'allcourses'      => false,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
@@ -240,7 +241,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 			'order'                     => null,
 			'orderby'                   => null,
 			'ondemand'                  => false,
-			//'coursesubject' => null
+			'allcourses'                => false,
 		),
 		normalize_empty_atts( $attributes ),
 		'eduadmin-detailinfo'
@@ -551,6 +552,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$ret_str .= ' data-showvenue="' . esc_attr( EDU()->is_checked( 'eduadmin-showEventVenueName', false ) ) . '"';
 				$ret_str .= ' data-eventinquiry="' . esc_attr( EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false ) ) . '"';
 				$ret_str .= ' data-ondemand="' . esc_attr( $attributes['ondemand'] ) . '"';
+				$ret_str .= ' data-allcourses="' . esc_attr( $attributes['allcourses'] ) . '"';
 				$ret_str .= '>';
 
 				$i                = 0;

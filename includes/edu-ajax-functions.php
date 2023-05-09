@@ -48,8 +48,7 @@ function edu_listview_courselist() {
 	}
 
 	if ( ! empty( $_POST['city'] ) && is_numeric( $_POST['city'] ) ) {
-		$filters[]       = 'Events/any(e:e/LocationId eq ' . intval( $_POST['city'] ) . ')';
-		$event_filters[] = 'LocationId eq ' . intval( $_POST['city'] );
+		$filters[] = 'Events/any(e:e/LocationId eq ' . intval( $_POST['city'] ) . ')';
 	}
 
 	if ( ! empty( $_POST['subject'] ) ) {
@@ -109,49 +108,12 @@ function edu_api_listview_eventlist() {
 		$fetch_months = 6;
 	}
 
-	$ondemand = $_POST['ondemand'];
+	$city         = null;
+	$subject_id   = null;
+	$course_level = null;
 
-	$filters       = array();
-	$selects       = array();
-	$event_filters = array();
-	$expands       = array();
-
-	$selects[] = 'CourseTemplateId';
-	$selects[] = 'CourseName';
-	$selects[] = 'InternalCourseName';
-	$selects[] = 'ImageUrl';
-	$selects[] = 'CourseDescription';
-	$selects[] = 'CourseDescriptionShort';
-	$selects[] = 'CourseGoal';
-	$selects[] = 'TargetGroup';
-	$selects[] = 'Prerequisites';
-	$selects[] = 'CourseAfter';
-	$selects[] = 'Quote';
-	$selects[] = 'Days';
-	$selects[] = 'StartTime';
-	$selects[] = 'EndTime';
-	$selects[] = 'RequireCivicRegistrationNumber';
-	$selects[] = 'ParticipantVat';
-	$selects[] = 'OnDemand';
-	$selects[] = 'OnDemandAccessDays';
-
-	$event_filters[] = 'HasPublicPriceName';
-	$event_filters[] = 'StatusId eq 1';
-	$event_filters[] = 'CustomerId eq null';
-	$event_filters[] = 'CompanySpecific eq false';
-
-	if ( ! $ondemand ) {
-		$event_filters[] = 'LastApplicationDate ge ' . date_i18n( 'c' );
-		$event_filters[] = 'StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' );
-		$event_filters[] = 'EndDate ge ' . edu_get_timezoned_date( 'c', 'now' );
-	} else {
-		$event_filters[] = 'OnDemand';
-		$event_filters[] = 'OnDemandPublished';
-
-		$filters[] = 'OnDemand';
-	}
-
-	$filters[] = 'ShowOnWeb';
+	$ondemand    = $_POST['ondemand'];
+	$all_courses = $_POST['allcourses'];
 
 	$category_id = wp_unslash( sanitize_text_field( $_POST['category'] ) );
 
@@ -159,61 +121,20 @@ function edu_api_listview_eventlist() {
 		$category_id = 'deep-' . sanitize_text_field( $_POST['categorydeep'] );
 	}
 
-	if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-		$filters[] = 'CategoryId eq ' . $category_id;
-	} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-		$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
-	}
-
 	if ( ! empty( $_POST['city'] ) && is_numeric( $_POST['city'] ) ) {
-		$filters[]       = 'Events/any(e:e/LocationId eq ' . intval( $_POST['city'] ) . ')';
-		$event_filters[] = 'LocationId eq ' . intval( $_POST['city'] );
+		$city = intval( $_POST['city'] );
 	}
 
 	if ( ! empty( $_POST['subject'] ) ) {
-		$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $_POST['subject'] ) . '\')';
+		$subject_id = intval( $_POST['subject'] );
 	}
 
 	if ( ! empty( $_POST['subjectid'] ) ) {
-		$filters[] = 'Subjects/any(s:s/SubjectId eq ' . intval( $_POST['subjectid'] ) . ')';
+		$subject_id = intval( $_POST['subjectid'] );
 	}
 
 	if ( ! empty( $_POST['courselevel'] ) ) {
-		$filters[] = 'CourseLevelId eq ' . intval( sanitize_text_field( $_POST['courselevel'] ) );
-	}
-
-	$expands['Subjects']   = '$select=SubjectName;';
-	$expands['Categories'] = '$select=CategoryName;';
-	$expands['PriceNames'] = '$filter=PublicPriceName';
-	$expands['Events']     =
-		'$filter=' .
-		join( ' and ', $event_filters ) .
-		';' .
-		'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
-		';' .
-		'$orderby=StartDate asc' .
-		';' .
-		'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate';
-
-	$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
-
-	if ( ! $ondemand ) {
-		$filters[] = 'Events/any(b:b/HasPublicPriceName' .
-		             ' and b/StatusId eq 1' .
-		             ' and b/CustomerId eq null' .
-		             ' and b/CompanySpecific eq false' .
-		             ' and b/LastApplicationDate ge ' . date_i18n( 'c' ) .
-		             ' and b/StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
-		             ' and b/EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
-		             ')';
-	} else {
-		$filters[] = 'Events/any(b:b/HasPublicPriceName' .
-		             ' and b/StatusId eq 1' .
-		             ' and b/CustomerId eq null' .
-		             ' and b/CompanySpecific eq false' .
-		             ' and b/OnDemand' .
-		             ' and b/OnDemandPublished' .
-		             ')';
+		$course_level = intval( sanitize_text_field( $_POST['courselevel'] ) );
 	}
 
 	$order_by              = array();
@@ -247,20 +168,23 @@ function edu_api_listview_eventlist() {
 		array_push( $order, 1 );
 	}
 
-	$expand_arr = array();
-	foreach ( $expands as $key => $value ) {
-		if ( empty( $value ) ) {
-			$expand_arr[] = $key;
+	$attributes = $_POST;
+
+	if ( $all_courses ) {
+		$_courses         = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+		$_ondemandcourses = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+
+		$edo = [
+			'value' => array_merge( $_ondemandcourses['value'], $_courses['value'] ),
+		];
+	} else {
+		if ( ! $ondemand ) {
+			$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
 		} else {
-			$expand_arr[] = $key . '(' . $value . ')';
+			$edo = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
 		}
 	}
 
-	$edo     = EDUAPI()->OData->CourseTemplates->Search(
-		join( ',', $selects ),
-		join( ' and ', $filters ),
-		join( ',', $expand_arr )
-	);
 	$courses = $edo['value'];
 
 	if ( ! empty( $_POST['search'] ) ) {
@@ -405,6 +329,8 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 		'showvenue',
 		'order',
 		'orderby',
+		'ondemand',
+		'allcourses',
 	);
 
 	$current_events = 0;
@@ -481,6 +407,8 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 		'showvenue',
 		'order',
 		'orderby',
+		'ondemand',
+		'allcourses',
 	);
 
 	$current_events = 0;

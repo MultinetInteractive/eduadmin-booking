@@ -9,8 +9,10 @@ foreach ( $events as $event ) {
 		break;
 	}
 
-	if ( $show_ondemand && ! $event['OnDemand'] ) {
-		continue;
+	if ( ! $all_courses ) {
+		if ( $show_ondemand && ! $event['OnDemand'] ) {
+			continue;
+		}
 	}
 
 	$name       = $event['EventName'];

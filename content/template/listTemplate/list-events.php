@@ -56,14 +56,24 @@ if ( null !== $custom_order_by ) {
 	if ( $order_option === "SortIndex" ) {
 		$order_option = "StartDate";
 	}
+
 	array_push( $order_by, $order_option );
 	array_push( $order, 1 );
 }
 
-if ( ! $show_ondemand ) {
-	$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+if ( $all_courses ) {
+	$_courses         = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+	$_ondemandcourses = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+
+	$edo = [
+		'value' => array_merge( $_ondemandcourses['value'], $_courses['value'] ),
+	];
 } else {
-	$edo = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+	if ( ! $show_ondemand ) {
+		$edo = EDUAPIHelper()->GetEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+	} else {
+		$edo = EDUAPIHelper()->GetOnDemandEventList( $attributes, $category_id, $city, $subject_id, $course_level, $custom_order_by, $custom_order_by_order );
+	}
 }
 
 $courses = $edo['value'];
@@ -180,4 +190,5 @@ $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
      data-hideimages="<?php echo esc_attr( $attributes['hideimages'] ); ?>"
      data-filtercity="<?php echo esc_attr( $attributes['filtercity'] ); ?>"
      data-useeduform="<?php echo esc_attr( $use_eduadmin_form ); ?>"
-     data-ondemand="<?php echo esc_attr( $attributes['ondemand'] ); ?>">
+     data-ondemand="<?php echo esc_attr( $attributes['ondemand'] ); ?>"
+     data-allcourses="<?php echo esc_attr( $attributes['allcourses'] ); ?>">

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.2...v3.7.0) (2023-05-09)
+
+
+### Features
+
+* Added possibility to use attribute `allcourses` to show both on demand and regular course templates at the same time. ([4919f52](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4919f52a185ba75224653e0f9f8719cab512ecd3)), closes [#478](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/478)
+
 ### [3.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.1...v3.6.2) (2023-05-05)
 
 
