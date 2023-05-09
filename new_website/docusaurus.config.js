@@ -39,7 +39,7 @@ module.exports = {
 				},
 				"theme": {
 					"customCss": "./src/css/customTheme.css"
-				}
+				},
 			}
 		]
 	],
