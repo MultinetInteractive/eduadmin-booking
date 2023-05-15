@@ -26,6 +26,7 @@ function edu_listview_courselist() {
 		' and LastApplicationDate ge ' . date_i18n( 'c' ) .
 		' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 		' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
+		( ! empty( $_POST['city'] ) ? ' and LocationId eq ' . intval( $_POST['city'] ) : '' ) .
 		';' .
 		'$top=1' .
 		';' .
