@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.3.0
-Stable tag: 3.7.0
+Stable tag: 3.7.1
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,14 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.7.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.0...v3.7.1) (2023-05-15)
+
+
+#### Bug Fixes
+
+* **Documentation:** Fixed a config error for the new version of Docusaurus ([b26c828](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b26c82876ec154b3f1b3374cacd7c57624ad9501))
+* Fix for filtering courses/events for the selected city, not just which course templates that has ever had an event there. ([478f75d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/478f75dc364fa3966e272eb361bfb2e0a3703776))
+
 ### [3.7.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.2...v3.7.0) (2023-05-09)
 
 
@@ -75,13 +83,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Bug Fixes
 
 * **List View:** Use mb_stripos the right way when filtering for cities ([ac1bfa7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ac1bfa7fdb7736ae28e0ffcc325a2fb6253d8b21))
-
-### [3.6.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.5.6...v3.6.0) (2023-01-30)
-
-
-#### Features
-
-* **Profile/Login:** Added setting to disable the login redirect to referring page, so it goes directly to the normal profile ([b038ee0](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b038ee03f575bcb2f03d8ab56524e99ba329c134)), closes [#470](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/470)
 
 
 
