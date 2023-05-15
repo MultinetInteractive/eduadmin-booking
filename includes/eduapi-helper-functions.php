@@ -182,6 +182,7 @@ class EduAdminAPIHelper {
 			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 			' and OnDemand eq false' .
+			( ! empty( $city ) ? ' and LocationId eq ' . intval( $city ) : '' ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;)' .
 			';' .
@@ -223,11 +224,7 @@ class EduAdminAPIHelper {
 			$orderby   = explode( ' ', $custom_order_by );
 			$sortorder = explode( ' ', $custom_order_by_order );
 			foreach ( $orderby as $od => $v ) {
-				if ( isset( $sortorder[ $od ] ) ) {
-					$or = $sortorder[ $od ];
-				} else {
-					$or = 'asc';
-				}
+				$or = isset( $sortorder[ $od ] ) ? $sortorder[ $od ] : 'asc';
 
 				if ( edu_validate_column( 'course', $v ) !== false ) {
 					$sorting[] = $v . ' ' . strtolower( $or );
@@ -300,6 +297,7 @@ class EduAdminAPIHelper {
 			' and CompanySpecific eq false' .
 			' and OnDemand eq true' .
 			' and OnDemandPublished eq true' .
+			( ! empty( $city ) ? ' and LocationId eq ' . intval( $city ) : '' ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;)' .
 			';' .
@@ -341,11 +339,7 @@ class EduAdminAPIHelper {
 			$orderby   = explode( ' ', $custom_order_by );
 			$sortorder = explode( ' ', $custom_order_by_order );
 			foreach ( $orderby as $od => $v ) {
-				if ( isset( $sortorder[ $od ] ) ) {
-					$or = $sortorder[ $od ];
-				} else {
-					$or = 'asc';
-				}
+				$or = isset( $sortorder[ $od ] ) ? $sortorder[ $od ] : 'asc';
 
 				if ( edu_validate_column( 'course', $v ) !== false ) {
 					$sorting[] = $v . ' ' . strtolower( $or );
@@ -417,6 +411,7 @@ class EduAdminAPIHelper {
 			' and StartDate le ' . edu_get_timezoned_date( 'c', 'now 23:59:59 +' . $fetch_months . ' months' ) .
 			' and EndDate ge ' . edu_get_timezoned_date( 'c', 'now' ) .
 			' and OnDemand eq false' .
+			( ! empty( $city ) ? ' and LocationId eq ' . intval( $city ) : '' ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 			';' .
@@ -530,6 +525,7 @@ class EduAdminAPIHelper {
 			' and CompanySpecific eq false' .
 			' and OnDemand eq true' .
 			' and OnDemandPublished eq true' .
+			( ! empty( $city ) ? ' and LocationId eq ' . intval( $city ) : '' ) .
 			';' .
 			'$expand=PriceNames($filter=PublicPriceName;$select=PriceNameId,PriceNameDescription,Price,MaxParticipantNumber,NumberOfParticipants,DiscountPercent;),EventDates($orderby=StartDate;$select=StartDate,EndDate;)' .
 			';' .
