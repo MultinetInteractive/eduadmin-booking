@@ -138,6 +138,8 @@ $show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 $currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
 
 $has_hidden_dates = false;
+
+do_action( 'eduadmin-list-course-view', $courses );
 ?>
 <div class="eduadmin-courselistoptions" data-subject="<?php echo esc_attr( $attributes['subject'] ); ?>"
      data-subjectid="<?php echo esc_attr( $attributes['subjectid'] ); ?>"
