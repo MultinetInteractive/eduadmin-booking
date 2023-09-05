@@ -307,6 +307,11 @@ function eduadmin_get_detailinfo( $attributes ) {
 				return $selected_course["@error"];
 			}
 
+			if ( ! key_exists( "edu-detail-view-" . $selected_course['CourseTemplateId'], $GLOBALS ) ) {
+				do_action( 'eduadmin-detail-view', $selected_course );
+				$GLOBALS[ "edu-detail-view-" . $selected_course['CourseTemplateId'] ] = true;
+			}
+
 			$org = EDUAPIHelper()->GetOrganization();
 
 			if ( isset( $attributes['coursename'] ) ) {

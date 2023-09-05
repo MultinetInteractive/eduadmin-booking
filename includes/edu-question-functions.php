@@ -110,7 +110,7 @@ function edu_render_drop_list_question( $question, $multiple, $suffix ) {
 	echo '<select class="questionDropdown" autocomplete="off" onchange="eduBookingView.UpdatePrice();"' . ( $question['Mandatory'] ? ' data-required="true"' : '' );
 	if ( $multiple ) {
 		echo ' data-replace="name|index"';
-		echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
+		echo ' data-name-template="question_' . esc_attr( $question['QuestionId'] . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 	}
 	echo ' name="question_' . esc_attr( md5( $question['QuestionText'] ) . '_dropdown' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '">';
 	foreach ( $question['Alternatives'] as $q ) {
