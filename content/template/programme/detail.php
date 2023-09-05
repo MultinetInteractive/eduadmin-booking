@@ -37,5 +37,7 @@ $show_headers = EDU()->is_checked( 'eduadmin-showDetailHeaders', true );
 	} else {
 		echo '<i>' . esc_html_x( 'No programme starts available', 'frontend', 'eduadmin-booking' ) . '</i>';
 	}
+
+	do_action( 'eduadmin-programme-detail-view', $programme );
 	?>
 </div>
