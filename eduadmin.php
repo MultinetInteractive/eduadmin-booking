@@ -158,9 +158,14 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function get_option( $optionName, $default = false ) {
 			return \get_option( $optionName, $default );
-			/*return EDURequestCache::GetItem( 'wp-option-' . $optionName, function() use ( $optionName, $default ) {
-				return get_option( $optionName, $default );
-			} );*/
+		}
+
+		public function delete_option( $optionName ) {
+			return \delete_option( $optionName );
+		}
+
+		public function update_option( $optionName, $value ) {
+			return \update_option( $optionName, $value );
 		}
 
 		/*
@@ -265,7 +270,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function get_news() {
-			return EDU()->get_transient( 'eduadmin-wp-news', function() {
+			return $this->get_transient( 'eduadmin-wp-news', function() {
 				$user_locale = get_user_locale();
 				$lang        = "en";
 				switch ( $user_locale ) {
@@ -278,7 +283,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				}
 
 				$u                 = wp_get_current_user();
-				$ut                = md5( EDU()->version );
+				$ut                = md5( $this->version );
 				$eduadmin_news_url = 'https://productnews.multinet.com/display/json/eduadmin-wp-plugin/live/' . $u->ID . '/' . $ut . '?lang=' . $lang;
 				$resp              = wp_remote_get( $eduadmin_news_url );
 
@@ -296,7 +301,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 							if ( $news_items[ $i ]['NewsItemConfig']['recommendedVersion'] ) {
 								$recommendedVersion = $news_items[ $i ]['NewsItemConfig']['recommendedVersion'];
 
-								$updateRecommended                      = version_compare( EDU()->version, $recommendedVersion ) < 0;
+								$updateRecommended                      = version_compare( $this->version, $recommendedVersion ) < 0;
 								$news_items[ $i ]['UpdateRecommended']  = $updateRecommended;
 								$news_items[ $i ]['RecommendedVersion'] = $recommendedVersion;
 								$needs_update                           = true;
@@ -306,7 +311,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				}
 
 				if ( $needs_update ) {
-					EDU()->new_version_needed_notice();
+					$this->new_version_needed_notice();
 				}
 
 				return $news_items;
@@ -412,10 +417,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 			$usage_data    = array(
 				'siteUrl'       => get_site_url(),
-				'siteName'      => get_option( 'blogname' ),
+				'siteName'      => $this->get_option( 'blogname' ),
 				'wpVersion'     => $wp_version,
 				'phpVersion'    => PHP_VERSION,
-				'token'         => get_option( 'eduadmin-api-key' ),
+				'token'         => $this->get_option( 'eduadmin-api-key' ),
 				'pluginVersion' => $this->version,
 				'storedHash'    => $integrity->storedIntegrityHash,
 				'currentHash'   => $integrity->currentIntegrityHash,
@@ -424,7 +429,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$call_home_url = 'https://ws10.multinet.se/edu-plugin/wp_phone_home.php';
 			wp_remote_post( $call_home_url, array( 'body' => $usage_data ) );
 
-			EDU()->get_news();
+			$this->get_news();
 		}
 
 		public function call_home_now() {
@@ -465,19 +470,19 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function get_integrity_check_footer() {
 			$integrity = EduAdminPluginIntegrityChecker::check_plugin_integrity();
-			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( EDU()->version ) . ") - Potentially modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
+			echo $integrity->currentIntegrityHash === $integrity->storedIntegrityHash ? "" : "<!-- EduAdmin Booking (" . esc_html( $this->version ) . ") - Potentially modified plugin (" . $integrity->currentIntegrityHash . ") -->\n";
 		}
 
 		public function get_scheduled_tasks() {
 			if ( ! empty( $_GET['edu-showtasks'] ) && '1' === $_GET['edu-showtasks'] ) {
-				echo '<!-- EduAdmin Booking (' . esc_html( EDU()->version ) . ") Scheduled Tasks -->\n";
+				echo '<!-- EduAdmin Booking (' . esc_html( $this->version ) . ") Scheduled Tasks -->\n";
 
 				$tasks = _get_cron_array();
 
 				$prettyList = array();
 
 				foreach ( $tasks as $nextExecution => $task ) {
-					if ( stristr( key( $task ), "eduadmin" ) == true ) {
+					if ( stristr( key( $task ), "eduadmin" ) ) {
 						$_task = array();
 
 						$_task['next_execution']    = date_i18n( "Y-m-d H:i:s", $nextExecution );
@@ -514,14 +519,14 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 					                               ), '', $transient->option_name );
 					$list[ $key ][] = $transient;
 				}
-				echo '<!-- EduAdmin Booking (' . esc_html( EDU()->version ) . ") Transients -->\n";
+				echo '<!-- EduAdmin Booking (' . esc_html( $this->version ) . ") Transients -->\n";
 
 				$nowTime = time();
 				foreach ( $list as $trn => $value ) {
 					$expires = "";
 					$_value  = "";
 					foreach ( $value as $item ) {
-						if ( stristr( $item->option_name, "timeout" ) == true ) {
+						if ( stristr( $item->option_name, "timeout" ) ) {
 							$timeToExpire = $item->option_value - $nowTime;
 							if ( abs( $timeToExpire ) > 59 ) {
 								if ( $timeToExpire > 0 ) {
@@ -541,7 +546,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 						}
 					}
 					echo '<!-- ' . esc_html( $trn ) . ": " . $expires . " -->\n";
-					//echo '<!-- ' . esc_html( $_value ) . " -->\n";
 				}
 				echo "<!-- /EduAdmin Booking Transients -->\n";
 			}
@@ -649,12 +653,12 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function new_theme() {
-			update_option( 'eduadmin-options_have_changed', 1 );
+			$this->update_option( 'eduadmin-options_have_changed', 1 );
 		}
 
 		public function activate() {
-			if ( EDU()->get_option( 'eduadmin-bookingViewPage', 0 ) == 0 ) {
-				update_option( 'eduadmin-useBookingFormFromApi', true );
+			if ( $this->get_option( 'eduadmin-bookingViewPage', 0 ) == 0 ) {
+				$this->update_option( 'eduadmin-useBookingFormFromApi', true );
 			}
 
 			$this->clear_transients();
@@ -685,7 +689,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$nowTime = time();
 			foreach ( $list as $trn => $value ) {
 				foreach ( $value as $item ) {
-					if ( stristr( $item->option_name, "timeout" ) == true ) {
+					if ( stristr( $item->option_name, "timeout" ) ) {
 						$timeToExpire = $item->option_value - $nowTime;
 						if ( $timeToExpire <= 0 ) {
 							$expired_transients[] = $trn;
@@ -728,13 +732,13 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		private function get_new_api_token() {
-			$new_key = get_option( 'eduadmin-newapi-key', null );
+			$new_key = $this->get_option( 'eduadmin-newapi-key', null );
 
 			if ( null !== $new_key && ! empty( $new_key ) ) {
 				$key = edu_decrypt_api_key( $new_key );
 				EDUAPI()->SetCredentials( $key->UserId, $key->Hash );
 			} else {
-				$old_key = get_option( 'eduadmin-api-key', null );
+				$old_key = $this->get_option( 'eduadmin-api-key', null );
 				if ( null !== $old_key && ! empty( $old_key ) ) {
 					$key = edu_decrypt_api_key( $old_key );
 					EDUAPI()->SetCredentials( $key->UserId, $key->Hash );

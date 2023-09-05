@@ -3,7 +3,7 @@ function edu_send_forgotten_password( $login_value ) {
 	$t     = EDU()->start_timer( __METHOD__ );
 	$cc_id = 0;
 
-	$login_field = get_option( 'eduadmin-loginField', 'Email' );
+	$login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 
 	$cc = EDUAPI()->OData->Persons->Search(
 		null,
@@ -33,7 +33,7 @@ function edu_send_forgotten_password( $login_value ) {
 function edu_logout_user() {
 	$t    = EDU()->start_timer( __METHOD__ );
 	$surl = get_home_url();
-	$cat  = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat  = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 	$base_url = $surl . '/' . $cat;
 
@@ -49,7 +49,7 @@ function edu_logout_user() {
 add_action(
 	'wp_loaded',
 	function() {
-		$api_key = get_option( 'eduadmin-api-key' );
+		$api_key = EDU()->get_option( 'eduadmin-api-key' );
 
 		if ( ! $api_key || empty( $api_key ) ) {
 			add_action( 'admin_notices', array( 'EduAdmin', 'setup_warning' ) );
@@ -61,7 +61,7 @@ add_action(
 				return;
 			}
 
-			$cat = get_option( 'eduadmin-rewriteBaseUrl' );
+			$cat = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 			if ( false !== stristr( $_SERVER['REQUEST_URI'], "/$cat/profile/logout" ) ) {
 				edu_logout_user();

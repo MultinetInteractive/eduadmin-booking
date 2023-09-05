@@ -18,7 +18,7 @@ if ( ! function_exists( 'normalize_empty_atts' ) ) {
 
 function eduadmin_get_list_view( $attributes ) {
 	$t                 = EDU()->start_timer( __METHOD__ );
-	$selected_template = get_option( 'eduadmin-listTemplate', 'template_A' );
+	$selected_template = EDU()->get_option( 'eduadmin-listTemplate', 'template_A' );
 
 	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/listView.css' );
 	wp_register_style(
@@ -96,7 +96,7 @@ function eduadmin_get_event_interest( $attributes ) {
 
 function eduadmin_get_detail_view( $attributes ) {
 	$t                 = EDU()->start_timer( __METHOD__ );
-	$selected_template = get_option( 'eduadmin-detailTemplate', 'template_A' );
+	$selected_template = EDU()->get_option( 'eduadmin-detailTemplate', 'template_A' );
 
 	$style_version = filemtime( EDUADMIN_PLUGIN_PATH . '/content/style/compiled/frontend/detailView.css' );
 	wp_register_style(
@@ -186,7 +186,7 @@ function eduadmin_get_booking_view( $attributes ) {
 	);
 	wp_enqueue_style( 'eduadmin_frontend_booking' );
 
-	$selected_template = get_option( 'eduadmin-bookingTemplate', 'template_A' );
+	$selected_template = EDU()->get_option( 'eduadmin-bookingTemplate', 'template_A' );
 	$attributes        = shortcode_atts(
 		array(
 			'template'               => $selected_template,
@@ -271,14 +271,14 @@ function eduadmin_get_detailinfo( $attributes ) {
 		);
 	}
 
-	$api_key = get_option( 'eduadmin-api-key' );
+	$api_key = EDU()->get_option( 'eduadmin-api-key' );
 
 	if ( empty( $api_key ) ) {
 		EDU()->stop_timer( $t );
 
 		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
 	} else {
-		$fetch_months  = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months  = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		$group_by_city = EDU()->is_checked( 'eduadmin-groupEventsByCity', false );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
@@ -460,7 +460,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			if ( isset( $attributes['bookurl'] ) ) {
 				$surl     = get_home_url();
-				$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+				$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 				$base_url = $surl . '/' . $cat;
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
@@ -470,7 +470,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			if ( isset( $attributes['courseinquiryurl'] ) ) {
 				$surl     = get_home_url();
-				$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+				$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 				$base_url = $surl . '/' . $cat;
 
 				$name = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
@@ -516,22 +516,22 @@ function eduadmin_get_detailinfo( $attributes ) {
 				}
 
 				$surl = get_home_url();
-				$cat  = get_option( 'eduadmin-rewriteBaseUrl' );
+				$cat  = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 				$last_city = '';
 
 				$show_more        = isset( $attributes['showmore'] ) && ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : -1;
-				$spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
-				$always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
-				$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+				$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+				$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+				$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 				$base_url = $surl . '/' . $cat;
 				$name     = ( ! empty( $selected_course['CourseName'] ) ? $selected_course['CourseName'] : $selected_course['InternalCourseName'] );
 
-				$object_interest_page      = get_option( 'eduadmin-interestObjectPage' );
+				$object_interest_page      = EDU()->get_option( 'eduadmin-interestObjectPage' );
 				$allow_interest_reg_object = EDU()->is_checked( 'eduadmin-allowInterestRegObject', false );
 
-				$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
+				$event_interest_page      = EDU()->get_option( 'eduadmin-interestEventPage' );
 				$allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
 
 				$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
@@ -559,7 +559,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$has_hidden_dates = false;
 				$show_event_venue = EDU()->is_checked( 'eduadmin-showEventVenueName', false );
 
-				$event_interest_page = get_option( 'eduadmin-interestEventPage' );
+				$event_interest_page = EDU()->get_option( 'eduadmin-interestEventPage' );
 
 				if ( ! empty( $events ) ) {
 					foreach ( $events as $ev ) {
@@ -607,7 +607,7 @@ function eduadmin_get_login_widget( $attributes ) {
 	);
 
 	$surl = get_home_url();
-	$cat  = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat  = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 
 	$base_url = $surl . '/' . $cat;
 	if ( isset( EDU()->session['eduadmin-loginUser'] ) ) {

@@ -3,7 +3,7 @@
 function edu_render_date_settings_page() {
 	$t = EDU()->start_timer( __METHOD__ );
 
-	$apiKey = get_option( 'eduadmin-api-key' );
+	$apiKey = EDU()->get_option( 'eduadmin-api-key' );
 
 	if ( ! $apiKey || empty( $apiKey ) ) {
 		add_action( 'admin_notices', array( 'EduAdmin', 'SetupWarning' ) );
@@ -11,40 +11,40 @@ function edu_render_date_settings_page() {
 		return;
 	} else {
 		if ( isset( $_REQUEST['act'] ) && $_REQUEST['act'] == "edu-reset-date-settings" ) {
-			delete_option( 'eduadmin-date-eventDates-detail' );
-			delete_option( 'eduadmin-date-eventDates-detail-short' );
-			delete_option( 'eduadmin-date-eventDates-detail-show-daynames' );
-			delete_option( 'eduadmin-date-eventDates-detail-show-time' );
-			delete_option( 'eduadmin-date-eventDates-detail-custom-format' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-detail' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-detail-short' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-detail-show-daynames' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-detail-show-time' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-detail-custom-format' );
 
-			delete_option( 'eduadmin-date-eventDates-list' );
-			delete_option( 'eduadmin-date-eventDates-list-short' );
-			delete_option( 'eduadmin-date-eventDates-list-show-daynames' );
-			delete_option( 'eduadmin-date-eventDates-list-show-time' );
-			delete_option( 'eduadmin-date-eventDates-list-custom-format' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-list' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-list-short' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-list-show-daynames' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-list-show-time' );
+			EDU()->delete_option( 'eduadmin-date-eventDates-list-custom-format' );
 
-			delete_option( 'eduadmin-date-courseDays-event' );
-			delete_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
-			delete_option( 'eduadmin-date-courseDays-event-neverGroup' );
+			EDU()->delete_option( 'eduadmin-date-courseDays-event' );
+			EDU()->delete_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
+			EDU()->delete_option( 'eduadmin-date-courseDays-event-neverGroup' );
 
 			wp_cache_flush();
 		}
 
-		$edu_eventDate_detail_setting = get_option( 'eduadmin-date-eventDates-detail', 'default' );
-		$event_detail_date_short      = get_option( 'eduadmin-date-eventDates-detail-short' );
-		$event_detail_show_day_name   = get_option( 'eduadmin-date-eventDates-detail-show-daynames', 'show-dayname' );
-		$event_detail_show_time       = get_option( 'eduadmin-date-eventDates-detail-show-time', 'show-time' );
-		$event_detail_custom_format   = get_option( 'eduadmin-date-eventDates-detail-custom-format' );
+		$edu_eventDate_detail_setting = EDU()->get_option( 'eduadmin-date-eventDates-detail', 'default' );
+		$event_detail_date_short      = EDU()->get_option( 'eduadmin-date-eventDates-detail-short' );
+		$event_detail_show_day_name   = EDU()->get_option( 'eduadmin-date-eventDates-detail-show-daynames', 'show-dayname' );
+		$event_detail_show_time       = EDU()->get_option( 'eduadmin-date-eventDates-detail-show-time', 'show-time' );
+		$event_detail_custom_format   = EDU()->get_option( 'eduadmin-date-eventDates-detail-custom-format' );
 
-		$edu_eventDate_list_setting = get_option( 'eduadmin-date-eventDates-list', 'default' );
-		$event_list_date_short      = get_option( 'eduadmin-date-eventDates-list-short' );
-		$event_list_show_day_name   = get_option( 'eduadmin-date-eventDates-list-show-daynames', 'show-dayname' );
-		$event_list_show_time       = get_option( 'eduadmin-date-eventDates-list-show-time', 'show-time' );
-		$event_list_custom_format   = get_option( 'eduadmin-date-eventDates-list-custom-format' );
+		$edu_eventDate_list_setting = EDU()->get_option( 'eduadmin-date-eventDates-list', 'default' );
+		$event_list_date_short      = EDU()->get_option( 'eduadmin-date-eventDates-list-short' );
+		$event_list_show_day_name   = EDU()->get_option( 'eduadmin-date-eventDates-list-show-daynames', 'show-dayname' );
+		$event_list_show_time       = EDU()->get_option( 'eduadmin-date-eventDates-list-show-time', 'show-time' );
+		$event_list_custom_format   = EDU()->get_option( 'eduadmin-date-eventDates-list-custom-format' );
 
-		$eduCourseDaySetting       = get_option( 'eduadmin-date-courseDays-event', 'default' );
-		$course_day_always_numbers = get_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
-		$course_day_never_group    = get_option( 'eduadmin-date-courseDays-event-neverGroup' );
+		$eduCourseDaySetting       = EDU()->get_option( 'eduadmin-date-courseDays-event', 'default' );
+		$course_day_always_numbers = EDU()->get_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
+		$course_day_never_group    = EDU()->get_option( 'eduadmin-date-courseDays-event-neverGroup' );
 		?>
 		<div class="eduadmin wrap">
 			<h2><?php echo sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ) ); ?></h2>

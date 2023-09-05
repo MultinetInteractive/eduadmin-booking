@@ -1,7 +1,7 @@
 <?php
 function edu_render_list_settings_page() {
 	EDU()->timers[ __METHOD__ ] = microtime( true );
-	$apiKey                     = get_option( 'eduadmin-api-key' );
+	$apiKey                     = EDU()->get_option( 'eduadmin-api-key' );
 
 	if ( ! $apiKey || empty( $apiKey ) ) {
 		add_action( 'admin_notices', array( 'EduAdmin', 'SetupWarning' ) );
@@ -22,70 +22,70 @@ function edu_render_list_settings_page() {
 								<h3><?php _ex( 'Template', 'backend', 'eduadmin-booking' ); ?></h3>
 								<select name="eduadmin-listTemplate">
 									<option
-										value="template_A"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_A" ); ?>>
+										value="template_A"<?php selected( EDU()->get_option( 'eduadmin-listTemplate' ), "template_A" ); ?>>
 										Layout A
 									</option>
 									<option
-										value="template_B"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_B" ); ?>>
+										value="template_B"<?php selected( EDU()->get_option( 'eduadmin-listTemplate' ), "template_B" ); ?>>
 										Layout B
 									</option>
 									<option
-										value="template_GF"<?php selected( get_option( 'eduadmin-listTemplate' ), "template_GF" ); ?>>
+										value="template_GF"<?php selected( EDU()->get_option( 'eduadmin-listTemplate' ), "template_GF" ); ?>>
 										Layout GF
 									</option>
 								</select>
 								<h3><?php _ex( 'List settings', 'backend', 'eduadmin-booking' ); ?></h3>
 								<label>
 									<input type="checkbox" id="eduadmin-showEventsInList"
-									       name="eduadmin-showEventsInList" <?php checked( get_option( 'eduadmin-showEventsInList', false ), "on" ); ?> />
+									       name="eduadmin-showEventsInList" <?php checked( EDU()->get_option( 'eduadmin-showEventsInList', false ), "on" ); ?> />
 									<?php _ex( 'Show events instead of courses', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox" id="eduadmin-showCourseImage"
-									       name="eduadmin-showCourseImage" <?php checked( get_option( 'eduadmin-showCourseImage', true ), "on" ); ?> />
+									       name="eduadmin-showCourseImage" <?php checked( EDU()->get_option( 'eduadmin-showCourseImage', true ), "on" ); ?> />
 									<?php _ex( 'Show course images', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showNextEventDate" <?php checked( get_option( 'eduadmin-showNextEventDate', false ), "on" ); ?> />
+									       name="eduadmin-showNextEventDate" <?php checked( EDU()->get_option( 'eduadmin-showNextEventDate', false ), "on" ); ?> />
 									<?php _ex( 'Show coming dates (Only course list, not events)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showCourseLocations" <?php checked( get_option( 'eduadmin-showCourseLocations', false ), "on" ); ?> />
+									       name="eduadmin-showCourseLocations" <?php checked( EDU()->get_option( 'eduadmin-showCourseLocations', false ), "on" ); ?> />
 									<?php _ex( 'Show locations (Only course list, not events)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showEventVenueName" <?php checked( get_option( 'eduadmin-showEventVenueName', false ), "on" ); ?> />
+									       name="eduadmin-showEventVenueName" <?php checked( EDU()->get_option( 'eduadmin-showEventVenueName', false ), "on" ); ?> />
 									<?php _ex( 'Show venue name', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showEventPrice" <?php checked( get_option( 'eduadmin-showEventPrice', false ), "on" ); ?> />
+									       name="eduadmin-showEventPrice" <?php checked( EDU()->get_option( 'eduadmin-showEventPrice', false ), "on" ); ?> />
 									<?php _ex( 'Show price', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showCourseDays" <?php checked( get_option( 'eduadmin-showCourseDays', true ), "on" ); ?> />
+									       name="eduadmin-showCourseDays" <?php checked( EDU()->get_option( 'eduadmin-showCourseDays', true ), "on" ); ?> />
 									<?php _ex( 'Show days', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showCourseTimes" <?php checked( get_option( 'eduadmin-showCourseTimes', true ), "on" ); ?> />
+									       name="eduadmin-showCourseTimes" <?php checked( EDU()->get_option( 'eduadmin-showCourseTimes', true ), "on" ); ?> />
 									<?php _ex( 'Show time', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-showWeekDays" <?php checked( get_option( 'eduadmin-showWeekDays', false ), "on" ); ?> />
+									       name="eduadmin-showWeekDays" <?php checked( EDU()->get_option( 'eduadmin-showWeekDays', false ), "on" ); ?> />
 									<?php _ex( 'Show weekday names (Only event list)', 'backend', 'eduadmin-booking' ); ?>
 								</label>
 								<br />
@@ -94,13 +94,13 @@ function edu_render_list_settings_page() {
 										<td>
 											<label>
 												<input type="checkbox" id="eduadmin-showCourseDescription"
-												       name="eduadmin-showCourseDescription" <?php checked( get_option( 'eduadmin-showCourseDescription', true ), "on" ); ?> />
+												       name="eduadmin-showCourseDescription" <?php checked( EDU()->get_option( 'eduadmin-showCourseDescription', true ), "on" ); ?> />
 												<?php _ex( 'Show course description', 'backend', 'eduadmin-booking' ); ?>
 											</label>
 										</td>
 										<td style="padding-left: 5px;">
 											<?php
-											$selectedDescriptionField = get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
+											$selectedDescriptionField = EDU()->get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
 											$attributes               = EDUAPI()->OData->CustomFields->Search(
 												null,
 												"ShowOnWeb and CustomFieldOwner eq 'Product' and CustomFieldSubOwner eq 'CourseTemplate'" .
@@ -142,7 +142,7 @@ function edu_render_list_settings_page() {
 								</table>
 								<br />
 								<?php
-								$sortOrder = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+								$sortOrder = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 								?>
 								<table>
 									<tr>
@@ -165,7 +165,7 @@ function edu_render_list_settings_page() {
 								<h3><?php _ex( 'Filter options', 'backend', 'eduadmin-booking' ); ?></h3>
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-allowRegionSearch"<?php if ( get_option( 'eduadmin-allowRegionSearch', false ) ) {
+									       name="eduadmin-allowRegionSearch"<?php if ( EDU()->get_option( 'eduadmin-allowRegionSearch', false ) ) {
 										echo " checked=\"checked\"";
 									} ?> />
 									<?php _ex( 'Allow filter by region', 'backend', 'eduadmin-booking' ); ?>
@@ -173,7 +173,7 @@ function edu_render_list_settings_page() {
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-allowLocationSearch"<?php if ( get_option( 'eduadmin-allowLocationSearch', true ) ) {
+									       name="eduadmin-allowLocationSearch"<?php if ( EDU()->get_option( 'eduadmin-allowLocationSearch', true ) ) {
 										echo " checked=\"checked\"";
 									} ?> />
 									<?php _ex( 'Allow filter by city', 'backend', 'eduadmin-booking' ); ?>
@@ -181,7 +181,7 @@ function edu_render_list_settings_page() {
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-allowSubjectSearch"<?php if ( get_option( 'eduadmin-allowSubjectSearch', false ) ) {
+									       name="eduadmin-allowSubjectSearch"<?php if ( EDU()->get_option( 'eduadmin-allowSubjectSearch', false ) ) {
 										echo " checked=\"checked\"";
 									} ?> />
 									<?php _ex( 'Allow filter by subject', 'backend', 'eduadmin-booking' ); ?>
@@ -189,7 +189,7 @@ function edu_render_list_settings_page() {
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-allowCategorySearch"<?php if ( get_option( 'eduadmin-allowCategorySearch', false ) ) {
+									       name="eduadmin-allowCategorySearch"<?php if ( EDU()->get_option( 'eduadmin-allowCategorySearch', false ) ) {
 										echo " checked=\"checked\"";
 									} ?> />
 									<?php _ex( 'Allow filter by category', 'backend', 'eduadmin-booking' ); ?>
@@ -197,7 +197,7 @@ function edu_render_list_settings_page() {
 								<br />
 								<label>
 									<input type="checkbox"
-									       name="eduadmin-allowLevelSearch"<?php if ( get_option( 'eduadmin-allowLevelSearch', false ) ) {
+									       name="eduadmin-allowLevelSearch"<?php if ( EDU()->get_option( 'eduadmin-allowLevelSearch', false ) ) {
 										echo " checked=\"checked\"";
 									} ?> />
 									<?php _ex( 'Allow filter by course level', 'backend', 'eduadmin-booking' ); ?>

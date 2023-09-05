@@ -122,7 +122,7 @@ abstract class EDU_Integration {
 
 	public function init_settings() {
 		$t              = EDU()->start_timer( __METHOD__ );
-		$this->settings = get_option( $this->get_option_key(), null );
+		$this->settings = EDU()->get_option( $this->get_option_key(), null );
 		add_action( 'eduadmin-plugin-save_' . $this->id, array( $this, 'save_options' ) );
 
 		if ( ! is_array( $this->settings ) ) {
@@ -166,7 +166,7 @@ abstract class EDU_Integration {
 			}
 			EDU()->stop_timer( $t );
 
-			return update_option( $this->get_option_key(), $this->settings );
+			return EDU()->update_option( $this->get_option_key(), $this->settings );
 		}
 
 		return false;

@@ -2,7 +2,7 @@
 function edu_render_style_settings_page() {
 	EDU()->timers[ __METHOD__ ] = microtime( true );
 	if ( ! empty( $_POST['style-settings-nonce'] ) && wp_verify_nonce( $_POST['style-settings-nonce'], 'eduadmin-style-settings' ) && isset( $_POST['resetStyle'] ) ) {
-		delete_option( 'eduadmin-style' );
+		EDU()->delete_option( 'eduadmin-style' );
 	}
 	?>
 	<div class="eduadmin wrap">
@@ -19,7 +19,7 @@ function edu_render_style_settings_page() {
 				<textarea name="eduadmin-style" id="eduadmin-style" style="width: 100%;" cols="250" rows="40"
 				          spellcheck="false"><?php
 					$default_css = '';
-					$css         = get_option( 'eduadmin-style', $default_css );
+					$css         = EDU()->get_option( 'eduadmin-style', $default_css );
 					echo esc_textarea( $css );
 					?></textarea>
 
@@ -39,13 +39,7 @@ function edu_render_style_settings_page() {
 				jQuery('#edu-styleform').submit(function () {
 					var data = jQuery(this).serialize();
 					jQuery.post('options.php', data, function (r) {
-						jQuery('#saveResult').html("<div id="
-						saveMessage
-						" class="
-						successModal
-						"></div>"
-					)
-						;
+						jQuery('#saveResult').html("<div id=\"saveMessage\" class=\"successModal\"></div>");
 						jQuery('#saveMessage').append("<p><?php echo htmlentities( __( 'Settings Saved Successfully', 'eduadmin-booking' ), ENT_QUOTES ); ?></p>").show();
 
 						setTimeout(function () {

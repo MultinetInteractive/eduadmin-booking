@@ -2,7 +2,7 @@
 function edu_render_security_settings_page() {
 	$t = EDU()->start_timer( __METHOD__ );
 
-	$apiKey = get_option( 'eduadmin-api-key' );
+	$apiKey = EDU()->get_option( 'eduadmin-api-key' );
 
 	if ( ! $apiKey || empty( $apiKey ) ) {
 		add_action( 'admin_notices', array( 'EduAdmin', 'SetupWarning' ) );
@@ -25,7 +25,7 @@ function edu_render_security_settings_page() {
 					</p>
 					<label>
 						<input type="checkbox"
-						       name="eduadmin-recaptcha-enabled"<?php checked( get_option( 'eduadmin-recaptcha-enabled', "off" ), "on" ); ?> />
+						       name="eduadmin-recaptcha-enabled"<?php checked( EDU()->get_option( 'eduadmin-recaptcha-enabled', "off" ), "on" ); ?> />
 						<?php echo esc_html_x( 'Enable reCAPTCHA v2 for booking form', 'backend', 'eduadmin-booking' ); ?>
 					</label>
 					<br />
@@ -33,12 +33,12 @@ function edu_render_security_settings_page() {
 					<?php echo esc_html_x( 'Site Key', 'backend', 'eduadmin-booking' ); ?>
 					<br />
 					<input type="text" class="form-control full-width" autocomplete="off" name="eduadmin-recaptcha-sitekey"
-					       value="<?php echo esc_attr( get_option( 'eduadmin-recaptcha-sitekey', '' ) ); ?>" />
+					       value="<?php echo esc_attr( EDU()->get_option( 'eduadmin-recaptcha-sitekey', '' ) ); ?>" />
 					<br />
 					<?php echo esc_html_x( 'Secret Key', 'backend', 'eduadmin-booking' ); ?>
 					<br />
 					<input type="text" class="form-control full-width" autocomplete="off" name="eduadmin-recaptcha-secretkey"
-					       value="<?php echo esc_attr( get_option( 'eduadmin-recaptcha-secretkey', '' ) ); ?>" />
+					       value="<?php echo esc_attr( EDU()->get_option( 'eduadmin-recaptcha-secretkey', '' ) ); ?>" />
 				</div>
 				<p class="submit">
 					<input type="submit" name="submit" id="submit" class="button button-primary"

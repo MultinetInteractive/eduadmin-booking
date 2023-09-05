@@ -10,14 +10,14 @@ if ( ! function_exists( 'wp_get_timezone_string' ) ) {
 	function wp_get_timezone_string() {
 		$t = EDU()->start_timer( __METHOD__ );
 		// if site timezone string exists, return it
-		if ( $timezone = get_option( 'timezone_string' ) ) {
+		if ( $timezone = EDU()->get_option( 'timezone_string' ) ) {
 			EDU()->stop_timer( $t );
 
 			return $timezone;
 		}
 
 		// get UTC offset, if it isn't set then return UTC
-		if ( 0 === ( $utc_offset = get_option( 'gmt_offset', 0 ) ) ) {
+		if ( 0 === ( $utc_offset = EDU()->get_option( 'gmt_offset', 0 ) ) ) {
 			EDU()->stop_timer( $t );
 
 			return 'UTC';
@@ -877,7 +877,7 @@ function convert_to_money( $value, $currency = 'SEK', $decimal = ',', $thousand 
 }
 
 function edu_timezone_shim() {
-	$offset  = (float) get_option( 'gmt_offset' );
+	$offset  = (float) EDU()->get_option( 'gmt_offset' );
 	$hours   = (int) $offset;
 	$minutes = ( $offset - $hours );
 
@@ -889,11 +889,11 @@ function edu_timezone_shim() {
 }
 
 function edu_now_date() {
-	$timezone_string = get_option( 'timezone_string' );
+	$timezone_string = EDU()->get_option( 'timezone_string' );
 	if ( $timezone_string ) {
 		date_default_timezone_set( $timezone_string );
 	}
-	$offset    = (float) get_option( 'gmt_offset' );
+	$offset    = (float) EDU()->get_option( 'gmt_offset' );
 	$timestamp = time() + $offset;
 
 	return date( "Y-m-d\TH:i:s", $timestamp ) . edu_timezone_shim();
@@ -908,7 +908,7 @@ function edu_get_timezoned_date( $dateformat, $input_date = null ) {
 
 	if ( stripos( $input_date, "now" ) !== false ) {
 		if ( $input_date === "now" ) {
-			$offset     = (float) get_option( 'gmt_offset' );
+			$offset     = (float) EDU()->get_option( 'gmt_offset' );
 			$input_date = "now " . date( "H:i:s", strtotime( "now" ) + $offset );
 		}
 		$input_date = date( "c", strtotime( substr( edu_now_date(), 0, 10 ) . " " . substr( $input_date, 4 ) ) );

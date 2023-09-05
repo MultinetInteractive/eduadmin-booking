@@ -74,7 +74,7 @@ function edu_set_canonical_url( $canonical_url ) {
 	$t = EDU()->start_timer( __METHOD__ );
 
 	global $wp_query;
-	$detailpage = get_option( 'eduadmin-detailViewPage' );
+	$detailpage = EDU()->get_option( 'eduadmin-detailViewPage' );
 	if ( isset( $wp_query->queried_object ) && ( isset( $wp_query->query['courseId'] ) || isset( $wp_query->query['edu_programme'] ) ) ) {
 		echo "<link rel=\"canonical\" href=\"" . get_home_url() . $_SERVER['REQUEST_URI'] . "\" />\n";
 	} else {
@@ -144,7 +144,7 @@ function eduadmin_page_title( $title, $sep = '|' ) {
 		}
 
 		if ( false !== $selected_course ) {
-			$title_field = get_option( 'eduadmin-pageTitleField', 'CourseName' );
+			$title_field = EDU()->get_option( 'eduadmin-pageTitleField', 'CourseName' );
 			if ( stristr( $title_field, 'attr_' ) !== false ) {
 				$attrid = substr( $title_field, 5 );
 				foreach ( $selected_course['CustomFields'] as $cf ) {
@@ -390,8 +390,8 @@ function eduadmin_frontend_content() {
 	wp_register_script( 'eduadmin_frontend_script', plugins_url( 'content/scripts/frontend/frontendjs.js', dirname( __FILE__ ) ), null, date_version( $script_version ) );
 	wp_enqueue_script( 'eduadmin_frontend_script', false, array( 'jquery' ) );
 
-	$recaptcha_sitekey   = get_option( 'eduadmin-recaptcha-sitekey', '' );
-	$recaptcha_secretkey = get_option( 'eduadmin-recaptcha-secretkey', '' );
+	$recaptcha_sitekey   = EDU()->get_option( 'eduadmin-recaptcha-sitekey', '' );
+	$recaptcha_secretkey = EDU()->get_option( 'eduadmin-recaptcha-secretkey', '' );
 
 	if ( $recaptcha_enabled && ! empty( $recaptcha_sitekey ) && ! empty( $recaptcha_secretkey ) ) {
 		wp_enqueue_script( 'edu-recaptcha', 'https://www.google.com/recaptcha/api.js', array( 'eduadmin_frontend_script' ), null, false );
@@ -450,7 +450,7 @@ function eduadmin_rewrite_javascript( $script ) {
 			$booking_info = EDUAPI()->OData->Bookings->GetItem(
 				intval( $_GET['edu-thankyou'] ),
 				null,
-				'Customer,ContactPerson,Participants'
+				'Customer,ContactPerson,Participants,OrderRows'
 			);
 
 			$event_info = EDUAPI()->OData->Events->GetItem(
@@ -473,6 +473,7 @@ function eduadmin_rewrite_javascript( $script ) {
 					'$paid$',
 					'$objectid$',
 					'$notes$',
+					'$orderrows$',
 				),
 				array(
 					esc_js( $booking_info['BookingId'] ), // $bookingno$
@@ -489,6 +490,7 @@ function eduadmin_rewrite_javascript( $script ) {
 					esc_js( $booking_info['Paid'] ), // $paid$
 					esc_js( $event_info['CourseTemplateId'] ), // $objectid$
 					esc_js( $booking_info['Notes'] ), // $notes$
+					esc_js( json_encode( $booking_info['OrderRows'] ) ), // $orderrows$
 				),
 				$script
 			);
@@ -503,7 +505,7 @@ function eduadmin_rewrite_javascript( $script ) {
 }
 
 function eduadmin_custom_styles() {
-	$customcss = get_option( 'eduadmin-style', '' );
+	$customcss = EDU()->get_option( 'eduadmin-style', '' );
 	wp_register_style( 'eduadmin_frontend_custom_style', false );
 	wp_add_inline_style( 'eduadmin_frontend_custom_style', $customcss );
 	wp_enqueue_style( 'eduadmin_frontend_custom_style' );
@@ -511,9 +513,9 @@ function eduadmin_custom_styles() {
 
 function eduadmin_print_javascript() {
 	$t = EDU()->start_timer( __METHOD__ );
-	if ( ! empty( trim( get_option( 'eduadmin-javascript', '' ) ) ) && isset( EDU()->session['eduadmin-printJS'] ) ) {
+	if ( ! empty( trim( EDU()->get_option( 'eduadmin-javascript', '' ) ) ) && isset( EDU()->session['eduadmin-printJS'] ) ) {
 		$str    = "<script type=\"text/javascript\">\n";
-		$script = get_option( 'eduadmin-javascript' );
+		$script = EDU()->get_option( 'eduadmin-javascript' );
 
 		$str .= eduadmin_rewrite_javascript( $script );
 		$str .= "\n</script>";

@@ -30,7 +30,7 @@ function edu_render_general_settings() {
 				<?php echo esc_html_x( 'Availability text', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<?php
-				$spotLeft = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+				$spotLeft = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 				?>
 				<select class="eduadmin-spotsLeft" name="eduadmin-spotsLeft" onchange="EduAdmin.SpotExampleText();">
 					<option <?php selected( $spotLeft, "exactNumbers" ); ?>
@@ -51,28 +51,28 @@ function edu_render_general_settings() {
 						<?php echo esc_html_x( 'Insert one interval range per row (1-3, 4-10, 10+)', 'backend', 'eduadmin-booking' ); ?>
 						<br />
 						<textarea name="eduadmin-spotsSettings" class="form-control" rows="5"
-								  cols="30"><?php echo get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
+								  cols="30"><?php echo EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" ); ?></textarea>
 					</div>
 					<div id="eduadmin-alwaysFewSpots">
 						<br />
 						<b><?php echo esc_html_x( 'Number of participants before showing as \"Few spots left\"', 'backend', 'eduadmin-booking' ); ?></b>
 						<br />
 						<input type="number" name="eduadmin-alwaysFewSpots"
-							   value="<?php echo esc_attr( get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
+							   value="<?php echo esc_attr( EDU()->get_option( 'eduadmin-alwaysFewSpots', "3" ) ); ?>" />
 					</div>
 				</div>
 				<br />
 				<?php echo esc_html_x( 'Number of months to fetch events for', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<input type="number" name="eduadmin-monthsToFetch"
-					   value="<?php echo esc_attr( get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
+					   value="<?php echo esc_attr( EDU()->get_option( 'eduadmin-monthsToFetch', '6' ) ); ?>" /> <?php _ex( 'months', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<br />
 				<?php echo esc_html_x( 'VAT text options', 'backend', 'eduadmin-booking' ); ?>
 				<br />
 				<label>
 					<input type="checkbox"
-						   name="eduadmin-showVatTexts"<?php checked( get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
+						   name="eduadmin-showVatTexts"<?php checked( EDU()->get_option( 'eduadmin-showVatTexts', "on" ), "on" ); ?> />
 					<?php echo esc_html_x( 'Show VAT texts on prices', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -80,7 +80,7 @@ function edu_render_general_settings() {
 				<strong><?php echo esc_html_x( 'How should we output the prices? (Overrides above setting)', 'backend', 'eduadmin-booking' ); ?></strong>
 				<br />
 				<?php
-				$showPricesAsSelected = get_option( 'eduadmin-showPricesAsSelected', '' );
+				$showPricesAsSelected = EDU()->get_option( 'eduadmin-showPricesAsSelected', '' );
 				?>
 				<select name="eduadmin-showPricesAsSelected">
 					<option <?php selected( $showPricesAsSelected, "" ); ?> value="">
@@ -107,7 +107,7 @@ function edu_render_general_settings() {
 				</p>
 				<?php echo home_url(); ?>/<input style="width: 200px;" type="text" class="form-control folder"
 												 name="eduadmin-rewriteBaseUrl" id="eduadmin-rewriteBaseUrl"
-												 value="<?php echo esc_attr( get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>"
+												 value="<?php echo esc_attr( EDU()->get_option( 'eduadmin-rewriteBaseUrl' ) ); ?>"
 												 placeholder="<?php echo _x( 'URL', 'backend', 'eduadmin-booking' ); ?>" />/
 				<?php
 				$pages    = get_pages();
@@ -133,7 +133,7 @@ function edu_render_general_settings() {
 									value="">-- <?php echo esc_html_x( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$listPage = get_option( 'eduadmin-listViewPage' );
+								$listPage = EDU()->get_option( 'eduadmin-listViewPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-listview' ) ) {
@@ -159,7 +159,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$detailPage = get_option( 'eduadmin-detailViewPage' );
+								$detailPage = EDU()->get_option( 'eduadmin-detailViewPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-detailview' ) ) {
@@ -185,7 +185,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$bookingPage = get_option( 'eduadmin-bookingViewPage' );
+								$bookingPage = EDU()->get_option( 'eduadmin-bookingViewPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-bookingview' ) ) {
@@ -211,7 +211,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$thankPage = get_option( 'eduadmin-thankYouPage' );
+								$thankPage = EDU()->get_option( 'eduadmin-thankYouPage' );
 								foreach ( $pages as $p ) {
 									echo "\t\t\t\t\t\t\t<option" . ( $thankPage == $p->ID ? " selected=\"selected\"" : "" ) . " value=\"" . $p->ID . "\">" .
 										 htmlentities( $p->post_title . " (ID: " . $p->ID . ")" ) .
@@ -230,7 +230,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$loginPage = get_option( 'eduadmin-loginViewPage' );
+								$loginPage = EDU()->get_option( 'eduadmin-loginViewPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-loginview' ) ) {
@@ -256,7 +256,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$objectInterestPage = get_option( 'eduadmin-interestObjectPage' );
+								$objectInterestPage = EDU()->get_option( 'eduadmin-interestObjectPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-objectinterest' ) ) {
@@ -282,7 +282,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$eventInterestPage = get_option( 'eduadmin-interestEventPage' );
+								$eventInterestPage = EDU()->get_option( 'eduadmin-interestEventPage' );
 								foreach ( $eduPages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-eventinterest' ) ) {
@@ -324,7 +324,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$list_page = get_option( 'eduadmin-programme-list' );
+								$list_page = EDU()->get_option( 'eduadmin-programme-list' );
 								foreach ( $programme_pages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-programme-list' ) ) {
@@ -350,7 +350,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$detail_page = get_option( 'eduadmin-programme-detail' );
+								$detail_page = EDU()->get_option( 'eduadmin-programme-detail' );
 								foreach ( $programme_pages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-programme-detail' ) ) {
@@ -376,7 +376,7 @@ function edu_render_general_settings() {
 								<option value="">-- <?php _ex( 'No page selected', 'backend', 'eduadmin-booking' ); ?>--
 								</option>
 								<?php
-								$book_page = get_option( 'eduadmin-programme-book' );
+								$book_page = EDU()->get_option( 'eduadmin-programme-book' );
 								foreach ( $programme_pages as $p ) {
 									$suggested = false;
 									if ( stristr( $p->post_content, '[eduadmin-programme-book' ) ) {

@@ -138,7 +138,7 @@ class EduAdminAPIHelper {
 	}
 
 	public function GetCourseList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -218,7 +218,7 @@ class EduAdminAPIHelper {
 			$filters[] = 'CourseLevelId eq ' . $courselevel;
 		}
 
-		$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+		$sort_order = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 		if ( null !== $custom_order_by ) {
 			$orderby   = explode( ' ', $custom_order_by );
@@ -255,7 +255,7 @@ class EduAdminAPIHelper {
 	}
 
 	public function GetOnDemandCourseList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -333,7 +333,7 @@ class EduAdminAPIHelper {
 			$filters[] = 'CourseLevelId eq ' . $courselevel;
 		}
 
-		$sort_order = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+		$sort_order = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 		if ( null !== $custom_order_by ) {
 			$orderby   = explode( ' ', $custom_order_by );
@@ -370,7 +370,7 @@ class EduAdminAPIHelper {
 	}
 
 	public function GetEventList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -448,7 +448,7 @@ class EduAdminAPIHelper {
 
 		$order_by     = array();
 		$order        = array( 1 );
-		$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+		$order_option = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 		if ( null !== $custom_order_by ) {
 			$order_by = explode( ' ', $custom_order_by );
@@ -486,7 +486,7 @@ class EduAdminAPIHelper {
 	}
 
 	public function GetOnDemandEventList( $attributes, $category_id, $city, $subjectid, $courselevel, $custom_order_by, $custom_order_by_order ) {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 		if ( ! is_numeric( $fetch_months ) ) {
 			$fetch_months = 6;
 		}
@@ -563,7 +563,7 @@ class EduAdminAPIHelper {
 
 		$order_by     = array();
 		$order        = array( 1 );
-		$order_option = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+		$order_option = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 
 		if ( null !== $custom_order_by ) {
 			$order_by = explode( ' ', $custom_order_by );
