@@ -465,21 +465,36 @@ function eduadmin_rewrite_javascript( $script, $booking_info, $event_info ) {
 				'$orderrows$',
 			),
 			array(
-				esc_js( $booking_info['BookingId'] ), // $bookingno$
-				esc_js( $event_info['CourseName'] ), // $productname$
-				esc_js( $booking_info['TotalPriceIncVat'] ), // $totalsum$
-				esc_js( $booking_info['NumberOfParticipants'] ), // $participants$
-				esc_js( $event_info['StartDate'] ), // $startdate$
-				esc_js( $event_info['EndDate'] ), // $enddate$
-				esc_js( $booking_info['EventId'] ), // $eventid$
-				esc_js( $event_info['EventName'] ), // $eventdescription$
-				esc_js( $booking_info['Customer']['CustomerId'] ), // $customerid$
-				esc_js( $booking_info['ContactPerson']['PersonId'] ), // $customercontactid$
-				esc_js( $booking_info['Created'] ), // $created$
-				esc_js( $booking_info['Paid'] ), // $paid$
-				esc_js( $event_info['CourseTemplateId'] ), // $objectid$
-				esc_js( $booking_info['Notes'] ), // $notes$
-				esc_js( json_encode( $booking_info['OrderRows'] ) ), // $orderrows$
+				esc_js( key_exists( 'BookingId', $booking_info ) ? $booking_info['BookingId'] : $booking_info['ProgrammeBookingId'] ),
+				// $bookingno$
+				esc_js( key_exists( 'CourseName', $event_info ) ? $event_info['CourseName'] : $event_info['ProgrammeName'] ),
+				// $productname$
+				esc_js( $booking_info['TotalPriceIncVat'] ),
+				// $totalsum$
+				esc_js( $booking_info['NumberOfParticipants'] ),
+				// $participants$
+				esc_js( $event_info['StartDate'] ),
+				// $startdate$
+				esc_js( $event_info['EndDate'] ),
+				// $enddate$
+				esc_js( key_exists( 'EventId', $booking_info ) ? $booking_info['EventId'] : $booking_info['ProgrammeStartId'] ),
+				// $eventid$
+				esc_js( key_exists( 'EventName', $event_info ) ? $event_info['EventName'] : $event_info['ProgrammeStartName'] ),
+				// $eventdescription$
+				esc_js( $booking_info['Customer']['CustomerId'] ),
+				// $customerid$
+				esc_js( $booking_info['ContactPerson']['PersonId'] ),
+				// $customercontactid$
+				esc_js( $booking_info['Created'] ),
+				// $created$
+				esc_js( $booking_info['Paid'] ),
+				// $paid$
+				esc_js( key_exists( 'CourseTemplateId', $event_info ) ? $event_info['CourseTemplateId'] : $event_info['ProgrammeId'] ),
+				// $objectid$
+				esc_js( $booking_info['Notes'] ),
+				// $notes$
+				esc_js( json_encode( $booking_info['OrderRows'] ) ),
+				// $orderrows$
 			),
 			$script
 		);
@@ -506,12 +521,28 @@ function eduadmin_print_javascript() {
 		$booking_info = EDUAPI()->OData->Bookings->GetItem(
 			intval( $_GET['edu-thankyou'] ),
 			null,
-			'Customer,ContactPerson,Participants,OrderRows'
+			'Customer,ContactPerson,Participants,OrderRows',
+			false
 		);
 
-		$event_info = EDUAPI()->OData->Events->GetItem(
-			$booking_info['EventId']
-		);
+		$event_info = null;
+
+		if ( 404 === $booking_info['@curl']['http_code'] ) {
+			$booking_info = EDUAPI()->OData->ProgrammeBookings->GetItem(
+				intval( $_GET['edu-thankyou'] ),
+				null,
+				'Customer,ContactPerson,Participants,OrderRows',
+				false
+			);
+
+			$event_info = EDUAPI()->OData->ProgrammeStarts->GetItem(
+				$booking_info['ProgrammeStartId']
+			);
+		} else {
+			$event_info = EDUAPI()->OData->Events->GetItem(
+				$booking_info['EventId']
+			);
+		}
 
 		if ( ! empty( trim( EDU()->get_option( 'eduadmin-javascript', '' ) ) ) && isset( EDU()->session['eduadmin-printJS'] ) ) {
 			$str    = "<script type=\"text/javascript\">\n";
