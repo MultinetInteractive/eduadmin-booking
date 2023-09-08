@@ -26,6 +26,11 @@ jobs:
           yarn
           npx tsc
           yarn gulp deploy
+          git config --global user.email "chga@multinet.se"
+          git config --global user.name "Chris Gårdenberg"
+          echo "machine github.com login itssimple password ${{ secrets.ITSSIMPLE_TOKEN }}" > ~/.netrc
+          cd new_website && yarn install && GIT_USER=itssimple yarn run deploy
+          cd ..
       - name: Deploy trunk to SVN
         env:
           WP_USERNAME: ${{ secrets.WP_USERNAME }}

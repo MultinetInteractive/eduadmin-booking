@@ -16,9 +16,9 @@ function eduadmin_deactivate_rewrite() {
 
 function eduadmin_rewrite_init() {
 	$t = EDU()->start_timer( __METHOD__ );
-	if ( true == get_option( 'eduadmin-options_have_changed', 0 ) ) {
+	if ( true == EDU()->get_option( 'eduadmin-options_have_changed', 0 ) ) {
 		flush_rewrite_rules();
-		update_option( 'eduadmin-options_have_changed', 0 );
+		EDU()->update_option( 'eduadmin-options_have_changed', 0 );
 	}
 	EDU()->stop_timer( $t );
 }

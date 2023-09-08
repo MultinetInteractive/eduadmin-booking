@@ -13,7 +13,7 @@ function edu_render_profile_settings_page() {
 			<?php do_settings_sections( 'eduadmin-profile' ); ?>
 			<div class="block">
 				<h3><?php _ex( 'Price settings', 'backend', 'eduadmin-booking' ); ?></h3>
-				<?php $selected_price_setting = get_option( 'eduadmin-profile-priceType', 'IncVat' ); ?>
+				<?php $selected_price_setting = EDU()->get_option( 'eduadmin-profile-priceType', 'IncVat' ); ?>
 				<select name="eduadmin-profile-priceType">
 					<option <?php selected( $selected_price_setting, 'IncVat' ); ?> value="IncVat">
 						<?php echo esc_html_x( 'VAT Inclusive', 'backend', 'eduadmin-booking' ); ?>
@@ -28,7 +28,7 @@ function edu_render_profile_settings_page() {
 				<h4><?php _ex( 'Login information', 'backend', 'eduadmin-booking' ); ?></h4>
 				<label>
 					<input type="checkbox" name="eduadmin-redirectLoginToProfile" value="true"
-						<?php echo( get_option( 'eduadmin-redirectLoginToProfile', false ) ? ' checked="checked"' : '' ); ?>
+						<?php echo( EDU()->get_option( 'eduadmin-redirectLoginToProfile', false ) ? ' checked="checked"' : '' ); ?>
 						   onchange="EduAdmin.ToggleVisibility(this.checked, '.eduadmin-redirectLoginToProfile');" />
 					<?php echo esc_html_x( 'Always redirect login to the user profile', 'backend', 'eduadmin-booking' ); ?>
 				</label>
@@ -37,7 +37,7 @@ function edu_render_profile_settings_page() {
 				<h4><?php _ex( 'Certificates', 'backend', 'eduadmin-booking' ); ?></h4>
 				<label>
 					<input type="checkbox" id="eduadmin-profile-showCompanyCertificates"
-					       name="eduadmin-profile-showCompanyCertificates" <?php checked( get_option( 'eduadmin-profile-showCompanyCertificates', false ), "on" ); ?> />
+					       name="eduadmin-profile-showCompanyCertificates" <?php checked( EDU()->get_option( 'eduadmin-profile-showCompanyCertificates', false ), "on" ); ?> />
 					<?php _ex( 'Show certificates from all persons in the certificates page', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 

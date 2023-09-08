@@ -168,6 +168,9 @@ $always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
 $spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
+
+do_action( 'eduadmin-list-event-view', $events );
+
 ?>
 <div class="eventListTable" data-eduwidget="listview-eventlist"
      data-template="<?php echo esc_attr( str_replace( 'template_', '', $attributes['template'] ) ); ?>"

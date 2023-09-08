@@ -22,7 +22,7 @@ $subjects = EDU()->get_transient( 'eduadmin-subjects', function() {
 		null,
 		'SubjectName asc'
 	);
-}, DAY_IN_SECONDS );
+},                                DAY_IN_SECONDS );
 
 $distinct_subjects = array();
 if ( isset( $subjects['value'] ) ) {
@@ -40,7 +40,7 @@ $addresses = EDU()->get_transient( 'eduadmin-locations', function() {
 		'LocationId,City',
 		'PublicLocation'
 	);
-}, DAY_IN_SECONDS );
+},                                 DAY_IN_SECONDS );
 
 $show_events = EDU()->is_checked( 'eduadmin-showEventsInList', false );
 
@@ -49,10 +49,10 @@ $categories = EDU()->get_transient( 'eduadmin-categories', function() {
 		'CategoryId,CategoryName',
 		'ShowOnWeb'
 	);
-}, DAY_IN_SECONDS );
+},                                  DAY_IN_SECONDS );
 
 $levels = EDU()->get_transient( 'eduadmin-levels', function() {
 	return EDUAPI()->OData->CourseLevels->Search(
 		'CourseLevelId,Name'
 	);
-}, DAY_IN_SECONDS );
+},                              DAY_IN_SECONDS );

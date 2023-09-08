@@ -13,6 +13,8 @@ if ( empty( $programmes['Errors'] ) ) {
 		foreach ( $programmes['value'] as $programme ) {
 			include 'template/list-item.php';
 		}
+
+		do_action( 'eduadmin-list-programme-view', $programmes['value'] );
 		?>
 	</div>
 	<?php

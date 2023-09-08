@@ -310,6 +310,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 			})();
 		</script>
 		<?php
+		do_action( 'eduadmin-bookingform-view', $selected_course );
 	}
 	}
 }

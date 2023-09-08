@@ -117,3 +117,10 @@ $hide_sections = array();
 if ( isset( $attributes['hide'] ) ) {
 	$hide_sections = explode( ',', $attributes['hide'] );
 }
+
+if ( ! ! $selected_course ) {
+	if ( ! key_exists( "edu-detail-view-" . $selected_course['CourseTemplateId'], $GLOBALS ) ) {
+		do_action( 'eduadmin-detail-view', $selected_course );
+		$GLOBALS[ "edu-detail-view-" . $selected_course['CourseTemplateId'] ] = true;
+	}
+}

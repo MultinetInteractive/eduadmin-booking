@@ -2,6 +2,7 @@
   "docs": {
     "Getting started": ["getting-started", "shortcodes"],
     "Custom templates": ["your-first-custom-template"],
+    "Actions": ["wordpress-actions"],
     "Troubleshooting": ["troubleshooting"],
     "Cookies": ["cookies"]
   }

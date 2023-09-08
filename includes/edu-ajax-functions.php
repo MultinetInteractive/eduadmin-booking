@@ -6,7 +6,7 @@ function edu_listview_courselist() {
 	if ( ! empty( $_POST['fetchmonths'] ) ) {
 		$fetch_months = intval( $_POST['fetchmonths'] );
 	} else {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 	}
 
 	if ( ! is_numeric( $fetch_months ) || 0 === $fetch_months ) {
@@ -102,7 +102,7 @@ function edu_api_listview_eventlist() {
 	if ( ! empty( $_POST['fetchmonths'] ) ) {
 		$fetch_months = intval( $_POST['fetchmonths'] );
 	} else {
-		$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+		$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 	}
 
 	if ( ! is_numeric( $fetch_months ) || 0 === $fetch_months ) {
@@ -140,7 +140,7 @@ function edu_api_listview_eventlist() {
 
 	$order_by              = array();
 	$order                 = array( 1 );
-	$order_option          = get_option( 'eduadmin-listSortOrder', 'SortIndex' );
+	$order_option          = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
 	$custom_order_by       = null;
 	$custom_order_by_order = null;
 
@@ -191,7 +191,7 @@ function edu_api_listview_eventlist() {
 	if ( ! empty( $_POST['search'] ) ) {
 		$courses = array_filter( $courses, function( $object ) {
 			$name        = ( ! empty( $object['CourseName'] ) ? $object['CourseName'] : $object['InternalCourseName'] );
-			$descr_field = get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
+			$descr_field = EDU()->get_option( 'eduadmin-layout-descriptionfield', 'CourseDescriptionShort' );
 			$descr       = '';
 			if ( false !== stripos( $descr_field, 'attr_' ) ) {
 				$attr_id = intval( substr( $descr_field, 5 ) );
@@ -283,19 +283,19 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$show_book_btn      = $request['showbookbtn'];
 	$show_read_more_btn = $request['showreadmorebtn'];
 
-	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
-	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
-	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
+	$show_course_days  = EDU()->get_option( 'eduadmin-showCourseDays', true );
+	$show_course_times = EDU()->get_option( 'eduadmin-showCourseTimes', true );
+	$show_week_days    = EDU()->get_option( 'eduadmin-showWeekDays', false );
 
-	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
-	$currency         = get_option( 'eduadmin-currency', 'SEK' );
-	$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+	$show_event_price = EDU()->get_option( 'eduadmin-showEventPrice', false );
+	$currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
+	$show_event_venue = EDU()->get_option( 'eduadmin-showEventVenueName', false );
 
-	$spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
-	$always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
-	$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+	$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+	$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+	$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
-	$show_images = get_option( 'eduadmin-showCourseImage', true );
+	$show_images = EDU()->get_option( 'eduadmin-showCourseImage', true );
 
 	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
@@ -310,7 +310,7 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 	$number_of_events = $request['numberofevents'];
 
 	$surl     = get_home_url();
-	$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 	$base_url = $surl . '/' . $cat;
 
 	$remove_items = array(
@@ -361,19 +361,19 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$show_book_btn      = $request['showbookbtn'];
 	$show_read_more_btn = $request['showreadmorebtn'];
 
-	$show_course_days  = get_option( 'eduadmin-showCourseDays', true );
-	$show_course_times = get_option( 'eduadmin-showCourseTimes', true );
-	$show_week_days    = get_option( 'eduadmin-showWeekDays', false );
+	$show_course_days  = EDU()->get_option( 'eduadmin-showCourseDays', true );
+	$show_course_times = EDU()->get_option( 'eduadmin-showCourseTimes', true );
+	$show_week_days    = EDU()->get_option( 'eduadmin-showWeekDays', false );
 
-	$show_event_price = get_option( 'eduadmin-showEventPrice', false );
-	$currency         = get_option( 'eduadmin-currency', 'SEK' );
-	$show_event_venue = get_option( 'eduadmin-showEventVenueName', false );
+	$show_event_price = EDU()->get_option( 'eduadmin-showEventPrice', false );
+	$currency         = EDU()->get_option( 'eduadmin-currency', 'SEK' );
+	$show_event_venue = EDU()->get_option( 'eduadmin-showEventVenueName', false );
 
-	$spot_left_option = get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
-	$always_few_spots = get_option( 'eduadmin-alwaysFewSpots', '3' );
-	$spot_settings    = get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+	$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+	$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+	$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
-	$show_images = get_option( 'eduadmin-showCourseImage', true );
+	$show_images = EDU()->get_option( 'eduadmin-showCourseImage', true );
 
 	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
@@ -388,7 +388,7 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 	$number_of_events = $request['numberofevents'];
 
 	$surl     = get_home_url();
-	$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 	$base_url = $surl . '/' . $cat;
 
 	$remove_items = array(
@@ -455,7 +455,7 @@ function edu_api_eventlist() {
 	}
 
 	$course_id    = $object_id;
-	$fetch_months = get_option( 'eduadmin-monthsToFetch', 6 );
+	$fetch_months = EDU()->get_option( 'eduadmin-monthsToFetch', 6 );
 	if ( ! is_numeric( $fetch_months ) ) {
 		$fetch_months = 6;
 	}
@@ -476,7 +476,7 @@ function edu_api_eventlist() {
 	}
 
 	$surl     = get_home_url();
-	$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 	$base_url = $surl . '/' . $cat;
 
 	$events = array();
@@ -580,7 +580,7 @@ function edu_api_eventlist() {
 	$show_event_venue         = $_POST['showvenue'];
 	$spot_settings            = $_POST['spotsettings'];
 	$allow_interest_reg_event = ! empty( $_POST['eventinquiry'] ) && '1' === $_POST['eventinquiry'];
-	$event_interest_page      = get_option( 'eduadmin-interestEventPage' );
+	$event_interest_page      = EDU()->get_option( 'eduadmin-interestEventPage' );
 
 	$use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
@@ -628,7 +628,7 @@ function edu_api_eventlist() {
 function edu_api_loginwidget() {
 	header( 'Content-type: text/html; charset=UTF-8' );
 	$surl     = get_home_url();
-	$cat      = get_option( 'eduadmin-rewriteBaseUrl' );
+	$cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl' );
 	$base_url = $surl . '/' . $cat;
 
 	$login_text  = $_POST['logintext'];

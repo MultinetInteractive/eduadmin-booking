@@ -12,15 +12,15 @@ function edu_render_detail_settings_page() {
 				<h3><?php echo esc_html_x( 'Template', 'backend', 'eduadmin-booking' ); ?></h3>
 				<select name="eduadmin-detailTemplate">
 					<option
-						value="template_A"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_A' ); ?>><?php _ex( 'One column layout', 'backend', 'eduadmin-booking' ); ?></option>
+						value="template_A"<?php selected( EDU()->get_option( 'eduadmin-detailTemplate' ), 'template_A' ); ?>><?php _ex( 'One column layout', 'backend', 'eduadmin-booking' ); ?></option>
 					<option
-						value="template_B"<?php selected( get_option( 'eduadmin-detailTemplate' ), 'template_B' ); ?>><?php _ex( 'Two column layout', 'backend', 'eduadmin-booking' ); ?></option>
+						value="template_B"<?php selected( EDU()->get_option( 'eduadmin-detailTemplate' ), 'template_B' ); ?>><?php _ex( 'Two column layout', 'backend', 'eduadmin-booking' ); ?></option>
 				</select>
 				<br />
 				<br />
 				<label>
 					<input type="checkbox" name="eduadmin-showDetailHeaders"
-					       value="true"<?php checked( get_option( 'eduadmin-showDetailHeaders', true ), "true" ); ?> />
+					       value="true"<?php checked( EDU()->get_option( 'eduadmin-showDetailHeaders', true ), "true" ); ?> />
 					<?php echo esc_html_x( 'Show headers in detail view', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -29,7 +29,7 @@ function edu_render_detail_settings_page() {
 				<br />
 				<label>
 					<input type="checkbox" name="eduadmin-groupEventsByCity"
-					       value="true"<?php checked( get_option( 'eduadmin-groupEventsByCity', false ), "true" ); ?> />
+					       value="true"<?php checked( EDU()->get_option( 'eduadmin-groupEventsByCity', false ), "true" ); ?> />
 					<?php echo esc_html_x( 'Group events by city', 'backend', 'eduadmin-booking' ); ?>
 				</label>
 				<br />
@@ -38,7 +38,7 @@ function edu_render_detail_settings_page() {
 				<br />
 				<h3><?php echo esc_html_x( 'Page title', 'backend', 'eduadmin-booking' ); ?></h3>
 				<?php
-				$selectedDescriptionField = get_option( 'eduadmin-pageTitleField', 'CourseName' );
+				$selectedDescriptionField = EDU()->get_option( 'eduadmin-pageTitleField', 'CourseName' );
 				$attributes               = EDUAPI()->OData->CustomFields->Search(
 					null,
 					"ShowOnWeb and CustomFieldOwner eq 'Product' and CustomFieldSubOwner eq 'CourseTemplate'" .
