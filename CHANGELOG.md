@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.1...v3.8.0) (2023-09-08)
+
+
+### Features
+
+* Added actions for showing course/event lists ([2fcdc70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2fcdc70a71969bbd9e1967e72e615f840321d13d)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase (not programs) ([a3270b2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a3270b265919513935f817c87bc259c91877e9db)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase of programs ([5dee4ec](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5dee4ecc0abf158b98e2d0a63499c953f46a5409)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase of programs ([d2757b4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d2757b478c470e8717cc522fe6ee58c86d339f9e)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+
+
+### Documentation
+
+* Added information about Actions ([2042c70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2042c7023647eb2e3f09c5d5db0b2faf7bf9d4a5))
+
 ### [3.7.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.0...v3.7.1) (2023-05-15)
 
 
