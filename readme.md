@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.3.0
-Stable tag: 3.7.1
+Stable tag: 3.8.1
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,23 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.8.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.0...v3.8.1) (2023-09-08)
+
+### [3.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.1...v3.8.0) (2023-09-08)
+
+
+#### Features
+
+* Added actions for showing course/event lists ([2fcdc70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2fcdc70a71969bbd9e1967e72e615f840321d13d)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase (not programs) ([a3270b2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a3270b265919513935f817c87bc259c91877e9db)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase of programs ([5dee4ec](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5dee4ecc0abf158b98e2d0a63499c953f46a5409)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+* Added actions for viewing detail views, booking forms and performing a purchase of programs ([d2757b4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d2757b478c470e8717cc522fe6ee58c86d339f9e)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
+
+
+#### Documentation
+
+* Added information about Actions ([2042c70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2042c7023647eb2e3f09c5d5db0b2faf7bf9d4a5))
+
 ### [3.7.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.0...v3.7.1) (2023-05-15)
 
 
@@ -64,25 +81,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Features
 
 * Added possibility to use attribute `allcourses` to show both on demand and regular course templates at the same time. ([4919f52](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4919f52a185ba75224653e0f9f8719cab512ecd3)), closes [#478](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/478)
-
-### [3.6.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.1...v3.6.2) (2023-05-05)
-
-
-#### Bug Fixes
-
-* **Booking page:** Fixed so that price recalculation will be done when you click a Discount Card. ([7847bda](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7847bda741019eea3c7dcf2e728af79f49a96f0a)), closes [#479](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/479)
-
-
-#### Security
-
-* Update packages to get rid of vulns ([acd5bfd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/acd5bfd9538df4079a8612630d3bc6cfe4ac9e04))
-
-### [3.6.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.0...v3.6.1) (2023-04-04)
-
-
-#### Bug Fixes
-
-* **List View:** Use mb_stripos the right way when filtering for cities ([ac1bfa7](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ac1bfa7fdb7736ae28e0ffcc325a2fb6253d8b21))
 
 
 
