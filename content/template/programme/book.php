@@ -26,6 +26,14 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 			<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame"
 			        src="<?php echo esc_attr( $programme['BookingFormUrl'] ); ?>"></iframe>
 			<?php
+			if ( ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
+				?>
+				<script type="text/javascript">
+					<?php echo EDU()->get_option( 'eduadmin-booking-form-javascript', '' ); ?>
+				</script>
+				<?php
+				$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
+			}
 		} else {
 			echo _x( 'The booking form needs configuration in EduAdmin before this works.', 'frontend', 'eduadmin-booking' );
 		}

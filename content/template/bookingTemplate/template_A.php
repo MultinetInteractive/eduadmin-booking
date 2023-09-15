@@ -15,6 +15,14 @@ if ( ! $api_key || empty( $api_key ) ) {
 			<iframe id="eduadmin-booking-frame" class="edu-bookingform-page-frame"
 			        src="<?php echo esc_attr( $event['BookingFormUrl'] ); ?>"></iframe>
 			<?php
+			if ( ! key_exists( 'eduadmin-booking-form-javascript-set', $GLOBALS ) && ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
+				?>
+				<script type="text/javascript">
+					<?php echo EDU()->get_option( 'eduadmin-booking-form-javascript', '' ); ?>
+				</script>
+				<?php
+				$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
+			}
 		} else {
 			echo _x( 'The booking form needs configuration in EduAdmin before this works.', 'frontend', 'eduadmin-booking' );
 		}
@@ -304,7 +312,7 @@ if ( ! $api_key || empty( $api_key ) ) {
 				eduBookingView.SingleParticipant = <?php echo esc_js( $single_person_booking ? "true" : "false" ); ?>;
 				eduBookingView.ProgrammeBooking = false;
 				eduBookingView.ForceContactCivicRegNo = <?php echo( $selected_course['RequireCivicRegistrationNumber'] ? 'true' : 'false' ); ?>;
-				eduBookingView.MaxParticipants = <?php echo esc_js( $event['ParticipantNumberLeft'] != null ? intval( $event['ParticipantNumberLeft'] ) : -1 ); ?>;
+				eduBookingView.MaxParticipants = <?php echo esc_js( $event['ParticipantNumberLeft'] != null ? intval( $event['ParticipantNumberLeft'] ) : - 1 ); ?>;
 				eduBookingView.AddParticipant();
 				eduBookingView.CheckPrice(false);
 			})();

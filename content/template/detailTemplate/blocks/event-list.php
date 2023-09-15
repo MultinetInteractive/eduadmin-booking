@@ -11,7 +11,7 @@ $allow_interest_reg_object = EDU()->is_checked( 'eduadmin-allowInterestRegObject
 
 $event_interest_page      = EDU()->get_option( 'eduadmin-interestEventPage' );
 $allow_interest_reg_event = EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false );
-$show_more                = ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : -1;
+$show_more                = ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : - 1;
 
 $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
@@ -20,6 +20,17 @@ $has_hidden_dates = false;
 $last_city = "";
 
 $is_ondemand = $selected_course['OnDemand'];
+
+if ( $use_eduadmin_form ) {
+	if ( ! key_exists( 'eduadmin-booking-form-javascript-set', $GLOBALS ) && ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
+		?>
+		<script type="text/javascript">
+			<?php echo EDU()->get_option( 'eduadmin-booking-form-javascript', '' ); ?>
+		</script>
+		<?php
+		$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
+	}
+}
 
 ?>
 <?php if ( $allow_region_search && empty( $_GET['eid'] ) && ! $is_ondemand ) : ?>
@@ -54,7 +65,7 @@ $is_ondemand = $selected_course['OnDemand'];
 			}
 			include 'event-item.php';
 			$last_city = $ev['City'];
-			$i++;
+			$i ++;
 		}
 	}
 	if ( empty( $prices ) || empty( $events ) ) {

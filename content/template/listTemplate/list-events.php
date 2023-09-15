@@ -49,7 +49,7 @@ if ( null !== $custom_order_by ) {
 		$order        = array();
 		$custom_order = explode( ' ', $custom_order_by_order );
 		foreach ( $custom_order as $coVal ) {
-			! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+			! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, - 1 );
 		}
 	}
 } else {
@@ -170,6 +170,17 @@ $spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+
 $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
 do_action( 'eduadmin-list-event-view', $events );
+
+if ( $use_eduadmin_form ) {
+	if ( ! key_exists( 'eduadmin-booking-form-javascript-set', $GLOBALS ) && ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
+		?>
+		<script type="text/javascript">
+			<?php echo EDU()->get_option( 'eduadmin-booking-form-javascript', '' ); ?>
+		</script>
+		<?php
+		$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
+	}
+}
 
 ?>
 <div class="eventListTable" data-eduwidget="listview-eventlist"

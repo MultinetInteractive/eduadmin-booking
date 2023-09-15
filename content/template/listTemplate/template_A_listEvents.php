@@ -25,7 +25,7 @@ foreach ( $events as $event ) {
 	}
 
 	include 'blocks/event-block-a.php';
-	$current_events++;
+	$current_events ++;
 }
 ?>
 	</div><!-- /eventlist -->

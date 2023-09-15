@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.3.0
-Stable tag: 3.8.1
+Stable tag: 3.9.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.1...v3.9.0) (2023-09-15)
+
+
+#### Features
+
+* New type of script, when you use the booking form in the API. ([92eabd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/92eabd85c6d6392e3ce68db769fd60f52258dc77)), closes [#412](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/412)
+
 ### [3.8.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.0...v3.8.1) (2023-09-08)
 
 ### [3.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.1...v3.8.0) (2023-09-08)
@@ -74,13 +81,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 
 * **Documentation:** Fixed a config error for the new version of Docusaurus ([b26c828](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b26c82876ec154b3f1b3374cacd7c57624ad9501))
 * Fix for filtering courses/events for the selected city, not just which course templates that has ever had an event there. ([478f75d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/478f75dc364fa3966e272eb361bfb2e0a3703776))
-
-### [3.7.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.6.2...v3.7.0) (2023-05-09)
-
-
-#### Features
-
-* Added possibility to use attribute `allcourses` to show both on demand and regular course templates at the same time. ([4919f52](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4919f52a185ba75224653e0f9f8719cab512ecd3)), closes [#478](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/478)
 
 
 

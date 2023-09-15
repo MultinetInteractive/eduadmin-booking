@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.1...v3.9.0) (2023-09-15)
+
+
+### Features
+
+* New type of script, when you use the booking form in the API. ([92eabd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/92eabd85c6d6392e3ce68db769fd60f52258dc77)), closes [#412](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/412)
+
 ### [3.8.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.0...v3.8.1) (2023-09-08)
 
 ## [3.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.1...v3.8.0) (2023-09-08)
