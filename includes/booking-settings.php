@@ -24,6 +24,37 @@ function edu_render_booking_settings_page() {
 					<br />
 					<em><?php echo esc_html_x( 'By enabling this option, all options below will be ineffective, as we use an external booking form from EduAdmin instead.', 'backend', 'eduadmin-booking' ); ?></em>
 					<br />
+					<h3><?php echo esc_html_x( 'Javascript to run the booking form is used', 'backend', 'eduadmin-booking' ); ?></h3>
+					<em><?php echo esc_html_x( 'Do not include &lt;script&gt; here, it is handled automatically.', 'backend', 'eduadmin-booking' ); ?></em>
+					<table>
+						<tr>
+							<td style="vertical-align: top;">
+								<textarea class="form-control" rows="12" cols="60"
+								          name="eduadmin-booking-form-javascript"><?php echo EDU()->get_option( 'eduadmin-booking-form-javascript' ); ?></textarea>
+							</td>
+							<td style="vertical-align: top;">
+								The booking form will use
+								<code>window.parent.postMessage</code> to post data from the form.
+								<br />
+								The event you want to keep track of it <code>eduadmin-order</code>.
+								<br />
+								<br />
+								Example code to listen to the <code>eduadmin-order</code> "event":
+								<br />
+
+								<pre>
+window.addEventListener('message', function (event) {
+  if (event.data.type == "eduadmin-order") {
+    // Here's where you'll write your custom code,
+    // to handle the event from the booking form.
+    // We'll just output it to the console log for now.
+    console.log(event.data);
+  }
+}, false);</pre>
+
+							</td>
+						</tr>
+					</table>
 					<div
 						class="non-eduform-options"<?php echo( ! EDU()->is_checked( 'eduadmin-useBookingFormFromApi', false ) ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
 						<?php
@@ -56,11 +87,11 @@ function edu_render_booking_settings_page() {
 							     esc_html( wp_strip_all_tags( $g['CustomerGroupName'] ) ) .
 							     "</option>\n";
 							if ( array_key_exists( (string) $g['CustomerGroupId'], $array ) ) {
-								$depth++;
+								$depth ++;
 								foreach ( $array[ (string) $g['CustomerGroupId'] ] as $ng ) {
 									edu_write_options( $ng, $array, $depth, $selected_option );
 								}
-								$depth--;
+								$depth --;
 							}
 						}
 

@@ -525,7 +525,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				$last_city = '';
 
-				$show_more        = isset( $attributes['showmore'] ) && ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : -1;
+				$show_more        = isset( $attributes['showmore'] ) && ! empty( $attributes['showmore'] ) ? $attributes['showmore'] : - 1;
 				$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
 				$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
 				$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
@@ -581,7 +581,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 						$ret_str .= ob_get_clean();
 
 						$last_city = $ev['City'];
-						$i++;
+						$i ++;
 					}
 				}
 				if ( empty( $events ) ) {
@@ -591,6 +591,13 @@ function eduadmin_get_detailinfo( $attributes ) {
 					$ret_str .= '<div class="eventShowMore"><a class="neutral-btn" href="javascript://" onclick="eduDetailView.ShowAllEvents(\'eduev' . esc_attr( ( $group_by_city ? '-' . $last_city : '' ) ) . '\', this);">' . esc_html_x( 'Show all events', 'frontend', 'eduadmin-booking' ) . '</a></div>';
 				}
 				$ret_str .= '</div></div>';
+
+				if ( $use_eduadmin_form ) {
+					if ( ! key_exists( 'eduadmin-booking-form-javascript-set', $GLOBALS ) && ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
+						$ret_str .= '<script type="text/javascript">' . EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) . '</script>';
+						$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
+					}
+				}
 			}
 		}
 	}

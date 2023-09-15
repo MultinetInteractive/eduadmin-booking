@@ -204,6 +204,8 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-booking', 'eduadmin-loginField' );
 	register_setting( 'eduadmin-booking', 'eduadmin-allowCustomerUpdate' );
 
+	register_setting( 'eduadmin-booking', 'eduadmin-booking-form-javascript' );
+
 	register_setting( 'eduadmin-booking', 'eduadmin-dontSendConfirmation' );
 
 	register_setting( 'eduadmin-booking', 'eduadmin-singlePersonBooking' );
