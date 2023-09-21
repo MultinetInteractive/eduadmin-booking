@@ -229,8 +229,8 @@ results from the API.
 
 You can set the `mode`-attribute to either `event` or `course`, to make the list show events or course templates.
 
-The `orderby`-attribute gives you the possibility to change the sort order of the listed items, and the `order`
--attribute decides in which way it should sort.
+The `orderby`-attribute gives you the possibility to change what field the list should be ordered by. The available fields can be found at https://api.eduadmin.se/?page=read#operation/GetEvents or https://api.eduadmin.se/?page=read#operation/GetCourseTemplates depending on what `mode`-attribute you are using, either `event` or `course`,
+ and the `order`-attribute takes the values ASC or DESC.
 
 `showsearch` will force the search bar to be visible.
 
