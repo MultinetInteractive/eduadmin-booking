@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.0...v3.9.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* **Programme:** Fixed an issue where programme views/shortcodes weren't included in the correct way. ([fd0ee12](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fd0ee128dfc1e324732544f9071640b5aba76e0c)), closes [#494](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/494)
+
 ## [3.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.1...v3.9.0) (2023-09-15)
 
 
