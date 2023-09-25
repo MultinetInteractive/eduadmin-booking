@@ -594,7 +594,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 				if ( $use_eduadmin_form ) {
 					if ( ! key_exists( 'eduadmin-booking-form-javascript-set', $GLOBALS ) && ! empty( trim( EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) ) ) ) {
-						$ret_str .= '<script type="text/javascript">' . EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) . '</script>';
+						$ret_str                                         .= '<script type="text/javascript">' . EDU()->get_option( 'eduadmin-booking-form-javascript', '' ) . '</script>';
 						$GLOBALS['eduadmin-booking-form-javascript-set'] = true;
 					}
 				}
@@ -660,7 +660,10 @@ function eduadmin_get_login_view( $attributes ) {
 	);
 	EDU()->stop_timer( $t );
 
-	return include_once EDUADMIN_PLUGIN_PATH . '/content/template/myPagesTemplate/login.php';
+	ob_start();
+	include_once EDUADMIN_PLUGIN_PATH . '/content/template/myPagesTemplate/login.php';
+
+	return ob_get_clean();
 }
 
 function eduadmin_get_programme_list( $attributes ) {
@@ -695,7 +698,10 @@ function eduadmin_get_programme_list( $attributes ) {
 		'StartDate),Courses'
 	);
 
+	ob_start();
 	include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/list.php';
+
+	return ob_get_clean();
 }
 
 function eduadmin_get_programme_details( $attributes ) {
@@ -745,7 +751,10 @@ function eduadmin_get_programme_details( $attributes ) {
 			'),PriceNames'
 		);
 
+		ob_start();
 		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/detail.php';
+
+		return ob_get_clean();
 	}
 }
 
@@ -793,7 +802,10 @@ function eduadmin_get_programme_booking( $attributes ) {
 			'Courses,Events,PaymentMethods,PriceNames'
 		);
 
+		ob_start();
 		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/book.php';
+
+		return ob_get_clean();
 	}
 }
 
