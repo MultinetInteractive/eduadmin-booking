@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.3.0
-Stable tag: 3.9.0
+Stable tag: 3.9.1
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -50,6 +50,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md
 
+### [3.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.0...v3.9.1) (2023-09-25)
+
+
+#### Bug Fixes
+
+* **Programme:** Fixed an issue where programme views/shortcodes weren't included in the correct way. ([fd0ee12](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fd0ee128dfc1e324732544f9071640b5aba76e0c)), closes [#494](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/494)
+
 ### [3.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.1...v3.9.0) (2023-09-15)
 
 
@@ -73,14 +80,6 @@ The full changelog available on https://github.com/MultinetInteractive/EduAdmin-
 #### Documentation
 
 * Added information about Actions ([2042c70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2042c7023647eb2e3f09c5d5db0b2faf7bf9d4a5))
-
-### [3.7.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.0...v3.7.1) (2023-05-15)
-
-
-#### Bug Fixes
-
-* **Documentation:** Fixed a config error for the new version of Docusaurus ([b26c828](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b26c82876ec154b3f1b3374cacd7c57624ad9501))
-* Fix for filtering courses/events for the selected city, not just which course templates that has ever had an event there. ([478f75d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/478f75dc364fa3966e272eb361bfb2e0a3703776))
 
 
 
