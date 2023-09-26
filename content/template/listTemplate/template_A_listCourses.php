@@ -20,7 +20,7 @@ $current_events   = 0;
 					continue;
 				}
 				include 'blocks/course-block-a.php';
-				$current_events++;
+				$current_events ++;
 			}
 		} else {
 			?>

@@ -30,7 +30,7 @@
 			"path": "./node_modules/cz-conventional-changelog"
 		},
 		"eduadmin": {
-			"testedUpTo": "6.3.0",
+			"testedUpTo": "6.4",
 			"requiresAtLeast": "5.8",
 			"minimumPhpVersion": "7.0"
 		}
