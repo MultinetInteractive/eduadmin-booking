@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.9.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.1...v3.9.2) (2023-09-26)
+
+
+### Refactoring
+
+* Made a readme.txt as well, for use in the SVN trunk. ([e6b6d61](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e6b6d61b8e3f27c2841c25812f46f6d2cde3ead3))
+
 ### [3.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.0...v3.9.1) (2023-09-25)
 
 
