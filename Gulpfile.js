@@ -22,7 +22,7 @@ gulp.task("styles-admin", function () {
 
 gulp.task("readme-version", function () {
 	return gulp
-		.src("src/readme.md")
+		.src("src/readme.*")
 		.pipe(replace("$PLUGINVERSION$", pinfo.version))
 		.pipe(replace("$PLUGINATLEAST$", pinfo.config.eduadmin.requiresAtLeast))
 		.pipe(replace("$PLUGINTESTEDTO$", pinfo.config.eduadmin.testedUpTo))
@@ -82,7 +82,7 @@ gulp.task("default", function () {
 	gulp.watch("src/scss/frontend/**/*.scss", gulp.series("styles-frontend"));
 	gulp.watch("src/scss/admin/**/*.scss", gulp.series("styles-admin"));
 	gulp.watch("src/eduadmin.php", gulp.series("eduadmin-version"));
-	gulp.watch("src/readme.md", gulp.series("readme-version"));
+	gulp.watch("src/readme.*", gulp.series("readme-version"));
 	gulp.watch(
 		"package.json",
 		gulp.series("readme-version", "eduadmin-version")
