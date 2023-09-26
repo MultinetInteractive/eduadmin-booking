@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 5.8
 - Tested up to: 6.4
-- Stable tag: 3.9.1
+- Stable tag: 3.9.2
 - Requires PHP: 7.0
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [3.9.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.1...v3.9.2) (2023-09-26)
+
+
+#### Refactoring
+
+* Made a readme.txt as well, for use in the SVN trunk. ([e6b6d61](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e6b6d61b8e3f27c2841c25812f46f6d2cde3ead3))
+
 ### [3.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.0...v3.9.1) (2023-09-25)
 
 
@@ -55,21 +62,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 * New type of script, when you use the booking form in the API. ([92eabd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/92eabd85c6d6392e3ce68db769fd60f52258dc77)), closes [#412](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/412)
 
 ### [3.8.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.0...v3.8.1) (2023-09-08)
-
-### [3.8.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.7.1...v3.8.0) (2023-09-08)
-
-
-#### Features
-
-* Added actions for showing course/event lists ([2fcdc70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2fcdc70a71969bbd9e1967e72e615f840321d13d)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
-* Added actions for viewing detail views, booking forms and performing a purchase (not programs) ([a3270b2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a3270b265919513935f817c87bc259c91877e9db)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
-* Added actions for viewing detail views, booking forms and performing a purchase of programs ([5dee4ec](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5dee4ecc0abf158b98e2d0a63499c953f46a5409)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
-* Added actions for viewing detail views, booking forms and performing a purchase of programs ([d2757b4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d2757b478c470e8717cc522fe6ee58c86d339f9e)), closes [#488](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/488)
-
-
-#### Documentation
-
-* Added information about Actions ([2042c70](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/2042c7023647eb2e3f09c5d5db0b2faf7bf9d4a5))
 
 
 
