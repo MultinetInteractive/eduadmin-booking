@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.2...v3.10.0) (2023-09-29)
+
+
+### Features
+
+* Programme starts now show number of spots left (according to settings) ([0117df4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0117df408a557998bd04d467720e51cef331612a)), closes [#498](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/498)
+
 ### [3.9.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.1...v3.9.2) (2023-09-26)
 
 

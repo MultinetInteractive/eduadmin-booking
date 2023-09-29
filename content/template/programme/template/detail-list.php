@@ -12,6 +12,10 @@ foreach ( $programme['ProgrammeStarts'] as $programme_start ) {
 $surl     = get_home_url();
 $base_url = $surl . '/programmes';
 
+$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
+
 $use_eduadmin_form = EDU()->is_checked( 'eduadmin-useBookingFormFromApi' );
 
 foreach ( $grouped_programmes as $group => $grouped_programme ) {
@@ -71,8 +75,10 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 			echo '</div>';
 		}
 
+		$spots_left = intval( $programme_start['ParticipantNumberLeft'] );
+
 		echo '</td>';
-		echo '<td>' . esc_html( $programme_start['ParticipantNumberLeft'] > 0 || intval( $programme_start['MaxParticipantNumber'] ) == 0 ? _x( 'Yes', 'frontend', 'eduadmin-booking' ) : _x( 'No', 'frontend', 'eduadmin-booking' ) ) . '</td>';
+		echo '<td>' . "<span class=\"spotsLeftInfo\">" . get_spots_left( $spots_left, intval( $programme_start['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>\n" . '</td>';
 		echo '<td>';
 
 		$priceNames = array();
