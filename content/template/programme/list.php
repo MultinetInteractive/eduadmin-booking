@@ -1,4 +1,7 @@
 <?php
+$spot_left_option = EDU()->get_option( 'eduadmin-spotsLeft', 'exactNumbers' );
+$always_few_spots = EDU()->get_option( 'eduadmin-alwaysFewSpots', '3' );
+$spot_settings    = EDU()->get_option( 'eduadmin-spotsSettings', "1-5\n5-10\n10+" );
 
 if ( empty( $programmes['Errors'] ) ) {
 	?>
