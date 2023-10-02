@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.4
-Stable tag: 3.10.0
+Stable tag: 3.11.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -45,6 +45,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [3.11.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.10.0...v3.11.0) (2023-10-02)
+
+
+#### Features
+
+* List number of free spots on programme list ([38529a8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/38529a86da27169961bb53597a0f6069c4721d1c))
+
 ### [3.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.2...v3.10.0) (2023-09-29)
 
 
@@ -65,13 +72,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Bug Fixes
 
 * **Programme:** Fixed an issue where programme views/shortcodes weren't included in the correct way. ([fd0ee12](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fd0ee128dfc1e324732544f9071640b5aba76e0c)), closes [#494](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/494)
-
-### [3.9.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.8.1...v3.9.0) (2023-09-15)
-
-
-#### Features
-
-* New type of script, when you use the booking form in the API. ([92eabd8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/92eabd85c6d6392e3ce68db769fd60f52258dc77)), closes [#412](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/412)
 
 
 
