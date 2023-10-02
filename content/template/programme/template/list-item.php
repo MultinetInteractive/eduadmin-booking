@@ -28,10 +28,13 @@
 		<?php
 		if ( ! empty( $programme['ProgrammeStarts'] ) ) {
 			$next_start = current( $programme['ProgrammeStarts'] );
+
+			$spots_left = intval( $next_start['ParticipantNumberLeft'] );
+
 			/* translators: 1. The date for the next programme start */
 			echo wp_kses_post( sprintf( _x( 'Next start: %s', 'Next programme start', 'eduadmin-booking' ), get_display_date( $next_start['StartDate'] ) ) );
 			echo '<br />';
-			echo wp_kses_post( $next_start['ParticipantNumberLeft'] > 0 || intval( $next_start['MaxParticipantNumber'] ) == 0 ? '<span class="spots-left">' . _x( 'Spots left', 'frontend', 'eduadmin-booking' ) . '</span>' : '<span class="no-spots">' . _x( 'No spots', 'frontend', 'eduadmin-booking' ) . '</span>' );
+			echo wp_kses_post("<span class=\"spots-left\">" . get_spots_left( $spots_left, intval( $next_start['MaxParticipantNumber'] ), $spot_left_option, $spot_settings, $always_few_spots ) . "</span>\n");
 		}
 		?>
 	</div>

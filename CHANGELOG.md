@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.11.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.10.0...v3.11.0) (2023-10-02)
+
+
+### Features
+
+* List number of free spots on programme list ([38529a8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/38529a86da27169961bb53597a0f6069c4721d1c))
+
 ## [3.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.2...v3.10.0) (2023-09-29)
 
 
