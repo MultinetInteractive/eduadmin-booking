@@ -19,11 +19,7 @@ if ( ! empty( EDU()->session['eduadmin-loginUser'] ) && ! empty( EDU()->session[
 		require_once 'profile.php';
 	}
 } else {
-	if ( isset( $q['edu-login'] ) ) {
-		require_once 'login-page.php';
-	} else {
-		require_once 'login-page.php';
-	}
+	require_once 'login-page.php';
 }
 
 $out = ob_get_clean();
