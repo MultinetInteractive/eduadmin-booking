@@ -691,6 +691,7 @@ function eduadmin_get_programme_list( $attributes ) {
 		'ProgrammeStarts(' .
 		'$filter=' .
 		'HasPublicPriceName' .
+		' and StatusId eq 1' .
 		' and (ApplicationOpenDate le ' . date_i18n( 'c' ) . ' or ApplicationOpenDate eq null)' .
 		' and StartDate ge ' . date_i18n( 'c' ) .
 		';' .
@@ -740,6 +741,7 @@ function eduadmin_get_programme_details( $attributes ) {
 			'ProgrammeStarts(' .
 			'$filter=' .
 			'HasPublicPriceName' .
+			' and StatusId eq 1' .
 			' and (ApplicationOpenDate le ' . date_i18n( 'c' ) . ' or ApplicationOpenDate eq null)' .
 			' and StartDate ge ' . date_i18n( 'c' ) .
 			';' .
