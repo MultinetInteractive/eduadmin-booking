@@ -658,12 +658,11 @@ function eduadmin_get_login_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-loginview'
 	);
+
+	$str = include_once EDUADMIN_PLUGIN_PATH . '/content/template/myPagesTemplate/login.php';
 	EDU()->stop_timer( $t );
 
-	ob_start();
-	include_once EDUADMIN_PLUGIN_PATH . '/content/template/myPagesTemplate/login.php';
-
-	return ob_get_clean();
+	return $str;
 }
 
 function eduadmin_get_programme_list( $attributes ) {
