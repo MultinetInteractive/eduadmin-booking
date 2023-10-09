@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.4
-Stable tag: 3.11.0
+Stable tag: 3.11.1
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -45,6 +45,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [3.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.0...v3.11.1) (2023-10-09)
+
+
+#### Bug Fixes
+
+* **Programme:** Added check for StatusId, so that we only show programme starts with statusid 1 (Booked) ([cc9a797](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cc9a7970fb7aaa989facd0aea7894edeaeb9407b))
+
 ### [3.11.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.10.0...v3.11.0) (2023-10-02)
 
 
@@ -65,13 +72,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Refactoring
 
 * Made a readme.txt as well, for use in the SVN trunk. ([e6b6d61](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e6b6d61b8e3f27c2841c25812f46f6d2cde3ead3))
-
-### [3.9.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.0...v3.9.1) (2023-09-25)
-
-
-#### Bug Fixes
-
-* **Programme:** Fixed an issue where programme views/shortcodes weren't included in the correct way. ([fd0ee12](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fd0ee128dfc1e324732544f9071640b5aba76e0c)), closes [#494](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/494)
 
 
 
