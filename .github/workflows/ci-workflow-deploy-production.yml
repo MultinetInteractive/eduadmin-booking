@@ -16,10 +16,10 @@ jobs:
           fetch-depth: 1
           submodules: true
           lfs: true
-      - name: Get Node 16.x
+      - name: Get Node 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Build source files
         shell: bash
         run: |
