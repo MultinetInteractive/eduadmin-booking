@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.0...v3.11.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* **Programme:** Added check for StatusId, so that we only show programme starts with statusid 1 (Booked) ([cc9a797](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cc9a7970fb7aaa989facd0aea7894edeaeb9407b))
+
 ## [3.11.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.10.0...v3.11.0) (2023-10-02)
 
 
