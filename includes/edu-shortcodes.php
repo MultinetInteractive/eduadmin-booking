@@ -698,10 +698,7 @@ function eduadmin_get_programme_list( $attributes ) {
 		'StartDate),Courses'
 	);
 
-	ob_start();
-	include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/list.php';
-
-	return ob_get_clean();
+	return include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/list.php';
 }
 
 function eduadmin_get_programme_details( $attributes ) {
@@ -752,11 +749,10 @@ function eduadmin_get_programme_details( $attributes ) {
 			'),PriceNames'
 		);
 
-		ob_start();
-		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/detail.php';
-
-		return ob_get_clean();
+		return include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/detail.php';
 	}
+
+	return '';
 }
 
 function eduadmin_get_programme_booking( $attributes ) {
@@ -803,11 +799,10 @@ function eduadmin_get_programme_booking( $attributes ) {
 			'Courses,Events,PaymentMethods,PriceNames'
 		);
 
-		ob_start();
-		include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/book.php';
-
-		return ob_get_clean();
+		return include_once EDUADMIN_PLUGIN_PATH . '/content/template/programme/book.php';
 	}
+
+	return '';
 }
 
 if ( is_callable( 'add_shortcode' ) ) {

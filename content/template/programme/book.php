@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // phpcs:disable WordPress.NamingConventions,Squiz
 
 if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-form'], 'edu-booking-confirm' ) && isset( $_POST['act'] ) && 'bookProgramme' === sanitize_text_field( $_POST['act'] ) ) {
@@ -643,3 +644,6 @@ if ( ! empty( $_POST['edu-valid-form'] ) && wp_verify_nonce( $_POST['edu-valid-f
 	<?php
 	do_action( 'eduadmin-programme-bookingform-view', $programme );
 }
+$out = ob_get_clean();
+
+return $out;
