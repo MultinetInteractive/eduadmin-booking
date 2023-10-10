@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.1...v4.0.0) (2023-10-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Programme/Shortcodes:** Custom code with `do_shortcode` now needs to do
+`echo do_shortcode( '[eduadmin-programme-list]' );` after the change.
+Which is the intended way to use `do_shortcode` the previous versions
+were not working in the correct way.
+
+### Bug Fixes
+
+* **Programme/Shortcodes:** Fixed an issue with Programme pages ([461c3bf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/461c3bfac424d8614580ac4f7df2fe5d70161499))
+
 ### [3.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.0...v3.11.1) (2023-10-09)
 
 
