@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 5.8
 - Tested up to: 6.4
-- Stable tag: 3.11.1
+- Stable tag: 4.0.0
 - Requires PHP: 7.0
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,20 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [4.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.1...v4.0.0) (2023-10-10)
+
+
+#### ⚠ BREAKING CHANGES
+
+* **Programme/Shortcodes:** Custom code with `do_shortcode` now needs to do
+`echo do_shortcode( '[eduadmin-programme-list]' );` after the change.
+Which is the intended way to use `do_shortcode` the previous versions
+were not working in the correct way.
+
+#### Bug Fixes
+
+* **Programme/Shortcodes:** Fixed an issue with Programme pages ([461c3bf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/461c3bfac424d8614580ac4f7df2fe5d70161499))
+
 ### [3.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.0...v3.11.1) (2023-10-09)
 
 
@@ -60,13 +74,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Features
 
 * Programme starts now show number of spots left (according to settings) ([0117df4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0117df408a557998bd04d467720e51cef331612a)), closes [#498](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/498)
-
-### [3.9.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.1...v3.9.2) (2023-09-26)
-
-
-#### Refactoring
-
-* Made a readme.txt as well, for use in the SVN trunk. ([e6b6d61](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e6b6d61b8e3f27c2841c25812f46f6d2cde3ead3))
 
 
 
