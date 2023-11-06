@@ -3,7 +3,7 @@ Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 5.8
 Tested up to: 6.4
-Stable tag: 4.0.0
+Stable tag: 4.1.0
 Requires PHP: 7.0
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -45,6 +45,18 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [4.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.0.0...v4.1.0) (2023-11-06)
+
+
+#### Features
+
+* Added shortcode [eduadmin-programmeinfo] with limited attributes ([b51a1b1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b51a1b102282dd7a23cd96aa9e459f4b116f3af0)), closes [#506](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/506)
+
+
+#### Documentation
+
+* **Shortcodes:** Added info about the new shortcode ([4fe4b80](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4fe4b8015c095841a75cfd5348ece89bfb90944a)), closes [#506](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/506)
+
 ### [4.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.1...v4.0.0) (2023-10-10)
 
 
@@ -72,13 +84,6 @@ were not working in the correct way.
 #### Features
 
 * List number of free spots on programme list ([38529a8](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/38529a86da27169961bb53597a0f6069c4721d1c))
-
-### [3.10.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.9.2...v3.10.0) (2023-09-29)
-
-
-#### Features
-
-* Programme starts now show number of spots left (according to settings) ([0117df4](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0117df408a557998bd04d467720e51cef331612a)), closes [#498](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/498)
 
 
 
