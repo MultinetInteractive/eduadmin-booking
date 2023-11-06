@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.0.0...v4.1.0) (2023-11-06)
+
+
+### Features
+
+* Added shortcode [eduadmin-programmeinfo] with limited attributes ([b51a1b1](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/b51a1b102282dd7a23cd96aa9e459f4b116f3af0)), closes [#506](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/506)
+
+
+### Documentation
+
+* **Shortcodes:** Added info about the new shortcode ([4fe4b80](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4fe4b8015c095841a75cfd5348ece89bfb90944a)), closes [#506](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/506)
+
 ## [4.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.1...v4.0.0) (2023-10-10)
 
 
