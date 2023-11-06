@@ -207,6 +207,151 @@ function eduadmin_get_booking_view( $attributes ) {
 	return $str;
 }
 
+function eduadmin_get_programmeinfo( $attributes ) {
+	$t = EDU()->start_timer( __METHOD__ );
+	global $wp_query;
+	$attributes = shortcode_atts(
+		array(
+			'programmeid'               => null,
+			'programmename'             => null,
+			'programmepublicname'       => null,
+			'programmeimage'            => null,
+			'programmeimagetext'        => null,
+			'courseprice'               => null,
+			'eventprice'                => null,
+			'programmedescriptionshort' => null,
+			'programmedescription'      => null,
+			'programmegoal'             => null,
+			'programmetarget'           => null,
+			'programmeprerequisites'    => null,
+			'courseafter'               => null,
+			'programmequote'            => null,
+			'courseeventlist'           => null,
+			'showmore'                  => null,
+			'courseattributeid'         => null,
+			'courseattributehasvalue'   => null,
+			'courseeventlistfiltercity' => null,
+			'pagetitlejs'               => null,
+			'bookurl'                   => null,
+			'courseinquiryurl'          => null,
+			'order'                     => null,
+			'orderby'                   => null,
+			'ondemand'                  => false,
+			'allcourses'                => false,
+		),
+		normalize_empty_atts( $attributes ),
+		'eduadmin-programmeinfo'
+	);
+	$api_key    = EDU()->get_option( 'eduadmin-api-key' );
+
+	$ret_str = '';
+
+	if ( empty( $api_key ) ) {
+		EDU()->stop_timer( $t );
+
+		return 'Please complete the configuration: <a href="' . admin_url() . 'admin.php?page=eduadmin-settings">EduAdmin - Api Authentication</a>';
+	}
+
+	if ( empty( $attributes['programmeid'] ) || str_replace( array(
+		                                                         '&#8221;',
+		                                                         '&#8243;',
+	                                                         ), '', $attributes['programmeid'] ) <= 0 ) {
+		if ( isset( $wp_query->query_vars['edu_programme'] ) ) {
+			$exploded_id  = explode( '_', $wp_query->query_vars['edu_programme'] )[1];
+			$programme_id = $exploded_id;
+		} else {
+			EDU()->stop_timer( $t );
+
+			return 'Missing programmeid in attributes';
+		}
+	} else {
+		$programme_id = str_replace(
+			array(
+				'&#8221;',
+				'&#8243;',
+			),
+			'',
+			$attributes['programmeid']
+		);
+	}
+
+	if ( ! empty( $programme_id ) ) {
+		$programme = EDUAPI()->OData->Programmes->GetItem(
+			$programme_id,
+			null,
+			'ProgrammeStarts(' .
+			'$filter=' .
+			'HasPublicPriceName' .
+			' and StatusId eq 1' .
+			' and (ApplicationOpenDate le ' . date_i18n( 'c' ) . ' or ApplicationOpenDate eq null)' .
+			' and StartDate ge ' . date_i18n( 'c' ) .
+			';' .
+			'$orderby=' .
+			'StartDate' .
+			';' .
+			'$expand=' .
+			'Courses($orderby=ProgrammeCourseSortIndex),Events($expand=EventDates($orderby=StartDate;$select=StartDate,EndDate;);$orderby=ProgrammeCourseSortIndex),PriceNames' .
+			'),PriceNames'
+		);
+
+		if ( isset( $programme["@error"] ) ) {
+			EDU()->stop_timer( $t );
+
+			return $programme["@error"];
+		}
+
+		if ( isset( $attributes['programmename'] ) ) {
+			$ret_str .= $programme['InternaProgrammeName'];
+		}
+
+		if ( isset( $attributes['programmepublicname'] ) ) {
+			$ret_str .= $programme['ProgrammeName'];
+		}
+
+		if ( isset( $attributes['programmeimage'] ) ) {
+			$ret_str .= $programme['ImageUrl'];
+		}
+
+		if ( isset( $attributes['programmeimagetext'] ) ) {
+			$ret_str .= $programme['ImageText'];
+		}
+
+		if ( isset( $attributes['programmedescriptionshort'] ) ) {
+			$ret_str .= $programme['DescriptionShort'];
+		}
+
+		if ( isset( $attributes['programmedescription'] ) ) {
+			$ret_str .= $programme['Description'];
+		}
+
+		if ( isset( $attributes['programmequote'] ) ) {
+			$ret_str .= $programme['Quote'];
+		}
+
+		if ( isset( $attributes['programmegoal'] ) ) {
+			$ret_str .= $programme['CourseGoal'];
+		}
+
+		if ( isset( $attributes['programmetarget'] ) ) {
+			$ret_str .= $programme['TargetGroup'];
+		}
+
+		if ( isset( $attributes['programmeprerequisites'] ) ) {
+			$ret_str .= $programme['Prerequisites'];
+		}
+
+		if ( isset( $attributes['courseafter'] ) ) {
+			$ret_str .= $programme['CourseAfter'];
+		}
+
+		$ret_str .= print_r( $programme, true );
+	}
+
+	EDU()->stop_timer( $t );
+
+	return $ret_str;
+}
+
 function eduadmin_get_detailinfo( $attributes ) {
 	$t = EDU()->start_timer( __METHOD__ );
 	global $wp_query;
@@ -819,4 +964,5 @@ if ( is_callable( 'add_shortcode' ) ) {
 	add_shortcode( 'eduadmin-programme-list', 'eduadmin_get_programme_list' );
 	add_shortcode( 'eduadmin-programme-detail', 'eduadmin_get_programme_details' );
 	add_shortcode( 'eduadmin-programme-book', 'eduadmin_get_programme_booking' );
+	add_shortcode( 'eduadmin-programmeinfo', 'eduadmin_get_programmeinfo' );
 }
