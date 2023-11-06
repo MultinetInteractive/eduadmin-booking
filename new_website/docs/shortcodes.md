@@ -3,6 +3,7 @@ id: shortcodes
 title: Shortcodes
 sidebar_label: Shortcodes
 ---
+
 Here we have a complete reference guide to all shortcodes available in the plugin, with all attributes.
 
 * * *
@@ -229,8 +230,11 @@ results from the API.
 
 You can set the `mode`-attribute to either `event` or `course`, to make the list show events or course templates.
 
-The `orderby`-attribute gives you the possibility to change what field the list should be ordered by. The available fields can be found at https://api.eduadmin.se/?page=read#operation/GetEvents or https://api.eduadmin.se/?page=read#operation/GetCourseTemplates depending on what `mode`-attribute you are using, either `event` or `course`,
- and the `order`-attribute takes the values ASC or DESC.
+The `orderby`-attribute gives you the possibility to change what field the list should be ordered by. The available
+fields can be found at https://api.eduadmin.se/?page=read#operation/GetEvents
+or https://api.eduadmin.se/?page=read#operation/GetCourseTemplates depending on what `mode`-attribute you are using,
+either `event` or `course`,
+and the `order`-attribute takes the values ASC or DESC.
 
 `showsearch` will force the search bar to be visible.
 
@@ -327,8 +331,7 @@ And if you want to create a specific page for a programme, you can also use the 
 
 ### `[eduadmin-programme-list]`
 
-As with the normal list view, this view lists the available programmes you have created in [**
-EduAdmin**](https://www.eduadmin.se).
+As with the normal list view, this view lists the available programmes you have created in [**EduAdmin**](https://www.eduadmin.se).
 
 | Attribute | Value type | Default value |
 |:----------|:----------:|:-------------:|
@@ -337,3 +340,28 @@ EduAdmin**](https://www.eduadmin.se).
 And if you want to filter this list, you can apply the `category`-attribute.
 
 * * *
+
+### `[eduadmin-programmeinfo]`
+
+This shortcode is used when you want to create your own custom template [**programme view**](#eduadmin-programme-detail).
+
+:::note
+
+We will add more attributes to this shortcode in the future.
+
+:::
+
+| Attribute                 | Value type | Default value |
+|:--------------------------|:----------:|:-------------:|
+| programmeid               |  integer   |    _null_     |
+| programmename             |  boolean   |     null      |
+| programmepublicname       |  boolean   |     null      |
+| programmeimage            |  boolean   |     null      |
+| programmeimagetext        |  boolean   |     null      |
+| programmedescriptionshort |  boolean   |     null      |
+| programmedescription      |  boolean   |     null      |
+| programmegoal             |  boolean   |     null      |
+| programmetarget           |  boolean   |     null      |
+| programmeprerequisites    |  boolean   |     null      |
+| courseafter               |  boolean   |     null      |
+| programmequote            |  boolean   |     null      |
