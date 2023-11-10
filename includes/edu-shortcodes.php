@@ -343,8 +343,6 @@ function eduadmin_get_programmeinfo( $attributes ) {
 		if ( isset( $attributes['courseafter'] ) ) {
 			$ret_str .= $programme['CourseAfter'];
 		}
-
-		$ret_str .= print_r( $programme, true );
 	}
 
 	EDU()->stop_timer( $t );
