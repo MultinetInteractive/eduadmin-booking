@@ -36,6 +36,11 @@ $base_url = $surl . '/' . $cat;
 $events = array();
 
 foreach ( $selected_course['Events'] as $event ) {
+	if ( ! empty( $_GET['eid'] ) ) { // Input var okay.
+		if ( $event['EventId'] != $_GET['eid'] ) { // Input var okay.
+			continue;
+		}
+	}
 	$event['CourseTemplate'] = $selected_course;
 	unset( $event['CourseTemplate']['Events'] );
 

@@ -59,7 +59,7 @@ if ( $use_eduadmin_form ) {
 	if ( ! empty( $prices ) ) {
 		foreach ( $events as $ev ) {
 			if ( ! empty( $_GET['eid'] ) ) { // Input var okay.
-				if ( $ev['EventId'] !== $_GET['eid'] ) { // Input var okay.
+				if ( $ev['EventId'] != $_GET['eid'] ) { // Input var okay.
 					continue;
 				}
 			}
