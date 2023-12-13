@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.1...v4.1.2) (2023-12-13)
+
+
+### Bug Fixes
+
+* Filtering the events if we're looking at a specific one for prices as well ([144762e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/144762e9e3c9c14f7c1c0ce68dafa7feb50cb4e2))
+
 ### [4.1.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.0...v4.1.1) (2023-11-10)
 
 

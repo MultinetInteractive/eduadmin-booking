@@ -158,7 +158,7 @@ function edu_api_listview_eventlist() {
 			$order        = array();
 			$custom_order = explode( ' ', $custom_order_by_order );
 			foreach ( $custom_order as $coVal ) {
-				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, - 1 );
 			}
 		}
 	} else {
@@ -351,7 +351,7 @@ function edu_api_listview_eventlist_template_A( $data, $request ) {
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-a.php';
-		$current_events++;
+		$current_events ++;
 	}
 }
 
@@ -429,7 +429,7 @@ function edu_api_listview_eventlist_template_B( $data, $request ) {
 		}
 
 		include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/blocks/event-block-b.php';
-		$current_events++;
+		$current_events ++;
 	}
 }
 
@@ -482,6 +482,11 @@ function edu_api_eventlist() {
 	$events = array();
 
 	foreach ( $selected_course['Events'] as $event ) {
+		if ( ! empty( $_POST['eid'] ) ) { // Input var okay.
+			if ( $event['EventId'] != $_POST['eid'] ) { // Input var okay.
+				continue;
+			}
+		}
 		$event['CourseTemplate'] = $selected_course;
 		unset( $event['CourseTemplate']['Events'] );
 
@@ -556,7 +561,7 @@ function edu_api_eventlist() {
 			$order        = array();
 			$custom_order = explode( ' ', $custom_order_by_order );
 			foreach ( $custom_order as $coVal ) {
-				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+				! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, - 1 );
 			}
 		}
 	} else {
@@ -574,7 +579,7 @@ function edu_api_eventlist() {
 
 	$last_city = '';
 
-	$show_more                = ! empty( $_POST['showmore'] ) ? $_POST['showmore'] : -1;
+	$show_more                = ! empty( $_POST['showmore'] ) ? $_POST['showmore'] : - 1;
 	$spot_left_option         = $_POST['spotsleft'];
 	$always_few_spots         = $_POST['fewspots'];
 	$show_event_venue         = $_POST['showvenue'];
@@ -590,7 +595,7 @@ function edu_api_eventlist() {
 	if ( ! empty( $prices ) ) {
 		foreach ( $events as $ev ) {
 			if ( isset( $_POST['eid'] ) ) {
-				if ( $ev['EventId'] !== intval( $_POST['eid'] ) ) {
+				if ( $ev['EventId'] != intval( $_POST['eid'] ) ) {
 					continue;
 				}
 			}
@@ -611,7 +616,7 @@ function edu_api_eventlist() {
 
 			include EDUADMIN_PLUGIN_PATH . '/content/template/detailTemplate/blocks/event-item.php';
 			$last_city = $ev['City'];
-			$i++;
+			$i ++;
 		}
 	}
 	if ( empty( $prices ) || empty( $events ) ) {

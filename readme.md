@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 5.8
 - Tested up to: 6.4
-- Stable tag: 4.1.1
+- Stable tag: 4.1.2
 - Requires PHP: 7.0
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [4.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.1...v4.1.2) (2023-12-13)
+
+
+#### Bug Fixes
+
+* Filtering the events if we're looking at a specific one for prices as well ([144762e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/144762e9e3c9c14f7c1c0ce68dafa7feb50cb4e2))
+
 ### [4.1.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.0...v4.1.1) (2023-11-10)
 
 
@@ -72,13 +79,6 @@ were not working in the correct way.
 #### Bug Fixes
 
 * **Programme/Shortcodes:** Fixed an issue with Programme pages ([461c3bf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/461c3bfac424d8614580ac4f7df2fe5d70161499))
-
-### [3.11.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.0...v3.11.1) (2023-10-09)
-
-
-#### Bug Fixes
-
-* **Programme:** Added check for StatusId, so that we only show programme starts with statusid 1 (Booked) ([cc9a797](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/cc9a7970fb7aaa989facd0aea7894edeaeb9407b))
 
 
 
