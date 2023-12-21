@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 5.8
 - Tested up to: 6.4
-- Stable tag: 4.1.2
+- Stable tag: 4.2.0
 - Requires PHP: 7.0
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [4.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.2...v4.2.0) (2023-12-21)
+
+
+#### Features
+
+* Support for the required fields in Google Search Console for the ld+json ([519a446](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/519a446527a37ae8ffc7e3d159ea99c5c9d86e45)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
+
 ### [4.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.1...v4.1.2) (2023-12-13)
 
 
@@ -65,20 +72,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Documentation
 
 * **Shortcodes:** Added info about the new shortcode ([4fe4b80](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/4fe4b8015c095841a75cfd5348ece89bfb90944a)), closes [#506](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/506)
-
-### [4.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v3.11.1...v4.0.0) (2023-10-10)
-
-
-#### ⚠ BREAKING CHANGES
-
-* **Programme/Shortcodes:** Custom code with `do_shortcode` now needs to do
-`echo do_shortcode( '[eduadmin-programme-list]' );` after the change.
-Which is the intended way to use `do_shortcode` the previous versions
-were not working in the correct way.
-
-#### Bug Fixes
-
-* **Programme/Shortcodes:** Fixed an issue with Programme pages ([461c3bf](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/461c3bfac424d8614580ac4f7df2fe5d70161499))
 
 
 

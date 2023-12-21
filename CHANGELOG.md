@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.2...v4.2.0) (2023-12-21)
+
+
+### Features
+
+* Support for the required fields in Google Search Console for the ld+json ([519a446](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/519a446527a37ae8ffc7e3d159ea99c5c9d86e45)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
+
 ### [4.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.1...v4.1.2) (2023-12-13)
 
 
