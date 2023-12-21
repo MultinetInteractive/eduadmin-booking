@@ -49,9 +49,29 @@ if ( $edo ) {
 			return;
 		}
 
+		$prices = array();
+
+		if ( ! empty( $selected_course['PriceNames'] ) ) {
+			foreach ( $selected_course['PriceNames'] as $pn ) {
+				$prices[ (string) $pn['PriceNameId'] ] = $pn;
+			}
+		}
+
 		$org_name = trim( ! empty( $organization['LegalName'] ) ? $organization['LegalName'] : $organization['OrganisationName'] );
 
-		$events = null;
+		$events = [];
+
+		$offers = [];
+
+		foreach ( $prices as $priceNameId => $priceName ) {
+			$offers[] = [
+				'@type'         => 'Offer',
+				'price'         => $priceName['Price'],
+				'category'      => $priceName['Price'] == 0 ? 'Free' : 'Paid',
+				'priceCurrency' => EDU()->get_option( 'eduadmin-currency', 'SEK' ),
+				'name'          => $priceName['PriceNameDescription'],
+			];
+		}
 
 		foreach ( $selected_course['Events'] as $event ) {
 			$_event = [
@@ -63,10 +83,35 @@ if ( $edo ) {
 				$_event['courseMode']  = "online";
 				$_event['location']    = "Online";
 				$_event['description'] = 'On-demand';
+
+				if ( $event['OnDemandAccessDays'] == null && $selected_course['OnDemandAccessDays'] != null ) {
+					$event['OnDemandAccessDays'] = $selected_course['OnDemandAccessDays'];
+				}
+
+				if ( $event['OnDemandAccessDays'] > 0 ) {
+					$_event['courseSchedule'] = [
+						'@type'           => 'Schedule',
+						'repeatFrequency' => 'Daily',
+						'repeatCount'     => $event['OnDemandAccessDays'],
+					];
+				} else {
+					$_event['courseSchedule'] = [
+						'@type'           => 'Schedule',
+						'duration'        => 'P1D',
+						'repeatFrequency' => 'Yearly',
+						'repeatCount'     => 99,
+					];
+				}
 			} else {
 				$_event['location']  = $event['City'];
 				$_event['startDate'] = $event['StartDate'];
 				$_event['endDate']   = $event['EndDate'];
+
+				$_event['courseSchedule'] = [
+					'@type'     => 'Schedule',
+					'startDate' => $event['StartDate'],
+					'endDate'   => $event['EndDate'],
+				];
 			}
 
 			if ( ! empty( $event['MaxParticipantNumber'] ) && $event['MaxParticipantNumber'] > 0 ) {
@@ -93,6 +138,7 @@ if ( $edo ) {
 				'image'     => $organization['LogoUrl'],
 			],
 			'hasCourseInstance'   => $events,
+			'offers'              => $offers,
 		];
 
 		echo '<script type="application/ld+json">
