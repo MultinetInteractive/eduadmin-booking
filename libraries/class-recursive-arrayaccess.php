@@ -61,7 +61,7 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return array
 	 */
-	public function toArray() {
+	public function toArray() : array {
 		$data = $this->container;
 		foreach ( $data as $key => $value ) {
 			if ( $value instanceof self ) {
@@ -83,7 +83,7 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return boolean true on success or false on failure.
 	 */
-	public function offsetExists( $offset ) {
+	public function offsetExists( $offset ) : bool {
 		return isset( $this->container[ $offset ] );
 	}
 
@@ -96,7 +96,7 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return mixed Can return all value types.
 	 */
-	public function offsetGet( $offset ) {
+	public function offsetGet( $offset ) : mixed {
 		return isset( $this->container[ $offset ] ) ? $this->container[ $offset ] : null;
 	}
 
@@ -110,7 +110,7 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return void
 	 */
-	public function offsetSet( $offset, $data ) {
+	public function offsetSet( $offset, $data ) : void {
 		if ( is_array( $data ) ) {
 			$data = new self( $data );
 		}
@@ -131,7 +131,7 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return void
 	 */
-	public function offsetUnset( $offset ) {
+	public function offsetUnset( $offset ) : void {
 		unset( $this->container[ $offset ] );
 	}
 }

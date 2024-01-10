@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.0...v4.2.1) (2024-01-10)
+
+
+### Bug Fixes
+
+* Add return types ([ae0f126](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ae0f126f31513731d677c7af2708b10c2a51573e))
+
 ## [4.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.2...v4.2.0) (2023-12-21)
 
 
