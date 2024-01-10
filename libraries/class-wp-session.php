@@ -295,7 +295,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return mixed
 	 */
-	public function current() {
+	public function current() : mixed {
 		return current( $this->container );
 	}
 
@@ -306,7 +306,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return mixed
 	 */
-	public function key() {
+	public function key() : mixed {
 		return key( $this->container );
 	}
 
@@ -317,7 +317,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return void
 	 */
-	public function next() {
+	public function next() : void {
 		next( $this->container );
 	}
 
@@ -328,7 +328,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return void
 	 */
-	public function rewind() {
+	public function rewind() : void {
 		reset( $this->container );
 	}
 
@@ -339,7 +339,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return bool
 	 */
-	public function valid() {
+	public function valid() : bool {
 		return $this->offsetExists( $this->key() );
 	}
 	/*****************************************************************/
@@ -352,7 +352,7 @@ final class WP_Session extends Recursive_ArrayAccess implements Iterator, Counta
 	 *
 	 * @return int
 	 */
-	public function count() {
+	public function count() : int {
 		return count( $this->container );
 	}
 }
