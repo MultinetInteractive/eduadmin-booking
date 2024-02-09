@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package WordPress
  * @since   3.6.0
  */
+
 class Recursive_ArrayAccess implements ArrayAccess {
 	/**
 	 * Internal data collection.
@@ -61,7 +62,8 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return array
 	 */
-	public function toArray() : array {
+	#[\ReturnTypeWillChange]
+	public function toArray() {
 		$data = $this->container;
 		foreach ( $data as $key => $value ) {
 			if ( $value instanceof self ) {
@@ -83,7 +85,8 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return boolean true on success or false on failure.
 	 */
-	public function offsetExists( $offset ) : bool {
+	#[\ReturnTypeWillChange]
+	public function offsetExists( $offset ) {
 		return isset( $this->container[ $offset ] );
 	}
 
@@ -96,7 +99,8 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return mixed Can return all value types.
 	 */
-	public function offsetGet( $offset ) : mixed {
+	#[\ReturnTypeWillChange]
+	public function offsetGet( $offset ) {
 		return isset( $this->container[ $offset ] ) ? $this->container[ $offset ] : null;
 	}
 
@@ -110,7 +114,8 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return void
 	 */
-	public function offsetSet( $offset, $data ) : void {
+	#[\ReturnTypeWillChange]
+	public function offsetSet( $offset, $data ) {
 		if ( is_array( $data ) ) {
 			$data = new self( $data );
 		}
@@ -131,7 +136,8 @@ class Recursive_ArrayAccess implements ArrayAccess {
 	 *
 	 * @return void
 	 */
-	public function offsetUnset( $offset ) : void {
+	#[\ReturnTypeWillChange]
+	public function offsetUnset( $offset ) {
 		unset( $this->container[ $offset ] );
 	}
 }
