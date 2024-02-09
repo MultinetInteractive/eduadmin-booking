@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 5.8
 - Tested up to: 6.4
-- Stable tag: 4.2.2
+- Stable tag: 4.2.3
 - Requires PHP: 7.0
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [4.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.2...v4.2.3) (2024-02-09)
+
+
+#### Bug Fixes
+
+* #[\ReturnTypeWillChange] instead of typing, because PHP is.. well PHP ([7684891](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7684891ff6d55b58e186a2569d42674792e7f543))
+
 ### [4.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.1...v4.2.2) (2024-01-10)
 
 
@@ -60,13 +67,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Features
 
 * Support for the required fields in Google Search Console for the ld+json ([519a446](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/519a446527a37ae8ffc7e3d159ea99c5c9d86e45)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
-
-### [4.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.1.1...v4.1.2) (2023-12-13)
-
-
-#### Bug Fixes
-
-* Filtering the events if we're looking at a specific one for prices as well ([144762e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/144762e9e3c9c14f7c1c0ce68dafa7feb50cb4e2))
 
 
 
