@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.2...v4.2.3) (2024-02-09)
+
+
+### Bug Fixes
+
+* #[\ReturnTypeWillChange] instead of typing, because PHP is.. well PHP ([7684891](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7684891ff6d55b58e186a2569d42674792e7f543))
+
 ### [4.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.1...v4.2.2) (2024-01-10)
 
 
