@@ -11,10 +11,10 @@ if ( ! file_exists( $_tests_dir . '/includes/functions.php' ) ) {
 // Give access to tests_add_filter() function.
 require_once $_tests_dir . '/includes/functions.php';
 
-define( 'PLUGIN_NAME', 'eduadmin.php' );
+const PLUGIN_NAME = 'eduadmin.php';
 define( 'PLUGIN_FOLDER', basename( dirname( __DIR__ ) ) );
-define( 'PLUGIN_PATH', PLUGIN_FOLDER . '/' . PLUGIN_NAME );
-// Activates this plugin in WordPress so it can be tested.
+const PLUGIN_PATH = PLUGIN_FOLDER . '/' . PLUGIN_NAME;
+// Activates this plugin in WordPress, so it can be tested.
 $GLOBALS['wp_tests_options'] = array(
 	'active_plugins' => array( PLUGIN_PATH ),
 );

@@ -80,9 +80,22 @@
 							<?php
 						}
 					} else {
-						?>
-						<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
-						<?php
+						if ( $use_eduadmin_form ) {
+							if ( $event['UseWaitingList'] ) {
+								?>
+								<a class="bookButton book-link cta-btn" href="javascript://"
+								   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $event['BookingFormUrl'] ); ?>');"><?php echo esc_html_x( 'Reserve list', 'frontend', 'eduadmin-booking' ); ?></a>
+								<?php
+							} else {
+								?>
+								<i class="fullBooked"><?php echo esc_html_x( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
+								<?php
+							}
+						} else {
+							?>
+							<i class="fullBooked"><?php _ex( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
+							<?php
+						}
 					}
 				} else {
 					?>

@@ -106,6 +106,10 @@ function edu_get_price( $price, $vatPercent, $settings_override = '' ) {
 }
 
 function edu_get_percent_from_values( $current_value, $max_value ) {
+	if ( null === $current_value || null === $max_value ) {
+		return 'percentUnknown';
+	}
+
 	if ( 0 === $current_value || 0 === $max_value ) {
 		return 'percentUnknown';
 	}
@@ -813,7 +817,7 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 			} else {
 				$lines = explode( "\n", $interval );
 				foreach ( $lines as $line ) {
-					if ( stripos( $line, '-' ) > -1 ) {
+					if ( stripos( $line, '-' ) > - 1 ) {
 						$range = explode( '-', $line );
 						$min   = intval( $range[0] );
 						$max   = intval( $range[1] );
@@ -822,7 +826,7 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 
 							return sprintf( _x( '%1$s spots left', 'frontend', 'eduadmin-booking' ), $line );
 						}
-					} elseif ( stripos( $line, '+' ) > -1 ) {
+					} elseif ( stripos( $line, '+' ) > - 1 ) {
 						/* translators: 1: Number of spots (range) */
 
 						return sprintf( _x( '%1$s spots left', 'frontend', 'eduadmin-booking' ), $line );
@@ -965,7 +969,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 	$total_days = count( $days );
 
-	for ( $x = 0; $x < $total_days; $x++ ) {
+	for ( $x = 0; $x < $total_days; $x ++ ) {
 		$day = $days[ $x ];
 
 		$added_dates[ edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] ) ][] = $day;
@@ -1177,7 +1181,7 @@ function DateComparer( $a, $b ) {
 		return 0;
 	}
 
-	return ( $a_date < $b_date ? -1 : 1 );
+	return ( $a_date < $b_date ? - 1 : 1 );
 }
 
 function KeySort( $key ) {
@@ -1378,7 +1382,7 @@ if ( ! function_exists( 'my_str_split' ) ) {
 	function my_str_split( $string ) {
 		$s_array = array();
 		$slen    = strlen( $string );
-		for ( $i = 0; $i < $slen; $i++ ) {
+		for ( $i = 0; $i < $slen; $i ++ ) {
 			$s_array[ (string) $i ] = $string[ $i ];
 		}
 
@@ -1932,7 +1936,7 @@ if ( ! function_exists( 'remove_duplicates' ) ) {
 			$s_subject = str_replace( $s_search, $s_replace, $s_subject );
 			$pos       = strpos( $s_subject, $s_search );
 
-			$i++;
+			$i ++;
 			if ( $i > 100 ) {
 				die( 'removeDuplicates() loop error' );
 			}
@@ -1950,6 +1954,6 @@ if ( ! function_exists( 'edu_starts_with' ) ) {
 
 if ( ! function_exists( 'edu_ends_with' ) ) {
 	function edu_ends_with( $haystack, $needle ) {
-		return substr( $haystack, -strlen( $needle ) ) === $needle;
+		return substr( $haystack, - strlen( $needle ) ) === $needle;
 	}
 }

@@ -53,7 +53,7 @@ class EduAdminAPIHelper {
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
-				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate,LastApplicationDate';
+				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate,LastApplicationDate,UseWaitingList';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -116,7 +116,7 @@ class EduAdminAPIHelper {
 				';' .
 				'$orderby=StartDate asc' . ( $group_by_city ? ', City asc' : '' ) .
 				';' .
-				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate';
+				'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,LocationId,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,ApplicationOpenDate,UseWaitingList';
 
 			$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -188,7 +188,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,LastApplicationDate';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,LastApplicationDate,UseWaitingList';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -303,7 +303,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,UseWaitingList';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -417,7 +417,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,LastApplicationDate';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,LastApplicationDate,UseWaitingList';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -456,7 +456,7 @@ class EduAdminAPIHelper {
 				$order        = array();
 				$custom_order = explode( ' ', $custom_order_by_order );
 				foreach ( $custom_order as $coVal ) {
-					! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+					! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, - 1 );
 				}
 			}
 		} else {
@@ -531,7 +531,7 @@ class EduAdminAPIHelper {
 			';' .
 			'$orderby=StartDate asc' .
 			';' .
-			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate';
+			'$select=EventId,City,ParticipantNumberLeft,MaxParticipantNumber,StartDate,EndDate,AddressName,EventName,ParticipantVat,BookingFormUrl,OnDemand,OnDemandPublished,OnDemandAccessDays,LocationId,ApplicationOpenDate,UseWaitingList';
 
 		$expands['CustomFields'] = '$filter=ShowOnWeb;$select=CustomFieldId,CustomFieldName,CustomFieldType,CustomFieldValue,CustomFieldChecked,CustomFieldDate,CustomFieldAlternativeId,CustomFieldAlternativeValue;';
 
@@ -571,7 +571,7 @@ class EduAdminAPIHelper {
 				$order        = array();
 				$custom_order = explode( ' ', $custom_order_by_order );
 				foreach ( $custom_order as $coVal ) {
-					! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, -1 );
+					! isset( $coVal ) || $coVal === "asc" ? array_push( $order, 1 ) : array_push( $order, - 1 );
 				}
 			}
 		} else {

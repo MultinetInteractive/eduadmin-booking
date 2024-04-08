@@ -39,13 +39,19 @@ if ( $edo ) {
 		$selected_course = json_decode( EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city ), true );
 	}
 
+	$description = ! empty( $selected_course['CourseDescriptionShort'] ) ?
+		$selected_course['CourseDescriptionShort'] :
+		$selected_course['CourseDescription'];
+
+	if ( $description == null || strlen( $description ) == 0 ) {
+		return;
+	}
+
 	$description = wp_strip_all_tags(
 		str_replace(
 			[ "<br />", "<br>", "</p>" ],
 			[ "&#xA;", "&#xA;", "</p>&#xA;&#xA;" ],
-			! empty( $selected_course['CourseDescriptionShort'] ) ?
-				$selected_course['CourseDescriptionShort'] :
-				$selected_course['CourseDescription']
+			$description
 		)
 	);
 
