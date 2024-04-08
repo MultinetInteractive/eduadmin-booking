@@ -72,15 +72,28 @@ if ( ! empty( $ev['EventDates'] ) ) {
 					<?php
 				}
 			} else {
-				if ( $allow_interest_reg_event && false !== $event_interest_page ) {
+				if ( $use_eduadmin_form ) {
+					if ( $ev['UseWaitingList'] ) {
+						?>
+						<a class="bookButton book-link cta-btn" href="javascript://"
+						   onclick="edu_OpenEduBookingFormModal('<?php echo esc_js( $ev['BookingFormUrl'] ); ?>');"><?php echo esc_html_x( 'Reserve list', 'frontend', 'eduadmin-booking' ); ?></a>
+						<?php
+					} else {
+						?>
+						<i class="fullBooked"><?php echo esc_html_x( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
+						<?php
+					}
+				} else {
+					if ( $allow_interest_reg_event && false !== $event_interest_page ) {
+						?>
+						<a class="inquiry-link"
+						   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/interest/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></a>
+						<?php
+					}
 					?>
-					<a class="inquiry-link"
-					   href="<?php echo esc_url( $base_url . '/' . make_slugs( $name ) . '__' . $selected_course['CourseTemplateId'] . '/book/interest/?eid=' . $ev['EventId'] . edu_get_query_string( '&', array( 'eid' ) ) . '&_=' . time() ); ?>"><?php echo esc_html_x( 'Inquiry', 'frontend', 'eduadmin-booking' ); ?></a>
+					<i class="fullBooked"><?php echo esc_html_x( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
 					<?php
 				}
-				?>
-				<i class="fullBooked"><?php echo esc_html_x( 'Full', 'frontend', 'eduadmin-booking' ); ?></i>
-				<?php
 			}
 		} else {
 			?>
