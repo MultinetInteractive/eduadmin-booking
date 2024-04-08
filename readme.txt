@@ -2,8 +2,8 @@
 Contributors: mnchga
 Tags: booking, participants, courses, events, eduadmin, lega online
 Requires at least: 6.0
-Tested up to: 6.5
-Stable tag: 4.3.0
+Tested up to: 6.6
+Stable tag: 5.0.0
 Requires PHP: 8.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -45,6 +45,17 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.3.0...v5.0.0) (2024-04-08)
+
+
+#### ⚠ BREAKING CHANGES
+
+* Updated required WP and PHP, changes are already made in code (353e4dd7c1bfa5aa31ee67e0572220acca3a6387)
+
+#### Bug Fixes
+
+* Updated required WP and PHP, changes are already made in code (353e4dd7c1bfa5aa31ee67e0572220acca3a6387) ([29b0adc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/29b0adc497a8d60d906784dd65ef04c824b42184))
+
 ### [4.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.3...v4.3.0) (2024-04-08)
 
 
@@ -70,13 +81,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Bug Fixes
 
 * More return types, because of silly deprecation notices. ([528d744](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/528d7441f64cd45de32fd599f6853a93c89a9489))
-
-### [4.2.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.0...v4.2.1) (2024-01-10)
-
-
-#### Bug Fixes
-
-* Add return types ([ae0f126](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ae0f126f31513731d677c7af2708b10c2a51573e))
 
 
 
