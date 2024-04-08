@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.3...v4.3.0) (2024-04-08)
+
+
+### Features
+
+* Support for EduAdmin Form Reserve/Waiting Lists when the event is fully booked. ([3680b47](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3680b4703298c57210f5d025a70fbbf1f6565a3d)), closes [#455](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/455)
+
+
+### Bug Fixes
+
+* Only check description if it actually contains anything ([33234df](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/33234dff3445e6642281cb5aa53ef674485a7fe0))
+
 ### [4.2.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.2...v4.2.3) (2024-02-09)
 
 
