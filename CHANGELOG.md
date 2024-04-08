@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.3.0...v5.0.0) (2024-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Updated required WP and PHP, changes are already made in code (353e4dd7c1bfa5aa31ee67e0572220acca3a6387)
+
+### Bug Fixes
+
+* Updated required WP and PHP, changes are already made in code (353e4dd7c1bfa5aa31ee67e0572220acca3a6387) ([29b0adc](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/29b0adc497a8d60d906784dd65ef04c824b42184))
+
 ## [4.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.3...v4.3.0) (2024-04-08)
 
 
