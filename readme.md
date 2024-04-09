@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 6.0
 - Tested up to: 6.6
-- Stable tag: 5.0.0
+- Stable tag: 5.0.1
 - Requires PHP: 8.1
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.0.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.0.0...v5.0.1) (2024-04-09)
+
+
+#### Bug Fixes
+
+* Some null handling that is deprecated in newer versions of PHP ([d89c27d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d89c27d1dcf6b245ff6fd982ebccdacc1a7a4527))
+
 ### [5.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.3.0...v5.0.0) (2024-04-08)
 
 
@@ -69,13 +76,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Bug Fixes
 
 * #[\ReturnTypeWillChange] instead of typing, because PHP is.. well PHP ([7684891](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7684891ff6d55b58e186a2569d42674792e7f543))
-
-### [4.2.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v4.2.1...v4.2.2) (2024-01-10)
-
-
-#### Bug Fixes
-
-* More return types, because of silly deprecation notices. ([528d744](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/528d7441f64cd45de32fd599f6853a93c89a9489))
 
 
 
