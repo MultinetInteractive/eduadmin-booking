@@ -24,10 +24,12 @@
 			}
 
 			if ( $show_descr ) {
-				echo '<div class="courseDescription">' . wp_kses( $descr, array(
-						'br' => array(),
-						'p'  => array(),
-					) ) . '</div>';
+				if ( $descr != null ) {
+					echo '<div class="courseDescription">' . wp_kses( $descr, array(
+							'br' => array(),
+							'p'  => array(),
+						) ) . '</div>';
+				}
 			}
 
 			if ( $show_course_locations && ! empty( $event_cities ) && $show_city ) {
