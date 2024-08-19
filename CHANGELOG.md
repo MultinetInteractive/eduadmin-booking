@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.0.1...v5.1.0) (2024-08-19)
+
+
+### Features
+
+* Adding new endpoints and classes ([0df472e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/0df472e7b80f3e1ca8584a3f7b7cbf0c81432dcc))
+
+
+### Bug Fixes
+
+* Fixes incorrect encoding after PHP 8.1 changing how things work. ([ff8055d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ff8055dfda0cb4e805977895136a2a0df6135f33)), closes [#526](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/526)
+
 ### [5.0.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.0.0...v5.0.1) (2024-04-09)
 
 

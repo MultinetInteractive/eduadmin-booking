@@ -852,7 +852,8 @@ function get_spots_left( $free_spots, $max_spots, $spot_option = 'exactNumbers',
 
 function get_utf8( $input ) {
 	$order = array( 'utf-8', 'iso-8859-1', 'iso-8859-15', 'windows-1251' );
-	if ( 'UTF-8' === mb_detect_encoding( $input, $order, true ) ) {
+
+	if ( mb_check_encoding( $input, 'UTF-8' ) ) {
 		return $input;
 	}
 
