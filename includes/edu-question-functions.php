@@ -63,7 +63,7 @@ function edu_render_checkbox_question( $question, $multiple, $suffix ) {
 		echo ' onchange="eduBookingView.UpdatePrice();"';
 		if ( $multiple ) {
 			echo ' data-replace="name|index"';
-			echo ' data-name-template="question_' . esc_attr( $question['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
+			echo ' data-name-template="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . '_{{index}}' ) . '"';
 		}
 		echo ' name="question_' . esc_attr( $q['AnswerId'] . '_check' . ( '' !== $suffix ? '-' . $suffix : '' ) . ( $multiple ? ( 'contact' === $suffix ? '' : '_-1' ) : '' ) ) . '"' . ( $question['Mandatory'] ? ' data-required="true"' : '' ) . ' value="' . esc_attr( $q['AnswerId'] ) . '" /> ';
 		echo esc_html( wp_strip_all_tags( $q['AnswerText'] ) );
