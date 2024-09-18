@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.0...v5.1.1) (2024-09-18)
+
+
+### Bug Fixes
+
+* Fetch AnswerId for checkbox questions the correct way ([d123497](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d123497be9795741796aad8f13469623bc072701))
+
 ## [5.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.0.1...v5.1.0) (2024-08-19)
 
 
