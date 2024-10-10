@@ -24,7 +24,7 @@ jobs:
       - name: Build source files
         shell: bash
         run: |
-          apt install -y subversion rsync git
+          sudo apt install -y subversion rsync git
           yarn
           npx tsc
           yarn gulp deploy
