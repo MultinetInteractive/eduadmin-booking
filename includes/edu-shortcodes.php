@@ -107,7 +107,7 @@ function eduadmin_get_detail_view( $attributes ) {
 	);
 	wp_enqueue_style( 'eduadmin_frontend_detail' );
 
-	$attributes                  = shortcode_atts(
+	$attributes = shortcode_atts(
 		array(
 			'template'       => $selected_template,
 			'courseid'       => null,
@@ -118,6 +118,16 @@ function eduadmin_get_detail_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-detailview'
 	);
+
+	switch ( $attributes['template'] ) {
+		case "template_A":
+		case "template_B":
+			break;
+		default:
+			$attributes['template'] = "template_A";
+			break;
+	}
+
 	EDU()->session['checkEmail'] = null;
 	EDU()->session['needsLogin'] = null;
 	unset( EDU()->session['checkEmail'] );
@@ -197,6 +207,16 @@ function eduadmin_get_booking_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-bookingview'
 	);
+
+	switch ( $attributes['template'] ) {
+		case "template_A":
+		case "template_B":
+			break;
+		default:
+			$attributes['template'] = "template_A";
+			break;
+	}
+
 	if ( ! EDU()->is_checked( 'eduadmin-useLogin', false ) || ( isset( EDU()->session['eduadmin-loginUser'] ) && ( ( isset( EDU()->session['eduadmin-loginUser']->Contact->PersonId ) && 0 !== EDU()->session['eduadmin-loginUser']->Contact->PersonId ) || isset( EDU()->session['eduadmin-loginUser']->NewCustomer ) ) ) ) {
 		$str = include_once EDUADMIN_PLUGIN_PATH . '/content/template/bookingTemplate/' . $attributes['template'] . '.php';
 	} else {
