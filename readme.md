@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 6.0
 - Tested up to: 6.6
-- Stable tag: 5.1.2
+- Stable tag: 5.1.3
 - Requires PHP: 8.1
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -40,6 +40,8 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.1.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.2...v5.1.3) (2024-10-10)
+
 ### [5.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.1...v5.1.2) (2024-10-10)
 
 
@@ -65,13 +67,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Bug Fixes
 
 * Fixes incorrect encoding after PHP 8.1 changing how things work. ([ff8055d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ff8055dfda0cb4e805977895136a2a0df6135f33)), closes [#526](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/526)
-
-### [5.0.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.0.0...v5.0.1) (2024-04-09)
-
-
-#### Bug Fixes
-
-* Some null handling that is deprecated in newer versions of PHP ([d89c27d](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d89c27d1dcf6b245ff6fd982ebccdacc1a7a4527))
 
 
 
