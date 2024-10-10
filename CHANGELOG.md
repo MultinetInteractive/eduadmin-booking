@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.1...v5.1.2) (2024-10-10)
+
+
+### Security
+
+* Fix potential LFI vulnerability ([89a8479](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/89a84796caaf40187c0272850632da92ee01477f))
+
 ### [5.1.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.0...v5.1.1) (2024-09-18)
 
 
