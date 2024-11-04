@@ -25,6 +25,10 @@ Requires the following PHP-modules
 -   Provide the API key from EduAdmin.
 -   Create pages for the different views and give them their shortcodes
 
+## How can I report security bugs?
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/eduadmin-booking)
+
 ## Upgrade Notice
 
 ### 3.0
