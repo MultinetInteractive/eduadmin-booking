@@ -13,6 +13,12 @@ if ( $course_id == null ) {
 	return;
 }
 
+$show_extra_metadata = EDU()->is_checked( 'eduadmin-showExtraMetadata', "on" );
+
+if ( ! $show_extra_metadata ) {
+	return;
+}
+
 $group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity' );
 $group_by_city_class = '';
 
