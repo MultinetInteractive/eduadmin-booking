@@ -309,6 +309,7 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-rewrite', 'eduadmin-monthsToFetch' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-showVatTexts' );
 	register_setting( 'eduadmin-rewrite', 'eduadmin-showPricesAsSelected' );
+	register_setting( 'eduadmin-rewrite', 'eduadmin-showExtraMetadata' );
 
 	if ( is_admin() ) {
 		wp_enqueue_script( 'jquery' );

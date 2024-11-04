@@ -13,6 +13,12 @@ if ( $course_id == null ) {
 	return;
 }
 
+$show_extra_metadata = EDU()->is_checked( 'eduadmin-showExtraMetadata', "on" );
+
+if ( ! $show_extra_metadata ) {
+	return;
+}
+
 $group_by_city       = EDU()->is_checked( 'eduadmin-groupEventsByCity' );
 $group_by_city_class = '';
 
@@ -80,8 +86,7 @@ if ( $edo ) {
 			];
 
 			if ( $is_ondemand ) {
-				$_event['courseMode']  = "online";
-				$_event['location']    = "Online";
+				$_event['courseMode']  = "Online";
 				$_event['description'] = 'On-demand';
 
 				if ( $event['OnDemandAccessDays'] == null && $selected_course['OnDemandAccessDays'] != null ) {
@@ -103,14 +108,17 @@ if ( $edo ) {
 					];
 				}
 			} else {
-				$_event['location']  = $event['City'];
-				$_event['startDate'] = $event['StartDate'];
-				$_event['endDate']   = $event['EndDate'];
+				$_event['courseMode'] = "Onsite";
+				$_event['location']   = $event['City'];
+				$_event['startDate']  = $event['StartDate'];
+				$_event['endDate']    = $event['EndDate'];
 
 				$_event['courseSchedule'] = [
-					'@type'     => 'Schedule',
-					'startDate' => $event['StartDate'],
-					'endDate'   => $event['EndDate'],
+					'@type'           => 'Schedule',
+					'startDate'       => $event['StartDate'],
+					'endDate'         => $event['EndDate'],
+					'repeatFrequency' => 'Daily',
+					'repeatCount'     => count( $event['EventDates'] ),
 				];
 			}
 

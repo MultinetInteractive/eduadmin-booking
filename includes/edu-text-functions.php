@@ -1008,7 +1008,7 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
-			wp_kses_post( sprintf( _nx( '%1$d day on %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
+			wp_kses_post( sprintf( _nx( '%1$d day, %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
 			'</span><div class="edu-DayPopup">
 <b>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</b><br />
 ' . join( "<br />\n", $ordered_dategroups ) . '

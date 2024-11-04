@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.3...v5.2.0) (2024-11-04)
+
+
+### Features
+
+* Setting to turn off/on OG/metadata and LD+JSON. ([594c422](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/594c422407be2aa6f8a4d2192f5636faac85975b)), closes [#520](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/520)
+
+
+### Bug Fixes
+
+* Added repeatFrequency, repeatCount and courseMode for LD+JSON ([e5e5c42](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e5e5c42bfe37d39c088e6901c2de3e7f31841e75)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
+
 ### [5.1.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.2...v5.1.3) (2024-10-10)
 
 ### [5.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.1...v5.1.2) (2024-10-10)
