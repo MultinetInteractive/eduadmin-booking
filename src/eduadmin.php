@@ -805,8 +805,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function check_api_connection() {
 			$api_check = wp_remote_head( "https://api.eduadmin.se/healthchecks", [
-				'timeout'  => 0.25,
-				'blocking' => false,
+				'timeout'  => 0.5,
+				'blocking' => true,
 			] );
 
 			$this->api_connection = ! is_wp_error( $api_check ) && 200 === wp_remote_retrieve_response_code( $api_check );
