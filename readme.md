@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 6.0
 - Tested up to: 6.6
-- Stable tag: 5.3.0
+- Stable tag: 5.3.1
 - Requires PHP: 8.1
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.0...v5.3.1) (2024-11-05)
+
+
+#### Bug Fixes
+
+* Set health-check as blocking, so we get an actual result, increase timeout to 0.5 seconds ([7e4bd4e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e4bd4e7ece1efe0bd7e99ecc5b0ada8f7422957))
+
 ### [5.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.2.0...v5.3.0) (2024-11-05)
 
 
@@ -64,13 +71,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 * Added repeatFrequency, repeatCount and courseMode for LD+JSON ([e5e5c42](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e5e5c42bfe37d39c088e6901c2de3e7f31841e75)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
 
 ### [5.1.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.2...v5.1.3) (2024-10-10)
-
-### [5.1.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.1...v5.1.2) (2024-10-10)
-
-
-#### Security
-
-* Fix potential LFI vulnerability ([89a8479](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/89a84796caaf40187c0272850632da92ee01477f))
 
 
 

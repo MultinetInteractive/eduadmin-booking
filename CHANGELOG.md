@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.0...v5.3.1) (2024-11-05)
+
+
+### Bug Fixes
+
+* Set health-check as blocking, so we get an actual result, increase timeout to 0.5 seconds ([7e4bd4e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e4bd4e7ece1efe0bd7e99ecc5b0ada8f7422957))
+
 ## [5.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.2.0...v5.3.0) (2024-11-05)
 
 

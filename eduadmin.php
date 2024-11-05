@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin
- * Version:	5.3.0
+ * Version:	5.3.1
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 6.0
@@ -805,8 +805,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		public function check_api_connection() {
 			$api_check = wp_remote_head( "https://api.eduadmin.se/healthchecks", [
-				'timeout'  => 0.25,
-				'blocking' => false,
+				'timeout'  => 0.5,
+				'blocking' => true,
 			] );
 
 			$this->api_connection = ! is_wp_error( $api_check ) && 200 === wp_remote_retrieve_response_code( $api_check );
