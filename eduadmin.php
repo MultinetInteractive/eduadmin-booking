@@ -9,7 +9,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
  * Plugin URI:	https://www.eduadmin.se
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin
- * Version:	5.3.0
+ * Version:	5.3.1
  * GitHub Plugin URI: multinetinteractive/eduadmin-wordpress
  * GitHub Plugin URI: https://github.com/multinetinteractive/eduadmin-wordpress
  * Requires at least: 6.0
