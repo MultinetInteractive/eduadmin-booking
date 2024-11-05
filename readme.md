@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 6.0
 - Tested up to: 6.6
-- Stable tag: 5.2.0
+- Stable tag: 5.3.0
 - Requires PHP: 8.1
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.2.0...v5.3.0) (2024-11-05)
+
+
+#### Features
+
+* Handle API being down/blocked, instead of making the site hang until the configured timeout happens. ([a1a5104](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a1a51042d4b7687830de5eaa9127ae2959a3f577)), closes [#153](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/153)
+
 ### [5.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.3...v5.2.0) (2024-11-04)
 
 
@@ -64,13 +71,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Security
 
 * Fix potential LFI vulnerability ([89a8479](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/89a84796caaf40187c0272850632da92ee01477f))
-
-### [5.1.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.0...v5.1.1) (2024-09-18)
-
-
-#### Bug Fixes
-
-* Fetch AnswerId for checkbox questions the correct way ([d123497](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d123497be9795741796aad8f13469623bc072701))
 
 
 
