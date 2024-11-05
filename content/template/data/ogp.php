@@ -1,6 +1,10 @@
 <?php
 global $wp_query;
 
+if ( ! EDU()->api_connection ) {
+	return;
+}
+
 if ( ! empty( $wp_query->query_vars['courseId'] ) ) {
 	$course_id = $wp_query->query_vars['courseId'];
 } elseif ( ! empty( $attributes['courseid'] ) ) {

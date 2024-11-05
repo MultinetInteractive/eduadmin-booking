@@ -1,7 +1,10 @@
 <?php
 ob_start();
 $show_headers = EDU()->is_checked( 'eduadmin-showDetailHeaders', true );
-?>
+if ( ! EDU()->api_connection ) {
+	echo esc_html_x( 'EduAdmin Booking could not connect to the API', 'frontend', 'eduadmin-booking' );
+} else {
+	?>
 	<div class="eduadmin" data-courseid="<?php echo esc_attr( $programme['ProgrammeId'] ); ?>"
 	     data-eventid="<?php echo( isset( $_REQUEST['id'] ) ? esc_attr( sanitize_text_field( $_REQUEST['id'] ) ) : '' ); ?>">
 		<?php if ( ! empty( $programme['ImageUrl'] ) ) : ?>
@@ -42,7 +45,9 @@ $show_headers = EDU()->is_checked( 'eduadmin-showDetailHeaders', true );
 		do_action( 'eduadmin-programme-detail-view', $programme );
 		?>
 	</div>
-<?php
+	<?php
+}
+
 $out = ob_get_clean();
 
 return $out;

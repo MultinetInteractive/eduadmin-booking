@@ -9,8 +9,12 @@ function edu_render_news_page() {
 		<div class="block">
 			<?php
 			$news = EDU()->get_news();
-			foreach ( $news as $item ) {
-				edu_render_news_item( $item );
+			if ( $news == null ) {
+				echo esc_html_x( 'EduAdmin Booking could not connect to the API', 'backend', 'eduadmin-booking' );
+			} else {
+				foreach ( $news as $item ) {
+					edu_render_news_item( $item );
+				}
 			}
 			?>
 		</div>

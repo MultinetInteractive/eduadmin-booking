@@ -60,7 +60,18 @@ function eduadmin_get_list_view( $attributes ) {
 		normalize_empty_atts( $attributes ),
 		'eduadmin-listview'
 	);
-	$str        = include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/' . $attributes['template'] . '.php';
+
+	switch ( $attributes['template'] ) {
+		case "template_A":
+		case "template_B":
+		case "template_GF":
+			break;
+		default:
+			$attributes['template'] = "template_A";
+			break;
+	}
+
+	$str = include EDUADMIN_PLUGIN_PATH . '/content/template/listTemplate/' . $attributes['template'] . '.php';
 	EDU()->stop_timer( $t );
 
 	return $str;
@@ -314,6 +325,12 @@ function eduadmin_get_programmeinfo( $attributes ) {
 			'),PriceNames'
 		);
 
+		if ( ! EDU()->api_connection ) {
+			EDU()->stop_timer( $t );
+
+			return esc_html_x( 'EduAdmin Booking could not connect to the API', 'frontend', 'eduadmin-booking' );
+		}
+
 		if ( isset( $programme["@error"] ) ) {
 			EDU()->stop_timer( $t );
 
@@ -464,6 +481,12 @@ function eduadmin_get_detailinfo( $attributes ) {
 
 			return 'Course with ID ' . $course_id . ' could not be found.';
 		} else {
+			if ( ! EDU()->api_connection ) {
+				EDU()->stop_timer( $t );
+
+				return esc_html_x( 'EduAdmin Booking could not connect to the API', 'frontend', 'eduadmin-booking' );
+			}
+
 			if ( isset( $selected_course["@error"] ) ) {
 				EDU()->stop_timer( $t );
 

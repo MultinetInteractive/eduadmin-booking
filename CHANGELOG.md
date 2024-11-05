@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.3.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.2.0...v5.3.0) (2024-11-05)
+
+
+### Features
+
+* Handle API being down/blocked, instead of making the site hang until the configured timeout happens. ([a1a5104](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a1a51042d4b7687830de5eaa9127ae2959a3f577)), closes [#153](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/153)
+
 ## [5.2.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.3...v5.2.0) (2024-11-04)
 
 
