@@ -1,3 +1,9 @@
+<?php
+if ( ! EDU()->api_connection ) {
+
+	return;
+}
+?>
 <?php if ( $search_visible ) { ?>
 	<form method="POST" class="search-form">
 		<div class="search-row">

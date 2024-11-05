@@ -1,4 +1,11 @@
 <?php
+
+if ( ! EDU()->api_connection ) {
+	echo esc_html_x( 'EduAdmin Booking could not connect to the API', 'frontend', 'eduadmin-booking' );
+
+	return;
+}
+
 $eds = $subjects;
 
 $edl = $levels;
@@ -45,8 +52,18 @@ if ( ! empty( $attributes['ondemand'] ) ) {
 }
 
 $all_courses = false;
-if(!empty($attributes['allcourses'])) {
+if ( ! empty( $attributes['allcourses'] ) ) {
 	$all_courses = $attributes['allcourses'];
+}
+
+switch ( $attributes['template'] ) {
+	case "template_A":
+	case "template_B":
+	case "template_GF":
+		break;
+	default:
+		$attributes['template'] = "template_A";
+		break;
 }
 
 if ( null !== $custom_mode ) {

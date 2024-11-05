@@ -121,6 +121,10 @@ add_filter( 'get_shortlink', '__return_empty_string' );
 function eduadmin_page_title( $title, $sep = '|' ) {
 	global $wp;
 
+	if ( ! EDU()->api_connection ) {
+		return $title;
+	}
+
 	if ( empty( $sep ) ) {
 		$sep = '|';
 	}

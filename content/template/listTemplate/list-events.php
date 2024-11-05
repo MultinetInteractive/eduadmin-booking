@@ -1,4 +1,11 @@
 <?php
+
+if ( ! EDU()->api_connection ) {
+	echo esc_html_x( 'EduAdmin Booking could not connect to the API', 'frontend', 'eduadmin-booking' );
+
+	return;
+}
+
 $surl     = get_home_url();
 $cat      = EDU()->get_option( 'eduadmin-rewriteBaseUrl', '' );
 $base_url = $surl . '/' . $cat;

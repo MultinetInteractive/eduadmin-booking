@@ -93,6 +93,8 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		private $storedIntegrityHash;
 		/** @var string */
 		private $currentIntegrityHash;
+		/** @var boolean */
+		public $api_connection;
 
 		/**
 		 * @return EduAdmin
@@ -270,6 +272,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		public function get_news() {
+			if ( ! EDU()->api_connection ) {
+				return null;
+			}
+
 			return $this->get_transient( 'eduadmin-wp-news', function() {
 				$user_locale = get_user_locale();
 				$lang        = "en";
@@ -354,6 +360,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		private function includes() {
 			$t = $this->start_timer( __METHOD__ );
+
 			include_once 'libraries/plugin-checksum.php';
 			include_once 'libraries/EDURequestCache.php';
 			include_once 'class/class-eduadminrouter.php';
@@ -383,10 +390,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			include_once 'includes/plugin/class-edu-integration.php'; // Integration interface
 			include_once 'includes/plugin/class-edu-integrationloader.php'; // Integration loader
 
-			if ( is_wp_error( $this->get_new_api_token() ) ) {
-				add_action( 'admin_notices', array( $this, 'setup_warning' ) );
-			}
-
 			include_once 'includes/edu-options.php';
 			include_once 'includes/edu-ajax-functions.php';
 			include_once 'includes/edu-rewrites.php';
@@ -403,10 +406,15 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			$this->rest_controller = new EduAdmin_APIController();
 			$this->booking_handler = new EduAdmin_BookingHandler();
 			$this->login_handler   = new EduAdmin_LoginHandler();
+
 			$this->stop_timer( $t );
 		}
 
 		public function call_home() {
+			if ( ! EDU()->api_connection ) {
+				return;
+			}
+
 			global $wp_version;
 			$integrity             = EduAdminPluginIntegrityChecker::check_plugin_integrity();
 			$installedIntegrations = array();
@@ -440,6 +448,7 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 
 		private function init_hooks() {
 			$t = $this->start_timer( __METHOD__ );
+
 			register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
 			add_action( 'after_switch_theme', array( $this, 'new_theme' ) );
@@ -607,6 +616,17 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 				12 => _x( 'dec', 'frontend', 'eduadmin-booking' ),
 			);
 
+			if ( ! $this->check_api_connection() ) {
+				add_action( 'admin_notices', array( $this, 'api_connection_warning' ) );
+				$this->stop_timer( $t );
+
+				return;
+			}
+
+			if ( is_wp_error( $this->get_new_api_token() ) ) {
+				add_action( 'admin_notices', array( $this, 'setup_warning' ) );
+			}
+
 			$this->stop_timer( $t );
 		}
 
@@ -617,6 +637,19 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 					<?php
 					/* translators: 1: start of link 2: end of link */
 					echo wp_kses_post( sprintf( _x( 'Please complete the configuration: %1$sEduAdmin - Api Authentication%2$s', 'backend', 'eduadmin-booking' ), '<a href="' . admin_url() . 'admin.php?page=eduadmin-settings">', '</a>' ) );
+					?>
+				</p>
+			</div>
+			<?php
+		}
+
+		public static function api_connection_warning() {
+			?>
+			<div class="notice notice-error">
+				<p>
+					<?php
+					/* translators: 1: start of link 2: end of link */
+					echo wp_kses_post( sprintf( _x( 'Could not connect to the EduAdmin API, contact the %1$sEduAdmin Support%2$s if the issue persists.', 'backend', 'eduadmin-booking' ), '<a href="https://support.eduadmin.se/en/support/tickets/new" target="_blank">', '</a>' ) );
 					?>
 				</p>
 			</div>
@@ -732,6 +765,10 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		}
 
 		private function get_new_api_token() {
+			if ( $this->api_connection === false ) {
+				return new WP_Error( 'broke', _x( 'Could not connect to the EduAdmin API, please contact MultiNet support.', 'backend', 'eduadmin-booking' ) );
+			}
+
 			$new_key = $this->get_option( 'eduadmin-newapi-key', null );
 
 			if ( null !== $new_key && ! empty( $new_key ) ) {
@@ -764,6 +801,17 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 			EDUAPI()->SetToken( $current_token );
 
 			return null;
+		}
+
+		public function check_api_connection() {
+			$api_check = wp_remote_head( "https://api.eduadmin.se/healthchecks", [
+				'timeout'  => 0.25,
+				'blocking' => false,
+			] );
+
+			$this->api_connection = ! is_wp_error( $api_check ) && 200 === wp_remote_retrieve_response_code( $api_check );
+
+			return $this->api_connection;
 		}
 	}
 
