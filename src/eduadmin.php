@@ -89,10 +89,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		public $short_months;
 		/** @var array */
 		public $request_items;
-		/** @var string */
-		private $storedIntegrityHash;
-		/** @var string */
-		private $currentIntegrityHash;
 		/** @var boolean */
 		public $api_connection;
 

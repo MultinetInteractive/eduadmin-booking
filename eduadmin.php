@@ -361,7 +361,6 @@ if ( ! class_exists( 'EduAdmin' ) ) :
 		private function includes() {
 			$t = $this->start_timer( __METHOD__ );
 
-			include_once 'libraries/plugin-checksum.php';
 			include_once 'libraries/EDURequestCache.php';
 			include_once 'class/class-eduadminrouter.php';
 			$this->router = new EduAdminRouter();
