@@ -120,7 +120,6 @@ This shortcode is used when you want to create your own custom template [**detai
 | courseinquiryurl          |                    boolean                     |     null      |
 | order                     |             string (`ASC`, `DESC`)             |    _null_     |
 | orderby                   |                     string                     |    _null_     |
-| ondemand                  |                    boolean                     |     false     |
 
 We will go into each attribute on the [_custom template_](custom-template.md) page.
 
