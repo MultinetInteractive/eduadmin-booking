@@ -1,9 +1,9 @@
 === EduAdmin Booking ===
 Contributors: mnchga
-Tags: booking, participants, courses, events, eduadmin, lega online
+Tags: booking, participants, courses, events, eduadmin
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 5.3.1
+Stable tag: 5.4.0
 Requires PHP: 8.1
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -49,6 +49,23 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.1...v5.4.0) (2025-02-25)
+
+
+#### Features
+
+* Added VoucherTemplate OData-endpoint ([9a6c631](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9a6c6310fb4876ab4e1413e83d17491ffc018d6a))
+
+
+#### Bug Fixes
+
+* Custom course detail views will no longer require an attribute to show on demand events. ([6f90e87](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6f90e875845d78a44ab32dda817284ad8b8b82ca))
+
+
+#### Documentation
+
+* Remove ondemand-attribute from detailinfo ([dfa3f59](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/dfa3f59c5bea11c8da99d5067e415d6859475a34))
+
 ### [5.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.0...v5.3.1) (2024-11-05)
 
 
@@ -74,8 +91,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Bug Fixes
 
 * Added repeatFrequency, repeatCount and courseMode for LD+JSON ([e5e5c42](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/e5e5c42bfe37d39c088e6901c2de3e7f31841e75)), closes [#511](https://github.com/MultinetInteractive/EduAdmin-WordPress/issues/511)
-
-### [5.1.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.1.2...v5.1.3) (2024-10-10)
 
 
 

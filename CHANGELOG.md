@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.1...v5.4.0) (2025-02-25)
+
+
+### Features
+
+* Added VoucherTemplate OData-endpoint ([9a6c631](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9a6c6310fb4876ab4e1413e83d17491ffc018d6a))
+
+
+### Bug Fixes
+
+* Custom course detail views will no longer require an attribute to show on demand events. ([6f90e87](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/6f90e875845d78a44ab32dda817284ad8b8b82ca))
+
+
+### Documentation
+
+* Remove ondemand-attribute from detailinfo ([dfa3f59](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/dfa3f59c5bea11c8da99d5067e415d6859475a34))
+
 ### [5.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.0...v5.3.1) (2024-11-05)
 
 

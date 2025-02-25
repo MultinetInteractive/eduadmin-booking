@@ -1,6 +1,6 @@
 === EduAdmin Booking ===
 Contributors: mnchga
-Tags: booking, participants, courses, events, eduadmin, lega online
+Tags: booking, participants, courses, events, eduadmin
 Requires at least: $PLUGINATLEAST$
 Tested up to: $PLUGINTESTEDTO$
 Stable tag: $PLUGINVERSION$
