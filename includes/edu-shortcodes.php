@@ -420,7 +420,6 @@ function eduadmin_get_detailinfo( $attributes ) {
 			'courseinquiryurl'          => null,
 			'order'                     => null,
 			'orderby'                   => null,
-			'ondemand'                  => false,
 			'allcourses'                => false,
 		),
 		normalize_empty_atts( $attributes ),
@@ -464,16 +463,16 @@ function eduadmin_get_detailinfo( $attributes ) {
 			$fetch_months = 6;
 		}
 
-		if ( ! $attributes['ondemand'] ) {
-			$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
-		} else {
-			$edo = EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city );
-		}
-
-		$selected_course = false;
+		$edo = EDUAPIHelper()->GetCourseDetailInfo( $course_id, $fetch_months, $group_by_city );
 
 		if ( ! empty( $edo ) ) {
 			$selected_course = json_decode( $edo, true );
+		}
+
+		$is_ondemand = $selected_course['OnDemand'];
+
+		if ( $is_ondemand ) {
+			$selected_course = json_decode( EDUAPIHelper()->GetOnDemandCourseDetailInfo( $course_id, $group_by_city ), true );
 		}
 
 		if ( ! is_array( $selected_course ) ) {
@@ -742,7 +741,7 @@ function eduadmin_get_detailinfo( $attributes ) {
 				$ret_str .= ' data-orderby="' . esc_attr( $custom_order_by_order ) . '"';
 				$ret_str .= ' data-showvenue="' . esc_attr( EDU()->is_checked( 'eduadmin-showEventVenueName', false ) ) . '"';
 				$ret_str .= ' data-eventinquiry="' . esc_attr( EDU()->is_checked( 'eduadmin-allowInterestRegEvent', false ) ) . '"';
-				$ret_str .= ' data-ondemand="' . esc_attr( $attributes['ondemand'] ) . '"';
+				$ret_str .= ' data-ondemand="' . esc_attr( $is_ondemand ) . '"';
 				$ret_str .= ' data-allcourses="' . esc_attr( $attributes['allcourses'] ) . '"';
 				$ret_str .= '>';
 
