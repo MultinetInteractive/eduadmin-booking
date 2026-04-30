@@ -208,7 +208,7 @@ with your current themes.`,
 					{
 						content:
 							`Get started today by downloading the <a href="https://wordpress.org/plugins/eduadmin-booking/" target="_blank"><b>EduAdmin WordPress Plugin</b></a><br />
-(Note: You have to be a <a href="https://www.eduadmin.se" target="_blank"><b>EduAdmin</b></a> customer for the plugin to work)<br /><br />
+(Note: You have to be a <a href="https://www.eduadmin.com" target="_blank"><b>EduAdmin</b></a> customer for the plugin to work)<br /><br />
 Use the built-in templates, or create a custom template for your needs!`,
 						image: `${baseUrl}img/undraw_code_review.svg`,
 						imageAlign: 'left',

@@ -10,7 +10,7 @@ EduAdmin plugin to allow visitors to book courses at your website. Requires EduA
 
 ## Description
 
-Plugin that you connect to [EduAdmin](https://www.eduadmin.se) to enable booking on your website.
+Plugin that you connect to [EduAdmin](https://www.eduadmin.com) to enable booking on your website.
 
 [<img src="https://img.shields.io/github/commits-since/MultinetInteractive/EduAdmin-WordPress/latest.svg" alt="Commits since latest plugin version" />](https://wordpress.org/plugins/eduadmin-booking/)
 

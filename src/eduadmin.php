@@ -6,7 +6,7 @@ defined( 'WP_SESSION_COOKIE' ) || define( 'WP_SESSION_COOKIE', 'eduadmin-cookie'
 
 /*
  * Plugin Name:	EduAdmin Booking
- * Plugin URI:	https://www.eduadmin.se
+ * Plugin URI:	https://www.eduadmin.com
  * Description:	EduAdmin plugin to allow visitors to book courses at your website
  * Tags:	booking, participants, courses, events, eduadmin
  * Version:	$PLUGINVERSION$

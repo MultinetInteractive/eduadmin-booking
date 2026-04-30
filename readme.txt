@@ -13,7 +13,7 @@ EduAdmin plugin to allow visitors to book courses at your website. Requires EduA
 
 == Description ==
 
-Plugin that you connect to [EduAdmin](https://www.eduadmin.se) to enable bookings of both courses and programmes through your website.
+Plugin that you connect to [EduAdmin](https://www.eduadmin.com) to enable bookings of both courses and programmes through your website.
 
 Requires the following PHP-modules
 

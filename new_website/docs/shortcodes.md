@@ -202,7 +202,7 @@ One of the main shortcodes, as it shows the end users a list of your courses/eve
 
 The `template`-attribute lets you override the default setting for what template the list should use.
 
-The `category`-attribute lets you enter a string to match for categories in [**EduAdmin**](https://www.eduadmin.se), so
+The `category`-attribute lets you enter a string to match for categories in [**EduAdmin**](https://www.eduadmin.com), so
 that the list filters the results based on the matches.
 
 If you want to show all sub-categories, you can use the `categorydeep`-attribute instead.
@@ -213,7 +213,7 @@ Only one of the category-attributes can be used at a time, and `categorydeep` wi
 
 :::
 
-The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.se), so that
+The `subject`-attribute lets you enter a string to match subjects in [**EduAdmin**](https://www.eduadmin.com), so that
 the list filters the results based on the matches.
 
 The `subjectid`-attribute lets you filter the list on a specific subject, based on its ID.
@@ -330,7 +330,7 @@ And if you want to create a specific page for a programme, you can also use the 
 
 ### `[eduadmin-programme-list]`
 
-As with the normal list view, this view lists the available programmes you have created in [**EduAdmin**](https://www.eduadmin.se).
+As with the normal list view, this view lists the available programmes you have created in [**EduAdmin**](https://www.eduadmin.com).
 
 | Attribute | Value type | Default value |
 |:----------|:----------:|:-------------:|
