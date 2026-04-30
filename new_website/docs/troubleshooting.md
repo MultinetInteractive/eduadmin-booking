@@ -20,7 +20,7 @@ or contacting our [support](https://support.eduadmin.se/en/support/tickets/new)
 
 ### The website is showing old data
 
-If the data on the web page isn't updating after you have updated the information in [**EduAdmin**](https://www.eduadmin.se),
+If the data on the web page isn't updating after you have updated the information in [**EduAdmin**](https://www.eduadmin.com),
 you might want to clear any eventual cache plugins, and the internal cache in our plugin.
 
 We cache some data for a period, to make the website as fast as possible.
@@ -61,7 +61,7 @@ You can always check the "Settings &gt; General" and see what "Site Language" is
 
 ### Whenever I try to complete a booking, an unexpected error occurs
 
-Most of the time, when the plugin connects to [**EduAdmin**](https://www.eduadmin.se) to complete the booking,
+Most of the time, when the plugin connects to [**EduAdmin**](https://www.eduadmin.com) to complete the booking,
 we get back either a success, or an array of errors.
 
 The unexpected error means something went wrong, that we do not have a classification for,

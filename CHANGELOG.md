@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.4.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.0...v5.4.2) (2026-04-30)
+
+
+### Documentation
+
+* Update links to EduAdmin from https://www.eduadmin.se to https://www.eduadmin.com instead to cater to the international website instead of the swedish one. ([c58f56e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c58f56e807f6904360685ba0af4a6316e0f8232d))
+
+### [5.4.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.0...v5.4.1) (2026-04-30)
+
+
+### Documentation
+
+* Update links to EduAdmin from https://www.eduadmin.se to https://www.eduadmin.com instead to cater to the international website instead of the swedish one. ([c58f56e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/c58f56e807f6904360685ba0af4a6316e0f8232d))
+
 ## [5.4.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.1...v5.4.0) (2025-02-25)
 
 

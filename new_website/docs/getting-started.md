@@ -8,10 +8,10 @@ This guide will focus on get you started with the [**EduAdmin WordPress Plugin**
 
 :::info EduAdmin API Key
 
-If you do not have an API key for [**EduAdmin**](https://www.eduadmin.se) yet, 
+If you do not have an API key for [**EduAdmin**](https://www.eduadmin.com) yet, 
 consider contacting our support.
 
-[**EduAdmin**](https://www.eduadmin.se) is not a free service, 
+[**EduAdmin**](https://www.eduadmin.com) is not a free service, 
 and the API key comes with a monthly fee.
 
 :::
@@ -60,7 +60,7 @@ The pages that we recommend that you create are as follows
 
 ### `[eduadmin-listview]`
 
-This page will show the available courses that you have published through [**EduAdmin**](https://www.eduadmin.se),
+This page will show the available courses that you have published through [**EduAdmin**](https://www.eduadmin.com),
 and depending on what settings it can show different information.
 
 ### `[eduadmin-detailview]`
@@ -71,9 +71,9 @@ It is also possible to build a custom template to use, instead of the two defaul
 
 ### `[eduadmin-bookingview]` (or use the EduAdmin Booking Forms)
 
-This page is probably the most important one, since it's the page used to post the bookings into [**EduAdmin**](https://www.eduadmin.se).
+This page is probably the most important one, since it's the page used to post the bookings into [**EduAdmin**](https://www.eduadmin.com).
 
-The form is automatically built by the plugin, and handles custom fields and questions that you can setup in [**EduAdmin**](https://www.eduadmin.se),
+The form is automatically built by the plugin, and handles custom fields and questions that you can setup in [**EduAdmin**](https://www.eduadmin.com),
 the elements have CSS classes, so it's easy to style the form, the way you want it to be.
 
 * * *
