@@ -1,7 +1,7 @@
 # EduAdmin Booking
 - Requires at least: 6.0
 - Tested up to: 7.0
-- Stable tag: 5.4.2
+- Stable tag: 5.4.3
 - Requires PHP: 8.1
 - License: GPL3
 - License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -44,6 +44,13 @@ If you notice that your API key doesn't work any more, you have to contact us.
 
 The full changelog available on [GitHub](https://github.com/MultinetInteractive/EduAdmin-WordPress/blob/production/CHANGELOG.md)
 
+### [5.4.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.2...v5.4.3) (2026-09-02)
+
+
+#### Security
+
+* **API:** Fixed proper filtering for OData variables to close a report from Patchstack. ([29ed776](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/29ed776df86d8ea81f5cc450c8d7348b21474d80))
+
 ### [5.4.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.0...v5.4.2) (2026-04-30)
 
 
@@ -74,13 +81,6 @@ The full changelog available on [GitHub](https://github.com/MultinetInteractive/
 #### Documentation
 
 * Remove ondemand-attribute from detailinfo ([dfa3f59](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/dfa3f59c5bea11c8da99d5067e415d6859475a34))
-
-### [5.3.1](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.3.0...v5.3.1) (2024-11-05)
-
-
-#### Bug Fixes
-
-* Set health-check as blocking, so we get an actual result, increase timeout to 0.5 seconds ([7e4bd4e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/7e4bd4e7ece1efe0bd7e99ecc5b0ada8f7422957))
 
 
 
