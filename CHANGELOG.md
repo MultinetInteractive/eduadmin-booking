@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.4.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.2...v5.4.3) (2026-09-02)
+
+
+### Security
+
+* **API:** Fixed proper filtering for OData variables to close a report from Patchstack. ([29ed776](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/29ed776df86d8ea81f5cc450c8d7348b21474d80))
+
 ### [5.4.2](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.0...v5.4.2) (2026-04-30)
 
 

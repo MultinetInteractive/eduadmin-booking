@@ -43,9 +43,9 @@ function edu_listview_courselist() {
 	}
 
 	if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-		$filters[] = 'CategoryId eq ' . $category_id;
+		$filters[] = 'CategoryId eq ' . intval( $category_id );
 	} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-		$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+		$filters[] = 'Categories/any(c:c/CategoryId eq ' . intval( str_replace( 'deep-', '', $category_id ) ) . ')';
 	}
 
 	if ( ! empty( $_POST['city'] ) && is_numeric( $_POST['city'] ) ) {
@@ -53,7 +53,7 @@ function edu_listview_courselist() {
 	}
 
 	if ( ! empty( $_POST['subject'] ) ) {
-		$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $_POST['subject'] ) . '\')';
+		$filters[] = 'Subjects/any(s:s/SubjectName eq ' . edu_odata_quote( sanitize_text_field( wp_unslash( $_POST['subject'] ) ) ) . ')';
 	}
 
 	if ( ! empty( $_POST['subjectid'] ) ) {

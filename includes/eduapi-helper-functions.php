@@ -196,9 +196,9 @@ class EduAdminAPIHelper {
 		$filters[] = 'OnDemand eq false';
 
 		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'CategoryId eq ' . $category_id;
+			$filters[] = 'CategoryId eq ' . intval( $category_id );
 		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . intval( str_replace( 'deep-', '', $category_id ) ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
@@ -206,16 +206,16 @@ class EduAdminAPIHelper {
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
-			$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
+			$filters[] = 'Subjects/any(s:s/SubjectName eq ' . edu_odata_quote( sanitize_text_field( wp_unslash( $attributes['subject'] ) ) ) . ')';
 		}
 
 		if ( ! empty( $subjectid ) ) {
-			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . $subjectid . ')';
+			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $subjectid ) . ')';
 			$attributes['subjectid'] = $subjectid;
 		}
 
 		if ( ! empty( $courselevel ) ) {
-			$filters[] = 'CourseLevelId eq ' . $courselevel;
+			$filters[] = 'CourseLevelId eq ' . intval( $courselevel );
 		}
 
 		$sort_order = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
@@ -311,9 +311,9 @@ class EduAdminAPIHelper {
 		$filters[] = 'OnDemand eq true';
 
 		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'CategoryId eq ' . $category_id;
+			$filters[] = 'CategoryId eq ' . intval( $category_id );
 		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . intval( str_replace( 'deep-', '', $category_id ) ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
@@ -321,16 +321,16 @@ class EduAdminAPIHelper {
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
-			$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
+			$filters[] = 'Subjects/any(s:s/SubjectName eq ' . edu_odata_quote( sanitize_text_field( wp_unslash( $attributes['subject'] ) ) ) . ')';
 		}
 
 		if ( ! empty( $subjectid ) ) {
-			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . $subjectid . ')';
+			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $subjectid ) . ')';
 			$attributes['subjectid'] = $subjectid;
 		}
 
 		if ( ! empty( $courselevel ) ) {
-			$filters[] = 'CourseLevelId eq ' . $courselevel;
+			$filters[] = 'CourseLevelId eq ' . intval( $courselevel );
 		}
 
 		$sort_order = EDU()->get_option( 'eduadmin-listSortOrder', 'SortIndex' );
@@ -424,9 +424,9 @@ class EduAdminAPIHelper {
 		$filters[] = 'ShowOnWeb';
 
 		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'CategoryId eq ' . $category_id;
+			$filters[] = 'CategoryId eq ' . intval( $category_id );
 		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . intval( str_replace( 'deep-', '', $category_id ) ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
@@ -434,16 +434,16 @@ class EduAdminAPIHelper {
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
-			$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
+			$filters[] = 'Subjects/any(s:s/SubjectName eq ' . edu_odata_quote( sanitize_text_field( wp_unslash( $attributes['subject'] ) ) ) . ')';
 		}
 
 		if ( ! empty( $subjectid ) ) {
-			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . $subjectid . ')';
-			$attributes['subjectid'] = $subjectid;
+			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $subjectid ) . ')';
+			$attributes['subjectid'] = intval( $subjectid );
 		}
 
 		if ( ! empty( $courselevel ) ) {
-			$filters[] = 'CourseLevelId eq ' . $courselevel;
+			$filters[] = 'CourseLevelId eq ' . intval( $courselevel );
 		}
 
 		$order_by     = array();
@@ -539,9 +539,9 @@ class EduAdminAPIHelper {
 		$filters[] = 'OnDemand';
 
 		if ( ! empty( $category_id ) && ! edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'CategoryId eq ' . $category_id;
+			$filters[] = 'CategoryId eq ' . intval( $category_id );
 		} elseif ( ! empty( $category_id ) && edu_starts_with( $category_id, 'deep-' ) ) {
-			$filters[] = 'Categories/any(c:c/CategoryId eq ' . str_replace( 'deep-', '', $category_id ) . ')';
+			$filters[] = 'Categories/any(c:c/CategoryId eq ' . intval( str_replace( 'deep-', '', $category_id ) ) . ')';
 		}
 
 		if ( ! empty( $city ) ) {
@@ -549,16 +549,16 @@ class EduAdminAPIHelper {
 		}
 
 		if ( isset( $attributes['subject'] ) && ! empty( $attributes['subject'] ) ) {
-			$filters[] = 'Subjects/any(s:s/SubjectName eq \'' . sanitize_text_field( $attributes['subject'] ) . '\')';
+			$filters[] = 'Subjects/any(s:s/SubjectName eq ' . edu_odata_quote( sanitize_text_field( wp_unslash( $attributes['subject'] ) ) ) . ')';
 		}
 
 		if ( ! empty( $subjectid ) ) {
-			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . $subjectid . ')';
-			$attributes['subjectid'] = $subjectid;
+			$filters[]               = 'Subjects/any(s:s/SubjectId eq ' . intval( $subjectid ) . ')';
+			$attributes['subjectid'] = intval( $subjectid );
 		}
 
 		if ( ! empty( $courselevel ) ) {
-			$filters[] = 'CourseLevelId eq ' . $courselevel;
+			$filters[] = 'CourseLevelId eq ' . intval( $courselevel );
 		}
 
 		$order_by     = array();

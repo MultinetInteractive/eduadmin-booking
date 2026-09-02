@@ -9,7 +9,7 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 
 		$possible_persons = EDUAPI()->OData->Persons->Search(
 			null,
-			"$login_field eq '" . sanitize_text_field( wp_unslash( $_POST['eduadminloginEmail'] ) ) . '\'', // Input var okay.
+			"$login_field eq " . edu_odata_quote( sanitize_text_field( wp_unslash( $_POST['eduadminloginEmail'] ) ) ), // Input var okay.
 			'CustomFields($filter=ShowOnWeb;)'
 		)['value'];
 

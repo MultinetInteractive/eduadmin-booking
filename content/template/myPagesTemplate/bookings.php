@@ -37,8 +37,8 @@ const valid_sort_order = [
 
 	$events = EDUAPI()->OData->Events->Search(
 		'EventId,EventName,CourseName,InternalCourseName,OnDemand,StartDate,EndDate',
-		'Bookings/any(b:b/Customer/CustomerId eq ' . $customer->CustomerId . ') and StatusId eq 1',
-		'Bookings($expand=Participants($select=FirstName,LastName,Arrived,GradeName,Canceled,PriceNameId),UnnamedParticipants($select=PriceNameId,Quantity,Canceled);$filter=Customer/CustomerId eq ' . $customer->CustomerId . ' and NumberOfParticipants gt 0;$select=BookingId,Created,NumberOfParticipants,TotalPriceIncVat,TotalPriceExVat)'
+		'Bookings/any(b:b/Customer/CustomerId eq ' . intval( $customer->CustomerId ) . ') and StatusId eq 1',
+		'Bookings($expand=Participants($select=FirstName,LastName,Arrived,GradeName,Canceled,PriceNameId),UnnamedParticipants($select=PriceNameId,Quantity,Canceled);$filter=Customer/CustomerId eq ' . intval( $customer->CustomerId ) . ' and NumberOfParticipants gt 0;$select=BookingId,Created,NumberOfParticipants,TotalPriceIncVat,TotalPriceExVat)'
 	);
 
 	$bookings = array();

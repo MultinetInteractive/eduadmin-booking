@@ -25,7 +25,7 @@ class EduAdmin_LoginHandler {
 
 				$possible_persons = EDUAPI()->OData->Persons->Search(
 					'PersonId',
-					"CanLogin and $login_field eq '" . sanitize_text_field( wp_unslash( $_POST['eduadminloginEmail'] ) ) . '\'', // Input var okay.
+					"CanLogin and $login_field eq " . edu_odata_quote( sanitize_text_field( wp_unslash( $_POST['eduadminloginEmail'] ) ) ), // Input var okay.
 					'CustomFields($filter=ShowOnWeb;)',
 					null,
 					null,
