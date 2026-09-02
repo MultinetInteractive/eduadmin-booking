@@ -7,7 +7,7 @@ function edu_send_forgotten_password( $login_value ) {
 
 	$cc = EDUAPI()->OData->Persons->Search(
 		null,
-		"$login_field eq '" . sanitize_text_field( $login_value ) . '\' and CanLogin',
+		"$login_field eq " . edu_odata_quote( sanitize_text_field( wp_unslash( $login_value ) ) ) . ' and CanLogin',
 		null,
 		null,
 		null,

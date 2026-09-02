@@ -15,7 +15,7 @@ $certificates = array();
 if ( $show_company_certificates ) {
 	$certificates = EDUAPI()->OData->Persons->Search(
 		'PersonId,FirstName,LastName,CivicRegistrationNumber',
-		'CustomerId eq ' . $customer->CustomerId,
+		'CustomerId eq ' . intval( $customer->CustomerId ),
 		'Certificates'
 	)["value"];
 } else {
