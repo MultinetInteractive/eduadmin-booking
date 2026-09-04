@@ -4,6 +4,7 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 	if ( 'checkEmail' === $_POST['eduformloginaction'] && ! empty( $_POST['eduadminloginEmail'] ) ) {
 		$selected_login_field        = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 		$allow_customer_registration = EDU()->is_checked( 'eduadmin-allowCustomerRegistration', true );
+		$use_login                   = EDU()->is_checked( 'eduadmin-useLogin', false );
 
 		$login_field = EDU()->get_option( 'eduadmin-loginField', 'Email' );
 
@@ -13,7 +14,7 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 			'CustomFields($filter=ShowOnWeb;)'
 		)['value'];
 
-		EDU()->session['needsLogin'] = false;
+		EDU()->session['needsLogin'] = $use_login;
 		EDU()->session['checkEmail'] = true;
 		if ( ! empty( $possible_persons ) ) {
 			foreach ( $possible_persons as $con ) {
@@ -39,6 +40,10 @@ if ( ! empty( $_POST['edu-login-ver'] ) && wp_verify_nonce( $_POST['edu-login-ve
 
 				return;
 			} else {
+				if ( $use_login ) {
+					return;
+				}
+
 				EDU()->session['needsLogin'] = false;
 			}
 

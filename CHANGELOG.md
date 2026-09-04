@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.3...v6.0.0) (2026-09-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Might break some convenience logins, but it's for the sake of safety.
+
+### Security
+
+* Fixed authentication to be a bit better than before. ([20a1a5e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/20a1a5e14fde227f515674063129554936e375e6))
+
 ### [5.4.3](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.2...v5.4.3) (2026-09-02)
 
 

@@ -40,6 +40,8 @@ function edu_logout_user() {
 	unset( EDU()->session['eduadmin-loginUser'] );
 	unset( EDU()->session['needsLogin'] );
 	unset( EDU()->session['checkEmail'] );
+	unset( EDU()->session['eduadmin-authenticated'] );
+
 	EDU()->session->regenerate_id( true );
 	wp_redirect( $base_url . edu_get_query_string() );
 	EDU()->stop_timer( $t );
