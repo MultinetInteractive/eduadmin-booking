@@ -42,6 +42,7 @@ class EduAdmin_LoginHandler {
 
 					if ( 200 === $login_result['@curl']['http_code'] ) {
 						$user = $this->get_login_user( $login_result['PersonId'], $login_result['CustomerId'] );
+						EDU()->session['eduadmin-authenticated'] = true;
 					}
 				}
 
