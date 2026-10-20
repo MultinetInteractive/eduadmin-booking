@@ -299,6 +299,8 @@ function eduadmin_settings_init() {
 	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-alwaysNumbers' );
 	register_setting( 'eduadmin-date', 'eduadmin-date-courseDays-event-neverGroup' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-useWpFormat' );
+	register_setting( 'eduadmin-date', 'eduadmin-date-wpFormat-show-time' );
 
 	/* Security settings */
 

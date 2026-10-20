@@ -31,9 +31,9 @@
 			echo '<div class="dayInfo">';
 			echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
 			                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
-			     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
+			     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? edu_get_display_time( $event['StartDate'] ) .
 			                                                                                                                                             ' - ' .
-			                                                                                                                                             edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
+			                                                                                                                                             edu_get_display_time( $event['EndDate'] ) : '' );
 			echo "</div>\n";
 		}
 

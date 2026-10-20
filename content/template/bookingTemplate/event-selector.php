@@ -23,6 +23,10 @@ switch ( $event_detail_setting ) {
 		}
 }
 
+if ( edu_use_wp_date_format() ) {
+	$show_time = edu_wp_format_show_time();
+}
+
 $first_event = true;
 ?><?php if ( count( $events ) > 1 ) : ?>
 	<div class="dateSelectLabel">
@@ -36,11 +40,11 @@ $first_event = true;
 				<?php
 				echo esc_html( wp_strip_all_tags( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) ) );
 				if ( $show_time ) {
-					echo ', ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) );
+					echo ', ' . esc_html( edu_get_display_time( $ev['StartDate'] ) );
 					?>
 					-
 					<?php
-					echo esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) );
+					echo esc_html( edu_get_display_time( $ev['EndDate'] ) );
 				}
 				echo esc_html( edu_output_event_venue( array( $ev['AddressName'], $ev['City'] ), ', ' ) );
 				$first_event = false;
@@ -56,11 +60,11 @@ elseif ( 1 === count( $events ) ) :
 
 		if ( $show_time ) {
 			echo ', ' . '<span class="eventTime">';
-			echo esc_html( edu_get_timezoned_date( 'H:i', $event['StartDate'] ) );
+			echo esc_html( edu_get_display_time( $event['StartDate'] ) );
 			?>
 			-
 			<?php
-			echo esc_html( edu_get_timezoned_date( 'H:i', $event['EndDate'] ) ) . '</span>';
+			echo esc_html( edu_get_display_time( $event['EndDate'] ) ) . '</span>';
 		}
 	} else {
 		echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
