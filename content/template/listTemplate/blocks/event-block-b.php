@@ -28,9 +28,9 @@
 			if ( count( $event['EventDates'] ) > 0 ) {
 				$dayCount = count( $event['EventDates'] );
 			}
-			// With the site's date format, "Show event time" also controls this time.
+			// With the site's date format, edu_event_listitem_date() already shows the time (per "Show event time").
 			$show_day_info_time = $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) &&
-			                      ( ! edu_use_wp_date_format() || edu_wp_format_show_time() );
+			                      ! edu_use_wp_date_format();
 			echo '<div class="dayInfo">';
 			echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
 			                           ( $show_day_info_time ? ', ' : '' ) : '' ) .

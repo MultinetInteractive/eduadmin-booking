@@ -1034,10 +1034,17 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 	$total_days = count( $days );
 
+	$use_wp_format = edu_use_wp_date_format();
+
 	for ( $x = 0; $x < $total_days; $x ++ ) {
 		$day = $days[ $x ];
 
-		$added_dates[ edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] ) ][] = $day;
+		// With the site's format, group by the displayed time labels so a group's shared label is accurate.
+		$time_key = $use_wp_format ?
+			edu_get_display_time( $day['StartDate'] ) . '-' . edu_get_display_time( $day['EndDate'] ) :
+			edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] );
+
+		$added_dates[ $time_key ][] = $day;
 	}
 
 	$ordered_dategroups = array();
