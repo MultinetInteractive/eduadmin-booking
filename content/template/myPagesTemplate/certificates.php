@@ -66,7 +66,7 @@ function edu_write_certificate_date( $start_date, $end_date ) {
 						?>
 						<tr>
 							<td align="left"><?php echo esc_html( $certificate['CertificateName'] ); ?></td>
-							<td align="left"><?php echo esc_html( edu_get_timezoned_date( 'Y-m-d', $certificate['CertificateDate'] ) ); ?></td>
+							<td align="left"><?php echo esc_html( edu_get_display_date( $certificate['CertificateDate'] ) ); ?></td>
 							<td align="left"><?php echo esc_html( edu_write_certificate_date( $certificate['ValidFrom'], $certificate['ValidTo'] ) ); ?></td>
 						</tr>
 						<?php

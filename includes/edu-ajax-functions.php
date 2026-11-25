@@ -88,7 +88,7 @@ function edu_listview_courselist() {
 			if ( $event['OnDemand'] ) {
 				$return_value[ (string) $event['CourseTemplateId'] ] = _x( 'On-demand', 'frontend', 'eduadmin-booking' );
 			} else {
-				$return_value[ (string) $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
+				$return_value[ (string) $event['CourseTemplateId'] ] = sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_display_date( $event['Events'][0]['StartDate'] ) ) . ' ' . $event['Events'][0]['City'];
 			}
 		}
 	}

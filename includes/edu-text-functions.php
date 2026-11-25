@@ -963,6 +963,26 @@ function edu_get_display_time( $input_date ) {
 	return edu_get_timezoned_date( 'H:i', $input_date );
 }
 
+/**
+ * Formats a single date for display, respecting the "use the site's date format" setting.
+ *
+ * @param string $input_date    Date from the API.
+ * @param string $legacy_format Format used when the setting is off.
+ * @param bool   $with_time     Append the site's time format when the setting is on.
+ */
+function edu_get_display_date( $input_date, $legacy_format = 'Y-m-d', $with_time = false ) {
+	if ( edu_use_wp_date_format() ) {
+		$format = get_option( 'date_format' );
+		if ( $with_time ) {
+			$format .= ' ' . get_option( 'time_format' );
+		}
+
+		return edu_get_wp_formatted_date( $format, $input_date );
+	}
+
+	return edu_get_timezoned_date( $legacy_format, $input_date );
+}
+
 function edu_get_wp_date_range( $start_date, $end_date ) {
 	$format = get_option( 'date_format' );
 	$str    = edu_get_wp_formatted_date( $format, $start_date );
@@ -1361,9 +1381,7 @@ if ( ! function_exists( 'edu_course_listitem_nextdate' ) ) {
 		if ( $next_event['OnDemand'] ) {
 			echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
 		} else {
-			$next_date = edu_use_wp_date_format() ?
-				edu_get_wp_formatted_date( get_option( 'date_format' ), $next_event['StartDate'] ) :
-				edu_get_timezoned_date( 'Y-m-d', $next_event['StartDate'] );
+			$next_date = edu_get_display_date( $next_event['StartDate'] );
 			echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), $next_date ) . ' ' . $next_event['City'] );
 			if ( $show_event_venue && ! empty( $next_event['AddressName'] ) ) {
 				echo '<span class="venueInfo">, ' . esc_html( $next_event['AddressName'] ) . '</span>';
