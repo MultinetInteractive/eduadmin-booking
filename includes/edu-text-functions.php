@@ -1068,11 +1068,20 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$force_show_times = date( "Y-m-d", strtotime( $days[0]['StartDate'] ) ) == date( "Y-m-d", strtotime( end( $days )['EndDate'] ) );
 
+		if ( edu_use_wp_date_format() && count( $added_dates ) > 1 ) {
+			// The days have different times, so a single time in the summary would be misleading.
+			$summary = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $days[0]['StartDate'] ) . '" data-enddate="' . esc_attr( end( $days )['EndDate'] ) . '">' .
+			           edu_get_wp_date_range( $days[0]['StartDate'], end( $days )['EndDate'] ) .
+			           '</span>';
+		} else {
+			$summary = get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times );
+		}
+
 		$n_res = array();
 		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
-			wp_kses_post( sprintf( _nx( '%1$d day, %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
+			wp_kses_post( sprintf( _nx( '%1$d day, %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), $summary ) ) .
 			'</span><div class="edu-DayPopup">
 <b>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</b><br />
 ' . join( "<br />\n", $ordered_dategroups ) . '
@@ -1090,10 +1099,12 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false, $show_times = false ) {
 	if ( edu_use_wp_date_format() ) {
+		// Only the "Show event time" setting decides whether times are shown; the legacy
+		// $show_days/$show_times flags (day names, same-day heuristics) don't apply here.
 		$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date['StartDate'] ) . '" data-enddate="' . esc_attr( $end_date['EndDate'] ) . '">';
 		$str .= edu_get_wp_date_range( $start_date['StartDate'], $end_date['EndDate'] );
-		if ( $show_days || $show_times ) {
-			$str .= ' ' . edu_get_display_time( $end_date['StartDate'] ) . '-' . edu_get_display_time( $end_date['EndDate'] );
+		if ( edu_wp_format_show_time() ) {
+			$str .= ', ' . edu_get_display_time( $end_date['StartDate'] ) . ' - ' . edu_get_display_time( $end_date['EndDate'] );
 		}
 		$str .= '</span>';
 
@@ -1321,8 +1332,9 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 			echo isset( $event_dates[ (string) $ev['EventId'] ] ) ?
 				get_logical_date_groups( $event_dates[ (string) $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
 				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			// With the site format, schedule entries (even a single one) already include the time.
 			if ( $show_time ) {
-				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || count( $event_dates[ (string) $ev['EventId'] ] ) === 1 ?
+				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || ( count( $event_dates[ (string) $ev['EventId'] ] ) === 1 && ! edu_use_wp_date_format() ) ?
 					'<span class="eventTime">, ' . esc_html( edu_get_display_time( $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_display_time( $ev['EndDate'] ) ) . '</span>' :
 					'';
 			}
