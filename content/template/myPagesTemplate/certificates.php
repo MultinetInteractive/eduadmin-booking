@@ -25,11 +25,11 @@ function edu_write_certificate_date( $start_date, $end_date ) {
 	$date_str = '';
 
 	if ( ! empty( $start_date ) ) {
-		$date_str = edu_get_timezoned_date( 'Y-m-d', $start_date ) . ' - ';
+		$date_str = edu_get_display_date( $start_date ) . ' - ';
 	}
 
 	if ( ! empty( $end_date ) ) {
-		$date_str .= edu_get_timezoned_date( 'Y-m-d', $end_date );
+		$date_str .= edu_get_display_date( $end_date );
 	} else {
 		$date_str .= _x( 'Ongoing', 'frontend', 'eduadmin-booking' );
 	}
