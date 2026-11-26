@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v6.0.0...v6.1.0) (2026-11-26)
+
+
+### Features
+
+* Add setting to use the site's date and time format ([9d07dfb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/9d07dfb7319a77719ed406d6c3892e9dee73f4c0))
+
+
+### Bug Fixes
+
+* Always show session times in the programme popup in site-format mode ([d9b71dd](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/d9b71dd105b0562f8a04bd34954d4362786bed49))
+* Avoid duplicate list times and group schedules by displayed time in site-format mode ([3c8e728](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/3c8e7283415273ff965f97bbbf4754f66cd75a56))
+* Escape new date settings labels ([ad8a496](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/ad8a49607f499e487bb6f60f32572c84def9a332))
+* Escape the AJAX-refreshed "Next event" label ([5a4acfb](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/5a4acfb8570a2c75f534c40a1342ec569a774d46))
+* Respect "Show event time" in schedules when using the sites' date format ([aa47ac2](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/aa47ac25d61ba3081dce6ceb2ceb51259ae99f5a))
+* Respect "Show event time" in the list day info when using the site's date format ([57274ae](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/57274ae529686a2ef8b445961e807338e4a943a8))
+* Use the site's date format for certificate validity dates ([a8def30](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/a8def30c39a9af174d8f8a8c78d44dadaa0302ea))
+* Use the site's date format for remaining date displays ([731d259](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/731d259d5704b30e96e47fb8e096733bc03819f3))
+
+
+### Documentation
+
+* Explain why the WP-format range shows a single day's times ([818656e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/818656eb3207b51eb5125c4a46f5746ce460c077))
+
+
+### Refactoring
+
+* Reuse existing helpers in the schedule popup summary ([fa5672c](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/fa5672c549fcd207a268d48a54886c49cc2ae27a))
+* Use the WP date helper for the range day comparison ([06ceb9e](https://github.com/MultinetInteractive/EduAdmin-WordPress/commit/06ceb9e7bbb8076e5141f8e48e898df456aa3a01))
+
 ## [6.0.0](https://github.com/MultinetInteractive/EduAdmin-WordPress/compare/v5.4.3...v6.0.0) (2026-09-04)
 
 
