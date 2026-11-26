@@ -1102,13 +1102,13 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	return $ordered_dategroups;
 }
 
-function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false, $show_times = false ) {
+function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false, $show_times = false, $always_show_time = false ) {
 	if ( edu_use_wp_date_format() ) {
-		// Only the "Show event time" setting decides whether times are shown; the legacy
-		// $show_days/$show_times flags (day names, same-day heuristics) don't apply here.
+		// Only the "Show event time" setting (or $always_show_time, for views that need times)
+		// decides whether times are shown; the legacy $show_days/$show_times flags don't apply here.
 		$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date['StartDate'] ) . '" data-enddate="' . esc_attr( $end_date['EndDate'] ) . '">';
 		$str .= edu_get_wp_date_range( $start_date['StartDate'], $end_date['EndDate'] );
-		if ( edu_wp_format_show_time() ) {
+		if ( $always_show_time || edu_wp_format_show_time() ) {
 			// Callers only pass ranges whose days share the same displayed times (single entries,
 			// or schedule groups keyed by edu_get_display_time()), so any day's times represent the range.
 			$str .= ', ' . edu_get_display_time( $end_date['StartDate'] ) . ' - ' . edu_get_display_time( $end_date['EndDate'] );

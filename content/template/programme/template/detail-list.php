@@ -59,13 +59,13 @@ foreach ( $grouped_programmes as $group => $grouped_programme ) {
 					if ( count( $ev['EventDates'] ) > 0 ) {
 						foreach ( $ev['EventDates'] as $evdate ) {
 							echo wp_kses_post(
-								     get_start_end_display_date( $evdate, $evdate, false, $ev, true ) . ' ' .
+								     get_start_end_display_date( $evdate, $evdate, false, $ev, true, false, true ) . ' ' .
 								     $ev['EventName']
 							     ) . '<br />';
 						}
 					} else {
 						echo wp_kses_post(
-							     get_start_end_display_date( $ev, $ev, false, $ev, true ) . ' ' .
+							     get_start_end_display_date( $ev, $ev, false, $ev, true, false, true ) . ' ' .
 							     $ev['EventName']
 						     ) . '<br />';
 					}
