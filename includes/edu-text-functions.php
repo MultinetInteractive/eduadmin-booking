@@ -1111,6 +1111,8 @@ function get_start_end_display_date( $start_date, $end_date, $short, $event, $sh
 		$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date['StartDate'] ) . '" data-enddate="' . esc_attr( $end_date['EndDate'] ) . '">';
 		$str .= edu_get_wp_date_range( $start_date['StartDate'], $end_date['EndDate'] );
 		if ( edu_wp_format_show_time() ) {
+			// Callers only pass ranges whose days share the same displayed times (single entries,
+			// or schedule groups keyed by edu_get_display_time()), so any day's times represent the range.
 			$str .= ', ' . edu_get_display_time( $end_date['StartDate'] ) . ' - ' . edu_get_display_time( $end_date['EndDate'] );
 		}
 		$str .= '</span>';
