@@ -986,7 +986,7 @@ function edu_get_display_date( $input_date, $legacy_format = 'Y-m-d', $with_time
 function edu_get_wp_date_range( $start_date, $end_date ) {
 	$format = get_option( 'date_format' );
 	$str    = edu_get_wp_formatted_date( $format, $start_date );
-	if ( edu_get_timezoned_date( 'Y-m-d', $start_date ) !== edu_get_timezoned_date( 'Y-m-d', $end_date ) ) {
+	if ( edu_get_wp_formatted_date( 'Y-m-d', $start_date ) !== edu_get_wp_formatted_date( 'Y-m-d', $end_date ) ) {
 		$str .= ' - ' . edu_get_wp_formatted_date( $format, $end_date );
 	}
 
