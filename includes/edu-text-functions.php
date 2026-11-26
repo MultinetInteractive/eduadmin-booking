@@ -1075,11 +1075,9 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$force_show_times = date( "Y-m-d", strtotime( $days[0]['StartDate'] ) ) == date( "Y-m-d", strtotime( end( $days )['EndDate'] ) );
 
-		if ( edu_use_wp_date_format() && count( $added_dates ) > 1 ) {
+		if ( $use_wp_format && count( $added_dates ) > 1 ) {
 			// The days have different times, so a single time in the summary would be misleading.
-			$summary = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $days[0]['StartDate'] ) . '" data-enddate="' . esc_attr( end( $days )['EndDate'] ) . '">' .
-			           edu_get_wp_date_range( $days[0]['StartDate'], end( $days )['EndDate'] ) .
-			           '</span>';
+			$summary = get_old_start_end_display_date( $days[0]['StartDate'], end( $days )['EndDate'] );
 		} else {
 			$summary = get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times );
 		}
