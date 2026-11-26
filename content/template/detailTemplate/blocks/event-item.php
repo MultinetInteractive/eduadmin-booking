@@ -98,7 +98,7 @@ if ( ! empty( $ev['EventDates'] ) ) {
 		} else {
 			?>
 		<i class="applicationNotOpenYet"
-		   title="<?php echo esc_attr( edu_get_timezoned_date( 'Y-m-d H:i', $ev['ApplicationOpenDate'] ) ); ?>">
+		   title="<?php echo esc_attr( edu_get_display_date( $ev['ApplicationOpenDate'], 'Y-m-d H:i', true ) ); ?>">
 			<?php
 			echo sprintf(
 				_x( 'Application opens<br />%1$s', 'frontend', 'eduadmin-booking' ),

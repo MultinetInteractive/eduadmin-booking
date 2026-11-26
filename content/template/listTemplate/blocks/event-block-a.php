@@ -30,12 +30,15 @@
 					if ( count( $event['EventDates'] ) > 0 ) {
 						$dayCount = count( $event['EventDates'] );
 					}
+					// With the site's date format, edu_event_listitem_date() already shows the time (per "Show event time").
+					$show_day_info_time = $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) &&
+					                      ! edu_use_wp_date_format();
 					echo '<div class="dayInfo">';
 					echo ( $show_course_days ? sprintf( _n( '%1$d day', '%1$d days', $dayCount, 'eduadmin-booking' ), $dayCount ) .
-					                           ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? ', ' : '' ) : '' ) .
-					     ( $show_course_times && $event['StartDate'] != '' && $event['EndDate'] != '' && ! isset( $event_dates[ (string) $event['EventId'] ] ) ? edu_get_timezoned_date( "H:i", $event['StartDate'] ) .
+					                           ( $show_day_info_time ? ', ' : '' ) : '' ) .
+					     ( $show_day_info_time ? edu_get_display_time( $event['StartDate'] ) .
 					                                                                                                                                             ' - ' .
-					                                                                                                                                             edu_get_timezoned_date( "H:i", $event['EndDate'] ) : '' );
+					                                                                                                                                             edu_get_display_time( $event['EndDate'] ) : '' );
 					echo "</div>\n";
 				}
 
@@ -100,7 +103,7 @@
 				} else {
 					?>
 				<i class="applicationNotOpenYet"
-				   title="<?php echo esc_attr( edu_get_timezoned_date( 'Y-m-d H:i', $event['ApplicationOpenDate'] ) ); ?>">
+				   title="<?php echo esc_attr( edu_get_display_date( $event['ApplicationOpenDate'], 'Y-m-d H:i', true ) ); ?>">
 					<?php
 					echo sprintf(
 						_x( 'Application opens<br />%1$s', 'frontend', 'eduadmin-booking' ),

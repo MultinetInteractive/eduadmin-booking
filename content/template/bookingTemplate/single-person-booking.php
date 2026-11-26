@@ -419,7 +419,7 @@ if ( ! $no_invoice_free_events || ( $no_invoice_free_events && $first_price['Pri
 				echo( $sub_event['MandatoryParticipation'] ? ' disabled="disabled"' : '' );
 				echo ' value="' . esc_attr( $sub_event['SessionId'] ) . '"> ';
 				echo esc_html( wp_strip_all_tags( $sub_event['SessionName'] ) );
-				echo esc_html( $hide_sub_event_date_info ? '' : ' (' . edu_get_timezoned_date( 'd/m H:i', $sub_event['StartDate'] ) . ' - ' . edu_get_timezoned_date( 'd/m H:i', $sub_event['EndDate'] ) . ') ' );
+				echo esc_html( $hide_sub_event_date_info ? '' : ' (' . edu_get_display_date( $sub_event['StartDate'], 'd/m H:i', true ) . ' - ' . edu_get_display_date( $sub_event['EndDate'], 'd/m H:i', true ) . ') ' );
 				echo( intval( $s ) > 0 ? '&nbsp;<i class="priceLabel">' . esc_html( edu_get_price( $s, $selected_course['ParticipantVat'] ) ) . '</i>' : '' );
 				echo "</label>\n";
 			}

@@ -935,7 +935,71 @@ function edu_get_timezoned_date( $dateformat, $input_date = null ) {
 	return get_date_from_gmt( $input_date, $dateformat );
 }
 
+function edu_use_wp_date_format() {
+	return EDU()->is_checked( 'eduadmin-date-useWpFormat' );
+}
+
+function edu_wp_format_show_time() {
+	return EDU()->is_checked( 'eduadmin-date-wpFormat-show-time', true );
+}
+
+function edu_get_wp_formatted_date( $format, $input_date ) {
+	if ( empty( $input_date ) ) {
+		return '';
+	}
+
+	// Parse like get_date_from_gmt(): honour an explicit offset, otherwise treat as UTC
+	// (strtotime() would use PHP's default timezone, which edu_now_date() changes).
+	$date = date_create( $input_date, new DateTimeZone( 'UTC' ) );
+
+	return $date ? wp_date( $format, $date->getTimestamp() ) : '';
+}
+
+function edu_get_display_time( $input_date ) {
+	if ( edu_use_wp_date_format() ) {
+		return edu_get_wp_formatted_date( get_option( 'time_format' ), $input_date );
+	}
+
+	return edu_get_timezoned_date( 'H:i', $input_date );
+}
+
+/**
+ * Formats a single date for display, respecting the "use the site's date format" setting.
+ *
+ * @param string $input_date    Date from the API.
+ * @param string $legacy_format Format used when the setting is off.
+ * @param bool   $with_time     Append the site's time format when the setting is on.
+ */
+function edu_get_display_date( $input_date, $legacy_format = 'Y-m-d', $with_time = false ) {
+	if ( edu_use_wp_date_format() ) {
+		$format = get_option( 'date_format' );
+		if ( $with_time ) {
+			$format .= ' ' . get_option( 'time_format' );
+		}
+
+		return edu_get_wp_formatted_date( $format, $input_date );
+	}
+
+	return edu_get_timezoned_date( $legacy_format, $input_date );
+}
+
+function edu_get_wp_date_range( $start_date, $end_date ) {
+	$format = get_option( 'date_format' );
+	$str    = edu_get_wp_formatted_date( $format, $start_date );
+	if ( edu_get_wp_formatted_date( 'Y-m-d', $start_date ) !== edu_get_wp_formatted_date( 'Y-m-d', $end_date ) ) {
+		$str .= ' - ' . edu_get_wp_formatted_date( $format, $end_date );
+	}
+
+	return $str;
+}
+
 function get_display_date( $in_date, $short = true ) {
+	if ( edu_use_wp_date_format() ) {
+		return '<span class="eduadmin-dateText" data-date="' . esc_attr( $in_date ) . '">' .
+		       edu_get_wp_formatted_date( get_option( 'date_format' ), $in_date ) .
+		       '</span>';
+	}
+
 	$months = $short ? EDU()->short_months : EDU()->months;
 
 	$year     = edu_get_timezoned_date( 'Y', $in_date );
@@ -970,10 +1034,17 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 
 	$total_days = count( $days );
 
+	$use_wp_format = edu_use_wp_date_format();
+
 	for ( $x = 0; $x < $total_days; $x ++ ) {
 		$day = $days[ $x ];
 
-		$added_dates[ edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] ) ][] = $day;
+		// With the site's format, group by the displayed time labels so a group's shared label is accurate.
+		$time_key = $use_wp_format ?
+			edu_get_display_time( $day['StartDate'] ) . '-' . edu_get_display_time( $day['EndDate'] ) :
+			edu_get_timezoned_date( 'H:i', $day['StartDate'] ) . '-' . edu_get_timezoned_date( 'H:i', $day['EndDate'] );
+
+		$added_dates[ $time_key ][] = $day;
 	}
 
 	$ordered_dategroups = array();
@@ -1004,11 +1075,18 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	if ( count( $ordered_dategroups ) > 3 || $always_show_schedule ) {
 		$force_show_times = date( "Y-m-d", strtotime( $days[0]['StartDate'] ) ) == date( "Y-m-d", strtotime( end( $days )['EndDate'] ) );
 
+		if ( $use_wp_format && count( $added_dates ) > 1 ) {
+			// The days have different times, so a single time in the summary would be misleading.
+			$summary = get_old_start_end_display_date( $days[0]['StartDate'], end( $days )['EndDate'] );
+		} else {
+			$summary = get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times );
+		}
+
 		$n_res = array();
 		$ret   =
 			'<span class="edu-manyDays" title="' . esc_attr_x( 'Show schedule', 'frontend', 'eduadmin-booking' ) . '" onclick="edu_openDatePopup(this);">' .
 			/* translators: 1: Number of days 2: Date range */
-			wp_kses_post( sprintf( _nx( '%1$d day, %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), get_start_end_display_date( $days[0], end( $days ), $short, null, false, $force_show_times ) ) ) .
+			wp_kses_post( sprintf( _nx( '%1$d day, %2$s', '%1$d days between %2$s', count( $days ), 'frontend', 'eduadmin-booking' ), count( $days ), $summary ) ) .
 			'</span><div class="edu-DayPopup">
 <b>' . esc_html_x( 'Schedule', 'frontend', 'eduadmin-booking' ) . '</b><br />
 ' . join( "<br />\n", $ordered_dategroups ) . '
@@ -1024,7 +1102,22 @@ function edu_get_date_range( $days, $short, $event, $show_days, $always_show_sch
 	return $ordered_dategroups;
 }
 
-function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false, $show_times = false ) {
+function get_start_end_display_date( $start_date, $end_date, $short, $event, $show_days = false, $show_times = false, $always_show_time = false ) {
+	if ( edu_use_wp_date_format() ) {
+		// Only the "Show event time" setting (or $always_show_time, for views that need times)
+		// decides whether times are shown; the legacy $show_days/$show_times flags don't apply here.
+		$str = '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date['StartDate'] ) . '" data-enddate="' . esc_attr( $end_date['EndDate'] ) . '">';
+		$str .= edu_get_wp_date_range( $start_date['StartDate'], $end_date['EndDate'] );
+		if ( $always_show_time || edu_wp_format_show_time() ) {
+			// Callers only pass ranges whose days share the same displayed times (single entries,
+			// or schedule groups keyed by edu_get_display_time()), so any day's times represent the range.
+			$str .= ', ' . edu_get_display_time( $end_date['StartDate'] ) . ' - ' . edu_get_display_time( $end_date['EndDate'] );
+		}
+		$str .= '</span>';
+
+		return $str;
+	}
+
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
 	$months    = $short ? EDU()->short_months : EDU()->months;
 
@@ -1114,6 +1207,12 @@ function get_old_start_end_display_date( $start_date, $end_date, $short = false,
 
 	if ( null === $end_date ) {
 		$end_date = $start_date;
+	}
+
+	if ( edu_use_wp_date_format() ) {
+		return '<span class="eduadmin-dateText" data-startdate="' . esc_attr( $start_date ) . '" data-enddate="' . esc_attr( $end_date ) . '">' .
+		       edu_get_wp_date_range( $start_date, $end_date ) .
+		       '</span>';
 	}
 
 	$week_days = $short ? EDU()->short_week_days : EDU()->week_days;
@@ -1218,6 +1317,10 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 				}
 		}
 
+		if ( edu_use_wp_date_format() ) {
+			$show_time = edu_wp_format_show_time();
+		}
+
 		$event_date_setting = EDU()->get_option( 'eduadmin-date-courseDays-event', 'default' );
 
 		$always_show_schedule = false;
@@ -1236,9 +1339,10 @@ if ( ! function_exists( 'edu_event_item_date' ) ) {
 			echo isset( $event_dates[ (string) $ev['EventId'] ] ) ?
 				get_logical_date_groups( $event_dates[ (string) $ev['EventId'] ], $use_short, null, $show_names, $overridden, $always_show_schedule, $never_group ) :
 				wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
+			// With the site format, schedule entries (even a single one) already include the time.
 			if ( $show_time ) {
-				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || count( $event_dates[ (string) $ev['EventId'] ] ) === 1 ?
-					'<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>' :
+				echo ! isset( $event_dates[ (string) $ev['EventId'] ] ) || ( count( $event_dates[ (string) $ev['EventId'] ] ) === 1 && ! edu_use_wp_date_format() ) ?
+					'<span class="eventTime">, ' . esc_html( edu_get_display_time( $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_display_time( $ev['EndDate'] ) ) . '</span>' :
 					'';
 			}
 		}
@@ -1274,9 +1378,13 @@ if ( ! function_exists( 'edu_event_item_applicationopendate' ) ) {
 				}
 		}
 
+		if ( edu_use_wp_date_format() ) {
+			$show_time = edu_wp_format_show_time();
+		}
+
 		$retValue = wp_kses_post( get_old_start_end_display_date( $application_open_date, $application_open_date, $use_short, $show_names ) );
 		if ( $show_time ) {
-			$retValue .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $application_open_date ) ) . '</span>';
+			$retValue .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_display_time( $application_open_date ) ) . '</span>';
 		}
 
 		EDU()->stop_timer( $__t );
@@ -1292,7 +1400,8 @@ if ( ! function_exists( 'edu_course_listitem_nextdate' ) ) {
 		if ( $next_event['OnDemand'] ) {
 			echo esc_html_x( 'On-demand', 'frontend', 'eduadmin-booking' );
 		} else {
-			echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), edu_get_timezoned_date( 'Y-m-d', $next_event['StartDate'] ) ) . ' ' . $next_event['City'] );
+			$next_date = edu_get_display_date( $next_event['StartDate'] );
+			echo esc_html( sprintf( _x( 'Next event %1$s', 'frontend', 'eduadmin-booking' ), $next_date ) . ' ' . $next_event['City'] );
 			if ( $show_event_venue && ! empty( $next_event['AddressName'] ) ) {
 				echo '<span class="venueInfo">, ' . esc_html( $next_event['AddressName'] ) . '</span>';
 			}
@@ -1327,12 +1436,16 @@ if ( ! function_exists( 'edu_event_listitem_date' ) ) {
 				}
 		}
 
+		if ( edu_use_wp_date_format() ) {
+			$show_time = edu_wp_format_show_time();
+		}
+
 		if ( $ev['OnDemand'] ) {
 			echo _x( 'On-demand', 'frontend', 'eduadmin-booking' );
 		} else {
 			echo wp_kses_post( get_old_start_end_display_date( $ev['StartDate'], $ev['EndDate'], $use_short, $show_names ) );
 			if ( $show_time ) {
-				echo '<span class="eventTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_timezoned_date( 'H:i', $ev['EndDate'] ) ) . '</span>';
+				echo '<span class="eventTime">, ' . esc_html( edu_get_display_time( $ev['StartDate'] ) ) . ' - ' . esc_html( edu_get_display_time( $ev['EndDate'] ) ) . '</span>';
 			}
 		}
 
@@ -1367,9 +1480,13 @@ if ( ! function_exists( 'edu_event_listitem_applicationopendate' ) ) {
 				}
 		}
 
+		if ( edu_use_wp_date_format() ) {
+			$show_time = edu_wp_format_show_time();
+		}
+
 		$retVal = wp_kses_post( get_old_start_end_display_date( $application_open_date, $application_open_date, $use_short, $show_names ) );
 		if ( $show_time ) {
-			$retVal .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_timezoned_date( 'H:i', $application_open_date ) ) . '</span>';
+			$retVal .= '<span class="applicationOpenTime">, ' . esc_html( edu_get_display_time( $application_open_date ) ) . '</span>';
 		}
 
 		EDU()->stop_timer( $__t );

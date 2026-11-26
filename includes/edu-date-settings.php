@@ -27,6 +27,9 @@ function edu_render_date_settings_page() {
 			EDU()->delete_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
 			EDU()->delete_option( 'eduadmin-date-courseDays-event-neverGroup' );
 
+			EDU()->delete_option( 'eduadmin-date-useWpFormat' );
+			EDU()->delete_option( 'eduadmin-date-wpFormat-show-time' );
+
 			wp_cache_flush();
 		}
 
@@ -45,6 +48,9 @@ function edu_render_date_settings_page() {
 		$eduCourseDaySetting       = EDU()->get_option( 'eduadmin-date-courseDays-event', 'default' );
 		$course_day_always_numbers = EDU()->get_option( 'eduadmin-date-courseDays-event-alwaysNumbers' );
 		$course_day_never_group    = EDU()->get_option( 'eduadmin-date-courseDays-event-neverGroup' );
+
+		$use_wp_format       = EDU()->is_checked( 'eduadmin-date-useWpFormat' );
+		$wp_format_show_time = EDU()->is_checked( 'eduadmin-date-wpFormat-show-time', true );
 		?>
 		<div class="eduadmin wrap">
 			<h2><?php echo sprintf( _x( 'EduAdmin settings - %s', 'backend', 'eduadmin-booking' ), _x( 'Date settings', 'backend', 'eduadmin-booking' ) ); ?></h2>
@@ -58,10 +64,32 @@ function edu_render_date_settings_page() {
 							<br />
 							<br />
 							<?php echo _x( 'If no changes are made, the plugin will run as it done before, with default settings.', 'backend', 'eduadmin-booking' ); ?>
+							<h3><?php echo esc_html_x( 'WordPress date format', 'backend', 'eduadmin-booking' ); ?></h3>
+							<label>
+								<input type="checkbox" name="eduadmin-date-useWpFormat"
+									<?php checked( $use_wp_format ); ?>
+									   value="on"
+									   onchange="EduAdmin.ToggleVisibility(this.checked, '.edu-date-wpformat-options'); EduAdmin.ToggleVisibility(!this.checked, '.edu-date-eventdate-options');" />
+								<?php echo esc_html_x( "Use the site's date and time format (Settings → General)", 'backend', 'eduadmin-booking' ); ?>
+							</label>
+							<br />
+							<?php echo esc_html( sprintf( _x( 'Example: %1$s %2$s', 'backend', 'eduadmin-booking' ), wp_date( get_option( 'date_format' ) ), wp_date( get_option( 'time_format' ) ) ) ); ?>
+							(<a href="<?php echo esc_url( admin_url( 'options-general.php' ) ); ?>"><?php echo esc_html_x( 'Change the site format', 'backend', 'eduadmin-booking' ); ?></a>)
 							<h3><?php echo _x( 'Date format (Event dates)', 'backend', 'eduadmin-booking' ); ?></h3>
 							<em><?php echo _x( 'These settings will make changes to where dates for specific events are shown in lists, details or in event selections.', 'backend', 'eduadmin-booking' ); ?></em>
 							<br />
 							<br />
+							<div class="edu-date-wpformat-options"<?php echo( $use_wp_format ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
+								<strong><?php echo esc_html_x( 'Detail and list settings', 'backend', 'eduadmin-booking' ); ?></strong>
+								<br />
+								<label>
+									<input type="checkbox" name="eduadmin-date-wpFormat-show-time"
+										<?php checked( $wp_format_show_time ); ?>
+										   value="on" />
+									<?php echo esc_html_x( 'Show event time', 'backend', 'eduadmin-booking' ); ?>
+								</label>
+							</div>
+							<div class="edu-date-eventdate-options"<?php echo( ! $use_wp_format ? ' style="display: block;"' : ' style="display: none;"' ); ?>>
 							<strong><?php echo _x( 'Detail settings', 'backend', 'eduadmin-booking' ); ?></strong>
 							<br />
 							<label>
@@ -157,6 +185,7 @@ function edu_render_date_settings_page() {
 							       name="eduadmin-date-eventDates-list-custom-format"
 							       id="eduadmin-date-eventDates-list-custom-format" placeholder="Custom date format"
 							       value="<?php echo esc_attr( $event_list_custom_format ); ?>" />-->
+							</div>
 
 							<br />
 							<h3><?php echo _x( 'Date format (Schedule for events)', 'backend', 'eduadmin-booking' ); ?></h3>
